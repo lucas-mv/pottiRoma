@@ -1,11 +1,12 @@
 ﻿using System;
-
+using Acr.UserDialogs;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xfx;
 
 namespace PottiRoma.App.Droid
 {
@@ -19,7 +20,11 @@ namespace PottiRoma.App.Droid
 
             base.OnCreate(bundle);
 
+            XfxControls.Init();
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            UserDialogs.Init(this);
+
             LoadApplication(new App());
         }
     }
