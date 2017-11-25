@@ -153,11 +153,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PottiRoma.IoC\PottiRoma.IoC.csproj">
-      <Project>{F6CF4821-4FAC-4EB9-A2B9-7B3C7F6CABE0}</Project>
+      <Project>{2F965862-46E6-4FDF-A907-D64D793583E0}</Project>
       <Name>PottiRoma.IoC</Name>
     </ProjectReference>
     <ProjectReference Include="..\PottiRoma.Services\PottiRoma.Services.csproj">
-      <Project>{C8062872-8711-4236-BFD2-B745E85AF656}</Project>
+      <Project>{80565B9A-5C78-4151-B434-B752D8A23474}</Project>
       <Name>PottiRoma.Services</Name>
     </ProjectReference>
   </ItemGroup>
