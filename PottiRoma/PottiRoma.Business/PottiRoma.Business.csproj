@@ -49,12 +49,8 @@
       <Name>PottiRoma.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\PottiRoma.Entities\PottiRoma.Entities.csproj">
-      <Project>{18a13d5a-23df-47e6-b7c7-5998473bbe5e}</Project>
+      <Project>{1DF79271-77A2-4066-816F-8F03BBAF6938}</Project>
       <Name>PottiRoma.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PottiRoma.Utils\PottiRoma.Utils.csproj">
-      <Project>{f1986902-f873-46a5-a153-588ac1054785}</Project>
-      <Name>PottiRoma.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
