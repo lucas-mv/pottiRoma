@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PottiRoma.App.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <Grid BackgroundColor="#f2f2f2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="14*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+
+        <Frame
+            Grid.Row="1"
+            Grid.Column="1"
+            BackgroundColor="White"
+            HasShadow="True"
+            OutlineColor="#f2f2f2">
+            <Grid RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="12" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="12" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="12" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Aspect="AspectFit"
+                    HeightRequest="100"
+                    Source="logo.png"
+                    VerticalOptions="Start" />
+
+                <renderers:CustomEntry
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Focused="Entry_Focused"
+                    FontSize="14"
+                    Keyboard="Email"
+                    Placeholder="Email"
+                    PlaceholderColor="#d5d5d5"
+                    Text="{Binding Login}"
+                    TextColor="Gray"
+                    VerticalOptions="End" />
+
+                <StackLayout
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    HeightRequest="60"
+                    Spacing="5"
+                    VerticalOptions="End">
+                    <renderers:CustomEntry
+                        Focused="Entry_Focused"
+                        FontSize="14"
+                        IsPassword="True"
+                        Placeholder="Senha"
+                        PlaceholderColor="#d5d5d5"
+                        Text="{Binding Password}"
+                        TextColor="Gray" />
+                    <Label
+                        x:Name="LoginIncorretoLabel"
+                        FontSize="11"
+                        IsVisible="{Binding LoginIncorreto}"
+                        Opacity="0.8"
+                        Text="Usuário e/ou senha incorretos."
+                        TextColor="Red" />
+                </StackLayout>
+
+                <Button
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    BackgroundColor="#e36b00"
+                    Command="{Binding LoginCommand}"
+                    FontSize="14"
+                    Text="PROSSEGUIR"
+                    TextColor="White"
+                    VerticalOptions="End" />
+            </Grid>
+
+        </Frame>
+
+    </Grid>
+</ContentPage>
