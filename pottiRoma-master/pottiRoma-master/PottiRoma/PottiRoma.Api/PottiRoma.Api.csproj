@@ -85,6 +85,7 @@
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization.Primitives" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -121,22 +122,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ADAuthorizationServerProvider.cs" />
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\Sales\NewSalesPersonRequest.cs" />
+    <Compile Include="Request\User\LoginUserRequest.cs" />
+    <Compile Include="Request\User\RegisterUserRequest.cs" />
     <Compile Include="Response\Sales\NewSalesPersonResponse.cs" />
+    <Compile Include="Response\User\LoginResponse.cs" />
+    <Compile Include="Response\User\RegisterUserResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -154,6 +161,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PottiRoma.Entities\PottiRoma.Entities.csproj">
+      <Project>{1DF79271-77A2-4066-816F-8F03BBAF6938}</Project>
+      <Name>PottiRoma.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PottiRoma.IoC\PottiRoma.IoC.csproj">
       <Project>{2F965862-46E6-4FDF-A907-D64D793583E0}</Project>
       <Name>PottiRoma.IoC</Name>
@@ -161,6 +172,10 @@
     <ProjectReference Include="..\PottiRoma.Services\PottiRoma.Services.csproj">
       <Project>{80565B9A-5C78-4151-B434-B752D8A23474}</Project>
       <Name>PottiRoma.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PottiRoma.Utils\PottiRoma.Utils.csproj">
+      <Project>{05508404-B1F3-4011-8BEC-6BC0944C7B63}</Project>
+      <Name>PottiRoma.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -174,7 +189,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51945</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

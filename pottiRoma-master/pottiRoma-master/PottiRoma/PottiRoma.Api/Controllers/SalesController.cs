@@ -15,7 +15,7 @@ namespace PottiRoma.Api.Controllers
     {
         readonly ISalesService _salesService;
 
-        public SalesController(ISalesService salesService)
+        public SalesController(ISalesService salesService, IAuthenticationService authenticationService) : base(authenticationService)
         {
             _salesService = salesService;
         }
@@ -24,6 +24,7 @@ namespace PottiRoma.Api.Controllers
         [Route("Person/New")]
         public async Task<NewSalesPersonResponse> NewSalesPerson(NewSalesPersonRequest request)
         {
+            await ValidateToken();
             _salesService.NewSalesPerson();
             return new NewSalesPersonResponse();
         }

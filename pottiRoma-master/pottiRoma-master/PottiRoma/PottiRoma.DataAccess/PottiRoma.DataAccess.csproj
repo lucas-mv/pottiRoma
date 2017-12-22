@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Core\BaseDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\AuthenticationControlQuery.cs" />
     <Compile Include="Query\UserQuery.cs" />
+    <Compile Include="Repositories\AuthenticationControlRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +58,10 @@
     <ProjectReference Include="..\PottiRoma.Entities\PottiRoma.Entities.csproj">
       <Project>{1DF79271-77A2-4066-816F-8F03BBAF6938}</Project>
       <Name>PottiRoma.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PottiRoma.Utils\PottiRoma.Utils.csproj">
+      <Project>{05508404-B1F3-4011-8BEC-6BC0944C7B63}</Project>
+      <Name>PottiRoma.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

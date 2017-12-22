@@ -23,7 +23,9 @@ namespace PottiRoma.IoC
 
         public static void RegisterServices(Container container)
         {
+            container.Register<IUserService, UserService>(Lifestyle.Transient);
             container.Register<ISalesService, SalesService>(Lifestyle.Transient);
+            container.Register<IAuthenticationService, AuthenticationService>(Lifestyle.Transient);
         }
     }
 }

@@ -4,6 +4,9 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Configuration;
+using System.Web.Http.Filters;
+using PottiRoma.Utils.CustomExceptions;
+using System.Net.Http;
 
 [assembly: OwinStartup(typeof(PottiRoma.Api.App_Start.Startup))]
 namespace PottiRoma.Api.App_Start
@@ -12,28 +15,42 @@ namespace PottiRoma.Api.App_Start
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureOAuth(app);
-
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             SimpleInjectorInitializer.Initialize();
 
+            GlobalConfiguration.Configuration.Filters.Add(new ExceptionFilter());
+
             app.UseWebApi(GlobalConfiguration.Configuration);
         }
+    }
 
-        public void ConfigureOAuth(IAppBuilder app)
+    public class ExceptionFilter : ExceptionFilterAttribute
+    {
+        public override void OnException(HttpActionExecutedContext context)
         {
-            OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
-            {
-                AllowInsecureHttp = true,
-                TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(double.Parse(ConfigurationManager.AppSettings["AccessTokenExpireInMinutes"])),
-                Provider = new ADAuthorizationServerProvider()
-            };
+            ExceptionWithHttpStatus customException = null;
 
-            // Token Generation
-            app.UseOAuthAuthorizationServer(OAuthServerOptions);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            if (context.Exception is ExceptionWithHttpStatus)
+            {
+                customException = context.Exception as ExceptionWithHttpStatus;
+            }
+            else if (context.Exception.InnerException is ExceptionWithHttpStatus)
+            {
+                customException = context.Exception.InnerException as ExceptionWithHttpStatus;
+            }
+
+            if (customException != null)
+            {
+                context.Response = new HttpResponseMessage(customException.GetStatusCode());
+                context.Response.Content = new StringContent(customException.Message);
+            }
+            else
+            {
+                context.Response = new HttpResponseMessage(System.Net.HttpStatusCode.InternalServerError);
+                context.Response.Content = new StringContent(String.Format("{0} / {1}", context.Exception.Message,
+                    context.Exception.InnerException != null ? context.Exception.InnerException.Message : String.Empty));
+            }
         }
     }
 }

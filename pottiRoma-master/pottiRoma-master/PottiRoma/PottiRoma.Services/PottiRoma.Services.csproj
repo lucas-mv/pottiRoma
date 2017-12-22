@@ -40,14 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\AuthenticationService.cs" />
     <Compile Include="Implementations\SalesService.cs" />
+    <Compile Include="Implementations\UserService.cs" />
+    <Compile Include="Interfaces\IAuthenticationService.cs" />
     <Compile Include="Interfaces\ISalesService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PottiRoma.Business\PottiRoma.Business.csproj">
       <Project>{C7B31654-8029-4074-9301-CFAC08F262AB}</Project>
       <Name>PottiRoma.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PottiRoma.Entities\PottiRoma.Entities.csproj">
+      <Project>{1DF79271-77A2-4066-816F-8F03BBAF6938}</Project>
+      <Name>PottiRoma.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PottiRoma.Utils\PottiRoma.Utils.csproj">
+      <Project>{05508404-B1F3-4011-8BEC-6BC0944C7B63}</Project>
+      <Name>PottiRoma.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
