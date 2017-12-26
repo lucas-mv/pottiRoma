@@ -36,6 +36,10 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<ProfileTabbedPage>();
             Container.RegisterTypeForNavigation<GamificationRulesPage>();
             Container.RegisterTypeForNavigation<InviteFlowerPage>();
+            Container.RegisterTypeForNavigation<NewSalesPage>();
+            Container.RegisterTypeForNavigation<ListClientsPage>();
+            Container.RegisterTypeForNavigation<ResetPasswordPage>();
+            Container.RegisterTypeForNavigation<RegisterSalePage>();
         }
     }
 }

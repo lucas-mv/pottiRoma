@@ -86,7 +86,7 @@
                 <Button
                     Grid.Row="4"
                     Grid.Column="1"
-                    BackgroundColor="#e36b00"
+                    BackgroundColor="#d48d48"
                     Command="{Binding LoginCommand}"
                     FontSize="14"
                     Text="PROSSEGUIR"

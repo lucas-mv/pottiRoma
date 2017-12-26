@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace PottiRoma.App.ViewModels
 {
-    public class MySalesPageViewModel : BindableBase
-    {
-        public MySalesPageViewModel()
+	public class ResetPasswordPageViewModel : BindableBase
+	{
+        public ResetPasswordPageViewModel()
         {
 
         }
-    }
+	}
 }

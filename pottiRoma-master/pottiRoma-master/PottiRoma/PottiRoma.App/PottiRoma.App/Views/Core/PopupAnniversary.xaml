@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PottiRoma.App.Views.Core.PopupAnniversary"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="#fafafa"
+            HeightRequest="400"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="260">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Image
+                Grid.Row="0"
+                Aspect="AspectFill"
+                Source="popup.png" />
+            <StackLayout
+                Grid.Row="1"
+                Margin="16"
+                Spacing="10">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Text="Aniversariantes: 19 de Dezembro!"
+                    TextColor="#080808"
+                    VerticalOptions="Center" />
+                <ContentView HeightRequest="10" />
+                <!--  AQUI VEM A LISTA DE ANIVERSARIANTES  -->
+            </StackLayout>
+
+            <Grid
+                Grid.Row="2"
+                BackgroundColor="#d48d48"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    BackgroundColor="#d48d48"
+                    FontSize="14"
+                    Text="FECHAR"
+                    TextColor="#fafafa" />
+                <Button
+                    Grid.Column="1"
+                    BackgroundColor="#d48d48"
+                    FontSize="14"
+                    Text="ENVIAR EMAIL"
+                    TextColor="#fafafa" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

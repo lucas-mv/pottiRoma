@@ -2,9 +2,9 @@
 
 namespace PottiRoma.App.Views
 {
-    public partial class MySalesPage : ContentPage
+    public partial class NewSalesPage : ContentPage
     {
-        public MySalesPage()
+        public NewSalesPage()
         {
             InitializeComponent();
         }

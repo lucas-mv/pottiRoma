@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PottiRoma.App.Views.RegisterSalePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="#e5e5e5">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="65" />
+            </Grid.RowDefinitions>
+            <Image
+                Grid.RowSpan="3"
+                Aspect="AspectFill"
+                Source="banned_sales_page_detail.png" />
+
+            <StackLayout
+                Margin="16"
+                Orientation="Horizontal"
+                Spacing="30">
+                <Image
+                    HeightRequest="30"
+                    Source="ic_arrow_back_white_24dp.png"
+                    WidthRequest="30" />
+                <Label
+                    FontSize="20"
+                    Text="Registro de Venda"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+            </StackLayout>
+
+            <Image
+                Grid.Row="1"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="take_pic.png"
+                VerticalOptions="Center"
+                WidthRequest="100" />
+
+            <Label
+                Grid.Row="2"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="Clique e fotografe sua Venda!"
+                TextColor="White"
+                VerticalOptions="Start" />
+
+        </Grid>
+
+        <ContentView
+            Grid.Row="1"
+            Margin="16,-20,16,0"
+            BackgroundColor="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid
+                    Grid.Row="0"
+                    BackgroundColor="#d48d48"
+                    HeightRequest="60"
+                    VerticalOptions="Start">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <ContentView
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill">
+                        <Image
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            Source="tabicon1.png"
+                            VerticalOptions="Center"
+                            WidthRequest="30" />
+                    </ContentView>
+
+                    <ContentView
+                        Grid.Column="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill">
+                        <Image
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            Source="tabicon3.png"
+                            VerticalOptions="Center"
+                            WidthRequest="30" />
+                    </ContentView>
+                </Grid>
+                <ScrollView
+                    Grid.Row="1"
+                    HorizontalOptions="Fill"
+                    IsEnabled="True"
+                    IsVisible="True"
+                    VerticalOptions="Fill">
+                    <StackLayout Spacing="0">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="120" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Margin="16,0,16,0"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="Venda nº 45876 para cliente no dia 18/10/2014"
+                                TextColor="#9e9e9e"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <ContentView
+                                Grid.Row="1"
+                                BackgroundColor="#616161"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                            <StackLayout Grid.Row="2" Margin="16,0,16,0">
+                                <Label
+                                    FontSize="18"
+                                    Text="Observações"
+                                    TextColor="#2c2c2c" />
+                                <Editor
+                                    FontSize="14"
+                                    HeightRequest="90"
+                                    HorizontalOptions="Fill"
+                                    TextColor="#616161"
+                                    VerticalOptions="Fill" />
+                            </StackLayout>
+                            <ContentView
+                                Grid.Row="3"
+                                BackgroundColor="#616161"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                            <Grid Grid.Row="4">
+                                <Label
+                                    Margin="16,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="Start"
+                                    Text="Valor Pago:"
+                                    TextColor="Green"
+                                    VerticalOptions="Center" />
+                                <Entry
+                                    Grid.Column="1"
+                                    Margin="0,0,16,0"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="End"
+                                    Placeholder="R$ 0,00"
+                                    PlaceholderColor="#9e9e9e"
+                                    TextColor="Green"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <ContentView
+                                Grid.Row="5"
+                                BackgroundColor="#616161"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                            <Grid Grid.Row="6">
+                                <Label
+                                    Margin="16,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="Start"
+                                    Text="Valor Total:"
+                                    TextColor="#2c2c2c"
+                                    VerticalOptions="Center" />
+                                <Entry
+                                    Grid.Column="1"
+                                    Margin="0,0,16,0"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="End"
+                                    Placeholder="R$ 0,00"
+                                    PlaceholderColor="#9e9e9e"
+                                    TextColor="#2c2c2c"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <ContentView
+                                Grid.Row="7"
+                                BackgroundColor="#616161"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+                <ScrollView
+                    Grid.Row="1"
+                    HorizontalOptions="Fill"
+                    IsEnabled="False"
+                    IsVisible="False"
+                    VerticalOptions="Fill">
+                    <StackLayout Spacing="0">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="120" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="1" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Margin="16,0,16,0"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="Venda nº 45876 para cliente no dia 18/10/2014"
+                                TextColor="#9e9e9e"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <ContentView
+                                Grid.Row="1"
+                                BackgroundColor="#616161"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                            <StackLayout
+                                Grid.Row="2"
+                                Margin="16,0,16,0"
+                                BackgroundColor="Blue">
+                                <Label
+                                    FontSize="18"
+                                    Text="Observações"
+                                    TextColor="#616161" />
+                            </StackLayout>
+                            <ContentView
+                                Grid.Row="3"
+                                BackgroundColor="#616161"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                            <Grid Grid.Row="4">
+                                <Label
+                                    Margin="16,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="Start"
+                                    Text="Valor Pago:"
+                                    TextColor="Green"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="0,0,16,0"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="End"
+                                    TextColor="Green"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <ContentView
+                                Grid.Row="5"
+                                BackgroundColor="#616161"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                            <Grid Grid.Row="6">
+                                <Label
+                                    Margin="16,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="Start"
+                                    Text="Valor Total:"
+                                    TextColor="#2c2c2c"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="0,0,16,0"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    HorizontalOptions="End"
+                                    TextColor="#2c2c2c"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <ContentView
+                                Grid.Row="7"
+                                BackgroundColor="#616161"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </ContentView>
+
+        <Button
+            Grid.Row="2"
+            BackgroundColor="#d48d48"
+            HeightRequest="50"
+            HorizontalOptions="Center"
+            Text="ENVIAR PARA MEU E-MAIL"
+            VerticalOptions="Center"
+            WidthRequest="250" />
+
+    </Grid>
+
+</ContentPage>
