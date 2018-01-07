@@ -6,6 +6,292 @@
     xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms">
 
     <prism:PrismApplication.Resources>
-        <ResourceDictionary />
+        <ResourceDictionary>
+
+            <Color x:Key="PrimaryDefault">#41986A</Color>
+            <Color x:Key="PrimaryDarkDefault">#006440</Color>
+            <Color x:Key="AccentDefault">#41986A</Color>
+            <Color x:Key="WindowBackgroundDefault">#F7F7F7</Color>
+            <Color x:Key="WindowBackgroundTimeline">#FFFFFF</Color>
+
+            <Color x:Key="ControlsFrameBackgroundColor">White</Color>
+            <Color x:Key="ControlsFrameOutlineColor">#E9E9E9</Color>
+            <x:Single x:Key="ControlsFrameCornerRadius">2</x:Single>
+
+            <Color x:Key="TextColorDisabled">#BFBFBF</Color>
+
+            <Color x:Key="CorBoxSeparetorLine">#D8D8D8</Color>
+            <Color x:Key="CorMenuItemAlerta">#FF3131</Color>
+
+            <Color x:Key="CorStatusNaoIniciado">#E9E9E9</Color>
+            <Color x:Key="CorStatusAguardandoExecucao">#F5B042</Color>
+            <Color x:Key="CorStatusEmAndamento">#3CAEDA</Color>
+            <Color x:Key="CorStatusMeta">#DCD513</Color>
+            <Color x:Key="CorStatusConcluido">#91D44A</Color>
+            <Color x:Key="CorStatusRemovida">#BDBDBD</Color>
+
+            <Color x:Key="CorOrcado">#41986A</Color>
+            <Color x:Key="CorNaoOrcado">#E9573E</Color>
+
+            <!--  New Style  -->
+            <Style x:Key="FloatingControl" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Spacing" Value="1" />
+                <Setter Property="Margin" Value="10,5,10,5" />
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform
+                            x:TypeArguments="x:Double"
+                            Android="30"
+                            iOS="34" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Color x:Key="ConfigCardBorder">#ECECEC</Color>
+            <Color x:Key="LabelContentFieldColor">#7c7c7c</Color>
+            <Color x:Key="TextContentFieldTextColor">#878688</Color>
+            <Color x:Key="LightTextColor">#9b9b9b</Color>
+            <Color x:Key="ErrorColor">#FF3131</Color>
+
+            <OnPlatform
+                x:Key="SmallFontSize"
+                x:TypeArguments="x:Double"
+                Android="10"
+                iOS="12" />
+            <OnPlatform
+                x:Key="LabelContentFieldFontSize"
+                x:TypeArguments="x:Double"
+                Android="12"
+                iOS="14" />
+            <OnPlatform
+                x:Key="TextContentFieldFontSize"
+                x:TypeArguments="x:Double"
+                Android="14.2"
+                iOS="16" />
+            <OnPlatform
+                x:Key="TextButtonFontSize"
+                x:TypeArguments="x:Double"
+                Android="15.5"
+                iOS="17" />
+            <OnPlatform
+                x:Key="LargeFontSize"
+                x:TypeArguments="x:Double"
+                Android="17"
+                iOS="18" />
+
+            <Style x:Key="TextHeaderPage" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+                <Setter Property="Margin" Value="10,0,0,0" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="RadioButtonContentField" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource LabelContentFieldColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LabelContentFieldFontSize}" />
+            </Style>
+
+            <Style x:Key="LabelContentField" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource LabelContentFieldColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LabelContentFieldFontSize}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="TextContentField" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextContentFieldTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextContentFieldFontSize}" />
+            </Style>
+
+            <Style x:Key="TextContentFieldNotify" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LabelContentFieldFontSize}" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+            </Style>
+
+            <Style x:Key="EntryContentField" TargetType="Entry">
+                <Setter Property="TextColor" Value="{StaticResource TextContentFieldTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextContentFieldFontSize}" />
+            </Style>
+
+            <Style x:Key="EditorContentField" TargetType="Editor">
+                <Setter Property="TextColor" Value="{StaticResource TextContentFieldTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextContentFieldFontSize}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="DialogTitleField" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextContentFieldTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LargeFontSize}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="TextFloatingContentField" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextContentFieldTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
+            </Style>
+
+            <Style x:Key="ButtonTransparent" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BorderRadius" Value="0" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
+            </Style>
+
+            <Style x:Key="ButtonGray" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="BorderRadius" Value="3" />
+                <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
+            </Style>
+
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="{StaticResource TextContentFieldTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="BorderColor" Value="{StaticResource LabelContentFieldColor}" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderRadius" Value="3" />
+            </Style>
+
+            <Style x:Key="ButtonDefault" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentDefault}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="3" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
+            </Style>
+
+            <Style x:Key="TextContent" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource LabelContentFieldColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LabelContentFieldFontSize}" />
+            </Style>
+
+            <Style x:Key="SummaryMessages" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LabelContentFieldFontSize}" />
+            </Style>
+
+            <Style x:Key="LightTitleContentList" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextColorDisabled}" />
+                <Setter Property="FontSize" Value="{StaticResource LabelContentFieldFontSize}" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+                <Setter Property="Margin" Value="0,0,15,0" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="TitleContentList" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource LabelContentFieldColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LabelContentFieldFontSize}" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+                <Setter Property="Margin" Value="0,0,15,0" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="SubTitleContentList" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LabelContentFieldFontSize}" />
+                <Setter Property="Margin" Value="0,0,15,0" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+            </Style>
+
+            <Style x:Key="TitleAlertMessage" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextContentFieldFontSize}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="SubTitleAlertMessage" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LabelContentFieldFontSize}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="SubTitleCardView" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextContentFieldTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+            </Style>
+
+            <Style x:Key="SubTitleBoldCardView" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextContentFieldTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <OnPlatform
+                x:Key="RowHeightVisaoPorBlocoPhone"
+                x:TypeArguments="x:Int32"
+                Android="120"
+                iOS="100" />
+            <OnPlatform
+                x:Key="RowHeightVisaoPorBlocoTablet"
+                x:TypeArguments="x:Int32"
+                Android="168"
+                iOS="126" />
+            <OnIdiom
+                x:Key="RowHeightVisaoPorBloco"
+                x:TypeArguments="x:Int32"
+                Phone="{StaticResource RowHeightVisaoPorBlocoPhone}"
+                Tablet="{StaticResource RowHeightVisaoPorBlocoTablet}" />
+
+            <OnPlatform
+                x:Key="HeightRequestVisaoPorBlocoPhone"
+                x:TypeArguments="x:Double"
+                Android="90"
+                iOS="100" />
+            <OnPlatform
+                x:Key="HeightRequestVisaoPorBlocoTablet"
+                x:TypeArguments="x:Double"
+                Android="168"
+                iOS="126" />
+            <OnIdiom
+                x:Key="HeightRequestVisaoPorBloco"
+                x:TypeArguments="x:Double"
+                Phone="{StaticResource HeightRequestVisaoPorBlocoPhone}"
+                Tablet="{StaticResource HeightRequestVisaoPorBlocoTablet}" />
+
+            <OnPlatform
+                x:Key="RowHeightVisaoPorServicoPhone"
+                x:TypeArguments="x:Int32"
+                Android="80"
+                iOS="80" />
+            <OnPlatform
+                x:Key="RowHeightVisaoPorServicoTablet"
+                x:TypeArguments="x:Int32"
+                Android="168"
+                iOS="91" />
+            <OnIdiom
+                x:Key="RowHeightVisaoPorServico"
+                x:TypeArguments="x:Int32"
+                Phone="{StaticResource RowHeightVisaoPorServicoPhone}"
+                Tablet="{StaticResource RowHeightVisaoPorServicoTablet}" />
+
+            <OnPlatform
+                x:Key="HeightRequestVisaoPorServicoPhone"
+                x:TypeArguments="x:Double"
+                Android="70"
+                iOS="65" />
+            <OnPlatform
+                x:Key="HeightRequestVisaoPorServicoTablet"
+                x:TypeArguments="x:Double"
+                Android="168"
+                iOS="91" />
+            <OnIdiom
+                x:Key="HeightRequestVisaoPorServico"
+                x:TypeArguments="x:Double"
+                Phone="{StaticResource HeightRequestVisaoPorServicoPhone}"
+                Tablet="{StaticResource HeightRequestVisaoPorServicoTablet}" />
+        </ResourceDictionary>
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>
