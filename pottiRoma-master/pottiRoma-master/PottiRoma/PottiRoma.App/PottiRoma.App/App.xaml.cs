@@ -26,7 +26,7 @@ namespace PottiRoma.App
 
         private void StartNavigation()
         {
-            NavigationService.NavigateAsync(NavigationSettings.ListClientsForSale);
+            NavigationService.NavigateAsync(NavigationSettings.Login);
         }
 
         protected override void RegisterTypes()

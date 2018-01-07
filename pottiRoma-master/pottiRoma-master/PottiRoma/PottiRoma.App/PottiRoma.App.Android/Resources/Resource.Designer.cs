@@ -4292,37 +4292,34 @@ namespace PottiRoma.App.Droid
 			public const int select_dialog_singlechoice_material = 2130903113;
 			
 			// aapt resource value: 0x7f03004a
-			public const int sfbusyindicator_layout = 2130903114;
+			public const int shape_colors_layout = 2130903114;
 			
 			// aapt resource value: 0x7f03004b
-			public const int shape_colors_layout = 2130903115;
+			public const int shapes_layout = 2130903115;
 			
 			// aapt resource value: 0x7f03004c
-			public const int shapes_layout = 2130903116;
+			public const int stroke_fill_layout = 2130903116;
 			
 			// aapt resource value: 0x7f03004d
-			public const int stroke_fill_layout = 2130903117;
+			public const int support_simple_spinner_dropdown_item = 2130903117;
 			
 			// aapt resource value: 0x7f03004e
-			public const int support_simple_spinner_dropdown_item = 2130903118;
+			public const int Tabbar = 2130903118;
 			
 			// aapt resource value: 0x7f03004f
-			public const int Tabbar = 2130903119;
+			public const int text_layout = 2130903119;
 			
 			// aapt resource value: 0x7f030050
-			public const int text_layout = 2130903120;
+			public const int thickness_layout = 2130903120;
 			
 			// aapt resource value: 0x7f030051
-			public const int thickness_layout = 2130903121;
+			public const int Toolbar = 2130903121;
 			
 			// aapt resource value: 0x7f030052
-			public const int Toolbar = 2130903122;
+			public const int toolbar_layout = 2130903122;
 			
 			// aapt resource value: 0x7f030053
-			public const int toolbar_layout = 2130903123;
-			
-			// aapt resource value: 0x7f030054
-			public const int transforms_layout = 2130903124;
+			public const int transforms_layout = 2130903123;
 			
 			static Layout()
 			{

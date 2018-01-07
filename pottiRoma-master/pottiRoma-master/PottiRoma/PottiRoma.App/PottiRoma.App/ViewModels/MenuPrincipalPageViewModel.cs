@@ -39,7 +39,7 @@ namespace PottiRoma.App.ViewModels
         private async void GoToMySales()
         {
             CanExecuteInitial();
-            await _navigationService.NavigateAsync(NavigationSettings.ListClients);
+            await _navigationService.NavigateAsync(NavigationSettings.ListClientsForSale);
             CanExecuteEnd();
         }
 
