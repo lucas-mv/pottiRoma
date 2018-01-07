@@ -19,6 +19,16 @@ namespace PottiRoma.App.ViewModels.Core
             set { SetProperty(ref _title, value); }
         }
 
+        private bool _canExecute = true;
+        public bool CanExecute
+        {
+            get { return _canExecute; }
+            private set
+            {
+                SetProperty(ref _canExecute, value);
+            }
+        }
+
         public ViewModelBase()
         {
 
@@ -42,6 +52,16 @@ namespace PottiRoma.App.ViewModels.Core
         public virtual void Destroy()
         {
 
+        }
+
+        public void CanExecuteInitial()
+        {
+            CanExecute = false;
+        }
+
+        public void CanExecuteEnd()
+        {
+            CanExecute = true;
         }
     }
 }

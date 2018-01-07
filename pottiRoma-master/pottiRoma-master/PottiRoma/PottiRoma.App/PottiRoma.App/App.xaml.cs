@@ -32,7 +32,6 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<MainNavigationPage>();
             Container.RegisterTypeForNavigation<RankingPage>();
             Container.RegisterTypeForNavigation<ProfilePage>();
-            Container.RegisterTypeForNavigation<MySalesPage>();
             Container.RegisterTypeForNavigation<ProfileTabbedPage>();
             Container.RegisterTypeForNavigation<GamificationRulesPage>();
             Container.RegisterTypeForNavigation<InviteFlowerPage>();
@@ -40,6 +39,7 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<ListClientsPage>();
             Container.RegisterTypeForNavigation<ResetPasswordPage>();
             Container.RegisterTypeForNavigation<RegisterSalePage>();
+            Container.RegisterTypeForNavigation<PopupLoading>();
         }
     }
 }

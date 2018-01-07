@@ -92,6 +92,8 @@
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\CustomEditorIOS.cs" />
+    <Compile Include="Renderers\CustomEntryIOS.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -189,6 +191,12 @@
     </Reference>
     <Reference Include="Syncfusion.GridCommon.Portable, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.GridCommon.15.4.0.17\lib\Xamarin.iOS10\Syncfusion.GridCommon.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfImageEditor.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfImageEditor.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfImageEditor.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfImageEditor.XForms.iOS, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfImageEditor.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfImageEditor.XForms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfListView.XForms, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.15.4.0.17\lib\Xamarin.iOS10\Syncfusion.SfListView.XForms.dll</HintPath>

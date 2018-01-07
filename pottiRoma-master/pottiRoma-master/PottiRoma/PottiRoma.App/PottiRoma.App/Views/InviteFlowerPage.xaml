@@ -4,5 +4,97 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     Title="Convidar Flor"
-    prism:ViewModelLocator.AutowireViewModel="True" />
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="#f2f2f2">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="14*" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Frame
+            Grid.Row="1"
+            Grid.Column="1"
+            BackgroundColor="White"
+            HasShadow="True"
+            OutlineColor="#f2f2f2">
+            <Grid RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="8*" />
+                    <RowDefinition Height="2*" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="12" />
+                </Grid.ColumnDefinitions>
+
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Padding="0"
+                    BackgroundColor="White"
+                    OutlineColor="#f2f2f2">
+                    <Entry
+                        Margin="10,0,0,0"
+                        Focused="Entry_Focused"
+                        FontSize="14"
+                        Keyboard="Email"
+                        Placeholder="Email"
+                        PlaceholderColor="#d5d5d5"
+                        TextColor="Gray"
+                        VerticalOptions="End" />
+                </Frame>
+
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Padding="0"
+                    BackgroundColor="Red"
+                    OutlineColor="Black">
+                    <Editor
+                        Focused="Entry_Focused"
+                        FontSize="14"
+                        HorizontalOptions="Fill"
+                        Keyboard="Email"
+                        Placeholder="Email"
+                        PlaceholderColor="#d5d5d5"
+                        TextColor="Gray"
+                        VerticalOptions="Fill" />
+                </Frame>
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="14,10,0,0"
+                    FontSize="14"
+                    Text="Mensagem"
+                    TextColor="#d5d5d5" />
+
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    BackgroundColor="#d48d48"
+                    FontSize="14"
+                    Text="CONVIDAR"
+                    TextColor="White"
+                    VerticalOptions="End" />
+            </Grid>
+
+        </Frame>
+
+
+    </Grid>
+
+</ContentPage>

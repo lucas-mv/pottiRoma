@@ -126,6 +126,12 @@
     <Reference Include="Syncfusion.GridCommon.Portable, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.GridCommon.15.4.0.17\lib\MonoAndroid10\Syncfusion.GridCommon.Portable.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfImageEditor.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfImageEditor.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfImageEditor.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfImageEditor.XForms.Android, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfImageEditor.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfImageEditor.XForms.Android.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.SfListView.XForms, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.15.4.0.17\lib\MonoAndroid10\Syncfusion.SfListView.XForms.dll</HintPath>
     </Reference>
@@ -219,6 +225,7 @@
   <ItemGroup>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\CustomEditorAndroid.cs" />
     <Compile Include="Renderers\CustomEntryAndroid.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -348,7 +355,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\titulo_potti.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\imagem cropped.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\imagem_cropped.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\imagem.png" />

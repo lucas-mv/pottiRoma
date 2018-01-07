@@ -25,7 +25,7 @@
 
                     <Grid
                         x:Name="ContentRanking"
-                        HeightRequest="60"
+                        HeightRequest="55"
                         HorizontalOptions="FillAndExpand"
                         Opacity="0.8">
                         <Grid.ColumnDefinitions>
@@ -51,7 +51,7 @@
                     </Grid>
                     <Grid
                         x:Name="ContentPerfil"
-                        HeightRequest="60"
+                        HeightRequest="55"
                         HorizontalOptions="FillAndExpand"
                         Opacity="0.8">
                         <Grid.ColumnDefinitions>
@@ -77,7 +77,7 @@
                     </Grid>
                     <Grid
                         x:Name="ContentSales"
-                        HeightRequest="60"
+                        HeightRequest="55"
                         HorizontalOptions="FillAndExpand"
                         Opacity="0.8">
                         <Grid.ColumnDefinitions>
@@ -103,7 +103,7 @@
                     </Grid>
                     <Grid
                         x:Name="ContentSettings"
-                        HeightRequest="60"
+                        HeightRequest="55"
                         HorizontalOptions="FillAndExpand"
                         Opacity="0.8">
                         <Grid.ColumnDefinitions>
@@ -123,13 +123,13 @@
                             Grid.Column="2"
                             FontSize="16"
                             HorizontalOptions="Start"
-                            Text="    Cadastro de Clientes"
+                            Text="    Registrar novo Cliente"
                             TextColor="White"
                             VerticalOptions="Center" />
                     </Grid>
                     <Grid
                         x:Name="ContentConvidarFlor"
-                        HeightRequest="60"
+                        HeightRequest="55"
                         HorizontalOptions="FillAndExpand"
                         Opacity="0.8">
                         <Grid.GestureRecognizers>
@@ -150,6 +150,32 @@
                             FontSize="16"
                             HorizontalOptions="Start"
                             Text="    Convidar Flor"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                    </Grid>
+                    <Grid
+                        x:Name="ContentRegistrarVenda"
+                        HeightRequest="55"
+                        HorizontalOptions="FillAndExpand"
+                        Opacity="0.8">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToDashboardCommand}" Tapped="ContentConvidarFlor_Clicked" />
+                        </Grid.GestureRecognizers>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="18" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Image
+                            Grid.Column="1"
+                            HorizontalOptions="Start"
+                            Source="ic_insert_invitation_white_24dp.png"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="2"
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            Text="    Fazer Logout"
                             TextColor="White"
                             VerticalOptions="Center" />
                     </Grid>

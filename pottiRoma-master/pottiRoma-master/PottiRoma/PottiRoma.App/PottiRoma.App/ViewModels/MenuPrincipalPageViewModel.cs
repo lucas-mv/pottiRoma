@@ -22,41 +22,46 @@ namespace PottiRoma.App.ViewModels
         public MenuPrincipalPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            GoToInviteFlowerCommand = new DelegateCommand(GoToInviteFlower, CanAlwaysNavigate);
-            GoToRankingCommand = new DelegateCommand(GoToRanking, CanAlwaysNavigate);
-            GoToProfileCommand = new DelegateCommand(GoToProfile, CanAlwaysNavigate);
-            GoToMySalesCommand = new DelegateCommand(GoToMySales, CanAlwaysNavigate);
-            GoToRegisterClientsCommand = new DelegateCommand(GoToRegisterClients, CanAlwaysNavigate);
+            GoToInviteFlowerCommand = new DelegateCommand(GoToInviteFlower).ObservesCanExecute(() => CanExecute);
+            GoToRankingCommand = new DelegateCommand(GoToRanking).ObservesCanExecute(() => CanExecute);
+            GoToProfileCommand = new DelegateCommand(GoToProfile).ObservesCanExecute(() => CanExecute);
+            GoToMySalesCommand = new DelegateCommand(GoToMySales).ObservesCanExecute(() => CanExecute);
+            GoToRegisterClientsCommand = new DelegateCommand(GoToRegisterClients).ObservesCanExecute(() => CanExecute);
         }
 
-        private void GoToRegisterClients()
+        private async void GoToRegisterClients()
         {
-            _navigationService.NavigateAsync(NavigationSettings.RegisterClients);
+            CanExecuteInitial();
+            await _navigationService.NavigateAsync(NavigationSettings.RegisterClients);
+            CanExecuteEnd();
         }
 
-        private void GoToMySales()
+        private async void GoToMySales()
         {
-            _navigationService.NavigateAsync(NavigationSettings.MySales);
+            CanExecuteInitial();
+            await _navigationService.NavigateAsync(NavigationSettings.ListClients);
+            CanExecuteEnd();
         }
 
-        private void GoToProfile()
+        private async void GoToProfile()
         {
-            _navigationService.NavigateAsync(NavigationSettings.TabbedProfile);
+            CanExecuteInitial();
+            await _navigationService.NavigateAsync(NavigationSettings.TabbedProfile);
+            CanExecuteEnd();
         }
 
-        private void GoToRanking()
+        private async void GoToRanking()
         {
-            _navigationService.NavigateAsync(NavigationSettings.Ranking);
+            CanExecuteInitial();
+            await _navigationService.NavigateAsync(NavigationSettings.Ranking);
+            CanExecuteEnd();
         }
 
-        private void GoToInviteFlower()
+        private async void GoToInviteFlower()
         {
-            _navigationService.NavigateAsync(NavigationSettings.InviteFlower);
-        }
-
-        private bool CanAlwaysNavigate()
-        {
-            return true;
+            CanExecuteInitial();
+            await _navigationService.NavigateAsync(NavigationSettings.InviteFlower);
+            CanExecuteEnd();
         }
     }
 }

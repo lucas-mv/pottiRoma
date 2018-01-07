@@ -39,7 +39,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomRenderers\CustomEditor.cs" />
     <Compile Include="CustomRenderers\CustomEntry.cs" />
+    <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Core\ViewModelBase.cs" />
     <Compile Include="ViewModels\EditPersonalDataPageViewModel.cs" />
@@ -50,6 +52,7 @@
     <Compile Include="ViewModels\MainNavigationPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPrincipalPageViewModel.cs" />
     <Compile Include="ViewModels\NewSalesPageViewModel.cs" />
+    <Compile Include="ViewModels\PopupLoadingViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\ProfileTabbedPageViewModel.cs" />
     <Compile Include="ViewModels\RankingPageViewModel.cs" />
@@ -61,6 +64,9 @@
     </Compile>
     <Compile Include="Views\Core\PopupAnniversary.xaml.cs">
       <DependentUpon>PopupAnniversary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\PopupLoading.xaml.cs">
+      <DependentUpon>PopupLoading.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GamificationRulesPage.xaml.cs">
       <DependentUpon>GamificationRulesPage.xaml</DependentUpon>
@@ -165,6 +171,9 @@
     </Reference>
     <Reference Include="Syncfusion.GridCommon.Portable, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.GridCommon.15.4.0.17\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.GridCommon.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfImageEditor.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfImageEditor.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.SfImageEditor.XForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfListView.XForms, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.15.4.0.17\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.SfListView.XForms.dll</HintPath>
@@ -293,6 +302,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\RegisterSalePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Core\PopupLoading.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
