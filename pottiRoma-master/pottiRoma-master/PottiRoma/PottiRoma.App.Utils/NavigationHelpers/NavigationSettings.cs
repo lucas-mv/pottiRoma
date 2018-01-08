@@ -21,6 +21,5 @@ namespace PottiRoma.App.Utils.NavigationHelpers
         public const string GamificationRules = "GamificationRulesPage";
         public const string MasterDetailRanking = "MenuPrincipalPage/MainNavigationPage/RankingPage";
         public const string InviteFlower = "MenuPrincipalPage/InviteFlowerPage";
-        public const string ListClientsForSale = "MenuPrincipalPage/ListClientsForSalePage";
     }
 }

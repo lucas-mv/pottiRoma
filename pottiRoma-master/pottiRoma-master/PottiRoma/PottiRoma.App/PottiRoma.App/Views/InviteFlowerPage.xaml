@@ -48,6 +48,7 @@
                     OutlineColor="#f2f2f2">
                     <Entry
                         Margin="10,0,0,0"
+                        Focused="Entry_Focused"
                         FontSize="14"
                         Keyboard="Email"
                         Placeholder="Email"
@@ -63,9 +64,12 @@
                     BackgroundColor="Red"
                     OutlineColor="Black">
                     <Editor
+                        Focused="Entry_Focused"
                         FontSize="14"
                         HorizontalOptions="Fill"
                         Keyboard="Email"
+                        Placeholder="Email"
+                        PlaceholderColor="#d5d5d5"
                         TextColor="Gray"
                         VerticalOptions="Fill" />
                 </Frame>
