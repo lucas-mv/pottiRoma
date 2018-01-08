@@ -47,7 +47,6 @@
     <Compile Include="ViewModels\EditPersonalDataPageViewModel.cs" />
     <Compile Include="ViewModels\GamificationRulesPageViewModel.cs" />
     <Compile Include="ViewModels\InviteFlowerPageViewModel.cs" />
-    <Compile Include="ViewModels\ListClientsForSalePageViewModel.cs" />
     <Compile Include="ViewModels\ListClientsPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationPageViewModel.cs" />
@@ -74,9 +73,6 @@
     </Compile>
     <Compile Include="Views\InviteFlowerPage.xaml.cs">
       <DependentUpon>InviteFlowerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ListClientsForSalePage.xaml.cs">
-      <DependentUpon>ListClientsForSalePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListClientsPage.xaml.cs">
       <DependentUpon>ListClientsPage.xaml</DependentUpon>
@@ -220,10 +216,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PottiRoma.App.Models\PottiRoma.App.Models.csproj">
-      <Project>{F6683953-D4B7-4CA7-B30A-BFD6442B4713}</Project>
-      <Name>PottiRoma.App.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\PottiRoma.App.Services\PottiRoma.App.Services.csproj">
       <Project>{dfc5f4c1-3ebc-4edf-b768-745414df25bb}</Project>
       <Name>PottiRoma.App.Services</Name>
@@ -328,12 +320,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Views\ListClientsForSalePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

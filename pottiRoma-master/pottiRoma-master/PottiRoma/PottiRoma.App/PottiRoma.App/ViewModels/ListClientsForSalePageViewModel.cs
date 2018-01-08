@@ -1,9 +1,7 @@
 ﻿using PottiRoma.App.Models.Models;
-using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
 using Prism.Mvvm;
-using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,31 +11,30 @@ namespace PottiRoma.App.ViewModels
 {
     public class ListClientsForSalePageViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
-
         public DelegateCommand<object> ClienteSelectedCommand { get; set; }
 
-        public List<Cliente> ListaClientes { get; set; }
-
-        public ListClientsForSalePageViewModel(INavigationService navigationService)
+        private List<Cliente> _funcionariosObra;
+        public List<Cliente> FuncionariosObra
         {
-            _navigationService = navigationService;
+            get
+            {
+                return _funcionariosObra;
+            }
+            set
+            {
+                SetProperty(ref _funcionariosObra, value);
+            }
+        }
 
+        public ListClientsForSalePageViewModel()
+        {
             ClienteSelectedCommand = new DelegateCommand<object>(async param => await SelecionarCliente(param))
                 .ObservesCanExecute(() => CanExecute);
         }
 
-        private async Task SelecionarCliente(object item)
+        private Task SelecionarCliente(object item)
         {
-            if (item == null) return;
-
-            CanExecuteInitial();
-
-            var param = new NavigationParameters();
-            param.Add(NavigationKeyParameters.SelectedClient, item as Cliente);
-            await _navigationService.GoBackAsync(param);
-
-            CanExecuteEnd();
+            throw new NotImplementedException();
         }
     }
 }
