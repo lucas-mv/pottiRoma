@@ -47,12 +47,12 @@
     <Compile Include="ViewModels\EditPersonalDataPageViewModel.cs" />
     <Compile Include="ViewModels\GamificationRulesPageViewModel.cs" />
     <Compile Include="ViewModels\InviteFlowerPageViewModel.cs" />
+    <Compile Include="ViewModels\ListClientsForSalePageViewModel.cs" />
     <Compile Include="ViewModels\ListClientsPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPrincipalPageViewModel.cs" />
     <Compile Include="ViewModels\NewSalesPageViewModel.cs" />
-    <Compile Include="ViewModels\PopupLoadingViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\ProfileTabbedPageViewModel.cs" />
     <Compile Include="ViewModels\RankingPageViewModel.cs" />
@@ -73,6 +73,9 @@
     </Compile>
     <Compile Include="Views\InviteFlowerPage.xaml.cs">
       <DependentUpon>InviteFlowerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListClientsForSalePage.xaml.cs">
+      <DependentUpon>ListClientsForSalePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListClientsPage.xaml.cs">
       <DependentUpon>ListClientsPage.xaml</DependentUpon>
@@ -163,20 +166,23 @@
     <Reference Include="SQLitePCLRaw.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLitePCLRaw.core.1.1.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Core.XForms, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.Core.15.4.0.17\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.Core.XForms.dll</HintPath>
+    <Reference Include="Syncfusion.Core.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.Core.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.Core.XForms.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.DataSource.Portable, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.DataSource.15.4.0.17\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.DataSource.Portable.dll</HintPath>
+    <Reference Include="Syncfusion.DataSource.Portable, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.DataSource.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.DataSource.Portable.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.GridCommon.Portable, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.GridCommon.15.4.0.17\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.GridCommon.Portable.dll</HintPath>
+    <Reference Include="Syncfusion.GridCommon.Portable, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.GridCommon.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.GridCommon.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfBusyIndicator.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.SfBusyIndicator.XForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfImageEditor.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfImageEditor.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.SfImageEditor.XForms.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfListView.XForms, Version=15.4451.0.17, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.15.4.0.17\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.SfListView.XForms.dll</HintPath>
+    <Reference Include="Syncfusion.SfListView.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.SfListView.XForms.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Rx-Core.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Core.dll</HintPath>
@@ -308,6 +314,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Core\PopupLoading.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ListClientsForSalePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

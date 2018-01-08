@@ -40,6 +40,7 @@
     <Compile Include="CustomExceptions\AuthorizationException.cs" />
     <Compile Include="CustomExceptions\ErrorException.cs" />
     <Compile Include="CustomExceptions\ValidationException.cs" />
+    <Compile Include="NavigationHelpers\NavigationKeyParameters.cs" />
     <Compile Include="NavigationHelpers\NavigationSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />

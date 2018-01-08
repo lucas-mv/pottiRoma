@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace PottiRoma.App.Views.Core
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PopupAnniversary : ContentPage
-	{
-		public PopupAnniversary ()
-		{
-			InitializeComponent ();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PopupAnniversary : ContentPage
+    {
+        public PopupAnniversary()
+        {
+            InitializeComponent();
+        }
+    }
 }

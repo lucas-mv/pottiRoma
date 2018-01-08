@@ -50,12 +50,12 @@ namespace PottiRoma.App.ViewModels
         }
 
         bool _canExecuteLogin = true;
-        private void ExecuteLogin()
+        private async void ExecuteLogin()
         {
             if (Login == "adm" && Password == "123")
             {
                 _canExecuteLogin = false;
-                _navigationService.NavigateAsync(NavigationSettings.MasterDetailRanking);
+                await _navigationService.NavigateAsync(NavigationSettings.MasterDetailRanking);
             }
             else
             {

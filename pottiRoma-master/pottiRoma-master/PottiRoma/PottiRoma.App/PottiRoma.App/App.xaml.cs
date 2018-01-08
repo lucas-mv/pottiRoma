@@ -8,13 +8,19 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PottiRoma.App
 {
     public partial class App : PrismApplication
     {
+        public App() : this(null) { }
+        public App(IPlatformInitializer initializer) : base(initializer) { }
+
         protected override void OnInitialized()
         {
+            InitializeComponent();
             StartNavigation();
         }
 
@@ -40,6 +46,7 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<ResetPasswordPage>();
             Container.RegisterTypeForNavigation<RegisterSalePage>();
             Container.RegisterTypeForNavigation<PopupLoading>();
+            Container.RegisterTypeForNavigation<ListClientsForSalePage>();
         }
     }
 }
