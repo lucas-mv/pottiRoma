@@ -6,96 +6,102 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     prism:ViewModelLocator.AutowireViewModel="True">
-    <Grid BackgroundColor="{StaticResource DarkBackgroundColor}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="14*" />
-            <RowDefinition Height="2*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="12*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
+    <ScrollView>
+        <Grid
+            x:Name="LoginPageContent"
+            BackgroundColor="{StaticResource DarkBackgroundColor}"
+            HeightRequest="{Binding ScreenHeightRequest}"
+            SizeChanged="LoginPageContent_SizeChanged">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="14*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="12*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Frame
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="White"
+                HasShadow="True"
+                OutlineColor="{StaticResource OutlineColor}">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="12" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="12" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="6" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Aspect="AspectFit"
+                        HeightRequest="110"
+                        Source="logo.png"
+                        VerticalOptions="Start" />
+
+                    <StackLayout Grid.Row="2" Grid.Column="1">
+
+                        <Label
+                            FontSize="{StaticResource StandardFontSize}"
+                            Text="Login:"
+                            TextColor="{StaticResource LabelLogin}" />
+
+                        <Entry
+                            Focused="Entry_Focused"
+                            FontSize="{StaticResource StandardFontSize}"
+                            Keyboard="Email"
+                            Text="{Binding Login}"
+                            TextColor="Gray"
+                            VerticalOptions="End" />
+
+                        <ContentView HeightRequest="20" />
+
+                        <Label
+                            FontSize="{StaticResource StandardFontSize}"
+                            Text="Senha:"
+                            TextColor="{StaticResource LabelLogin}" />
+                        <Entry
+                            Focused="Entry_Focused"
+                            FontSize="{StaticResource StandardFontSize}"
+                            IsPassword="True"
+                            Text="{Binding Password}"
+                            TextColor="Gray" />
+                        <Label
+                            x:Name="LoginIncorretoLabel"
+                            FontSize="11"
+                            IsVisible="{Binding LoginIncorreto}"
+                            Opacity="0.8"
+                            Text="Usuário e/ou senha incorretos."
+                            TextColor="{StaticResource ErrorColor}" />
+                        <ContentView HeightRequest="20" />
+                    </StackLayout>
 
 
-        <Frame
-            Grid.Row="1"
-            Grid.Column="1"
-            BackgroundColor="White"
-            HasShadow="True"
-            OutlineColor="{StaticResource OutlineColor}">
-            <Grid RowSpacing="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="12" />
-                    <RowDefinition Height="5*" />
-                    <RowDefinition Height="6*" />
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="12" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="12" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="12" />
-                </Grid.ColumnDefinitions>
 
-                <Image
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Aspect="AspectFit"
-                    HeightRequest="110"
-                    Source="logo.png"
-                    VerticalOptions="Start" />
-
-                <StackLayout Grid.Row="2" Grid.Column="1">
-
-                    <Label
-                        FontSize="{StaticResource StandardFontSize}"
-                        Text="Login:"
-                        TextColor="{StaticResource LabelLogin}" />
-
-                    <Entry
-                        Focused="Entry_Focused"
-                        FontSize="{StaticResource StandardFontSize}"
-                        Keyboard="Email"
-                        Text="{Binding Login}"
-                        TextColor="Gray"
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Command="{Binding LoginCommand}"
+                        HeightRequest="50"
+                        Style="{StaticResource ButtonDefault}"
+                        Text="PROSSEGUIR"
                         VerticalOptions="End" />
-                    <ContentView HeightRequest="20" />
+                </Grid>
 
-                    <Label
-                        FontSize="{StaticResource StandardFontSize}"
-                        Text="Senha:"
-                        TextColor="{StaticResource LabelLogin}" />
-                    <Entry
-                        Focused="Entry_Focused"
-                        FontSize="{StaticResource StandardFontSize}"
-                        IsPassword="True"
-                        Text="{Binding Password}"
-                        TextColor="Gray" />
-                    <Label
-                        x:Name="LoginIncorretoLabel"
-                        FontSize="11"
-                        IsVisible="{Binding LoginIncorreto}"
-                        Opacity="0.8"
-                        Text="Usuário e/ou senha incorretos."
-                        TextColor="{StaticResource ErrorColor}" />
-                    <ContentView HeightRequest="20" />
-                </StackLayout>
+            </Frame>
 
-
-
-                <Button
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    Command="{Binding LoginCommand}"
-                    HeightRequest="50"
-                    Style="{StaticResource ButtonDefault}"
-                    Text="PROSSEGUIR"
-                    VerticalOptions="End" />
-            </Grid>
-
-        </Frame>
-
-    </Grid>
+        </Grid>
+    </ScrollView>
 </ContentPage>

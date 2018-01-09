@@ -13,6 +13,13 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
 
+        private double _screenHeightRequest;
+        public double ScreenHeightRequest
+        {
+            get { return _screenHeightRequest; }
+            set { SetProperty(ref _screenHeightRequest, value); }
+        }
+
         public DelegateCommand ChangePasswordCommand { get; set; }
 
         public EditPersonalDataPageViewModel(INavigationService navigationService)

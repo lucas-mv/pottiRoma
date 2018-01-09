@@ -6,89 +6,95 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     Title="Ranking"
     prism:ViewModelLocator.AutowireViewModel="True">
-    <Grid BackgroundColor="#fafafa">
+    <ScrollView>
         <Grid
-            Margin="12"
-            ColumnSpacing="12"
-            RowSpacing="12">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*" />
-                <RowDefinition Height="7*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <Image
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Aspect="AspectFill"
-                Source="ranking_geral.png" />
+            x:Name="RankingPageContent"
+            BackgroundColor="#fafafa"
+            SizeChanged="RankingPageContent_SizeChanged"
+            HeightRequest="{Binding ScreenHeightRequest}">
             <Grid
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2">
+                Margin="12"
+                ColumnSpacing="12"
+                RowSpacing="12">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="7*" />
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Aspect="AspectFill"
+                    Source="ranking_geral.png" />
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="1">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="RANKING GERAL"
+                            TextColor="#fafafa"
+                            VerticalOptions="Center" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="POTTI ROMÃ"
+                            TextColor="#fafafa"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+
                     <Label
+                        Grid.Row="2"
+                        Margin="10,0,10,0"
                         FontAttributes="Bold"
-                        FontSize="24"
+                        FontSize="14"
                         HorizontalOptions="Center"
-                        Text="RANKING GERAL"
+                        HorizontalTextAlignment="Center"
+                        Text="Clique aqui para ver seu posicionamento geral na venda de produtos Potti Romã."
                         TextColor="#fafafa"
                         VerticalOptions="Center" />
+
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Image Aspect="AspectFill" Source="ranking_semana.png" />
                     <Label
+                        Margin="18,18,0,0"
                         FontAttributes="Bold"
-                        FontSize="20"
-                        HorizontalOptions="Center"
-                        Text="POTTI ROMÃ"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="Ranking da Semana"
                         TextColor="#fafafa"
-                        VerticalOptions="Center" />
-                </StackLayout>
+                        VerticalOptions="Start" />
+                </Grid>
 
-                <Label
-                    Grid.Row="2"
-                    Margin="10,0,10,0"
-                    FontAttributes="Bold"
-                    FontSize="14"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="Clique aqui para ver seu posicionamento geral na venda de produtos Potti Romã."
-                    TextColor="#fafafa"
-                    VerticalOptions="Center" />
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Image Aspect="AspectFill" Source="ranking_dia.png" />
+                    <Label
+                        Margin="18,18,0,0"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="Ranking do Dia"
+                        TextColor="#fafafa"
+                        VerticalOptions="Start" />
+                </Grid>
+
 
             </Grid>
-
-            <Grid Grid.Row="1" Grid.Column="0">
-                <Image Aspect="AspectFill" Source="ranking_semana.png" />
-                <Label
-                    Margin="18,18,0,0"
-                    FontAttributes="Bold"
-                    FontSize="14"
-                    HorizontalOptions="Start"
-                    Text="Ranking da Semana"
-                    TextColor="#fafafa"
-                    VerticalOptions="Start" />
-            </Grid>
-
-            <Grid Grid.Row="1" Grid.Column="1">
-                <Image Aspect="AspectFill" Source="ranking_dia.png" />
-                <Label
-                    Margin="18,18,0,0"
-                    FontAttributes="Bold"
-                    FontSize="14"
-                    HorizontalOptions="Start"
-                    Text="Ranking do Dia"
-                    TextColor="#fafafa"
-                    VerticalOptions="Start" />
-            </Grid>
-
-
         </Grid>
-    </Grid>
+    </ScrollView>
 </ContentPage>

@@ -38,6 +38,7 @@
                     FontSize="{StaticResource StandardFontSize}"
                     Placeholder="Nome"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding ClientSelectedForEdition.Nome}"
                     TextColor="{StaticResource TextColor}"
                     VerticalOptions="End" />
             </Frame>
@@ -101,8 +102,9 @@
         <Button
             Grid.Row="2"
             Margin="16"
+            Command="{Binding RegisterNewClientCommand}"
             Style="{StaticResource ButtonDefault}"
-            Text="CADASTRAR"
+            Text="{Binding RegisterOrEditText}"
             VerticalOptions="Center" />
 
     </Grid>

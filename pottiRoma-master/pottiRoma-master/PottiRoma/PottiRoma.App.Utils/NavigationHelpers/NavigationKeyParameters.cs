@@ -9,5 +9,6 @@ namespace PottiRoma.App.Utils.NavigationHelpers
     public class NavigationKeyParameters
     {
         public const string SelectedClient = "SelectedClient";
+        public const string EditClient = "EditClient";
     }
 }

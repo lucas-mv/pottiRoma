@@ -19,9 +19,26 @@ namespace PottiRoma.App.Views
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
+        private void SetInitialScreenHeight()
+        {
+            if(ViewModel != null)
+                ViewModel.ScreenHeightRequest = (LoginPageContent.Width < LoginPageContent.Height) ? LoginPageContent.Height : 650;
+        }
+
         private void Entry_Focused(object sender, FocusEventArgs e)
         {
             ViewModel.LoginIncorreto = false;
+        }
+
+        private void LoginPageContent_SizeChanged(object sender, System.EventArgs e)
+        {
+            SetInitialScreenHeight();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetInitialScreenHeight();
         }
     }
 }

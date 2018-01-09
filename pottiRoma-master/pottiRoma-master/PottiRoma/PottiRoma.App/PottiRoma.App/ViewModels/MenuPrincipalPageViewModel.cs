@@ -1,4 +1,6 @@
-﻿using PottiRoma.App.Utils.NavigationHelpers;
+﻿using Acr.UserDialogs;
+using PottiRoma.App.Helpers;
+using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -12,6 +14,8 @@ namespace PottiRoma.App.ViewModels
     public class MenuPrincipalPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private readonly IUserDialogs _userDialogs;
+
         private string _title;
         public string Title
         {
@@ -23,19 +27,34 @@ namespace PottiRoma.App.ViewModels
         public DelegateCommand GoToRankingCommand { get; set; }
         public DelegateCommand GoToProfileCommand { get; set; }
         public DelegateCommand GoToMySalesCommand { get; set; }
-        public DelegateCommand GoToRegisterClientsCommand { get; set; }
+        public DelegateCommand GoToMyClientsCommand { get; set; }
         public DelegateCommand GoToEditPersonalDataCommand { get; set; }
+        public DelegateCommand LogoutCommand { get; set; }
 
-        public MenuPrincipalPageViewModel(INavigationService navigationService)
+
+        public MenuPrincipalPageViewModel(
+            INavigationService navigationService,
+            IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
+            _userDialogs = userDialogs;
+
             GoToInviteFlowerCommand = new DelegateCommand(GoToInviteFlower).ObservesCanExecute(() => CanExecute);
             GoToRankingCommand = new DelegateCommand(GoToRanking).ObservesCanExecute(() => CanExecute);
             GoToProfileCommand = new DelegateCommand(GoToProfile).ObservesCanExecute(() => CanExecute);
             GoToMySalesCommand = new DelegateCommand(GoToMySales).ObservesCanExecute(() => CanExecute);
-            GoToRegisterClientsCommand = new DelegateCommand(GoToRegisterClients).ObservesCanExecute(() => CanExecute);
+            GoToMyClientsCommand = new DelegateCommand(GoToMyClients).ObservesCanExecute(() => CanExecute);
             GoToEditPersonalDataCommand = new DelegateCommand(GoToEditPersonalData).ObservesCanExecute(() => CanExecute);
+            LogoutCommand = new DelegateCommand(Logout).ObservesCanExecute(() => CanExecute);
+
             Title = "Ranking Geral";
+        }
+
+        private async void Logout()
+        {
+            CanExecuteInitial();
+            await LogoutPopupHelper.Mostrar(_userDialogs, _navigationService);
+            CanExecuteEnd();
         }
 
         private async void GoToEditPersonalData()
@@ -46,11 +65,11 @@ namespace PottiRoma.App.ViewModels
             CanExecuteEnd();
         }
 
-        private async void GoToRegisterClients()
+        private async void GoToMyClients()
         {
             CanExecuteInitial();
-            await _navigationService.NavigateAsync(NavigationSettings.RegisterClients);
-            Title = "Registrar Cliente";
+            await _navigationService.NavigateAsync(NavigationSettings.MyClients);
+            Title = "Meus Cliente";
             CanExecuteEnd();
         }
 

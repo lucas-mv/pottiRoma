@@ -9,17 +9,20 @@
     Title="Meus Clientes"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
-    <Grid>
+    <Grid
+        x:Name="MyClientsPageContent"
+        HeightRequest="{Binding ScreenHeightRequest}"
+        SizeChanged="MyClientsPageContent_SizeChanged">
         <Grid.Margin>
             <OnPlatform
                 x:TypeArguments="Thickness"
-                Android="16,16,16,16"
-                iOS="16,40,16,16" />
+                Android="8,8,8,8"
+                iOS="8,32,8,8" />
         </Grid.Margin>
         <Grid.RowDefinitions>
-            <RowDefinition Height="35" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="120" />
+            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
         <Grid
@@ -32,15 +35,19 @@
                 BackgroundColor="Transparent"
                 CancelButtonColor="Transparent"
                 FontSize="{StaticResource StandardFontSize}"
+                HeightRequest="35"
                 Placeholder="Pesquise..."
                 PlaceholderColor="{StaticResource PlaceholderColor}"
-                TextColor="{StaticResource TextColor}" />
+                TextColor="{StaticResource TextColor}"
+                VerticalOptions="Start" />
         </Grid>
 
         <syncfusion:SfListView
             x:Name="ClientsListView"
+            Grid.Row="1"
             AllowSwiping="True"
             ItemSize="130"
+            ItemSpacing="6"
             ItemsSource="{Binding ListaClientes}"
             SelectionBackgroundColor="{StaticResource SelectionBackgroundColor}"
             SwipeOffset="150">
@@ -54,24 +61,22 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <Grid Margin="12" RowSpacing="0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
+                            <StackLayout Margin="6" Spacing="0">
                                 <Button
-                                    Grid.Row="0"
+                                    Command="{Binding Path=BindingContext.EditClientCommand, Source={x:Reference ClientsListView}}"
+                                    CommandParameter="{Binding .}"
+                                    HeightRequest="65"
                                     HorizontalOptions="Fill"
                                     Style="{StaticResource ButtonDefault}"
-                                    Text="Editar"
-                                    VerticalOptions="Fill" />
+                                    Text="Editar" />
                                 <Button
-                                    Grid.Row="0"
+                                    Command="{Binding Path=BindingContext.RemoveClientCommand, Source={x:Reference ClientsListView}}"
+                                    CommandParameter="{Binding .}"
+                                    HeightRequest="65"
                                     HorizontalOptions="Fill"
                                     Style="{StaticResource RedButton}"
-                                    Text="Remover"
-                                    VerticalOptions="Fill" />
-                            </Grid>
+                                    Text="Remover" />
+                            </StackLayout>
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
@@ -80,56 +85,54 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <Frame
-                                Grid.Row="1"
-                                Padding="0"
-                                BackgroundColor="{StaticResource LightBackgroundColor}"
-                                HeightRequest="130"
-                                OutlineColor="{StaticResource OutlineColor}"
-                                VerticalOptions="Start">
-                                <Grid Margin="16">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-
-                                    <Label
-                                        Grid.Row="0"
-                                        FontAttributes="Bold"
-                                        FontSize="{StaticResource StandardFontSize}"
-                                        HorizontalOptions="Start"
-                                        Text="Nome do usuário"
-                                        TextColor="{StaticResource TextColor}"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Grid.Row="1"
-                                        FontSize="{StaticResource StandardFontSize}"
-                                        HorizontalOptions="Start"
-                                        Text="Email do usuário"
-                                        TextColor="{StaticResource TextColor}"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                        FontAttributes="Bold"
-                                        FontSize="{StaticResource StandardFontSize}"
-                                        HorizontalOptions="End"
-                                        Text="Aniversário dia Tal"
-                                        TextColor="{StaticResource PlaceholderColor}"
-                                        VerticalOptions="Center" />
-                                </Grid>
-                            </Frame>
-
+                            <Grid HeightRequest="130">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Margin="0"
+                                    Aspect="AspectFill"
+                                    Source="cardlogin.png" />
+                                <Label
+                                    Grid.Row="0"
+                                    Margin="16,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="Start"
+                                    Text="Nome do usuário"
+                                    TextColor="{StaticResource TextColor}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="1"
+                                    Margin="16,0,0,0"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="Start"
+                                    Text="Email do usuário"
+                                    TextColor="{StaticResource TextColor}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Margin="0,0,16,0"
+                                    FontAttributes="Bold"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="End"
+                                    Text="Aniversário dia Tal"
+                                    TextColor="{StaticResource PlaceholderColor}"
+                                    VerticalOptions="Center" />
+                            </Grid>
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
             </syncfusion:SfListView.ItemTemplate>
         </syncfusion:SfListView>
 
-
-
         <Button
             Grid.Row="2"
+            Command="{Binding RegisterNewClientCommand}"
             HorizontalOptions="Center"
             Style="{StaticResource ButtonDefault}"
             Text="NOVO CLIENTE"

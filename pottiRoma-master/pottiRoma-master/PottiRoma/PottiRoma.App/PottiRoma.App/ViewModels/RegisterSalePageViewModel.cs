@@ -14,6 +14,13 @@ namespace PottiRoma.App.ViewModels
 
         public DelegateCommand GoBackCommand { get; set; }
 
+        private double _screenHeightRequest;
+        public double ScreenHeightRequest
+        {
+            get { return _screenHeightRequest; }
+            set { SetProperty(ref _screenHeightRequest, value); }
+        }
+
         public RegisterSalePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;

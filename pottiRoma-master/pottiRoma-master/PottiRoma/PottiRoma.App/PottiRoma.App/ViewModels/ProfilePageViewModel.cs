@@ -1,15 +1,27 @@
-﻿using Prism.Commands;
+﻿using PottiRoma.App.ViewModels.Core;
+using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace PottiRoma.App.ViewModels
 {
-    public class ProfilePageViewModel : BindableBase
+    public class ProfilePageViewModel : ViewModelBase
     {
-        public ProfilePageViewModel()
+        private readonly INavigationService _navigationService;
+
+        private double _screenHeightRequest;
+        public double ScreenHeightRequest
         {
+            get { return _screenHeightRequest; }
+            set { SetProperty(ref _screenHeightRequest, value); }
+        }
+
+        public ProfilePageViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
 
         }
     }

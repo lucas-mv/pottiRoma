@@ -15,7 +15,8 @@
             <Color x:Key="LabelLogin">#61000000</Color>
             <Color x:Key="DarkTextColor">#080808</Color>
             <Color x:Key="LightTextColor">#9e9e9e</Color>
-            <Color x:Key="TextColorDisabled">#BFBFBF</Color>
+            <Color x:Key="TextColorDisabled">#9b9b9b</Color>
+            <Color x:Key="ConfirmTextColor">#d48d48</Color>
             <Color x:Key="ErrorColor">#FF3131</Color>
             <Color x:Key="ButtonColor">#d48d48</Color>
             <Color x:Key="RedButtonColor">#FF3131</Color>
@@ -74,7 +75,7 @@
             </Style>
 
             <Style x:Key="RedButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource ButtonColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource RedButtonColor}" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="BorderRadius" Value="3" />
                 <Setter Property="HeightRequest" Value="50" />

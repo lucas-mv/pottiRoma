@@ -1,4 +1,6 @@
-﻿using PottiRoma.App.Utils.NavigationHelpers;
+﻿using Acr.UserDialogs;
+using Microsoft.Practices.Unity;
+using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.Views;
 using PottiRoma.App.Views.Core;
 using Prism.Unity;
@@ -31,6 +33,9 @@ namespace PottiRoma.App
 
         protected override void RegisterTypes()
         {
+            BootStrapperIoC.Init(Container);
+
+            Container.RegisterInstance(UserDialogs.Instance);
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<RegisterClientsPage>();
             Container.RegisterTypeForNavigation<EditPersonalDataPage>();

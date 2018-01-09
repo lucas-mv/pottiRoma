@@ -9,91 +9,95 @@
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource LightBackgroundColor}">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="170" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="120" />
-        </Grid.RowDefinitions>
+    <ScrollView>
+        <Grid
+            x:Name="EditPersonalDataPageContent"
+            HeightRequest="{Binding ScreenHeightRequest}"
+            SizeChanged="EditPersonalDataPageContent_SizeChanged">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="170" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
 
-        <Image
-            Grid.Row="0"
-            Aspect="AspectFill"
-            Source="banner_perfil.png" />
+            <Image
+                Grid.Row="0"
+                Aspect="AspectFill"
+                Source="banner_perfil.png" />
 
-        <!--  TROCAR ESSE BANNER PQ TA REPETIDO  -->
+            <!--  TROCAR ESSE BANNER PQ TA REPETIDO  -->
 
-        <StackLayout
-            Grid.Row="1"
-            Margin="16"
-            Spacing="12">
-            <ContentView HeightRequest="16" />
-            <Label
-                Margin="12,0,0,0"
-                FontAttributes="Bold"
-                FontSize="{StaticResource StandardFontSize}"
-                Text="Nome Do Cliente"
-                TextColor="{StaticResource TextColor}" />
-            <ContentView HeightRequest="16" />
-            <Label
-                Margin="12,0,0,0"
-                FontAttributes="Bold"
-                FontSize="{StaticResource StandardFontSize}"
-                Text="CPF : 1231283-23"
-                TextColor="{StaticResource TextColor}" />
-            <ContentView HeightRequest="16" />
-            <Frame
+            <StackLayout
                 Grid.Row="1"
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
+                Margin="16"
+                Spacing="12">
+                <ContentView HeightRequest="16" />
+                <Label
+                    Margin="12,0,0,0"
+                    FontAttributes="Bold"
                     FontSize="{StaticResource StandardFontSize}"
-                    Keyboard="Email"
-                    Placeholder="Email"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="End" />
-            </Frame>
-            <Frame
-                Grid.Row="1"
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
+                    Text="Nome Do Cliente"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="16" />
+                <Label
+                    Margin="12,0,0,0"
+                    FontAttributes="Bold"
                     FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="Telefone 1"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="End" />
-            </Frame>
-            <Frame
-                Grid.Row="1"
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="Telefone 2"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="End" />
-            </Frame>
-        </StackLayout>
+                    Text="CPF : 1231283-23"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="16" />
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Keyboard="Email"
+                        Placeholder="Email"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="End" />
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="Telefone 1"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="End" />
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="Telefone 2"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="End" />
+                </Frame>
+            </StackLayout>
 
-        <Button
-            Grid.Row="2"
-            Margin="16"
-            Command="{Binding ChangePasswordCommand}"
-            Style="{StaticResource ButtonDefault}"
-            Text="ALTERAR SENHA"
-            VerticalOptions="Center" />
+            <Button
+                Grid.Row="2"
+                Margin="16"
+                Command="{Binding ChangePasswordCommand}"
+                Style="{StaticResource ButtonDefault}"
+                Text="ALTERAR SENHA"
+                VerticalOptions="Center" />
 
-    </Grid>
-
+        </Grid>
+    </ScrollView>
 
 
 

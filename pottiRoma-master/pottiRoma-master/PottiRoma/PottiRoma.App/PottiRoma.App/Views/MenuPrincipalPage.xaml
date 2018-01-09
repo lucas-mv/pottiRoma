@@ -10,207 +10,209 @@
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <Grid
-                BackgroundColor="{StaticResource BackgroundMenuColor}"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Margin="0,28,0,0"
-                    Spacing="-10"
-                    VerticalOptions="Start">
-                    <Image
-                        Aspect="AspectFit"
-                        HeightRequest="100"
-                        Source="foto_perfil.png" />
-                    <Grid HeightRequest="40" />
+            <ScrollView>
+                <Grid
+                    BackgroundColor="{StaticResource BackgroundMenuColor}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout
+                        Margin="0,28,0,0"
+                        Spacing="-10"
+                        VerticalOptions="Start">
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="100"
+                            Source="foto_perfil.png" />
+                        <Grid HeightRequest="40" />
 
-                    <Grid
-                        x:Name="ContentRanking"
-                        HeightRequest="{StaticResource HeightMenuItem}"
-                        HorizontalOptions="FillAndExpand"
-                        Opacity="{StaticResource ShadedMenu}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="18" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToRankingCommand}" Tapped="ContentRanking_Clicked" />
-                        </Grid.GestureRecognizers>
-                        <Image
-                            Grid.Column="1"
-                            HorizontalOptions="Start"
-                            Source="ic_podium.png"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            FontSize="{StaticResource LargeFontSize}"
-                            HorizontalOptions="Start"
-                            Text="    Ranking Geral"
-                            TextColor="{StaticResource WhiteColor}"
-                            VerticalOptions="Center" />
-                    </Grid>
-                    <Grid
-                        x:Name="ContentPerfil"
-                        HeightRequest="{StaticResource HeightMenuItem}"
-                        HorizontalOptions="FillAndExpand"
-                        Opacity="{StaticResource ShadedMenu}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="18" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToProfileCommand}" Tapped="ContentPerfil_Clicked" />
-                        </Grid.GestureRecognizers>
-                        <Image
-                            Grid.Column="1"
-                            HorizontalOptions="Start"
-                            Source="ic_account_circle_white_24dp.png"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            FontSize="{StaticResource LargeFontSize}"
-                            HorizontalOptions="Start"
-                            Text="    Meu Perfil"
-                            TextColor="{StaticResource WhiteColor}"
-                            VerticalOptions="Center" />
-                    </Grid>
-                    <Grid
-                        x:Name="ContentSales"
-                        HeightRequest="{StaticResource HeightMenuItem}"
-                        HorizontalOptions="FillAndExpand"
-                        Opacity="{StaticResource ShadedMenu}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="18" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToMySalesCommand}" Tapped="ContentSales_Clicked" />
-                        </Grid.GestureRecognizers>
-                        <Image
-                            Grid.Column="1"
-                            HorizontalOptions="Start"
-                            Source="ic_attach_money_white_24dp.png"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            FontSize="{StaticResource LargeFontSize}"
-                            HorizontalOptions="Start"
-                            Text="    Registrar Venda"
-                            TextColor="{StaticResource WhiteColor}"
-                            VerticalOptions="Center" />
-                    </Grid>
-                    <Grid
-                        x:Name="ContentSettings"
-                        HeightRequest="{StaticResource HeightMenuItem}"
-                        HorizontalOptions="FillAndExpand"
-                        Opacity="{StaticResource ShadedMenu}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="18" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToRegisterClientsCommand}" Tapped="ContentSettings_Clicked" />
-                        </Grid.GestureRecognizers>
-                        <Image
-                            Grid.Column="1"
-                            HorizontalOptions="Start"
-                            Source="ic_settings_white_24dp.png"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            FontSize="{StaticResource LargeFontSize}"
-                            HorizontalOptions="Start"
-                            Text="    Registrar Cliente"
-                            TextColor="{StaticResource WhiteColor}"
-                            VerticalOptions="Center" />
-                    </Grid>
-                    <Grid
-                        x:Name="ContentConvidarFlor"
-                        HeightRequest="{StaticResource HeightMenuItem}"
-                        HorizontalOptions="FillAndExpand"
-                        Opacity="{StaticResource ShadedMenu}">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToInviteFlowerCommand}" Tapped="ContentConvidarFlor_Clicked" />
-                        </Grid.GestureRecognizers>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="18" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Image
-                            Grid.Column="1"
-                            HorizontalOptions="Start"
-                            Source="ic_insert_invitation_white_24dp.png"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            FontSize="{StaticResource LargeFontSize}"
-                            HorizontalOptions="Start"
-                            Text="    Convidar Flor"
-                            TextColor="{StaticResource WhiteColor}"
-                            VerticalOptions="Center" />
-                    </Grid>
+                        <Grid
+                            x:Name="ContentRanking"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToRankingCommand}" Tapped="ContentRanking_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Image
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                Source="ic_podium.png"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Ranking Geral"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                        <Grid
+                            x:Name="ContentPerfil"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToProfileCommand}" Tapped="ContentPerfil_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Image
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                Source="ic_account_circle_white_24dp.png"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Meu Perfil"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                        <Grid
+                            x:Name="ContentSales"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToMySalesCommand}" Tapped="ContentSales_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Image
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                Source="ic_attach_money_white_24dp.png"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Registrar Venda"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                        <Grid
+                            x:Name="ContentSettings"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToMyClientsCommand}" Tapped="ContentSettings_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Image
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                Source="ic_settings_white_24dp.png"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Meus Clientes"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                        <Grid
+                            x:Name="ContentConvidarFlor"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToInviteFlowerCommand}" Tapped="ContentConvidarFlor_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                Source="ic_insert_invitation_white_24dp.png"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Convidar Flor"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
 
-                    <Grid
-                        x:Name="ContentAlterarDadosPessoais"
-                        HeightRequest="{StaticResource HeightMenuItem}"
-                        HorizontalOptions="FillAndExpand"
-                        Opacity="{StaticResource ShadedMenu}">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToEditPersonalDataCommand}" Tapped="ContentAlterarDados_Clicked" />
-                        </Grid.GestureRecognizers>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="18" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Image
-                            Grid.Column="1"
-                            HorizontalOptions="Start"
-                            Source="ic_insert_invitation_white_24dp.png"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            FontSize="{StaticResource LargeFontSize}"
-                            HorizontalOptions="Start"
-                            Text="    Editar Dados Pessoais"
-                            TextColor="{StaticResource WhiteColor}"
-                            VerticalOptions="Center" />
-                    </Grid>
+                        <Grid
+                            x:Name="ContentAlterarDadosPessoais"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToEditPersonalDataCommand}" Tapped="ContentAlterarDados_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                Source="ic_insert_invitation_white_24dp.png"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Editar Dados Pessoais"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
 
-                    <Grid
-                        x:Name="ContentRegistrarVenda"
-                        HeightRequest="{StaticResource HeightMenuItem}"
-                        HorizontalOptions="FillAndExpand"
-                        Opacity="{StaticResource ShadedMenu}">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToDashboardCommand}" Tapped="ContentConvidarFlor_Clicked" />
-                        </Grid.GestureRecognizers>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="18" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Image
-                            Grid.Column="1"
-                            HorizontalOptions="Start"
-                            Source="ic_insert_invitation_white_24dp.png"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            FontSize="{StaticResource LargeFontSize}"
-                            HorizontalOptions="Start"
-                            Text="    Fazer Logout"
-                            TextColor="{StaticResource WhiteColor}"
-                            VerticalOptions="Center" />
-                    </Grid>
+                        <Grid
+                            x:Name="ContentEfetuarLogout"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LogoutCommand}" Tapped="ContentEfetuarLogout_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                Source="ic_insert_invitation_white_24dp.png"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Fazer Logout"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
 
-                </StackLayout>
-            </Grid>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
         </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
