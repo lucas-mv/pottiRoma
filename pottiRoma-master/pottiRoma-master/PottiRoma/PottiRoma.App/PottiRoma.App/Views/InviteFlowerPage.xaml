@@ -47,14 +47,14 @@
                 Padding="0"
                 BackgroundColor="{StaticResource WhiteColor}"
                 OutlineColor="{StaticResource OutlineColor}">
-                <Entry
+                <renderers:CustomEntry
                     Margin="10,0,10,0"
                     FontSize="{StaticResource StandardFontSize}"
                     Keyboard="Email"
                     Placeholder="Email"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
                     TextColor="{StaticResource TextColor}"
-                    VerticalOptions="End" />
+                    VerticalOptions="Center" />
             </Frame>
 
             <Frame
@@ -63,7 +63,7 @@
                 BackgroundColor="{StaticResource WhiteColor}"
                 OutlineColor="{StaticResource OutlineColor}">
                 <Grid>
-                    <Editor
+                    <renderers:CustomEditor
                         Margin="10,0,10,0"
                         BackgroundColor="Transparent"
                         FontSize="14"

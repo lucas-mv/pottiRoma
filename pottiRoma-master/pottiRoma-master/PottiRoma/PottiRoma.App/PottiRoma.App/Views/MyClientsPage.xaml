@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PottiRoma.App.Views.MyClientsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    Title="Meus Clientes"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource DarkBackgroundColor}">
+    <Grid>
+        <Grid.Margin>
+            <OnPlatform
+                x:TypeArguments="Thickness"
+                Android="16,16,16,16"
+                iOS="16,40,16,16" />
+        </Grid.Margin>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="120" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill">
+            <SearchBar
+                x:Name="SearchBarClientes"
+                Margin="0,0,10,0"
+                BackgroundColor="Transparent"
+                CancelButtonColor="Transparent"
+                FontSize="{StaticResource StandardFontSize}"
+                Placeholder="Pesquise..."
+                PlaceholderColor="{StaticResource PlaceholderColor}"
+                TextColor="{StaticResource TextColor}" />
+        </Grid>
+
+        <syncfusion:SfListView
+            x:Name="ClientsListView"
+            AllowSwiping="True"
+            ItemSize="130"
+            ItemsSource="{Binding ListaClientes}"
+            SelectionBackgroundColor="{StaticResource SelectionBackgroundColor}"
+            SwipeOffset="150">
+            <syncfusion:SfListView.Behaviors>
+                <behaviors:EventToCommandBehavior
+                    Command="{Binding ClienteSelectedCommand}"
+                    EventArgsParameterPath="ItemData"
+                    EventName="ItemTapped" />
+            </syncfusion:SfListView.Behaviors>
+            <syncfusion:SfListView.RightSwipeTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid Margin="12" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Button
+                                    Grid.Row="0"
+                                    HorizontalOptions="Fill"
+                                    Style="{StaticResource ButtonDefault}"
+                                    Text="Editar"
+                                    VerticalOptions="Fill" />
+                                <Button
+                                    Grid.Row="0"
+                                    HorizontalOptions="Fill"
+                                    Style="{StaticResource RedButton}"
+                                    Text="Remover"
+                                    VerticalOptions="Fill" />
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.RightSwipeTemplate>
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame
+                                Grid.Row="1"
+                                Padding="0"
+                                BackgroundColor="{StaticResource LightBackgroundColor}"
+                                HeightRequest="130"
+                                OutlineColor="{StaticResource OutlineColor}"
+                                VerticalOptions="Start">
+                                <Grid Margin="16">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource StandardFontSize}"
+                                        HorizontalOptions="Start"
+                                        Text="Nome do usuário"
+                                        TextColor="{StaticResource TextColor}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource StandardFontSize}"
+                                        HorizontalOptions="Start"
+                                        Text="Email do usuário"
+                                        TextColor="{StaticResource TextColor}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource StandardFontSize}"
+                                        HorizontalOptions="End"
+                                        Text="Aniversário dia Tal"
+                                        TextColor="{StaticResource PlaceholderColor}"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                            </Frame>
+
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+
+
+
+        <Button
+            Grid.Row="2"
+            HorizontalOptions="Center"
+            Style="{StaticResource ButtonDefault}"
+            Text="NOVO CLIENTE"
+            VerticalOptions="Center"
+            WidthRequest="250" />
+    </Grid>
+</ContentPage>

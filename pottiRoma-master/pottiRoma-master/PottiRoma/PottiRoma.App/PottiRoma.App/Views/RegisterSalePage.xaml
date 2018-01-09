@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
 
@@ -143,7 +144,7 @@
                                     FontSize="{StaticResource LargeFontSize}"
                                     Text="Observações"
                                     TextColor="{StaticResource DarkTextColor}" />
-                                <Editor
+                                <renderers:CustomEditor
                                     FontSize="14"
                                     HeightRequest="90"
                                     HorizontalOptions="Fill"
@@ -164,7 +165,7 @@
                                     Text="Valor Pago:"
                                     TextColor="Green"
                                     VerticalOptions="Center" />
-                                <Entry
+                                <renderers:CustomEntry
                                     Grid.Column="1"
                                     Margin="0,0,16,0"
                                     FontAttributes="Bold"
@@ -189,7 +190,7 @@
                                     Text="Valor Total:"
                                     TextColor="{StaticResource DarkTextColor}"
                                     VerticalOptions="Center" />
-                                <Entry
+                                <renderers:CustomEntry
                                     Grid.Column="1"
                                     Margin="0,0,16,0"
                                     FontAttributes="Bold"
@@ -213,7 +214,6 @@
 
         <Button
             Grid.Row="2"
-            HeightRequest="50"
             HorizontalOptions="Center"
             Style="{StaticResource ButtonDefault}"
             Text="ENVIAR PARA MEU E-MAIL"

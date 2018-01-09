@@ -5,6 +5,8 @@ namespace PottiRoma.App.Views
     public partial class MenuPrincipalPage : MasterDetailPage
     {
         public const string SelectedBackgroundColor = "#435861";
+        public const double ShadedMenuItem = 0.7d;
+        public const double SelectedMenuItem = 1.0d;
         public MenuPrincipalPage()
         {
             InitializeComponent();
@@ -14,77 +16,103 @@ namespace PottiRoma.App.Views
         private void SetInitialScreenState()
         {
             ContentRanking.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
-            ContentRanking.Opacity = 1;
+            ContentRanking.Opacity = SelectedMenuItem;
         }
 
         private void ContentConvidarFlor_Clicked(object sender, System.EventArgs e)
         {
             ContentConvidarFlor.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
-            ContentConvidarFlor.Opacity = 1;
+            ContentConvidarFlor.Opacity = SelectedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
-            ContentRanking.Opacity = 0.8;
+            ContentRanking.Opacity = ShadedMenuItem;
             ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = 0.8;
+            ContentPerfil.Opacity = ShadedMenuItem;
             ContentSales.BackgroundColor = Color.Transparent;
-            ContentSales.Opacity = 0.8;
+            ContentSales.Opacity = ShadedMenuItem;
             ContentSettings.BackgroundColor = Color.Transparent;
-            ContentSettings.Opacity = 0.8;
+            ContentSettings.Opacity = ShadedMenuItem;
+            ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
+            ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
         }
 
         private void ContentRanking_Clicked(object sender, System.EventArgs e)
         {
             ContentRanking.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
-            ContentRanking.Opacity = 1;
+            ContentRanking.Opacity = SelectedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
-            ContentConvidarFlor.Opacity = 0.8;
+            ContentConvidarFlor.Opacity = ShadedMenuItem;
             ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = 0.8;
+            ContentPerfil.Opacity = ShadedMenuItem;
             ContentSales.BackgroundColor = Color.Transparent;
-            ContentSales.Opacity = 0.8;
+            ContentSales.Opacity = ShadedMenuItem;
             ContentSettings.BackgroundColor = Color.Transparent;
-            ContentSettings.Opacity = 0.8;
+            ContentSettings.Opacity = ShadedMenuItem;
+            ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
+            ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
         }
 
         private void ContentPerfil_Clicked(object sender, System.EventArgs e)
         {
             ContentPerfil.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
-            ContentPerfil.Opacity = 1;
+            ContentPerfil.Opacity = SelectedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
-            ContentRanking.Opacity = 0.8;
+            ContentRanking.Opacity = ShadedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
-            ContentConvidarFlor.Opacity = 0.8;
+            ContentConvidarFlor.Opacity = ShadedMenuItem;
             ContentSales.BackgroundColor = Color.Transparent;
-            ContentSales.Opacity = 0.8;
+            ContentSales.Opacity = ShadedMenuItem;
             ContentSettings.BackgroundColor = Color.Transparent;
-            ContentSettings.Opacity = 0.8;
+            ContentSettings.Opacity = ShadedMenuItem;
+            ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
+            ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
         }
 
         private void ContentSales_Clicked(object sender, System.EventArgs e)
         {
             ContentSales.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
-            ContentSales.Opacity = 1;
+            ContentSales.Opacity = SelectedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
-            ContentRanking.Opacity = 0.8;
+            ContentRanking.Opacity = ShadedMenuItem;
             ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = 0.8;
+            ContentPerfil.Opacity = ShadedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
-            ContentConvidarFlor.Opacity = 0.8;
+            ContentConvidarFlor.Opacity = ShadedMenuItem;
             ContentSettings.BackgroundColor = Color.Transparent;
-            ContentSettings.Opacity = 0.8;
+            ContentSettings.Opacity = ShadedMenuItem;
+            ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
+            ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
         }
 
         private void ContentSettings_Clicked(object sender, System.EventArgs e)
         {
             ContentSettings.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
-            ContentSettings.Opacity = 1;
+            ContentSettings.Opacity = SelectedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
-            ContentRanking.Opacity = 0.8;
+            ContentRanking.Opacity = ShadedMenuItem;
             ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = 0.8;
+            ContentPerfil.Opacity = ShadedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
-            ContentConvidarFlor.Opacity = 0.8;
+            ContentConvidarFlor.Opacity = ShadedMenuItem;
             ContentSales.BackgroundColor = Color.Transparent;
-            ContentSales.Opacity = 0.8;
+            ContentSales.Opacity = ShadedMenuItem;
+            ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
+            ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
+        }
+
+        private void ContentAlterarDados_Clicked(object sender, System.EventArgs e)
+        {
+            ContentSettings.BackgroundColor = Color.Transparent;
+            ContentSettings.Opacity = ShadedMenuItem;
+            ContentRanking.BackgroundColor = Color.Transparent;
+            ContentRanking.Opacity = ShadedMenuItem;
+            ContentPerfil.BackgroundColor = Color.Transparent;
+            ContentPerfil.Opacity = ShadedMenuItem;
+            ContentConvidarFlor.BackgroundColor = Color.Transparent;
+            ContentConvidarFlor.Opacity = ShadedMenuItem;
+            ContentSales.BackgroundColor = Color.Transparent;
+            ContentSales.Opacity = ShadedMenuItem;
+            ContentAlterarDadosPessoais.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
+            ContentAlterarDadosPessoais.Opacity = SelectedMenuItem;
         }
 
         protected override bool OnBackButtonPressed()

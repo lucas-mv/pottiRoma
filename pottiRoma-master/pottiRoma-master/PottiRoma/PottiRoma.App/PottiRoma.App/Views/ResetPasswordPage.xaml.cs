@@ -7,6 +7,7 @@ namespace PottiRoma.App.Views
         public ResetPasswordPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

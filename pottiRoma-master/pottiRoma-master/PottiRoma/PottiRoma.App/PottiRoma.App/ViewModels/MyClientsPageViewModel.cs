@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace PottiRoma.App.ViewModels
 {
-    public class MainNavigationPageViewModel : ViewModelBase
-    {
-        public MainNavigationPageViewModel()
+	public class MyClientsPageViewModel : ViewModelBase
+	{
+        public MyClientsPageViewModel()
         {
 
         }
-    }
+	}
 }

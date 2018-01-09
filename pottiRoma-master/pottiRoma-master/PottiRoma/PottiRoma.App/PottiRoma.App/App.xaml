@@ -18,6 +18,9 @@
             <Color x:Key="TextColorDisabled">#BFBFBF</Color>
             <Color x:Key="ErrorColor">#FF3131</Color>
             <Color x:Key="ButtonColor">#d48d48</Color>
+            <Color x:Key="RedButtonColor">#FF3131</Color>
+            <Color x:Key="DarkOrangeButtonColor">#aa713a</Color>
+            <Color x:Key="SecondButtonColor">#fafafa</Color>
             <Color x:Key="BackgroundMenuColor">#546e7a</Color>
             <Color x:Key="WhiteColor">#ffffff</Color>
             <Color x:Key="CorBoxSeparetorLine">#D8D8D8</Color>
@@ -70,9 +73,29 @@
                 <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
             </Style>
 
+            <Style x:Key="RedButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="3" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
+            </Style>
 
+            <Style x:Key="LightButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource SecondButtonColor}" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="BorderRadius" Value="3" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
+            </Style>
 
-
+            <Style x:Key="DarkOrangeButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkOrangeButtonColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="3" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
+            </Style>
 
 
 

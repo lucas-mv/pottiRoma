@@ -49,11 +49,10 @@
     <Compile Include="ViewModels\GamificationRulesPageViewModel.cs" />
     <Compile Include="ViewModels\InviteFlowerPageViewModel.cs" />
     <Compile Include="ViewModels\ListClientsForSalePageViewModel.cs" />
-    <Compile Include="ViewModels\ListClientsPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPrincipalPageViewModel.cs" />
-    <Compile Include="ViewModels\NewSalesPageViewModel.cs" />
+    <Compile Include="ViewModels\MyClientsPageViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\ProfileTabbedPageViewModel.cs" />
     <Compile Include="ViewModels\RankingPageViewModel.cs" />
@@ -78,11 +77,8 @@
     <Compile Include="Views\ListClientsForSalePage.xaml.cs">
       <DependentUpon>ListClientsForSalePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ListClientsPage.xaml.cs">
-      <DependentUpon>ListClientsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NewSalesPage.xaml.cs">
-      <DependentUpon>NewSalesPage.xaml</DependentUpon>
+    <Compile Include="Views\MyClientsPage.xaml.cs">
+      <DependentUpon>MyClientsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProfileTabbedPage.xaml.cs">
       <DependentUpon>ProfileTabbedPage.xaml</DependentUpon>
@@ -284,18 +280,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\NewSalesPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\ListClientsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\ResetPasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -321,6 +305,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ListClientsForSalePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MyClientsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -24,6 +24,7 @@ namespace PottiRoma.App.ViewModels
         public DelegateCommand GoToProfileCommand { get; set; }
         public DelegateCommand GoToMySalesCommand { get; set; }
         public DelegateCommand GoToRegisterClientsCommand { get; set; }
+        public DelegateCommand GoToEditPersonalDataCommand { get; set; }
 
         public MenuPrincipalPageViewModel(INavigationService navigationService)
         {
@@ -33,13 +34,21 @@ namespace PottiRoma.App.ViewModels
             GoToProfileCommand = new DelegateCommand(GoToProfile).ObservesCanExecute(() => CanExecute);
             GoToMySalesCommand = new DelegateCommand(GoToMySales).ObservesCanExecute(() => CanExecute);
             GoToRegisterClientsCommand = new DelegateCommand(GoToRegisterClients).ObservesCanExecute(() => CanExecute);
+            GoToEditPersonalDataCommand = new DelegateCommand(GoToEditPersonalData).ObservesCanExecute(() => CanExecute);
             Title = "Ranking Geral";
+        }
+
+        private async void GoToEditPersonalData()
+        {
+            CanExecuteInitial();
+            await _navigationService.NavigateAsync(NavigationSettings.EditPersonalData);
+            Title = "Editar Dados Pessoais";
+            CanExecuteEnd();
         }
 
         private async void GoToRegisterClients()
         {
             CanExecuteInitial();
-            await _navigationService.GoBackAsync();
             await _navigationService.NavigateAsync(NavigationSettings.RegisterClients);
             Title = "Registrar Cliente";
             CanExecuteEnd();

@@ -4,5 +4,107 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     Title="Cadastro de Clientes"
-    prism:ViewModelLocator.AutowireViewModel="True" />
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource DarkBackgroundColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="120" />
+        </Grid.RowDefinitions>
+
+        <Image
+            Grid.Row="0"
+            Aspect="AspectFill"
+            Source="banner_perfil.png" />
+
+        <!--  TROCAR ESSE BANNER PQ TA REPETIDO  -->
+
+        <StackLayout
+            Grid.Row="1"
+            Margin="16"
+            Spacing="12">
+
+            <Frame
+                Grid.Row="1"
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Placeholder="Nome"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="End" />
+            </Frame>
+
+            <Frame
+                Grid.Row="1"
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Placeholder="CPF"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="End" />
+            </Frame>
+
+            <Frame
+                Grid.Row="1"
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Keyboard="Email"
+                    Placeholder="Email"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="End" />
+            </Frame>
+            <Frame
+                Grid.Row="1"
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Placeholder="Data de Aniversário"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="End" />
+            </Frame>
+            <Frame
+                Grid.Row="1"
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Placeholder="Telefone"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="End" />
+            </Frame>
+        </StackLayout>
+
+        <Button
+            Grid.Row="2"
+            Margin="16"
+            Style="{StaticResource ButtonDefault}"
+            Text="CADASTRAR"
+            VerticalOptions="Center" />
+
+    </Grid>
+
+</ContentPage>
