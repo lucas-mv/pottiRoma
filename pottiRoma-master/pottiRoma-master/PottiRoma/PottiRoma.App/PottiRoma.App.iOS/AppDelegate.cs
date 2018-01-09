@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
 using UIKit;
 using Xfx;
 
@@ -26,9 +28,18 @@ namespace PottiRoma.App.iOS
             XfxControls.Init();
 
             global::Xamarin.Forms.Forms.Init();
+
+            InitializePlugins();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        private void InitializePlugins()
+        {
+            SfListViewRenderer.Init();
+            new SfBusyIndicatorRenderer();
         }
     }
 }

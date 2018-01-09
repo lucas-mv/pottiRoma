@@ -7,6 +7,7 @@ namespace PottiRoma.App.Views
         public RegisterSalePage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

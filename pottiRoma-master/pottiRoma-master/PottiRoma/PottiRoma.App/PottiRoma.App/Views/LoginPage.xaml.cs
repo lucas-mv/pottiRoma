@@ -16,6 +16,7 @@ namespace PottiRoma.App.Views
         public LoginPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private void Entry_Focused(object sender, FocusEventArgs e)

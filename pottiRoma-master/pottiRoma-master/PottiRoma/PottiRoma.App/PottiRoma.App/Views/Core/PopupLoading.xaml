@@ -25,13 +25,13 @@
         HorizontalOptions="FillAndExpand"
         VerticalOptions="Center">
 
-        <!--<sfBusy:SfBusyIndicator
+        <sfBusy:SfBusyIndicator
             Title="Aguarde..."
             AnimationType="SingleCircle"
             TextColor="White"
             VerticalOptions="FillAndExpand"
             ViewBoxHeight="60"
-            ViewBoxWidth="60" />-->
+            ViewBoxWidth="60" />
 
     </StackLayout>
 

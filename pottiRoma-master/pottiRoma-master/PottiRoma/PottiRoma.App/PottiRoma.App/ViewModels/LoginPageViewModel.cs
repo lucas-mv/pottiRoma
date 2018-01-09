@@ -16,14 +16,14 @@ namespace PottiRoma.App.ViewModels
 
         public DelegateCommand LoginCommand { get; set; }
 
-        private string _login;
+        private string _login = "";
         public string Login
         {
             get { return _login; }
             set { SetProperty(ref _login, value); }
         }
 
-        private string _password;
+        private string _password = "";
         public string Password
         {
             get { return _password; }
@@ -41,28 +41,23 @@ namespace PottiRoma.App.ViewModels
         {
             _navigationService = navigationService;
 
-            LoginCommand = new DelegateCommand(ExecuteLogin, CanExecuteLogin);
+            LoginCommand = new DelegateCommand(ExecuteLogin).ObservesCanExecute(() => CanExecute);
         }
 
-        private bool CanExecuteLogin()
-        {
-            return _canExecuteLogin;
-        }
 
-        bool _canExecuteLogin = true;
         private async void ExecuteLogin()
         {
-            if (Login == "adm" && Password == "123")
+            CanExecuteInitial();
+
+            if (Login.ToLower() != "adm" && Password != "123")
             {
-                _canExecuteLogin = false;
-                await _navigationService.NavigateAsync(NavigationSettings.MasterDetailRanking);
+                await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
             }
             else
             {
-                Device.BeginInvokeOnMainThread(() => {
-                    LoginIncorreto = true;
-                });
+                LoginIncorreto = true;
             }
+            CanExecuteEnd();
         }
     }
 }

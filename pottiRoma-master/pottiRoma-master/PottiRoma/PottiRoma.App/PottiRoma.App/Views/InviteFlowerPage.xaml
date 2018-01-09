@@ -7,89 +7,90 @@
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     Title="Convidar Flor"
     prism:ViewModelLocator.AutowireViewModel="True"
-    BackgroundColor="#f2f2f2">
+    BackgroundColor="{StaticResource LightBackgroundColor}">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="14*" />
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="190" />
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="16" />
             <ColumnDefinition Width="12*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="16" />
         </Grid.ColumnDefinitions>
 
-        <Frame
+        <Image
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Aspect="AspectFill"
+            Source="banner_top_2.png" />
+
+        <Grid
             Grid.Row="1"
             Grid.Column="1"
-            BackgroundColor="White"
-            HasShadow="True"
-            OutlineColor="#f2f2f2">
-            <Grid RowSpacing="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="8*" />
-                    <RowDefinition Height="2*" />
+            RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="2*" />
 
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="12" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="12" />
-                </Grid.ColumnDefinitions>
+            </Grid.RowDefinitions>
 
-                <Frame
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Padding="0"
-                    BackgroundColor="White"
-                    OutlineColor="#f2f2f2">
-                    <Entry
-                        Margin="10,0,0,0"
-                        FontSize="14"
-                        Keyboard="Email"
-                        Placeholder="Email"
-                        PlaceholderColor="#d5d5d5"
-                        TextColor="Gray"
-                        VerticalOptions="End" />
-                </Frame>
+            <Frame
+                Grid.Row="1"
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                OutlineColor="{StaticResource OutlineColor}">
+                <Entry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Keyboard="Email"
+                    Placeholder="Email"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="End" />
+            </Frame>
 
-                <Frame
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Padding="0"
-                    BackgroundColor="Red"
-                    OutlineColor="Black">
+            <Frame
+                Grid.Row="3"
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                OutlineColor="{StaticResource OutlineColor}">
+                <Grid>
                     <Editor
+                        Margin="10,0,10,0"
+                        BackgroundColor="Transparent"
                         FontSize="14"
                         HorizontalOptions="Fill"
                         Keyboard="Email"
                         TextColor="Gray"
                         VerticalOptions="Fill" />
-                </Frame>
+                    <Label
+                        Margin="14,10,0,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        HorizontalOptions="Start"
+                        Text="Mensagem"
+                        TextColor="{StaticResource PlaceholderColor}"
+                        VerticalOptions="Start" />
+                </Grid>
 
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="14,10,0,0"
-                    FontSize="14"
-                    Text="Mensagem"
-                    TextColor="#d5d5d5" />
+            </Frame>
 
-                <Button
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    BackgroundColor="#d48d48"
-                    FontSize="14"
-                    Text="CONVIDAR"
-                    TextColor="White"
-                    VerticalOptions="End" />
-            </Grid>
 
-        </Frame>
 
+            <Button
+                Grid.Row="5"
+                HeightRequest="50"
+                Style="{StaticResource ButtonDefault}"
+                Text="CONVIDAR"
+                VerticalOptions="End" />
+        </Grid>
 
     </Grid>
 

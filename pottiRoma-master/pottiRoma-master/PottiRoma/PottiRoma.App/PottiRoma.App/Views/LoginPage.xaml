@@ -6,7 +6,7 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     prism:ViewModelLocator.AutowireViewModel="True">
-    <Grid BackgroundColor="#f2f2f2">
+    <Grid BackgroundColor="{StaticResource DarkBackgroundColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="14*" />
@@ -24,14 +24,13 @@
             Grid.Column="1"
             BackgroundColor="White"
             HasShadow="True"
-            OutlineColor="#f2f2f2">
+            OutlineColor="{StaticResource OutlineColor}">
             <Grid RowSpacing="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="12" />
                     <RowDefinition Height="5*" />
-                    <RowDefinition Height="40" />
-                    <RowDefinition Height="60" />
-                    <RowDefinition Height="40" />
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="80" />
                     <RowDefinition Height="12" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -44,34 +43,34 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     Aspect="AspectFit"
-                    HeightRequest="100"
+                    HeightRequest="110"
                     Source="logo.png"
                     VerticalOptions="Start" />
 
-                <renderers:CustomEntry
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    Focused="Entry_Focused"
-                    FontSize="14"
-                    Keyboard="Email"
-                    Placeholder="Email"
-                    PlaceholderColor="#d5d5d5"
-                    Text="{Binding Login}"
-                    TextColor="Gray"
-                    VerticalOptions="End" />
+                <StackLayout Grid.Row="2" Grid.Column="1">
 
-                <StackLayout
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    HeightRequest="60"
-                    Spacing="5"
-                    VerticalOptions="End">
-                    <renderers:CustomEntry
+                    <Label
+                        FontSize="{StaticResource StandardFontSize}"
+                        Text="Login:"
+                        TextColor="{StaticResource LabelLogin}" />
+
+                    <Entry
                         Focused="Entry_Focused"
-                        FontSize="14"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Keyboard="Email"
+                        Text="{Binding Login}"
+                        TextColor="Gray"
+                        VerticalOptions="End" />
+                    <ContentView HeightRequest="20" />
+
+                    <Label
+                        FontSize="{StaticResource StandardFontSize}"
+                        Text="Senha:"
+                        TextColor="{StaticResource LabelLogin}" />
+                    <Entry
+                        Focused="Entry_Focused"
+                        FontSize="{StaticResource StandardFontSize}"
                         IsPassword="True"
-                        Placeholder="Senha"
-                        PlaceholderColor="#d5d5d5"
                         Text="{Binding Password}"
                         TextColor="Gray" />
                     <Label
@@ -80,17 +79,19 @@
                         IsVisible="{Binding LoginIncorreto}"
                         Opacity="0.8"
                         Text="Usuário e/ou senha incorretos."
-                        TextColor="Red" />
+                        TextColor="{StaticResource ErrorColor}" />
+                    <ContentView HeightRequest="20" />
                 </StackLayout>
 
+
+
                 <Button
-                    Grid.Row="4"
+                    Grid.Row="3"
                     Grid.Column="1"
-                    BackgroundColor="#d48d48"
                     Command="{Binding LoginCommand}"
-                    FontSize="14"
+                    HeightRequest="50"
+                    Style="{StaticResource ButtonDefault}"
                     Text="PROSSEGUIR"
-                    TextColor="White"
                     VerticalOptions="End" />
             </Grid>
 

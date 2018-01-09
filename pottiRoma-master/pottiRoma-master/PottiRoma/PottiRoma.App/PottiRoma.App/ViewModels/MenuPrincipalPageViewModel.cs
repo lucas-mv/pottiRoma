@@ -12,6 +12,12 @@ namespace PottiRoma.App.ViewModels
     public class MenuPrincipalPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
 
         public DelegateCommand GoToInviteFlowerCommand { get; set; }
         public DelegateCommand GoToRankingCommand { get; set; }
@@ -27,12 +33,15 @@ namespace PottiRoma.App.ViewModels
             GoToProfileCommand = new DelegateCommand(GoToProfile).ObservesCanExecute(() => CanExecute);
             GoToMySalesCommand = new DelegateCommand(GoToMySales).ObservesCanExecute(() => CanExecute);
             GoToRegisterClientsCommand = new DelegateCommand(GoToRegisterClients).ObservesCanExecute(() => CanExecute);
+            Title = "Ranking Geral";
         }
 
         private async void GoToRegisterClients()
         {
             CanExecuteInitial();
+            await _navigationService.GoBackAsync();
             await _navigationService.NavigateAsync(NavigationSettings.RegisterClients);
+            Title = "Registrar Cliente";
             CanExecuteEnd();
         }
 
@@ -40,6 +49,7 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
             await _navigationService.NavigateAsync(NavigationSettings.ListClientsForSale);
+            Title = "Registrar Venda";
             CanExecuteEnd();
         }
 
@@ -47,13 +57,15 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
             await _navigationService.NavigateAsync(NavigationSettings.TabbedProfile);
+            Title = "Meu Perfil";
             CanExecuteEnd();
         }
 
         private async void GoToRanking()
         {
             CanExecuteInitial();
-            await _navigationService.NavigateAsync(NavigationSettings.Ranking);
+            await _navigationService.NavigateAsync(NavigationSettings.RankingDetail);
+            Title = "Ranking Geral";
             CanExecuteEnd();
         }
 
@@ -61,6 +73,7 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
             await _navigationService.NavigateAsync(NavigationSettings.InviteFlower);
+            Title = "Convidar Flor";
             CanExecuteEnd();
         }
     }

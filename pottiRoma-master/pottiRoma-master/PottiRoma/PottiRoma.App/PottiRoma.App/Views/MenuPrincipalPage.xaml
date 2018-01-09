@@ -5,12 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:PottiRoma.App.Views"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="{Binding Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
             <Grid
-                BackgroundColor="#546e7a"
+                BackgroundColor="{StaticResource BackgroundMenuColor}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
                 <StackLayout
@@ -25,9 +26,9 @@
 
                     <Grid
                         x:Name="ContentRanking"
-                        HeightRequest="55"
+                        HeightRequest="{StaticResource HeightMenuItem}"
                         HorizontalOptions="FillAndExpand"
-                        Opacity="0.8">
+                        Opacity="{StaticResource ShadedMenu}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="18" />
                             <ColumnDefinition Width="Auto" />
@@ -43,17 +44,17 @@
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
-                            FontSize="16"
+                            FontSize="{StaticResource LargeFontSize}"
                             HorizontalOptions="Start"
-                            Text="    Ranking"
-                            TextColor="White"
+                            Text="    Ranking Geral"
+                            TextColor="{StaticResource WhiteColor}"
                             VerticalOptions="Center" />
                     </Grid>
                     <Grid
                         x:Name="ContentPerfil"
-                        HeightRequest="55"
+                        HeightRequest="{StaticResource HeightMenuItem}"
                         HorizontalOptions="FillAndExpand"
-                        Opacity="0.8">
+                        Opacity="{StaticResource ShadedMenu}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="18" />
                             <ColumnDefinition Width="Auto" />
@@ -69,17 +70,17 @@
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
-                            FontSize="16"
+                            FontSize="{StaticResource LargeFontSize}"
                             HorizontalOptions="Start"
-                            Text="    Perfil"
-                            TextColor="White"
+                            Text="    Meu Perfil"
+                            TextColor="{StaticResource WhiteColor}"
                             VerticalOptions="Center" />
                     </Grid>
                     <Grid
                         x:Name="ContentSales"
-                        HeightRequest="55"
+                        HeightRequest="{StaticResource HeightMenuItem}"
                         HorizontalOptions="FillAndExpand"
-                        Opacity="0.8">
+                        Opacity="{StaticResource ShadedMenu}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="18" />
                             <ColumnDefinition Width="Auto" />
@@ -95,17 +96,17 @@
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
-                            FontSize="16"
+                            FontSize="{StaticResource LargeFontSize}"
                             HorizontalOptions="Start"
-                            Text="    Minhas Vendas"
-                            TextColor="White"
+                            Text="    Registrar Venda"
+                            TextColor="{StaticResource WhiteColor}"
                             VerticalOptions="Center" />
                     </Grid>
                     <Grid
                         x:Name="ContentSettings"
-                        HeightRequest="55"
+                        HeightRequest="{StaticResource HeightMenuItem}"
                         HorizontalOptions="FillAndExpand"
-                        Opacity="0.8">
+                        Opacity="{StaticResource ShadedMenu}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="18" />
                             <ColumnDefinition Width="Auto" />
@@ -121,19 +122,19 @@
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
-                            FontSize="16"
+                            FontSize="{StaticResource LargeFontSize}"
                             HorizontalOptions="Start"
-                            Text="    Registrar novo Cliente"
-                            TextColor="White"
+                            Text="    Registrar Cliente"
+                            TextColor="{StaticResource WhiteColor}"
                             VerticalOptions="Center" />
                     </Grid>
                     <Grid
                         x:Name="ContentConvidarFlor"
-                        HeightRequest="55"
+                        HeightRequest="{StaticResource HeightMenuItem}"
                         HorizontalOptions="FillAndExpand"
-                        Opacity="0.8">
+                        Opacity="{StaticResource ShadedMenu}">
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToDashboardCommand}" Tapped="ContentConvidarFlor_Clicked" />
+                            <TapGestureRecognizer Command="{Binding GoToInviteFlowerCommand}" Tapped="ContentConvidarFlor_Clicked" />
                         </Grid.GestureRecognizers>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="18" />
@@ -147,17 +148,17 @@
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
-                            FontSize="16"
+                            FontSize="{StaticResource LargeFontSize}"
                             HorizontalOptions="Start"
                             Text="    Convidar Flor"
-                            TextColor="White"
+                            TextColor="{StaticResource WhiteColor}"
                             VerticalOptions="Center" />
                     </Grid>
                     <Grid
                         x:Name="ContentRegistrarVenda"
-                        HeightRequest="55"
+                        HeightRequest="{StaticResource HeightMenuItem}"
                         HorizontalOptions="FillAndExpand"
-                        Opacity="0.8">
+                        Opacity="{StaticResource ShadedMenu}">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToDashboardCommand}" Tapped="ContentConvidarFlor_Clicked" />
                         </Grid.GestureRecognizers>
@@ -173,14 +174,12 @@
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
-                            FontSize="16"
+                            FontSize="{StaticResource LargeFontSize}"
                             HorizontalOptions="Start"
                             Text="    Fazer Logout"
-                            TextColor="White"
+                            TextColor="{StaticResource WhiteColor}"
                             VerticalOptions="Center" />
                     </Grid>
-
-
 
                 </StackLayout>
             </Grid>

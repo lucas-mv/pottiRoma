@@ -7,6 +7,82 @@
 
     <prism:PrismApplication.Resources>
         <ResourceDictionary>
+            <Color x:Key="OutlineColor">#f2f2f2</Color>
+            <Color x:Key="DarkBackgroundColor">#e2e2e2</Color>
+            <Color x:Key="LightBackgroundColor">#fafafa</Color>
+            <Color x:Key="PlaceholderColor">#d5d5d5</Color>
+            <Color x:Key="TextColor">#696969</Color>
+            <Color x:Key="LabelLogin">#61000000</Color>
+            <Color x:Key="DarkTextColor">#080808</Color>
+            <Color x:Key="LightTextColor">#9e9e9e</Color>
+            <Color x:Key="TextColorDisabled">#BFBFBF</Color>
+            <Color x:Key="ErrorColor">#FF3131</Color>
+            <Color x:Key="ButtonColor">#d48d48</Color>
+            <Color x:Key="BackgroundMenuColor">#546e7a</Color>
+            <Color x:Key="WhiteColor">#ffffff</Color>
+            <Color x:Key="CorBoxSeparetorLine">#D8D8D8</Color>
+            <Color x:Key="SelectionBackgroundColor">#f0f0f0</Color>
+
+            <OnPlatform
+                x:Key="ShadedMenu"
+                x:TypeArguments="x:Double"
+                Android="0.7"
+                iOS="0.7" />
+
+            <OnIdiom
+                x:Key="HeightMenuItem"
+                x:TypeArguments="x:Double"
+                Phone="55"
+                Tablet="70" />
+            <OnPlatform
+                x:Key="TextButtonFontSize"
+                x:TypeArguments="x:Double"
+                Android="14"
+                iOS="15" />
+
+            <OnPlatform
+                x:Key="LargeFontSize"
+                x:TypeArguments="x:Double"
+                Android="17"
+                iOS="18" />
+            <OnPlatform
+                x:Key="StandardFontSize"
+                x:TypeArguments="x:Double"
+                Android="14"
+                iOS="15" />
+            <OnPlatform
+                x:Key="SmallFontSize"
+                x:TypeArguments="x:Double"
+                Android="10"
+                iOS="12" />
+            <OnPlatform
+                x:Key="TopBarFontSize"
+                x:TypeArguments="x:Double"
+                Android="20"
+                iOS="21" />
+
+
+            <Style x:Key="ButtonDefault" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="3" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
+            </Style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <Color x:Key="PrimaryDefault">#41986A</Color>
             <Color x:Key="PrimaryDarkDefault">#006440</Color>
@@ -14,13 +90,13 @@
             <Color x:Key="WindowBackgroundDefault">#F7F7F7</Color>
             <Color x:Key="WindowBackgroundTimeline">#FFFFFF</Color>
 
+
             <Color x:Key="ControlsFrameBackgroundColor">White</Color>
             <Color x:Key="ControlsFrameOutlineColor">#E9E9E9</Color>
             <x:Single x:Key="ControlsFrameCornerRadius">2</x:Single>
 
-            <Color x:Key="TextColorDisabled">#BFBFBF</Color>
 
-            <Color x:Key="CorBoxSeparetorLine">#D8D8D8</Color>
+
             <Color x:Key="CorMenuItemAlerta">#FF3131</Color>
 
             <Color x:Key="CorStatusNaoIniciado">#E9E9E9</Color>
@@ -52,14 +128,9 @@
             <Color x:Key="ConfigCardBorder">#ECECEC</Color>
             <Color x:Key="LabelContentFieldColor">#7c7c7c</Color>
             <Color x:Key="TextContentFieldTextColor">#878688</Color>
-            <Color x:Key="LightTextColor">#9b9b9b</Color>
-            <Color x:Key="ErrorColor">#FF3131</Color>
 
-            <OnPlatform
-                x:Key="SmallFontSize"
-                x:TypeArguments="x:Double"
-                Android="10"
-                iOS="12" />
+
+
             <OnPlatform
                 x:Key="LabelContentFieldFontSize"
                 x:TypeArguments="x:Double"
@@ -70,16 +141,8 @@
                 x:TypeArguments="x:Double"
                 Android="14.2"
                 iOS="16" />
-            <OnPlatform
-                x:Key="TextButtonFontSize"
-                x:TypeArguments="x:Double"
-                Android="15.5"
-                iOS="17" />
-            <OnPlatform
-                x:Key="LargeFontSize"
-                x:TypeArguments="x:Double"
-                Android="17"
-                iOS="18" />
+
+
 
             <Style x:Key="TextHeaderPage" TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
@@ -158,14 +221,6 @@
                 <Setter Property="BorderColor" Value="{StaticResource LabelContentFieldColor}" />
                 <Setter Property="BorderWidth" Value="1" />
                 <Setter Property="BorderRadius" Value="3" />
-            </Style>
-
-            <Style x:Key="ButtonDefault" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource AccentDefault}" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="BorderRadius" Value="3" />
-                <Setter Property="HeightRequest" Value="50" />
-                <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
             </Style>
 
             <Style x:Key="TextContent" TargetType="Label">

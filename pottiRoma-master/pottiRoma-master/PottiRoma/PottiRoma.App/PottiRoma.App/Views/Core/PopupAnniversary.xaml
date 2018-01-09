@@ -1,60 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<pages:PopupPage
     x:Class="PottiRoma.App.Views.Core.PopupAnniversary"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <ContentPage.Content>
-        <Grid
-            BackgroundColor="#fafafa"
-            HeightRequest="400"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            WidthRequest="260">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-            <Image
-                Grid.Row="0"
-                Aspect="AspectFill"
-                Source="popup.png" />
-            <StackLayout
-                Grid.Row="1"
-                Margin="16"
-                Spacing="10">
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="14"
-                    HorizontalOptions="Center"
-                    Text="Aniversariantes: 19 de Dezembro!"
-                    TextColor="#080808"
-                    VerticalOptions="Center" />
-                <ContentView HeightRequest="10" />
-                <!--  AQUI VEM A LISTA DE ANIVERSARIANTES  -->
-            </StackLayout>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:sflistview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
 
-            <Grid
-                Grid.Row="2"
-                BackgroundColor="#d48d48"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Button
-                    BackgroundColor="#d48d48"
-                    FontSize="14"
-                    Text="FECHAR"
-                    TextColor="#fafafa" />
-                <Button
-                    Grid.Column="1"
-                    BackgroundColor="#d48d48"
-                    FontSize="14"
-                    Text="ENVIAR EMAIL"
-                    TextColor="#fafafa" />
-            </Grid>
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+    <Grid
+        BackgroundColor="{StaticResource LightBackgroundColor}"
+        HeightRequest="400"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        WidthRequest="260">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Image
+            Grid.Row="0"
+            Aspect="AspectFill"
+            Source="popup.png" />
+        <StackLayout
+            Grid.Row="1"
+            Margin="16"
+            Spacing="10">
+            <Label
+                FontAttributes="Bold"
+                FontSize="{StaticResource LargeFontSize}"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{Binding DataAniversariantes}"
+                TextColor="{StaticResource DarkTextColor}"
+                VerticalOptions="Center" />
+            <ContentView HeightRequest="10" />
+            <sflistview:SfListView
+                HorizontalOptions="CenterAndExpand"
+                ItemsSource="{Binding Aniversariantes}"
+                SelectionBackgroundColor="Transparent"
+                VerticalOptions="CenterAndExpand">
+                <sflistview:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Label
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    Text="{Binding Nome}"
+                                    TextColor="{StaticResource TextColor}" />
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </sflistview:SfListView.ItemTemplate>
+            </sflistview:SfListView>
+        </StackLayout>
+
+        <Grid
+            Grid.Row="2"
+            BackgroundColor="{StaticResource ButtonColor}"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                FontSize="14"
+                Style="{StaticResource ButtonDefault}"
+                Text="FECHAR" />
+            <Button
+                Grid.Column="1"
+                Style="{StaticResource ButtonDefault}"
+                Text="ENVIAR EMAIL"
+                TextColor="#fafafa" />
         </Grid>
-    </ContentPage.Content>
-</ContentPage>
+    </Grid>
+</pages:PopupPage>

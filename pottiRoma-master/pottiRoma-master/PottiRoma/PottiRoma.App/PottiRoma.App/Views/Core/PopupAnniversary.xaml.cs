@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace PottiRoma.App.Views.Core
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PopupAnniversary : ContentPage
+    public partial class PopupAnniversary : PopupPage
     {
         public PopupAnniversary()
         {
