@@ -42,7 +42,6 @@
                     HeightRequest="35"
                     Placeholder="Pesquise..."
                     PlaceholderColor="{StaticResource PlaceholderColor}"
-                    TextChanged="FloatingSearchBar_SearchTextChanged"
                     TextColor="{StaticResource TextColor}" />
 
                 <ContentView HeightRequest="10" />

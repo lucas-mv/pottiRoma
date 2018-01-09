@@ -32,28 +32,41 @@ namespace PottiRoma.App.ViewModels
 
         private void GenerateMock()
         {
-            Cliente mock1 = new Cliente {
+            Cliente mock1 = new Cliente
+            {
                 Nome = "Cliente 1",
+                Email = "cliente1@gmail.com",
+                Telefone = "31 3248324",
             };
             Cliente mock2 = new Cliente
             {
                 Nome = "Cliente 5",
+                Email = "cliente1@gmail.com",
+                Telefone = "31 3248324",
             };
             Cliente mock3 = new Cliente
             {
                 Nome = "Cliente 3",
+                Email = "cliente2@gmail.com",
+                Telefone = "31 6456456",
             };
             Cliente mock4 = new Cliente
             {
                 Nome = "Cliente 4",
+                Email = "cliente3@gmail.com",
+                Telefone = "31 3456347",
             };
             Cliente mock5 = new Cliente
             {
                 Nome = "Cliente 5",
+                Email = "cliente4@gmail.com",
+                Telefone = "31 56433534",
             };
             Cliente mock6 = new Cliente
             {
                 Nome = "Cliente 6",
+                Email = "cliente6@gmail.com",
+                Telefone = "31 643634",
             };
             ListaClientes.Add(mock1);
             ListaClientes.Add(mock2);
