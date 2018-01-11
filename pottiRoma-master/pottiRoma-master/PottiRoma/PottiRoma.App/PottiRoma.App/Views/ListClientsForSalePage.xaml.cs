@@ -20,7 +20,7 @@ namespace PottiRoma.App.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            SearchBarClientes.TextChanged += TextoPesquisaChanged;
+            SearchBarClientesForSale.TextChanged += TextoPesquisaChanged;
         }
 
         private void TextoPesquisaChanged(object sender, TextChangedEventArgs e)
@@ -35,7 +35,7 @@ namespace PottiRoma.App.Views
 
         private bool FiltrarClientes(object item)
         {
-            if (SearchBarClientes == null || SearchBarClientes.Text == null) return true;
+            if (SearchBarClientesForSale == null || SearchBarClientesForSale.Text == null) return true;
 
             var cliente = item as Cliente;
 
@@ -44,7 +44,7 @@ namespace PottiRoma.App.Views
             bool ok = false;
 
             Translate translate = new Translate();
-            textobarra = translate.TranslateString(SearchBarClientes.Text.ToLower());
+            textobarra = translate.TranslateString(SearchBarClientesForSale.Text.ToLower());
 
             if (cliente != null)
             {
@@ -57,6 +57,5 @@ namespace PottiRoma.App.Views
             }
             return ok;
         }
-
     }
 }

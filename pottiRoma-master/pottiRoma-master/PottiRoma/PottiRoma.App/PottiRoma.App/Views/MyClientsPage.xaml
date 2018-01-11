@@ -85,45 +85,48 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <Grid HeightRequest="130">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <Image
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
+                            <ContentView HeightRequest="130">
+                                <Frame
                                     Margin="0"
-                                    Aspect="AspectFill"
-                                    Source="cardlogin.png" />
-                                <Label
-                                    Grid.Row="0"
-                                    Margin="16,0,0,0"
-                                    FontAttributes="Bold"
-                                    FontSize="{StaticResource StandardFontSize}"
-                                    HorizontalOptions="Start"
-                                    Text="Nome do usuário"
-                                    TextColor="{StaticResource TextColor}"
-                                    VerticalOptions="Center" />
-                                <Label
-                                    Grid.Row="1"
-                                    Margin="16,0,0,0"
-                                    FontSize="{StaticResource StandardFontSize}"
-                                    HorizontalOptions="Start"
-                                    Text="Email do usuário"
-                                    TextColor="{StaticResource TextColor}"
-                                    VerticalOptions="Center" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    Margin="0,0,16,0"
-                                    FontAttributes="Bold"
-                                    FontSize="{StaticResource StandardFontSize}"
-                                    HorizontalOptions="End"
-                                    Text="Aniversário dia Tal"
-                                    TextColor="{StaticResource PlaceholderColor}"
-                                    VerticalOptions="Center" />
-                            </Grid>
+                                    BackgroundColor="{StaticResource WhiteColor}"
+                                    HasShadow="True"
+                                    OutlineColor="{StaticResource OutlineColor}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.Row="0"
+                                            Margin="16,0,0,0"
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource StandardFontSize}"
+                                            HorizontalOptions="Start"
+                                            Text="Nome do usuário"
+                                            TextColor="{StaticResource TextColor}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Margin="16,0,0,0"
+                                            FontSize="{StaticResource StandardFontSize}"
+                                            HorizontalOptions="Start"
+                                            Text="Email do usuário"
+                                            TextColor="{StaticResource TextColor}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Margin="0,0,16,0"
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource StandardFontSize}"
+                                            HorizontalOptions="End"
+                                            Text="Aniversário dia Tal"
+                                            TextColor="{StaticResource PlaceholderColor}"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </Frame>
+
+                            </ContentView>
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>

@@ -126,5 +126,7 @@ namespace PottiRoma.App.ViewModels
             }
             CanExecuteEnd();
         }
+
+
     }
 }

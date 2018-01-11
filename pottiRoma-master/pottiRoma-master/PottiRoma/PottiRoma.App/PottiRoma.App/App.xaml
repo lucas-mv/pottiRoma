@@ -7,8 +7,8 @@
 
     <prism:PrismApplication.Resources>
         <ResourceDictionary>
-            <Color x:Key="OutlineColor">#f2f2f2</Color>
             <Color x:Key="DarkBackgroundColor">#e2e2e2</Color>
+            <Color x:Key="ThemeColor">#ffd195</Color>
             <Color x:Key="LightBackgroundColor">#fafafa</Color>
             <Color x:Key="PlaceholderColor">#d5d5d5</Color>
             <Color x:Key="TextColor">#696969</Color>
@@ -26,6 +26,12 @@
             <Color x:Key="WhiteColor">#ffffff</Color>
             <Color x:Key="CorBoxSeparetorLine">#D8D8D8</Color>
             <Color x:Key="SelectionBackgroundColor">#f0f0f0</Color>
+
+            <OnPlatform
+                x:Key="OutlineColor"
+                x:TypeArguments="Color"
+                Android="#d2d2d2"
+                iOS="#ffffff" />
 
             <OnPlatform
                 x:Key="ShadedMenu"

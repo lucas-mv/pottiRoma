@@ -3,35 +3,35 @@
     x:Class="PottiRoma.App.Views.RegisterClientsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custompicker="clr-namespace:PottiRoma.App.Controls"
+    xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
-    Title="Cadastro de Clientes"
+    Title="{Binding PageTitle}"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="170" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="280" />
+            <RowDefinition Height="90" />
         </Grid.RowDefinitions>
 
-        <Image
-            Grid.Row="0"
-            Aspect="AspectFill"
-            Source="banner_perfil.png" />
+        <Image Aspect="AspectFill" Source="banner_perfil.png" />
 
         <!--  TROCAR ESSE BANNER PQ TA REPETIDO  -->
 
         <StackLayout
             Grid.Row="1"
-            Margin="16"
+            Margin="16,8,16,8"
             Spacing="12">
 
             <Frame
                 Grid.Row="1"
                 Padding="0"
                 BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="40"
                 OutlineColor="{StaticResource OutlineColor}">
                 <renderers:CustomEntry
                     Margin="10,0,10,0"
@@ -40,13 +40,14 @@
                     PlaceholderColor="{StaticResource PlaceholderColor}"
                     Text="{Binding ClientSelectedForEdition.Nome}"
                     TextColor="{StaticResource TextColor}"
-                    VerticalOptions="End" />
+                    VerticalOptions="Center" />
             </Frame>
 
             <Frame
                 Grid.Row="1"
                 Padding="0"
                 BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="40"
                 OutlineColor="{StaticResource OutlineColor}">
                 <renderers:CustomEntry
                     Margin="10,0,10,0"
@@ -54,13 +55,14 @@
                     Placeholder="CPF"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
                     TextColor="{StaticResource TextColor}"
-                    VerticalOptions="End" />
+                    VerticalOptions="Center" />
             </Frame>
 
             <Frame
                 Grid.Row="1"
                 Padding="0"
                 BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="40"
                 OutlineColor="{StaticResource OutlineColor}">
                 <renderers:CustomEntry
                     Margin="10,0,10,0"
@@ -69,25 +71,32 @@
                     Placeholder="Email"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
                     TextColor="{StaticResource TextColor}"
-                    VerticalOptions="End" />
+                    VerticalOptions="Center" />
             </Frame>
+
             <Frame
+                x:Name="AnniversaryPickerButton"
                 Grid.Row="1"
                 Padding="0"
                 BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="40"
                 OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenPopupDateCommand}" />
+                </Frame.GestureRecognizers>
+                <Label
                     Margin="10,0,10,0"
                     FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="Data de Aniversário"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="End" />
+                    Text="Data de Aniversário"
+                    TextColor="{StaticResource PlaceholderColor}"
+                    VerticalOptions="Center" />
             </Frame>
+
             <Frame
                 Grid.Row="1"
                 Padding="0"
                 BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="40"
                 OutlineColor="{StaticResource OutlineColor}">
                 <renderers:CustomEntry
                     Margin="10,0,10,0"
@@ -95,7 +104,7 @@
                     Placeholder="Telefone"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
                     TextColor="{StaticResource TextColor}"
-                    VerticalOptions="End" />
+                    VerticalOptions="Center" />
             </Frame>
         </StackLayout>
 
@@ -106,7 +115,6 @@
             Style="{StaticResource ButtonDefault}"
             Text="{Binding RegisterOrEditText}"
             VerticalOptions="Center" />
-
     </Grid>
 
 </ContentPage>

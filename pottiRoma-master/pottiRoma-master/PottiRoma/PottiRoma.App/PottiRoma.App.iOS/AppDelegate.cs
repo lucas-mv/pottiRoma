@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
+using Syncfusion.SfPicker.XForms.iOS;
 using UIKit;
 using Xfx;
 
@@ -40,6 +41,7 @@ namespace PottiRoma.App.iOS
         {
             SfListViewRenderer.Init();
             new SfBusyIndicatorRenderer();
+            SfPickerRenderer.Init();
         }
     }
 }

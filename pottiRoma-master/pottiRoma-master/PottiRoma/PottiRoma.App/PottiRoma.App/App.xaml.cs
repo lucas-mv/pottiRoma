@@ -51,6 +51,7 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<PopupLoading>();
             Container.RegisterTypeForNavigation<ListClientsForSalePage>();
             Container.RegisterTypeForNavigation<MyClientsPage>();
+            Container.RegisterTypeForNavigation<PopupGetDate>();
         }
     }
 }
