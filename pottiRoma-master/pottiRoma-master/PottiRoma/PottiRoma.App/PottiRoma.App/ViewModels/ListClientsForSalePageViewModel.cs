@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -20,6 +21,13 @@ namespace PottiRoma.App.ViewModels
 
         public ObservableCollection<Cliente> ListaClientes { get; set; }
 
+        private string _pageTitle;
+        public string PageTitle
+        {
+            get { return _pageTitle; }
+            set { SetProperty(ref _pageTitle, value); }
+        }
+
         public ListClientsForSalePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -27,7 +35,6 @@ namespace PottiRoma.App.ViewModels
             ClienteSelectedCommand = new DelegateCommand<object>(async param => await SelecionarCliente(param))
                 .ObservesCanExecute(() => CanExecute);
             ListaClientes = new ObservableCollection<Cliente>();
-            GenerateMock();
         }
 
         private void GenerateMock()
@@ -86,6 +93,18 @@ namespace PottiRoma.App.ViewModels
             await _navigationService.NavigateAsync(NavigationSettings.RegisterSale,param);
 
             CanExecuteEnd();
+        }
+
+        public override void OnNavigatedTo(NavigationParameters parameters)
+        {
+            PageTitle = SetTitle();
+            GenerateMock();
+            base.OnNavigatedTo(parameters);
+        }
+
+        private string SetTitle()
+        {
+            return Device.OS == TargetPlatform.Android ? "Selecionar Cliente" : "";
         }
     }
 }

@@ -8,7 +8,7 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     Title="Meus Clientes"
     prism:ViewModelLocator.AutowireViewModel="True"
-    BackgroundColor="{StaticResource DarkBackgroundColor}">
+    BackgroundColor="{StaticResource WhiteColor}">
     <Grid
         x:Name="MyClientsPageContent"
         HeightRequest="{Binding ScreenHeightRequest}"
@@ -46,11 +46,11 @@
             x:Name="ClientsListView"
             Grid.Row="1"
             AllowSwiping="True"
-            ItemSize="130"
+            ItemSize="65"
             ItemSpacing="6"
             ItemsSource="{Binding ListaClientes}"
             SelectionBackgroundColor="{StaticResource SelectionBackgroundColor}"
-            SwipeOffset="150">
+            SwipeOffset="200">
             <syncfusion:SfListView.Behaviors>
                 <behaviors:EventToCommandBehavior
                     Command="{Binding ClienteSelectedCommand}"
@@ -61,21 +61,26 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <StackLayout Margin="6" Spacing="0">
+                            <StackLayout
+                                Margin="6"
+                                Orientation="Horizontal"
+                                Spacing="0">
                                 <Button
                                     Command="{Binding Path=BindingContext.EditClientCommand, Source={x:Reference ClientsListView}}"
                                     CommandParameter="{Binding .}"
                                     HeightRequest="65"
                                     HorizontalOptions="Fill"
                                     Style="{StaticResource ButtonDefault}"
-                                    Text="Editar" />
+                                    Text="Editar"
+                                    WidthRequest="100" />
                                 <Button
                                     Command="{Binding Path=BindingContext.RemoveClientCommand, Source={x:Reference ClientsListView}}"
                                     CommandParameter="{Binding .}"
                                     HeightRequest="65"
                                     HorizontalOptions="Fill"
                                     Style="{StaticResource RedButton}"
-                                    Text="Remover" />
+                                    Text="Remover"
+                                    WidthRequest="100" />
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>
@@ -85,48 +90,36 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <ContentView HeightRequest="130">
-                                <Frame
-                                    Margin="0"
-                                    BackgroundColor="{StaticResource WhiteColor}"
-                                    HasShadow="True"
-                                    OutlineColor="{StaticResource OutlineColor}">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="*" />
-                                        </Grid.RowDefinitions>
-                                        <Label
-                                            Grid.Row="0"
-                                            Margin="16,0,0,0"
-                                            FontAttributes="Bold"
-                                            FontSize="{StaticResource StandardFontSize}"
-                                            HorizontalOptions="Start"
-                                            Text="Nome do usuário"
-                                            TextColor="{StaticResource TextColor}"
-                                            VerticalOptions="Center" />
-                                        <Label
-                                            Grid.Row="1"
-                                            Margin="16,0,0,0"
-                                            FontSize="{StaticResource StandardFontSize}"
-                                            HorizontalOptions="Start"
-                                            Text="Email do usuário"
-                                            TextColor="{StaticResource TextColor}"
-                                            VerticalOptions="Center" />
-                                        <Label
-                                            Grid.Row="0"
-                                            Grid.RowSpan="2"
-                                            Margin="0,0,16,0"
-                                            FontAttributes="Bold"
-                                            FontSize="{StaticResource StandardFontSize}"
-                                            HorizontalOptions="End"
-                                            Text="Aniversário dia Tal"
-                                            TextColor="{StaticResource PlaceholderColor}"
-                                            VerticalOptions="Center" />
-                                    </Grid>
-                                </Frame>
+                            <Grid BackgroundColor="White" HeightRequest="65">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="1" />
+                                </Grid.RowDefinitions>
 
-                            </ContentView>
+                                <BoxView
+                                    Grid.Row="1"
+                                    BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                                    HeightRequest="1"
+                                    VerticalOptions="End" />
+
+                                <Label
+                                    Grid.Row="0"
+                                    Margin="16,0,0,0"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding Nome}"
+                                    TextColor="{StaticResource TextColor}"
+                                    VerticalOptions="Center" />
+
+                                <Image
+                                    Margin="0,0,16,0"
+                                    HeightRequest="16"
+                                    HorizontalOptions="End"
+                                    Source="right.png"
+                                    VerticalOptions="Center"
+                                    WidthRequest="16" />
+                            </Grid>
+
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>

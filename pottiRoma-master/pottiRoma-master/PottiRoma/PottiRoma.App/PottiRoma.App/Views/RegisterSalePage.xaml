@@ -70,146 +70,117 @@
                 Margin="16,-20,16,0"
                 BackgroundColor="White">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid
-                        Grid.Row="0"
-                        BackgroundColor="#d48d48"
-                        HeightRequest="60"
-                        VerticalOptions="Start">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <ContentView
-                            Grid.Column="0"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Fill">
-                            <Image
-                                HeightRequest="30"
-                                HorizontalOptions="Center"
-                                Source="tabicon1.png"
-                                VerticalOptions="Center"
-                                WidthRequest="30" />
-                        </ContentView>
-
-                        <ContentView
-                            Grid.Column="1"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Fill">
-                            <Image
-                                HeightRequest="30"
-                                HorizontalOptions="Center"
-                                Source="tabicon3.png"
-                                VerticalOptions="Center"
-                                WidthRequest="30" />
-                        </ContentView>
-                    </Grid>
                     <ScrollView
-                        Grid.Row="1"
                         HorizontalOptions="Fill"
                         IsEnabled="True"
                         IsVisible="True"
                         VerticalOptions="Fill">
-                        <StackLayout Spacing="0">
-
-                            <Grid RowSpacing="0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="60*" />
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="120*" />
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="50*" />
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="50*" />
-                                    <RowDefinition Height="1*" />
-                                </Grid.RowDefinitions>
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="145*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="50*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="50*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Margin="16,0,16,0"
+                                FontAttributes="Bold"
+                                FontSize="{StaticResource StandardFontSize}"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="Venda nº 45876 para cliente no dia 18/10/2014"
+                                TextColor="{StaticResource LightTextColor}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <ContentView
+                                Grid.Row="1"
+                                BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                            <StackLayout Grid.Row="2" Margin="16,0,16,0">
                                 <Label
-                                    Grid.Row="0"
-                                    Margin="16,0,16,0"
+                                    FontSize="{StaticResource LargeFontSize}"
+                                    Text="Observações"
+                                    TextColor="{StaticResource DarkTextColor}" />
+                                <renderers:CustomEditor
+                                    FontSize="14"
+                                    HorizontalOptions="Fill"
+                                    TextColor="{StaticResource TextColor}"
+                                    VerticalOptions="Fill" />
+                            </StackLayout>
+                            <ContentView
+                                Grid.Row="3"
+                                BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                            <Grid Grid.Row="4">
+                                <Label
+                                    Margin="16,0,0,0"
                                     FontAttributes="Bold"
                                     FontSize="{StaticResource StandardFontSize}"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    Text="Venda nº 45876 para cliente no dia 18/10/2014"
-                                    TextColor="{StaticResource LightTextColor}"
+                                    HorizontalOptions="Start"
+                                    Text="Valor Pago:"
+                                    TextColor="Green"
+                                    VerticalOptions="Center" />
+                                <renderers:CustomEntry
+                                    x:Name="Entry_Price"
+                                    Grid.Column="1"
+                                    Margin="0,0,16,0"
+                                    Completed="Entry_Price_Completed"
+                                    Focused="Entry_Price_Focused"
+                                    FontAttributes="Bold"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="End"
+                                    HorizontalTextAlignment="End"
+                                    Keyboard="Numeric"
+                                    Placeholder="R$ 0,00"
+                                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                                    TextColor="{StaticResource TextColor}"
+                                    Unfocused="Entry_Price_Unfocused"
                                     VerticalOptions="Center"
-                                    VerticalTextAlignment="Center" />
-                                <ContentView
-                                    Grid.Row="1"
-                                    BackgroundColor="{StaticResource CorBoxSeparetorLine}"
-                                    HorizontalOptions="Fill"
-                                    VerticalOptions="Fill" />
-                                <StackLayout Grid.Row="2" Margin="16,0,16,0">
-                                    <Label
-                                        FontSize="{StaticResource LargeFontSize}"
-                                        Text="Observações"
-                                        TextColor="{StaticResource DarkTextColor}" />
-                                    <renderers:CustomEditor
-                                        FontSize="14"
-                                        HorizontalOptions="Fill"
-                                        TextColor="{StaticResource TextColor}"
-                                        VerticalOptions="Fill" />
-                                </StackLayout>
-                                <ContentView
-                                    Grid.Row="3"
-                                    BackgroundColor="{StaticResource CorBoxSeparetorLine}"
-                                    HorizontalOptions="Fill"
-                                    VerticalOptions="Fill" />
-                                <Grid Grid.Row="4">
-                                    <Label
-                                        Margin="16,0,0,0"
-                                        FontAttributes="Bold"
-                                        FontSize="{StaticResource StandardFontSize}"
-                                        HorizontalOptions="Start"
-                                        Text="Valor Pago:"
-                                        TextColor="Green"
-                                        VerticalOptions="Center" />
-                                    <renderers:CustomEntry
-                                        Grid.Column="1"
-                                        Margin="0,0,16,0"
-                                        FontAttributes="Bold"
-                                        FontSize="{StaticResource StandardFontSize}"
-                                        HorizontalOptions="End"
-                                        Placeholder="R$ 0,00"
-                                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                                        TextColor="{StaticResource TextColor}"
-                                        VerticalOptions="Center" />
-                                </Grid>
-                                <ContentView
-                                    Grid.Row="5"
-                                    BackgroundColor="{StaticResource CorBoxSeparetorLine}"
-                                    HorizontalOptions="Fill"
-                                    VerticalOptions="Fill" />
-                                <Grid Grid.Row="6">
-                                    <Label
-                                        Margin="16,0,0,0"
-                                        FontAttributes="Bold"
-                                        FontSize="{StaticResource StandardFontSize}"
-                                        HorizontalOptions="Start"
-                                        Text="Valor Total:"
-                                        TextColor="{StaticResource DarkTextColor}"
-                                        VerticalOptions="Center" />
-                                    <renderers:CustomEntry
-                                        Grid.Column="1"
-                                        Margin="0,0,16,0"
-                                        FontAttributes="Bold"
-                                        FontSize="{StaticResource StandardFontSize}"
-                                        HorizontalOptions="End"
-                                        Placeholder="R$ 0,00"
-                                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                                        TextColor="{StaticResource TextColor}"
-                                        VerticalOptions="Center" />
-                                </Grid>
-                                <ContentView
-                                    Grid.Row="7"
-                                    BackgroundColor="{StaticResource DarkBackgroundColor}"
-                                    HorizontalOptions="Fill"
-                                    VerticalOptions="Fill" />
+                                    WidthRequest="120" />
                             </Grid>
-                        </StackLayout>
+                            <ContentView
+                                Grid.Row="5"
+                                BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                            <Grid Grid.Row="6">
+                                <Label
+                                    Margin="16,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="Start"
+                                    Text="Valor Total:"
+                                    TextColor="{StaticResource DarkTextColor}"
+                                    VerticalOptions="Center" />
+                                <renderers:CustomEntry
+                                    Grid.Column="1"
+                                    Margin="0,0,16,0"
+                                    Completed="Entry_Price_Completed"
+                                    Focused="Entry_Price_Focused"
+                                    FontAttributes="Bold"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="End"
+                                    HorizontalTextAlignment="End"
+                                    Keyboard="Numeric"
+                                    Placeholder="R$ 0,00"
+                                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                                    TextColor="{StaticResource TextColor}"
+                                    Unfocused="Entry_Price_Unfocused"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <ContentView
+                                Grid.Row="7"
+                                BackgroundColor="{StaticResource DarkBackgroundColor}"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill" />
+                        </Grid>
                     </ScrollView>
                 </Grid>
             </ContentView>

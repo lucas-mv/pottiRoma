@@ -40,6 +40,7 @@
     <Compile Include="CustomExceptions\AuthorizationException.cs" />
     <Compile Include="CustomExceptions\ErrorException.cs" />
     <Compile Include="CustomExceptions\ValidationException.cs" />
+    <Compile Include="Helpers\Formatter.cs" />
     <Compile Include="Helpers\MonthStringFormat.cs" />
     <Compile Include="Helpers\Translate.cs" />
     <Compile Include="NavigationHelpers\NavigationKeyParameters.cs" />

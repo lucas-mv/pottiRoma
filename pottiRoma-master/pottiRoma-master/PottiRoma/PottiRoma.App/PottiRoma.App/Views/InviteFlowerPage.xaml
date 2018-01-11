@@ -64,14 +64,17 @@
                     OutlineColor="{StaticResource OutlineColor}">
                     <Grid>
                         <renderers:CustomEditor
+                            x:Name="EditorMessage"
                             Margin="10,0,10,0"
                             BackgroundColor="Transparent"
                             FontSize="14"
                             HorizontalOptions="Fill"
                             Keyboard="Email"
+                            TextChanged="EditorMessage_TextChanged"
                             TextColor="Gray"
                             VerticalOptions="Fill" />
                         <Label
+                            x:Name="EditorPlaceholder"
                             Margin="14,10,0,0"
                             FontSize="{StaticResource StandardFontSize}"
                             HorizontalOptions="Start"

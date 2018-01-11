@@ -6,6 +6,7 @@
     xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    Title="{Binding PageTitle}"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource WhiteColor}">
 
@@ -99,7 +100,6 @@
                                     VerticalOptions="Center"
                                     WidthRequest="16" />
                             </Grid>
-
                         </ViewCell>
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>

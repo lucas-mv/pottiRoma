@@ -8,5 +8,11 @@ namespace PottiRoma.App.Views
         {
             InitializeComponent();
         }
+
+        private void EditorMessage_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var thisEditor = sender as Editor;
+            EditorPlaceholder.IsVisible = (thisEditor.Text.Length > 0) ? false : true;
+        }
     }
 }

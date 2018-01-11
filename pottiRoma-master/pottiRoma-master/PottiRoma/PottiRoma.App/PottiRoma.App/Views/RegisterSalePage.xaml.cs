@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.ViewModels;
+﻿using PottiRoma.App.Utils.Helpers;
+using PottiRoma.App.ViewModels;
 using Xamarin.Forms;
 
 namespace PottiRoma.App.Views
@@ -33,6 +34,21 @@ namespace PottiRoma.App.Views
         private void ContentRegisterSalePage_SizeChanged(object sender, System.EventArgs e)
         {
             SetInitialScreenHeight();
+        }
+
+        private void Entry_Price_Focused(object sender, FocusEventArgs e)
+        {
+            Entry_Price.Text = "";
+        }
+
+        private void Entry_Price_Unfocused(object sender, FocusEventArgs e)
+        {
+            Entry_Price.Text = Formatter.FormatDRE(decimal.Parse(Entry_Price.Text));
+        }
+
+        private void Entry_Price_Completed(object sender, System.EventArgs e)
+        {
+            Entry_Price.Text = Formatter.FormatDRE(decimal.Parse(Entry_Price.Text));
         }
     }
 }
