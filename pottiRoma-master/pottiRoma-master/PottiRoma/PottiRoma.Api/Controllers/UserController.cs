@@ -48,6 +48,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task ChangePassword(ChangePasswordRequest request)
         {
+            await ValidateToken();
             _userService.ChangePassword(request.UserId, request.OldPassword, request.NewPassword);
         }
 

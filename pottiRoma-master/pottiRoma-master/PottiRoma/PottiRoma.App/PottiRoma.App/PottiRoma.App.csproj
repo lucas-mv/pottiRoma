@@ -224,6 +224,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PottiRoma.App.Models\PottiRoma.App.Models.csproj">
+      <Project>{F6683953-D4B7-4CA7-B30A-BFD6442B4713}</Project>
+      <Name>PottiRoma.App.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\PottiRoma.App.Repositories\PottiRoma.App.Repositories.csproj">
       <Project>{AA62C9C2-6971-4ABD-A979-5DECEA9984CC}</Project>
       <Name>PottiRoma.App.Repositories</Name>

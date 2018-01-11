@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Api\UserApiRepository.cs" />
     <Compile Include="Internal\CacheAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,13 +87,15 @@
       <Project>{3a96a966-7397-4985-a59f-5cb85a1d0087}</Project>
       <Name>PottiRoma.App.ApiAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PottiRoma.App.Models\PottiRoma.App.Models.csproj">
+      <Project>{F6683953-D4B7-4CA7-B30A-BFD6442B4713}</Project>
+      <Name>PottiRoma.App.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PottiRoma.App.Utils\PottiRoma.App.Utils.csproj">
       <Project>{94C320C6-AE88-4DAB-BB16-4F4BC240BDB4}</Project>
       <Name>PottiRoma.App.Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Api\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
