@@ -31,15 +31,15 @@ namespace PottiRoma.App.Utils
             {
                 {
                     Enviroments.Production,
-                    new Uri("https://petsol-pdv.azurewebsites.net/v1")
+                    new Uri("https://pottiroma.azurewebsites.net/v1")
                 },
                 {
                     Enviroments.Development,
-                    new Uri("https://petsol-pdv.azurewebsites.net/v1")
+                    new Uri("https://pottiroma.azurewebsites.net/v1")
                 },
                 {
                     Enviroments.Homologation,
-                    new Uri("https://petsol-pdv.azurewebsites.net/v1")
+                    new Uri("https://pottiroma.azurewebsites.net/v1")
                 }
             };
         }
