@@ -9,5 +9,39 @@ namespace PottiRoma.App.Utils
     public class Constants
     {
         public const string HeaderUser = "user";
+        public const string AKAVACHE_APP_NAME = "PottiRoma";
+
+        public class CacheKeys
+        {
+            public const string USER_KEY = "User";
+        }
+
+        public class Global
+        {
+            public const string SELECTED_ENVIROMENT = Enviroments.Development;
+
+            public static class Enviroments
+            {
+                public const string Development = "dev";
+                public const string Homologation = "hom";
+                public const string Production = "prd";
+            }
+
+            public static readonly Dictionary<string, Uri> ApiBaseUrls = new Dictionary<string, Uri>()
+            {
+                {
+                    Enviroments.Production,
+                    new Uri("https://pottiroma.azurewebsites.net/v1")
+                },
+                {
+                    Enviroments.Development,
+                    new Uri("https://pottiroma.azurewebsites.net/v1")
+                },
+                {
+                    Enviroments.Homologation,
+                    new Uri("https://pottiroma.azurewebsites.net/v1")
+                }
+            };
+        }
     }
 }
