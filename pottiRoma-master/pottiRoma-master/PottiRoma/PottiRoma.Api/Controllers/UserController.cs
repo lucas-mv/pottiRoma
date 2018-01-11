@@ -1,4 +1,7 @@
-﻿using PottiRoma.Api.Request.User;
+﻿using PottiRoma.Api.Helpers;
+using PottiRoma.Api.Request.Email;
+using PottiRoma.Api.Request.User;
+using PottiRoma.Api.Response.Email;
 using PottiRoma.Api.Response.User;
 using PottiRoma.Services.Interfaces;
 using PottiRoma.Utils.Enums;
@@ -47,5 +50,13 @@ namespace PottiRoma.Api.Controllers
         {
             _userService.ChangePassword(request.UserId, request.OldPassword, request.NewPassword);
         }
+
+        //[HttpPost]
+        //[Route("EnviarEmail")]
+        //public async Task<SendEmailResponse> EnviarEmail(SendEmailRequest request)
+        //{
+        //    //Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, , emailNomeFrom.Item2, _logoPath);
+        //    //return ResponseResult(string.Empty);
+        //}
     }
 }
