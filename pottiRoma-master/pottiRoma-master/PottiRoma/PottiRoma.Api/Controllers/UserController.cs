@@ -5,6 +5,7 @@ using PottiRoma.Utils.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
@@ -22,7 +23,7 @@ namespace PottiRoma.Api.Controllers
 
         [Route("Login")]
         [HttpPost]
-        public LoginResponse LoginUser(LoginUserRequest request)
+        public async Task<LoginResponse> LoginUser(LoginUserRequest request)
         {
             var response = new LoginResponse();
             response.User = _userService.Authenticate(request.Email, request.Password);
@@ -32,12 +33,19 @@ namespace PottiRoma.Api.Controllers
 
         [Route("Register")]
         [HttpPost]
-        public RegisterUserResponse RegisterUser(RegisterUserRequest request)
+        public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)
         {
             return new RegisterUserResponse()
             {
                 User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecondaryTelephone, request.Cpf, request.UserType)
             };
+        }
+
+        [Route("Profile/Password")]
+        [HttpPost]
+        public async Task ChangePassword(ChangePasswordRequest request)
+        {
+            _userService.ChangePassword(request.UserId, request.OldPassword, request.NewPassword);
         }
     }
 }

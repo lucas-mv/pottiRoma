@@ -9,5 +9,6 @@ namespace PottiRoma.App.Utils
     public class Constants
     {
         public const string HeaderUser = "user";
+        public const string AKAVACHE_APP_NAME = "PottiRoma"; 
     }
 }
