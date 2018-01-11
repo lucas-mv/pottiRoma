@@ -16,6 +16,11 @@ namespace PottiRoma.Business.User
 {
     public static class UserBusiness
     {
+        public static UserEntity GetUserById(Guid userId)
+        {
+            return UserRepository.Get().GetUserById(userId);
+        }
+
         public static UserEntity RegisterUser(string email, string password, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType)
         {
             if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password) || String.IsNullOrEmpty(name) ||

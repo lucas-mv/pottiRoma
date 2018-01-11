@@ -21,5 +21,10 @@ namespace PottiRoma.Services.Implementations
         {
             return UserBusiness.RegisterUser(email, password, name, primaryTelephone, secondaryTelephone, cpf, userType);
         }
+
+        public UserEntity GetUserById(Guid userId)
+        {
+            return UserBusiness.GetUserById(userId);
+        }
     }
 }
