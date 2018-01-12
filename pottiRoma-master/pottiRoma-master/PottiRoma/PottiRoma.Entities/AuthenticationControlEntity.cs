@@ -14,5 +14,6 @@ namespace PottiRoma.Entities
         public DateTime RegisterDate { get; set; }
         public AuthOrigin AuthOrigin { get; set; }
         public bool KeepAlive { get; set; }
+        public bool Active { get; set; }
     }
 }

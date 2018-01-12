@@ -49,12 +49,16 @@ namespace PottiRoma.DataAccess.Repositories
         )";
 
         private const string GET_AUTH_CONTROL = @"
-        SELECT UsuarioId, Token, DataRegistro, Origem, ManterConectado, Valido
+        SELECT UsuarioId as UserId, 
+        Token as Token, 
+        DataRegistro as RegisterDate, 
+        Origem as AuthOrigin, 
+        ManterConectado as KeepAlive, 
+        Valido as Active
         FROM dbo.AuthenticationControl
         WHERE UsuarioId = @usuarioid
         AND Token = @token
-        AND Valido = 1
-        ";
+        AND Valido = 1";
 
         private const string DELETE_AUTH_CONTROL = @"
         UPDATE dbo.AuthenticationControl
@@ -92,7 +96,7 @@ namespace PottiRoma.DataAccess.Repositories
 
             parameters.Add("@usuarioid", userId, System.Data.DbType.Guid);
             parameters.Add("@token", token, System.Data.DbType.Guid);
-            parameters.Add("@dataregistro", DateTime.Now, System.Data.DbType.DateTime);
+            parameters.Add("@dataregistro", DateTime.UtcNow, System.Data.DbType.DateTime);
             parameters.Add("@origem", origin, System.Data.DbType.Int16);
             parameters.Add("@manterconectado", manterConectado, System.Data.DbType.Int16);
 

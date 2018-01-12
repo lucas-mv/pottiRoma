@@ -57,25 +57,22 @@ namespace PottiRoma.App.ViewModels
             {
                 TimeSpan duration = new TimeSpan(0, 0, 2);
                 if (string.IsNullOrEmpty(RepeatPassword) || string.IsNullOrEmpty(Password))
-                    _userDialogs.Toast("Escreva a nova senha nos campos!", duration);
-                else if (RepeatPassword != Password)
-                    _userDialogs.Toast("As senhas não são iguais!", duration);
-                else
                 {
-                    await NavigationHelper.ShowLoading();
-
-                    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                    await _userAppService.ChangePassword(new ChangePasswordRequest()
-                    {
-                        NewPassword = Password,
-                        OldPassword = RepeatPassword,
-                        UserId = user.UserId
-                    });
-
-                    _userDialogs.Toast("Senha Alterada com Sucesso!", duration);
-                    await _navigationService.GoBackAsync();
-                    await NavigationHelper.PopLoading();
+                    _userDialogs.Toast("Preencha os dois campos para continuar.", duration);
+                    return;
                 }
+                await NavigationHelper.ShowLoading();
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                await _userAppService.ChangePassword(new ChangePasswordRequest()
+                {
+                    NewPassword = Password,
+                    OldPassword = RepeatPassword,
+                    UserId = user.UserId
+                });
+
+                _userDialogs.Toast("Senha Alterada com Sucesso!", duration);
+                await _navigationService.GoBackAsync();
+                await NavigationHelper.PopLoading();
             }
             catch (Exception ex)
             {

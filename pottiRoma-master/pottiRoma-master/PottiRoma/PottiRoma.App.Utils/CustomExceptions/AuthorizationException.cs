@@ -9,7 +9,7 @@ namespace PottiRoma.App.Utils.CustomExceptions
     public class AuthorizationException : Exception
     {
         public AuthorizationException()
-            : base(String.Empty)
+            : base("Sua sessão expirou ou voce não possui acesso a esta funcionalidade.")
         { }
 
         public AuthorizationException(string message)
