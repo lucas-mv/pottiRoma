@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
+using System.Web;
 
 namespace PottiRoma.Api.Helpers
 {
@@ -70,14 +71,9 @@ namespace PottiRoma.Api.Helpers
             msg.Subject = _Assunto;
             msg.IsBodyHtml = true;
             msg.Body = _Corpo;
-           
 
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new System.Net.NetworkCredential("lucasrloliveira@gmail.com", "Qpmjvc@1704");
-            
-            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtpClient.EnableSsl = true;
+
+            SmtpClient smtpClient = new SmtpClient(ConfigurationManager.AppSettings["Email:ServidorSmtp"].ToString());
 
             smtpClient.Send(msg);
         }
