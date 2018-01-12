@@ -1,5 +1,6 @@
 ﻿using PottiRoma.App.Helpers;
 using PottiRoma.App.Models;
+using PottiRoma.App.Models.Models;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -68,7 +69,7 @@ namespace PottiRoma.App.ViewModels
 
         private string SetTitle()
         {
-            return Device.OS == TargetPlatform.Android ? "Cadastro de Clientes" : ""; 
+            return Device.OS == TargetPlatform.Android ? "Cadastro de Clientes" : "";
         }
     }
 }

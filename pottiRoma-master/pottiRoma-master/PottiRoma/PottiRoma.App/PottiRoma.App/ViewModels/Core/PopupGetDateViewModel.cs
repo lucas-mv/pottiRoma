@@ -11,8 +11,8 @@ using System.Linq;
 
 namespace PottiRoma.App.ViewModels
 {
-	public class PopupGetDateViewModel : ViewModelBase
-	{
+    public class PopupGetDateViewModel : ViewModelBase
+    {
         public ObservableCollection<string> Days { get; set; }
         public ObservableCollection<string> Months { get; set; }
 
@@ -34,7 +34,7 @@ namespace PottiRoma.App.ViewModels
         public DelegateCommand CancelDateCommand { get; set; }
         public PopupGetDateViewModel()
         {
-            ConfirmDateCommand = new DelegateCommand(Confirm).ObservesCanExecute(()=>CanExecute);
+            ConfirmDateCommand = new DelegateCommand(Confirm).ObservesCanExecute(() => CanExecute);
             CancelDateCommand = new DelegateCommand(Cancel).ObservesCanExecute(() => CanExecute);
 
             Days = FillDays(31);

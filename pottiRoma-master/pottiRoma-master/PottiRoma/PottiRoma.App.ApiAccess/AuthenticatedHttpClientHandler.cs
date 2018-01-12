@@ -34,7 +34,7 @@ namespace PottiRoma.App.ApiAccess
             }
 
             response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-            
+
             if (await ValidateResponse(response))
                 return response;
             else

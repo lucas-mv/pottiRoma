@@ -107,7 +107,7 @@ namespace PottiRoma.DataAccess.Repositories
         {
             return entity;
         }
-        
+
         #endregion
     }
 }

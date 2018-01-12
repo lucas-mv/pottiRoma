@@ -53,6 +53,7 @@
                         Keyboard="Email"
                         Placeholder="Email"
                         PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding Email}"
                         TextColor="{StaticResource TextColor}"
                         VerticalOptions="Center" />
                 </Frame>
@@ -70,6 +71,7 @@
                             FontSize="14"
                             HorizontalOptions="Fill"
                             Keyboard="Email"
+                            Text="{Binding Message}"
                             TextChanged="EditorMessage_TextChanged"
                             TextColor="Gray"
                             VerticalOptions="Fill" />
@@ -89,6 +91,7 @@
 
                 <Button
                     Grid.Row="5"
+                    Command="{Binding SendEmailCommand}"
                     HeightRequest="50"
                     Style="{StaticResource ButtonDefault}"
                     Text="CONVIDAR"

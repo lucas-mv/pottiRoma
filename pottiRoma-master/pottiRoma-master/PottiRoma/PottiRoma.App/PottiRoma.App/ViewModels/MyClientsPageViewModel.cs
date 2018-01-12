@@ -1,4 +1,5 @@
 ﻿using PottiRoma.App.Models;
+using PottiRoma.App.Models.Models;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -12,8 +13,8 @@ using System.Threading.Tasks;
 
 namespace PottiRoma.App.ViewModels
 {
-	public class MyClientsPageViewModel : ViewModelBase
-	{
+    public class MyClientsPageViewModel : ViewModelBase
+    {
         private readonly INavigationService _navigationService;
 
         private double _screenHeightRequest;
@@ -34,7 +35,7 @@ namespace PottiRoma.App.ViewModels
 
             EditClientCommand = new DelegateCommand<object>(async param => await EditClient(param))
                 .ObservesCanExecute(() => CanExecute);
-            RemoveClientCommand = new DelegateCommand<object>(param =>  RemoveClient(param))
+            RemoveClientCommand = new DelegateCommand<object>(param => RemoveClient(param))
                 .ObservesCanExecute(() => CanExecute);
             RegisterNewClientCommand = new DelegateCommand(RegisterNewClient).ObservesCanExecute(() => CanExecute);
             ListaClientes = new ObservableCollection<Cliente>();
@@ -56,7 +57,7 @@ namespace PottiRoma.App.ViewModels
             Cliente removedClient = (Cliente)item;
             if (removedClient != null)
             {
-                for (int i=0; i < ListaClientes.Count; i++)
+                for (int i = 0; i < ListaClientes.Count; i++)
                 {
                     if (ListaClientes[i].CPF == removedClient.CPF)
                         ListaClientes.RemoveAt(i);

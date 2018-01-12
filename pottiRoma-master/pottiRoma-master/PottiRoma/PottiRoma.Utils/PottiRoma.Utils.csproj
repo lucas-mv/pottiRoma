@@ -47,6 +47,7 @@
     <Compile Include="Enums\AuthOrigin.cs" />
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Helpers\CheckEmailStringFormat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

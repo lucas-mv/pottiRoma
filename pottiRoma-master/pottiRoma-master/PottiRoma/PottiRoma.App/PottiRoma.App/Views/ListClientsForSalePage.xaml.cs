@@ -1,4 +1,5 @@
 ﻿using PottiRoma.App.Models;
+using PottiRoma.App.Models.Models;
 using PottiRoma.App.Utils.Helpers;
 using Xamarin.Forms;
 

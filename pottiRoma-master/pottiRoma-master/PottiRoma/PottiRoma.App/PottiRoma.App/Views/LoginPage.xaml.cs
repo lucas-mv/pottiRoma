@@ -21,7 +21,7 @@ namespace PottiRoma.App.Views
 
         private void SetInitialScreenHeight()
         {
-            if(ViewModel != null)
+            if (ViewModel != null)
                 ViewModel.ScreenHeightRequest = (LoginPageContent.Width < LoginPageContent.Height) ? LoginPageContent.Height : 650;
         }
 

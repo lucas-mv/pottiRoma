@@ -52,11 +52,30 @@ namespace PottiRoma.Business.User
             if (user == null)
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
 
-            if(ValidatePassword(password, user.PasswordSalt, user.Password))
+            if (ValidatePassword(password, user.PasswordSalt, user.Password))
             {
                 user.Password = string.Empty;
                 user.PasswordSalt = string.Empty;
                 return user;
+            }
+            else
+            {
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+            }
+        }
+
+        public static void ChangePassword(Guid userId, string oldPassword, string newPassword)
+        {
+            UserEntity user;
+            user = UserRepository.Get().GetUserAuthById(userId);
+
+            if (user == null)
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+
+            if (ValidatePassword(oldPassword, user.PasswordSalt, user.Password))
+            {
+                var newPasswordEncryption = EncryptPassword(newPassword);
+                UserRepository.Get().UpdateUserPassword(user.UserId, newPasswordEncryption.Password, newPasswordEncryption.Salt);
             }
             else
             {

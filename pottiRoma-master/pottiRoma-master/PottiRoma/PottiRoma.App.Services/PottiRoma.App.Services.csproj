@@ -33,9 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Implementations\UserAppService.cs" />
+    <Compile Include="Interfaces\IUserAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PottiRoma.App.Models\PottiRoma.App.Models.csproj">
+      <Project>{20132776-6ce2-4000-b2c9-b9841a24056f}</Project>
+      <Name>PottiRoma.App.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PottiRoma.App.Repositories\PottiRoma.App.Repositories.csproj">
       <Project>{aa62c9c2-6971-4abd-a979-5decea9984cc}</Project>
       <Name>PottiRoma.App.Repositories</Name>

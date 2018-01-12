@@ -8,8 +8,8 @@ using System.Linq;
 
 namespace PottiRoma.App.ViewModels
 {
-	public class RegisterSalePageViewModel : ViewModelBase
-	{
+    public class RegisterSalePageViewModel : ViewModelBase
+    {
         private readonly INavigationService _navigationService;
 
         public DelegateCommand GoBackCommand { get; set; }

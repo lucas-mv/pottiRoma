@@ -17,7 +17,7 @@ namespace PottiRoma.IoC
             // Lifestyle.Transient => Uma instancia para cada solicitacao;
             // Lifestyle.Singleton => Uma instancia unica para a classe;
             // Lifestyle.Scoped => Uma instancia unica para o request;
-      
+
             RegisterServices(container);
         }
 

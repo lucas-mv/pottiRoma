@@ -40,13 +40,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BootStrapperIoC.cs" />
-    <Compile Include="Controls\CustomDatePicker.cs" />
     <Compile Include="CustomRenderers\CustomEditor.cs" />
     <Compile Include="CustomRenderers\CustomEntry.cs" />
     <Compile Include="Helpers\GetDatePopupHelper.cs" />
     <Compile Include="Helpers\LogoutPopupHelper.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
-    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Core\ViewModelBase.cs" />
     <Compile Include="ViewModels\EditPersonalDataPageViewModel.cs" />
@@ -224,6 +222,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PottiRoma.App.Models\PottiRoma.App.Models.csproj">
+      <Project>{20132776-6ce2-4000-b2c9-b9841a24056f}</Project>
+      <Name>PottiRoma.App.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PottiRoma.App.Repositories\PottiRoma.App.Repositories.csproj">
+      <Project>{aa62c9c2-6971-4abd-a979-5decea9984cc}</Project>
+      <Name>PottiRoma.App.Repositories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\PottiRoma.App.Services\PottiRoma.App.Services.csproj">
       <Project>{dfc5f4c1-3ebc-4edf-b768-745414df25bb}</Project>
       <Name>PottiRoma.App.Services</Name>
@@ -342,6 +348,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controls\" />
     <Folder Include="Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

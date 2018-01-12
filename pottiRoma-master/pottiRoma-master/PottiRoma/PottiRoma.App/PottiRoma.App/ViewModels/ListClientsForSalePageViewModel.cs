@@ -1,4 +1,5 @@
 ﻿using PottiRoma.App.Models;
+using PottiRoma.App.Models.Models;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -90,7 +91,7 @@ namespace PottiRoma.App.ViewModels
             CanExecuteInitial();
 
             var param = new NavigationParameters();
-            await _navigationService.NavigateAsync(NavigationSettings.RegisterSale,param);
+            await _navigationService.NavigateAsync(NavigationSettings.RegisterSale, param);
 
             CanExecuteEnd();
         }

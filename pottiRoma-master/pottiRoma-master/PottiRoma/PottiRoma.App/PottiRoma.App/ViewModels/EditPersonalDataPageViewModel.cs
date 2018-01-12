@@ -31,7 +31,7 @@ namespace PottiRoma.App.ViewModels
         private async void ChangePassword()
         {
             CanExecuteInitial();
-            await _navigationService.NavigateAsync(NavigationSettings.ResetPassword,useModalNavigation: true);
+            await _navigationService.NavigateAsync(NavigationSettings.ResetPassword, useModalNavigation: true);
             CanExecuteEnd();
         }
     }

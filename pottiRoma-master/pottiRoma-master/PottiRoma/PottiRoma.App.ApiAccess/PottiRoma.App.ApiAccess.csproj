@@ -36,7 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AuthenticatedHttpClientHandler.cs" />
+    <Compile Include="PottiRomaApiAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Refit\IUserRefit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -50,11 +52,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PottiRoma.App.Models\PottiRoma.App.Models.csproj">
+      <Project>{20132776-6ce2-4000-b2c9-b9841a24056f}</Project>
+      <Name>PottiRoma.App.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PottiRoma.App.Utils\PottiRoma.App.Utils.csproj">
       <Project>{94C320C6-AE88-4DAB-BB16-4F4BC240BDB4}</Project>
       <Name>PottiRoma.App.Utils</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets" Condition="Exists('..\packages\refit.2.4.1\build\portable-net45+netcore45+wp8+wpa81+monoandroid+xamarin.ios10\refit.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
