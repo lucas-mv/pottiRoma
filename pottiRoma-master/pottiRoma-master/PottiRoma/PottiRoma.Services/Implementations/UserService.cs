@@ -26,10 +26,5 @@ namespace PottiRoma.Services.Implementations
         {
             return UserBusiness.GetUserById(userId);
         }
-
-        public void ChangePassword(Guid userId, string oldPassword, string newPassword)
-        {
-            UserBusiness.ChangePassword(userId, oldPassword, newPassword);
-        }
     }
 }

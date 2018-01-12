@@ -1,5 +1,4 @@
-﻿using PottiRoma.App.Repositories.Internal;
-using PottiRoma.App.Utils.NavigationHelpers;
+﻿using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -50,8 +49,6 @@ namespace PottiRoma.App.ViewModels
             _navigationService = navigationService;
 
             LoginCommand = new DelegateCommand(ExecuteLogin).ObservesCanExecute(() => CanExecute);
-
-            CacheAccess.Initialize();
         }
 
 

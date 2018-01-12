@@ -36,9 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AuthenticatedHttpClientHandler.cs" />
-    <Compile Include="PottiRomaApiAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Refit\IUserRefit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -52,10 +50,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PottiRoma.App.Models\PottiRoma.App.Models.csproj">
-      <Project>{F6683953-D4B7-4CA7-B30A-BFD6442B4713}</Project>
-      <Name>PottiRoma.App.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PottiRoma.App.Utils\PottiRoma.App.Utils.csproj">
       <Project>{94C320C6-AE88-4DAB-BB16-4F4BC240BDB4}</Project>
       <Name>PottiRoma.App.Utils</Name>

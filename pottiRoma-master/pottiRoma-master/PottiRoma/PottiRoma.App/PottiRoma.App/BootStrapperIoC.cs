@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
-using PottiRoma.App.Services.Implementations;
-using PottiRoma.App.Services.Interfaces;
 
 namespace PottiRoma.App
 {
@@ -13,12 +11,22 @@ namespace PottiRoma.App
     {
         public static void Init(IUnityContainer Container)
         {
+            RegisterTypesRepositories(Container);
+            RegisterTypesServices(Container);
             RegisterTypesAppServices(Container);
+        }
+
+        protected static void RegisterTypesRepositories(IUnityContainer Container)
+        {
+
+        }
+
+        protected static void RegisterTypesServices(IUnityContainer Container)
+        {
         }
 
         protected static void RegisterTypesAppServices(IUnityContainer Container)
         {
-            Container.RegisterType<IUserAppService, UserAppService>(new ContainerControlledLifetimeManager());
         }
     }
 }

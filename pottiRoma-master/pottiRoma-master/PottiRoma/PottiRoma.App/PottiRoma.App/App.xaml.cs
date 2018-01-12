@@ -1,6 +1,5 @@
 ﻿using Acr.UserDialogs;
 using Microsoft.Practices.Unity;
-using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.Views;
 using PottiRoma.App.Views.Core;
@@ -29,7 +28,7 @@ namespace PottiRoma.App
 
         private void StartNavigation()
         {
-            NavigationService.NavigateAsync(NavigationSettings.Login, useModalNavigation : true);
+            NavigationService.NavigateAsync(NavigationSettings.Login,useModalNavigation : true);
         }
 
         protected override void RegisterTypes()

@@ -63,19 +63,6 @@ namespace PottiRoma.DataAccess.Repositories
           FROM dbo.usuario
           where email = @email";
 
-        public const string GET_USER_AUTH_BY_ID = @"
-        SELECT UsuarioId AS UserId
-              ,Cpf As Cpf
-              ,Nome as UserName
-              ,Email as Email
-              ,TelefonePrimario as PrimaryTelephone
-              ,TelefoneSecundario as SecondaryTelphone
-              ,TipoUsuario as UserType,
-              Senha as Password,
-              Salt as PasswordSalt
-          FROM dbo.usuario
-          where email = @usuarioid";
-
         #endregion
 
         #region Commands
@@ -105,12 +92,6 @@ namespace PottiRoma.DataAccess.Repositories
 	        @senha, 
 	        @salt
         )";
-
-        private const string UPDATE_USER_PASSWORD = @"
-        UPDATE dbo.Usuario
-        SET Senha = @senha,
-	        Salt = @salt
-        WHERE UsuarioId = @usuarioid";
 
         #endregion
 
@@ -143,15 +124,6 @@ namespace PottiRoma.DataAccess.Repositories
             return Query(GET_USER_AUTH_BY_EMAIL, parameters).FirstOrDefault();
         }
 
-        public UserEntity GetUserAuthById(Guid userId)
-        {
-            DynamicParameters parameters = new DynamicParameters();
-
-            parameters.Add("@usuarioid", userId, System.Data.DbType.Guid);
-
-            return Query(GET_USER_AUTH_BY_ID, parameters).FirstOrDefault();
-        }
-
         public void InsertUser(Guid usuarioId, string email, string password, string passwordSalt, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType)
         {
             DynamicParameters parameters = new DynamicParameters();
@@ -165,17 +137,6 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@tipousuario", userType, System.Data.DbType.Int16);
             parameters.Add("@senha", password, System.Data.DbType.AnsiString);
             parameters.Add("@salt", passwordSalt, System.Data.DbType.AnsiString);
-
-            Execute(INSERT_USER, parameters);
-        }
-
-        public void UpdateUserPassword(Guid usuarioId, string password, string salt)
-        {
-            DynamicParameters parameters = new DynamicParameters();
-
-            parameters.Add("@usuarioid", usuarioId, System.Data.DbType.Guid);
-            parameters.Add("@senha", password, System.Data.DbType.AnsiString);
-            parameters.Add("@salt", salt, System.Data.DbType.AnsiString);
 
             Execute(INSERT_USER, parameters);
         }

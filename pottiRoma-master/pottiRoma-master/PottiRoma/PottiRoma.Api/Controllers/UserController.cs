@@ -26,7 +26,7 @@ namespace PottiRoma.Api.Controllers
 
         [Route("Login")]
         [HttpPost]
-        public async Task<LoginResponse> LoginUser(LoginUserRequest request)
+        public LoginResponse LoginUser(LoginUserRequest request)
         {
             var response = new LoginResponse();
             response.User = _userService.Authenticate(request.Email, request.Password);
@@ -36,7 +36,7 @@ namespace PottiRoma.Api.Controllers
 
         [Route("Register")]
         [HttpPost]
-        public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)
+        public RegisterUserResponse RegisterUser(RegisterUserRequest request)
         {
             return new RegisterUserResponse()
             {
@@ -44,21 +44,6 @@ namespace PottiRoma.Api.Controllers
             };
         }
 
-        [Route("Profile/Password")]
-        [HttpPost]
-        public async Task ChangePassword(ChangePasswordRequest request)
-        {
-            await ValidateToken();
-            _userService.ChangePassword(request.UserId, request.OldPassword, request.NewPassword);
-        }
-
-        //[HttpPost]
-        //[Route("EnviarEmail")]
-        //public async Task<SendEmailResponse> EnviarEmail(SendEmailRequest request)
-        //{
-        //    //Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, , emailNomeFrom.Item2, _logoPath);
-        //    //return ResponseResult(string.Empty);
-        //}
         [HttpPost]
         [Route("EnviarEmail")]
         public async Task<SendEmailResponse> EnviarEmail(SendEmailRequest request)
