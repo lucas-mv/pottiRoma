@@ -21,7 +21,6 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IUserAppService _userAppService;
-        private readonly IUserDialogs _userDialogs;
 
         private double _screenHeightRequest;
         public double ScreenHeightRequest
@@ -55,12 +54,10 @@ namespace PottiRoma.App.ViewModels
 
         public LoginPageViewModel(
             INavigationService navigationService,
-            IUserAppService userAppService,
-            IUserDialogs userDialogs)
+            IUserAppService userAppService)
         {
             _navigationService = navigationService;
             _userAppService = userAppService;
-            _userDialogs = userDialogs;
 
             LoginCommand = new DelegateCommand(ExecuteLogin).ObservesCanExecute(() => CanExecute);
 
@@ -91,15 +88,14 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 CanExecuteInitial();
-                _userDialogs.Loading("Carregando");
-                var request = new LoginRequest()
+                UserDialogs.Instance.ShowLoading("Carregando");
+
+                var response = await _userAppService.Login(new LoginRequest()
                 {
                     Email = Login,
                     Origin = 0,
                     Password = Password
-                };
-                var requestJson = Newtonsoft.Json.JsonConvert.SerializeObject(request);
-                var response = await _userAppService.Login(request);
+                });
                 if(response != null && response.User != null)
                 {
                     await CacheAccess.InsertSecure<User>(CacheKeys.USER_KEY, response.User);
@@ -116,11 +112,14 @@ namespace PottiRoma.App.ViewModels
             }
             catch(Exception ex)
             {
-                _userDialogs.Toast(ex.Message);
+                UserDialogs.Instance.Toast(ex.Message);
                 LoginIncorreto = true;
             }
-            _userDialogs.HideLoading();
-            CanExecuteEnd();
+            finally
+            {
+                UserDialogs.Instance.HideLoading();
+                CanExecuteEnd();
+            }
         }
     }
 }

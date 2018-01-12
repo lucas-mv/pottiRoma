@@ -8,6 +8,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -48,12 +49,6 @@ namespace PottiRoma.App.ViewModels
             LogoutCommand = new DelegateCommand(Logout).ObservesCanExecute(() => CanExecute);
 
             Title = "Ranking Geral";
-        }
-
-        public override void OnNavigatedTo(NavigationParameters parameters)
-        {
-            base.OnNavigatedTo(parameters);
-            _userDialogs.HideLoading();
         }
 
         private async void Logout()
