@@ -12,7 +12,7 @@ namespace PottiRoma.App.Services.Interfaces
     {
         Task ChangePassword(ChangePasswordRequest request);
         Task<LoginReponse> Login(LoginRequest request);
-
+        Task Logout(string userId);
         Task SendEmail(SendEmailRequest request);
     }
 }

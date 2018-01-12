@@ -17,6 +17,11 @@ namespace PottiRoma.Services.Implementations
             return UserBusiness.Authenticate(email, password);
         }
 
+        public void Logout(string userId)
+        {
+            UserBusiness.Logout(userId);
+        }
+
         public UserEntity RegisterUser(string email, string password, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType)
         {
             return UserBusiness.RegisterUser(email, password, name, primaryTelephone, secondaryTelephone, cpf, userType);

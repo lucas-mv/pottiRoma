@@ -69,5 +69,19 @@ namespace PottiRoma.App.Repositories.Api
               );
             return response;
         }
+
+        public async Task Logout(string userId)
+        {
+            await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+               retryCount: 5,
+               sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+             )
+             .ExecuteAsync(async () =>
+                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().Logout(userId)
+              );
+        }
     }
 }

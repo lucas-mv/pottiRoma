@@ -10,6 +10,7 @@ namespace PottiRoma.Services.Interfaces
 {
     public interface IUserService
     {
+        void Logout(string userId);
         void ChangePassword(Guid userId, string oldPassword, string newPassword);
         UserEntity GetUserById(Guid userId);
         UserEntity Authenticate(string email, string password);

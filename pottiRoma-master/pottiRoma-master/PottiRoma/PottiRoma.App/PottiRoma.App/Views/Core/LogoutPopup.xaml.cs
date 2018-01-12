@@ -8,6 +8,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
+using PottiRoma.App.Services.Interfaces;
+using PottiRoma.App.Repositories.Internal;
+using static PottiRoma.App.Utils.Constants;
+using PottiRoma.App.Models.Models;
 
 namespace PottiRoma.App.Views.Core
 {
@@ -15,12 +19,18 @@ namespace PottiRoma.App.Views.Core
     {
         private readonly IUserDialogs _userDialogs;
         private readonly INavigationService _navigationService;
+        private readonly IUserAppService _userAppService;
 
-        public LogoutPopup(IUserDialogs userDialogs, INavigationService navigationService)
+        public LogoutPopup(
+            IUserDialogs userDialogs, 
+            INavigationService navigationService,
+            IUserAppService userAppService)
         {
             InitializeComponent();
             _userDialogs = userDialogs;
             _navigationService = navigationService;
+            _userAppService = userAppService;
+
             BindingContext = new
             {
                 ConfirmaLogoutCommand = new DelegateCommand(Confirm),
@@ -35,14 +45,21 @@ namespace PottiRoma.App.Views.Core
 
         private async void Confirm()
         {
-            await Task.Delay(500);
-            await NavigationHelper.ShowLoading();
-            var duration = new TimeSpan(0, 0, 2);
-            _userDialogs.Toast("Realizando logout...", duration);
-
-            await Task.Delay(1000);
-            await _navigationService.NavigateAsync(NavigationSettings.AbsoluteLogin);
-            await NavigationHelper.PopLoading();
+            try
+            {
+                await NavigationHelper.ShowLoading();
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                await _userAppService.Logout(user.UserId.ToString());
+                await _navigationService.NavigateAsync(NavigationSettings.AbsoluteLogin);
+            }
+            catch(Exception ex)
+            {
+                _userDialogs.Toast(ex.Message);
+            }
+            finally
+            {
+                await NavigationHelper.PopLoading();
+            }
         }
     }
 }

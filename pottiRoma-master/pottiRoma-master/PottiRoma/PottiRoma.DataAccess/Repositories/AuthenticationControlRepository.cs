@@ -66,9 +66,23 @@ namespace PottiRoma.DataAccess.Repositories
         WHERE UsuarioId = @usuarioid
         AND Token = @token";
 
+        private const string DELETE_ALL_USER_AUTH_CONTROL = @"
+        UPDATE dbo.AuthenticationControl
+        SET Valido = 0
+        WHERE UsuarioId = @usuarioid";
+
         #endregion
 
         #region Public methods
+
+        public void DeleteAllUserAuthControl(Guid userId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@usuarioid", userId, System.Data.DbType.Guid);
+
+            Execute(DELETE_ALL_USER_AUTH_CONTROL, parameters);
+        }
 
         public void DeleteAuthControl(Guid userId, Guid token)
         {

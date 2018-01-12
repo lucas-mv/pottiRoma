@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Views.Core;
 using Prism.Navigation;
 using Rg.Plugins.Popup.Services;
@@ -12,9 +13,9 @@ namespace PottiRoma.App.Helpers
 {
     public class LogoutPopupHelper
     {
-        public static async Task Mostrar(IUserDialogs userDialogs, INavigationService navigationService)
+        public static async Task Mostrar(IUserDialogs userDialogs, INavigationService navigationService, IUserAppService userAppService)
         {
-            await PopupNavigation.PushAsync(new LogoutPopup(userDialogs, navigationService));
+            await PopupNavigation.PushAsync(new LogoutPopup(userDialogs, navigationService, userAppService));
         }
 
         public static async Task EsconderAsync()

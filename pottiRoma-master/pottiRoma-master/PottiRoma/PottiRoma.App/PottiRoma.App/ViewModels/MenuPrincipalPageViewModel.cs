@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -16,6 +17,7 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private readonly IUserAppService _userAppService;
 
         private string _title;
         public string Title
@@ -35,10 +37,12 @@ namespace PottiRoma.App.ViewModels
 
         public MenuPrincipalPageViewModel(
             INavigationService navigationService,
-            IUserDialogs userDialogs)
+            IUserDialogs userDialogs,
+            IUserAppService userAppService)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _userAppService = userAppService;
 
             GoToInviteFlowerCommand = new DelegateCommand(GoToInviteFlower).ObservesCanExecute(() => CanExecute);
             GoToRankingCommand = new DelegateCommand(GoToRanking).ObservesCanExecute(() => CanExecute);
@@ -54,7 +58,7 @@ namespace PottiRoma.App.ViewModels
         private async void Logout()
         {
             CanExecuteInitial();
-            await LogoutPopupHelper.Mostrar(_userDialogs, _navigationService);
+            await LogoutPopupHelper.Mostrar(_userDialogs, _navigationService, _userAppService);
             CanExecuteEnd();
         }
 

@@ -34,6 +34,13 @@ namespace PottiRoma.Api.Controllers
             return response;
         }
 
+        [Route("Logout/{id}")]
+        [HttpGet]
+        public async Task LogoutUser(string id)
+        {
+            _userService.Logout(id);
+        }
+
         [Route("Register")]
         [HttpPost]
         public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)

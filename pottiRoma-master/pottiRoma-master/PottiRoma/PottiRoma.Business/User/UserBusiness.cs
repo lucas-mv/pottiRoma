@@ -21,6 +21,11 @@ namespace PottiRoma.Business.User
             return UserRepository.Get().GetUserById(userId);
         }
 
+        public static void Logout(string userId)
+        {
+            AuthenticationControlRepository.Get().DeleteAllUserAuthControl(new Guid(userId));
+        }
+
         public static UserEntity RegisterUser(string email, string password, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType)
         {
             if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password) || String.IsNullOrEmpty(name) ||
