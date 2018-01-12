@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.Utils;
+﻿using ModernHttpClient;
+using PottiRoma.App.Utils;
 using PottiRoma.App.Utils.CustomExceptions;
 using System;
 using System.Collections.Generic;
@@ -13,13 +14,11 @@ using System.Threading.Tasks;
 
 namespace PottiRoma.App.ApiAccess
 {
-    public class AuthenticatedHttpClientHandler : HttpClientHandler
+    public class AuthenticatedHttpClientHandler : NativeMessageHandler
     {
-        private int NumberOfAttempts;
-
         public AuthenticatedHttpClientHandler()
         {
-            NumberOfAttempts = 0;
+
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
