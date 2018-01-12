@@ -138,14 +138,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Email.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\Clients\RegisterClientRequest.cs" />
-    <Compile Include="Request\Email\SendEmailRequest.cs" />
     <Compile Include="Request\Sales\NewSalesPersonRequest.cs" />
     <Compile Include="Request\User\LoginUserRequest.cs" />
     <Compile Include="Request\User\RegisterUserRequest.cs" />
-    <Compile Include="Response\Email\SendEmailResponse.cs" />
     <Compile Include="Response\Sales\NewSalesPersonResponse.cs" />
     <Compile Include="Response\User\LoginResponse.cs" />
     <Compile Include="Response\User\RegisterUserResponse.cs" />

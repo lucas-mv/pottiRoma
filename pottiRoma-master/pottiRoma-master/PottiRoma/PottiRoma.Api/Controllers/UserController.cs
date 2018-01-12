@@ -1,7 +1,4 @@
-﻿using PottiRoma.Api.Helpers;
-using PottiRoma.Api.Request.Email;
-using PottiRoma.Api.Request.User;
-using PottiRoma.Api.Response.Email;
+﻿using PottiRoma.Api.Request.User;
 using PottiRoma.Api.Response.User;
 using PottiRoma.Services.Interfaces;
 using PottiRoma.Utils.Enums;
@@ -26,7 +23,7 @@ namespace PottiRoma.Api.Controllers
 
         [Route("Login")]
         [HttpPost]
-        public LoginResponse LoginUser(LoginUserRequest request)
+        public async Task<LoginResponse> LoginUser(LoginUserRequest request)
         {
             var response = new LoginResponse();
             response.User = _userService.Authenticate(request.Email, request.Password);
@@ -36,7 +33,7 @@ namespace PottiRoma.Api.Controllers
 
         [Route("Register")]
         [HttpPost]
-        public RegisterUserResponse RegisterUser(RegisterUserRequest request)
+        public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)
         {
             return new RegisterUserResponse()
             {
@@ -44,12 +41,11 @@ namespace PottiRoma.Api.Controllers
             };
         }
 
-        //[HttpPost]
-        //[Route("EnviarEmail")]
-        //public async Task<SendEmailResponse> EnviarEmail(SendEmailRequest request)
-        //{
-        //    //Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, , emailNomeFrom.Item2, _logoPath);
-        //    //return ResponseResult(string.Empty);
-        //}
+        [Route("Profile/Password")]
+        [HttpPost]
+        public async Task ChangePassword(ChangePasswordRequest request)
+        {
+            _userService.ChangePassword(request.UserId, request.OldPassword, request.NewPassword);
+        }
     }
 }
