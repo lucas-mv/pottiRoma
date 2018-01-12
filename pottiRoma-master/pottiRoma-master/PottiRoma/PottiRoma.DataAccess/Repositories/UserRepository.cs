@@ -28,7 +28,7 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Selects
 
-        public const string GET_USER_BY_ID = @"
+        private const string GET_USER_BY_ID = @"
         SELECT UsuarioId AS UserId
               ,Cpf As Cpf
               ,Nome as UserName
@@ -50,7 +50,7 @@ namespace PottiRoma.DataAccess.Repositories
           FROM dbo.usuario
           where Email = @email";
 
-        public const string GET_USER_AUTH_BY_EMAIL = @"
+        private const string GET_USER_AUTH_BY_EMAIL = @"
         SELECT UsuarioId AS UserId
               ,Cpf As Cpf
               ,Nome as UserName
@@ -63,7 +63,7 @@ namespace PottiRoma.DataAccess.Repositories
           FROM dbo.usuario
           where Email = @email";
 
-        public const string GET_USER_AUTH_BY_ID = @"
+        private const string GET_USER_AUTH_BY_ID = @"
         SELECT UsuarioId AS UserId
               ,Cpf As Cpf
               ,Nome as UserName

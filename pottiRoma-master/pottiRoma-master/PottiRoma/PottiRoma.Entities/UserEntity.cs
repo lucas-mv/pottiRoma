@@ -16,5 +16,6 @@ namespace PottiRoma.Entities
         public string PrimaryTelephone { get; set; }
         public string SecondaryTelphone { get; set; }
         public UserType UserType { get; set; }
+        public SalespersonEntity Salesperson { get; set; }
     }
 }

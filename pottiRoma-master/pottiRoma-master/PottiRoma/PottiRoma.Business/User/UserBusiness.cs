@@ -1,4 +1,5 @@
-﻿using PottiRoma.DataAccess.Repositories;
+﻿using PottiRoma.Business.Sales;
+using PottiRoma.DataAccess.Repositories;
 using PottiRoma.Entities;
 using PottiRoma.Entities.Internal;
 using PottiRoma.Utils;
@@ -26,7 +27,7 @@ namespace PottiRoma.Business.User
             AuthenticationControlRepository.Get().DeleteAllUserAuthControl(new Guid(userId));
         }
 
-        public static UserEntity RegisterUser(string email, string password, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType)
+        public static UserEntity RegisterUser(string email, string password, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType, DateTime birthday, Guid flowerId)
         {
             if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password) || String.IsNullOrEmpty(name) ||
                 String.IsNullOrEmpty(primaryTelephone) || String.IsNullOrEmpty(secondaryTelephone))
@@ -45,6 +46,31 @@ namespace PottiRoma.Business.User
 
             if (newUser == null)
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_REGISTRATION_ERROR);
+
+            if(newUser.UserType == UserType.SalesPerson)
+            {
+                var salespersonId = Guid.NewGuid();
+                SalesBusiness.NewSalesPerson(new SalespersonEntity()
+                {
+                    Birthday = birthday,
+                    FlowerId = Guid.Empty,
+                    SalespersonId = salespersonId,
+                    UserId = newUser.UserId
+                });
+                newUser.Salesperson = SalesBusiness.GetSalespersonById(salespersonId);
+            } 
+            else if (newUser.UserType == UserType.SecondarySalesPerson)
+            {
+                var salespersonId = Guid.NewGuid();
+                SalesBusiness.NewSalesPerson(new SalespersonEntity()
+                {
+                    Birthday = birthday,
+                    FlowerId = flowerId,
+                    SalespersonId = salespersonId,
+                    UserId = newUser.UserId
+                });
+                newUser.Salesperson = SalesBusiness.GetSalespersonById(salespersonId);
+            }
 
             return newUser;
         }

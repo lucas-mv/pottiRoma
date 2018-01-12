@@ -15,5 +15,7 @@ namespace PottiRoma.Api.Request.User
         public string SecondaryTelephone { get; set; }
         public string Cpf { get; set; }
         public UserType UserType { get; set; }
+        public DateTime Birthday { get; set; }
+        public Guid FlowerId { get; set; }
     }
 }

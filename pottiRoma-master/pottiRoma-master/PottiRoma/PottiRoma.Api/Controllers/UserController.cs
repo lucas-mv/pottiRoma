@@ -47,7 +47,7 @@ namespace PottiRoma.Api.Controllers
         {
             return new RegisterUserResponse()
             {
-                User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecondaryTelephone, request.Cpf, request.UserType)
+                User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecondaryTelephone, request.Cpf, request.UserType, request.Birthday, request.FlowerId)
             };
         }
 
@@ -63,6 +63,7 @@ namespace PottiRoma.Api.Controllers
         [Route("SendEmail")]
         public async Task<SendEmailResponse> SendEmail(SendEmailRequest request)
         {
+            await ValidateToken();
             var user = _userService.GetUserById(request.UserId);
             Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, user.Email, user.UserName, null);
             return new SendEmailResponse()

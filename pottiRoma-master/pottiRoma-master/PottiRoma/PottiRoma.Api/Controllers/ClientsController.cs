@@ -1,4 +1,5 @@
 ﻿using PottiRoma.Api.Request.Clients;
+using PottiRoma.Api.Response.Clients;
 using PottiRoma.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -30,10 +31,13 @@ namespace PottiRoma.Api.Controllers
 
         [Route("Get/{salespersonid}")]
         [HttpGet]
-        public async Task RegisterClient(string salespersonid)
+        public async Task<GetClientsBySalespersonIdResponse> GetClientsBySalespersonId(string salespersonid)
         {
             await ValidateToken();
-            _clientsService.GetClientsBySalespersonId(new Guid(salespersonid));
+            return new GetClientsBySalespersonIdResponse()
+            {
+                Clients = _clientsService.GetClientsBySalespersonId(new Guid(salespersonid))
+            }; 
         }
     }
 }

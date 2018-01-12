@@ -42,6 +42,7 @@
     <Compile Include="Requests\User\ChangePasswordRequest.cs" />
     <Compile Include="Requests\User\LoginRequest.cs" />
     <Compile Include="Requests\User\SendEmailRequest.cs" />
+    <Compile Include="Responses\Clients\GetClientsBySalespersonIdResponse.cs" />
     <Compile Include="Responses\User\LoginReponse.cs" />
     <Compile Include="Responses\User\SendEmailResponse.cs" />
   </ItemGroup>

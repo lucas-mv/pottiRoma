@@ -38,6 +38,7 @@
     <Compile Include="AuthenticatedHttpClientHandler.cs" />
     <Compile Include="PottiRomaApiAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Refit\IClientsRefit.cs" />
     <Compile Include="Refit\IUserRefit.cs" />
   </ItemGroup>
   <ItemGroup>

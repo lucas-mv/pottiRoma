@@ -22,9 +22,9 @@ namespace PottiRoma.Services.Implementations
             UserBusiness.Logout(userId);
         }
 
-        public UserEntity RegisterUser(string email, string password, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType)
+        public UserEntity RegisterUser(string email, string password, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType, DateTime birthday, Guid flowerId)
         {
-            return UserBusiness.RegisterUser(email, password, name, primaryTelephone, secondaryTelephone, cpf, userType);
+            return UserBusiness.RegisterUser(email, password, name, primaryTelephone, secondaryTelephone, cpf, userType, birthday, flowerId);
         }
 
         public UserEntity GetUserById(Guid userId)
