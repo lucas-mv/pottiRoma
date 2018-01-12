@@ -50,6 +50,12 @@ namespace PottiRoma.App.ViewModels
             Title = "Ranking Geral";
         }
 
+        public override void OnNavigatedTo(NavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            _userDialogs.HideLoading();
+        }
+
         private async void Logout()
         {
             CanExecuteInitial();

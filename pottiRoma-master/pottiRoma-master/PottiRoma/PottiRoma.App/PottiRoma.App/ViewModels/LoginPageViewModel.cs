@@ -88,10 +88,10 @@ namespace PottiRoma.App.ViewModels
 
         private async void ExecuteLogin()
         {
-            CanExecuteInitial();
-
             try
             {
+                CanExecuteInitial();
+                _userDialogs.Loading("Carregando");
                 var request = new LoginRequest()
                 {
                     Email = Login,
@@ -110,6 +110,7 @@ namespace PottiRoma.App.ViewModels
                 }
                 else
                 {
+                    LoginIncorreto = true;
                     throw new Exception("Ocorreu um erro, tente novamente mais tarde.");
                 }
             }
@@ -118,7 +119,7 @@ namespace PottiRoma.App.ViewModels
                 _userDialogs.Toast(ex.Message);
                 LoginIncorreto = true;
             }
-            
+            _userDialogs.HideLoading();
             CanExecuteEnd();
         }
     }

@@ -32,15 +32,15 @@ namespace PottiRoma.App.Utils
             {
                 {
                     Enviroments.Production,
-                    new Uri("https://pottiroma.azurewebsites.net/v1")
+                    new Uri("https://pottiroma.azurewebsites.net/api/v1")
                 },
                 {
                     Enviroments.Development,
-                    new Uri("https://pottiroma.azurewebsites.net/v1")
+                    new Uri("https://pottiroma.azurewebsites.net/api/v1")
                 },
                 {
                     Enviroments.Homologation,
-                    new Uri("https://pottiroma.azurewebsites.net/v1")
+                    new Uri("https://pottiroma.azurewebsites.net/api/v1")
                 }
             };
         }

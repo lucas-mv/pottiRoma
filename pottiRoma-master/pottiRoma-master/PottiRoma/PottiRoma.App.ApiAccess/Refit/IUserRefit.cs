@@ -11,15 +11,15 @@ namespace PottiRoma.App.ApiAccess.Refit
 {
     public interface IUserRefit
     {
-        [Post("/api/v1/User/Profile/Password")]
+        [Post("/User/Profile/Password")]
         [Headers("Authorization: Bearer")]
         Task ChangePassword(ChangePasswordRequest request);
 
-        [Post("/api/v1/User/Login")]
+        [Post("/User/Login")]
         [Headers("Authorization: Bearer")]
         Task<LoginReponse> Login(LoginRequest request);
 
-        //[Post("/api/v1/User/SendEmail")]
+        //[Post("/User/SendEmail")]
         //[Headers("Authorization: Bearer")]
         //Task SendEmail(SendEmailRequest request);
     }
