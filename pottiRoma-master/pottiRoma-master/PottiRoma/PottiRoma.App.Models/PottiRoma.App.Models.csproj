@@ -41,7 +41,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\User\ChangePasswordRequest.cs" />
     <Compile Include="Requests\User\LoginRequest.cs" />
+    <Compile Include="Requests\User\SendEmailRequest.cs" />
     <Compile Include="Responses\User\LoginReponse.cs" />
+    <Compile Include="Responses\User\SendEmailResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PottiRoma.App.Utils\PottiRoma.App.Utils.csproj">

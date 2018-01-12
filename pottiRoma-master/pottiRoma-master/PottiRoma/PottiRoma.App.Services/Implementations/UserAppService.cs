@@ -22,9 +22,9 @@ namespace PottiRoma.App.Services.Implementations
             return await UserApiRepository.Get().Login(request);
         }
 
-        //public async Task SendEmail(SendEmailRequest request)
-        //{
-        //    await UserApiRepository.Get().SendEmail(request);
-        //}
+        public async Task SendEmail(SendEmailRequest request)
+        {
+            await UserApiRepository.Get().SendEmail(request);
+        }
     }
 }

@@ -19,8 +19,8 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Headers("Authorization: Bearer")]
         Task<LoginReponse> Login(LoginRequest request);
 
-        //[Post("/User/SendEmail")]
-        //[Headers("Authorization: Bearer")]
-        //Task SendEmail(SendEmailRequest request);
+        [Post("/User/SendEmail")]
+        [Headers("Authorization: Bearer")]
+        Task SendEmail(SendEmailRequest request);
     }
 }

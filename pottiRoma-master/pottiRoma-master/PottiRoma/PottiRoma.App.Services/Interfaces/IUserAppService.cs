@@ -13,6 +13,6 @@ namespace PottiRoma.App.Services.Interfaces
         Task ChangePassword(ChangePasswordRequest request);
         Task<LoginReponse> Login(LoginRequest request);
 
-        //Task SendEmail(SendEmailRequest request);
+        Task SendEmail(SendEmailRequest request);
     }
 }

@@ -41,19 +41,19 @@ namespace PottiRoma.App.Repositories.Api
               );
         }
 
-        //public async Task SendEmail(SendEmailRequest request)
-        //{
-        //    await Policy
-        //     .Handle<WebException>()
-        //     .WaitAndRetryAsync
-        //     (
-        //       retryCount: 5,
-        //       sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
-        //     )
-        //     .ExecuteAsync(async () =>
-        //           await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().SendEmail(request)
-        //      );
-        //}
+        public async Task SendEmail(SendEmailRequest request)
+        {
+            await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+               retryCount: 5,
+               sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+             )
+             .ExecuteAsync(async () =>
+                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().SendEmail(request)
+              );
+        }
 
         public async Task<LoginReponse> Login(LoginRequest request)
         {
