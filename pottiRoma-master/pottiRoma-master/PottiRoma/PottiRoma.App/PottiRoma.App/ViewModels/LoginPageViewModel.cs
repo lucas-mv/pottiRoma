@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using PottiRoma.App.Helpers;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
@@ -88,7 +89,7 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 CanExecuteInitial();
-                UserDialogs.Instance.ShowLoading("Carregando");
+                await NavigationHelper.ShowLoading();
 
                 var response = await _userAppService.Login(new LoginRequest()
                 {
@@ -117,7 +118,7 @@ namespace PottiRoma.App.ViewModels
             }
             finally
             {
-                UserDialogs.Instance.HideLoading();
+                await NavigationHelper.PopLoading();
                 CanExecuteEnd();
             }
         }
