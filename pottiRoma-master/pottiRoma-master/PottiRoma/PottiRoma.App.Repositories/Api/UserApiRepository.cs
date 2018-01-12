@@ -2,7 +2,6 @@
 using PottiRoma.App.ApiAccess;
 using PottiRoma.App.ApiAccess.Refit;
 using PottiRoma.App.Models.Requests.User;
-using PottiRoma.App.Models.Responses.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,23 +38,6 @@ namespace PottiRoma.App.Repositories.Api
              .ExecuteAsync(async () =>
                    await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().ChangePassword(request)
               );
-        }
-
-        public async Task<LoginResponse> Login(LoginUserRequest request)
-        {
-            var response = new LoginResponse();
-            await Policy
-             .Handle<WebException>()
-             .WaitAndRetryAsync
-             (
-               retryCount: 5,
-               sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
-             )
-             .ExecuteAsync(async () =>
-             {
-                 response = await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().Login(request);
-             });
-            return response;
         }
     }
 }
