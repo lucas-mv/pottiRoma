@@ -81,33 +81,17 @@
         <ContentView
             Grid.Row="3"
             Grid.Column="0"
+            Grid.ColumnSpan="2"
             HorizontalOptions="Fill"
             VerticalOptions="Fill">
             <ContentView.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding ConfirmDateCommand}" />
+                <TapGestureRecognizer Command="{Binding ConfirmDateCommand}" Tapped="ClickOk_Tapped" />
             </ContentView.GestureRecognizers>
             <Label
                 FontAttributes="Bold"
                 FontSize="{StaticResource LargeFontSize}"
                 HorizontalOptions="Center"
                 Text="OK"
-                TextColor="{StaticResource WhiteColor}"
-                VerticalOptions="Center" />
-        </ContentView>
-
-        <ContentView
-            Grid.Row="3"
-            Grid.Column="1"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill">
-            <ContentView.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding CancelDateCommand}" />
-            </ContentView.GestureRecognizers>
-            <Label
-                FontAttributes="Bold"
-                FontSize="{StaticResource LargeFontSize}"
-                HorizontalOptions="Center"
-                Text="Cancelar"
                 TextColor="{StaticResource WhiteColor}"
                 VerticalOptions="Center" />
         </ContentView>

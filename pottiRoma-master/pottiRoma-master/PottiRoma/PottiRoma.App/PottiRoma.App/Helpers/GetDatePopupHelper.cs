@@ -13,9 +13,9 @@ namespace PottiRoma.App.Helpers
 {
     public static class GetDatePopupHelper
     {
-        public static async Task Mostrar()
+        public static async Task Mostrar(Action<string> CallBackGetDate)
         {
-            await PopupNavigation.PushAsync(new PopupGetDate());
+            await PopupNavigation.PushAsync(new PopupGetDate(CallBackGetDate));
         }
 
         public static async Task EsconderAsync()

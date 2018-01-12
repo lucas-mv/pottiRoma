@@ -54,6 +54,7 @@
                     FontSize="{StaticResource StandardFontSize}"
                     Placeholder="CPF"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding ClientSelectedForEdition.CPF}"
                     TextColor="{StaticResource TextColor}"
                     VerticalOptions="Center" />
             </Frame>
@@ -70,6 +71,7 @@
                     Keyboard="Email"
                     Placeholder="Email"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding ClientSelectedForEdition.Email}"
                     TextColor="{StaticResource TextColor}"
                     VerticalOptions="Center" />
             </Frame>
@@ -87,8 +89,8 @@
                 <Label
                     Margin="10,0,10,0"
                     FontSize="{StaticResource StandardFontSize}"
-                    Text="Data de Aniversário"
-                    TextColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding AnniversaryDate}"
+                    TextColor="{Binding ColorDateAnniversary}"
                     VerticalOptions="Center" />
             </Frame>
 
@@ -103,6 +105,7 @@
                     FontSize="{StaticResource StandardFontSize}"
                     Placeholder="Telefone"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding ClientSelectedForEdition.Telefone}"
                     TextColor="{StaticResource TextColor}"
                     VerticalOptions="Center" />
             </Frame>

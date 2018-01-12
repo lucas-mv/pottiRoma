@@ -10,8 +10,8 @@
         <Grid
             x:Name="RankingPageContent"
             BackgroundColor="#fafafa"
-            SizeChanged="RankingPageContent_SizeChanged"
-            HeightRequest="{Binding ScreenHeightRequest}">
+            HeightRequest="{Binding ScreenHeightRequest}"
+            SizeChanged="RankingPageContent_SizeChanged">
             <Grid
                 Margin="12"
                 ColumnSpacing="12"

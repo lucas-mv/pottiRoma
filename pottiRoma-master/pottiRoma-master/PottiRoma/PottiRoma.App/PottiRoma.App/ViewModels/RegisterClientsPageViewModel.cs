@@ -17,8 +17,21 @@ namespace PottiRoma.App.ViewModels
     public class RegisterClientsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-
+        private readonly string DatePlaceholder = "Data de Aniversário";
+        private Color _colorDateAnniversary;
+        public Color ColorDateAnniversary
+        {
+            get { return _colorDateAnniversary; }
+            set { SetProperty(ref _colorDateAnniversary, value); }
+        }
         public DelegateCommand OpenPopupDateCommand { get; set; }
+
+        private string _anniversaryDate;
+        public string AnniversaryDate
+        {
+            get { return _anniversaryDate; }
+            set { SetProperty(ref _anniversaryDate, value); }
+        }
 
         private string _pageTitle;
         public string PageTitle
@@ -46,13 +59,15 @@ namespace PottiRoma.App.ViewModels
             _navigationService = navigationService;
             ClientSelectedForEdition = new Cliente();
             OpenPopupDateCommand = new DelegateCommand(OpenDatePopup).ObservesCanExecute(() => CanExecute);
+            AnniversaryDate = DatePlaceholder;
+            ColorDateAnniversary = Color.FromHex("#d5d5d5");
             PageTitle = SetTitle();
         }
 
         private async void OpenDatePopup()
         {
             CanExecuteInitial();
-            await GetDatePopupHelper.Mostrar();
+            await GetDatePopupHelper.Mostrar(CallbackDate);
             CanExecuteEnd();
         }
 
@@ -65,6 +80,19 @@ namespace PottiRoma.App.ViewModels
                 if (parameters.ContainsKey(NavigationKeyParameters.SelectedClient))
                     ClientSelectedForEdition = parameters[NavigationKeyParameters.SelectedClient] as Cliente;
             }
+        }
+
+        private void CallbackDate(string date)
+        {
+            DateTime now = DateTime.Now;
+            string[] newDate = date.Split('/');
+            newDate[0] = newDate[0] == "0" ? now.Day.ToString() : newDate[0];
+            newDate[1] = newDate[1] == "0" ? now.Month.ToString() : newDate[1];
+            date = newDate[0] + "/" + newDate[1];
+            ClientSelectedForEdition.DataAniversario = date;
+            AnniversaryDate = date;
+            ColorDateAnniversary = Color.FromHex("#696969");
+
         }
 
         private string SetTitle()

@@ -18,6 +18,8 @@ namespace PottiRoma.App.Models.Models
 
         public string CPF { get; set; }
 
+        public string DataAniversario { get; set; }
+
         public Guid ClienteId { get; set; }
 
         public Guid VendedorId { get; set; }

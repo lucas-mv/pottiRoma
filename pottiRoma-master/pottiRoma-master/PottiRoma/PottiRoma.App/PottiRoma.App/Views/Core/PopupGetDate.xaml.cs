@@ -17,10 +17,14 @@ namespace PottiRoma.App.Views.Core
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupGetDate : PopupPage
     {
-        public PopupGetDate()
+        public int Month { get; set; }
+        public int Day { get; set; }
+        private Action<string> CallbackDate;
+        public PopupGetDate(Action<string> callbackDate)
         {
             InitializeComponent();
             BindingContext = new PopupGetDateViewModel();
+            CallbackDate = callbackDate;
 
             DayPicker.SelectionChanged += DayPicker_SelectionChanged;
             MonthPicker.SelectionChanged += MonthPicker_SelectionChanged;
@@ -42,11 +46,11 @@ namespace PottiRoma.App.Views.Core
                     if (e.OldValue != null && e.NewValue != null)
                     {
                         ObservableCollection<object> days = new ObservableCollection<object>();
-                        int month = GetDatePopupHelper.ConvertBack((string)e.NewValue);
+                        Month = GetDatePopupHelper.ConvertBack((string)e.NewValue);
 
-                        if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+                        if (Month == 1 || Month == 3 || Month == 5 || Month == 7 || Month == 8 || Month == 10 || Month == 12)
                             viewModel.Days = viewModel.FillDays(31);
-                        else if (month == 2)
+                        else if (Month == 2)
                             viewModel.Days = viewModel.FillDays(29);
                         else
                             viewModel.Days = viewModel.FillDays(30);
@@ -58,6 +62,15 @@ namespace PottiRoma.App.Views.Core
 
         private void DayPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.OldValue != null && e.NewValue != null)
+            {
+                Day = int.Parse(e.NewValue.ToString());
+            }
+        }
+
+        private void ClickOk_Tapped(object sender, EventArgs e)
+        {
+            CallbackDate?.Invoke(Day.ToString() + "/" + Month.ToString());
         }
     }
 }

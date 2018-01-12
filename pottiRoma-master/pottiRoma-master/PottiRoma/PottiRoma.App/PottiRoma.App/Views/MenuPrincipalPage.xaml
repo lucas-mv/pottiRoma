@@ -6,7 +6,8 @@
     xmlns:local="clr-namespace:PottiRoma.App.Views"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     Title="{Binding Title}"
-    prism:ViewModelLocator.AutowireViewModel="True">
+    prism:ViewModelLocator.AutowireViewModel="True"
+    Icon="ic_menu_white.png">
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
