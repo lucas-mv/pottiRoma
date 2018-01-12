@@ -52,13 +52,6 @@ namespace PottiRoma.Api.Controllers
             _userService.ChangePassword(request.UserId, request.OldPassword, request.NewPassword);
         }
 
-        //[HttpPost]
-        //[Route("EnviarEmail")]
-        //public async Task<SendEmailResponse> EnviarEmail(SendEmailRequest request)
-        //{
-        //    //Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, , emailNomeFrom.Item2, _logoPath);
-        //    //return ResponseResult(string.Empty);
-        //}
         [HttpPost]
         [Route("EnviarEmail")]
         public async Task<SendEmailResponse> EnviarEmail(SendEmailRequest request)
