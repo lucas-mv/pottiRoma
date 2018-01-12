@@ -44,16 +44,12 @@ namespace PottiRoma.Api.Controllers
             };
         }
 
-        [HttpPost]
-        [Route("EnviarEmail")]
-        public async Task<SendEmailResponse> EnviarEmail(SendEmailRequest request)
-        {
-            var user = _userService.GetUserById(request.UserId);
-            Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, user.Email, user.UserName, null);
-            return new SendEmailResponse()
-            {
-                IsSuccess = true
-            };
-        }
+        //[HttpPost]
+        //[Route("EnviarEmail")]
+        //public async Task<SendEmailResponse> EnviarEmail(SendEmailRequest request)
+        //{
+        //    //Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, , emailNomeFrom.Item2, _logoPath);
+        //    //return ResponseResult(string.Empty);
+        //}
     }
 }
