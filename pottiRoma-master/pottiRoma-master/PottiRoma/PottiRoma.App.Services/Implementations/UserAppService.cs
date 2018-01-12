@@ -1,4 +1,5 @@
 ﻿using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Models.Responses.User;
 using PottiRoma.App.Repositories.Api;
 using PottiRoma.App.Services.Interfaces;
 using System;
@@ -14,6 +15,11 @@ namespace PottiRoma.App.Services.Implementations
         public async Task ChangePassword(ChangePasswordRequest request)
         {
             await UserApiRepository.Get().ChangePassword(request);
+        }
+
+        public async Task<LoginReponse> Login(LoginRequest request)
+        {
+            return await UserApiRepository.Get().Login(request);
         }
 
         //public async Task SendEmail(SendEmailRequest request)

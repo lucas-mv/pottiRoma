@@ -14,6 +14,7 @@ namespace PottiRoma.App.Utils
         public class CacheKeys
         {
             public const string USER_KEY = "User";
+            public const string ACCESS_TOKEN = "AccessToken";
         }
 
         public class Global

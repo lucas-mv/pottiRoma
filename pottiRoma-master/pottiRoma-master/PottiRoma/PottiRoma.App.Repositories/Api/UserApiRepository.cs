@@ -2,6 +2,7 @@
 using PottiRoma.App.ApiAccess;
 using PottiRoma.App.ApiAccess.Refit;
 using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Models.Responses.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,5 +54,20 @@ namespace PottiRoma.App.Repositories.Api
         //           await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().SendEmail(request)
         //      );
         //}
+
+        public async Task<LoginReponse> Login(LoginRequest request)
+        {
+            var response = await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+               retryCount: 5,
+               sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+             )
+             .ExecuteAsync(async () =>
+                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().Login(request)
+              );
+            return response;
+        }
     }
 }

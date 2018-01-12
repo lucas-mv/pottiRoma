@@ -1,4 +1,9 @@
-﻿using PottiRoma.App.Repositories.Internal;
+﻿using Acr.UserDialogs;
+using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Repositories.Internal;
+using PottiRoma.App.Services.Interfaces;
+using PottiRoma.App.Utils;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -8,12 +13,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private readonly IUserAppService _userAppService;
+        private readonly IUserDialogs _userDialogs;
 
         private double _screenHeightRequest;
         public double ScreenHeightRequest
@@ -45,13 +53,36 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _loginIncorreto, value); }
         }
 
-        public LoginPageViewModel(INavigationService navigationService)
+        public LoginPageViewModel(
+            INavigationService navigationService,
+            IUserAppService userAppService,
+            IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
+            _userAppService = userAppService;
+            _userDialogs = userDialogs;
 
             LoginCommand = new DelegateCommand(ExecuteLogin).ObservesCanExecute(() => CanExecute);
 
             CacheAccess.Initialize();
+        }
+
+        public override async void OnNavigatedTo(NavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            try
+            {
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                var token = await CacheAccess.GetSecure<Guid>(CacheKeys.ACCESS_TOKEN);
+                Settings.AccessToken = token.ToString();
+                Settings.UserId = user.UserId.ToString();
+                await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+            }
+            catch
+            {
+                Settings.AccessToken = string.Empty;
+                Settings.UserId = string.Empty;
+            }
         }
 
 
@@ -59,14 +90,35 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
 
-            if (Login.ToLower() != "adm" && Password != "123")
+            try
             {
-                await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                var request = new LoginRequest()
+                {
+                    Email = Login,
+                    Origin = 0,
+                    Password = Password
+                };
+                var requestJson = Newtonsoft.Json.JsonConvert.SerializeObject(request);
+                var response = await _userAppService.Login(request);
+                if(response != null && response.User != null)
+                {
+                    await CacheAccess.InsertSecure<User>(CacheKeys.USER_KEY, response.User);
+                    await CacheAccess.InsertSecure<Guid>(CacheKeys.ACCESS_TOKEN, response.Token);
+                    Settings.AccessToken = response.Token.ToString();
+                    Settings.UserId = response.User.UserId.ToString();
+                    await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                }
+                else
+                {
+                    throw new Exception("Ocorreu um erro, tente novamente mais tarde.");
+                }
             }
-            else
+            catch(Exception ex)
             {
+                _userDialogs.Toast(ex.Message);
                 LoginIncorreto = true;
             }
+            
             CanExecuteEnd();
         }
     }
