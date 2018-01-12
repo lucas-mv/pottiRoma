@@ -1,4 +1,5 @@
 ﻿using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Models.Responses.User;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,9 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Post("/api/v1/User/Profile/Password")]
         [Headers("Authorization: Bearer")]
         Task ChangePassword(ChangePasswordRequest request);
+
+        [Post("/api/v1/User/Login")]
+        [Headers("Authorization: Bearer")]
+        Task<LoginResponse> Login(LoginUserRequest request);
     }
 }
