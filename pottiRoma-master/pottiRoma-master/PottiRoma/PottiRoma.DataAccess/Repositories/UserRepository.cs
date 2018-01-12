@@ -37,7 +37,7 @@ namespace PottiRoma.DataAccess.Repositories
               ,TelefoneSecundario as SecondaryTelphone
               ,TipoUsuario as UserType
           FROM dbo.usuario
-          where usuarioId = @usuarioId";
+          where UsuarioId = @usuarioId";
 
         public const string GET_USER_BY_EMAIL = @"
         SELECT UsuarioId AS UserId
@@ -48,7 +48,7 @@ namespace PottiRoma.DataAccess.Repositories
               ,TelefoneSecundario as SecondaryTelphone
               ,TipoUsuario as UserType
           FROM dbo.usuario
-          where email = @email";
+          where Email = @email";
 
         public const string GET_USER_AUTH_BY_EMAIL = @"
         SELECT UsuarioId AS UserId
@@ -61,7 +61,7 @@ namespace PottiRoma.DataAccess.Repositories
               Senha as Password,
               Salt as PasswordSalt
           FROM dbo.usuario
-          where email = @email";
+          where Email = @email";
 
         public const string GET_USER_AUTH_BY_ID = @"
         SELECT UsuarioId AS UserId
@@ -74,7 +74,7 @@ namespace PottiRoma.DataAccess.Repositories
               Senha as Password,
               Salt as PasswordSalt
           FROM dbo.usuario
-          where email = @usuarioid";
+          where UsuarioId = @usuarioid";
 
         #endregion
 
@@ -177,7 +177,7 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@senha", password, System.Data.DbType.AnsiString);
             parameters.Add("@salt", salt, System.Data.DbType.AnsiString);
 
-            Execute(INSERT_USER, parameters);
+            Execute(UPDATE_USER_PASSWORD, parameters);
         }
 
         #endregion
