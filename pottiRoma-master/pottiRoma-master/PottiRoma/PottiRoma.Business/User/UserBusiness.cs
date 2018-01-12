@@ -19,7 +19,9 @@ namespace PottiRoma.Business.User
     {
         public static UserEntity GetUserById(Guid userId)
         {
-            return UserRepository.Get().GetUserById(userId);
+            var user = UserRepository.Get().GetUserById(userId);
+            user.Salesperson = SalesBusiness.GetSalespersonByUserId(userId);
+            return user;
         }
 
         public static void Logout(string userId)

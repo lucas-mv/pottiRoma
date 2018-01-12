@@ -36,6 +36,15 @@ namespace PottiRoma.DataAccess.Repositories
         FROM dbo.Vendedor
         WHERE VendedorId = @vendedorid";
 
+        private const string GET_SALESPERSON_BY_USER_ID = @"
+        SELECT 
+        VendedorId AS SalespersonId, 
+        UsuarioId AS UserId, 
+        FlorId AS FlowerId, 
+        DataNascimento AS Birthday
+        FROM dbo.Vendedor
+        WHERE UsuarioId = @usuarioid";
+
         #endregion
 
         #region Commands
@@ -78,7 +87,16 @@ namespace PottiRoma.DataAccess.Repositories
 
             parameters.Add("@vendedorid", salespersonId, System.Data.DbType.Guid);
 
-            return Query(INSERT_NEW_SALESPERSON, parameters).FirstOrDefault();
+            return Query(GET_SALESPERSON_BY_ID, parameters).FirstOrDefault();
+        }
+
+        public SalespersonEntity GetSalespersonByUserId(Guid userId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@usuarioid", userId, System.Data.DbType.Guid);
+
+            return Query(GET_SALESPERSON_BY_USER_ID, parameters).FirstOrDefault();
         }
 
         #endregion

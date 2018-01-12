@@ -17,5 +17,10 @@ namespace PottiRoma.Business.Sales
         {
             return SalespersonRepository.Get().GetSalespersonById(salespersonId);
         }
+
+        public static SalespersonEntity GetSalespersonByUserId(Guid userId)
+        {
+            return SalespersonRepository.Get().GetSalespersonByUserId(userId);
+        }
     }
 }
