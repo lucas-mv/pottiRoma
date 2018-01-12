@@ -8,9 +8,5 @@ namespace PottiRoma.Services.Implementations
 {
     public class SalesService : ISalesService
     {
-        public void NewSalesPerson()
-        {
-            SalesBusiness.NewSalesPerson();
-        }
     }
 }

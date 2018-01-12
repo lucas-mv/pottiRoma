@@ -19,14 +19,5 @@ namespace PottiRoma.Api.Controllers
         {
             _salesService = salesService;
         }
-
-        [HttpPost]
-        [Route("Person/New")]
-        public async Task<NewSalesPersonResponse> NewSalesPerson(NewSalesPersonRequest request)
-        {
-            await ValidateToken();
-            _salesService.NewSalesPerson();
-            return new NewSalesPersonResponse();
-        }
     }
 }

@@ -6,6 +6,5 @@ namespace PottiRoma.Services.Interfaces
 {
     public interface ISalesService
     {
-        void NewSalesPerson();
     }
 }
