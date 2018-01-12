@@ -50,6 +50,7 @@ namespace PottiRoma.App.Views.Core
                 await NavigationHelper.ShowLoading();
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 await _userAppService.Logout(user.UserId.ToString());
+                await CacheAccess.DeleteAll();
                 await _navigationService.NavigateAsync(NavigationSettings.AbsoluteLogin);
             }
             catch(Exception ex)

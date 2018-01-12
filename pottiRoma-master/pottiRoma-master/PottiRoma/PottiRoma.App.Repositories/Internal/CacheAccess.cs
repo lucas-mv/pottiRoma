@@ -16,6 +16,12 @@ namespace PottiRoma.App.Repositories.Internal
             BlobCache.ApplicationName = Constants.AKAVACHE_APP_NAME;
         }
 
+        public async static Task DeleteAll()
+        {
+            await BlobCache.InMemory.InvalidateAll();
+            await BlobCache.Secure.InvalidateAll();
+        }
+
         public async static Task Insert<T>(string key, T blob)
         {
             await BlobCache.InMemory.InsertObject<T>(key, blob);
