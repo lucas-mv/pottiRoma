@@ -1,7 +1,7 @@
 ﻿using Acr.UserDialogs;
 using PottiRoma.App.Helpers;
-////using PottiRoma.App.Models.Models;
-////using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.ViewModels.Core;
@@ -64,13 +64,13 @@ namespace PottiRoma.App.ViewModels
                 {
                     await NavigationHelper.ShowLoading();
 
-                    //var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                    //await _userAppService.ChangePassword(new ChangePasswordRequest()
-                    //{
-                    //    NewPassword = Password,
-                    //    OldPassword = RepeatPassword,
-                    //    UserId = user.UserId
-                    //});
+                    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                    await _userAppService.ChangePassword(new ChangePasswordRequest()
+                    {
+                        NewPassword = Password,
+                        OldPassword = RepeatPassword,
+                        UserId = user.UserId
+                    });
 
                     _userDialogs.Toast("Senha Alterada com Sucesso!", duration);
                     await _navigationService.GoBackAsync();
