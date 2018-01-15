@@ -35,7 +35,6 @@ namespace PottiRoma.App
         protected override void RegisterTypes()
         {
             BootStrapperIoC.Init(Container);
-
             Container.RegisterInstance(UserDialogs.Instance);
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<RegisterClientsPage>();
@@ -53,6 +52,7 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<ListClientsForSalePage>();
             Container.RegisterTypeForNavigation<MyClientsPage>();
             Container.RegisterTypeForNavigation<PopupGetDate>();
+            Container.RegisterTypeForNavigation<TrophyRoomPage>();
         }
     }
 }

@@ -94,6 +94,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CustomEditorIOS.cs" />
     <Compile Include="Renderers\CustomEntryIOS.cs" />
+    <Compile Include="Renderers\CustomProgressBarIOS.cs" />
     <Compile Include="Renderers\MaterialFrameRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
@@ -204,6 +205,15 @@
     </Reference>
     <Reference Include="Syncfusion.SfBusyIndicator.XForms.iOS, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfBusyIndicator.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfBusyIndicator.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.iOS, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCarousel.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfCarousel.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCarousel.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfCarousel.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.XForms.iOS, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCarousel.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfCarousel.XForms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfImageEditor.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfImageEditor.15.4.0.20\lib\Xamarin.iOS10\Syncfusion.SfImageEditor.XForms.dll</HintPath>

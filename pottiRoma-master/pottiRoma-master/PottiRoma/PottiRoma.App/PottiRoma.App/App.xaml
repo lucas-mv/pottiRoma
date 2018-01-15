@@ -61,6 +61,11 @@
                 Android="14"
                 iOS="15" />
             <OnPlatform
+                x:Key="ReducedFontSize"
+                x:TypeArguments="x:Double"
+                Android="13"
+                iOS="14" />
+            <OnPlatform
                 x:Key="SmallFontSize"
                 x:TypeArguments="x:Double"
                 Android="10"

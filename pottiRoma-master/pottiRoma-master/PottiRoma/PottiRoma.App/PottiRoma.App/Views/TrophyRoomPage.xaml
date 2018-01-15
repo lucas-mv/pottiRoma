@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PottiRoma.App.Views.TrophyRoomPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
+    xmlns:sfcarousel="clr-namespace:Syncfusion.SfCarousel.XForms;assembly=Syncfusion.SfCarousel.XForms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource LightBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="CarouselTemplate">
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="{StaticResource WhiteColor}"
+                        HasShadow="True"
+                        OutlineColor="{StaticResource OutlineColor}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="180" />
+                                <RowDefinition Height="100" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                Grid.Row="0"
+                                Margin="16"
+                                Aspect="AspectFill"
+                                Source="{Binding Image}" />
+                            <Label
+                                Grid.Row="1"
+                                Margin="16,0,16,0"
+                                FontSize="{StaticResource ReducedFontSize}"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Description}"
+                                TextColor="{StaticResource LightTextColor}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                    </Frame>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.Margin>
+            <OnPlatform
+                x:TypeArguments="Thickness"
+                Android="0,0,0,0"
+                iOS="0,24,0,0" />
+        </Grid.Margin>
+
+        <StackLayout
+            Grid.Row="0"
+            HorizontalOptions="Center"
+            Orientation="Vertical"
+            Spacing="0"
+            VerticalOptions="Center">
+            <ContentView HeightRequest="24" />
+            <Label
+                FontAttributes="Bold"
+                FontSize="{StaticResource LargeFontSize}"
+                HorizontalOptions="Center"
+                Text="Progressão na Temporada"
+                TextColor="{StaticResource TextColor}" />
+            <ContentView HeightRequest="15" />
+            <renderers:CustomProgressBar
+                HorizontalOptions="FillAndExpand"
+                Progress="0.6"
+                WidthRequest="260" />
+
+        </StackLayout>
+
+        <sfcarousel:SfCarousel
+            Grid.Row="1"
+            ItemHeight="280"
+            ItemTemplate="{StaticResource CarouselTemplate}"
+            ItemWidth="180"
+            ItemsSource="{Binding RewardDto}"
+            RotationAngle="30"
+            SelectedIndex="1"
+            Offset="50" />
+
+
+    </Grid>
+</ContentPage>

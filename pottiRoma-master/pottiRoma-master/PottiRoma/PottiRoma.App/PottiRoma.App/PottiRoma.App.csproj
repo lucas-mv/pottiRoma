@@ -42,6 +42,8 @@
     <Compile Include="BootStrapperIoC.cs" />
     <Compile Include="CustomRenderers\CustomEditor.cs" />
     <Compile Include="CustomRenderers\CustomEntry.cs" />
+    <Compile Include="CustomRenderers\CustomProgressBar.cs" />
+    <Compile Include="Dtos\TrophyRewardsDto.cs" />
     <Compile Include="Helpers\GetDatePopupHelper.cs" />
     <Compile Include="Helpers\LogoutPopupHelper.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="ViewModels\RegisterClientsPageViewModel.cs" />
     <Compile Include="ViewModels\RegisterSalePageViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordPageViewModel.cs" />
+    <Compile Include="ViewModels\TrophyRoomPageViewModel.cs" />
     <Compile Include="Views\Core\MainNavigationPage.xaml.cs">
       <DependentUpon>MainNavigationPage.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,9 @@
     </Compile>
     <Compile Include="Views\ResetPasswordPage.xaml.cs">
       <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrophyRoomPage.xaml.cs">
+      <DependentUpon>TrophyRoomPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +189,9 @@
     </Reference>
     <Reference Include="Syncfusion.SfBusyIndicator.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfBusyIndicator.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.SfBusyIndicator.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCarousel.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCarousel.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.SfCarousel.XForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfImageEditor.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfImageEditor.15.4.0.20\lib\portable-win+net45+wp80+win81+wpa81\Syncfusion.SfImageEditor.XForms.dll</HintPath>
@@ -350,6 +359,12 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TrophyRoomPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

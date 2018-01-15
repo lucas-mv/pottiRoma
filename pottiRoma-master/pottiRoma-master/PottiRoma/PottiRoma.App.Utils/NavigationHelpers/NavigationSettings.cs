@@ -18,6 +18,7 @@ namespace PottiRoma.App.Utils.NavigationHelpers
         public const string RankingDetail = "MainNavigationPage/RankingPage";
         public const string MyClients = "MainNavigationPage/MyClientsPage";
         public const string EditPersonalData = "MainNavigationPage/EditPersonalDataPage";
+        public const string TrophyRoom = "MainNavigationPage/TrophyRoomPage";
 
         #endregion
 
