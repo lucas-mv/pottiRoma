@@ -1,5 +1,9 @@
-﻿using PottiRoma.App.Models;
+﻿using Acr.UserDialogs;
+using PottiRoma.App.Helpers;
+using PottiRoma.App.Models;
 using PottiRoma.App.Models.Models;
+using PottiRoma.App.Repositories.Internal;
+using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -10,12 +14,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
     public class MyClientsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private readonly IClientsAppService _clientsAppService;
 
         private double _screenHeightRequest;
         public double ScreenHeightRequest
@@ -29,9 +35,12 @@ namespace PottiRoma.App.ViewModels
         public DelegateCommand RegisterNewClientCommand { get; set; }
         public ObservableCollection<Client> ListaClientes { get; set; }
 
-        public MyClientsPageViewModel(INavigationService navigationService)
+        public MyClientsPageViewModel(
+            INavigationService navigationService,
+            IClientsAppService clientsAppService)
         {
             _navigationService = navigationService;
+            _clientsAppService = clientsAppService;
 
             EditClientCommand = new DelegateCommand<object>(async param => await EditClient(param))
                 .ObservesCanExecute(() => CanExecute);
@@ -39,7 +48,29 @@ namespace PottiRoma.App.ViewModels
                 .ObservesCanExecute(() => CanExecute);
             RegisterNewClientCommand = new DelegateCommand(RegisterNewClient).ObservesCanExecute(() => CanExecute);
             ListaClientes = new ObservableCollection<Client>();
-            GenerateMock();
+        }
+
+        public override async void OnNavigatedTo(NavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            try
+            {
+                await NavigationHelper.ShowLoading();
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                var response = await _clientsAppService.GetClientsBySalespersonId(user.Salesperson.SalespersonId.ToString());
+                if (response == null || response.Clients == null)
+                    throw new Exception("Ocorreu um erro, tente novamente mais tarde.");
+                ListaClientes = new ObservableCollection<Client>(response.Clients);
+            }
+            catch(Exception ex)
+            {
+                UserDialogs.Instance.Toast(ex.Message);
+                await _navigationService.GoBackAsync();
+            }
+            finally
+            {
+                await NavigationHelper.PopLoading();
+            }
         }
 
         private async void RegisterNewClient()
@@ -64,52 +95,6 @@ namespace PottiRoma.App.ViewModels
                 }
             }
             CanExecuteEnd();
-        }
-
-        private void GenerateMock()
-        {
-            Client mock1 = new Client
-            {
-                Name = "Cliente 1",
-                Email = "cliente1@gmail.com",
-                Telephone = "31 3248324",
-            };
-            Client mock2 = new Client
-            {
-                Name = "Cliente 5",
-                Email = "cliente1@gmail.com",
-                Telephone = "31 3248324",
-            };
-            Client mock3 = new Client
-            {
-                Name = "Cliente 3",
-                Email = "cliente2@gmail.com",
-                Telephone = "31 6456456",
-            };
-            Client mock4 = new Client
-            {
-                Name = "Cliente 4",
-                Email = "cliente3@gmail.com",
-                Telephone = "31 3456347",
-            };
-            Client mock5 = new Client
-            {
-                Name = "Cliente 5",
-                Email = "cliente4@gmail.com",
-                Telephone = "31 56433534",
-            };
-            Client mock6 = new Client
-            {
-                Name = "Cliente 6",
-                Email = "cliente6@gmail.com",
-                Telephone = "31 643634",
-            };
-            ListaClientes.Add(mock1);
-            ListaClientes.Add(mock2);
-            ListaClientes.Add(mock3);
-            ListaClientes.Add(mock4);
-            ListaClientes.Add(mock5);
-            ListaClientes.Add(mock6);
         }
 
         private async Task EditClient(object item)

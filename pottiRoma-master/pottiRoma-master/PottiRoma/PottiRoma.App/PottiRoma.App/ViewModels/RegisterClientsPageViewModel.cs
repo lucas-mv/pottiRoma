@@ -1,6 +1,10 @@
-﻿using PottiRoma.App.Helpers;
+﻿using Acr.UserDialogs;
+using PottiRoma.App.Helpers;
 using PottiRoma.App.Models;
 using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Requests.Clients;
+using PottiRoma.App.Repositories.Internal;
+using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -11,12 +15,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
     public class RegisterClientsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private readonly IClientsAppService _clientsAppService;
+
         private readonly string DatePlaceholder = "Data de Aniversário";
         private Color _colorDateAnniversary;
         public Color ColorDateAnniversary
@@ -24,7 +31,9 @@ namespace PottiRoma.App.ViewModels
             get { return _colorDateAnniversary; }
             set { SetProperty(ref _colorDateAnniversary, value); }
         }
+
         public DelegateCommand OpenPopupDateCommand { get; set; }
+        public DelegateCommand RegisterNewClientCommand { get; set; }
 
         private string _anniversaryDate;
         public string AnniversaryDate
@@ -54,9 +63,13 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _registerOrEditText, value); }
         }
 
-        public RegisterClientsPageViewModel(INavigationService navigationService)
+        public RegisterClientsPageViewModel(
+            INavigationService navigationService,
+            IClientsAppService clientsAppService)
         {
             _navigationService = navigationService;
+            _clientsAppService = clientsAppService;
+
             ClientSelectedForEdition = new Client();
             OpenPopupDateCommand = new DelegateCommand(OpenDatePopup).ObservesCanExecute(() => CanExecute);
             AnniversaryDate = DatePlaceholder;
@@ -97,6 +110,34 @@ namespace PottiRoma.App.ViewModels
         private string SetTitle()
         {
             return Device.OS == TargetPlatform.Android ? "Cadastro de Clientes" : "";
+        }
+
+        private async void RegisterNewClient()
+        {
+            try
+            {
+                await NavigationHelper.ShowLoading();
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                await _clientsAppService.RegisterClient(new RegisterClientRequest()
+                {
+                    Address = string.Empty,
+                    Birthdate = ClientSelectedForEdition.Birthdate,
+                    Cpf = ClientSelectedForEdition.Cpf,
+                    Email = ClientSelectedForEdition.Email,
+                    SalespersonId = user.Salesperson.SalespersonId,
+                    Name = ClientSelectedForEdition.Name,
+                    Telephone = ClientSelectedForEdition.Telephone
+                });
+                UserDialogs.Instance.Toast("Cliente registrado com sucesso!");
+            }
+            catch(Exception ex)
+            {
+                UserDialogs.Instance.Toast(ex.Message);
+            }
+            finally
+            {
+                await NavigationHelper.PopLoading();
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace PottiRoma.App
 
         protected static void RegisterTypesAppServices(IUnityContainer Container)
         {
+            Container.RegisterType<IClientsAppService, ClientsAppService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IUserAppService, UserAppService>(new ContainerControlledLifetimeManager());
         }
     }

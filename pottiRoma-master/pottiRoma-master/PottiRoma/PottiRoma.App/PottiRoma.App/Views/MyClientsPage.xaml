@@ -107,7 +107,7 @@
                                     Margin="16,0,0,0"
                                     FontSize="{StaticResource StandardFontSize}"
                                     HorizontalOptions="Start"
-                                    Text="{Binding Nome}"
+                                    Text="{Binding Name}"
                                     TextColor="{StaticResource TextColor}"
                                     VerticalOptions="Center" />
 
