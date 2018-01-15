@@ -332,6 +332,42 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_menu_white_3x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ranking_dia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ranking_geral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ranking_semana.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banned_sales_page_detail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_listClientsForSale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_top_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_top1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\foto_perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\imagem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\imagem_cropped.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\popup.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
