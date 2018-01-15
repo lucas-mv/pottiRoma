@@ -40,8 +40,8 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _pageTitle, value); }
         }
 
-        private Cliente _clientSelectedForEdition;
-        public Cliente ClientSelectedForEdition
+        private Client _clientSelectedForEdition;
+        public Client ClientSelectedForEdition
         {
             get { return _clientSelectedForEdition; }
             set { SetProperty(ref _clientSelectedForEdition, value); }
@@ -57,7 +57,7 @@ namespace PottiRoma.App.ViewModels
         public RegisterClientsPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            ClientSelectedForEdition = new Cliente();
+            ClientSelectedForEdition = new Client();
             OpenPopupDateCommand = new DelegateCommand(OpenDatePopup).ObservesCanExecute(() => CanExecute);
             AnniversaryDate = DatePlaceholder;
             ColorDateAnniversary = Color.FromHex("#d5d5d5");
@@ -78,7 +78,7 @@ namespace PottiRoma.App.ViewModels
             {
                 RegisterOrEditText = "EDITAR";
                 if (parameters.ContainsKey(NavigationKeyParameters.SelectedClient))
-                    ClientSelectedForEdition = parameters[NavigationKeyParameters.SelectedClient] as Cliente;
+                    ClientSelectedForEdition = parameters[NavigationKeyParameters.SelectedClient] as Client;
             }
         }
 
@@ -89,10 +89,9 @@ namespace PottiRoma.App.ViewModels
             newDate[0] = newDate[0] == "0" ? now.Day.ToString() : newDate[0];
             newDate[1] = newDate[1] == "0" ? now.Month.ToString() : newDate[1];
             date = newDate[0] + "/" + newDate[1];
-            ClientSelectedForEdition.DataAniversario = date;
+            ClientSelectedForEdition.Birthdate = new DateTime(9999, int.Parse(newDate[1]), int.Parse(newDate[0]));
             AnniversaryDate = date;
             ColorDateAnniversary = Color.FromHex("#696969");
-
         }
 
         private string SetTitle()

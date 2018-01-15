@@ -20,7 +20,7 @@ namespace PottiRoma.App.ViewModels
 
         public DelegateCommand<object> ClienteSelectedCommand { get; set; }
 
-        public ObservableCollection<Cliente> ListaClientes { get; set; }
+        public ObservableCollection<Client> ListaClientes { get; set; }
 
         private string _pageTitle;
         public string PageTitle
@@ -35,46 +35,46 @@ namespace PottiRoma.App.ViewModels
 
             ClienteSelectedCommand = new DelegateCommand<object>(async param => await SelecionarCliente(param))
                 .ObservesCanExecute(() => CanExecute);
-            ListaClientes = new ObservableCollection<Cliente>();
+            ListaClientes = new ObservableCollection<Client>();
         }
 
         private void GenerateMock()
         {
-            Cliente mock1 = new Cliente
+            Client mock1 = new Client
             {
-                Nome = "Cliente 1",
+                Name = "Cliente 1",
                 Email = "cliente1@gmail.com",
-                Telefone = "31 3248324",
+                Telephone = "31 3248324",
             };
-            Cliente mock2 = new Cliente
+            Client mock2 = new Client
             {
-                Nome = "Cliente 5",
+                Name = "Cliente 5",
                 Email = "cliente1@gmail.com",
-                Telefone = "31 3248324",
+                Telephone = "31 3248324",
             };
-            Cliente mock3 = new Cliente
+            Client mock3 = new Client
             {
-                Nome = "Cliente 3",
+                Name = "Cliente 3",
                 Email = "cliente2@gmail.com",
-                Telefone = "31 6456456",
+                Telephone = "31 6456456",
             };
-            Cliente mock4 = new Cliente
+            Client mock4 = new Client
             {
-                Nome = "Cliente 4",
+                Name = "Cliente 4",
                 Email = "cliente3@gmail.com",
-                Telefone = "31 3456347",
+                Telephone = "31 3456347",
             };
-            Cliente mock5 = new Cliente
+            Client mock5 = new Client
             {
-                Nome = "Cliente 5",
+                Name = "Cliente 5",
                 Email = "cliente4@gmail.com",
-                Telefone = "31 56433534",
+                Telephone = "31 56433534",
             };
-            Cliente mock6 = new Cliente
+            Client mock6 = new Client
             {
-                Nome = "Cliente 6",
+                Name = "Cliente 6",
                 Email = "cliente6@gmail.com",
-                Telefone = "31 643634",
+                Telephone = "31 643634",
             };
             ListaClientes.Add(mock1);
             ListaClientes.Add(mock2);

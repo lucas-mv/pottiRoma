@@ -27,7 +27,7 @@ namespace PottiRoma.App.ViewModels
         public DelegateCommand<object> EditClientCommand { get; set; }
         public DelegateCommand<object> RemoveClientCommand { get; set; }
         public DelegateCommand RegisterNewClientCommand { get; set; }
-        public ObservableCollection<Cliente> ListaClientes { get; set; }
+        public ObservableCollection<Client> ListaClientes { get; set; }
 
         public MyClientsPageViewModel(INavigationService navigationService)
         {
@@ -38,7 +38,7 @@ namespace PottiRoma.App.ViewModels
             RemoveClientCommand = new DelegateCommand<object>(param => RemoveClient(param))
                 .ObservesCanExecute(() => CanExecute);
             RegisterNewClientCommand = new DelegateCommand(RegisterNewClient).ObservesCanExecute(() => CanExecute);
-            ListaClientes = new ObservableCollection<Cliente>();
+            ListaClientes = new ObservableCollection<Client>();
             GenerateMock();
         }
 
@@ -54,12 +54,12 @@ namespace PottiRoma.App.ViewModels
             if (item == null) return;
 
             CanExecuteInitial();
-            Cliente removedClient = (Cliente)item;
+            Client removedClient = (Client)item;
             if (removedClient != null)
             {
                 for (int i = 0; i < ListaClientes.Count; i++)
                 {
-                    if (ListaClientes[i].CPF == removedClient.CPF)
+                    if (ListaClientes[i].Cpf == removedClient.Cpf)
                         ListaClientes.RemoveAt(i);
                 }
             }
@@ -68,41 +68,41 @@ namespace PottiRoma.App.ViewModels
 
         private void GenerateMock()
         {
-            Cliente mock1 = new Cliente
+            Client mock1 = new Client
             {
-                Nome = "Cliente 1",
+                Name = "Cliente 1",
                 Email = "cliente1@gmail.com",
-                Telefone = "31 3248324",
+                Telephone = "31 3248324",
             };
-            Cliente mock2 = new Cliente
+            Client mock2 = new Client
             {
-                Nome = "Cliente 5",
+                Name = "Cliente 5",
                 Email = "cliente1@gmail.com",
-                Telefone = "31 3248324",
+                Telephone = "31 3248324",
             };
-            Cliente mock3 = new Cliente
+            Client mock3 = new Client
             {
-                Nome = "Cliente 3",
+                Name = "Cliente 3",
                 Email = "cliente2@gmail.com",
-                Telefone = "31 6456456",
+                Telephone = "31 6456456",
             };
-            Cliente mock4 = new Cliente
+            Client mock4 = new Client
             {
-                Nome = "Cliente 4",
+                Name = "Cliente 4",
                 Email = "cliente3@gmail.com",
-                Telefone = "31 3456347",
+                Telephone = "31 3456347",
             };
-            Cliente mock5 = new Cliente
+            Client mock5 = new Client
             {
-                Nome = "Cliente 5",
+                Name = "Cliente 5",
                 Email = "cliente4@gmail.com",
-                Telefone = "31 56433534",
+                Telephone = "31 56433534",
             };
-            Cliente mock6 = new Cliente
+            Client mock6 = new Client
             {
-                Nome = "Cliente 6",
+                Name = "Cliente 6",
                 Email = "cliente6@gmail.com",
-                Telefone = "31 643634",
+                Telephone = "31 643634",
             };
             ListaClientes.Add(mock1);
             ListaClientes.Add(mock2);
@@ -117,7 +117,7 @@ namespace PottiRoma.App.ViewModels
             if (item == null) return;
 
             CanExecuteInitial();
-            Cliente selectedClient = (Cliente)item;
+            Client selectedClient = (Client)item;
             if (selectedClient != null)
             {
                 var param = new NavigationParameters();

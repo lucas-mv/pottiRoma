@@ -16,5 +16,6 @@ namespace PottiRoma.App.Models.Models
         public string PrimaryTelephone { get; set; }
         public string SecondaryTelphone { get; set; }
         public UserType UserType { get; set; }
+        public Salesperson Salesperson { get; set; }
     }
 }
