@@ -26,7 +26,7 @@ namespace PottiRoma.Api.Controllers
         public async Task RegisterClient(RegisterClientRequest request)
         {
             await ValidateToken();
-            _clientsService.RegisterClient(request.SalespersonId, request.Name, request.Cpf, request.Telephone, request.Email, request.Address);
+            _clientsService.RegisterClient(request.SalespersonId, request.Name, request.Cpf, request.Telephone, request.Email, request.Address, request.Birthdate);
         }
 
         [Route("Get/{salespersonid}")]

@@ -54,7 +54,7 @@ namespace PottiRoma.App.Views
         {
             if (SearchBarClientes == null || SearchBarClientes.Text == null) return true;
 
-            var cliente = item as Cliente;
+            var cliente = item as Client;
 
             string textolista;
             string textobarra;
@@ -65,9 +65,9 @@ namespace PottiRoma.App.Views
 
             if (cliente != null)
             {
-                if (cliente.Nome != null)
+                if (!string.IsNullOrEmpty(cliente.Name))
                 {
-                    textolista = translate.TranslateString(cliente.Nome.ToLower());
+                    textolista = translate.TranslateString(cliente.Name.ToLower());
                     if (textolista.Contains(textobarra))
                         ok = true;
                 }

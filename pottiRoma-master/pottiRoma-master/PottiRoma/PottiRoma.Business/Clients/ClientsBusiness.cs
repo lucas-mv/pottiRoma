@@ -10,7 +10,7 @@ namespace PottiRoma.Business.Clients
 {
     public static class ClientsBusiness
     {
-        public static void RegisterClient(Guid clientId, Guid salespersonId, string name, string cpf, string telephone, string email, string address)
+        public static void RegisterClient(Guid clientId, Guid salespersonId, string name, string cpf, string telephone, string email, string address, DateTime birthdate)
         {
             var client = new ClientEntity()
             {
@@ -20,7 +20,8 @@ namespace PottiRoma.Business.Clients
                 Name = name,
                 SalespersonId = salespersonId,
                 Telephone = telephone,
-                Address = address
+                Address = address,
+                Birthdate = birthdate
             };
             ClientsRepository.Get().InsertClient(client);
         }

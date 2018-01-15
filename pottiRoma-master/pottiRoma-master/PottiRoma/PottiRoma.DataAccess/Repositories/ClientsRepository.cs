@@ -33,8 +33,9 @@ namespace PottiRoma.DataAccess.Repositories
         Nome as Name, 
         Email as Email, 
         Telefone as Telephone, 
-        Endereco as Address, 
-        Cpf as Cpf
+        Endereco as Address,
+        Cpf as Cpf,
+        DataAniversario as Birthdate
         FROM dbo.Cliente
         WHERE VendedorId = @vendedorid";
 
@@ -51,7 +52,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        Email, 
 	        Telefone, 
 	        Endereco, 
-	        Cpf
+	        Cpf,
+            DataAniversario
         )
         VALUES 
         (
@@ -61,7 +63,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        @email, 
 	        @telefone, 
 	        @endereco, 
-	        @cpf
+	        @cpf,
+            @dataaniversario
         )";
 
         #endregion
@@ -88,6 +91,7 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@telefone", client.Telephone, System.Data.DbType.AnsiString);
             parameters.Add("@cpf", client.Cpf, System.Data.DbType.AnsiString);
             parameters.Add("@endereco", client.Address, System.Data.DbType.AnsiString);
+            parameters.Add("@dataaniversario", client.Birthdate, System.Data.DbType.DateTime);
 
             Execute(INSERT_CLIENT, parameters);
         }

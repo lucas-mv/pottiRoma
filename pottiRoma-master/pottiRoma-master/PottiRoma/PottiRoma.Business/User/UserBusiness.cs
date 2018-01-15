@@ -89,6 +89,8 @@ namespace PottiRoma.Business.User
             {
                 user.Password = string.Empty;
                 user.PasswordSalt = string.Empty;
+                if(user.UserType == UserType.SalesPerson || user.UserType == UserType.SecondarySalesPerson)
+                    user.Salesperson = SalesBusiness.GetSalespersonByUserId(user.UserId);
                 return user;
             }
             else

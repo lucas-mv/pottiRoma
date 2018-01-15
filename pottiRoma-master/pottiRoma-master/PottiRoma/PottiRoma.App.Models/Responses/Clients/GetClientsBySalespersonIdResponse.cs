@@ -9,6 +9,6 @@ namespace PottiRoma.App.Models.Responses.Clients
 {
     public class GetClientsBySalespersonIdResponse
     {
-        public List<Cliente> Clients { get; set; }
+        public List<Client> Clients { get; set; }
     }
 }

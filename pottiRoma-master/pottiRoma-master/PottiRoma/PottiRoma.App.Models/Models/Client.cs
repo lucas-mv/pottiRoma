@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace PottiRoma.Api.Request.Clients
+namespace PottiRoma.App.Models.Models
 {
-    public class RegisterClientRequest
+    public class Client
     {
+        public Guid ClientId { get; set; }
         public Guid SalespersonId { get; set; }
         public string Name { get; set; }
         public string Cpf { get; set; }
