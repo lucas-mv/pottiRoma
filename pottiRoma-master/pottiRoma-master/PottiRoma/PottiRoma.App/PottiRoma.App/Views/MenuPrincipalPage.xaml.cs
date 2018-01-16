@@ -5,7 +5,7 @@ namespace PottiRoma.App.Views
     public partial class MenuPrincipalPage : MasterDetailPage
     {
         public const string SelectedBackgroundColor = "#435861";
-        public const double ShadedMenuItem = 0.7d;
+        public const double ShadedMenuItem = 0.4d;
         public const double SelectedMenuItem = 1.0d;
         public MenuPrincipalPage()
         {

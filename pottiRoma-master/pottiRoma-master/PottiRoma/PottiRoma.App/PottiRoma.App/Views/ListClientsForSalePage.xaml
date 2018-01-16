@@ -76,30 +76,37 @@
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="1" />
                                 </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="16" />
+                                </Grid.ColumnDefinitions>
 
                                 <BoxView
                                     Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
                                     BackgroundColor="{StaticResource CorBoxSeparetorLine}"
                                     HeightRequest="1"
                                     VerticalOptions="End" />
 
                                 <Label
                                     Grid.Row="0"
-                                    Margin="16,0,0,0"
+                                    Grid.Column="1"
                                     FontSize="{StaticResource StandardFontSize}"
                                     HorizontalOptions="Start"
-                                    Text="{Binding Nome}"
+                                    Text="{Binding Name}"
                                     TextColor="{StaticResource TextColor}"
                                     VerticalOptions="Center" />
 
                                 <Image
-                                    Margin="0,0,16,0"
-                                    HeightRequest="16"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
                                     HorizontalOptions="End"
                                     Opacity="{StaticResource ShadedMenu}"
                                     Source="ic_keyboard_arrow_right_black_24dp.png"
-                                    VerticalOptions="Center"
-                                    WidthRequest="16" />
+                                    VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
