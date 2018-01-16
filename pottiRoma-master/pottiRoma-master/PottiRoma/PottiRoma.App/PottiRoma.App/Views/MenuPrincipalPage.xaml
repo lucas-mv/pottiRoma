@@ -10,7 +10,7 @@
     Icon="ic_menu_white.png">
 
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu">
+        <ContentPage Title="Menu" Icon="ic_menu_white.png">
             <ScrollView>
                 <Grid
                     BackgroundColor="{StaticResource BackgroundMenuColor}"

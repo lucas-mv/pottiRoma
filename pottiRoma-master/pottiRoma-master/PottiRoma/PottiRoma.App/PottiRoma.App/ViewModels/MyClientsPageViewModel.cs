@@ -57,10 +57,13 @@ namespace PottiRoma.App.ViewModels
             {
                 await NavigationHelper.ShowLoading();
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                var response = await _clientsAppService.GetClientsBySalespersonId(user.Salesperson.SalespersonId.ToString());
-                if (response == null || response.Clients == null)
-                    throw new Exception("Ocorreu um erro, tente novamente mais tarde.");
-                ListaClientes = new ObservableCollection<Client>(response.Clients);
+                if (user.Salesperson != null)
+                {
+                    var response = await _clientsAppService.GetClientsBySalespersonId(user.Salesperson.SalespersonId.ToString());
+                    if (response == null || response.Clients == null)
+                        throw new Exception("Ocorreu um erro, tente novamente mais tarde.");
+                    ListaClientes = new ObservableCollection<Client>(response.Clients);
+                }
             }
             catch(Exception ex)
             {

@@ -72,6 +72,7 @@ namespace PottiRoma.App.ViewModels
 
             ClientSelectedForEdition = new Client();
             OpenPopupDateCommand = new DelegateCommand(OpenDatePopup).ObservesCanExecute(() => CanExecute);
+            RegisterNewClientCommand = new DelegateCommand(RegisterNewClient).ObservesCanExecute(() => CanExecute);
             AnniversaryDate = DatePlaceholder;
             ColorDateAnniversary = Color.FromHex("#d5d5d5");
             PageTitle = SetTitle();
@@ -129,10 +130,11 @@ namespace PottiRoma.App.ViewModels
                     Telephone = ClientSelectedForEdition.Telephone
                 });
                 UserDialogs.Instance.Toast("Cliente registrado com sucesso!");
+                await _navigationService.GoBackAsync();
             }
             catch(Exception ex)
             {
-                UserDialogs.Instance.Toast(ex.Message);
+                UserDialogs.Instance.Toast("Não foi possível registrar o cliente.");
             }
             finally
             {
