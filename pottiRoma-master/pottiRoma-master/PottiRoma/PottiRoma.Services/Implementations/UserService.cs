@@ -36,5 +36,12 @@ namespace PottiRoma.Services.Implementations
         {
             UserBusiness.ChangePassword(userId, oldPassword, newPassword);
         }
+
+        public UserEntity ResetPassword(Guid userId)
+        {
+            var user = GetUserById(userId);
+            user.Password = UserBusiness.ResetPassword(userId);
+            return user;
+        }
     }
 }
