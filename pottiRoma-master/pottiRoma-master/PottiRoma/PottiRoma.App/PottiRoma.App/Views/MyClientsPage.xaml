@@ -47,7 +47,7 @@
             Grid.Row="1"
             AllowSwiping="True"
             ItemSize="65"
-            ItemSpacing="6"
+            ItemSpacing="0"
             ItemsSource="{Binding ListaClientes}"
             SelectionBackgroundColor="{StaticResource SelectionBackgroundColor}"
             SwipeOffset="200">
@@ -72,6 +72,7 @@
                                     HorizontalOptions="Fill"
                                     Style="{StaticResource ButtonDefault}"
                                     Text="Editar"
+                                    VerticalOptions="Center"
                                     WidthRequest="100" />
                                 <Button
                                     Command="{Binding Path=BindingContext.RemoveClientCommand, Source={x:Reference ClientsListView}}"
@@ -80,6 +81,7 @@
                                     HorizontalOptions="Fill"
                                     Style="{StaticResource RedButton}"
                                     Text="Remover"
+                                    VerticalOptions="Center"
                                     WidthRequest="100" />
                             </StackLayout>
                         </ViewCell.View>
@@ -95,16 +97,23 @@
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="1" />
                                 </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="16" />
+                                </Grid.ColumnDefinitions>
 
                                 <BoxView
                                     Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
                                     BackgroundColor="{StaticResource CorBoxSeparetorLine}"
                                     HeightRequest="1"
                                     VerticalOptions="End" />
 
                                 <Label
                                     Grid.Row="0"
-                                    Margin="16,0,0,0"
+                                    Grid.Column="1"
                                     FontSize="{StaticResource StandardFontSize}"
                                     HorizontalOptions="Start"
                                     Text="{Binding Name}"
@@ -112,12 +121,13 @@
                                     VerticalOptions="Center" />
 
                                 <Image
-                                    Margin="0,0,16,0"
-                                    HeightRequest="16"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
                                     HorizontalOptions="End"
-                                    Source="right.png"
-                                    VerticalOptions="Center"
-                                    WidthRequest="16" />
+                                    Opacity="{StaticResource ShadedMenu}"
+                                    Source="ic_keyboard_arrow_left_black_24dp.png"
+                                    VerticalOptions="Center" />
                             </Grid>
 
                         </ViewCell.View>

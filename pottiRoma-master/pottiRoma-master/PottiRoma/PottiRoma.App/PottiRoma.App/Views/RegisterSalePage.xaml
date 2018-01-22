@@ -108,10 +108,12 @@
                                     Text="Observações"
                                     TextColor="{StaticResource DarkTextColor}" />
                                 <renderers:CustomEditor
+                                    Margin="0"
                                     FontSize="14"
+                                    HeightRequest="100"
                                     HorizontalOptions="Fill"
                                     TextColor="{StaticResource TextColor}"
-                                    VerticalOptions="Fill" />
+                                    VerticalOptions="Center" />
                             </StackLayout>
                             <ContentView
                                 Grid.Row="3"
@@ -128,7 +130,6 @@
                                     TextColor="Green"
                                     VerticalOptions="Center" />
                                 <renderers:CustomEntry
-                                    x:Name="Entry_Price"
                                     Grid.Column="1"
                                     Margin="0,0,16,0"
                                     Completed="Entry_Price_Completed"
@@ -173,7 +174,8 @@
                                     PlaceholderColor="{StaticResource PlaceholderColor}"
                                     TextColor="{StaticResource TextColor}"
                                     Unfocused="Entry_Price_Unfocused"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center"
+                                    WidthRequest="120" />
                             </Grid>
                             <ContentView
                                 Grid.Row="7"

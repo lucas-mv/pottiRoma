@@ -40,48 +40,51 @@ namespace PottiRoma.App.ViewModels
 
         private void GenerateMock()
         {
-            Client mock1 = new Client
+            ListaClientes.Add(new Client
             {
-                Name = "Cliente 1",
-                Email = "cliente1@gmail.com",
-                Telephone = "31 3248324",
-            };
-            Client mock2 = new Client
+                Birthdate = new DateTime(1990, 11, 08),
+                Name = "Lucas Roscoe",
+                Cpf = "109472066-63",
+                ClientId = Guid.NewGuid(),
+                Email = "lucasrloliveira@gmail.com",
+                Telephone = "998085147",
+            });
+            ListaClientes.Add(new Client
             {
-                Name = "Cliente 5",
-                Email = "cliente1@gmail.com",
-                Telephone = "31 3248324",
-            };
-            Client mock3 = new Client
+                Birthdate = new DateTime(1989, 8, 25),
+                Name = "Maria Clara Diniz",
+                Cpf = "109549066-45",
+                ClientId = Guid.NewGuid(),
+                Email = "lucasrloliveira@gmail.com",
+                Telephone = "998986521",
+            });
+            ListaClientes.Add(new Client
             {
-                Name = "Cliente 3",
-                Email = "cliente2@gmail.com",
-                Telephone = "31 6456456",
-            };
-            Client mock4 = new Client
+                Birthdate = new DateTime(1990, 11, 08),
+                Name = "Laura Diniz",
+                Cpf = "367472066-33",
+                ClientId = Guid.NewGuid(),
+                Email = "Lauradiniz@gmail.com",
+                Telephone = "985748526",
+            });
+            ListaClientes.Add(new Client
             {
-                Name = "Cliente 4",
-                Email = "cliente3@gmail.com",
-                Telephone = "31 3456347",
-            };
-            Client mock5 = new Client
+                Birthdate = new DateTime(1990, 11, 08),
+                Name = "Luisa Antunes",
+                Cpf = "685956874-12",
+                ClientId = Guid.NewGuid(),
+                Email = "luisa_antunes@gmail.com",
+                Telephone = "987545852",
+            });
+            ListaClientes.Add(new Client
             {
-                Name = "Cliente 5",
-                Email = "cliente4@gmail.com",
-                Telephone = "31 56433534",
-            };
-            Client mock6 = new Client
-            {
-                Name = "Cliente 6",
-                Email = "cliente6@gmail.com",
-                Telephone = "31 643634",
-            };
-            ListaClientes.Add(mock1);
-            ListaClientes.Add(mock2);
-            ListaClientes.Add(mock3);
-            ListaClientes.Add(mock4);
-            ListaClientes.Add(mock5);
-            ListaClientes.Add(mock6);
+                Birthdate = new DateTime(1990, 11, 08),
+                Name = "Davi Ferraz",
+                Cpf = "521478596-12",
+                ClientId = Guid.NewGuid(),
+                Email = "davi_ferraz@gmail.com",
+                Telephone = "985623165",
+            });
         }
 
         private async Task SelecionarCliente(object item)

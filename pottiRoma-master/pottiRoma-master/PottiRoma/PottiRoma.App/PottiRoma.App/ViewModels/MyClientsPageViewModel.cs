@@ -53,24 +53,83 @@ namespace PottiRoma.App.ViewModels
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            try
+
+
+            //TODO verificar esse metodo porque esta dando null pointer no user.salesPerson
+
+            //try
+            //{
+            //    await NavigationHelper.ShowLoading();
+            //    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+            //    if (user.Salesperson != null)
+            //    {
+            //        var response = await _clientsAppService.GetClientsBySalespersonId(user.Salesperson.SalespersonId.ToString());
+            //        if (response == null || response.Clients == null)
+            //            throw new Exception("Ocorreu um erro, tente novamente mais tarde.");
+            //        ListaClientes = new ObservableCollection<Client>(response.Clients);
+            //    }
+            //}
+            //catch(Exception ex)
+            //{
+            //    UserDialogs.Instance.Toast(ex.Message);
+            //    await _navigationService.GoBackAsync();
+            //}
+            //finally
+            //{
+            //    await NavigationHelper.PopLoading();
+            //}
+
+
+            MockClients();
+        }
+
+        private void MockClients()
+        {
+            ListaClientes.Add(new Client
             {
-                await NavigationHelper.ShowLoading();
-                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                var response = await _clientsAppService.GetClientsBySalespersonId(user.Salesperson.SalespersonId.ToString());
-                if (response == null || response.Clients == null)
-                    throw new Exception("Ocorreu um erro, tente novamente mais tarde.");
-                ListaClientes = new ObservableCollection<Client>(response.Clients);
-            }
-            catch(Exception ex)
+                Birthdate = new DateTime(1990,11,08),
+                Name = "Lucas Roscoe",
+                Cpf = "109472066-63",
+                ClientId = Guid.NewGuid(),
+                Email = "lucasrloliveira@gmail.com",
+                Telephone = "998085147",
+            });
+            ListaClientes.Add(new Client
             {
-                UserDialogs.Instance.Toast(ex.Message);
-                await _navigationService.GoBackAsync();
-            }
-            finally
+                Birthdate = new DateTime(1989, 8, 25),
+                Name = "Maria Clara Diniz",
+                Cpf = "109549066-45",
+                ClientId = Guid.NewGuid(),
+                Email = "lucasrloliveira@gmail.com",
+                Telephone = "998986521",
+            });
+            ListaClientes.Add(new Client
             {
-                await NavigationHelper.PopLoading();
-            }
+                Birthdate = new DateTime(1990, 11, 08),
+                Name = "Laura Diniz",
+                Cpf = "367472066-33",
+                ClientId = Guid.NewGuid(),
+                Email = "Lauradiniz@gmail.com",
+                Telephone = "985748526",
+            });
+            ListaClientes.Add(new Client
+            {
+                Birthdate = new DateTime(1990, 11, 08),
+                Name = "Luisa Antunes",
+                Cpf = "685956874-12",
+                ClientId = Guid.NewGuid(),
+                Email = "luisa_antunes@gmail.com",
+                Telephone = "987545852",
+            });
+            ListaClientes.Add(new Client
+            {
+                Birthdate = new DateTime(1990, 11, 08),
+                Name = "Davi Ferraz",
+                Cpf = "521478596-12",
+                ClientId = Guid.NewGuid(),
+                Email = "davi_ferraz@gmail.com",
+                Telephone = "985623165",
+            });
         }
 
         private async void RegisterNewClient()
