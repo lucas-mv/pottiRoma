@@ -89,7 +89,7 @@ namespace PottiRoma.App.ViewModels
             {
                 Birthdate = new DateTime(1990,11,08),
                 Name = "Lucas Roscoe",
-                Cpf = "109472066-63",
+                Cep = "109472066-63",
                 ClientId = Guid.NewGuid(),
                 Email = "lucasrloliveira@gmail.com",
                 Telephone = "998085147",
@@ -98,7 +98,7 @@ namespace PottiRoma.App.ViewModels
             {
                 Birthdate = new DateTime(1989, 8, 25),
                 Name = "Maria Clara Diniz",
-                Cpf = "109549066-45",
+                Cep = "109549066-45",
                 ClientId = Guid.NewGuid(),
                 Email = "lucasrloliveira@gmail.com",
                 Telephone = "998986521",
@@ -107,7 +107,7 @@ namespace PottiRoma.App.ViewModels
             {
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Laura Diniz",
-                Cpf = "367472066-33",
+                Cep = "367472066-33",
                 ClientId = Guid.NewGuid(),
                 Email = "Lauradiniz@gmail.com",
                 Telephone = "985748526",
@@ -116,7 +116,7 @@ namespace PottiRoma.App.ViewModels
             {
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Luisa Antunes",
-                Cpf = "685956874-12",
+                Cep = "685956874-12",
                 ClientId = Guid.NewGuid(),
                 Email = "luisa_antunes@gmail.com",
                 Telephone = "987545852",
@@ -125,7 +125,7 @@ namespace PottiRoma.App.ViewModels
             {
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Davi Ferraz",
-                Cpf = "521478596-12",
+                Cep = "521478596-12",
                 ClientId = Guid.NewGuid(),
                 Email = "davi_ferraz@gmail.com",
                 Telephone = "985623165",
@@ -149,7 +149,7 @@ namespace PottiRoma.App.ViewModels
             {
                 for (int i = 0; i < ListaClientes.Count; i++)
                 {
-                    if (ListaClientes[i].Cpf == removedClient.Cpf)
+                    if (ListaClientes[i].ClientId == removedClient.ClientId)
                         ListaClientes.RemoveAt(i);
                 }
             }

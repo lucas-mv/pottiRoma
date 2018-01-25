@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.Utils.NavigationHelpers;
+﻿using PottiRoma.App.Models.Models;
+using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -20,7 +21,15 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _screenHeightRequest, value); }
         }
 
+        private User _user;
+        public User User
+        {
+            get { return _user; }
+            set { SetProperty(ref _user, value); }
+        }
+
         public DelegateCommand ChangePasswordCommand { get; set; }
+        
 
         public EditPersonalDataPageViewModel(INavigationService navigationService)
         {
@@ -33,6 +42,27 @@ namespace PottiRoma.App.ViewModels
             CanExecuteInitial();
             await _navigationService.NavigateAsync(NavigationSettings.ResetPassword, useModalNavigation: true);
             CanExecuteEnd();
+        }
+
+        private void MockUser()
+        {
+            string prefixCPF = "CPF : ";
+
+            User = new User()
+            {
+                UserName = "Usuário teste",
+                Cep = prefixCPF + "30310-370",
+                Email = "teste@teste.com",
+                PrimaryTelephone = "31 99808-6453",
+                SecondaryTelephone = "31 99657-6453",
+                Cpf = "182738473-90"
+            };
+        }
+
+        public override void OnNavigatedTo(NavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            MockUser();
         }
     }
 }
