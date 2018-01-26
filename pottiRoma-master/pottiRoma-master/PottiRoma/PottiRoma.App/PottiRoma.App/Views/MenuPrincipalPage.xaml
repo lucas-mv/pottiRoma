@@ -68,13 +68,13 @@
                             <Image
                                 Grid.Column="1"
                                 HorizontalOptions="Start"
-                                Source="ic_account_circle_white_24dp.png"
+                                Source="ic_regras.png"
                                 VerticalOptions="Center" />
                             <Label
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"
                                 HorizontalOptions="Start"
-                                Text="    Meu Perfil"
+                                Text="    Regras do Jogo"
                                 TextColor="{StaticResource WhiteColor}"
                                 VerticalOptions="Center" />
                         </Grid>
@@ -94,7 +94,7 @@
                             <Image
                                 Grid.Column="1"
                                 HorizontalOptions="Start"
-                                Source="ic_attach_money_white_24dp.png"
+                                Source="ic_reg.png"
                                 VerticalOptions="Center" />
                             <Label
                                 Grid.Column="2"
@@ -146,7 +146,7 @@
                             <Image
                                 Grid.Column="1"
                                 HorizontalOptions="Start"
-                                Source="ic_insert_invitation_white_24dp.png"
+                                Source="ic_invite_flor.png"
                                 VerticalOptions="Center" />
                             <Label
                                 Grid.Column="2"
@@ -173,7 +173,7 @@
                             <Image
                                 Grid.Column="1"
                                 HorizontalOptions="Start"
-                                Source="ic_insert_invitation_white_24dp.png"
+                                Source="ic_edit_data.png"
                                 VerticalOptions="Center" />
                             <Label
                                 Grid.Column="2"
@@ -200,7 +200,7 @@
                             <Image
                                 Grid.Column="1"
                                 HorizontalOptions="Start"
-                                Source="ic_insert_invitation_white_24dp.png"
+                                Source="ic_log.png"
                                 VerticalOptions="Center" />
                             <Label
                                 Grid.Column="2"
