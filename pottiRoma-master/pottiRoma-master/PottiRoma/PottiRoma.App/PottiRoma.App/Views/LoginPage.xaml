@@ -64,7 +64,6 @@
                             HeightRequest="40"
                             OutlineColor="{StaticResource OutlineColor}">
                             <renderers:CustomEntry
-                                Focused="Entry_Focused"
                                 FontSize="{StaticResource StandardFontSize}"
                                 Keyboard="Email"
                                 Text="{Binding Login}"
@@ -85,21 +84,24 @@
                             HeightRequest="40"
                             OutlineColor="{StaticResource OutlineColor}">
                             <renderers:CustomEntry
-                                Focused="Entry_Focused"
                                 FontSize="{StaticResource StandardFontSize}"
                                 IsPassword="True"
                                 Text="{Binding Password}"
                                 TextColor="Gray"
                                 VerticalOptions="Center" />
                         </Frame>
-
+                        <ContentView HeightRequest="10" />
                         <Label
                             x:Name="LoginIncorretoLabel"
                             FontSize="11"
-                            IsVisible="{Binding LoginIncorreto}"
-                            Opacity="0.8"
-                            Text="Usuário e/ou senha incorretos."
-                            TextColor="{StaticResource ErrorColor}" />
+                            HorizontalOptions="Start"
+                            Text="Esqueci minha Senha"
+                            TextColor="{StaticResource LightTextColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ResetPasswordCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+
                         <ContentView HeightRequest="20" />
                     </StackLayout>
 

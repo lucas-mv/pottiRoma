@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.Utils.Helpers;
+﻿using PottiRoma.App.CustomRenderers;
+using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.ViewModels;
 using Xamarin.Forms;
 
@@ -38,17 +39,25 @@ namespace PottiRoma.App.Views
 
         private void Entry_Price_Focused(object sender, FocusEventArgs e)
         {
-            Entry_Price.Text = "";
+            var thisEntry = sender as CustomEntry;
+
+            thisEntry.Text = "";
         }
 
         private void Entry_Price_Unfocused(object sender, FocusEventArgs e)
         {
-            Entry_Price.Text = Formatter.FormatDRE(decimal.Parse(Entry_Price.Text));
+            var thisEntry = sender as CustomEntry;
+
+            if (!string.IsNullOrEmpty(thisEntry.Text) && !thisEntry.Text.Contains("R$"))
+                thisEntry.Text = Formatter.FormatDRE(decimal.Parse(thisEntry.Text));
         }
 
         private void Entry_Price_Completed(object sender, System.EventArgs e)
         {
-            Entry_Price.Text = Formatter.FormatDRE(decimal.Parse(Entry_Price.Text));
+            var thisEntry = sender as CustomEntry;
+
+            if (!string.IsNullOrEmpty(thisEntry.Text) && !thisEntry.Text.Contains("R$"))
+                thisEntry.Text = Formatter.FormatDRE(decimal.Parse(thisEntry.Text));
         }
     }
 }

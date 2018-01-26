@@ -17,6 +17,8 @@ namespace PottiRoma.Business.User
 {
     public static class UserBusiness
     {
+        private static Random _random = new Random();
+
         public static UserEntity GetUserById(Guid userId)
         {
             var user = UserRepository.Get().GetUserById(userId);
@@ -118,7 +120,28 @@ namespace PottiRoma.Business.User
             }
         }
 
+        public static string ResetPassword(Guid userId)
+        {
+            UserEntity user;
+            user = UserRepository.Get().GetUserAuthById(userId);
+
+            if (user == null)
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+
+            var newPassword = RandomString(10);
+            var newPasswordEncryption = EncryptPassword(newPassword);
+            UserRepository.Get().UpdateUserPassword(user.UserId, newPasswordEncryption.Password, newPasswordEncryption.Salt);
+            return newPassword;
+        }
+
         #region Private methods
+
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[_random.Next(s.Length)]).ToArray());
+        }
 
         private static PasswordCrypto EncryptPassword(string password)
         {

@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.Models.Responses.Clients;
+﻿using PottiRoma.App.Models.Requests.Clients;
+using PottiRoma.App.Models.Responses.Clients;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,9 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Get("/Clients/Get/{salespersonid}")]
         [Headers("Authorization: Bearer")]
         Task<GetClientsBySalespersonIdResponse> GetClientsBySalespersonId([AliasAs("id")]string salespersonId);
+
+        [Post("/Clients/Register")]
+        [Headers("Authorization: Bearer")]
+        Task RegisterClient(RegisterClientRequest request);
     }
 }

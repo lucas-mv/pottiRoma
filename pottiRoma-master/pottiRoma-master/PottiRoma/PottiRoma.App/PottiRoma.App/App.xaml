@@ -36,8 +36,8 @@
             <OnPlatform
                 x:Key="ShadedMenu"
                 x:TypeArguments="x:Double"
-                Android="0.7"
-                iOS="0.7" />
+                Android="0.4"
+                iOS="0.6" />
 
             <OnIdiom
                 x:Key="HeightMenuItem"
