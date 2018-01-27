@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PottiRoma.App.Views.ListRankingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource WhiteColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image Aspect="AspectFill" Source="banner_ranking.jpg" />
+        <Grid Margin="16,0,16,0" VerticalOptions="End">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="16" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="90" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Column="0"
+                FontAttributes="Bold"
+                FontSize="{StaticResource LargeFontSize}"
+                HorizontalOptions="Start"
+                Text="25."
+                TextColor="{StaticResource LightBackgroundColor}"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Column="1"
+                FontAttributes="Bold"
+                FontSize="{StaticResource LargeFontSize}"
+                HorizontalOptions="Start"
+                Text="Lucas Roscoe"
+                TextColor="{StaticResource LightBackgroundColor}"
+                VerticalOptions="Center" />
+            <StackLayout
+                Grid.Column="2"
+                HorizontalOptions="End"
+                Orientation="Horizontal"
+                Spacing="5">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    HorizontalOptions="Start"
+                    Text="554"
+                    TextColor="{StaticResource LightBackgroundColor}"
+                    VerticalOptions="Center" />
+                <Image
+                    HeightRequest="30"
+                    Source="ic_trophy_white.png"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+            </StackLayout>
+
+
+        </Grid>
+
+        <syncfusion:SfListView
+            Grid.Row="1"
+            ItemSize="65"
+            ItemsSource="{Binding AppUsers}"
+            SelectionBackgroundColor="Transparent">
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid
+                            Grid.Row="0"
+                            Margin="16"
+                            VerticalOptions="End">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="4" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="90" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                FontSize="{StaticResource StandardFontSize}"
+                                HorizontalOptions="Start"
+                                Text="{Binding RankingPosition}"
+                                TextColor="{StaticResource TextColor}"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="1"
+                                FontSize="{StaticResource StandardFontSize}"
+                                HorizontalOptions="Start"
+                                Text="{Binding UserName}"
+                                TextColor="{StaticResource TextColor}"
+                                VerticalOptions="Center" />
+                            <StackLayout
+                                Grid.Column="2"
+                                HorizontalOptions="End"
+                                Orientation="Horizontal"
+                                Spacing="5">
+                                <Label
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding TotalPoints}"
+                                    TextColor="{StaticResource TextColor}"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    HeightRequest="25"
+                                    Source="ic_trophy.png"
+                                    VerticalOptions="Center"
+                                    WidthRequest="17" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+    </Grid>
+
+</ContentPage>

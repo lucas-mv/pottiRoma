@@ -87,7 +87,6 @@ namespace PottiRoma.App.ViewModels
             if (item == null) return;
 
             CanExecuteInitial();
-            await Task.Delay(1000);
             var param = new NavigationParameters();
             await _navigationService.NavigateAsync(NavigationSettings.RegisterSale, param);
 

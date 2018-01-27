@@ -53,6 +53,7 @@
     <Compile Include="ViewModels\GamificationRulesPageViewModel.cs" />
     <Compile Include="ViewModels\InviteFlowerPageViewModel.cs" />
     <Compile Include="ViewModels\ListClientsForSalePageViewModel.cs" />
+    <Compile Include="ViewModels\ListRankingPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPrincipalPageViewModel.cs" />
@@ -87,6 +88,9 @@
     </Compile>
     <Compile Include="Views\ListClientsForSalePage.xaml.cs">
       <DependentUpon>ListClientsForSalePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListRankingPage.xaml.cs">
+      <DependentUpon>ListRankingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MyClientsPage.xaml.cs">
       <DependentUpon>MyClientsPage.xaml</DependentUpon>
@@ -355,6 +359,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\SalesHistoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ListRankingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

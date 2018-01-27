@@ -52,6 +52,7 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<PopupGetDate>();
             Container.RegisterTypeForNavigation<TrophyRoomPage>();
             Container.RegisterTypeForNavigation<SalesHistoryPage>();
+            Container.RegisterTypeForNavigation<ListRankingPage>();
         }
     }
 }

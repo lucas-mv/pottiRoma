@@ -12,19 +12,19 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="CarouselRankingTemplate">
-                <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                    <Image
-                        HeightRequest="450"
-                        Source="banner_ranking1.png"
-                        WidthRequest="220" />
+                <Grid HeightRequest="280">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToRankingPageCommand, Source={x:Reference PageContent}}" />
+                    </Grid.GestureRecognizers>
+                    <Image Aspect="AspectFill" Source="{Binding Image}" />
                     <Label
-                        Margin="16,32,8,0"
+                        Margin="16,40,16,0"
                         FontAttributes="Bold"
                         FontSize="{StaticResource StandardFontSize}"
                         HeightRequest="50"
                         HorizontalOptions="Start"
                         HorizontalTextAlignment="Start"
-                        Text="asfdfasafsfas"
+                        Text="{Binding Description}"
                         TextColor="{StaticResource LightBackgroundColor}"
                         VerticalOptions="Start"
                         VerticalTextAlignment="Start" />
@@ -32,7 +32,7 @@
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentView BackgroundColor="{StaticResource LightBackgroundColor}">
+    <ContentView x:Name="PageContent" BackgroundColor="{StaticResource LightBackgroundColor}">
         <Grid ColumnSpacing="12" RowSpacing="12">
             <Grid.RowDefinitions>
                 <RowDefinition Height="12" />
@@ -86,103 +86,16 @@
 
             </Grid>
 
-
-            <ScrollView
-                x:Name="ScrollView"
+            <sfcarousel:SfCarousel
                 Grid.Row="2"
                 Grid.Column="1"
-                Orientation="Horizontal">
-                <StackLayout
-                    HorizontalOptions="Center"
-                    Orientation="Horizontal"
-                    Spacing="12">
-                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image
-                            Aspect="Fill"
-                            Source="banner_ranking1.png"
-                            WidthRequest="160" />
-                        <Label
-                            Margin="16,32,8,0"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HeightRequest="50"
-                            HorizontalOptions="Start"
-                            HorizontalTextAlignment="Start"
-                            Text="asfdfasafsfas"
-                            TextColor="{StaticResource LightBackgroundColor}"
-                            VerticalOptions="Start"
-                            VerticalTextAlignment="Start" />
-                    </Grid>
-                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image
-                            Aspect="Fill"
-                            Source="banner_ranking1.png"
-                            WidthRequest="160" />
-                        <Label
-                            Margin="16,32,8,0"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HeightRequest="50"
-                            HorizontalOptions="Start"
-                            HorizontalTextAlignment="Start"
-                            Text="asfdfasafsfas"
-                            TextColor="{StaticResource LightBackgroundColor}"
-                            VerticalOptions="Start"
-                            VerticalTextAlignment="Start" />
-                    </Grid>
-                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image
-                            Aspect="Fill"
-                            Source="banner_ranking1.png"
-                            WidthRequest="160" />
-                        <Label
-                            Margin="16,32,8,0"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HeightRequest="50"
-                            HorizontalOptions="Start"
-                            HorizontalTextAlignment="Start"
-                            Text="DO MEIO"
-                            TextColor="{StaticResource LightBackgroundColor}"
-                            VerticalOptions="Start"
-                            VerticalTextAlignment="Start" />
-                    </Grid>
-                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image
-                            Aspect="Fill"
-                            Source="banner_ranking1.png"
-                            WidthRequest="160" />
-                        <Label
-                            Margin="16,32,8,0"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HeightRequest="50"
-                            HorizontalOptions="Start"
-                            HorizontalTextAlignment="Start"
-                            Text="asfdfasafsfas"
-                            TextColor="{StaticResource LightBackgroundColor}"
-                            VerticalOptions="Start"
-                            VerticalTextAlignment="Start" />
-                    </Grid>
-                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image
-                            Aspect="Fill"
-                            Source="banner_ranking1.png"
-                            WidthRequest="160" />
-                        <Label
-                            Margin="16,32,8,0"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HeightRequest="50"
-                            HorizontalOptions="Start"
-                            HorizontalTextAlignment="Start"
-                            Text="asfdfasafsfas"
-                            TextColor="{StaticResource LightBackgroundColor}"
-                            VerticalOptions="Start"
-                            VerticalTextAlignment="Start" />
-                    </Grid>
-                </StackLayout>
-            </ScrollView>
+                ItemHeight="350"
+                ItemTemplate="{StaticResource CarouselRankingTemplate}"
+                ItemWidth="220"
+                ItemsSource="{Binding RankingDto}"
+                RotationAngle="30"
+                SelectedIndex="2"
+                SelectionChanged="SfCarousel_SelectionChanged" />
 
         </Grid>
     </ContentView>

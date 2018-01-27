@@ -46,23 +46,6 @@
                         TextColor="{StaticResource WhiteColor}"
                         VerticalOptions="Center" />
                 </StackLayout>
-
-                <!--<Image
-                    Grid.Row="1"
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    Source="take_pic.png"
-                    VerticalOptions="Center"
-                    WidthRequest="100" />
-
-                <Label
-                    Grid.Row="2"
-                    FontSize="{StaticResource TopBarFontSize}"
-                    HorizontalOptions="Center"
-                    Text="Clique e fotografe sua Venda!"
-                    TextColor="{StaticResource WhiteColor}"
-                    VerticalOptions="Start" />-->
-
             </Grid>
 
             <ContentView

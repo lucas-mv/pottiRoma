@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
 using PottiRoma.App.Dtos;
+using PottiRoma.App.Helpers;
+using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -8,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -30,18 +33,33 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _selectedIndex, value); }
         }
 
+        public DelegateCommand GoToRankingPageCommand { get; set; }
+
         public RankingPageViewModel(
             INavigationService navigationService,
             IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
+            GoToRankingPageCommand = new DelegateCommand(GoToRankingPage).ObservesCanExecute(() => CanExecute);
+            InitializeMockRewards();
         }
 
-        public override void OnNavigatingTo(NavigationParameters parameters)
+        private async void GoToRankingPage()
+        {
+            CanExecuteInitial();
+            await NavigationHelper.ShowLoading();
+            await Task.Delay(2000);
+            NavigationParameters parameters = new NavigationParameters();
+            parameters.Add(NavigationKeyParameters.RankingType, SelectedIndex);
+            await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
+            CanExecuteEnd();
+            await NavigationHelper.PopLoading();
+        }
+
+        public override void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            InitializeMockRewards();
             _selectedIndex = 2;
         }
 

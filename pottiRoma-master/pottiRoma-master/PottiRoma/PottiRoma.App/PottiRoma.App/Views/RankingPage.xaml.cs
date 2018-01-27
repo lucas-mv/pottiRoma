@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.ViewModels;
+﻿using PottiRoma.App.Dtos;
+using PottiRoma.App.ViewModels;
 using Xamarin.Forms;
 
 namespace PottiRoma.App.Views
@@ -15,13 +16,17 @@ namespace PottiRoma.App.Views
         public RankingPage()
         {
             InitializeComponent();
-            ScrollView.ScrollToAsync(1436, 1435, false);
         }
 
 
         protected override bool OnBackButtonPressed()
         {
             return true;
+        }
+
+        private void SfCarousel_SelectionChanged(object sender, Syncfusion.SfCarousel.XForms.SelectionChangedEventArgs e)
+        {
+            ViewModel.SelectedIndex = e.SelectedIndex;
         }
     }
 }

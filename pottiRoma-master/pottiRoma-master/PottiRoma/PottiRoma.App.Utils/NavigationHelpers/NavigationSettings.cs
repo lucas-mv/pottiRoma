@@ -29,6 +29,6 @@ namespace PottiRoma.App.Utils.NavigationHelpers
         public const string AbsoluteLogin = "app:///LoginPage";
         public const string RegisterSale = "RegisterSalePage";
         public const string ResetPassword = "ResetPasswordPage";
-
+        public const string ListRanking = "ListRankingPage";
     }
 }

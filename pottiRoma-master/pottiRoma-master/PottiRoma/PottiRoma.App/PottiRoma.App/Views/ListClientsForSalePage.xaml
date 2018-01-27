@@ -55,7 +55,6 @@
 
             <ContentView Grid.Row="1" HeightRequest="10" />
 
-
             <syncfusion:SfListView
                 x:Name="ClientsListView"
                 Grid.Row="2"
