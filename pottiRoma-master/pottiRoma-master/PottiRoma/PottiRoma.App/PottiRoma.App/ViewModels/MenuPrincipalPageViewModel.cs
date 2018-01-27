@@ -32,6 +32,7 @@ namespace PottiRoma.App.ViewModels
         public DelegateCommand GoToMySalesCommand { get; set; }
         public DelegateCommand GoToMyClientsCommand { get; set; }
         public DelegateCommand GoToEditPersonalDataCommand { get; set; }
+        public DelegateCommand GoToSalesHistoryCommand { get; set; }
         public DelegateCommand LogoutCommand { get; set; }
 
 
@@ -50,9 +51,19 @@ namespace PottiRoma.App.ViewModels
             GoToMySalesCommand = new DelegateCommand(GoToMySales).ObservesCanExecute(() => CanExecute);
             GoToMyClientsCommand = new DelegateCommand(GoToMyClients).ObservesCanExecute(() => CanExecute);
             GoToEditPersonalDataCommand = new DelegateCommand(GoToEditPersonalData).ObservesCanExecute(() => CanExecute);
+            GoToSalesHistoryCommand = new DelegateCommand(GoToSalesHistory).ObservesCanExecute(() => CanExecute);
             LogoutCommand = new DelegateCommand(Logout).ObservesCanExecute(() => CanExecute);
 
+
             Title = "Ranking Geral";
+        }
+
+        private async void GoToSalesHistory()
+        {
+            CanExecuteInitial();
+            await _navigationService.NavigateAsync(NavigationSettings.SalesHistory);
+            Title = "Histórico de Vendas";
+            CanExecuteEnd();
         }
 
         private async void Logout()
@@ -89,8 +100,8 @@ namespace PottiRoma.App.ViewModels
         private async void GoToProfile()
         {
             CanExecuteInitial();
-            await _navigationService.NavigateAsync(NavigationSettings.TabbedProfile);
-            Title = "Meu Perfil";
+            await _navigationService.NavigateAsync(NavigationSettings.GamificationRules);
+            Title = "Regras do Jogo";
             CanExecuteEnd();
         }
 

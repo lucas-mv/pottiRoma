@@ -42,8 +42,6 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<MenuPrincipalPage>();
             Container.RegisterTypeForNavigation<MainNavigationPage>();
             Container.RegisterTypeForNavigation<RankingPage>();
-            Container.RegisterTypeForNavigation<ProfilePage>();
-            Container.RegisterTypeForNavigation<ProfileTabbedPage>();
             Container.RegisterTypeForNavigation<GamificationRulesPage>();
             Container.RegisterTypeForNavigation<InviteFlowerPage>();
             Container.RegisterTypeForNavigation<ResetPasswordPage>();
@@ -53,6 +51,7 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<MyClientsPage>();
             Container.RegisterTypeForNavigation<PopupGetDate>();
             Container.RegisterTypeForNavigation<TrophyRoomPage>();
+            Container.RegisterTypeForNavigation<SalesHistoryPage>();
         }
     }
 }

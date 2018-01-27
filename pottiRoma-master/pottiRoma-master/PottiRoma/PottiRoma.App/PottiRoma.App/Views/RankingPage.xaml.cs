@@ -15,28 +15,13 @@ namespace PottiRoma.App.Views
         public RankingPage()
         {
             InitializeComponent();
+            ScrollView.ScrollToAsync(1436, 1435, false);
         }
 
-        private void SetInitialScreenHeight()
-        {
-            if (ViewModel != null)
-                ViewModel.ScreenHeightRequest = (RankingPageContent.Width < RankingPageContent.Height) ? RankingPageContent.Height : 650;
-        }
 
         protected override bool OnBackButtonPressed()
         {
             return true;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            SetInitialScreenHeight();
-        }
-
-        private void RankingPageContent_SizeChanged(object sender, System.EventArgs e)
-        {
-            SetInitialScreenHeight();
         }
     }
 }

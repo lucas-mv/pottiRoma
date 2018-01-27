@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PottiRoma.App.Dtos
 {
-    public class TrophyRewardsDto : BindableBase
+    public class RankingBannerDto : BindableBase
     {
         private string _image;
         public string Image
@@ -23,7 +23,7 @@ namespace PottiRoma.App.Dtos
             set { SetProperty(ref _description, value); }
         }
 
-        public TrophyRewardsDto()
+        public RankingBannerDto()
         {
         }
     }
