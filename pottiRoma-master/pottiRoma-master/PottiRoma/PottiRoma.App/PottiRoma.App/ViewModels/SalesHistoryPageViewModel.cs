@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
+using PottiRoma.App.Utils.Helpers;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -40,7 +41,6 @@ namespace PottiRoma.App.ViewModels
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
-            SalesList = new ObservableCollection<Sale>();
             SaleSelectedCommand = new DelegateCommand<object>(SaleSelected).ObservesCanExecute(() => CanExecute);
         }
 
@@ -59,43 +59,52 @@ namespace PottiRoma.App.ViewModels
 
         private void GenerateMock()
         {
+            SalesList = new ObservableCollection<Sale>();
             var mock1 = new Sale()
             {
                 SaleDate = new DateTime(1990, 11, 08),
-                BuyerName = "Lucas Roscoe",
+                ClientName = "Lucas Roscoe",
                 SaleValue = "R$ 250,00",
             };
             var mock2 = new Sale()
             {
                 SaleDate = new DateTime(1990, 11, 08),
-                BuyerName = "Lucas Roscoe",
+                ClientName = "Lucas Roscoe",
                 SaleValue = "R$ 250,00",
             };
             var mock3 = new Sale()
             {
                 SaleDate = new DateTime(1990, 11, 08),
-                BuyerName = "Lucas Roscoe",
+                ClientName = "Lucas Roscoe",
                 SaleValue = "R$ 250,00",
             };
             var mock4 = new Sale()
             {
                 SaleDate = new DateTime(1990, 11, 08),
-                BuyerName = "Lucas Roscoe",
+                ClientName = "Lucas Roscoe",
                 SaleValue = "R$ 250,00",
             };
             var mock5 = new Sale()
             {
                 SaleDate = new DateTime(1990, 11, 08),
-                BuyerName = "Lucas Roscoe",
+                ClientName = "Lucas Roscoe",
                 SaleValue = "R$ 250,00",
             };
+            SalesList.Add(mock1);
+            SalesList.Add(mock2);
+            SalesList.Add(mock3);
+            SalesList.Add(mock4);
+            SalesList.Add(mock5);
+
+            foreach (var Sale in SalesList)
+            {
+                CompleteLabelFromSale(Sale);
+            }
         }
 
         private void CompleteLabelFromSale(Sale Sale)
         {
-            string StringDate = Sale.SaleDate.ToString();
-            string FormattedDate = Convert.ToDateTime(StringDate).ToString("yyyy-MM-dd");
-            Sale.CardLabel = Sale.BuyerName + ", " + FormattedDate;
+            Sale.CardLabel = Sale.ClientName + ", " + Formatter.FormatDate(Sale.SaleDate);
         }
     }
 }

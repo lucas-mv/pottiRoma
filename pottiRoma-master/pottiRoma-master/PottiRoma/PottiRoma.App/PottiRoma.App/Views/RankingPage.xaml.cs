@@ -23,10 +23,5 @@ namespace PottiRoma.App.Views
         {
             return true;
         }
-
-        private void SfCarousel_SelectionChanged(object sender, Syncfusion.SfCarousel.XForms.SelectionChangedEventArgs e)
-        {
-            ViewModel.SelectedIndex = e.SelectedIndex;
-        }
     }
 }

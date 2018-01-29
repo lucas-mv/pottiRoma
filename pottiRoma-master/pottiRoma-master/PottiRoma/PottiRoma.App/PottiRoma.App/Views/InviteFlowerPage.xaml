@@ -3,6 +3,7 @@
     x:Class="PottiRoma.App.Views.InviteFlowerPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PottiRoma.App.Controls"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     Title="Convidar Flor"

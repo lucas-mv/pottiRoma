@@ -23,6 +23,13 @@ namespace PottiRoma.App.Dtos
             set { SetProperty(ref _description, value); }
         }
 
+        private int _index;
+        public int Index
+        {
+            get { return _index; }
+            set { SetProperty(ref _index, value); }
+        }
+
         public RankingBannerDto()
         {
         }

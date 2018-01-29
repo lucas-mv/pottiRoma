@@ -40,6 +40,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BootStrapperIoC.cs" />
+    <Compile Include="Controls\StatusBarIOS.xaml.cs">
+      <DependentUpon>StatusBarIOS.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomRenderers\CustomEditor.cs" />
     <Compile Include="CustomRenderers\CustomEntry.cs" />
     <Compile Include="CustomRenderers\CustomProgressBar.cs" />
@@ -348,7 +351,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
     <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +367,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ListRankingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\StatusBarIOS.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

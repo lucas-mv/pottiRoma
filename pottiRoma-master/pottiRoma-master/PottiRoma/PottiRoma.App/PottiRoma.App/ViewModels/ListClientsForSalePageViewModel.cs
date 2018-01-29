@@ -32,16 +32,16 @@ namespace PottiRoma.App.ViewModels
         public ListClientsForSalePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-
+            ListaClientes = new ObservableCollection<Client>();
             ClienteSelectedCommand = new DelegateCommand<object>(async param => await SelecionarCliente(param))
                 .ObservesCanExecute(() => CanExecute);
-            ListaClientes = new ObservableCollection<Client>();
         }
 
         private void GenerateMock()
         {
             ListaClientes.Add(new Client
             {
+                SalespersonId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Lucas Roscoe",
                 ClientId = Guid.NewGuid(),
@@ -50,6 +50,7 @@ namespace PottiRoma.App.ViewModels
             });
             ListaClientes.Add(new Client
             {
+                SalespersonId = Guid.NewGuid(),
                 Birthdate = new DateTime(1989, 8, 25),
                 Name = "Maria Clara Diniz",
                 ClientId = Guid.NewGuid(),
@@ -58,6 +59,7 @@ namespace PottiRoma.App.ViewModels
             });
             ListaClientes.Add(new Client
             {
+                SalespersonId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Laura Diniz",
                 ClientId = Guid.NewGuid(),
@@ -66,6 +68,7 @@ namespace PottiRoma.App.ViewModels
             });
             ListaClientes.Add(new Client
             {
+                SalespersonId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Luisa Antunes",
                 ClientId = Guid.NewGuid(),
@@ -74,6 +77,7 @@ namespace PottiRoma.App.ViewModels
             });
             ListaClientes.Add(new Client
             {
+                SalespersonId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Davi Ferraz",
                 ClientId = Guid.NewGuid(),
@@ -88,6 +92,7 @@ namespace PottiRoma.App.ViewModels
 
             CanExecuteInitial();
             var param = new NavigationParameters();
+            param.Add(NavigationKeyParameters.SelectedClient, (Client)item);
             await _navigationService.NavigateAsync(NavigationSettings.RegisterSale, param);
 
             CanExecuteEnd();
@@ -95,14 +100,9 @@ namespace PottiRoma.App.ViewModels
 
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
-            PageTitle = SetTitle();
+            PageTitle = "Selecionar Cliente";
             GenerateMock();
             base.OnNavigatedTo(parameters);
-        }
-
-        private string SetTitle()
-        {
-            return Device.OS == TargetPlatform.Android ? "Selecionar Cliente" : "";
         }
     }
 }

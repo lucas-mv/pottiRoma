@@ -1,6 +1,8 @@
 ﻿using Acr.UserDialogs;
 using PottiRoma.App.Dtos;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Utils.Enums;
+using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -33,7 +35,8 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _selectedIndex, value); }
         }
 
-        public DelegateCommand GoToRankingPageCommand { get; set; }
+        public DelegateCommand<RankingBannerDto> GoToRankingPageCommand { get; set; }
+        public DelegateCommand GoToGeneralRankingPageCommand { get; set; }
 
         public RankingPageViewModel(
             INavigationService navigationService,
@@ -41,17 +44,31 @@ namespace PottiRoma.App.ViewModels
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
-            GoToRankingPageCommand = new DelegateCommand(GoToRankingPage).ObservesCanExecute(() => CanExecute);
+            GoToRankingPageCommand = new DelegateCommand<RankingBannerDto>(GoToRankingPage).ObservesCanExecute(() => CanExecute);
+            GoToGeneralRankingPageCommand = new DelegateCommand(GoToGeneralRankingPage).ObservesCanExecute(() => CanExecute);
             InitializeMockRewards();
         }
 
-        private async void GoToRankingPage()
+        private async void GoToGeneralRankingPage()
         {
             CanExecuteInitial();
             await NavigationHelper.ShowLoading();
+            //TODO fazer servico que busca todos os usuarios do app que nao sao do tipo administrativo            
+            await Task.Delay(2000);
+            await _navigationService.NavigateAsync(NavigationSettings.ListRanking);
+            CanExecuteEnd();
+            await NavigationHelper.PopLoading();
+        }
+
+        private async void GoToRankingPage(RankingBannerDto obj)
+        {
+            CanExecuteInitial();
+            await NavigationHelper.ShowLoading();
+            //TODO fazer servico que busca todos os usuarios do app que nao sao do tipo administrativo
             await Task.Delay(2000);
             NavigationParameters parameters = new NavigationParameters();
-            parameters.Add(NavigationKeyParameters.RankingType, SelectedIndex);
+            CarouselBannerType convertedIndex = ConvertIndexToEnumHelper.Convert(obj.Index);
+            parameters.Add(NavigationKeyParameters.RankingType, convertedIndex);
             await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
             CanExecuteEnd();
             await NavigationHelper.PopLoading();
@@ -60,7 +77,7 @@ namespace PottiRoma.App.ViewModels
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            _selectedIndex = 2;
+            SelectedIndex = 2;
         }
 
         private void InitializeMockRewards()
@@ -69,27 +86,32 @@ namespace PottiRoma.App.ViewModels
             RankingDto.Add(new RankingBannerDto()
             {
                 Image = "ranking_semana.png",
-                Description = "TICKET MÉDIO"
+                Description = "TICKET MÉDIO",
+                Index = 0
             });
             RankingDto.Add(new RankingBannerDto()
             {
                 Image = "banner_ranking1.png",
-                Description = "CADASTRO DE CLIENTES"
+                Description = "CADASTRO DE CLIENTES",
+                Index = 1
             });
             RankingDto.Add(new RankingBannerDto()
             {
                 Image = "banner_ranking2.png",
-                Description = "PEÇAS POR ATENDIMENTO"
+                Description = "PEÇAS POR ATENDIMENTO",
+                Index = 2
             });
             RankingDto.Add(new RankingBannerDto()
             {
                 Image = "banner_ranking3.png",
-                Description = "CADASTRO DE FLORES ALIADAS"
+                Description = "CADASTRO DE FLORES ALIADAS",
+                Index = 3
             });
             RankingDto.Add(new RankingBannerDto()
             {
                 Image = "ranking_dia.png",
-                Description = "VENDAS EFETUADAS"
+                Description = "VENDAS EFETUADAS",
+                Index = 4
             });
         }
     }

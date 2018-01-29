@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="PottiRoma.App.Controls.StatusBarIOS"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentView.Content>
+        <Grid
+            x:Name="GridStatusBariOS"
+            Grid.Row="0"
+            Style="{StaticResource StatusBarGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnPlatform x:TypeArguments="GridLength">
+                            <OnPlatform.iOS>
+                                20
+                            </OnPlatform.iOS>
+                            <OnPlatform.Android>
+                                0
+                            </OnPlatform.Android>
+                        </OnPlatform>
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+
+            <BoxView Grid.Row="0" Style="{StaticResource StatusBarBoxView}" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -41,13 +41,12 @@ namespace PottiRoma.App.ViewModels
         {
             _navigationService = navigationService;
             _clientsAppService = clientsAppService;
-
+            ListaClientes = new ObservableCollection<Client>();
             EditClientCommand = new DelegateCommand<object>(async param => await EditClient(param))
                 .ObservesCanExecute(() => CanExecute);
             RemoveClientCommand = new DelegateCommand<object>(param => RemoveClient(param))
                 .ObservesCanExecute(() => CanExecute);
             RegisterNewClientCommand = new DelegateCommand(RegisterNewClient).ObservesCanExecute(() => CanExecute);
-            ListaClientes = new ObservableCollection<Client>();
         }
 
         public override async void OnNavigatedTo(NavigationParameters parameters)

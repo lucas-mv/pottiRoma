@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:controls="clr-namespace:PottiRoma.App.Controls"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     Title="{Binding PageTitle}"
@@ -11,17 +12,12 @@
     BackgroundColor="{StaticResource WhiteColor}">
 
     <Grid>
-        <Grid.Margin>
-            <OnPlatform
-                x:TypeArguments="Thickness"
-                Android="0,0,0,0"
-                iOS="0,24,0,0" />
-        </Grid.Margin>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="150" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <controls:StatusBarIOS />
         <Image
             Grid.Row="0"
             Aspect="AspectFill"
@@ -33,7 +29,6 @@
             RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="35" />
-                <RowDefinition Height="10" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -52,12 +47,9 @@
 
             </Grid>
 
-
-            <ContentView Grid.Row="1" HeightRequest="10" />
-
             <syncfusion:SfListView
                 x:Name="ClientsListView"
-                Grid.Row="2"
+                Grid.Row="1"
                 ItemSize="65"
                 ItemsSource="{Binding ListaClientes}"
                 SelectionBackgroundColor="{StaticResource SelectionBackgroundColor}">

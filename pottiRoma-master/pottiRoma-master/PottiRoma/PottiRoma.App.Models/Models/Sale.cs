@@ -9,11 +9,14 @@ namespace PottiRoma.App.Models.Models
 {
     public class Sale : BindableBase
     {
-        private string _buyerName;
-        public string BuyerName
+        public Guid UserId { get; set; }
+        public Guid ClientId { get; set; }
+
+        private string _clientName;
+        public string ClientName
         {
-            get { return _buyerName; }
-            set { SetProperty(ref _buyerName, value); }
+            get { return _clientName; }
+            set { SetProperty(ref _clientName, value); }
         }
 
         public DateTime _saleDate;
@@ -30,11 +33,36 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _saleValue, value); }
         }
 
+        private string _salePaidValue;
+        public string SalePaidValue
+        {
+            get { return _salePaidValue; }
+            set { SetProperty(ref _salePaidValue, value); }
+        }
+
+        private string _numberSoldPieces;
+        public string NumberSoldPieces
+        {
+            get { return _numberSoldPieces; }
+            set { SetProperty(ref _numberSoldPieces, value); }
+        }
+
+
+
+
+        #region Helper Values
+
         private string _cardLabel;
         public string CardLabel
         {
             get { return _cardLabel; }
             set { SetProperty(ref _cardLabel, value); }
+        }
+
+        #endregion
+
+        public Sale()
+        {
         }
     }
 }

@@ -23,18 +23,6 @@ namespace PottiRoma.App.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            SetInitialScreenHeight();
-        }
-
-        private void SetInitialScreenHeight()
-        {
-            if (ViewModel != null)
-                ViewModel.ScreenHeightRequest = (ContentRegisterSalePage.Width < ContentRegisterSalePage.Height) ? ContentRegisterSalePage.Height : 650;
-        }
-
-        private void ContentRegisterSalePage_SizeChanged(object sender, System.EventArgs e)
-        {
-            SetInitialScreenHeight();
         }
 
         private void Entry_Price_Focused(object sender, FocusEventArgs e)
@@ -49,7 +37,7 @@ namespace PottiRoma.App.Views
             var thisEntry = sender as CustomEntry;
 
             if (!string.IsNullOrEmpty(thisEntry.Text) && !thisEntry.Text.Contains("R$"))
-                thisEntry.Text = Formatter.FormatDRE(decimal.Parse(thisEntry.Text));
+                thisEntry.Text = Formatter.FormatMoney(decimal.Parse(thisEntry.Text));
         }
 
         private void Entry_Price_Completed(object sender, System.EventArgs e)
@@ -57,7 +45,7 @@ namespace PottiRoma.App.Views
             var thisEntry = sender as CustomEntry;
 
             if (!string.IsNullOrEmpty(thisEntry.Text) && !thisEntry.Text.Contains("R$"))
-                thisEntry.Text = Formatter.FormatDRE(decimal.Parse(thisEntry.Text));
+                thisEntry.Text = Formatter.FormatMoney(decimal.Parse(thisEntry.Text));
         }
     }
 }
