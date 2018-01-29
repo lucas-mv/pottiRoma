@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PottiRoma.App.Views.SalesHistoryPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    Title="Histórico de Vendas"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource DarkBackgroundColor}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image Aspect="AspectFill" Source="banner_history.png" />
+        <StackLayout
+            Grid.Row="1"
+            Margin="16,-20,16,0"
+            BackgroundColor="{StaticResource WhiteColor}"
+            Spacing="0">
+            <SearchBar
+                x:Name="SearchBarClientesForSale"
+                Margin="0,10,10,0"
+                BackgroundColor="Transparent"
+                CancelButtonColor="Transparent"
+                FontSize="{StaticResource StandardFontSize}"
+                HeightRequest="35"
+                Placeholder="Pesquise..."
+                PlaceholderColor="{StaticResource PlaceholderColor}"
+                TextColor="{StaticResource TextColor}"
+                VerticalOptions="Start" />
+
+            <ContentView HeightRequest="10" />
+
+            <syncfusion:SfListView
+                ItemSize="65"
+                ItemsSource="{Binding SalesList}"
+                SelectionBackgroundColor="{StaticResource SelectionBackgroundColor}">
+                <syncfusion:SfListView.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        Command="{Binding SaleSelectedCommand}"
+                        EventArgsParameterPath="ItemData"
+                        EventName="ItemTapped" />
+                </syncfusion:SfListView.Behaviors>
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid HeightRequest="65">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="1" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="16" />
+                                </Grid.ColumnDefinitions>
+
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                                    HeightRequest="1"
+                                    VerticalOptions="End" />
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding CardLabel}"
+                                    TextColor="{StaticResource LightTextColor}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="End"
+                                    Text="{Binding SaleValue}"
+                                    TextColor="{StaticResource TextColor}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </StackLayout>
+    </Grid>
+</ContentPage>

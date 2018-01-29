@@ -103,7 +103,6 @@
                         VerticalOptions="Center" />
                 </Frame>
 
-
                 <ContentView HeightRequest="10" />
             </StackLayout>
         </ScrollView>

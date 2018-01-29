@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.ViewModels;
+﻿using PottiRoma.App.Dtos;
+using PottiRoma.App.ViewModels;
 using Xamarin.Forms;
 
 namespace PottiRoma.App.Views
@@ -17,26 +18,15 @@ namespace PottiRoma.App.Views
             InitializeComponent();
         }
 
-        private void SetInitialScreenHeight()
-        {
-            if (ViewModel != null)
-                ViewModel.ScreenHeightRequest = (RankingPageContent.Width < RankingPageContent.Height) ? RankingPageContent.Height : 650;
-        }
 
         protected override bool OnBackButtonPressed()
         {
             return true;
         }
 
-        protected override void OnAppearing()
+        private void SfCarousel_SelectionChanged(object sender, Syncfusion.SfCarousel.XForms.SelectionChangedEventArgs e)
         {
-            base.OnAppearing();
-            SetInitialScreenHeight();
-        }
-
-        private void RankingPageContent_SizeChanged(object sender, System.EventArgs e)
-        {
-            SetInitialScreenHeight();
+            ViewModel.SelectedIndex = e.SelectedIndex;
         }
     }
 }

@@ -43,7 +43,7 @@
     <Compile Include="CustomRenderers\CustomEditor.cs" />
     <Compile Include="CustomRenderers\CustomEntry.cs" />
     <Compile Include="CustomRenderers\CustomProgressBar.cs" />
-    <Compile Include="Dtos\TrophyRewardsDto.cs" />
+    <Compile Include="Dtos\RankingBannerDto.cs" />
     <Compile Include="Helpers\GetDatePopupHelper.cs" />
     <Compile Include="Helpers\LogoutPopupHelper.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
@@ -53,16 +53,16 @@
     <Compile Include="ViewModels\GamificationRulesPageViewModel.cs" />
     <Compile Include="ViewModels\InviteFlowerPageViewModel.cs" />
     <Compile Include="ViewModels\ListClientsForSalePageViewModel.cs" />
+    <Compile Include="ViewModels\ListRankingPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainNavigationPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPrincipalPageViewModel.cs" />
     <Compile Include="ViewModels\MyClientsPageViewModel.cs" />
-    <Compile Include="ViewModels\ProfilePageViewModel.cs" />
-    <Compile Include="ViewModels\ProfileTabbedPageViewModel.cs" />
     <Compile Include="ViewModels\RankingPageViewModel.cs" />
     <Compile Include="ViewModels\RegisterClientsPageViewModel.cs" />
     <Compile Include="ViewModels\RegisterSalePageViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordPageViewModel.cs" />
+    <Compile Include="ViewModels\SalesHistoryPageViewModel.cs" />
     <Compile Include="ViewModels\TrophyRoomPageViewModel.cs" />
     <Compile Include="Views\Core\MainNavigationPage.xaml.cs">
       <DependentUpon>MainNavigationPage.xaml</DependentUpon>
@@ -89,11 +89,11 @@
     <Compile Include="Views\ListClientsForSalePage.xaml.cs">
       <DependentUpon>ListClientsForSalePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ListRankingPage.xaml.cs">
+      <DependentUpon>ListRankingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MyClientsPage.xaml.cs">
       <DependentUpon>MyClientsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ProfileTabbedPage.xaml.cs">
-      <DependentUpon>ProfileTabbedPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RankingPage.xaml.cs">
       <DependentUpon>RankingPage.xaml</DependentUpon>
@@ -107,9 +107,6 @@
     <Compile Include="Views\MenuPrincipalPage.xaml.cs">
       <DependentUpon>MenuPrincipalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\RegisterClientsPage.xaml.cs">
       <DependentUpon>RegisterClientsPage.xaml</DependentUpon>
     </Compile>
@@ -118,6 +115,9 @@
     </Compile>
     <Compile Include="Views\ResetPasswordPage.xaml.cs">
       <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SalesHistoryPage.xaml.cs">
+      <DependentUpon>SalesHistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TrophyRoomPage.xaml.cs">
       <DependentUpon>TrophyRoomPage.xaml</DependentUpon>
@@ -214,6 +214,9 @@
     <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Rx-PlatformServices.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.CarouselView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.4.0.280\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -285,18 +288,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ProfilePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\ProfileTabbedPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\GamificationRulesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -362,6 +353,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\TrophyRoomPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SalesHistoryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ListRankingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

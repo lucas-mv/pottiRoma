@@ -27,14 +27,16 @@ namespace PottiRoma.App.Views
             ContentConvidarFlor.Opacity = SelectedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
             ContentRanking.Opacity = ShadedMenuItem;
-            ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = ShadedMenuItem;
+            ContentGameRules.BackgroundColor = Color.Transparent;
+            ContentGameRules.Opacity = ShadedMenuItem;
             ContentSales.BackgroundColor = Color.Transparent;
             ContentSales.Opacity = ShadedMenuItem;
             ContentSettings.BackgroundColor = Color.Transparent;
             ContentSettings.Opacity = ShadedMenuItem;
             ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
             ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
+            ContentSalesHistory.BackgroundColor = Color.Transparent;
+            ContentSalesHistory.Opacity = ShadedMenuItem;
         }
 
         private void ContentRanking_Clicked(object sender, System.EventArgs e)
@@ -45,22 +47,24 @@ namespace PottiRoma.App.Views
             ContentRanking.Opacity = SelectedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
             ContentConvidarFlor.Opacity = ShadedMenuItem;
-            ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = ShadedMenuItem;
+            ContentGameRules.BackgroundColor = Color.Transparent;
+            ContentGameRules.Opacity = ShadedMenuItem;
             ContentSales.BackgroundColor = Color.Transparent;
             ContentSales.Opacity = ShadedMenuItem;
             ContentSettings.BackgroundColor = Color.Transparent;
             ContentSettings.Opacity = ShadedMenuItem;
             ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
             ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
+            ContentSalesHistory.BackgroundColor = Color.Transparent;
+            ContentSalesHistory.Opacity = ShadedMenuItem;
         }
 
-        private void ContentPerfil_Clicked(object sender, System.EventArgs e)
+        private void ContentGameRules_Clicked(object sender, System.EventArgs e)
         {
             ContentSettings.BackgroundColor = Color.Transparent;
             ContentSettings.Opacity = ShadedMenuItem;
-            ContentPerfil.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
-            ContentPerfil.Opacity = SelectedMenuItem;
+            ContentGameRules.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
+            ContentGameRules.Opacity = SelectedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
             ContentRanking.Opacity = ShadedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
@@ -71,6 +75,8 @@ namespace PottiRoma.App.Views
             ContentSettings.Opacity = ShadedMenuItem;
             ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
             ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
+            ContentSalesHistory.BackgroundColor = Color.Transparent;
+            ContentSalesHistory.Opacity = ShadedMenuItem;
         }
 
         private void ContentSales_Clicked(object sender, System.EventArgs e)
@@ -81,14 +87,16 @@ namespace PottiRoma.App.Views
             ContentSales.Opacity = SelectedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
             ContentRanking.Opacity = ShadedMenuItem;
-            ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = ShadedMenuItem;
+            ContentGameRules.BackgroundColor = Color.Transparent;
+            ContentGameRules.Opacity = ShadedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
             ContentConvidarFlor.Opacity = ShadedMenuItem;
             ContentSettings.BackgroundColor = Color.Transparent;
             ContentSettings.Opacity = ShadedMenuItem;
             ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
             ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
+            ContentSalesHistory.BackgroundColor = Color.Transparent;
+            ContentSalesHistory.Opacity = ShadedMenuItem;
         }
 
         private void ContentSettings_Clicked(object sender, System.EventArgs e)
@@ -99,14 +107,16 @@ namespace PottiRoma.App.Views
             ContentSettings.Opacity = SelectedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
             ContentRanking.Opacity = ShadedMenuItem;
-            ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = ShadedMenuItem;
+            ContentGameRules.BackgroundColor = Color.Transparent;
+            ContentGameRules.Opacity = ShadedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
             ContentConvidarFlor.Opacity = ShadedMenuItem;
             ContentSales.BackgroundColor = Color.Transparent;
             ContentSales.Opacity = ShadedMenuItem;
             ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
             ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
+            ContentSalesHistory.BackgroundColor = Color.Transparent;
+            ContentSalesHistory.Opacity = ShadedMenuItem;
         }
 
         private void ContentAlterarDados_Clicked(object sender, System.EventArgs e)
@@ -117,14 +127,16 @@ namespace PottiRoma.App.Views
             ContentEfetuarLogout.Opacity = ShadedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
             ContentRanking.Opacity = ShadedMenuItem;
-            ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = ShadedMenuItem;
+            ContentGameRules.BackgroundColor = Color.Transparent;
+            ContentGameRules.Opacity = ShadedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
             ContentConvidarFlor.Opacity = ShadedMenuItem;
             ContentSales.BackgroundColor = Color.Transparent;
             ContentSales.Opacity = ShadedMenuItem;
             ContentAlterarDadosPessoais.BackgroundColor = Color.FromHex(SelectedBackgroundColor);
             ContentAlterarDadosPessoais.Opacity = SelectedMenuItem;
+            ContentSalesHistory.BackgroundColor = Color.Transparent;
+            ContentSalesHistory.Opacity = ShadedMenuItem;
         }
 
         private void ContentEfetuarLogout_Clicked(object sender, System.EventArgs e)
@@ -133,8 +145,8 @@ namespace PottiRoma.App.Views
             ContentEfetuarLogout.Opacity = SelectedMenuItem;
             ContentConvidarFlor.BackgroundColor = Color.Transparent;
             ContentConvidarFlor.Opacity = ShadedMenuItem;
-            ContentPerfil.BackgroundColor = Color.Transparent;
-            ContentPerfil.Opacity = ShadedMenuItem;
+            ContentGameRules.BackgroundColor = Color.Transparent;
+            ContentGameRules.Opacity = ShadedMenuItem;
             ContentSales.BackgroundColor = Color.Transparent;
             ContentSales.Opacity = ShadedMenuItem;
             ContentSettings.BackgroundColor = Color.Transparent;
@@ -143,6 +155,29 @@ namespace PottiRoma.App.Views
             ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
             ContentRanking.BackgroundColor = Color.Transparent;
             ContentRanking.Opacity = ShadedMenuItem;
+            ContentSalesHistory.BackgroundColor = Color.Transparent;
+            ContentSalesHistory.Opacity = ShadedMenuItem;
+        }
+
+        private void ContentSalesHistory_Clicked(object sender, System.EventArgs e)
+        {
+            ContentSalesHistory.BackgroundColor = Color.FromHex(SelectedBackgroundColor); ;
+            ContentSalesHistory.Opacity = SelectedMenuItem;
+            ContentEfetuarLogout.BackgroundColor = Color.Transparent;
+            ContentEfetuarLogout.Opacity = ShadedMenuItem;
+            ContentConvidarFlor.BackgroundColor = Color.Transparent;
+            ContentConvidarFlor.Opacity = ShadedMenuItem;
+            ContentGameRules.BackgroundColor = Color.Transparent;
+            ContentGameRules.Opacity = ShadedMenuItem;
+            ContentSales.BackgroundColor = Color.Transparent;
+            ContentSales.Opacity = ShadedMenuItem;
+            ContentSettings.BackgroundColor = Color.Transparent;
+            ContentSettings.Opacity = ShadedMenuItem;
+            ContentAlterarDadosPessoais.BackgroundColor = Color.Transparent;
+            ContentAlterarDadosPessoais.Opacity = ShadedMenuItem;
+            ContentRanking.BackgroundColor = Color.Transparent;
+            ContentRanking.Opacity = ShadedMenuItem;
+            
         }
 
         protected override bool OnBackButtonPressed()

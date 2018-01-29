@@ -10,6 +10,8 @@ namespace PottiRoma.App.Models.Models
 {
     public class User : BindableBase
     {
+        #region Database Values
+
         public Guid UserId { get; set; }
         public UserType UserType { get; set; }
         public Salesperson Salesperson { get; set; }
@@ -54,6 +56,71 @@ namespace PottiRoma.App.Models.Models
         {
             get { return _cep; }
             set { SetProperty(ref _cep, value); }
+        }
+
+        private int _averageTicketPoints;
+        public int AverageTicketPoints
+        {
+            get { return _averageTicketPoints; }
+            set { SetProperty(ref _averageTicketPoints, value); }
+        }
+
+        private int _registerNewClientsPoints;
+        public int RegisterNewClientsPoints
+        {
+            get { return _registerNewClientsPoints; }
+            set { SetProperty(ref _registerNewClientsPoints, value); }
+        }
+
+        private int _salesNumberPoints;
+        public int SalesNumberPoints
+        {
+            get { return _salesNumberPoints; }
+            set { SetProperty(ref _salesNumberPoints, value); }
+        }
+
+        private int _averageItensPerSalePoints;
+        public int AverageItensPerSalePoints
+        {
+            get { return _averageItensPerSalePoints; }
+            set { SetProperty(ref _averageItensPerSalePoints, value); }
+        }
+
+        private int _inviteAllyFlowersPoints;
+        public int InviteAllyFlowersPoints
+        {
+            get { return _inviteAllyFlowersPoints; }
+            set { SetProperty(ref _inviteAllyFlowersPoints, value); }
+        }
+
+        #endregion
+
+        #region Helper Values
+
+        private int _totalPoints;
+        public int TotalPoints
+        {
+            get { return _totalPoints; }
+            set { SetProperty(ref _totalPoints, value); }
+        }
+
+        private string _rankingPosition;
+        public string RankingPosition
+        {
+            get { return _rankingPosition; }
+            set { SetProperty(ref _rankingPosition, value); }
+        }
+
+        #endregion
+
+        public User()
+        {
+            TotalPoints = SetTotalPoints();
+        }
+
+        private int SetTotalPoints()
+        {
+            return AverageItensPerSalePoints + AverageTicketPoints + RegisterNewClientsPoints + InviteAllyFlowersPoints + RegisterNewClientsPoints;
         }
     }
 }

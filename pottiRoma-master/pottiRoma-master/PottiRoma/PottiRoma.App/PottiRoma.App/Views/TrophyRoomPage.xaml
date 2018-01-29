@@ -12,33 +12,33 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="CarouselTemplate">
-                    <Frame
-                        Padding="0"
-                        BackgroundColor="{StaticResource WhiteColor}"
-                        HasShadow="True"
-                        OutlineColor="{StaticResource OutlineColor}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="180" />
-                                <RowDefinition Height="100" />
-                            </Grid.RowDefinitions>
-                            <Image
-                                Grid.Row="0"
-                                Margin="16"
-                                Aspect="AspectFill"
-                                Source="{Binding Image}" />
-                            <Label
-                                Grid.Row="1"
-                                Margin="16,0,16,0"
-                                FontSize="{StaticResource ReducedFontSize}"
-                                HorizontalOptions="Center"
-                                HorizontalTextAlignment="Center"
-                                Text="{Binding Description}"
-                                TextColor="{StaticResource LightTextColor}"
-                                VerticalOptions="Center"
-                                VerticalTextAlignment="Center" />
-                        </Grid>
-                    </Frame>
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HasShadow="True"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="180" />
+                            <RowDefinition Height="100" />
+                        </Grid.RowDefinitions>
+                        <Image
+                            Grid.Row="0"
+                            Margin="16"
+                            Aspect="AspectFill"
+                            Source="{Binding Image}" />
+                        <Label
+                            Grid.Row="1"
+                            Margin="16,0,16,0"
+                            FontSize="{StaticResource ReducedFontSize}"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Description}"
+                            TextColor="{StaticResource LightTextColor}"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </Frame>
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -83,9 +83,8 @@
             ItemTemplate="{StaticResource CarouselTemplate}"
             ItemWidth="180"
             ItemsSource="{Binding RewardDto}"
-            RotationAngle="30"
-            SelectedIndex="1"
-            Offset="50" />
+            RotationAngle="10"
+            SelectedIndex="1" />
 
 
     </Grid>
