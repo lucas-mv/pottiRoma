@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X5k-f2-b5h">
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X5k-f2-b5h">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9ZL-r4-8FZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yd7-JS-zBw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
@@ -21,7 +22,7 @@
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39"/>
                             <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41"/>
@@ -34,6 +35,57 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-60.png" width="180" height="180"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="banned_sales_page_detail.png" width="540" height="373"/>
+        <image name="banner_history.png" width="540" height="225"/>
+        <image name="banner_listClientsForSale.png" width="540" height="142"/>
+        <image name="banner_perfil.png" width="540" height="290"/>
+        <image name="banner_ranking.jpg" width="1080" height="420"/>
+        <image name="banner_ranking1.png" width="234" height="331"/>
+        <image name="banner_ranking2.png" width="234" height="331"/>
+        <image name="banner_ranking3.png" width="234" height="331"/>
+        <image name="banner_top_2.png" width="540" height="142"/>
+        <image name="banner_top1.png" width="540" height="142"/>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="Default-Portrait.png" width="768" height="1004"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="foto_perfil.png" width="220" height="220"/>
+        <image name="ic_account_circle_white.png" width="24" height="24"/>
+        <image name="ic_account_circle_white_2x.png" width="48" height="48"/>
+        <image name="ic_account_circle_white_3x.png" width="72" height="72"/>
+        <image name="ic_arrow_back_white_24dp.png" width="24" height="24"/>
+        <image name="ic_attach_money_white.png" width="24" height="24"/>
+        <image name="ic_attach_money_white_2x.png" width="48" height="48"/>
+        <image name="ic_attach_money_white_3x.png" width="72" height="72"/>
+        <image name="ic_edit_data.png" width="20" height="20"/>
+        <image name="ic_history.png" width="20" height="20"/>
+        <image name="ic_home_white.png" width="24" height="24"/>
+        <image name="ic_home_white_2x.png" width="48" height="48"/>
+        <image name="ic_home_white_3x.png" width="72" height="72"/>
+        <image name="ic_keyboard_arrow_left@_black_24dp.png" width="-48" height="-48"/>
+        <image name="ic_keyboard_arrow_left_black_24dp.png" width="24" height="24"/>
+        <image name="ic_keyboard_arrow_right_black_24dp.png" width="24" height="24"/>
+        <image name="ic_launcher.png" width="20" height="20"/>
+        <image name="ic_logout.png" width="20" height="20"/>
+        <image name="ic_menu_white.png" width="24" height="24"/>
+        <image name="ic_menu_white_2x.png" width="48" height="48"/>
+        <image name="ic_menu_white_3x.png" width="72" height="72"/>
+        <image name="ic_my_clients.png" width="20" height="20"/>
+        <image name="ic_my_sales.png" width="20" height="20"/>
+        <image name="ic_rules.png" width="20" height="20"/>
+        <image name="ic_settings_white.png" width="24" height="24"/>
+        <image name="ic_settings_white_2x.png" width="48" height="48"/>
+        <image name="ic_settings_white_3x.png" width="72" height="72"/>
+        <image name="ic_trophy.png" width="40" height="40"/>
+        <image name="ic_trophy_white.png" width="40" height="40"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="imagem.png" width="1080" height="767"/>
+        <image name="imagem_cropped.png" width="1080" height="370"/>
+        <image name="popup.png" width="880" height="596"/>
+        <image name="ranking_dia.png" width="495" height="700"/>
+        <image name="ranking_geral.png" width="1020" height="700"/>
+        <image name="ranking_semana.png" width="495" height="700"/>
     </resources>
 </document>

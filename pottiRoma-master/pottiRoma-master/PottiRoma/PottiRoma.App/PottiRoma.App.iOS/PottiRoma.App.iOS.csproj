@@ -363,22 +363,7 @@
     <BundleResource Include="Resources\popup.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_left_3x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_right_2x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_right_3x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_left.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_left_2x.png" />
+    <BundleResource Include="Resources\ic_keyboard_arrow_left_black_24dp.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_history.png" />
@@ -475,6 +460,38 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\banner_ranking.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_left%40_black_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_left_black_24dp%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_right_black_24dp%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_right_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_right_black_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_arrow_back_white_24dp%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_arrow_back_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_arrow_back_white_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
