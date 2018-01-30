@@ -87,5 +87,13 @@
         <image name="ranking_dia.png" width="495" height="700"/>
         <image name="ranking_geral.png" width="1020" height="700"/>
         <image name="ranking_semana.png" width="495" height="700"/>
+        <image name="Icon-App-20x20.png" width="20" height="20"/>
+        <image name="Icon-App-29x29.png" width="29" height="29"/>
+        <image name="Icon-App-40x40.png" width="40" height="40"/>
+        <image name="Icon-App-60x60.png" width="60" height="60"/>
+        <image name="Icon-App-76x76.png" width="76" height="76"/>
+        <image name="Icon-App-83.5x83.5.png" width="83.5" height="83.5"/>
+        <image name="ItunesArtwork.png" width="512" height="512"/>
+        <image name="iTunesArtwork.png" width="512" height="512"/>
     </resources>
 </document>
