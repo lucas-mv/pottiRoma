@@ -133,12 +133,31 @@ namespace PottiRoma.App.ViewModels
                 AverageItensPerSalePoints = 457,
             });
 
-            //Aqui precisa de um script que ordena de acordo com a pontuacao
+            var listaOrdenada = ListaOrdenada();
 
-            for(int i=0; i < AppUsers.Count; i++)
+            AppUsers.Clear();
+
+            foreach (var userOrdenado in listaOrdenada)
+            {
+                AppUsers.Add(userOrdenado);
+            }
+
+            for (int i=0; i < AppUsers.Count; i++)
             {
                 AppUsers[i].RankingPosition = (i+1).ToString() + ". ";
             }
+        }
+
+        private List<User> ListaOrdenada()
+        {
+            var listainvertida = AppUsers.OrderBy(user => user.TotalPoints).ToList();
+            var listaCorreta = new List<User>();
+
+            for (int i = 0; i < listainvertida.Count; i++)
+            {
+                listaCorreta.Add(listainvertida[listainvertida.Count - i - 1]);
+            }
+            return listaCorreta;
         }
     }
 }
