@@ -41,7 +41,7 @@ namespace PottiRoma.App.ViewModels
         {
             ListaClientes.Add(new Client
             {
-                SalespersonId = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Lucas Roscoe",
                 ClientId = Guid.NewGuid(),
@@ -50,7 +50,7 @@ namespace PottiRoma.App.ViewModels
             });
             ListaClientes.Add(new Client
             {
-                SalespersonId = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1989, 8, 25),
                 Name = "Maria Clara Diniz",
                 ClientId = Guid.NewGuid(),
@@ -59,7 +59,7 @@ namespace PottiRoma.App.ViewModels
             });
             ListaClientes.Add(new Client
             {
-                SalespersonId = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Laura Diniz",
                 ClientId = Guid.NewGuid(),
@@ -68,7 +68,7 @@ namespace PottiRoma.App.ViewModels
             });
             ListaClientes.Add(new Client
             {
-                SalespersonId = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Luisa Antunes",
                 ClientId = Guid.NewGuid(),
@@ -77,7 +77,7 @@ namespace PottiRoma.App.ViewModels
             });
             ListaClientes.Add(new Client
             {
-                SalespersonId = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Davi Ferraz",
                 ClientId = Guid.NewGuid(),

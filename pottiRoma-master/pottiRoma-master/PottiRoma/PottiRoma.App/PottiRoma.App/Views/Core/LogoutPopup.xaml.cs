@@ -56,6 +56,7 @@ namespace PottiRoma.App.Views.Core
             catch(Exception ex)
             {
                 _userDialogs.Toast(ex.Message);
+                await NavigationHelper.PopLoading();
             }
             finally
             {

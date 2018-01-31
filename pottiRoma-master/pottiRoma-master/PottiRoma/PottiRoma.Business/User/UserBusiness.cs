@@ -22,7 +22,6 @@ namespace PottiRoma.Business.User
         public static UserEntity GetUserById(Guid userId)
         {
             var user = UserRepository.Get().GetUserById(userId);
-            user.Salesperson = SalesBusiness.GetSalespersonByUserId(userId);
             return user;
         }
 
@@ -59,9 +58,8 @@ namespace PottiRoma.Business.User
                     Birthday = birthday,
                     FlowerId = Guid.Empty,
                     SalespersonId = salespersonId,
-                    UserId = newUser.UserId
+                    UserId = newUser.UsuarioId
                 });
-                newUser.Salesperson = SalesBusiness.GetSalespersonById(salespersonId);
             } 
             else if (newUser.UserType == UserType.SecondarySalesPerson)
             {
@@ -71,9 +69,8 @@ namespace PottiRoma.Business.User
                     Birthday = birthday,
                     FlowerId = flowerId,
                     SalespersonId = salespersonId,
-                    UserId = newUser.UserId
+                    UserId = newUser.UsuarioId
                 });
-                newUser.Salesperson = SalesBusiness.GetSalespersonById(salespersonId);
             }
 
             return newUser;
@@ -91,8 +88,6 @@ namespace PottiRoma.Business.User
             {
                 user.Password = string.Empty;
                 user.PasswordSalt = string.Empty;
-                if(user.UserType == UserType.SalesPerson || user.UserType == UserType.SecondarySalesPerson)
-                    user.Salesperson = SalesBusiness.GetSalespersonByUserId(user.UserId);
                 return user;
             }
             else
@@ -112,7 +107,7 @@ namespace PottiRoma.Business.User
             if (ValidatePassword(oldPassword, user.PasswordSalt, user.Password))
             {
                 var newPasswordEncryption = EncryptPassword(newPassword);
-                UserRepository.Get().UpdateUserPassword(user.UserId, newPasswordEncryption.Password, newPasswordEncryption.Salt);
+                UserRepository.Get().UpdateUserPassword(user.UsuarioId, newPasswordEncryption.Password, newPasswordEncryption.Salt);
             }
             else
             {
@@ -130,7 +125,7 @@ namespace PottiRoma.Business.User
 
             var newPassword = RandomString(10);
             var newPasswordEncryption = EncryptPassword(newPassword);
-            UserRepository.Get().UpdateUserPassword(user.UserId, newPasswordEncryption.Password, newPasswordEncryption.Salt);
+            UserRepository.Get().UpdateUserPassword(user.UsuarioId, newPasswordEncryption.Password, newPasswordEncryption.Salt);
             return newPassword;
         }
 

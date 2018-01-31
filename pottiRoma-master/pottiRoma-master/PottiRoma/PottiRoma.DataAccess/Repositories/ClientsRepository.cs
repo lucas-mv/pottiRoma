@@ -84,13 +84,12 @@ namespace PottiRoma.DataAccess.Repositories
         {
             DynamicParameters parameters = new DynamicParameters();
 
-            parameters.Add("@clienteid", client.ClientId, System.Data.DbType.Guid);
-            parameters.Add("@vendedorid", client.SalespersonId, System.Data.DbType.Guid);
+            parameters.Add("@clienteid", client.ClienteId, System.Data.DbType.Guid);
+            parameters.Add("@vendedorid", client.UsuarioId, System.Data.DbType.Guid);
             parameters.Add("@nome", client.Name, System.Data.DbType.AnsiString);
             parameters.Add("@email", client.Email, System.Data.DbType.AnsiString);
             parameters.Add("@telefone", client.Telephone, System.Data.DbType.AnsiString);
-            parameters.Add("@cpf", client.Cpf, System.Data.DbType.AnsiString);
-            parameters.Add("@endereco", client.Address, System.Data.DbType.AnsiString);
+            parameters.Add("@endereco", client.Cep, System.Data.DbType.AnsiString);
             parameters.Add("@dataaniversario", client.Birthdate, System.Data.DbType.DateTime);
 
             Execute(INSERT_CLIENT, parameters);

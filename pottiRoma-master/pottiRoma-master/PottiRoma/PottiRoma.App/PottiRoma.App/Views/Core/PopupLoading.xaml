@@ -28,11 +28,12 @@
         <sfBusy:SfBusyIndicator
             Title="Aguarde..."
             AnimationType="Globe"
+            HorizontalOptions="Center"
             TextColor="White"
             TextSize="12"
-            VerticalOptions="FillAndExpand"
-            ViewBoxHeight="90"
-            ViewBoxWidth="90" />
+            VerticalOptions="Center"
+            ViewBoxHeight="70"
+            ViewBoxWidth="70" />
 
     </StackLayout>
 
