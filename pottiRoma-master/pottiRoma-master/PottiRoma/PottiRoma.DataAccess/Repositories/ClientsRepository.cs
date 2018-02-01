@@ -27,17 +27,16 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Selects
 
-        private const string GET_BY_SALESPERSON_ID = @"
+        private const string GET_BY_USER_ID = @"
         SELECT ClienteId as ClientId, 
-        VendedorId as SalespersonId, 
-        Nome as Name, 
+        UsuarioId as UsuarioId,
+        Name as Name, 
         Email as Email, 
-        Telefone as Telephone, 
-        Endereco as Address,
-        Cpf as Cpf,
-        DataAniversario as Birthdate
+        Telephone as Telephone, 
+        Cep as Cep,
+        Birthdate as Birthdate
         FROM dbo.Cliente
-        WHERE VendedorId = @vendedorid";
+        WHERE UsuarioId = @usuarioid";
 
         #endregion
 
@@ -47,24 +46,22 @@ namespace PottiRoma.DataAccess.Repositories
         INSERT INTO dbo.Cliente 
         (
 	        ClienteId, 
-	        VendedorId, 
-	        Nome, 
+	        UsuarioId, 
+	        Name, 
 	        Email, 
-	        Telefone, 
-	        Endereco, 
-	        Cpf,
-            DataAniversario
+	        Telephone, 
+	        Cep, 
+	        Birthdate
         )
         VALUES 
         (
 	        @clienteid, 
-	        @vendedorid, 
-	        @nome, 
+	        @usuarioid, 
+	        @name, 
 	        @email, 
-	        @telefone, 
-	        @endereco, 
-	        @cpf,
-            @dataaniversario
+	        @telephone, 
+	        @cep, 
+            @birthdate
         )";
 
         #endregion
@@ -85,23 +82,23 @@ namespace PottiRoma.DataAccess.Repositories
             DynamicParameters parameters = new DynamicParameters();
 
             parameters.Add("@clienteid", client.ClienteId, System.Data.DbType.Guid);
-            parameters.Add("@vendedorid", client.UsuarioId, System.Data.DbType.Guid);
-            parameters.Add("@nome", client.Name, System.Data.DbType.AnsiString);
+            parameters.Add("@usuarioid", client.UsuarioId, System.Data.DbType.Guid);
+            parameters.Add("@name", client.Name, System.Data.DbType.AnsiString);
             parameters.Add("@email", client.Email, System.Data.DbType.AnsiString);
-            parameters.Add("@telefone", client.Telephone, System.Data.DbType.AnsiString);
-            parameters.Add("@endereco", client.Cep, System.Data.DbType.AnsiString);
-            parameters.Add("@dataaniversario", client.Birthdate, System.Data.DbType.DateTime);
+            parameters.Add("@telephone", client.Telephone, System.Data.DbType.AnsiString);
+            parameters.Add("@cep", client.Cep, System.Data.DbType.AnsiString);
+            parameters.Add("@birthdate", client.Birthdate, System.Data.DbType.DateTime);
 
             Execute(INSERT_CLIENT, parameters);
         }
 
-        public List<ClientEntity> GetClientsBySalespersonId(Guid salespersonId)
+        public List<ClientEntity> GetClientsByUserId(Guid userId)
         {
             DynamicParameters parameters = new DynamicParameters();
 
-            parameters.Add("@vendedorid", salespersonId, System.Data.DbType.Guid);
+            parameters.Add("@usuarioid", userId, System.Data.DbType.Guid);
 
-            return Query(GET_BY_SALESPERSON_ID, parameters).ToList();
+            return Query(GET_BY_USER_ID, parameters).ToList();
         }
 
         #endregion

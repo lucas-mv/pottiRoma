@@ -40,13 +40,6 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _telephone, value); }
         }
 
-        private string _adress;
-        public string Address
-        {
-            get { return _adress; }
-            set { SetProperty(ref _adress, value); }
-        }
-
         private DateTime _birthdate;
         public DateTime Birthdate
         {
