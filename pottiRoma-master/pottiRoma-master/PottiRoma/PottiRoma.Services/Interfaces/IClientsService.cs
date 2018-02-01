@@ -9,7 +9,7 @@ namespace PottiRoma.Services.Interfaces
 {
     public interface IClientsService
     {
-        void RegisterClient(Guid salespersonId, string name, string telephone, string email, string address, DateTime birthdate);
-        List<ClientEntity> GetClientsBySalespersonId(Guid salespersonId);
+        void RegisterClient(Guid userId, string name, string telephone, string email,string Cep, DateTime birthdate);
+        List<ClientEntity> GetClientsByUserId(Guid UserId);
     }
 }

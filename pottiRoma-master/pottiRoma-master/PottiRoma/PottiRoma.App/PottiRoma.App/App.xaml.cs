@@ -29,7 +29,7 @@ namespace PottiRoma.App
 
         private void StartNavigation()
         {
-            NavigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+            NavigationService.NavigateAsync(NavigationSettings.Login);
         }
 
         protected override void RegisterTypes()

@@ -11,15 +11,15 @@ namespace PottiRoma.Services.Implementations
 {
     public class ClientsService : IClientsService
     {
-        public void RegisterClient(Guid salespersonId, string name, string telephone, string email, string address, DateTime birthdate)
+        public void RegisterClient(Guid userId, string name, string telephone, string email, string Cep, DateTime birthdate)
         {
             var clientId = Guid.NewGuid();
-            ClientsBusiness.RegisterClient(clientId, salespersonId, name, telephone, email, address, birthdate);
+            ClientsBusiness.RegisterClient(userId, clientId, name, telephone, email, Cep, birthdate);
         }
 
-        public List<ClientEntity> GetClientsBySalespersonId(Guid salespersonId)
+        public List<ClientEntity> GetClientsByUserId(Guid userId)
         {
-            return ClientsBusiness.GetClientsBySalespersonId(salespersonId);
+            return ClientsBusiness.GetClientsByUserId(userId);
         }
     }
 }

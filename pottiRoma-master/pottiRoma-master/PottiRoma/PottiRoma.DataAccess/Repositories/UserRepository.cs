@@ -74,7 +74,7 @@ namespace PottiRoma.DataAccess.Repositories
               ,PrimaryTelephone as PrimaryTelephone
               ,SecundaryTelephone as SecundaryTelephone
               ,UserType as UserType
-              ,Senha as Password,
+              ,Senha as Password
               ,Salt as PasswordSalt
               ,Cep as Cep
               ,AverageTicketPoints as AverageTicketPoints
