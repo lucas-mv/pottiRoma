@@ -30,7 +30,7 @@ namespace PottiRoma.Api.Controllers
         {
             var response = new LoginResponse();
             response.User = _userService.Authenticate(request.Email, request.Password);
-            response.Token = _authenticationService.CreateAuthenticationControl(response.User.UserId, request.Origin);
+            response.Token = _authenticationService.CreateAuthenticationControl(response.User.UsuarioId, request.Origin);
             return response;
         }
 
@@ -47,7 +47,7 @@ namespace PottiRoma.Api.Controllers
         {
             return new RegisterUserResponse()
             {
-                User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecondaryTelephone, request.Cpf, request.UserType, request.Birthday, request.FlowerId)
+                User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecundaryTelephone, request.Cpf, request.UserType,request.Cep,request.AverageTicketPoints,request.RegisterClientsPoints,request.SalesNumberPoints,request.AverageItensPerSalePoints,request.InviteAllyFlowersPoints,request.TemporadaId,request.MotherFlowerId)
             };
         }
 
@@ -67,7 +67,7 @@ namespace PottiRoma.Api.Controllers
             var corpoEmail = "Para redefinir uma nova senha para o app da Potti Roma, por favor clique no link abaixo:\n\n" +
                 "pottiroma.azurewebsites.net/api/v1/User/Profile/Password/Reset/" + userId;
             var destinatario = new Dictionary<string, string>();
-            destinatario.Add(user.Email, user.UserName);
+            destinatario.Add(user.Email, user.Name);
             Email.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
         }
 
@@ -78,7 +78,7 @@ namespace PottiRoma.Api.Controllers
             var user = _userService.ResetPassword(new Guid(userId));
             var corpoEmail = "A sua senha do app da Potti Roma foi redefinida com sucesso para a senha temporária indicada abaixo:\n\n" + user.Password;
             var destinatario = new Dictionary<string, string>();
-            destinatario.Add(user.Email, user.UserName);
+            destinatario.Add(user.Email, user.Name);
             Email.Enviar("Potti Roma - Nova senha", corpoEmail, destinatario);
         }
 
@@ -88,7 +88,7 @@ namespace PottiRoma.Api.Controllers
         {
             await ValidateToken();
             var user = _userService.GetUserById(request.UserId);
-            Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, user.Email, user.UserName, null);
+            Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, user.Email, user.Name, null);
             return new SendEmailResponse()
             {
                 IsSuccess = true

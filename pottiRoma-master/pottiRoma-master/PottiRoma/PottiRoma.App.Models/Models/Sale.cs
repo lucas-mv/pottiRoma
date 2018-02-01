@@ -47,9 +47,6 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _numberSoldPieces, value); }
         }
 
-
-
-
         #region Helper Values
 
         private string _cardLabel;
