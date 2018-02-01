@@ -32,6 +32,7 @@ namespace PottiRoma.DataAccess.Repositories
         , StartDate AS StartDate
         , EndDate AS EndDate
         , AverageTicketGoal AS AverageTicketGoal
+        , AverageItensPerSaleGoal AS AverageItensPerSaleGoal
         , RegisterClientsGoal AS RegisterClientsGoal
         , SalesNumberGoal AS SalesNumberGoal
         , InviteFlowersGoal AS InviteFlowersGoal

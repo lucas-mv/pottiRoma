@@ -29,7 +29,7 @@ namespace PottiRoma.App
 
         private void StartNavigation()
         {
-            NavigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+            NavigationService.NavigateAsync(NavigationSettings.Landing);
         }
 
         protected override void RegisterTypes()
@@ -53,6 +53,7 @@ namespace PottiRoma.App
             Container.RegisterTypeForNavigation<TrophyRoomPage>();
             Container.RegisterTypeForNavigation<SalesHistoryPage>();
             Container.RegisterTypeForNavigation<ListRankingPage>();
+            Container.RegisterTypeForNavigation<LandingPage>();
         }
     }
 }
