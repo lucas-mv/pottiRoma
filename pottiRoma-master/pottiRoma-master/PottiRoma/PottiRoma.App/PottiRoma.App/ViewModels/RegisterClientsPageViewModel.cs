@@ -23,8 +23,9 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IClientsAppService _clientsAppService;
+        private readonly IUserDialogs _userDialogs;
 
-        private readonly string DatePlaceholder = "Data de Aniversário";
+        private readonly string DatePlaceholder = "Data de Aniversário*";
         private Color _colorDateAnniversary;
         public Color ColorDateAnniversary
         {
@@ -65,10 +66,12 @@ namespace PottiRoma.App.ViewModels
 
         public RegisterClientsPageViewModel(
             INavigationService navigationService,
-            IClientsAppService clientsAppService)
+            IClientsAppService clientsAppService,
+            IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _clientsAppService = clientsAppService;
+            _userDialogs = userDialogs;
 
             ClientSelectedForEdition = new Client();
             OpenPopupDateCommand = new DelegateCommand(OpenDatePopup).ObservesCanExecute(() => CanExecute);
@@ -115,31 +118,38 @@ namespace PottiRoma.App.ViewModels
 
         private async void RegisterNewClient()
         {
-            try
+            if (!string.IsNullOrEmpty(ClientSelectedForEdition.Name) && !string.IsNullOrEmpty(ClientSelectedForEdition.Email) && !string.IsNullOrEmpty(ClientSelectedForEdition.Telephone) && !string.IsNullOrEmpty(ClientSelectedForEdition.Birthdate.ToString()))
             {
-                await NavigationHelper.ShowLoading();
-                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                await _clientsAppService.RegisterClient(new RegisterClientRequest()
+                try
                 {
-                    Address = string.Empty,
-                    Birthdate = ClientSelectedForEdition.Birthdate,
-                    Cpf = ClientSelectedForEdition.Cpf,
-                    Email = ClientSelectedForEdition.Email,
-                    SalespersonId = user.Salesperson.SalespersonId,
-                    Name = ClientSelectedForEdition.Name,
-                    Telephone = ClientSelectedForEdition.Telephone
-                });
-                UserDialogs.Instance.Toast("Cliente registrado com sucesso!");
-                await _navigationService.GoBackAsync();
+                    await NavigationHelper.ShowLoading();
+                    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                    await _clientsAppService.RegisterClient(new RegisterClientRequest()
+                    {
+                        Address = string.Empty,
+                        Birthdate = ClientSelectedForEdition.Birthdate,
+                        Cep = ClientSelectedForEdition.Cep,
+                        Email = ClientSelectedForEdition.Email,
+                        Name = ClientSelectedForEdition.Name,
+                        Telephone = ClientSelectedForEdition.Telephone
+                    });
+                    UserDialogs.Instance.Toast("Cliente registrado com sucesso!");
+                    await _navigationService.GoBackAsync();
+                }
+                catch (Exception ex)
+                {
+                    UserDialogs.Instance.Toast("Não foi possível registrar o cliente.");
+                }
+                finally
+                {
+                    await NavigationHelper.PopLoading();
+                }
             }
-            catch(Exception ex)
+            else
             {
-                UserDialogs.Instance.Toast("Não foi possível registrar o cliente.");
-            }
-            finally
-            {
-                await NavigationHelper.PopLoading();
-            }
+                TimeSpan duration = new TimeSpan(0, 0, 2);
+                _userDialogs.Toast("Insira todos os dados obrigatórios.", duration);
+             }
         }
     }
 }

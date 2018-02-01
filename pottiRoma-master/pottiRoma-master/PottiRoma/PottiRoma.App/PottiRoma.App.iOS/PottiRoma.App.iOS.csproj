@@ -47,7 +47,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
@@ -100,8 +100,11 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork@2x" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
     <None Include="packages.config" />
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ITunesArtwork Include="Resources\iTunesArtwork" />
+    <ITunesArtwork Include="Resources\iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -119,7 +122,6 @@
     <BundleResource Include="Resources\Icon-Small.png" />
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -252,6 +254,9 @@
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="Xamarin.Forms.CarouselView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.4.0.280\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -315,15 +320,6 @@
     <BundleResource Include="Resources\ic_settings_white_3x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_email.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_email_2x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_email_3x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ic_menu_white.png" />
   </ItemGroup>
   <ItemGroup>
@@ -369,22 +365,267 @@
     <BundleResource Include="Resources\popup.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_left_3x.png" />
+    <BundleResource Include="Resources\ic_keyboard_arrow_left_black_24dp.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_right.png" />
+    <BundleResource Include="Resources\ic_history.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_right_2x.png" />
+    <BundleResource Include="Resources\ic_history%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_right_3x.png" />
+    <BundleResource Include="Resources\ic_history%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_left.png" />
+    <BundleResource Include="Resources\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_keyboard_arrow_left_2x.png" />
+    <BundleResource Include="Resources\ic_launcher%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_launcher%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_logout%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_logout%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_my_clients.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_my_clients%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_my_clients%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_my_sales.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_my_sales%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_my_sales%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_rules.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_rules%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_rules%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_edit_data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_edit_data%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_edit_data%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_ranking1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_ranking2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_ranking3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_history.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_trophy%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_trophy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_trophy%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_trophy_white%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_trophy_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_trophy_white%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_ranking.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_left%40_black_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_left_black_24dp%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_right_black_24dp%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_right_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_keyboard_arrow_right_black_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_arrow_back_white_24dp%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_arrow_back_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_arrow_back_white_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-20x20@1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-20x20@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-20x20@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-29x29@1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-29x29@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-29x29@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-40x40@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-40x40@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-60x60@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-76x76@1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-76x76@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Icon-App-83.5x83.5@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\ItunesArtwork@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Default-568h@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Default-Portrait.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Default-Portrait@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Default@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\splash_portrait_1024_768.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\splash_portrait_2048_1536.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\SplashScreen.xcassets\AppIcons.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\SplashScreen.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\SplashScreen.xcassets\LaunchImages.launchimage\Default-568h@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\SplashScreen.xcassets\LaunchImages.launchimage\Default-Portrait.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\SplashScreen.xcassets\LaunchImages.launchimage\Default-Portrait@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\SplashScreen.xcassets\LaunchImages.launchimage\Default@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\SplashScreen.xcassets\LaunchImages.launchimage\splash_portrait_1024_768.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\SplashScreen.xcassets\LaunchImages.launchimage\splash_portrait_2048_1536.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-20x20%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-20x20%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-20x20%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-29x29%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-29x29%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-29x29%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-40x40%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-40x40%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-60x60%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-76x76%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-76x76%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon-App-83.5x83.5%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ItunesArtwork%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iTunesArtwork%401x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splash_portrait_1024_768.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splash_portrait_2048_1536.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_login.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

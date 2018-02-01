@@ -25,11 +25,6 @@ namespace PottiRoma.App.Views
                 ViewModel.ScreenHeightRequest = (LoginPageContent.Width < LoginPageContent.Height) ? LoginPageContent.Height : 650;
         }
 
-        private void Entry_Focused(object sender, FocusEventArgs e)
-        {
-            ViewModel.LoginIncorreto = false;
-        }
-
         private void LoginPageContent_SizeChanged(object sender, System.EventArgs e)
         {
             SetInitialScreenHeight();

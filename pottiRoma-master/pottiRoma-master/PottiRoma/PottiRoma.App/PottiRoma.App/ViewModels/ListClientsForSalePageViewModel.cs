@@ -32,55 +32,54 @@ namespace PottiRoma.App.ViewModels
         public ListClientsForSalePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-
+            ListaClientes = new ObservableCollection<Client>();
             ClienteSelectedCommand = new DelegateCommand<object>(async param => await SelecionarCliente(param))
                 .ObservesCanExecute(() => CanExecute);
-            ListaClientes = new ObservableCollection<Client>();
         }
 
         private void GenerateMock()
         {
             ListaClientes.Add(new Client
             {
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Lucas Roscoe",
-                Cpf = "109472066-63",
                 ClientId = Guid.NewGuid(),
                 Email = "lucasrloliveira@gmail.com",
                 Telephone = "998085147",
             });
             ListaClientes.Add(new Client
             {
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1989, 8, 25),
                 Name = "Maria Clara Diniz",
-                Cpf = "109549066-45",
                 ClientId = Guid.NewGuid(),
                 Email = "lucasrloliveira@gmail.com",
                 Telephone = "998986521",
             });
             ListaClientes.Add(new Client
             {
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Laura Diniz",
-                Cpf = "367472066-33",
                 ClientId = Guid.NewGuid(),
                 Email = "Lauradiniz@gmail.com",
                 Telephone = "985748526",
             });
             ListaClientes.Add(new Client
             {
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Luisa Antunes",
-                Cpf = "685956874-12",
                 ClientId = Guid.NewGuid(),
                 Email = "luisa_antunes@gmail.com",
                 Telephone = "987545852",
             });
             ListaClientes.Add(new Client
             {
+                UserId = Guid.NewGuid(),
                 Birthdate = new DateTime(1990, 11, 08),
                 Name = "Davi Ferraz",
-                Cpf = "521478596-12",
                 ClientId = Guid.NewGuid(),
                 Email = "davi_ferraz@gmail.com",
                 Telephone = "985623165",
@@ -92,8 +91,8 @@ namespace PottiRoma.App.ViewModels
             if (item == null) return;
 
             CanExecuteInitial();
-
             var param = new NavigationParameters();
+            param.Add(NavigationKeyParameters.SelectedClient, (Client)item);
             await _navigationService.NavigateAsync(NavigationSettings.RegisterSale, param);
 
             CanExecuteEnd();
@@ -101,14 +100,9 @@ namespace PottiRoma.App.ViewModels
 
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
-            PageTitle = SetTitle();
+            PageTitle = "Selecionar Cliente";
             GenerateMock();
             base.OnNavigatedTo(parameters);
-        }
-
-        private string SetTitle()
-        {
-            return Device.OS == TargetPlatform.Android ? "Selecionar Cliente" : "";
         }
     }
 }

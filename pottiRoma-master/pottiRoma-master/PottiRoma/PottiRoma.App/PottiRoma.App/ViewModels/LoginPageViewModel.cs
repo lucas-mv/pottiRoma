@@ -22,6 +22,7 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IUserAppService _userAppService;
+        private readonly IUserDialogs _userDialogs;
 
         private double _screenHeightRequest;
         public double ScreenHeightRequest
@@ -31,6 +32,7 @@ namespace PottiRoma.App.ViewModels
         }
 
         public DelegateCommand LoginCommand { get; set; }
+        public DelegateCommand ResetPasswordCommand { get; set; }
 
         private string _login = "";
         public string Login
@@ -46,23 +48,24 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _password, value); }
         }
 
-        private bool _loginIncorreto = false;
-        public bool LoginIncorreto
-        {
-            get { return _loginIncorreto; }
-            set { SetProperty(ref _loginIncorreto, value); }
-        }
-
         public LoginPageViewModel(
             INavigationService navigationService,
-            IUserAppService userAppService)
+            IUserAppService userAppService,
+            IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _userAppService = userAppService;
+            _userDialogs = userDialogs;
 
             LoginCommand = new DelegateCommand(ExecuteLogin).ObservesCanExecute(() => CanExecute);
+            ResetPasswordCommand = new DelegateCommand(ResetPassword).ObservesCanExecute(() => CanExecute);
 
             CacheAccess.Initialize();
+        }
+
+        private void ResetPassword()
+        {
+            //aqui deve abrir um popup pro usuário inserir o email dele e assim reenviar outra senha para esse email
         }
 
         public override async void OnNavigatedTo(NavigationParameters parameters)
@@ -107,14 +110,14 @@ namespace PottiRoma.App.ViewModels
                 }
                 else
                 {
-                    LoginIncorreto = true;
+                    TimeSpan duration = new TimeSpan(0, 0, 2);
+                    _userDialogs.Toast("Login ou senha incorretos");
                     throw new Exception("Ocorreu um erro, tente novamente mais tarde.");
                 }
             }
             catch(Exception ex)
             {
                 UserDialogs.Instance.Toast(ex.Message);
-                LoginIncorreto = true;
             }
             finally
             {

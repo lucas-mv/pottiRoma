@@ -51,6 +51,18 @@
                 iOS="15" />
 
             <OnPlatform
+                x:Key="UltraLargeFontSize"
+                x:TypeArguments="x:Double"
+                Android="23"
+                iOS="24" />
+
+            <OnPlatform
+                x:Key="SuperLargeFontSize"
+                x:TypeArguments="x:Double"
+                Android="19"
+                iOS="20" />
+
+            <OnPlatform
                 x:Key="LargeFontSize"
                 x:TypeArguments="x:Double"
                 Android="17"
@@ -109,8 +121,19 @@
                 <Setter Property="FontSize" Value="{StaticResource TextButtonFontSize}" />
             </Style>
 
+            <Style x:Key="StatusBarBoxView" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="Opacity" Value="0.25" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HeightRequest" Value="20" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            </Style>
 
-
+            <Style x:Key="StatusBarGrid" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="Start" />
+            </Style>
 
 
 

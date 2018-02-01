@@ -3,8 +3,17 @@
     x:Class="PottiRoma.App.Views.GamificationRulesPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PottiRoma.App.Controls"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    Title="REGRAS DO JOGO"
+    Title="Regras do Jogo"
     prism:ViewModelLocator.AutowireViewModel="True">
-    <ScrollView />
+    <ScrollView>
+        <Label
+            Margin="16"
+            FontSize="{StaticResource StandardFontSize}"
+            HorizontalOptions="Fill"
+            Text="{Binding Rules}"
+            TextColor="{StaticResource TextColor}"
+            VerticalOptions="Fill" />
+    </ScrollView>
 </ContentPage>

@@ -3,6 +3,7 @@
     x:Class="PottiRoma.App.Views.MenuPrincipalPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PottiRoma.App.Controls"
     xmlns:local="clr-namespace:PottiRoma.App.Views"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     Title="{Binding Title}"
@@ -41,9 +42,11 @@
                             </Grid.GestureRecognizers>
                             <Image
                                 Grid.Column="1"
+                                HeightRequest="24"
                                 HorizontalOptions="Start"
                                 Source="ic_podium.png"
-                                VerticalOptions="Center" />
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
                             <Label
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"
@@ -52,32 +55,7 @@
                                 TextColor="{StaticResource WhiteColor}"
                                 VerticalOptions="Center" />
                         </Grid>
-                        <Grid
-                            x:Name="ContentPerfil"
-                            HeightRequest="{StaticResource HeightMenuItem}"
-                            HorizontalOptions="FillAndExpand"
-                            Opacity="{StaticResource ShadedMenu}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="18" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoToProfileCommand}" Tapped="ContentPerfil_Clicked" />
-                            </Grid.GestureRecognizers>
-                            <Image
-                                Grid.Column="1"
-                                HorizontalOptions="Start"
-                                Source="ic_account_circle_white_24dp.png"
-                                VerticalOptions="Center" />
-                            <Label
-                                Grid.Column="2"
-                                FontSize="{StaticResource LargeFontSize}"
-                                HorizontalOptions="Start"
-                                Text="    Meu Perfil"
-                                TextColor="{StaticResource WhiteColor}"
-                                VerticalOptions="Center" />
-                        </Grid>
+
                         <Grid
                             x:Name="ContentSales"
                             HeightRequest="{StaticResource HeightMenuItem}"
@@ -93,9 +71,11 @@
                             </Grid.GestureRecognizers>
                             <Image
                                 Grid.Column="1"
+                                HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_attach_money_white_24dp.png"
-                                VerticalOptions="Center" />
+                                Source="ic_my_sales.png"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
                             <Label
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"
@@ -119,9 +99,11 @@
                             </Grid.GestureRecognizers>
                             <Image
                                 Grid.Column="1"
+                                HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_settings_white_24dp.png"
-                                VerticalOptions="Center" />
+                                Source="ic_my_clients.png"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
                             <Label
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"
@@ -145,9 +127,11 @@
                             </Grid.ColumnDefinitions>
                             <Image
                                 Grid.Column="1"
+                                HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_insert_invitation_white_24dp.png"
-                                VerticalOptions="Center" />
+                                Source="ic_launcher.png"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
                             <Label
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"
@@ -172,14 +156,74 @@
                             </Grid.ColumnDefinitions>
                             <Image
                                 Grid.Column="1"
+                                HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_insert_invitation_white_24dp.png"
-                                VerticalOptions="Center" />
+                                Source="ic_edit_data.png"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
                             <Label
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"
                                 HorizontalOptions="Start"
                                 Text="    Editar Dados Pessoais"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
+
+                        <Grid
+                            x:Name="ContentSalesHistory"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToSalesHistoryCommand}" Tapped="ContentSalesHistory_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="1"
+                                HeightRequest="24"
+                                HorizontalOptions="Start"
+                                Source="ic_history.png"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Histórico de Venda"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
+
+                        <Grid
+                            x:Name="ContentGameRules"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToProfileCommand}" Tapped="ContentGameRules_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Image
+                                Grid.Column="1"
+                                HeightRequest="24"
+                                HorizontalOptions="Start"
+                                Source="ic_rules.png"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Regras do Jogo"
                                 TextColor="{StaticResource WhiteColor}"
                                 VerticalOptions="Center" />
                         </Grid>
@@ -199,9 +243,11 @@
                             </Grid.ColumnDefinitions>
                             <Image
                                 Grid.Column="1"
+                                HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_insert_invitation_white_24dp.png"
-                                VerticalOptions="Center" />
+                                Source="ic_logout.png"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
                             <Label
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"

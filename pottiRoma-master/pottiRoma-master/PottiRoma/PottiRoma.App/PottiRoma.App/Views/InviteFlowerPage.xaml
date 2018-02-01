@@ -3,55 +3,58 @@
     x:Class="PottiRoma.App.Views.InviteFlowerPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PottiRoma.App.Controls"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     Title="Convidar Flor"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource LightBackgroundColor}">
-    <ScrollView>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="190" />
-                <RowDefinition Height="9*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="16" />
-                <ColumnDefinition Width="12*" />
-                <ColumnDefinition Width="16" />
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="16" />
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="16" />
+        </Grid.ColumnDefinitions>
 
-            <Image
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                Aspect="AspectFill"
-                Source="banner_top_2.png" />
+        <Image
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Aspect="AspectFill"
+            Source="banner_top_2.png" />
 
-            <Grid
-                Grid.Row="1"
-                Grid.Column="1"
-                RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="8*" />
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="2*" />
-
-                </Grid.RowDefinitions>
+        <ScrollView Grid.Row="1" Grid.Column="1">
+            <StackLayout Spacing="10">
 
                 <Frame
-                    Grid.Row="1"
                     Padding="0"
                     BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="50"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="Nome*"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="50"
                     OutlineColor="{StaticResource OutlineColor}">
                     <renderers:CustomEntry
                         Margin="10,0,10,0"
                         FontSize="{StaticResource StandardFontSize}"
                         Keyboard="Email"
-                        Placeholder="Email"
+                        Placeholder="Email*"
                         PlaceholderColor="{StaticResource PlaceholderColor}"
                         Text="{Binding Email}"
                         TextColor="{StaticResource TextColor}"
@@ -59,45 +62,59 @@
                 </Frame>
 
                 <Frame
-                    Grid.Row="3"
                     Padding="0"
                     BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="50"
                     OutlineColor="{StaticResource OutlineColor}">
-                    <Grid>
-                        <renderers:CustomEditor
-                            x:Name="EditorMessage"
-                            Margin="10,0,10,0"
-                            BackgroundColor="Transparent"
-                            FontSize="14"
-                            HorizontalOptions="Fill"
-                            Keyboard="Email"
-                            Text="{Binding Message}"
-                            TextChanged="EditorMessage_TextChanged"
-                            TextColor="Gray"
-                            VerticalOptions="Fill" />
-                        <Label
-                            x:Name="EditorPlaceholder"
-                            Margin="14,10,0,0"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HorizontalOptions="Start"
-                            Text="Mensagem"
-                            TextColor="{StaticResource PlaceholderColor}"
-                            VerticalOptions="Start" />
-                    </Grid>
-
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="CPF*"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
                 </Frame>
 
-
-
-                <Button
-                    Grid.Row="5"
-                    Command="{Binding SendEmailCommand}"
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
                     HeightRequest="50"
-                    Style="{StaticResource ButtonDefault}"
-                    Text="CONVIDAR"
-                    VerticalOptions="End" />
-            </Grid>
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Keyboard="Email"
+                        Placeholder="Telefone Principal*"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
 
-        </Grid>
-    </ScrollView>
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="50"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="CEP"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <ContentView HeightRequest="10" />
+            </StackLayout>
+        </ScrollView>
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Command="{Binding SendEmailCommand}"
+            HeightRequest="50"
+            Style="{StaticResource ButtonDefault}"
+            Text="CONVIDAR FLOR ALIADA"
+            VerticalOptions="Center" />
+    </Grid>
 </ContentPage>

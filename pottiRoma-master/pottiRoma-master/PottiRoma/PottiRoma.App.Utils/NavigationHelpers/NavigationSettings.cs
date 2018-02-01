@@ -12,13 +12,15 @@ namespace PottiRoma.App.Utils.NavigationHelpers
 
         public const string MenuPrincipal = "app:///MenuPrincipalPage/MainNavigationPage/RankingPage";
 
-        public const string TabbedProfile = "MainNavigationPage/ProfileTabbedPage";
         public const string ListClientsForSale = "MainNavigationPage/ListClientsForSalePage";
         public const string InviteFlower = "MainNavigationPage/InviteFlowerPage";
         public const string RankingDetail = "MainNavigationPage/RankingPage";
         public const string MyClients = "MainNavigationPage/MyClientsPage";
         public const string EditPersonalData = "MainNavigationPage/EditPersonalDataPage";
         public const string TrophyRoom = "MainNavigationPage/TrophyRoomPage";
+        public const string GamificationRules = "MainNavigationPage/GamificationRulesPage";
+        public const string SalesHistory = "MainNavigationPage/SalesHistoryPage";
+
 
         #endregion
 
@@ -26,9 +28,7 @@ namespace PottiRoma.App.Utils.NavigationHelpers
         public const string Login = "LoginPage";
         public const string AbsoluteLogin = "app:///LoginPage";
         public const string RegisterSale = "RegisterSalePage";
-        public const string Profile = "ProfilePage";
-        public const string GamificationRules = "GamificationRulesPage";
         public const string ResetPassword = "ResetPasswordPage";
-
+        public const string ListRanking = "ListRankingPage";
     }
 }

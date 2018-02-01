@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
 
+  <style name ="Theme.Splash"
+       parent="android:Theme">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">fill_parent</item>
+    <item name="android:windowBackground">@drawable/splashscreen_android</item>
+    <!--<item name="android:windowBackground">@color/splash_orange</item>-->
+    <item name="android:windowNoTitle">true</item>
+  </style>
+
   <style name="MainTheme" parent="MainTheme.Base">
   </style>
   <!-- Base theme applied no matter what API -->

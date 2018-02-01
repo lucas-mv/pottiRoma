@@ -3,6 +3,7 @@
     x:Class="PottiRoma.App.Views.EditPersonalDataPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PottiRoma.App.Controls"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     Title="Editar Dados Pessoais"
@@ -15,9 +16,9 @@
             HeightRequest="{Binding ScreenHeightRequest}"
             SizeChanged="EditPersonalDataPageContent_SizeChanged">
             <Grid.RowDefinitions>
-                <RowDefinition Height="170" />
+                <RowDefinition Height="150" />
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="120" />
+                <RowDefinition Height="100" />
             </Grid.RowDefinitions>
 
             <Image
@@ -27,69 +28,88 @@
 
             <!--  TROCAR ESSE BANNER PQ TA REPETIDO  -->
 
-            <StackLayout
-                Grid.Row="1"
-                Margin="16"
-                Spacing="12">
-                <ContentView HeightRequest="8" />
-                <Label
-                    Margin="12,0,0,0"
-                    FontAttributes="Bold"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Text="Nome Do Cliente"
-                    TextColor="{StaticResource TextColor}" />
-                <ContentView HeightRequest="8" />
-                <Label
-                    Margin="12,0,0,0"
-                    FontAttributes="Bold"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Text="CPF : 1231283-23"
-                    TextColor="{StaticResource TextColor}" />
-                <ContentView HeightRequest="8" />
-                <Frame
-                    Grid.Row="1"
-                    Padding="0"
-                    BackgroundColor="{StaticResource WhiteColor}"
-                    HeightRequest="40"
-                    OutlineColor="{StaticResource OutlineColor}">
-                    <renderers:CustomEntry
-                        Margin="10,0,10,0"
+            <ScrollView Grid.Row="1" VerticalOptions="Center">
+                <StackLayout Margin="16,8,16,8" Spacing="8">
+                    <ContentView HeightRequest="4" />
+                    <Label
+                        Margin="12,0,0,0"
+                        FontAttributes="Bold"
                         FontSize="{StaticResource StandardFontSize}"
-                        Keyboard="Email"
-                        Placeholder="Email"
-                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                        TextColor="{StaticResource TextColor}"
-                        VerticalOptions="Center" />
-                </Frame>
-                <Frame
-                    Grid.Row="1"
-                    Padding="0"
-                    BackgroundColor="{StaticResource WhiteColor}"
-                    HeightRequest="40"
-                    OutlineColor="{StaticResource OutlineColor}">
-                    <renderers:CustomEntry
-                        Margin="10,0,10,0"
+                        Text="{Binding User.UserName}"
+                        TextColor="{StaticResource TextColor}" />
+                    <ContentView HeightRequest="8" />
+                    <Label
+                        Margin="12,0,0,0"
+                        FontAttributes="Bold"
                         FontSize="{StaticResource StandardFontSize}"
-                        Placeholder="Telefone 1"
-                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                        TextColor="{StaticResource TextColor}"
-                        VerticalOptions="Center" />
-                </Frame>
-                <Frame
-                    Grid.Row="1"
-                    Padding="0"
-                    BackgroundColor="{StaticResource WhiteColor}"
-                    HeightRequest="40"
-                    OutlineColor="{StaticResource OutlineColor}">
-                    <renderers:CustomEntry
-                        Margin="10,0,10,0"
-                        FontSize="{StaticResource StandardFontSize}"
-                        Placeholder="Telefone 2"
-                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                        TextColor="{StaticResource TextColor}"
-                        VerticalOptions="Center" />
-                </Frame>
-            </StackLayout>
+                        Text="{Binding User.Cpf}"
+                        TextColor="{StaticResource TextColor}" />
+                    <ContentView HeightRequest="4" />
+                    <Frame
+                        Grid.Row="1"
+                        Padding="0"
+                        BackgroundColor="{StaticResource WhiteColor}"
+                        HeightRequest="40"
+                        OutlineColor="{StaticResource OutlineColor}">
+                        <renderers:CustomEntry
+                            Margin="10,0,10,0"
+                            FontSize="{StaticResource StandardFontSize}"
+                            Keyboard="Email"
+                            Placeholder="Email"
+                            PlaceholderColor="{StaticResource PlaceholderColor}"
+                            Text="{Binding User.Email}"
+                            TextColor="{StaticResource TextColor}"
+                            VerticalOptions="Center" />
+                    </Frame>
+                    <Frame
+                        Grid.Row="1"
+                        Padding="0"
+                        BackgroundColor="{StaticResource WhiteColor}"
+                        HeightRequest="40"
+                        OutlineColor="{StaticResource OutlineColor}">
+                        <renderers:CustomEntry
+                            Margin="10,0,10,0"
+                            FontSize="{StaticResource StandardFontSize}"
+                            Placeholder="Telefone 1"
+                            PlaceholderColor="{StaticResource PlaceholderColor}"
+                            Text="{Binding User.PrimaryTelephone}"
+                            TextColor="{StaticResource TextColor}"
+                            VerticalOptions="Center" />
+                    </Frame>
+                    <Frame
+                        Grid.Row="1"
+                        Padding="0"
+                        BackgroundColor="{StaticResource WhiteColor}"
+                        HeightRequest="40"
+                        OutlineColor="{StaticResource OutlineColor}">
+                        <renderers:CustomEntry
+                            Margin="10,0,10,0"
+                            FontSize="{StaticResource StandardFontSize}"
+                            Placeholder="Telefone 2"
+                            PlaceholderColor="{StaticResource PlaceholderColor}"
+                            Text="{Binding User.SecondaryTelephone}"
+                            TextColor="{StaticResource TextColor}"
+                            VerticalOptions="Center" />
+                    </Frame>
+                    <Frame
+                        Grid.Row="1"
+                        Padding="0"
+                        BackgroundColor="{StaticResource WhiteColor}"
+                        HeightRequest="40"
+                        OutlineColor="{StaticResource OutlineColor}">
+                        <renderers:CustomEntry
+                            Margin="10,0,10,0"
+                            FontSize="{StaticResource StandardFontSize}"
+                            Placeholder="CEP"
+                            PlaceholderColor="{StaticResource PlaceholderColor}"
+                            Text="{Binding User.Cep}"
+                            TextColor="{StaticResource TextColor}"
+                            VerticalOptions="Center" />
+                    </Frame>
+                    <ContentView HeightRequest="8" />
+                </StackLayout>
+
+            </ScrollView>
 
             <Button
                 Grid.Row="2"

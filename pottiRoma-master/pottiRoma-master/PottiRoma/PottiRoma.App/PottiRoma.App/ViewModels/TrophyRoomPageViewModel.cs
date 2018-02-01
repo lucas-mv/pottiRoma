@@ -18,8 +18,8 @@ namespace PottiRoma.App.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
 
-        private ObservableCollection<TrophyRewardsDto> _rewardDto;
-        public ObservableCollection<TrophyRewardsDto> RewardDto
+        private ObservableCollection<RankingBannerDto> _rewardDto;
+        public ObservableCollection<RankingBannerDto> RewardDto
         {
             get { return _rewardDto; }
             set { SetProperty(ref _rewardDto, value); }
@@ -32,38 +32,38 @@ namespace PottiRoma.App.ViewModels
             _navigationService = navigationService;
             _userDialogs = userDialogs;
 
-            InitializeMockRewards();
+            
         }
 
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+            InitializeMockRewards();
         }
 
         private void InitializeMockRewards()
         {
-            RewardDto = new ObservableCollection<TrophyRewardsDto>();
-            RewardDto.Add(new TrophyRewardsDto()
+            RewardDto = new ObservableCollection<RankingBannerDto>();
+            RewardDto.Add(new RankingBannerDto()
             {
                 Image = "award_1.png",
                 Description = "Lorem ipsum blandit ullamcorper nunc eleifend inceptos in ligula dictum sit habitant"
             });
-            RewardDto.Add(new TrophyRewardsDto()
+            RewardDto.Add(new RankingBannerDto()
             {
                 Image = "award_2.png",
                 Description = "Lorem ipsum blandit ullamcorper nunc eleifend inceptos in ligula dictum sit habitant"
             });
-            RewardDto.Add(new TrophyRewardsDto()
+            RewardDto.Add(new RankingBannerDto()
             {
                 Image = "award_3.png",
                 Description = "Lorem ipsum blandit ullamcorper nunc eleifend inceptos in ligula dictum sit habitant"
             });
-            RewardDto.Add(new TrophyRewardsDto()
+            RewardDto.Add(new RankingBannerDto()
             {
                 Image = "award_3.png",
                 Description = "Lorem ipsum blandit ullamcorper nunc eleifend inceptos in ligula dictum sit habitant"
             });
-
         }
     }
 }

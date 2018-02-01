@@ -29,51 +29,82 @@ namespace PottiRoma.DataAccess.Repositories
         #region Selects
 
         private const string GET_USER_BY_ID = @"
-        SELECT UsuarioId AS UserId
+        SELECT UsuarioId AS UsuarioId
               ,Cpf As Cpf
-              ,Nome as UserName
+              ,Name as Name
               ,Email as Email
-              ,TelefonePrimario as PrimaryTelephone
-              ,TelefoneSecundario as SecondaryTelphone
-              ,TipoUsuario as UserType
-          FROM dbo.usuario
+              ,PrimaryTelephone as PrimaryTelephone
+              ,SecundaryTelephone as SecundaryTelephone
+              ,UserType as UserType
+              ,Cep as Cep
+              ,AverageTicketPoints as AverageTicketPoints
+              ,RegisterClientsPoints as RegisterClientsPoints
+              ,SalesNumberPoints as SalesNumberPoints
+              ,AverageItensPerSalePoints as AverageItensPerSalePoints
+              ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
+              ,TemporadaId as TemporadaId
+              ,MotherFlowerId as MotherFlowerId
+          FROM dbo.UsuarioPotti
           where UsuarioId = @usuarioId";
 
         public const string GET_USER_BY_EMAIL = @"
-        SELECT UsuarioId AS UserId
+        SELECT UsuarioId AS UsuarioId
               ,Cpf As Cpf
-              ,Nome as UserName
+              ,Name as Name
               ,Email as Email
-              ,TelefonePrimario as PrimaryTelephone
-              ,TelefoneSecundario as SecondaryTelphone
-              ,TipoUsuario as UserType
-          FROM dbo.usuario
+              ,PrimaryTelephone as PrimaryTelephone
+              ,SecundaryTelephone as SecundaryTelephone
+              ,UserType as UserType
+              ,Cep as Cep
+              ,AverageTicketPoints as AverageTicketPoints
+              ,RegisterClientsPoints as RegisterClientsPoints
+              ,SalesNumberPoints as SalesNumberPoints
+              ,AverageItensPerSalePoints as AverageItensPerSalePoints
+              ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
+              ,TemporadaId as TemporadaId
+              ,MotherFlowerId as MotherFlowerId
+          FROM dbo.UsuarioPotti
           where Email = @email";
 
         private const string GET_USER_AUTH_BY_EMAIL = @"
-        SELECT UsuarioId AS UserId
+        SELECT UsuarioId AS UsuarioId
               ,Cpf As Cpf
-              ,Nome as UserName
+              ,Name as Name
               ,Email as Email
-              ,TelefonePrimario as PrimaryTelephone
-              ,TelefoneSecundario as SecondaryTelphone
-              ,TipoUsuario as UserType,
-              Senha as Password,
-              Salt as PasswordSalt
-          FROM dbo.usuario
+              ,PrimaryTelephone as PrimaryTelephone
+              ,SecundaryTelephone as SecundaryTelephone
+              ,UserType as UserType
+              ,Senha as Password,
+              ,Salt as PasswordSalt
+              ,Cep as Cep
+              ,AverageTicketPoints as AverageTicketPoints
+              ,RegisterClientsPoints as RegisterClientsPoints
+              ,SalesNumberPoints as SalesNumberPoints
+              ,AverageItensPerSalePoints as AverageItensPerSalePoints
+              ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
+              ,TemporadaId as TemporadaId
+              ,MotherFlowerId as MotherFlowerId
+          FROM dbo.UsuarioPotti
           where Email = @email";
 
         private const string GET_USER_AUTH_BY_ID = @"
         SELECT UsuarioId AS UserId
               ,Cpf As Cpf
-              ,Nome as UserName
+              ,Name as Name
               ,Email as Email
-              ,TelefonePrimario as PrimaryTelephone
-              ,TelefoneSecundario as SecondaryTelphone
-              ,TipoUsuario as UserType,
-              Senha as Password,
-              Salt as PasswordSalt
-          FROM dbo.usuario
+              ,PrimaryTelephone as PrimaryTelephone
+              ,SecundaryTelephone as SecondaryTelephone
+              ,UserType as UserType
+              ,Senha as Password
+              ,Salt as PasswordSalt
+              ,AverageTicketPoints as AverageTicketPoints
+              ,RegisterClientsPoints as RegisterClientsPoints
+              ,SalesNumberPoints as SalesNumberPoints
+              ,AverageItensPerSalePoints as AverageItensPerSalePoints
+              ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
+              ,TemporadaId as TemporadaId
+              ,MotherFlowerId as MotherFlowerId
+          FROM dbo.UsuarioPotti
           where UsuarioId = @usuarioid";
 
         #endregion
@@ -81,33 +112,47 @@ namespace PottiRoma.DataAccess.Repositories
         #region Commands
 
         private const string INSERT_USER = @"
-        INSERT INTO dbo.Usuario 
+        INSERT INTO dbo.UsuarioPotti 
         (
 	        UsuarioId, 
 	        Cpf, 
-	        Nome, 
+	        Name, 
 	        Email, 
-	        TelefonePrimario, 
-	        TelefoneSecundario, 
-	        TipoUsuario, 
+	        PrimaryTelephone, 
+	        SecundaryTelephone, 
+	        UserType, 
 	        Senha, 
-	        Salt
+	        Salt,
+            AverageTicketPoints,
+            RegisterClientsPoints,
+            SalesNumberPoints,
+            AverageItensPerSalePoints,
+            InviteAllyFlowersPoints,
+            TemporadaId,
+            MotherFlowerId
         )
         VALUES 
         (
 	        @usuarioid, 
 	        @cpf, 
-	        @nome, 
+	        @name, 
 	        @email, 
-	        @telefoneprimario, 
-	        @telefonesecundario, 
-	        @tipousuario, 
+	        @primarytelephone, 
+	        @secundarytelephone, 
+	        @usertype, 
 	        @senha, 
-	        @salt
+	        @salt,
+            @averageticketpoints,
+            @RegisterClientsPoints,
+            @salesnumberpoints,
+            @averageitenspersalepoints,
+            @inviteallyflowerspoints,
+            @temporadaid,
+            @motherflowerid
         )";
 
         private const string UPDATE_USER_PASSWORD = @"
-        UPDATE dbo.Usuario
+        UPDATE dbo.UsuarioPotti
         SET Senha = @senha,
 	        Salt = @salt
         WHERE UsuarioId = @usuarioid";
@@ -152,19 +197,29 @@ namespace PottiRoma.DataAccess.Repositories
             return Query(GET_USER_AUTH_BY_ID, parameters).FirstOrDefault();
         }
 
-        public void InsertUser(Guid usuarioId, string email, string password, string passwordSalt, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType)
+        public void InsertUser(Guid usuarioId, string email, string password, string passwordSalt, string name, 
+            string primaryTelephone, string secundaryTelephone, string cpf, UserType userType,
+            int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
+            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId)
         {
             DynamicParameters parameters = new DynamicParameters();
 
             parameters.Add("@usuarioid", usuarioId, System.Data.DbType.Guid);
             parameters.Add("@cpf", cpf, System.Data.DbType.AnsiString);
             parameters.Add("@email", email, System.Data.DbType.AnsiString);
-            parameters.Add("@nome", name, System.Data.DbType.AnsiString);
-            parameters.Add("@telefoneprimario", primaryTelephone, System.Data.DbType.AnsiString);
-            parameters.Add("@telefonesecundario", secondaryTelephone, System.Data.DbType.AnsiString);
-            parameters.Add("@tipousuario", userType, System.Data.DbType.Int16);
+            parameters.Add("@name", name, System.Data.DbType.AnsiString);
+            parameters.Add("@primarytelephone", primaryTelephone, System.Data.DbType.AnsiString);
+            parameters.Add("@secundarytelephone", secundaryTelephone, System.Data.DbType.AnsiString);
+            parameters.Add("@usertype", userType, System.Data.DbType.Int16);
             parameters.Add("@senha", password, System.Data.DbType.AnsiString);
             parameters.Add("@salt", passwordSalt, System.Data.DbType.AnsiString);
+            parameters.Add("@averageticketpoints", AverageTicketPoints, System.Data.DbType.Int16);
+            parameters.Add("@RegisterClientsPoints", RegisterClientsPoints, System.Data.DbType.Int16);
+            parameters.Add("@salesnumberpoints", salesNumberPoints, System.Data.DbType.Int16);
+            parameters.Add("@averageitenspersalepoints", averageTtensPerSalepoints, System.Data.DbType.Int16);
+            parameters.Add("@inviteallyflowerspoints", inviteAllyFlowersPoints, System.Data.DbType.Int16);
+            parameters.Add("@temporadaid", temporadaId, System.Data.DbType.Guid);
+            parameters.Add("@motherflowerid", motherFlowerId, System.Data.DbType.Guid);
 
             Execute(INSERT_USER, parameters);
         }
