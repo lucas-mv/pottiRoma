@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Microsoft.Practices.Unity;
+using Prism;
+using Prism.Unity;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
 using Syncfusion.SfCarousel.XForms.iOS;
@@ -36,7 +39,7 @@ namespace PottiRoma.App.iOS
             UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
             UIApplication.SharedApplication.SetStatusBarHidden(false, false);
 
-            LoadApplication(new App());
+            LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
         }
@@ -47,6 +50,13 @@ namespace PottiRoma.App.iOS
             new SfBusyIndicatorRenderer();
             SfPickerRenderer.Init();
             new SfCarouselRenderer();
+        }
+    }
+    public class iOSInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IUnityContainer container)
+        {
+
         }
     }
 }

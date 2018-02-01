@@ -1,41 +1,35 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X5k-f2-b5h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="418">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="gAE-YM-kbH">
+        <scene sceneID="417">
             <objects>
-                <viewController id="X5k-f2-b5h" sceneMemberID="viewController">
+                <viewController id="418" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Y8P-hJ-Z43"/>
-                        <viewControllerLayoutGuide type="bottom" id="9ZL-r4-8FZ"/>
+                        <viewControllerLayoutGuide type="top" id="415"/>
+                        <viewControllerLayoutGuide type="bottom" id="416"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yd7-JS-zBw">
+                    <view key="view" contentMode="scaleToFill" id="419">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
-                                <rect key="frame" x="270" y="270" width="60" height="60"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="838" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="20" y="412" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39"/>
-                            <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41"/>
-                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="420" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349" y="339"/>
+            <point key="canvasLocation" x="-24" y="-314"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-60.png" width="60" height="60"/>
         <image name="banned_sales_page_detail.png" width="540" height="373"/>
         <image name="banner_history.png" width="540" height="225"/>
         <image name="banner_listClientsForSale.png" width="540" height="142"/>
@@ -47,7 +41,7 @@
         <image name="banner_top_2.png" width="540" height="142"/>
         <image name="banner_top1.png" width="540" height="142"/>
         <image name="Default-568h.png" width="320" height="568"/>
-        <image name="Default-Portrait.png" width="768" height="1004"/>
+        <image name="Default-Portrait.png" width="768" height="1024"/>
         <image name="Default.png" width="320" height="480"/>
         <image name="foto_perfil.png" width="220" height="220"/>
         <image name="ic_account_circle_white.png" width="24" height="24"/>
@@ -78,22 +72,26 @@
         <image name="ic_settings_white_3x.png" width="72" height="72"/>
         <image name="ic_trophy.png" width="40" height="40"/>
         <image name="ic_trophy_white.png" width="40" height="40"/>
+        <image name="Icon-60.png" width="60" height="60"/>
         <image name="Icon-76.png" width="76" height="76"/>
-        <image name="Icon-Small-40.png" width="40" height="40"/>
-        <image name="Icon-Small.png" width="29" height="29"/>
-        <image name="imagem.png" width="1080" height="767"/>
-        <image name="imagem_cropped.png" width="1080" height="370"/>
-        <image name="popup.png" width="880" height="596"/>
-        <image name="ranking_dia.png" width="495" height="700"/>
-        <image name="ranking_geral.png" width="1020" height="700"/>
-        <image name="ranking_semana.png" width="495" height="700"/>
         <image name="Icon-App-20x20.png" width="20" height="20"/>
         <image name="Icon-App-29x29.png" width="29" height="29"/>
         <image name="Icon-App-40x40.png" width="40" height="40"/>
         <image name="Icon-App-60x60.png" width="60" height="60"/>
         <image name="Icon-App-76x76.png" width="76" height="76"/>
         <image name="Icon-App-83.5x83.5.png" width="83.5" height="83.5"/>
-        <image name="ItunesArtwork.png" width="512" height="512"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="imagem.png" width="1080" height="767"/>
+        <image name="imagem_cropped.png" width="1080" height="370"/>
         <image name="iTunesArtwork.png" width="512" height="512"/>
+        <image name="ItunesArtwork.png" width="512" height="512"/>
+        <image name="logo_login.png" width="634" height="375"/>
+        <image name="popup.png" width="880" height="596"/>
+        <image name="ranking_dia.png" width="495" height="700"/>
+        <image name="ranking_geral.png" width="1020" height="700"/>
+        <image name="ranking_semana.png" width="495" height="700"/>
+        <image name="splash_portrait_1024_768.png" width="1024" height="768"/>
+        <image name="splash_portrait_2048_1536.png" width="2048" height="1536"/>
     </resources>
 </document>

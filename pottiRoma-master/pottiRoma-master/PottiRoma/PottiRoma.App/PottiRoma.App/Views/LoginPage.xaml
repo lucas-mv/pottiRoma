@@ -49,7 +49,7 @@
                         Grid.Column="1"
                         Aspect="AspectFit"
                         HeightRequest="110"
-                        Source="logo.png"
+                        Source="logo_login.png"
                         VerticalOptions="Start" />
 
                     <StackLayout Grid.Row="2" Grid.Column="1">
