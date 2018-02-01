@@ -34,8 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Implementations\ClientsAppService.cs" />
+    <Compile Include="Implementations\SeasonAppService.cs" />
     <Compile Include="Implementations\UserAppService.cs" />
     <Compile Include="Interfaces\IClientsAppService.cs" />
+    <Compile Include="Interfaces\ISeasonAppService.cs" />
     <Compile Include="Interfaces\IUserAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

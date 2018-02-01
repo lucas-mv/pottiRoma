@@ -55,6 +55,7 @@
     <Compile Include="ViewModels\EditPersonalDataPageViewModel.cs" />
     <Compile Include="ViewModels\GamificationRulesPageViewModel.cs" />
     <Compile Include="ViewModels\InviteFlowerPageViewModel.cs" />
+    <Compile Include="ViewModels\LandingPageViewModel.cs" />
     <Compile Include="ViewModels\ListClientsForSalePageViewModel.cs" />
     <Compile Include="ViewModels\ListRankingPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
@@ -88,6 +89,9 @@
     </Compile>
     <Compile Include="Views\InviteFlowerPage.xaml.cs">
       <DependentUpon>InviteFlowerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LandingPage.xaml.cs">
+      <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListClientsForSalePage.xaml.cs">
       <DependentUpon>ListClientsForSalePage.xaml</DependentUpon>
@@ -373,6 +377,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\StatusBarIOS.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\LandingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
