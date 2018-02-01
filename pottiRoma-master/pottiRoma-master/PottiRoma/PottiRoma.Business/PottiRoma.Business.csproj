@@ -46,6 +46,7 @@
     <Compile Include="Authentication\AuthenticationBusiness.cs" />
     <Compile Include="Clients\ClientsBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sale\SalesBusiness.cs" />
     <Compile Include="Season\SeasonBusiness.cs" />
     <Compile Include="User\UserBusiness.cs" />
   </ItemGroup>

@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Api\ClientsApiRepository.cs" />
+    <Compile Include="Api\SalesApiRepository.cs" />
     <Compile Include="Api\SeasonApiRepository.cs" />
     <Compile Include="Api\UserApiRepository.cs" />
     <Compile Include="Internal\CacheAccess.cs" />
