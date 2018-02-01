@@ -8,6 +8,6 @@ namespace PottiRoma.Utils.Enums
     {
         SalesPerson = 1,
         Administrator,
-        SecondarySalesPerson
+        SecundarySalesPerson
     }
 }

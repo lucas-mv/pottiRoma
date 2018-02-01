@@ -54,7 +54,7 @@ namespace PottiRoma.App.ViewModels
                 Cep = prefixCPF + "30310-370",
                 Email = "teste@teste.com",
                 PrimaryTelephone = "31 99808-6453",
-                SecondaryTelephone = "31 99657-6453",
+                SecundaryTelephone = "31 99657-6453",
                 Cpf = "182738473-90"
             };
         }

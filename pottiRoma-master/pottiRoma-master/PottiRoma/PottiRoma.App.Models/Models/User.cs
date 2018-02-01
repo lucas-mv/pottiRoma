@@ -45,11 +45,11 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _primaryTelephone, value); }
         }
 
-        private string _secondaryTelephone;
-        public string SecondaryTelephone
+        private string _secundaryTelephone;
+        public string SecundaryTelephone
         {
-            get { return _secondaryTelephone; }
-            set { SetProperty(ref _secondaryTelephone, value); }
+            get { return _secundaryTelephone; }
+            set { SetProperty(ref _secundaryTelephone, value); }
         }
 
         private string _cep;
