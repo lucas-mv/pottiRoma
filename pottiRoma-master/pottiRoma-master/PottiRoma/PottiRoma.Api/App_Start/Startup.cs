@@ -22,6 +22,11 @@ namespace PottiRoma.Api.App_Start
             GlobalConfiguration.Configuration.Filters.Add(new ExceptionFilter());
 
             app.UseWebApi(GlobalConfiguration.Configuration);
+
+            DateTime now = new DateTime();
+            now = DateTime.Now;
+
+            var jsonNow = Newtonsoft.Json.JsonConvert.SerializeObject(now);
         }
     }
 

@@ -14,5 +14,6 @@ namespace PottiRoma.Utils.Constants
         public const string EMAIL_ALREADY_USED = "Email já registrado no sistema, por favor utilize outro endereço.";
         public const string INVALID_AUTHORIZATION = "Você não possui permissão para acessar este conteúdo.";
         public const string EXPIRED_AUTHORIZATION = "Sua sessão expirou e precisa ser revalidada.";
+        public const string NO_SEASONS_REGISTERED = "Não há temporadas registradas";
     }
 }

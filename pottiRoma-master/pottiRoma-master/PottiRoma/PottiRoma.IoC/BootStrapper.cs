@@ -27,6 +27,7 @@ namespace PottiRoma.IoC
             container.Register<ISalesService, SalesService>(Lifestyle.Transient);
             container.Register<IClientsService, ClientsService>(Lifestyle.Transient);
             container.Register<IAuthenticationService, AuthenticationService>(Lifestyle.Transient);
+            container.Register<ISeasonService,SeasonService>(Lifestyle.Transient);
         }
     }
 }

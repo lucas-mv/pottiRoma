@@ -134,6 +134,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\SeasonController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,12 +144,14 @@
     <Compile Include="Request\Clients\RegisterClientRequest.cs" />
     <Compile Include="Request\Email\SendEmailRequest.cs" />
     <Compile Include="Request\Sales\NewSalesPersonRequest.cs" />
+    <Compile Include="Request\Season\SeasonRequest.cs" />
     <Compile Include="Request\User\ChangePasswordRequest.cs" />
     <Compile Include="Request\User\LoginUserRequest.cs" />
     <Compile Include="Request\User\RegisterUserRequest.cs" />
     <Compile Include="Response\Clients\GetClientsBySalespersonIdResponse.cs" />
     <Compile Include="Response\Email\SendEmailResponse.cs" />
     <Compile Include="Response\Sales\NewSalesPersonResponse.cs" />
+    <Compile Include="Response\Season\SeasonResponse.cs" />
     <Compile Include="Response\User\LoginResponse.cs" />
     <Compile Include="Response\User\RegisterUserResponse.cs" />
   </ItemGroup>
