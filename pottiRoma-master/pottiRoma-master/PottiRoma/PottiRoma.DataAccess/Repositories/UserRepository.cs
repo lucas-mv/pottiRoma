@@ -93,8 +93,9 @@ namespace PottiRoma.DataAccess.Repositories
               ,Name as Name
               ,Email as Email
               ,PrimaryTelephone as PrimaryTelephone
-              ,SecundaryTelephone as SecondaryTelephone
+              ,SecundaryTelephone as SecundaryTelephone
               ,UserType as UserType
+              ,Cep as Cep
               ,Senha as Password
               ,Salt as PasswordSalt
               ,AverageTicketPoints as AverageTicketPoints
@@ -121,6 +122,7 @@ namespace PottiRoma.DataAccess.Repositories
 	        PrimaryTelephone, 
 	        SecundaryTelephone, 
 	        UserType, 
+            Cep,
 	        Senha, 
 	        Salt,
             AverageTicketPoints,
@@ -139,7 +141,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        @email, 
 	        @primarytelephone, 
 	        @secundarytelephone, 
-	        @usertype, 
+	        @usertype,
+            @cep,
 	        @senha, 
 	        @salt,
             @averageticketpoints,
@@ -198,7 +201,7 @@ namespace PottiRoma.DataAccess.Repositories
         }
 
         public void InsertUser(Guid usuarioId, string email, string password, string passwordSalt, string name, 
-            string primaryTelephone, string secundaryTelephone, string cpf, UserType userType,
+            string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
             int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId)
         {
@@ -211,6 +214,7 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@primarytelephone", primaryTelephone, System.Data.DbType.AnsiString);
             parameters.Add("@secundarytelephone", secundaryTelephone, System.Data.DbType.AnsiString);
             parameters.Add("@usertype", userType, System.Data.DbType.Int16);
+            parameters.Add("@cep", cep, System.Data.DbType.AnsiString);
             parameters.Add("@senha", password, System.Data.DbType.AnsiString);
             parameters.Add("@salt", passwordSalt, System.Data.DbType.AnsiString);
             parameters.Add("@averageticketpoints", AverageTicketPoints, System.Data.DbType.Int16);

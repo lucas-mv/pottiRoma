@@ -47,7 +47,7 @@ namespace PottiRoma.Business.User
             var cryptoPassword = EncryptPassword(password);
             var newUserId = Guid.NewGuid();
             UserRepository.Get().InsertUser(newUserId, email, cryptoPassword.Password, cryptoPassword.Salt, name, primaryTelephone,
-                secundaryTelephone, cpf, userType, AverageTicketPoints, RegisterClientsPoints, salesNumberPoints, averageTtensPerSalepoints, 
+                secundaryTelephone, cpf, userType, cep, AverageTicketPoints, RegisterClientsPoints, salesNumberPoints, averageTtensPerSalepoints, 
                 inviteAllyFlowersPoints, temporadaId, motherFlowerId);
             var newUser = UserRepository.Get().GetUserById(newUserId);
 

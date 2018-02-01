@@ -16,7 +16,7 @@ namespace PottiRoma.Services.Interfaces
         UserEntity GetUserById(Guid userId);
         UserEntity Authenticate(string email, string password);
         UserEntity RegisterUser(string email, string password, string name,
-            string primaryTelephone, string secondaryTelephone, string cpf, UserType userType, string cep,
+            string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
             int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId);
     }

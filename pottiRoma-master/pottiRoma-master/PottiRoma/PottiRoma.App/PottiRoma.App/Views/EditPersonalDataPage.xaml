@@ -87,7 +87,7 @@
                             FontSize="{StaticResource StandardFontSize}"
                             Placeholder="Telefone 2"
                             PlaceholderColor="{StaticResource PlaceholderColor}"
-                            Text="{Binding User.SecondaryTelephone}"
+                            Text="{Binding User.SecundaryTelephone}"
                             TextColor="{StaticResource TextColor}"
                             VerticalOptions="Center" />
                     </Frame>
