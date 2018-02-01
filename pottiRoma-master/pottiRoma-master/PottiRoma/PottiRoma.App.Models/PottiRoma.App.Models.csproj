@@ -42,10 +42,12 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Clients\RegisterClientRequest.cs" />
+    <Compile Include="Requests\Sales\InsertNewSaleRequest.cs" />
     <Compile Include="Requests\User\ChangePasswordRequest.cs" />
     <Compile Include="Requests\User\LoginRequest.cs" />
     <Compile Include="Requests\User\SendEmailRequest.cs" />
     <Compile Include="Responses\Clients\GetClientsBySalespersonIdResponse.cs" />
+    <Compile Include="Responses\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Responses\Season\SeasonResponse.cs" />
     <Compile Include="Responses\User\LoginReponse.cs" />
     <Compile Include="Responses\User\SendEmailResponse.cs" />
