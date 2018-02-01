@@ -14,7 +14,8 @@ namespace PottiRoma.App.Models.Models
 
         public Guid UserId { get; set; }
         public UserType UserType { get; set; }
-        public Salesperson Salesperson { get; set; }
+        public Guid MotherFlowerId { get; set; }
+        public Guid TemporadaId { get; set; }
 
         private string _cpf;
         public string Cpf
@@ -65,11 +66,11 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _averageTicketPoints, value); }
         }
 
-        private int _registerNewClientsPoints;
-        public int RegisterNewClientsPoints
+        private int _RegisterClientsPoints;
+        public int RegisterClientsPoints
         {
-            get { return _registerNewClientsPoints; }
-            set { SetProperty(ref _registerNewClientsPoints, value); }
+            get { return _RegisterClientsPoints; }
+            set { SetProperty(ref _RegisterClientsPoints, value); }
         }
 
         private int _salesNumberPoints;
@@ -120,7 +121,7 @@ namespace PottiRoma.App.Models.Models
 
         private int SetTotalPoints()
         {
-            return AverageItensPerSalePoints + AverageTicketPoints + RegisterNewClientsPoints + InviteAllyFlowersPoints + RegisterNewClientsPoints;
+            return AverageItensPerSalePoints + AverageTicketPoints + RegisterClientsPoints + InviteAllyFlowersPoints + RegisterClientsPoints;
         }
     }
 }

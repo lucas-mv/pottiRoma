@@ -1,5 +1,4 @@
-﻿using PottiRoma.Business.Sales;
-using PottiRoma.DataAccess.Repositories;
+﻿using PottiRoma.DataAccess.Repositories;
 using PottiRoma.Entities;
 using PottiRoma.Entities.Internal;
 using PottiRoma.Utils;
@@ -30,10 +29,13 @@ namespace PottiRoma.Business.User
             AuthenticationControlRepository.Get().DeleteAllUserAuthControl(new Guid(userId));
         }
 
-        public static UserEntity RegisterUser(string email, string password, string name, string primaryTelephone, string secondaryTelephone, string cpf, UserType userType, DateTime birthday, Guid flowerId)
+        public static UserEntity RegisterUser(string email, string password, string name,
+            string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
+            int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
+            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId)
         {
             if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password) || String.IsNullOrEmpty(name) ||
-                String.IsNullOrEmpty(primaryTelephone) || String.IsNullOrEmpty(secondaryTelephone))
+                String.IsNullOrEmpty(primaryTelephone) || String.IsNullOrEmpty(cpf))
             {
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.OBRIGATORY_DATA_MISSING);
             }
@@ -44,35 +46,13 @@ namespace PottiRoma.Business.User
 
             var cryptoPassword = EncryptPassword(password);
             var newUserId = Guid.NewGuid();
-            UserRepository.Get().InsertUser(newUserId, email, cryptoPassword.Password, cryptoPassword.Salt, name, primaryTelephone, secondaryTelephone, cpf, userType);
+            UserRepository.Get().InsertUser(newUserId, email, cryptoPassword.Password, cryptoPassword.Salt, name, primaryTelephone,
+                secundaryTelephone, cpf, userType, AverageTicketPoints, RegisterClientsPoints, salesNumberPoints, averageTtensPerSalepoints, 
+                inviteAllyFlowersPoints, temporadaId, motherFlowerId);
             var newUser = UserRepository.Get().GetUserById(newUserId);
 
             if (newUser == null)
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_REGISTRATION_ERROR);
-
-            if(newUser.UserType == UserType.SalesPerson)
-            {
-                var salespersonId = Guid.NewGuid();
-                SalesBusiness.NewSalesPerson(new SalespersonEntity()
-                {
-                    Birthday = birthday,
-                    FlowerId = Guid.Empty,
-                    SalespersonId = salespersonId,
-                    UserId = newUser.UsuarioId
-                });
-            } 
-            else if (newUser.UserType == UserType.SecondarySalesPerson)
-            {
-                var salespersonId = Guid.NewGuid();
-                SalesBusiness.NewSalesPerson(new SalespersonEntity()
-                {
-                    Birthday = birthday,
-                    FlowerId = flowerId,
-                    SalespersonId = salespersonId,
-                    UserId = newUser.UsuarioId
-                });
-            }
-
             return newUser;
         }
 

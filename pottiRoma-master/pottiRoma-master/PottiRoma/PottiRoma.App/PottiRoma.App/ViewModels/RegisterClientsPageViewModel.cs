@@ -130,7 +130,6 @@ namespace PottiRoma.App.ViewModels
                         Birthdate = ClientSelectedForEdition.Birthdate,
                         Cep = ClientSelectedForEdition.Cep,
                         Email = ClientSelectedForEdition.Email,
-                        SalespersonId = user.Salesperson.SalespersonId,
                         Name = ClientSelectedForEdition.Name,
                         Telephone = ClientSelectedForEdition.Telephone
                     });

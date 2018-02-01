@@ -52,7 +52,7 @@ namespace PottiRoma.App.ViewModels
                 case CarouselBannerType.RegisterClients:
                     Title = "Cadastro de Clientes";
                     foreach (var users in AppUsers)
-                        users.TotalPoints = users.RegisterNewClientsPoints;
+                        users.TotalPoints = users.RegisterClientsPoints;
                     break;
                 case CarouselBannerType.AveragePiecesForSale:
                     Title = "Peças por Venda";

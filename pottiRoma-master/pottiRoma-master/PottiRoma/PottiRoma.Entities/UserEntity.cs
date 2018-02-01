@@ -12,17 +12,17 @@ namespace PottiRoma.Entities
         public string Name { get; set; }
         public string Email { get; set; }
         public string PrimaryTelephone { get; set; }
-        public string SecondaryTelphone { get; set; }
+        public string SecundaryTelephone { get; set; }
         public UserType UserType { get; set; }
         public string PasswordSalt { get; set; }
         public string Password { get; set; }
         public string Cep { get; set; }
         public int AverageTicketPoints { get; set; }
-        public int RegisterNewClientsPoints { get; set; }
+        public int RegisterClientsPoints { get; set; }
         public int SalesNumberPoints { get; set; }
         public int AverageItensPerSalePoints { get; set; }
         public int InviteAllyFlowersPoints { get; set; }
         public Guid TemporadaId { get; set; }
-
+        public Guid MotherFlowerId { get; set; }
     }
 }
