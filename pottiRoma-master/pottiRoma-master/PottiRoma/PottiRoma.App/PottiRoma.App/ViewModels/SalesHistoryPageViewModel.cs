@@ -11,6 +11,9 @@ using PottiRoma.App.Models.Models;
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.Utils.Helpers;
+using PottiRoma.App.Services.Interfaces;
+using PottiRoma.App.Repositories.Internal;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -18,6 +21,7 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private readonly ISalesAppService _salesAppService;
 
         public DelegateCommand<object> SaleSelectedCommand { get; set; }
 
@@ -37,10 +41,13 @@ namespace PottiRoma.App.ViewModels
 
         public SalesHistoryPageViewModel(
             INavigationService navigationService,
-            IUserDialogs userDialogs)
+            IUserDialogs userDialogs,
+            ISalesAppService salesAppService)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _salesAppService = salesAppService;
+
             SaleSelectedCommand = new DelegateCommand<object>(SaleSelected).ObservesCanExecute(() => CanExecute);
         }
 
@@ -51,56 +58,22 @@ namespace PottiRoma.App.ViewModels
             CanExecuteEnd();
         }
 
-        public override void OnNavigatedTo(NavigationParameters parameters)
+        public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            GenerateMock();
-        }
 
-        private void GenerateMock()
-        {
-            SalesList = new ObservableCollection<Sale>();
-            var mock1 = new Sale()
+            try
             {
-                SaleDate = new DateTime(1990, 11, 08),
-                ClientName = "Lucas Roscoe",
-                SaleValue = "R$ 250,00",
-            };
-            var mock2 = new Sale()
-            {
-                SaleDate = new DateTime(1990, 11, 08),
-                ClientName = "Lucas Roscoe",
-                SaleValue = "R$ 250,00",
-            };
-            var mock3 = new Sale()
-            {
-                SaleDate = new DateTime(1990, 11, 08),
-                ClientName = "Lucas Roscoe",
-                SaleValue = "R$ 250,00",
-            };
-            var mock4 = new Sale()
-            {
-                SaleDate = new DateTime(1990, 11, 08),
-                ClientName = "Lucas Roscoe",
-                SaleValue = "R$ 250,00",
-            };
-            var mock5 = new Sale()
-            {
-                SaleDate = new DateTime(1990, 11, 08),
-                ClientName = "Lucas Roscoe",
-                SaleValue = "R$ 250,00",
-            };
-            SalesList.Add(mock1);
-            SalesList.Add(mock2);
-            SalesList.Add(mock3);
-            SalesList.Add(mock4);
-            SalesList.Add(mock5);
-
-            foreach (var Sale in SalesList)
-            {
-                CompleteLabelFromSale(Sale);
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                var salesResponse = await _salesAppService.GetSalesByUserId(user.UserId.ToString());
+                SalesList = new ObservableCollection<Sale>(salesResponse.Sales);
             }
-        }
+            catch(Exception ex)
+            {
+                _userDialogs.Toast(ex.Message);
+                await _navigationService.GoBackAsync();
+            }
+        }        
 
         private void CompleteLabelFromSale(Sale Sale)
         {

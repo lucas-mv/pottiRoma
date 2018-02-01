@@ -61,7 +61,7 @@ namespace PottiRoma.App.ViewModels
 
         private bool IsSaleValid()
         {
-            return (!string.IsNullOrEmpty(SaleRegistered.SaleValue) && !string.IsNullOrEmpty(SaleRegistered.SalePaidValue) && !string.IsNullOrEmpty(SaleRegistered.NumberSoldPieces) && (SaleRegistered.ClientId != null)) ? true : false;
+            return (SaleRegistered.SaleValue > 0 && SaleRegistered.SalePaidValue >= 0 && !string.IsNullOrEmpty(SaleRegistered.NumberSoldPieces) && (SaleRegistered.ClientId != null)) ? true : false;
         }
 
         private async void SaveSale()
