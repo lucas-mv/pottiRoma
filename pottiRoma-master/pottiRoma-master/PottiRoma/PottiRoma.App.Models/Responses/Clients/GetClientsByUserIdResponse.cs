@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PottiRoma.App.Models.Responses.Clients
 {
-    public class GetClientsBySalespersonIdResponse
+    public class GetClientsByUserIdResponse
     {
         public List<Client> Clients { get; set; }
     }

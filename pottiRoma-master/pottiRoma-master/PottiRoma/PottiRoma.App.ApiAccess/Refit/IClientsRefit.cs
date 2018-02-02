@@ -13,7 +13,7 @@ namespace PottiRoma.App.ApiAccess.Refit
     {
         [Get("/Clients/Get/{salespersonid}")]
         [Headers("Authorization: Bearer")]
-        Task<GetClientsBySalespersonIdResponse> GetClientsBySalespersonId([AliasAs("id")]string salespersonId);
+        Task<GetClientsByUserIdResponse> GetClientsBySalespersonId([AliasAs("id")]string salespersonId);
 
         [Post("/Clients/Register")]
         [Headers("Authorization: Bearer")]

@@ -12,7 +12,7 @@ namespace PottiRoma.App.Services.Implementations
 {
     public class ClientsAppService : IClientsAppService
     {
-        public async Task<GetClientsBySalespersonIdResponse> GetClientsBySalespersonId(string salespersonId)
+        public async Task<GetClientsByUserIdResponse> GetClientsBySalespersonId(string salespersonId)
         {
             return await ClientsApiRepository.Get().GetClientsBySalespersonId(salespersonId);
         }

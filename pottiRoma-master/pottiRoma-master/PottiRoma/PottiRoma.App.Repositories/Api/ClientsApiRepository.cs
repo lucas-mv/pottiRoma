@@ -27,7 +27,7 @@ namespace PottiRoma.App.Repositories.Api
 
         #endregion
 
-        public async Task<GetClientsBySalespersonIdResponse> GetClientsBySalespersonId(string salespersonId)
+        public async Task<GetClientsByUserIdResponse> GetClientsBySalespersonId(string salespersonId)
         {
             var response = await Policy
              .Handle<WebException>()
