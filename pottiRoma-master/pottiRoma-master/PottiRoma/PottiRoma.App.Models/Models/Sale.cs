@@ -26,15 +26,15 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _saleDate, value); }
         }
 
-        private string _saleValue;
-        public string SaleValue
+        private float _saleValue;
+        public float SaleValue
         {
             get { return _saleValue; }
             set { SetProperty(ref _saleValue, value); }
         }
 
-        private string _salePaidValue;
-        public string SalePaidValue
+        private float _salePaidValue;
+        public float SalePaidValue
         {
             get { return _salePaidValue; }
             set { SetProperty(ref _salePaidValue, value); }
