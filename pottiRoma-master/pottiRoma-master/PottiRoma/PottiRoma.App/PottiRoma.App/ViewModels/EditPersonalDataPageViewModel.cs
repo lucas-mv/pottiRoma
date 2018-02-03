@@ -50,7 +50,7 @@ namespace PottiRoma.App.ViewModels
 
             User = new User()
             {
-                UserName = "Usuário teste",
+                Name = "Usuário teste",
                 Cep = prefixCPF + "30310-370",
                 Email = "teste@teste.com",
                 PrimaryTelephone = "31 99808-6453",

@@ -37,7 +37,6 @@
   <ItemGroup>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Sale.cs" />
-    <Compile Include="Models\Salesperson.cs" />
     <Compile Include="Models\Season.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

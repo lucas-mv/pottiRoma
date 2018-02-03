@@ -47,5 +47,11 @@ namespace PottiRoma.App.Views
             if (!string.IsNullOrEmpty(thisEntry.Text) && !thisEntry.Text.Contains("R$"))
                 thisEntry.Text = Formatter.FormatMoney(decimal.Parse(thisEntry.Text));
         }
+
+        private void NumberSoldPieces_focused(object sender, FocusEventArgs e)
+        {
+            var thisEntry = sender as CustomEntry;
+            thisEntry.Text = "";
+        }
     }
 }

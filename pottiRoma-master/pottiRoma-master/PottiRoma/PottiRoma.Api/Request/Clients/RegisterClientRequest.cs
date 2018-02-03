@@ -7,7 +7,7 @@ namespace PottiRoma.Api.Request.Clients
 {
     public class RegisterClientRequest
     {
-        public Guid UserId { get; set; }
+        public Guid UsuarioId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Telephone { get; set; }

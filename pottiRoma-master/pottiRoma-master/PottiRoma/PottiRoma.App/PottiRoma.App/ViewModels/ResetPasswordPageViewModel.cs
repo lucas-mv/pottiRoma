@@ -67,7 +67,7 @@ namespace PottiRoma.App.ViewModels
                 {
                     NewPassword = Password,
                     OldPassword = RepeatPassword,
-                    UserId = user.UserId
+                    UserId = user.UsuarioId
                 });
 
                 _userDialogs.Toast("Senha Alterada com Sucesso!", duration);

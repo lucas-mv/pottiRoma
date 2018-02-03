@@ -148,7 +148,7 @@
     <Compile Include="Request\User\ChangePasswordRequest.cs" />
     <Compile Include="Request\User\LoginUserRequest.cs" />
     <Compile Include="Request\User\RegisterUserRequest.cs" />
-    <Compile Include="Response\Clients\GetClientsBySalespersonIdResponse.cs" />
+    <Compile Include="Response\Clients\GetClientsByUserIdResponse.cs" />
     <Compile Include="Response\Email\SendEmailResponse.cs" />
     <Compile Include="Response\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Response\Season\SeasonResponse.cs" />

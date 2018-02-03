@@ -16,6 +16,7 @@ namespace PottiRoma.App.Utils
             public const string USER_KEY = "User";
             public const string ACCESS_TOKEN = "AccessToken";
             public const string SEASON_KEY = "Season";
+            public const string CLIENTS = "Clients";
         }
 
         public class Global

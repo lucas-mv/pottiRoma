@@ -10,14 +10,14 @@ namespace PottiRoma.Business.Clients
 {
     public static class ClientsBusiness
     {
-        public static void RegisterClient(Guid userId , Guid clientId, string name, string telephone, string email, string Cep, DateTime birthdate)
+        public static void RegisterClient(Guid usuarioId, string name, string telephone, string email, string Cep, DateTime birthdate)
         {
             var client = new ClientEntity()
             {
-                ClienteId = clientId,
+                ClienteId = Guid.NewGuid(),
                 Email = email,
                 Name = name,
-                UsuarioId = userId,
+                UsuarioId = usuarioId,
                 Telephone = telephone,
                 Cep = Cep,
                 Birthdate = birthdate

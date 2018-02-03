@@ -92,43 +92,43 @@ namespace PottiRoma.App.ViewModels
             AppUsers = new ObservableCollection<User>();
             AppUsers.Add(new User
             {
-                UserName = "Lucas Roscoe",
+                Name = "Lucas Roscoe",
                 TotalPoints = 756,
                 AverageItensPerSalePoints = 345,
             });
             AppUsers.Add(new User
             {
-                UserName = "Lucas Roscoe",
+                Name = "Lucas Roscoe",
                 TotalPoints = 125,
                 AverageItensPerSalePoints = 754,
             });
             AppUsers.Add(new User
             {
-                UserName = "Lucas Roscoe",
+                Name = "Lucas Roscoe",
                 TotalPoints = 634,
                 AverageItensPerSalePoints = 445,
             });
             AppUsers.Add(new User
             {
-                UserName = "Lucas Roscoe",
+                Name = "Lucas Roscoe",
                 TotalPoints = 743,
                 AverageItensPerSalePoints = 468,
             });
             AppUsers.Add(new User
             {
-                UserName = "Lucas Roscoe",
+                Name = "Lucas Roscoe",
                 TotalPoints = 224,
                 AverageItensPerSalePoints = 256,
             });
             AppUsers.Add(new User
             {
-                UserName = "Lucas Roscoe",
+                Name = "Lucas Roscoe",
                 TotalPoints = 896,
                 AverageItensPerSalePoints = 648,
             });
             AppUsers.Add(new User
             {
-                UserName = "Lucas Roscoe",
+                Name = "Lucas Roscoe",
                 TotalPoints = 574,
                 AverageItensPerSalePoints = 457,
             });

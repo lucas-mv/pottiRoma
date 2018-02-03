@@ -124,15 +124,19 @@ namespace PottiRoma.App.ViewModels
                 {
                     await NavigationHelper.ShowLoading();
                     var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                    await _clientsAppService.RegisterClient(new RegisterClientRequest()
+                    var userGuid = user.UsuarioId;
+                    if (RegisterOrEditText.Contains("CADASTRAR"))
                     {
-                        Address = string.Empty,
-                        Birthdate = ClientSelectedForEdition.Birthdate,
-                        Cep = ClientSelectedForEdition.Cep,
-                        Email = ClientSelectedForEdition.Email,
-                        Name = ClientSelectedForEdition.Name,
-                        Telephone = ClientSelectedForEdition.Telephone
-                    });
+                        await _clientsAppService.RegisterClient(new RegisterClientRequest()
+                        {
+                            UsuarioId = userGuid,
+                            Birthdate = ClientSelectedForEdition.Birthdate,
+                            Cep = ClientSelectedForEdition.Cep,
+                            Email = ClientSelectedForEdition.Email,
+                            Name = ClientSelectedForEdition.Name,
+                            Telephone = ClientSelectedForEdition.Telephone
+                        });
+                    }
                     UserDialogs.Instance.Toast("Cliente registrado com sucesso!");
                     await _navigationService.GoBackAsync();
                 }

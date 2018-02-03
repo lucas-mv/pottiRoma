@@ -39,7 +39,7 @@ namespace PottiRoma.App.ViewModels
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 var token = await CacheAccess.GetSecure<Guid>(CacheKeys.ACCESS_TOKEN);
                 Settings.AccessToken = token.ToString();
-                Settings.UserId = user.UserId.ToString();
+                Settings.UserId = user.UsuarioId.ToString();
                 await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
             }
             catch

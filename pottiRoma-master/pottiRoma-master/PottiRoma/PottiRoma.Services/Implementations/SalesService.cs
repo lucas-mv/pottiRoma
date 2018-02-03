@@ -9,14 +9,14 @@ namespace PottiRoma.Services.Implementations
 {
     public class SalesService : ISalesService
     {
-        public List<SaleEntity> GetSalesByUserId(Guid userId)
+        public void InsertNewSale(Guid usuarioId, Guid clienteId, string userName, string clientName, DateTime saleDate, float saleValue, float salePaidValue, int numberSoldPieces)
         {
-            return SalesBusiness.GetSalesByUserId(userId);
+            SalesBusiness.InsertNewSale(usuarioId, clienteId, userName, clientName, saleDate, saleValue, salePaidValue, numberSoldPieces);
         }
 
-        public void InsertNewSale(Guid userId, Guid clientId, string userName, string clientName, DateTime saleDate, float saleValue, float salePaidValue, int numberSoldPieces)
+        public List<SaleEntity> GetSalesByUserId(Guid usuarioId)
         {
-            SalesBusiness.InsertNewSale(userId, clientId, userName, clientName, saleDate, saleValue, salePaidValue, numberSoldPieces);
+            return SalesBusiness.GetSalesByUserId(usuarioId);
         }
     }
 }

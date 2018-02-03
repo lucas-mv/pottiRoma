@@ -1,5 +1,9 @@
-﻿using PottiRoma.App.Models;
+﻿using Acr.UserDialogs;
+using PottiRoma.App.Helpers;
+using PottiRoma.App.Models;
 using PottiRoma.App.Models.Models;
+using PottiRoma.App.Repositories.Internal;
+using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -11,14 +15,16 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
     public class ListClientsForSalePageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private readonly IClientsAppService _clientAppService;
 
-        public DelegateCommand<object> ClienteSelectedCommand { get; set; }
+        public DelegateCommand<Client> ClienteSelectedCommand { get; set; }
 
         public ObservableCollection<Client> ListaClientes { get; set; }
 
@@ -29,80 +35,72 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _pageTitle, value); }
         }
 
-        public ListClientsForSalePageViewModel(INavigationService navigationService)
+        public ListClientsForSalePageViewModel(INavigationService navigationService,
+            IClientsAppService clientsAppService)
         {
             _navigationService = navigationService;
+            _clientAppService = clientsAppService;
             ListaClientes = new ObservableCollection<Client>();
-            ClienteSelectedCommand = new DelegateCommand<object>(async param => await SelecionarCliente(param))
+            ClienteSelectedCommand = new DelegateCommand<Client>(async param => await SelecionarCliente(param))
                 .ObservesCanExecute(() => CanExecute);
         }
 
-        private void GenerateMock()
+        private async Task GetClientsFromCache()
         {
-            ListaClientes.Add(new Client
+            ListaClientes.Clear();
+            try
             {
-                UserId = Guid.NewGuid(),
-                Birthdate = new DateTime(1990, 11, 08),
-                Name = "Lucas Roscoe",
-                ClientId = Guid.NewGuid(),
-                Email = "lucasrloliveira@gmail.com",
-                Telephone = "998085147",
-            });
-            ListaClientes.Add(new Client
+                var ListClients = await CacheAccess.Get<List<Client>>(CacheKeys.CLIENTS);
+                foreach (var client in ListClients)
+                {
+                    ListaClientes.Add(client);
+                }
+            }
+            catch
             {
-                UserId = Guid.NewGuid(),
-                Birthdate = new DateTime(1989, 8, 25),
-                Name = "Maria Clara Diniz",
-                ClientId = Guid.NewGuid(),
-                Email = "lucasrloliveira@gmail.com",
-                Telephone = "998986521",
-            });
-            ListaClientes.Add(new Client
+                try
+                {
+                    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                    int i = 0;
+                    var clients = await _clientAppService.GetClientsByUserId(user.UsuarioId.ToString());
+
+                    foreach (var client in clients.Clients)
+                    {
+                        ListaClientes.Add(client);
+                    }
+                }
+                catch
+                {
+                    UserDialogs.Instance.Toast("Não foi possível carregar os clientes");
+                    await _navigationService.GoBackAsync();
+                }
+            }
+            finally
             {
-                UserId = Guid.NewGuid(),
-                Birthdate = new DateTime(1990, 11, 08),
-                Name = "Laura Diniz",
-                ClientId = Guid.NewGuid(),
-                Email = "Lauradiniz@gmail.com",
-                Telephone = "985748526",
-            });
-            ListaClientes.Add(new Client
-            {
-                UserId = Guid.NewGuid(),
-                Birthdate = new DateTime(1990, 11, 08),
-                Name = "Luisa Antunes",
-                ClientId = Guid.NewGuid(),
-                Email = "luisa_antunes@gmail.com",
-                Telephone = "987545852",
-            });
-            ListaClientes.Add(new Client
-            {
-                UserId = Guid.NewGuid(),
-                Birthdate = new DateTime(1990, 11, 08),
-                Name = "Davi Ferraz",
-                ClientId = Guid.NewGuid(),
-                Email = "davi_ferraz@gmail.com",
-                Telephone = "985623165",
-            });
+                await NavigationHelper.PopLoading();
+            }
         }
 
-        private async Task SelecionarCliente(object item)
+        private async Task SelecionarCliente(Client item)
         {
             if (item == null) return;
 
             CanExecuteInitial();
             var param = new NavigationParameters();
+
             param.Add(NavigationKeyParameters.SelectedClient, (Client)item);
             await _navigationService.NavigateAsync(NavigationSettings.RegisterSale, param);
 
             CanExecuteEnd();
         }
 
-        public override void OnNavigatedTo(NavigationParameters parameters)
+        public override async void OnNavigatedTo(NavigationParameters parameters)
         {
+            await NavigationHelper.PopLoading();
             PageTitle = "Selecionar Cliente";
-            GenerateMock();
+            await GetClientsFromCache();
             base.OnNavigatedTo(parameters);
         }
+
     }
 }

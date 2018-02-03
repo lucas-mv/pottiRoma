@@ -65,7 +65,7 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                var salesResponse = await _salesAppService.GetSalesByUserId(user.UserId.ToString());
+                var salesResponse = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
                 SalesList = new ObservableCollection<Sale>(salesResponse.Sales);
             }
             catch(Exception ex)

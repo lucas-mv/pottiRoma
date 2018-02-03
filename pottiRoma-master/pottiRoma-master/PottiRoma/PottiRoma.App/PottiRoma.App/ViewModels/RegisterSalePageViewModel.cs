@@ -1,6 +1,9 @@
 ﻿using Acr.UserDialogs;
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Requests.Sales;
+using PottiRoma.App.Repositories.Internal;
+using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
@@ -11,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -18,6 +22,10 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private readonly ISalesAppService _salesAppService;
+
+        private InsertNewSaleRequest SaleInsertedRequest;
+        private User CurrentUser;
 
         public DelegateCommand GoBackCommand { get; set; }
         public DelegateCommand SaveSaleCommand { get; set; }
@@ -38,22 +46,36 @@ namespace PottiRoma.App.ViewModels
 
         public RegisterSalePageViewModel(
             INavigationService navigationService,
-            IUserDialogs userDialogs)
+            IUserDialogs userDialogs,
+            ISalesAppService salesAppService)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _salesAppService = salesAppService;
             GoBackCommand = new DelegateCommand(GoBack).ObservesCanExecute(() => CanExecute);
             SaveSaleCommand = new DelegateCommand(SaveSale).ObservesCanExecute(() => CanExecute);
             SaleRegistered = new Sale();
         }
 
-        public override void OnNavigatedTo(NavigationParameters parameters)
+        public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey(NavigationKeyParameters.SelectedClient))
             {
                 Client selectedClient = (Client)parameters[NavigationKeyParameters.SelectedClient];
-                SaleRegistered.ClientId = selectedClient.ClientId;
+                SaleRegistered.ClienteId = selectedClient.ClienteId;
                 SaleRegistered.ClientName = selectedClient.Name;
+
+                try
+                {
+                    CurrentUser = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                    SaleRegistered.UsuarioId = CurrentUser.UsuarioId;
+                }
+                catch
+                {
+                    _userDialogs.Toast("Seu usuário foi removido, contate o administrador");
+                }
+
+
                 NameAndDateLabel = "Venda para: " + SaleRegistered.ClientName + ", " + Formatter.FormatDate(DateTime.Now);
             }
             base.OnNavigatedTo(parameters);
@@ -61,7 +83,7 @@ namespace PottiRoma.App.ViewModels
 
         private bool IsSaleValid()
         {
-            return (SaleRegistered.SaleValue > 0 && SaleRegistered.SalePaidValue >= 0 && !string.IsNullOrEmpty(SaleRegistered.NumberSoldPieces) && (SaleRegistered.ClientId != null)) ? true : false;
+            return (SaleRegistered.SaleValue > 0 && SaleRegistered.SalePaidValue >= 0) && (SaleRegistered.ClienteId != null) ? true : false;
         }
 
         private async void SaveSale()
@@ -72,13 +94,40 @@ namespace PottiRoma.App.ViewModels
             {
                 CanExecuteInitial();
                 await NavigationHelper.ShowLoading();
-                _userDialogs.Toast("Parabéns! Você ganhou 30 pontos!", duration);
-                var teste = SaleRegistered;
-                //TODO fazer servico que registra a venda do usuário         
-                await Task.Delay(2000);
-                await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
-                CanExecuteEnd();
-                await NavigationHelper.PopLoading();
+                try
+                {
+                    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                    var userGuid = user.UsuarioId;
+
+                    var teste1 = userGuid.ToString();
+                    var teste2 = user.Name;
+                    var teste3 = SaleRegistered.ClienteId.ToString();
+                    var teste4 = SaleRegistered.ClientName;
+                    var teste5 = SaleRegistered.SaleDate.ToString();
+                    var teste6 = SaleRegistered.SalePaidValue;
+                    var teste7 = SaleRegistered.SaleValue;
+
+                    await _salesAppService.InsertNewSale(new InsertNewSaleRequest
+                    {
+                        UsuarioId = userGuid,
+                        UserName = user.Name,
+                        ClienteId = SaleRegistered.ClienteId,
+                        ClientName = SaleRegistered.ClientName,
+                        NumberSoldPieces = SaleRegistered.NumberSoldPieces,
+                        SaleDate = SaleRegistered.SaleDate,
+                        SalePaidValue = SaleRegistered.SalePaidValue,
+                        SaleValue = SaleRegistered.SaleValue
+                    });
+                }
+                catch
+                {
+                    _userDialogs.Toast("Não foi possível registrar sua venda");
+                }
+                finally
+                {
+                    CanExecuteEnd();
+                    await NavigationHelper.PopLoading();
+                }
             }
             else _userDialogs.Toast("Faltam Dados para preencher!", duration);
         }

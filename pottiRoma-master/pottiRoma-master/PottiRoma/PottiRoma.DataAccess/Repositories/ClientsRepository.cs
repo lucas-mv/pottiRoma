@@ -28,13 +28,13 @@ namespace PottiRoma.DataAccess.Repositories
         #region Selects
 
         private const string GET_BY_USER_ID = @"
-        SELECT ClienteId as ClientId, 
-        UsuarioId as UsuarioId,
-        Name as Name, 
-        Email as Email, 
-        Telephone as Telephone, 
-        Cep as Cep,
-        Birthdate as Birthdate
+        SELECT ClienteId as ClienteId, 
+            UsuarioId as UsuarioId,
+            Name as Name, 
+            Email as Email, 
+            Telephone as Telephone, 
+            Cep as Cep,
+            Birthdate as Birthdate
         FROM dbo.Cliente
         WHERE UsuarioId = @usuarioid";
 

@@ -20,14 +20,14 @@ namespace PottiRoma.Api.Controllers
             _salesService = salesService;
         }
 
-        [Route("Get/{userId}")]
+        [Route("Get/{usuarioId}")]
         [HttpGet]
-        public async Task<GetSalesByUserIdResponse> GetSalesByUserId(string userId)
+        public async Task<GetSalesByUserIdResponse> GetSalesByUserId(string usuarioId)
         {
-            await ValidateToken();
+            //await ValidateToken();
             return new GetSalesByUserIdResponse()
             {
-                Sales = _salesService.GetSalesByUserId(new Guid(userId))
+                Sales = _salesService.GetSalesByUserId(new Guid(usuarioId))
             };
         }
 
@@ -35,8 +35,8 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task InsertNewSale(InsertNewSaleRequest request)
         {
-            await ValidateToken();
-            _salesService.InsertNewSale(request.UserId, request.ClientId, request.UserName, request.ClientName, request.SaleDate, request.SaleValue, request.SalePaidValue, request.NumberSoldPieces);
+            //await ValidateToken();
+            _salesService.InsertNewSale(request.UsuarioId, request.ClienteId, request.UserName, request.ClientName, request.SaleDate, request.SaleValue, request.SalePaidValue, request.NumberSoldPieces);
         }
     }
 }

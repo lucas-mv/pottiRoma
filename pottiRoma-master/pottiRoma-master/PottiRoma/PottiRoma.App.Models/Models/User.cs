@@ -12,7 +12,7 @@ namespace PottiRoma.App.Models.Models
     {
         #region Database Values
 
-        public Guid UserId { get; set; }
+        public Guid UsuarioId { get; set; }
         public UserType UserType { get; set; }
         public Guid MotherFlowerId { get; set; }
         public Guid TemporadaId { get; set; }
@@ -24,11 +24,11 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _cpf, value); }
         }
 
-        private string _userName;
-        public string UserName
+        private string _name;
+        public string Name
         {
-            get { return _userName; }
-            set { SetProperty(ref _userName, value); }
+            get { return _name; }
+            set { SetProperty(ref _name, value); }
         }
 
         private string _email;

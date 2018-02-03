@@ -30,9 +30,9 @@ namespace PottiRoma.DataAccess.Repositories
 
         private const string GET_SALES_BY_USER_ID = @"
         SELECT 
-	        VendaId AS SaleId, 
-	        UsuarioId AS UserId, 
-	        ClienteId AS ClientId, 
+	        VendaId AS VendaId, 
+	        UsuarioId AS UsuarioId, 
+	        ClienteId AS ClienteId, 
 	        UserName AS UserName, 
 	        ClientName AS ClientName,
 	        SaleDate AS SaleDate,
@@ -80,9 +80,9 @@ namespace PottiRoma.DataAccess.Repositories
         {
             DynamicParameters parameters = new DynamicParameters();
 
-            parameters.Add("@vendaid", sale.SaleId, System.Data.DbType.Guid);
-            parameters.Add("@usuarioid", sale.UserId, System.Data.DbType.Guid);
-            parameters.Add("@clienteid", sale.ClientId, System.Data.DbType.Guid);
+            parameters.Add("@vendaid", sale.VendaId, System.Data.DbType.Guid);
+            parameters.Add("@usuarioid", sale.UsuarioId, System.Data.DbType.Guid);
+            parameters.Add("@clienteid", sale.ClienteId, System.Data.DbType.Guid);
             parameters.Add("@username", sale.UserName, System.Data.DbType.AnsiString);
             parameters.Add("@clientname", sale.ClientName, System.Data.DbType.AnsiString);
             parameters.Add("@saledate", sale.SaleDate, System.Data.DbType.DateTime);
@@ -93,11 +93,11 @@ namespace PottiRoma.DataAccess.Repositories
             Execute(INSERT_NEW_SALE, parameters);
         }
 
-        public List<SaleEntity> GetSalesByUserId(Guid userId)
+        public List<SaleEntity> GetSalesByUserId(Guid usuarioId)
         {
             DynamicParameters parameters = new DynamicParameters();
 
-            parameters.Add("@usuarioid", userId, System.Data.DbType.Guid);
+            parameters.Add("@usuarioid", usuarioId, System.Data.DbType.Guid);
 
             return Query(GET_SALES_BY_USER_ID, parameters).ToList();
         }

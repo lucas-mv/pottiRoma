@@ -10,18 +10,18 @@ namespace PottiRoma.Business.Sale
 {
     public static class SalesBusiness
     {
-        public static void InsertNewSale(Guid userId, Guid clientId, string userName, string clientName, DateTime saleDate, float saleValue, float salePaidValue, int numberSoldPieces)
+        public static void InsertNewSale(Guid usuarioId, Guid clienteId, string userName, string clientName, DateTime saleDate, float saleValue, float salePaidValue, int numberSoldPieces)
         {
             var newSale = new SaleEntity()
             {
-                ClientId = clientId,
+                ClienteId = clienteId,
                 ClientName = clientName,
                 NumberSoldPieces = numberSoldPieces,
                 SaleDate = saleDate,
-                SaleId = Guid.NewGuid(),
+                VendaId = Guid.NewGuid(),
                 SalePaidValue = salePaidValue,
                 SaleValue = saleValue,
-                UserId = userId,
+                UsuarioId = usuarioId,
                 UserName = userName
             };
             SalesRepository.Get().InsertNewSale(newSale);

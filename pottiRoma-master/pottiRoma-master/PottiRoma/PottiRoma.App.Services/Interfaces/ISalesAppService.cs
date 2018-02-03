@@ -10,7 +10,7 @@ namespace PottiRoma.App.Services.Interfaces
 {
     public interface ISalesAppService
     {
-        Task<GetSalesByUserIdResponse> GetSalesByUserId(string userId);
+        Task<GetSalesByUserIdResponse> GetSalesByUserId(string usuarioId);
         Task InsertNewSale(InsertNewSaleRequest request);
     }
 }

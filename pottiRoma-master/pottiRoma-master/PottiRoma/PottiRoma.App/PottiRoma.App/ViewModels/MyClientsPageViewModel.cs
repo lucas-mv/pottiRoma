@@ -51,84 +51,46 @@ namespace PottiRoma.App.ViewModels
 
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
+            await NavigationHelper.PopLoading();
             base.OnNavigatedTo(parameters);
+            await GetClientsFromCache();
 
-
-            //TODO verificar esse metodo porque esta dando null pointer no user.salesPerson
-
-            //try
-            //{
-            //    await NavigationHelper.ShowLoading();
-            //    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-            //    if (user.Salesperson != null)
-            //    {
-            //        var response = await _clientsAppService.GetClientsBySalespersonId(user.Salesperson.SalespersonId.ToString());
-            //        if (response == null || response.Clients == null)
-            //            throw new Exception("Ocorreu um erro, tente novamente mais tarde.");
-            //        ListaClientes = new ObservableCollection<Client>(response.Clients);
-            //    }
-            //}
-            //catch(Exception ex)
-            //{
-            //    UserDialogs.Instance.Toast(ex.Message);
-            //    await _navigationService.GoBackAsync();
-            //}
-            //finally
-            //{
-            //    await NavigationHelper.PopLoading();
-            //}
-
-
-            MockClients();
         }
 
-        private void MockClients()
+        private async Task GetClientsFromCache()
         {
-            ListaClientes.Add(new Client
+            ListaClientes.Clear();
+            try
             {
-                Birthdate = new DateTime(1990,11,08),
-                Name = "Lucas Roscoe",
-                Cep = "109472066-63",
-                ClientId = Guid.NewGuid(),
-                Email = "lucasrloliveira@gmail.com",
-                Telephone = "998085147",
-            });
-            ListaClientes.Add(new Client
+                var ListClients = await CacheAccess.Get<List<Client>>(CacheKeys.CLIENTS);
+                foreach (var client in ListClients)
+                {
+                    ListaClientes.Add(client);
+                }
+            }
+            catch
             {
-                Birthdate = new DateTime(1989, 8, 25),
-                Name = "Maria Clara Diniz",
-                Cep = "109549066-45",
-                ClientId = Guid.NewGuid(),
-                Email = "lucasrloliveira@gmail.com",
-                Telephone = "998986521",
-            });
-            ListaClientes.Add(new Client
+                try
+                {
+                    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                    int i = 0;
+                    var clients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
+
+                    foreach (var client in clients.Clients)
+                    {
+                        ListaClientes.Add(client);
+                    }
+                }
+                catch
+                {
+                    UserDialogs.Instance.Toast("Não foi possível carregar os clientes");
+                    await _navigationService.GoBackAsync();
+                }
+            }
+            finally
             {
-                Birthdate = new DateTime(1990, 11, 08),
-                Name = "Laura Diniz",
-                Cep = "367472066-33",
-                ClientId = Guid.NewGuid(),
-                Email = "Lauradiniz@gmail.com",
-                Telephone = "985748526",
-            });
-            ListaClientes.Add(new Client
-            {
-                Birthdate = new DateTime(1990, 11, 08),
-                Name = "Luisa Antunes",
-                Cep = "685956874-12",
-                ClientId = Guid.NewGuid(),
-                Email = "luisa_antunes@gmail.com",
-                Telephone = "987545852",
-            });
-            ListaClientes.Add(new Client
-            {
-                Birthdate = new DateTime(1990, 11, 08),
-                Name = "Davi Ferraz",
-                Cep = "521478596-12",
-                ClientId = Guid.NewGuid(),
-                Email = "davi_ferraz@gmail.com",
-                Telephone = "985623165",
-            });
+                await NavigationHelper.PopLoading();
+            }
         }
 
         private async void RegisterNewClient()
@@ -148,7 +110,7 @@ namespace PottiRoma.App.ViewModels
             {
                 for (int i = 0; i < ListaClientes.Count; i++)
                 {
-                    if (ListaClientes[i].ClientId == removedClient.ClientId)
+                    if (ListaClientes[i].ClienteId == removedClient.ClienteId)
                         ListaClientes.RemoveAt(i);
                 }
             }

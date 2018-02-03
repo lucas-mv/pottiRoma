@@ -27,7 +27,7 @@ namespace PottiRoma.App.Repositories.Api
 
         #endregion
 
-        public async Task<GetSalesByUserIdResponse> GetSalesByUserId(string userId)
+        public async Task<GetSalesByUserIdResponse> GetSalesByUserId(string usuarioId)
         {
             var response = await Policy
              .Handle<WebException>()
@@ -37,7 +37,7 @@ namespace PottiRoma.App.Repositories.Api
                sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
              )
              .ExecuteAsync(async () =>
-                   await PottiRomaApiAccess.GetPottiRomaApi<ISalesRefit>().GetSalesByUserId(userId)
+                   await PottiRomaApiAccess.GetPottiRomaApi<ISalesRefit>().GetSalesByUserId(usuarioId)
               );
             return response;
         }

@@ -9,8 +9,9 @@ namespace PottiRoma.App.Models.Models
 {
     public class Sale : BindableBase
     {
-        public Guid UserId { get; set; }
-        public Guid ClientId { get; set; }
+        public Guid UsuarioId { get; set; }
+        public Guid ClienteId { get; set; }
+        public Guid VendaId { get; set; }
 
         private string _clientName;
         public string ClientName
@@ -40,8 +41,8 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _salePaidValue, value); }
         }
 
-        private string _numberSoldPieces;
-        public string NumberSoldPieces
+        private int _numberSoldPieces;
+        public int NumberSoldPieces
         {
             get { return _numberSoldPieces; }
             set { SetProperty(ref _numberSoldPieces, value); }
