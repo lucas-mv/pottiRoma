@@ -38,7 +38,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        SaleDate AS SaleDate,
 	        SaleValue AS SaleValue,
 	        SalePaidValue AS SalePaidValue, 
-	        NumberSoldPieces AS NumberSoldPieces
+	        NumberSoldPieces AS NumberSoldPieces,
+            Description AS Description
         FROM dbo.Venda
         WHERE UsuarioId = @usuarioid";
 
@@ -57,7 +58,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        SaleDate, 
 	        SaleValue, 
 	        SalePaidValue, 
-	        NumberSoldPieces
+	        NumberSoldPieces,
+            Description
         )
         VALUES 
         (
@@ -69,7 +71,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        @saledate, 
 	        @salevalue, 
 	        @salepaidvalue,
-	        @numbersoldpieces
+	        @numbersoldpieces,
+            @description
         )";
 
         #endregion
@@ -89,6 +92,7 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@salevalue", sale.SaleValue, System.Data.DbType.Double);
             parameters.Add("@salepaidvalue", sale.SalePaidValue, System.Data.DbType.Double);
             parameters.Add("@numbersoldpieces", sale.NumberSoldPieces, System.Data.DbType.Int32);
+            parameters.Add("@description", sale.Description, System.Data.DbType.AnsiString);
 
             Execute(INSERT_NEW_SALE, parameters);
         }

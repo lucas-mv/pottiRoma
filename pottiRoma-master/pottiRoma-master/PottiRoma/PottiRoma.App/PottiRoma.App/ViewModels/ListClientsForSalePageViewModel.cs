@@ -45,35 +45,24 @@ namespace PottiRoma.App.ViewModels
                 .ObservesCanExecute(() => CanExecute);
         }
 
-        private async Task GetClientsFromCache()
+        private async Task GetClients()
         {
+            await NavigationHelper.ShowLoading();
             ListaClientes.Clear();
             try
             {
-                var ListClients = await CacheAccess.Get<List<Client>>(CacheKeys.CLIENTS);
-                foreach (var client in ListClients)
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                var clients = await _clientAppService.GetClientsByUserId(user.UsuarioId.ToString());
+
+                foreach (var client in clients.Clients)
                 {
                     ListaClientes.Add(client);
                 }
             }
             catch
             {
-                try
-                {
-                    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                    int i = 0;
-                    var clients = await _clientAppService.GetClientsByUserId(user.UsuarioId.ToString());
-
-                    foreach (var client in clients.Clients)
-                    {
-                        ListaClientes.Add(client);
-                    }
-                }
-                catch
-                {
-                    UserDialogs.Instance.Toast("Não foi possível carregar os clientes");
-                    await _navigationService.GoBackAsync();
-                }
+                UserDialogs.Instance.Toast("Não foi possível carregar os clientes");
+                await _navigationService.GoBackAsync();
             }
             finally
             {
@@ -96,11 +85,9 @@ namespace PottiRoma.App.ViewModels
 
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
-            await NavigationHelper.PopLoading();
             PageTitle = "Selecionar Cliente";
-            await GetClientsFromCache();
+            await GetClients();
             base.OnNavigatedTo(parameters);
         }
-
     }
 }

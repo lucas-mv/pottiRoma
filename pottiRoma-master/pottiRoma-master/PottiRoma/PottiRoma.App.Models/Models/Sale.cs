@@ -48,6 +48,13 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _numberSoldPieces, value); }
         }
 
+        private string _description;
+        public string Description
+        {
+            get { return _description; }
+            set { SetProperty(ref _description, value); }
+        }
+
         #region Helper Values
 
         private string _cardLabel;

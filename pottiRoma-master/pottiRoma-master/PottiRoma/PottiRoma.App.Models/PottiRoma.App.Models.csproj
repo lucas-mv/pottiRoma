@@ -41,6 +41,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Clients\RegisterClientRequest.cs" />
+    <Compile Include="Requests\Clients\UpdateClientInfoRequest.cs" />
     <Compile Include="Requests\Sales\InsertNewSaleRequest.cs" />
     <Compile Include="Requests\User\ChangePasswordRequest.cs" />
     <Compile Include="Requests\User\LoginRequest.cs" />

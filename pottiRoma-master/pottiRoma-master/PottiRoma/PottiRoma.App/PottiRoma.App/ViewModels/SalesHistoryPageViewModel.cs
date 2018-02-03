@@ -61,17 +61,26 @@ namespace PottiRoma.App.ViewModels
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+            await NavigationHelper.ShowLoading();
 
             try
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 var salesResponse = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
                 SalesList = new ObservableCollection<Sale>(salesResponse.Sales);
+                foreach (var sale in SalesList)
+                {
+                    sale.CardLabel = sale.ClientName + ", " + sale.SaleDate.ToString("dd/MM/yyyy");
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _userDialogs.Toast(ex.Message);
                 await _navigationService.GoBackAsync();
+            }
+            finally
+            {
+                await NavigationHelper.PopLoading();
             }
         }        
 

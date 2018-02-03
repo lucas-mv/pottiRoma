@@ -192,6 +192,7 @@
                                 FontSize="14"
                                 HeightRequest="100"
                                 HorizontalOptions="Fill"
+                                Text="{Binding SaleRegistered.Description}"
                                 TextColor="{StaticResource TextColor}"
                                 VerticalOptions="Center" />
                         </StackLayout>

@@ -35,16 +35,9 @@
                         Margin="12,0,0,0"
                         FontAttributes="Bold"
                         FontSize="{StaticResource StandardFontSize}"
-                        Text="{Binding User.UserName}"
+                        Text="{Binding User.Name}"
                         TextColor="{StaticResource TextColor}" />
                     <ContentView HeightRequest="8" />
-                    <Label
-                        Margin="12,0,0,0"
-                        FontAttributes="Bold"
-                        FontSize="{StaticResource StandardFontSize}"
-                        Text="{Binding User.Cpf}"
-                        TextColor="{StaticResource TextColor}" />
-                    <ContentView HeightRequest="4" />
                     <Frame
                         Grid.Row="1"
                         Padding="0"
@@ -106,6 +99,19 @@
                             TextColor="{StaticResource TextColor}"
                             VerticalOptions="Center" />
                     </Frame>
+                    <ContentView HeightRequest="15" />
+                    <Label
+                        x:Name="LoginIncorretoLabel"
+                        FontSize="{StaticResource StandardFontSize}"
+                        HeightRequest="30"
+                        HorizontalOptions="Center"
+                        Text="Trocar Senha"
+                        TextColor="{StaticResource LightTextColor}"
+                        VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangePasswordCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <ContentView HeightRequest="8" />
                 </StackLayout>
 
@@ -114,9 +120,8 @@
             <Button
                 Grid.Row="2"
                 Margin="16"
-                Command="{Binding ChangePasswordCommand}"
                 Style="{StaticResource ButtonDefault}"
-                Text="ALTERAR SENHA"
+                Text="SALVAR"
                 VerticalOptions="Center" />
 
         </Grid>

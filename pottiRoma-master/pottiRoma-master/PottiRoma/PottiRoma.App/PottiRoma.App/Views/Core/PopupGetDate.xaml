@@ -29,22 +29,16 @@
         VerticalOptions="Center"
         WidthRequest="300">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition Height="40" />
-            <RowDefinition Height="270" />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="270*" />
+            <RowDefinition Height="60*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <ContentView
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            BackgroundColor="{StaticResource ButtonColor}" />
         <Label
             Grid.Row="1"
             Grid.Column="0"
@@ -52,7 +46,7 @@
             FontSize="{StaticResource LargeFontSize}"
             HorizontalOptions="Center"
             Text="Dia"
-            TextColor="{StaticResource WhiteColor}"
+            TextColor="{StaticResource ThemeColor}"
             VerticalOptions="Center" />
         <Label
             Grid.Row="1"
@@ -61,7 +55,7 @@
             FontSize="{StaticResource LargeFontSize}"
             HorizontalOptions="Center"
             Text="Mês"
-            TextColor="{StaticResource WhiteColor}"
+            TextColor="{StaticResource ThemeColor}"
             VerticalOptions="Center" />
         <Label
             Grid.Row="0"
@@ -71,19 +65,14 @@
             FontSize="{StaticResource LargeFontSize}"
             HorizontalOptions="Center"
             Text="Dia do Aniversário"
-            TextColor="{StaticResource WhiteColor}"
+            TextColor="{StaticResource ThemeColor}"
             VerticalOptions="Center" />
         <ContentView
             Grid.Row="3"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            BackgroundColor="{StaticResource ButtonColor}" />
-        <ContentView
-            Grid.Row="3"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill">
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
             <ContentView.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding ConfirmDateCommand}" Tapped="ClickOk_Tapped" />
             </ContentView.GestureRecognizers>
@@ -92,8 +81,8 @@
                 FontSize="{StaticResource LargeFontSize}"
                 HorizontalOptions="Center"
                 Text="OK"
-                TextColor="{StaticResource WhiteColor}"
-                VerticalOptions="Center" />
+                TextColor="{StaticResource ThemeColor}"
+                VerticalOptions="Start" />
         </ContentView>
 
         <picker:SfPicker

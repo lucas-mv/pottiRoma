@@ -16,5 +16,6 @@ namespace PottiRoma.App.Models.Requests.Sales
         public float SaleValue { get; set; }
         public float SalePaidValue { get; set; }
         public int NumberSoldPieces { get; set; }
+        public string Description { get; set; }
     }
 }

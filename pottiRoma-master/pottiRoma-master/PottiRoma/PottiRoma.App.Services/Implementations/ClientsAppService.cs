@@ -21,5 +21,10 @@ namespace PottiRoma.App.Services.Implementations
         {
             await ClientsApiRepository.Get().RegisterClient(request);
         }
+
+        public async Task UpdateClientInfo(UpdateClientInfoRequest request)
+        {
+            await ClientsApiRepository.Get().UpdateClientInfo(request);
+        }
     }
 }

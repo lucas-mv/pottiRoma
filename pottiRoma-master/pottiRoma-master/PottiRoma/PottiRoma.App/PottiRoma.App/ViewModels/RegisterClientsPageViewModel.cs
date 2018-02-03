@@ -5,6 +5,7 @@ using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.Clients;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
+using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -78,7 +79,7 @@ namespace PottiRoma.App.ViewModels
             RegisterNewClientCommand = new DelegateCommand(RegisterNewClient).ObservesCanExecute(() => CanExecute);
             AnniversaryDate = DatePlaceholder;
             ColorDateAnniversary = Color.FromHex("#d5d5d5");
-            PageTitle = SetTitle();
+            
         }
 
         private async void OpenDatePopup()
@@ -93,10 +94,14 @@ namespace PottiRoma.App.ViewModels
             base.OnNavigatedTo(parameters);
             if (parameters.ContainsKey(NavigationKeyParameters.EditClient))
             {
-                RegisterOrEditText = "EDITAR";
+                RegisterOrEditText = "SALVAR";
+                PageTitle = SetTitle(true);
                 if (parameters.ContainsKey(NavigationKeyParameters.SelectedClient))
                     ClientSelectedForEdition = parameters[NavigationKeyParameters.SelectedClient] as Client;
+                AnniversaryDate = Formatter.FormatDateWithoutYear(ClientSelectedForEdition.Birthdate);
+                ColorDateAnniversary = Color.FromHex("#696969");
             }
+            else PageTitle = SetTitle(false);
         }
 
         private void CallbackDate(string date)
@@ -111,9 +116,12 @@ namespace PottiRoma.App.ViewModels
             ColorDateAnniversary = Color.FromHex("#696969");
         }
 
-        private string SetTitle()
+        private string SetTitle(bool isEdit)
         {
-            return Device.OS == TargetPlatform.Android ? "Cadastro de Clientes" : "";
+            if(isEdit)
+                return Device.OS == TargetPlatform.Android ? "Cadastro de Clientes" : "";
+            else
+                return Device.OS == TargetPlatform.Android ? "Editar dados do Cliente" : "";
         }
 
         private async void RegisterNewClient()
@@ -136,17 +144,33 @@ namespace PottiRoma.App.ViewModels
                             Name = ClientSelectedForEdition.Name,
                             Telephone = ClientSelectedForEdition.Telephone
                         });
+                        UserDialogs.Instance.Toast("Cliente registrado com sucesso!");
                     }
-                    UserDialogs.Instance.Toast("Cliente registrado com sucesso!");
-                    await _navigationService.GoBackAsync();
+                    else
+                    {
+                        await _clientsAppService.UpdateClientInfo(new UpdateClientInfoRequest()
+                        {
+                            ClienteId = ClientSelectedForEdition.ClienteId,
+                            Birthdate = ClientSelectedForEdition.Birthdate,
+                            Cep = ClientSelectedForEdition.Cep,
+                            Email = ClientSelectedForEdition.Email,
+                            Name = ClientSelectedForEdition.Name,
+                            Telephone = ClientSelectedForEdition.Telephone
+                        });
+                        UserDialogs.Instance.Toast("Cliente editado com sucesso!");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    UserDialogs.Instance.Toast("Não foi possível registrar o cliente.");
+                    if (RegisterOrEditText.Contains("CADASTRAR"))
+                        UserDialogs.Instance.Toast("Não foi possível registrar o cliente.");
+                    else
+                        UserDialogs.Instance.Toast("Não foi possível editar o cliente.");
                 }
                 finally
                 {
                     await NavigationHelper.PopLoading();
+                    await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
                 }
             }
             else

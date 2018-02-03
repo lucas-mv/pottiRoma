@@ -18,5 +18,9 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Post("/Clients/Register")]
         [Headers("Authorization: Bearer")]
         Task RegisterClient(RegisterClientRequest request);
+
+        [Post("/Clients/Update")]
+        [Headers("Authorization: Bearer")]
+        Task UpdateClientInfo(UpdateClientInfoRequest request);
     }
 }

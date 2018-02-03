@@ -79,6 +79,7 @@
                                     Grid.Column="1"
                                     FontSize="{StaticResource StandardFontSize}"
                                     HorizontalOptions="End"
+                                    PropertyChanged="Label_PropertyChanged"
                                     Text="{Binding SaleValue}"
                                     TextColor="{StaticResource TextColor}"
                                     VerticalOptions="Center" />

@@ -20,5 +20,10 @@ namespace PottiRoma.Services.Implementations
         {
             return ClientsBusiness.GetClientsByUserId(usuarioId);
         }
+
+        public void UpdateClientInfo(Guid clienteId, string name, string telephone, string email, string Cep, DateTime birthdate)
+        {
+            ClientsBusiness.UpdateClientInfo(clienteId, name, telephone, email, Cep, birthdate);
+        }
     }
 }

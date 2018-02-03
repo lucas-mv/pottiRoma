@@ -25,9 +25,23 @@ namespace PottiRoma.Business.Clients
             ClientsRepository.Get().InsertClient(client);
         }
 
-        public static List<ClientEntity> GetClientsByUserId(Guid UserId)
+        public static List<ClientEntity> GetClientsByUserId(Guid usuarioId)
         {
-            return ClientsRepository.Get().GetClientsByUserId(UserId);
+            return ClientsRepository.Get().GetClientsByUserId(usuarioId);
+        }
+
+        public static void UpdateClientInfo(Guid clienteId, string name, string telephone, string email, string Cep, DateTime birthdate)
+        {
+            var client = new ClientEntity()
+            {
+                ClienteId = clienteId,
+                Name = name,
+                Telephone = telephone,
+                Email = email,
+                Cep = Cep,
+                Birthdate = birthdate
+            };
+            ClientsRepository.Get().UpdateClientInfo(client);
         }
     }
 }

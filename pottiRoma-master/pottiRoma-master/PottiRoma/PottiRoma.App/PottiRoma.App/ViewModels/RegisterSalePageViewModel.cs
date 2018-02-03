@@ -24,7 +24,6 @@ namespace PottiRoma.App.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly ISalesAppService _salesAppService;
 
-        private InsertNewSaleRequest SaleInsertedRequest;
         private User CurrentUser;
 
         public DelegateCommand GoBackCommand { get; set; }
@@ -72,7 +71,7 @@ namespace PottiRoma.App.ViewModels
                 }
                 catch
                 {
-                    _userDialogs.Toast("Seu usuário foi removido, contate o administrador");
+                    _userDialogs.Toast("Tivemos um problema com seu usuário, faça o Login novamente!");
                 }
 
 
@@ -114,10 +113,12 @@ namespace PottiRoma.App.ViewModels
                         ClienteId = SaleRegistered.ClienteId,
                         ClientName = SaleRegistered.ClientName,
                         NumberSoldPieces = SaleRegistered.NumberSoldPieces,
-                        SaleDate = SaleRegistered.SaleDate,
+                        SaleDate = DateTime.Now,
                         SalePaidValue = SaleRegistered.SalePaidValue,
                         SaleValue = SaleRegistered.SaleValue
                     });
+                    _userDialogs.Toast("Cliente Cadastrado!");
+                    await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
                 }
                 catch
                 {

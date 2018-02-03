@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -56,12 +57,15 @@ namespace PottiRoma.App.ViewModels
             CanExecuteEnd();
         }
 
-        private void SetInitialPickePositions()
+        private  void SetInitialPickePositions()
         {
             DateTime currentDay = DateTime.Now;
 
-            ActualMonth = GetDatePopupHelper.Convert(currentDay.Month);
-            ActualDay = currentDay.Day.ToString();
+            Device.BeginInvokeOnMainThread(() => 
+            {
+                ActualMonth = "Junho";
+                ActualDay = "15";
+            });
         }
 
         public ObservableCollection<string> FillMonths()
