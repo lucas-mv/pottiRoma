@@ -94,5 +94,13 @@ namespace PottiRoma.Api.Controllers
                 IsSuccess = true
             };
         }
+
+        [Route("Profile/Update")]
+        [HttpPost]
+        public async Task UpdateClientInfo(UpdateUserPointsRequest request)
+        {
+            //await ValidateToken();
+            _userService.UpdateUserPoints(request.UsuarioId ,request.AverageTicketPoints, request.RegisterClientsPoints, request.SalesNumberPoints, request.AverageItensPerSalePoints, request.InviteAllyFlowersPoints);
+        }
     }
 }

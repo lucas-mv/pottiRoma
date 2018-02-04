@@ -36,7 +36,7 @@ namespace PottiRoma.Api.Controllers
         public async Task InsertNewSale(InsertNewSaleRequest request)
         {
             //await ValidateToken();
-            _salesService.InsertNewSale(request.UsuarioId, request.ClienteId, request.UserName, request.ClientName, request.SaleDate, request.SaleValue, request.SalePaidValue, request.NumberSoldPieces);
+            _salesService.InsertNewSale(request.UsuarioId, request.ClienteId, request.UserName, request.ClientName, request.SaleDate, request.SaleValue, request.SalePaidValue, request.NumberSoldPieces, request.Description);
         }
     }
 }

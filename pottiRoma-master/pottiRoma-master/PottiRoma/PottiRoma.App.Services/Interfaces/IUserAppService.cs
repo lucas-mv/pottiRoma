@@ -14,5 +14,6 @@ namespace PottiRoma.App.Services.Interfaces
         Task<LoginReponse> Login(LoginRequest request);
         Task Logout(string userId);
         Task SendEmail(SendEmailRequest request);
+        Task UpdateUserPoints(UpdateUserPointsRequest request);
     }
 }

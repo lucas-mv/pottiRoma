@@ -35,6 +35,13 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _pageTitle, value); }
         }
 
+        private bool _noData = false;
+        public bool NoData
+        {
+            get { return _noData; }
+            set { SetProperty(ref _noData, value); }
+        }
+
         public ListClientsForSalePageViewModel(INavigationService navigationService,
             IClientsAppService clientsAppService)
         {
@@ -58,11 +65,12 @@ namespace PottiRoma.App.ViewModels
                 {
                     ListaClientes.Add(client);
                 }
+                NoData = ListaClientes.Count < 1 ? true : false;
             }
             catch
             {
                 UserDialogs.Instance.Toast("Não foi possível carregar os clientes");
-                await _navigationService.GoBackAsync();
+                await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
             }
             finally
             {

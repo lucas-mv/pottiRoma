@@ -30,6 +30,13 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _screenHeightRequest, value); }
         }
 
+        private bool _noData = false;
+        public bool NoData
+        {
+            get { return _noData; }
+            set { SetProperty(ref _noData, value); }
+        }
+
         public DelegateCommand<object> EditClientCommand { get; set; }
         public DelegateCommand<object> RemoveClientCommand { get; set; }
         public DelegateCommand RegisterNewClientCommand { get; set; }
@@ -68,6 +75,7 @@ namespace PottiRoma.App.ViewModels
                 {
                     ListaClientes.Add(client);
                 }
+                NoData = ListaClientes.Count < 1 ? true : false;
             }
             catch
             {

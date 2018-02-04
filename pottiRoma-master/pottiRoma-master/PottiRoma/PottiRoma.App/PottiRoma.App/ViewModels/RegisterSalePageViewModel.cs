@@ -115,9 +115,10 @@ namespace PottiRoma.App.ViewModels
                         NumberSoldPieces = SaleRegistered.NumberSoldPieces,
                         SaleDate = DateTime.Now,
                         SalePaidValue = SaleRegistered.SalePaidValue,
-                        SaleValue = SaleRegistered.SaleValue
+                        SaleValue = SaleRegistered.SaleValue,
+                        Description = SaleRegistered.Description
                     });
-                    _userDialogs.Toast("Cliente Cadastrado!");
+                    _userDialogs.Toast("Venda Registrada!");
                     await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
                 }
                 catch

@@ -47,6 +47,27 @@
 
             </Grid>
 
+            <StackLayout
+                Grid.Row="1"
+                HeightRequest="200"
+                IsVisible="{Binding NoData}"
+                Opacity="0.8"
+                Spacing="20"
+                VerticalOptions="Center">
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="120"
+                    Source="ic_no_data.png" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Não há Registros nessa Tela!"
+                    TextColor="{StaticResource PlaceholderColor}"
+                    WidthRequest="180" />
+            </StackLayout>
+
             <syncfusion:SfListView
                 x:Name="ClientsListView"
                 Grid.Row="1"

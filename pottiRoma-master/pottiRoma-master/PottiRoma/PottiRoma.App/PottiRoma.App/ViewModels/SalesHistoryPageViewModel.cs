@@ -25,6 +25,13 @@ namespace PottiRoma.App.ViewModels
 
         public DelegateCommand<object> SaleSelectedCommand { get; set; }
 
+        private bool _noData = false;
+        public bool NoData
+        {
+            get { return _noData; }
+            set { SetProperty(ref _noData, value); }
+        }
+
         private ObservableCollection<Sale> _saleList;
         public ObservableCollection<Sale> SalesList
         {
@@ -72,6 +79,7 @@ namespace PottiRoma.App.ViewModels
                 {
                     sale.CardLabel = sale.ClientName + ", " + sale.SaleDate.ToString("dd/MM/yyyy");
                 }
+                NoData = SalesList.Count < 1 ? true : false;
             }
             catch (Exception ex)
             {

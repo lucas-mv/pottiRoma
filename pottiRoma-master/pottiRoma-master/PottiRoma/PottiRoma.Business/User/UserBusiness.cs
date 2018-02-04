@@ -109,6 +109,20 @@ namespace PottiRoma.Business.User
             return newPassword;
         }
 
+        public static void UpdateUserPoints(Guid usuarioId, int averageTicketPoints, int registerClientsPoints, int salesNumberPoints, int averageItensPerSalePoints, int inviteAllyFlowersPoints)
+        {
+            var user = new UserEntity()
+            {
+                UsuarioId = usuarioId,
+                AverageTicketPoints = averageTicketPoints,
+                RegisterClientsPoints = registerClientsPoints,
+                SalesNumberPoints = salesNumberPoints,
+                AverageItensPerSalePoints = averageItensPerSalePoints,
+                InviteAllyFlowersPoints = inviteAllyFlowersPoints
+            };
+            UserRepository.Get().UpdateUserPoints(user);
+        }
+
         #region Private methods
 
         public static string RandomString(int length)

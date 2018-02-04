@@ -46,6 +46,7 @@
     <Compile Include="Requests\User\ChangePasswordRequest.cs" />
     <Compile Include="Requests\User\LoginRequest.cs" />
     <Compile Include="Requests\User\SendEmailRequest.cs" />
+    <Compile Include="Requests\User\UpdateUserPointsRequest.cs" />
     <Compile Include="Responses\Clients\GetClientsByUserIdResponse.cs" />
     <Compile Include="Responses\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Responses\Season\SeasonResponse.cs" />

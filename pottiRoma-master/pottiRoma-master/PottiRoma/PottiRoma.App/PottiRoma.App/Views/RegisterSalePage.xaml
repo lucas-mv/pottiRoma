@@ -188,7 +188,6 @@
                                 TextColor="{StaticResource DarkTextColor}" />
                             <renderers:CustomEditor
                                 Margin="0"
-                                FontAttributes="Bold"
                                 FontSize="14"
                                 HeightRequest="100"
                                 HorizontalOptions="Fill"
