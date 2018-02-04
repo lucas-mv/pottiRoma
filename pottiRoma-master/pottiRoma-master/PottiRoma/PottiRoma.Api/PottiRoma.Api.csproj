@@ -133,6 +133,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\PointsGamificationController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SeasonController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Request\Clients\RegisterClientRequest.cs" />
     <Compile Include="Request\Clients\UpdateClientRequest.cs" />
     <Compile Include="Request\Email\SendEmailRequest.cs" />
+    <Compile Include="Request\GamificationPoints\GamificationPointsRequest.cs" />
     <Compile Include="Request\Sales\InsertNewSaleRequest.cs" />
     <Compile Include="Request\Season\SeasonRequest.cs" />
     <Compile Include="Request\User\ChangePasswordRequest.cs" />
@@ -152,6 +154,7 @@
     <Compile Include="Request\User\UpdateUserPointsRequest.cs" />
     <Compile Include="Response\Clients\GetClientsByUserIdResponse.cs" />
     <Compile Include="Response\Email\SendEmailResponse.cs" />
+    <Compile Include="Response\GamificationPoints\GamificationPointsByIdResponse.cs" />
     <Compile Include="Response\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Response\Season\SeasonResponse.cs" />
     <Compile Include="Response\User\LoginResponse.cs" />

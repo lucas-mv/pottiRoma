@@ -3,6 +3,7 @@ using PottiRoma.App.Helpers;
 using PottiRoma.App.Models;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.Clients;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.Helpers;
@@ -24,6 +25,7 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IClientsAppService _clientsAppService;
+        private readonly IUserAppService _userAppService;
         private readonly IUserDialogs _userDialogs;
 
         private readonly string DatePlaceholder = "Data de Aniversário*";
@@ -68,10 +70,12 @@ namespace PottiRoma.App.ViewModels
         public RegisterClientsPageViewModel(
             INavigationService navigationService,
             IClientsAppService clientsAppService,
+            IUserAppService userAppService,
             IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _clientsAppService = clientsAppService;
+            _userAppService = userAppService;
             _userDialogs = userDialogs;
 
             ClientSelectedForEdition = new Client();
@@ -144,7 +148,22 @@ namespace PottiRoma.App.ViewModels
                             Name = ClientSelectedForEdition.Name,
                             Telephone = ClientSelectedForEdition.Telephone
                         });
-                        UserDialogs.Instance.Toast("Cliente registrado com sucesso!");
+
+                        int increatePoints = 50;
+                        //CONSERTAR ESSE ESQUEMA
+                        user.RegisterClientsPoints += 50;
+
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            UsuarioId = userGuid,
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            RegisterClientsPoints = user.RegisterClientsPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                            SalesNumberPoints = user.SalesNumberPoints
+                        });
+                        TimeSpan duration = new TimeSpan(0, 0, 3);
+                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increatePoints + " Pontos!", duration);
                     }
                     else
                     {
