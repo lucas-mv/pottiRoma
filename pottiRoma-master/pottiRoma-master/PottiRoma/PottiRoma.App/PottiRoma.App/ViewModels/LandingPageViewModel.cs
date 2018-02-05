@@ -18,20 +18,27 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly ISeasonAppService _seasonAppService;
         private readonly INavigationService _navigationService;
+        private readonly IGamificationPointsAppService _gamificationPointsAppService;
 
         public LandingPageViewModel(
             ISeasonAppService seasonAppService,
-            INavigationService navigationService)
+            INavigationService navigationService,
+            IGamificationPointsAppService gamificationPointsAppService)
         {
             _seasonAppService = seasonAppService;
             _navigationService = navigationService;
+            _gamificationPointsAppService = gamificationPointsAppService;
         }
 
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-      
+
+
             var currentSeasonReponse = await _seasonAppService.CurrentSeason();
+
+            //var currentPoints = await _gamificationPointsAppService.GetCurrentGamificationPoints();
+            //await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, currentPoints.Entity);
             await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
 
             try

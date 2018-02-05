@@ -7,7 +7,7 @@ namespace PottiRoma.Api.Request.PointsGamification
 {
     public class GamificationPointsRequest
     {
-        public Guid PontosGamificacaoId { get; set; }
+        public bool IsActive { get; set; }
         public int AverageTicket { get; set; }
         public int RegisterNewClients { get; set; }
         public int SalesNumber { get; set; }

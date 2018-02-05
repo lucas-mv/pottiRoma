@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PottiRoma.Entities
+namespace PottiRoma.App.Models.Models
 {
-    public class GamificationPointsEntity
+    public class Points
     {
-        public Guid PontosGamificacaoId { get; set; }
         public int AverageTicket { get; set; }
         public int RegisterNewClients { get; set; }
         public int SalesNumber { get; set; }

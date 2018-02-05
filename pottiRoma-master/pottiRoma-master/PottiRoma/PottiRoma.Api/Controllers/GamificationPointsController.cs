@@ -10,12 +10,12 @@ using System.Web.Http;
 
 namespace PottiRoma.Api.Controllers
 {
-    [RoutePrefix("api/v1/PointsGamification")]
-    public class PointsGamificationController : BaseController
+    [RoutePrefix("api/v1/GamificationPoints")]
+    public class GamificationPointsController : BaseController
     {
         private readonly IGamificationPointsService _gamificationPointsService;
 
-        public PointsGamificationController(IAuthenticationService authenticationService,
+        public GamificationPointsController(IAuthenticationService authenticationService,
             IGamificationPointsService gamificationPointsService) : base(authenticationService)
         {
             _gamificationPointsService = gamificationPointsService;
@@ -26,18 +26,19 @@ namespace PottiRoma.Api.Controllers
         public async Task UpdateGamificationPoints(GamificationPointsRequest request)
         {
             //await ValidateToken();
-            _gamificationPointsService.UpdatePoints(request.PontosGamificacaoId, request.AverageTicket, request.RegisterNewClients, request.SalesNumber, request.AverageItensPerSale, request.InviteFlower);
+            _gamificationPointsService.UpdatePoints(request.IsActive, request.AverageTicket, request.RegisterNewClients, request.SalesNumber, request.AverageItensPerSale, request.InviteFlower);
         }
 
-        [Route("Get")]
+        [Route("GetCurrent")]
         [HttpPost]
-        public async Task<GamificationPointsByIdResponse> GetGamificationPointsById(string gamificationPointsId)
+        public async Task<GamificationPointsResponse> GetCurrentGamificationPoints()
         {
             //await ValidateToken();
-            return new GamificationPointsByIdResponse()
-            {
-                GamificationPoints = _gamificationPointsService.GetGamificationPointsById(new Guid(gamificationPointsId))
-            };
+
+            var response = new GamificationPointsResponse();
+            response.Entity = _gamificationPointsService.GetCurrentGamificationPoints();
+
+            return response;
         }
     }
 }

@@ -34,17 +34,17 @@ namespace PottiRoma.DataAccess.Repositories
 	        SalesNumber = @salesnumber,
  	        AverageItensPerSale = @averageitenspersale,
             InviteFlower = @inviteflower
-        WHERE PontosGamificacaoId = @pontosgamificacaoid";
+        WHERE IsActive = 1";
 
-        private const string GET_GAMIFICATION_POINTS_BY_ID = @"
-        SELECT AverageTicket as AverageTicket, 
+        private const string GET_CURRENT_GAMIFICATION_POINTS = @"
+        SELECT AverageTicket as AverageTicket,
+            IsActive as IsActive,
             RegisterNewClients as RegisterNewClients,
             SalesNumber as SalesNumber, 
             AverageItensPerSale as AverageItensPerSale, 
-            InviteFlower as InviteFlower,
-            PontosGamificacaoId as PontosGamificacaoId
+            InviteFlower as InviteFlower
         FROM dbo.PontosGamificacao
-        WHERE PontosGamificacaoId = @pontosgamificacaoid";
+        WHERE IsActive = 1";
 
         #endregion
 
@@ -63,7 +63,6 @@ namespace PottiRoma.DataAccess.Repositories
         {
             DynamicParameters parameters = new DynamicParameters();
 
-            parameters.Add("@pontosgamificacaoid", pointsGamification.PontosGamificacaoId, System.Data.DbType.Guid);
             parameters.Add("@averageticket", pointsGamification.AverageTicket, System.Data.DbType.Int32);
             parameters.Add("@registernewclients", pointsGamification.RegisterNewClients, System.Data.DbType.Int32);
             parameters.Add("@salesnumber", pointsGamification.SalesNumber, System.Data.DbType.Int32);
@@ -71,13 +70,9 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@inviteflower", pointsGamification.InviteFlower, System.Data.DbType.Int32);
         }
 
-        public GamificationPointsEntity GetGamificationPointsById(Guid gamificationPointsId)
+        public GamificationPointsEntity GetCurrentGamificationPoints()
         {
-            DynamicParameters parameters = new DynamicParameters();
-
-            parameters.Add("@pontosgamificacaoid", gamificationPointsId, System.Data.DbType.Guid);
-
-            return Query(GET_GAMIFICATION_POINTS_BY_ID, parameters).FirstOrDefault();
+            return Query(GET_CURRENT_GAMIFICATION_POINTS).FirstOrDefault();
         }
 
         #endregion

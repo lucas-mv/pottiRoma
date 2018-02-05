@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Points.cs" />
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\Season.cs" />
     <Compile Include="Models\User.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Requests\User\SendEmailRequest.cs" />
     <Compile Include="Requests\User\UpdateUserPointsRequest.cs" />
     <Compile Include="Responses\Clients\GetClientsByUserIdResponse.cs" />
+    <Compile Include="Responses\GamificationPoints\GetGamificationPointsResponse.cs" />
     <Compile Include="Responses\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Responses\Season\SeasonResponse.cs" />
     <Compile Include="Responses\User\LoginReponse.cs" />

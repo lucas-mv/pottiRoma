@@ -6,8 +6,8 @@ using System.Web;
 
 namespace PottiRoma.Api.Response.GamificationPoints
 {
-    public class GamificationPointsByIdResponse
+    public class GamificationPointsResponse
     {
-        public GamificationPointsEntity GamificationPoints { get; set; }
+        public GamificationPointsEntity Entity { get; set; }
     }
 }

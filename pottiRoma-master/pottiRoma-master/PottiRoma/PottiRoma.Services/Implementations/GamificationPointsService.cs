@@ -11,14 +11,14 @@ namespace PottiRoma.Services.Implementations
 {
     public class GamificationPointsService : IGamificationPointsService
     {
-        public GamificationPointsEntity GetGamificationPointsById(Guid gamificationPointsId)
+        public GamificationPointsEntity GetCurrentGamificationPoints()
         {
-            return GamificationPointBusiness.GetGamificationPointsById(gamificationPointsId);
+            return GamificationPointBusiness.GetCurrentGamificationPoints();
         }
 
-        public void UpdatePoints(Guid pontosGamificacaoId, int averageTicket, int registerNewClients, int salesNumber, int averageItensPerSale, int inviteFlower)
+        public void UpdatePoints(bool isActive, int averageTicket, int registerNewClients, int salesNumber, int averageItensPerSale, int inviteFlower)
         {
-            GamificationPointBusiness.UpdatePoints(pontosGamificacaoId, averageTicket, registerNewClients, salesNumber, averageItensPerSale, inviteFlower);
+            GamificationPointBusiness.UpdatePoints(isActive, averageTicket, registerNewClients, salesNumber, averageItensPerSale, inviteFlower);
         }
     }
 }
