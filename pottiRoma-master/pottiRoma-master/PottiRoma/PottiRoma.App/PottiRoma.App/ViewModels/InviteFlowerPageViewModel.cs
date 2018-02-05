@@ -63,13 +63,13 @@ namespace PottiRoma.App.ViewModels
 
                     var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                     var email_name = new Dictionary<string, string>();
-                    email_name.Add(Email, user.UserName);
+                    email_name.Add(Email, user.Name);
                     await _userAppService.SendEmail(new Models.Requests.User.SendEmailRequest
                     {
-                        Assunto = "Convite para ser revendedor Potti Roma de" + user.UserName,
+                        Assunto = "Convite para ser revendedor Potti Roma de" + user.Name,
                         CorpoEmail = Message,
                         Destinatarios = email_name,
-                        UserId = user.UserId,
+                        UserId = user.UsuarioId,
                     });
                     _userDialogs.Toast("Email enviado com Sucesso!", duration);
                 }

@@ -89,6 +89,7 @@
                         <Grid Grid.Row="2">
                             <Label
                                 Margin="16,0,0,0"
+                                FontAttributes="Bold"
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="Start"
                                 Text="Valor Pago:"
@@ -99,6 +100,7 @@
                                 Margin="0,0,16,0"
                                 Completed="Entry_Price_Completed"
                                 Focused="Entry_Price_Focused"
+                                FontAttributes="Bold"
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="End"
                                 HorizontalTextAlignment="End"
@@ -119,6 +121,7 @@
                         <Grid Grid.Row="4">
                             <Label
                                 Margin="16,0,0,0"
+                                FontAttributes="Bold"
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="Start"
                                 Text="Valor Total:"
@@ -129,6 +132,7 @@
                                 Margin="0,0,16,0"
                                 Completed="Entry_Price_Completed"
                                 Focused="Entry_Price_Focused"
+                                FontAttributes="Bold"
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="End"
                                 HorizontalTextAlignment="End"
@@ -149,6 +153,7 @@
                         <Grid Grid.Row="6">
                             <Label
                                 Margin="16,0,0,0"
+                                FontAttributes="Bold"
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="Start"
                                 Text="Quantidade de Peças:"
@@ -157,6 +162,8 @@
                             <renderers:CustomEntry
                                 Grid.Column="1"
                                 Margin="0,0,16,0"
+                                Focused="NumberSoldPieces_focused"
+                                FontAttributes="Bold"
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="End"
                                 HorizontalTextAlignment="End"
@@ -175,6 +182,7 @@
                             VerticalOptions="Fill" />
                         <StackLayout Grid.Row="8" Margin="16,10,16,0">
                             <Label
+                                FontAttributes="Bold"
                                 FontSize="{StaticResource StandardFontSize}"
                                 Text="Observações"
                                 TextColor="{StaticResource DarkTextColor}" />
@@ -183,6 +191,7 @@
                                 FontSize="14"
                                 HeightRequest="100"
                                 HorizontalOptions="Fill"
+                                Text="{Binding SaleRegistered.Description}"
                                 TextColor="{StaticResource TextColor}"
                                 VerticalOptions="Center" />
                         </StackLayout>

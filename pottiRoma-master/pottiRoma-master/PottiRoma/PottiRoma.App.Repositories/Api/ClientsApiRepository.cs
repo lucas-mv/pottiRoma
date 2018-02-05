@@ -27,7 +27,7 @@ namespace PottiRoma.App.Repositories.Api
 
         #endregion
 
-        public async Task<GetClientsByUserIdResponse> GetClientsBySalespersonId(string salespersonId)
+        public async Task<GetClientsByUserIdResponse> GetClientsByUserId(string usuarioId)
         {
             var response = await Policy
              .Handle<WebException>()
@@ -37,7 +37,7 @@ namespace PottiRoma.App.Repositories.Api
                sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
              )
              .ExecuteAsync(async () =>
-                   await PottiRomaApiAccess.GetPottiRomaApi<IClientsRefit>().GetClientsBySalespersonId(salespersonId)
+                   await PottiRomaApiAccess.GetPottiRomaApi<IClientsRefit>().GetClientsByUserId(usuarioId)
               );
             return response;
         }
@@ -53,6 +53,20 @@ namespace PottiRoma.App.Repositories.Api
              )
              .ExecuteAsync(async () =>
                    await PottiRomaApiAccess.GetPottiRomaApi<IClientsRefit>().RegisterClient(request)
+              );
+        }
+
+        public async Task UpdateClientInfo(UpdateClientInfoRequest request)
+        {
+            await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+               retryCount: 5,
+               sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+             )
+             .ExecuteAsync(async () =>
+                   await PottiRomaApiAccess.GetPottiRomaApi<IClientsRefit>().UpdateClientInfo(request)
               );
         }
     }

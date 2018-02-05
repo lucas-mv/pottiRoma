@@ -87,6 +87,7 @@
                     <TapGestureRecognizer Command="{Binding OpenPopupDateCommand}" />
                 </Frame.GestureRecognizers>
                 <Label
+                    x:Name="DateLabel"
                     Margin="10,0,10,0"
                     FontSize="{StaticResource StandardFontSize}"
                     Text="{Binding AnniversaryDate}"

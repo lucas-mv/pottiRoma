@@ -24,6 +24,8 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<SeasonResponse> CurrentSeason()
         {
+            //await ValidateToken();
+
             var response = new SeasonResponse();
             response.Entity = _seasonService.GetCurrentSeason();
 

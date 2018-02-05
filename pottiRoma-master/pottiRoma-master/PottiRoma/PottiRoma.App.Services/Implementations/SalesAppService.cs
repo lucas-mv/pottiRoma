@@ -12,9 +12,9 @@ namespace PottiRoma.App.Services.Implementations
 {
     public class SalesAppService : ISalesAppService
     {
-        public async Task<GetSalesByUserIdResponse> GetSalesByUserId(string userId)
+        public async Task<GetSalesByUserIdResponse> GetSalesByUserId(string usuarioId)
         {
-            return await SalesApiRepository.Get().GetSalesByUserId(userId);
+            return await SalesApiRepository.Get().GetSalesByUserId(usuarioId);
         }
 
         public async Task InsertNewSale(InsertNewSaleRequest request)

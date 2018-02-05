@@ -3,8 +3,10 @@ using PottiRoma.App.Helpers;
 using PottiRoma.App.Models;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.Clients;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
+using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -23,6 +25,7 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IClientsAppService _clientsAppService;
+        private readonly IUserAppService _userAppService;
         private readonly IUserDialogs _userDialogs;
 
         private readonly string DatePlaceholder = "Data de Aniversário*";
@@ -67,10 +70,12 @@ namespace PottiRoma.App.ViewModels
         public RegisterClientsPageViewModel(
             INavigationService navigationService,
             IClientsAppService clientsAppService,
+            IUserAppService userAppService,
             IUserDialogs userDialogs)
         {
             _navigationService = navigationService;
             _clientsAppService = clientsAppService;
+            _userAppService = userAppService;
             _userDialogs = userDialogs;
 
             ClientSelectedForEdition = new Client();
@@ -78,7 +83,7 @@ namespace PottiRoma.App.ViewModels
             RegisterNewClientCommand = new DelegateCommand(RegisterNewClient).ObservesCanExecute(() => CanExecute);
             AnniversaryDate = DatePlaceholder;
             ColorDateAnniversary = Color.FromHex("#d5d5d5");
-            PageTitle = SetTitle();
+            
         }
 
         private async void OpenDatePopup()
@@ -93,10 +98,14 @@ namespace PottiRoma.App.ViewModels
             base.OnNavigatedTo(parameters);
             if (parameters.ContainsKey(NavigationKeyParameters.EditClient))
             {
-                RegisterOrEditText = "EDITAR";
+                RegisterOrEditText = "SALVAR";
+                PageTitle = SetTitle(true);
                 if (parameters.ContainsKey(NavigationKeyParameters.SelectedClient))
                     ClientSelectedForEdition = parameters[NavigationKeyParameters.SelectedClient] as Client;
+                AnniversaryDate = Formatter.FormatDateWithoutYear(ClientSelectedForEdition.Birthdate);
+                ColorDateAnniversary = Color.FromHex("#696969");
             }
+            else PageTitle = SetTitle(false);
         }
 
         private void CallbackDate(string date)
@@ -111,9 +120,12 @@ namespace PottiRoma.App.ViewModels
             ColorDateAnniversary = Color.FromHex("#696969");
         }
 
-        private string SetTitle()
+        private string SetTitle(bool isEdit)
         {
-            return Device.OS == TargetPlatform.Android ? "Cadastro de Clientes" : "";
+            if(isEdit)
+                return Device.OS == TargetPlatform.Android ? "Cadastro de Clientes" : "";
+            else
+                return Device.OS == TargetPlatform.Android ? "Editar dados do Cliente" : "";
         }
 
         private async void RegisterNewClient()
@@ -124,25 +136,60 @@ namespace PottiRoma.App.ViewModels
                 {
                     await NavigationHelper.ShowLoading();
                     var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                    await _clientsAppService.RegisterClient(new RegisterClientRequest()
+                    var userGuid = user.UsuarioId;
+                    if (RegisterOrEditText.Contains("CADASTRAR"))
                     {
-                        Address = string.Empty,
-                        Birthdate = ClientSelectedForEdition.Birthdate,
-                        Cep = ClientSelectedForEdition.Cep,
-                        Email = ClientSelectedForEdition.Email,
-                        Name = ClientSelectedForEdition.Name,
-                        Telephone = ClientSelectedForEdition.Telephone
-                    });
-                    UserDialogs.Instance.Toast("Cliente registrado com sucesso!");
-                    await _navigationService.GoBackAsync();
+                        await _clientsAppService.RegisterClient(new RegisterClientRequest()
+                        {
+                            UsuarioId = userGuid,
+                            Birthdate = ClientSelectedForEdition.Birthdate,
+                            Cep = ClientSelectedForEdition.Cep,
+                            Email = ClientSelectedForEdition.Email,
+                            Name = ClientSelectedForEdition.Name,
+                            Telephone = ClientSelectedForEdition.Telephone
+                        });
+
+                        int increatePoints = 50;
+                        //CONSERTAR ESSE ESQUEMA
+                        user.RegisterClientsPoints += 50;
+
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            UsuarioId = userGuid,
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            RegisterClientsPoints = user.RegisterClientsPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                            SalesNumberPoints = user.SalesNumberPoints
+                        });
+                        TimeSpan duration = new TimeSpan(0, 0, 3);
+                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increatePoints + " Pontos!", duration);
+                    }
+                    else
+                    {
+                        await _clientsAppService.UpdateClientInfo(new UpdateClientInfoRequest()
+                        {
+                            ClienteId = ClientSelectedForEdition.ClienteId,
+                            Birthdate = ClientSelectedForEdition.Birthdate,
+                            Cep = ClientSelectedForEdition.Cep,
+                            Email = ClientSelectedForEdition.Email,
+                            Name = ClientSelectedForEdition.Name,
+                            Telephone = ClientSelectedForEdition.Telephone
+                        });
+                        UserDialogs.Instance.Toast("Cliente editado com sucesso!");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    UserDialogs.Instance.Toast("Não foi possível registrar o cliente.");
+                    if (RegisterOrEditText.Contains("CADASTRAR"))
+                        UserDialogs.Instance.Toast("Não foi possível registrar o cliente.");
+                    else
+                        UserDialogs.Instance.Toast("Não foi possível editar o cliente.");
                 }
                 finally
                 {
                     await NavigationHelper.PopLoading();
+                    await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
                 }
             }
             else

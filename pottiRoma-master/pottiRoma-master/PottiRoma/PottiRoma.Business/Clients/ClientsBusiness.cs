@@ -10,14 +10,14 @@ namespace PottiRoma.Business.Clients
 {
     public static class ClientsBusiness
     {
-        public static void RegisterClient(Guid userId , Guid clientId, string name, string telephone, string email, string Cep, DateTime birthdate)
+        public static void RegisterClient(Guid usuarioId, string name, string telephone, string email, string Cep, DateTime birthdate)
         {
             var client = new ClientEntity()
             {
-                ClienteId = clientId,
+                ClienteId = Guid.NewGuid(),
                 Email = email,
                 Name = name,
-                UsuarioId = userId,
+                UsuarioId = usuarioId,
                 Telephone = telephone,
                 Cep = Cep,
                 Birthdate = birthdate
@@ -25,9 +25,23 @@ namespace PottiRoma.Business.Clients
             ClientsRepository.Get().InsertClient(client);
         }
 
-        public static List<ClientEntity> GetClientsByUserId(Guid UserId)
+        public static List<ClientEntity> GetClientsByUserId(Guid usuarioId)
         {
-            return ClientsRepository.Get().GetClientsByUserId(UserId);
+            return ClientsRepository.Get().GetClientsByUserId(usuarioId);
+        }
+
+        public static void UpdateClientInfo(Guid clienteId, string name, string telephone, string email, string Cep, DateTime birthdate)
+        {
+            var client = new ClientEntity()
+            {
+                ClienteId = clienteId,
+                Name = name,
+                Telephone = telephone,
+                Email = email,
+                Cep = Cep,
+                Birthdate = birthdate
+            };
+            ClientsRepository.Get().UpdateClientInfo(client);
         }
     }
 }

@@ -19,5 +19,6 @@ namespace PottiRoma.Services.Interfaces
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
             int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId);
+        void UpdateUserPoints(Guid usuarioId, int averageTicketPoints, int registerClientsPoints, int salesNumberPoints, int averageItensPerSalePoints, int inviteAllyFlowersPoints);
     }
 }

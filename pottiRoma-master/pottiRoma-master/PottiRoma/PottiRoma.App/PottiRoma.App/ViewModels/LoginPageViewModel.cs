@@ -76,7 +76,7 @@ namespace PottiRoma.App.ViewModels
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 var token = await CacheAccess.GetSecure<Guid>(CacheKeys.ACCESS_TOKEN);
                 Settings.AccessToken = token.ToString();
-                Settings.UserId = user.UserId.ToString();
+                Settings.UserId = user.UsuarioId.ToString();
                 await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
             }
             catch
@@ -105,7 +105,7 @@ namespace PottiRoma.App.ViewModels
                     await CacheAccess.InsertSecure<User>(CacheKeys.USER_KEY, response.User);
                     await CacheAccess.InsertSecure<Guid>(CacheKeys.ACCESS_TOKEN, response.Token);
                     Settings.AccessToken = response.Token.ToString();
-                    Settings.UserId = response.User.UserId.ToString();
+                    Settings.UserId = response.User.UsuarioId.ToString();
                     await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
                 }
                 else

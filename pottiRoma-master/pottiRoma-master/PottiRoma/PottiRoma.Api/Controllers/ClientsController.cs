@@ -26,17 +26,25 @@ namespace PottiRoma.Api.Controllers
         public async Task RegisterClient(RegisterClientRequest request)
         {
             //await ValidateToken();
-            _clientsService.RegisterClient(request.UserId, request.Name, request.Telephone, request.Email, request.Cep, request.Birthdate);
+            _clientsService.RegisterClient(request.UsuarioId, request.Name, request.Telephone, request.Email, request.Cep, request.Birthdate);
         }
 
-        [Route("GetClients")]
-        [HttpGet]
-        public async Task<GetClientsBySalespersonIdResponse> GetClientsFromUser(Guid UserId)
+        [Route("Update")]
+        [HttpPost]
+        public async Task UpdateClientInfo(UpdateClientRequest request)
         {
-            await ValidateToken();
-            return new GetClientsBySalespersonIdResponse()
+            //await ValidateToken();
+            _clientsService.UpdateClientInfo(request.ClienteId, request.Name, request.Telephone, request.Email, request.Cep, request.Birthdate);
+        }
+
+        [Route("Get/{usuarioId}")]
+        [HttpGet]
+        public async Task<GetClientsByUserIdResponse> GetClientsByUserId(string usuarioId)
+        {
+            //await ValidateToken();
+            return new GetClientsByUserIdResponse()
             {
-                Clients = _clientsService.GetClientsByUserId(UserId)
+                Clients = _clientsService.GetClientsByUserId(new Guid(usuarioId))
             }; 
         }
     }

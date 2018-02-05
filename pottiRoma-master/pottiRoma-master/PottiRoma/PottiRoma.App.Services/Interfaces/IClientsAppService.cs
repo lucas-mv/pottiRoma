@@ -10,7 +10,8 @@ namespace PottiRoma.App.Services.Interfaces
 {
     public interface IClientsAppService
     {
-        Task<GetClientsByUserIdResponse> GetClientsUserId(string userId);
+        Task<GetClientsByUserIdResponse> GetClientsByUserId(string usuarioId);
         Task RegisterClient(RegisterClientRequest request);
+        Task UpdateClientInfo(UpdateClientInfoRequest request);
     }
 }

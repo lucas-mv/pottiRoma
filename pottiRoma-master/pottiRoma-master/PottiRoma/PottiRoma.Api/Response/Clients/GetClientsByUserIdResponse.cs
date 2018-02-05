@@ -6,7 +6,7 @@ using System.Web;
 
 namespace PottiRoma.Api.Response.Clients
 {
-    public class GetClientsBySalespersonIdResponse
+    public class GetClientsByUserIdResponse
     {
         public List<ClientEntity> Clients { get; set; }
     }

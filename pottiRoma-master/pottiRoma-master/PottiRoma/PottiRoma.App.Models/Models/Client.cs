@@ -9,8 +9,8 @@ namespace PottiRoma.App.Models.Models
 {
     public class Client : BindableBase
     {
-        public Guid ClientId { get; set; }
-        public Guid UserId { get; set; }
+        public Guid ClienteId { get; set; }
+        public Guid UsuarioId { get; set; }
 
         private string _name;
         public string Name

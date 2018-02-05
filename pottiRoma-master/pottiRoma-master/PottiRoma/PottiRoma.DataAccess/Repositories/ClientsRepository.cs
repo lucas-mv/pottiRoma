@@ -28,19 +28,29 @@ namespace PottiRoma.DataAccess.Repositories
         #region Selects
 
         private const string GET_BY_USER_ID = @"
-        SELECT ClienteId as ClientId, 
-        UsuarioId as UsuarioId,
-        Name as Name, 
-        Email as Email, 
-        Telephone as Telephone, 
-        Cep as Cep,
-        Birthdate as Birthdate
+        SELECT ClienteId as ClienteId, 
+            UsuarioId as UsuarioId,
+            Name as Name, 
+            Email as Email, 
+            Telephone as Telephone, 
+            Cep as Cep,
+            Birthdate as Birthdate
         FROM dbo.Cliente
         WHERE UsuarioId = @usuarioid";
 
         #endregion
 
         #region Commands
+
+        private const string UPDATE_CLIENT_INFO = @"
+        UPDATE dbo.Cliente
+        SET Name = @name,
+	        Email = @email,
+	        Telephone = @telephone,
+ 	        Cep = @cep,
+            Birthdate = @birthdate
+        WHERE ClienteId = @clienteid  
+        ";
 
         private const string INSERT_CLIENT = @"
         INSERT INTO dbo.Cliente 
@@ -76,6 +86,20 @@ namespace PottiRoma.DataAccess.Repositories
         #endregion
 
         #region Public methods
+
+        public void UpdateClientInfo(ClientEntity client)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@clienteid", client.ClienteId, System.Data.DbType.Guid);
+            parameters.Add("@name", client.Name, System.Data.DbType.AnsiString);
+            parameters.Add("@email", client.Email, System.Data.DbType.AnsiString);
+            parameters.Add("@telephone", client.Telephone, System.Data.DbType.AnsiString);
+            parameters.Add("@cep", client.Cep, System.Data.DbType.AnsiString);
+            parameters.Add("@birthdate", client.Birthdate, System.Data.DbType.DateTime);
+
+            Execute(UPDATE_CLIENT_INFO, parameters);
+        }
 
         public void InsertClient(ClientEntity client)
         {

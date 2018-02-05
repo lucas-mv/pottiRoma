@@ -1,4 +1,6 @@
-﻿using PottiRoma.App.Models.Models;
+﻿using Acr.UserDialogs;
+using PottiRoma.App.Models.Models;
+using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -7,6 +9,8 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -44,25 +48,22 @@ namespace PottiRoma.App.ViewModels
             CanExecuteEnd();
         }
 
-        private void MockUser()
+        private async Task GetUserFromCache()
         {
-            string prefixCPF = "CPF : ";
-
-            User = new User()
+            try
             {
-                UserName = "Usuário teste",
-                Cep = prefixCPF + "30310-370",
-                Email = "teste@teste.com",
-                PrimaryTelephone = "31 99808-6453",
-                SecundaryTelephone = "31 99657-6453",
-                Cpf = "182738473-90"
-            };
+                User = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+            }
+            catch
+            {
+                UserDialogs.Instance.Toast("Ocorreu um problema, faça o Login Novamente!");
+            }
         }
 
-        public override void OnNavigatedTo(NavigationParameters parameters)
+        public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            MockUser();
+            await GetUserFromCache();
         }
     }
 }

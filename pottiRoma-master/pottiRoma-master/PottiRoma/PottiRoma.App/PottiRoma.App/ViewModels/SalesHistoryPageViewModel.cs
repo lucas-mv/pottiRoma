@@ -25,6 +25,13 @@ namespace PottiRoma.App.ViewModels
 
         public DelegateCommand<object> SaleSelectedCommand { get; set; }
 
+        private bool _noData = false;
+        public bool NoData
+        {
+            get { return _noData; }
+            set { SetProperty(ref _noData, value); }
+        }
+
         private ObservableCollection<Sale> _saleList;
         public ObservableCollection<Sale> SalesList
         {
@@ -61,17 +68,27 @@ namespace PottiRoma.App.ViewModels
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+            await NavigationHelper.ShowLoading();
 
             try
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                var salesResponse = await _salesAppService.GetSalesByUserId(user.UserId.ToString());
+                var salesResponse = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
                 SalesList = new ObservableCollection<Sale>(salesResponse.Sales);
+                foreach (var sale in SalesList)
+                {
+                    sale.CardLabel = sale.ClientName + ", " + sale.SaleDate.ToString("dd/MM/yyyy");
+                }
+                NoData = SalesList.Count < 1 ? true : false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _userDialogs.Toast(ex.Message);
                 await _navigationService.GoBackAsync();
+            }
+            finally
+            {
+                await NavigationHelper.PopLoading();
             }
         }        
 

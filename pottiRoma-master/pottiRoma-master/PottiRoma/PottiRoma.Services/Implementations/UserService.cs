@@ -49,5 +49,10 @@ namespace PottiRoma.Services.Implementations
             user.Password = UserBusiness.ResetPassword(userId);
             return user;
         }
+
+        public void UpdateUserPoints(Guid usuarioId, int averageTicketPoints, int registerClientsPoints, int salesNumberPoints, int averageItensPerSalePoints, int inviteAllyFlowersPoints)
+        {
+            UserBusiness.UpdateUserPoints(usuarioId, averageTicketPoints, registerClientsPoints, salesNumberPoints, averageItensPerSalePoints, inviteAllyFlowersPoints);
+        }
     }
 }

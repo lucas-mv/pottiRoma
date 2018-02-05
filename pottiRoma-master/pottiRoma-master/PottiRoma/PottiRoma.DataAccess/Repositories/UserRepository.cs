@@ -156,13 +156,42 @@ namespace PottiRoma.DataAccess.Repositories
 
         private const string UPDATE_USER_PASSWORD = @"
         UPDATE dbo.UsuarioPotti
-        SET Senha = @senha,
-	        Salt = @salt
-        WHERE UsuarioId = @usuarioid";
+        SET UsuarioId = @name,
+	        Email = @email,
+	        Telephone = @telephone,
+ 	        Cep = @cep,
+            Birthdate = @birthdate
+        WHERE UsuarioId = @clienteid  
+        ";
+
+        private const string UPDATE_USER_POINTS = @"
+        UPDATE dbo.UsuarioPotti
+        SET AverageTicketPoints = @averageTicketPoints,
+	        RegisterClientsPoints = @registerClientsPoints,
+	        SalesNumberPoints = @salesNumberPoints,
+ 	        AverageItensPerSalePoints = @averageItensPerSalePoints,
+            InviteAllyFlowersPoints = @inviteAllyFlowersPoints
+        WHERE UsuarioId = @usuarioid  
+        ";
 
         #endregion
 
         #region Public methods
+
+
+        public void UpdateUserPoints(UserEntity user)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@usuarioid", user.UsuarioId, System.Data.DbType.Guid);
+            parameters.Add("@averageTicketPoints", user.AverageTicketPoints, System.Data.DbType.Int64);
+            parameters.Add("@registerClientsPoints", user.RegisterClientsPoints, System.Data.DbType.Int64);
+            parameters.Add("@salesNumberPoints", user.SalesNumberPoints, System.Data.DbType.Int64);
+            parameters.Add("@averageItensPerSalePoints", user.AverageItensPerSalePoints, System.Data.DbType.Int64);
+            parameters.Add("@inviteAllyFlowersPoints", user.InviteAllyFlowersPoints, System.Data.DbType.Int64);
+
+            Execute(UPDATE_USER_POINTS, parameters);
+        }
 
         public UserEntity GetUserById(Guid userId)
         {
