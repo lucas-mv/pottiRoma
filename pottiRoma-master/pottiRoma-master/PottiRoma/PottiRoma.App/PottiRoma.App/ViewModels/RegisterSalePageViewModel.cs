@@ -2,6 +2,7 @@
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.Sales;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.Helpers;
@@ -23,6 +24,7 @@ namespace PottiRoma.App.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
         private readonly ISalesAppService _salesAppService;
+        private readonly IUserAppService _userAppService;
 
         private User CurrentUser;
 
@@ -46,11 +48,13 @@ namespace PottiRoma.App.ViewModels
         public RegisterSalePageViewModel(
             INavigationService navigationService,
             IUserDialogs userDialogs,
-            ISalesAppService salesAppService)
+            ISalesAppService salesAppService,
+            IUserAppService userAppService)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
             _salesAppService = salesAppService;
+            _userAppService = userAppService;
             GoBackCommand = new DelegateCommand(GoBack).ObservesCanExecute(() => CanExecute);
             SaveSaleCommand = new DelegateCommand(SaveSale).ObservesCanExecute(() => CanExecute);
             SaleRegistered = new Sale();
@@ -98,13 +102,7 @@ namespace PottiRoma.App.ViewModels
                     var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                     var userGuid = user.UsuarioId;
 
-                    var teste1 = userGuid.ToString();
-                    var teste2 = user.Name;
-                    var teste3 = SaleRegistered.ClienteId.ToString();
-                    var teste4 = SaleRegistered.ClientName;
-                    var teste5 = SaleRegistered.SaleDate.ToString();
-                    var teste6 = SaleRegistered.SalePaidValue;
-                    var teste7 = SaleRegistered.SaleValue;
+
 
                     await _salesAppService.InsertNewSale(new InsertNewSaleRequest
                     {
@@ -118,8 +116,24 @@ namespace PottiRoma.App.ViewModels
                         SaleValue = SaleRegistered.SaleValue,
                         Description = SaleRegistered.Description
                     });
-                    _userDialogs.Toast("Venda Registrada!");
+
+
+                    int increment = (int)SaleRegistered.NumberSoldPieces + (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces;
+                    user.AverageItensPerSalePoints += (int)SaleRegistered.NumberSoldPieces;
+                    user.AverageTicketPoints += (int)SaleRegistered.SaleValue/SaleRegistered.NumberSoldPieces;
+
+                    await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                    {
+                        UsuarioId = userGuid,
+                        AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                        AverageTicketPoints = user.AverageTicketPoints,
+                        RegisterClientsPoints = user.RegisterClientsPoints,
+                        InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                        SalesNumberPoints = user.SalesNumberPoints
+                    });
+                    UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increment + " Pontos com essa Venda!", duration);
                     await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+
                 }
                 catch
                 {

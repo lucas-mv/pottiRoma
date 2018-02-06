@@ -25,12 +25,12 @@ namespace PottiRoma.Services.Implementations
         public UserEntity RegisterUser(string email, string password, string name,
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
-            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId)
+            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive)
         {
             return UserBusiness.RegisterUser( email, password, name,
              primaryTelephone, secundaryTelephone, cpf, userType, cep,
              AverageTicketPoints, RegisterClientsPoints, salesNumberPoints, averageTtensPerSalepoints,
-             inviteAllyFlowersPoints, temporadaId, motherFlowerId);
+             inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive);
         }
 
         public UserEntity GetUserById(Guid userId)
@@ -53,6 +53,11 @@ namespace PottiRoma.Services.Implementations
         public void UpdateUserPoints(Guid usuarioId, int averageTicketPoints, int registerClientsPoints, int salesNumberPoints, int averageItensPerSalePoints, int inviteAllyFlowersPoints)
         {
             UserBusiness.UpdateUserPoints(usuarioId, averageTicketPoints, registerClientsPoints, salesNumberPoints, averageItensPerSalePoints, inviteAllyFlowersPoints);
+        }
+
+        public List<UserEntity> GetAppUsers()
+        {
+            return UserBusiness.GetAppUsers();
         }
     }
 }

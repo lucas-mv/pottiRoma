@@ -157,6 +157,7 @@
     <Compile Include="Response\GamificationPoints\GamificationPointsResponse.cs" />
     <Compile Include="Response\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Response\Season\SeasonResponse.cs" />
+    <Compile Include="Response\User\GetAppUsersResponse.cs" />
     <Compile Include="Response\User\LoginResponse.cs" />
     <Compile Include="Response\User\RegisterUserResponse.cs" />
   </ItemGroup>

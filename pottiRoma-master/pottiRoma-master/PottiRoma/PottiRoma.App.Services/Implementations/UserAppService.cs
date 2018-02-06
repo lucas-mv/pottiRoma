@@ -17,6 +17,11 @@ namespace PottiRoma.App.Services.Implementations
             await UserApiRepository.Get().ChangePassword(request);
         }
 
+        public async Task<GetAppUsersResponse> GetAppUsers()
+        {
+            return await UserApiRepository.Get().GetAppUsers();
+        }
+
         public async Task<LoginReponse> Login(LoginRequest request)
         {
             return await UserApiRepository.Get().Login(request);

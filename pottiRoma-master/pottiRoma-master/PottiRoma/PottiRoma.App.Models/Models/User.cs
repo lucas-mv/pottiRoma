@@ -16,6 +16,7 @@ namespace PottiRoma.App.Models.Models
         public UserType UserType { get; set; }
         public Guid MotherFlowerId { get; set; }
         public Guid TemporadaId { get; set; }
+        public bool IsActive { get; set; }
 
         private string _cpf;
         public string Cpf

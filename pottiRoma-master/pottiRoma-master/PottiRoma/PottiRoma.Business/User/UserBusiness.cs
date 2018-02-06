@@ -32,7 +32,7 @@ namespace PottiRoma.Business.User
         public static UserEntity RegisterUser(string email, string password, string name,
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
-            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId)
+            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive)
         {
             if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password) || String.IsNullOrEmpty(name) ||
                 String.IsNullOrEmpty(primaryTelephone) || String.IsNullOrEmpty(cpf))
@@ -48,7 +48,7 @@ namespace PottiRoma.Business.User
             var newUserId = Guid.NewGuid();
             UserRepository.Get().InsertUser(newUserId, email, cryptoPassword.Password, cryptoPassword.Salt, name, primaryTelephone,
                 secundaryTelephone, cpf, userType, cep, AverageTicketPoints, RegisterClientsPoints, salesNumberPoints, averageTtensPerSalepoints, 
-                inviteAllyFlowersPoints, temporadaId, motherFlowerId);
+                inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive);
             var newUser = UserRepository.Get().GetUserById(newUserId);
 
             if (newUser == null)
@@ -121,6 +121,11 @@ namespace PottiRoma.Business.User
                 InviteAllyFlowersPoints = inviteAllyFlowersPoints
             };
             UserRepository.Get().UpdateUserPoints(user);
+        }
+
+        public static List<UserEntity> GetAppUsers()
+        {
+            return UserRepository.Get().GetAppUsers();
         }
 
         #region Private methods

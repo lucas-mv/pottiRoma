@@ -23,5 +23,6 @@ namespace PottiRoma.Api.Request.User
         public int InviteAllyFlowersPoints { get; set; }
         public Guid TemporadaId { get; set; }
         public Guid MotherFlowerId { get; set; }
+        public bool IsActive { get; set; }
     }
 }

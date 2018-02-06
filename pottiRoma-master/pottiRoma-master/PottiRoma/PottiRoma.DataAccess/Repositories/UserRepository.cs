@@ -28,6 +28,26 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Selects
 
+        private const string GET_APP_USERS = @"
+        SELECT UsuarioId AS UsuarioId
+              ,Cpf As Cpf
+              ,Name as Name
+              ,Email as Email
+              ,PrimaryTelephone as PrimaryTelephone
+              ,SecundaryTelephone as SecundaryTelephone
+              ,UserType as UserType
+              ,Cep as Cep
+              ,AverageTicketPoints as AverageTicketPoints
+              ,RegisterClientsPoints as RegisterClientsPoints
+              ,SalesNumberPoints as SalesNumberPoints
+              ,AverageItensPerSalePoints as AverageItensPerSalePoints
+              ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
+              ,TemporadaId as TemporadaId
+              ,MotherFlowerId as MotherFlowerId
+              ,IsActive as IsActive
+          FROM dbo.UsuarioPotti
+          where IsActive = 1";
+
         private const string GET_USER_BY_ID = @"
         SELECT UsuarioId AS UsuarioId
               ,Cpf As Cpf
@@ -44,6 +64,7 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
+              ,IsActive as IsActive
           FROM dbo.UsuarioPotti
           where UsuarioId = @usuarioId";
 
@@ -63,6 +84,7 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
+              ,IsActive as IsActive
           FROM dbo.UsuarioPotti
           where Email = @email";
 
@@ -84,6 +106,7 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
+              ,IsActive as IsActive
           FROM dbo.UsuarioPotti
           where Email = @email";
 
@@ -105,6 +128,7 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
+              ,IsActive as IsActive
           FROM dbo.UsuarioPotti
           where UsuarioId = @usuarioid";
 
@@ -131,7 +155,8 @@ namespace PottiRoma.DataAccess.Repositories
             AverageItensPerSalePoints,
             InviteAllyFlowersPoints,
             TemporadaId,
-            MotherFlowerId
+            MotherFlowerId,
+            IsActive
         )
         VALUES 
         (
@@ -152,6 +177,7 @@ namespace PottiRoma.DataAccess.Repositories
             @inviteallyflowerspoints,
             @temporadaid,
             @motherflowerid
+            @isactive
         )";
 
         private const string UPDATE_USER_PASSWORD = @"
@@ -193,6 +219,11 @@ namespace PottiRoma.DataAccess.Repositories
             Execute(UPDATE_USER_POINTS, parameters);
         }
 
+        public List<UserEntity> GetAppUsers()
+        {
+            return Query(GET_APP_USERS).ToList();
+        }
+
         public UserEntity GetUserById(Guid userId)
         {
             DynamicParameters parameters = new DynamicParameters();
@@ -232,7 +263,7 @@ namespace PottiRoma.DataAccess.Repositories
         public void InsertUser(Guid usuarioId, string email, string password, string passwordSalt, string name, 
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
-            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId)
+            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive)
         {
             DynamicParameters parameters = new DynamicParameters();
 
@@ -253,6 +284,7 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@inviteallyflowerspoints", inviteAllyFlowersPoints, System.Data.DbType.Int16);
             parameters.Add("@temporadaid", temporadaId, System.Data.DbType.Guid);
             parameters.Add("@motherflowerid", motherFlowerId, System.Data.DbType.Guid);
+            parameters.Add("@isactive", isActive, System.Data.DbType.Boolean);
 
             Execute(INSERT_USER, parameters);
         }

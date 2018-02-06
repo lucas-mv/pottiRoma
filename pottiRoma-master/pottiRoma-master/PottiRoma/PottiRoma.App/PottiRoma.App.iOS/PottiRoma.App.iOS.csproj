@@ -105,6 +105,7 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ITunesArtwork Include="Resources\iTunesArtwork" />
     <ITunesArtwork Include="Resources\iTunesArtwork%402x" />
+    <BundleResource Include="Resources\sync_smb.json" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -626,6 +627,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_no_data%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_landing_page.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

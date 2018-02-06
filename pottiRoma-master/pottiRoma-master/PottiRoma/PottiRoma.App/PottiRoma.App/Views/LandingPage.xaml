@@ -1,8 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="PottiRoma.App.Views.LandingPage">
-  
+<ContentPage
+    x:Class="PottiRoma.App.Views.LandingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:sfBusy="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <Grid BackgroundColor="{StaticResource LightBackgroundColor}">
+        <Image
+            Margin="0"
+            Aspect="AspectFill"
+            Source="banner_landing_page.png" />
+        <Grid
+            BackgroundColor="Black"
+            HorizontalOptions="Fill"
+            Opacity="0.5"
+            VerticalOptions="Fill" />
+        <StackLayout
+            HorizontalOptions="Center"
+            Spacing="15"
+            VerticalOptions="Center">
+            <sfBusy:SfBusyIndicator
+                AnimationType="SingleCircle"
+                HeightRequest="90"
+                HorizontalOptions="Center"
+                TextColor="#fafafa"
+                VerticalOptions="Center"
+                ViewBoxHeight="90"
+                ViewBoxWidth="90"
+                WidthRequest="90" />
+            <Label
+                FontSize="{StaticResource LargeFontSize}"
+                Text="Carregando dados, Aguarde..."
+                TextColor="{StaticResource LightBackgroundColor}"
+                VerticalOptions="Start" />
+        </StackLayout>
+
+
+    </Grid>
 </ContentPage>

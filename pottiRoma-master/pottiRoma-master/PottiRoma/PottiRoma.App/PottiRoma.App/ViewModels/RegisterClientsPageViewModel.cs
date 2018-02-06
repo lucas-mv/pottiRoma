@@ -163,7 +163,7 @@ namespace PottiRoma.App.ViewModels
                             SalesNumberPoints = user.SalesNumberPoints
                         });
                         TimeSpan duration = new TimeSpan(0, 0, 3);
-                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increatePoints + " Pontos!", duration);
+                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increatePoints + " Pontos com esse Cadastro!", duration);
                     }
                     else
                     {

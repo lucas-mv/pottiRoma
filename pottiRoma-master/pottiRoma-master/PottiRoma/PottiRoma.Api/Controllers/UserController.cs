@@ -3,6 +3,7 @@ using PottiRoma.Api.Request.Email;
 using PottiRoma.Api.Request.User;
 using PottiRoma.Api.Response.Email;
 using PottiRoma.Api.Response.User;
+using PottiRoma.Entities;
 using PottiRoma.Services.Interfaces;
 using PottiRoma.Utils.Enums;
 using System;
@@ -47,7 +48,7 @@ namespace PottiRoma.Api.Controllers
         {
             return new RegisterUserResponse()
             {
-                User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecundaryTelephone, request.Cpf, request.UserType,request.Cep,request.AverageTicketPoints,request.RegisterClientsPoints,request.SalesNumberPoints,request.AverageItensPerSalePoints,request.InviteAllyFlowersPoints,request.TemporadaId,request.MotherFlowerId)
+                User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecundaryTelephone, request.Cpf, request.UserType,request.Cep,request.AverageTicketPoints,request.RegisterClientsPoints,request.SalesNumberPoints,request.AverageItensPerSalePoints,request.InviteAllyFlowersPoints,request.TemporadaId,request.MotherFlowerId, request.IsActive)
             };
         }
 
@@ -101,6 +102,17 @@ namespace PottiRoma.Api.Controllers
         {
             //await ValidateToken();
             _userService.UpdateUserPoints(request.UsuarioId ,request.AverageTicketPoints, request.RegisterClientsPoints, request.SalesNumberPoints, request.AverageItensPerSalePoints, request.InviteAllyFlowersPoints);
+        }
+
+        [Route("GetAppUsers")]
+        [HttpPost]
+        public async Task<GetAppUsersResponse> GetAppUsers()
+        {
+            //await ValidateToken();
+            return new GetAppUsersResponse()
+            {
+                Users = _userService.GetAppUsers()
+            };
         }
     }
 }

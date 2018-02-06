@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Models.Responses.User;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
@@ -9,6 +10,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace PottiRoma.App.ViewModels
@@ -53,6 +55,7 @@ namespace PottiRoma.App.ViewModels
             GoToEditPersonalDataCommand = new DelegateCommand(GoToEditPersonalData).ObservesCanExecute(() => CanExecute);
             GoToSalesHistoryCommand = new DelegateCommand(GoToSalesHistory).ObservesCanExecute(() => CanExecute);
             LogoutCommand = new DelegateCommand(Logout).ObservesCanExecute(() => CanExecute);
+
 
 
             Title = "Ranking Geral";

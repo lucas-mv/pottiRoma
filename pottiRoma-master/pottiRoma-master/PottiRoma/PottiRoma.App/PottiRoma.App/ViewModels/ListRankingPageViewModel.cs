@@ -1,5 +1,9 @@
 ﻿using Acr.UserDialogs;
+using PottiRoma.App.Helpers;
 using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Responses.User;
+using PottiRoma.App.Repositories.Internal;
+using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.Enums;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
@@ -10,6 +14,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -17,12 +23,20 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
+        private readonly IUserAppService _userAppService;
         private CarouselBannerType ListType;
         private ObservableCollection<User> _appUsers;
         public ObservableCollection<User> AppUsers
         {
             get { return _appUsers; }
             set { SetProperty(ref _appUsers, value); }
+        }
+
+        private User _thisUser;
+        public User ThisUser
+        {
+            get { return _thisUser; }
+            set { SetProperty(ref _thisUser, value); }
         }
 
         private string _title;
@@ -34,10 +48,14 @@ namespace PottiRoma.App.ViewModels
 
         public ListRankingPageViewModel(
             INavigationService navigationService,
-            IUserDialogs userDialogs)
+            IUserDialogs userDialogs,
+            IUserAppService userAppService)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _userAppService = userAppService;
+
+            AppUsers = new ObservableCollection<User>();
         }
 
         private void InsertPageTitleAndPoints()
@@ -60,7 +78,7 @@ namespace PottiRoma.App.ViewModels
                         users.TotalPoints = users.AverageItensPerSalePoints;
                     break;
                 case CarouselBannerType.RegisterAlliedFlowers:
-                    Title = "Registro de Flores Aliadas";
+                    Title = "Convite de Flores Aliadas";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.InviteAllyFlowersPoints;
                     break;
@@ -71,80 +89,70 @@ namespace PottiRoma.App.ViewModels
                     break;
                 case CarouselBannerType.Total:
                     Title = "Geral";
+                    foreach (var users in AppUsers)
+                        users.TotalPoints = users.AverageItensPerSalePoints + users.AverageTicketPoints + users.RegisterClientsPoints + users.InviteAllyFlowersPoints + users.SalesNumberPoints;
                     break;
             }
         }
 
-        public override void OnNavigatedTo(NavigationParameters parameters)
+        public override async void OnNavigatedTo(NavigationParameters parameters)
         {
-            InsertMock();
-
             if (parameters.ContainsKey(NavigationKeyParameters.RankingType))
                 ListType = (CarouselBannerType)parameters[NavigationKeyParameters.RankingType];
             else ListType = CarouselBannerType.Total;
-
-            InsertPageTitleAndPoints();
+            await GetAppUsers();
             base.OnNavigatedTo(parameters);
         }
 
-        private void InsertMock()
+        private async Task GetAppUsers()
         {
-            AppUsers = new ObservableCollection<User>();
-            AppUsers.Add(new User
+            AppUsers.Clear();
+            try
             {
-                Name = "Lucas Roscoe",
-                TotalPoints = 756,
-                AverageItensPerSalePoints = 345,
-            });
-            AppUsers.Add(new User
+                var users = await _userAppService.GetAppUsers();
+                
+                foreach (var user in users.Users)
+                {
+                    AppUsers.Add(user);
+                }
+
+            }
+            catch
             {
-                Name = "Lucas Roscoe",
-                TotalPoints = 125,
-                AverageItensPerSalePoints = 754,
-            });
-            AppUsers.Add(new User
-            {
-                Name = "Lucas Roscoe",
-                TotalPoints = 634,
-                AverageItensPerSalePoints = 445,
-            });
-            AppUsers.Add(new User
-            {
-                Name = "Lucas Roscoe",
-                TotalPoints = 743,
-                AverageItensPerSalePoints = 468,
-            });
-            AppUsers.Add(new User
-            {
-                Name = "Lucas Roscoe",
-                TotalPoints = 224,
-                AverageItensPerSalePoints = 256,
-            });
-            AppUsers.Add(new User
-            {
-                Name = "Lucas Roscoe",
-                TotalPoints = 896,
-                AverageItensPerSalePoints = 648,
-            });
-            AppUsers.Add(new User
-            {
-                Name = "Lucas Roscoe",
-                TotalPoints = 574,
-                AverageItensPerSalePoints = 457,
-            });
+                _userDialogs.Toast("Não foi possível obter os usuários");
+                await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+            }
 
             var listaOrdenada = ListaOrdenada();
 
             AppUsers.Clear();
+            
 
             foreach (var userOrdenado in listaOrdenada)
             {
                 AppUsers.Add(userOrdenado);
             }
 
+            ThisUser = new User();
+
+            ThisUser = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+
             for (int i=0; i < AppUsers.Count; i++)
             {
                 AppUsers[i].RankingPosition = (i+1).ToString() + ". ";
+
+            }
+
+            InsertPageTitleAndPoints();
+
+            foreach (var user in AppUsers)
+            {
+                if (ThisUser.UsuarioId == user.UsuarioId)
+                {
+                    ThisUser.RankingPosition = user.RankingPosition;
+                    ThisUser.Name = user.Name;
+                    ThisUser.TotalPoints = user.TotalPoints;
+                }
             }
         }
 

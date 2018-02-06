@@ -33,7 +33,7 @@
                 FontAttributes="Bold"
                 FontSize="{StaticResource LargeFontSize}"
                 HorizontalOptions="Start"
-                Text="25."
+                Text="{Binding ThisUser.RankingPosition}"
                 TextColor="{StaticResource LightBackgroundColor}"
                 VerticalOptions="Center" />
 
@@ -42,7 +42,7 @@
                 FontAttributes="Bold"
                 FontSize="{StaticResource LargeFontSize}"
                 HorizontalOptions="Start"
-                Text="Lucas Roscoe"
+                Text="{Binding ThisUser.Name}"
                 TextColor="{StaticResource LightBackgroundColor}"
                 VerticalOptions="Center" />
             <StackLayout
@@ -54,7 +54,7 @@
                     FontAttributes="Bold"
                     FontSize="{StaticResource LargeFontSize}"
                     HorizontalOptions="Start"
-                    Text="554"
+                    Text="{Binding ThisUser.TotalPoints}"
                     TextColor="{StaticResource LightBackgroundColor}"
                     VerticalOptions="Center" />
                 <Image
@@ -102,7 +102,7 @@
                                 Grid.Column="1"
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="Start"
-                                Text="{Binding UserName}"
+                                Text="{Binding Name}"
                                 TextColor="{StaticResource TextColor}"
                                 VerticalOptions="Center" />
                             <StackLayout

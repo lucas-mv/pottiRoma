@@ -104,7 +104,7 @@ namespace PottiRoma.App.ViewModels
             RankingDto.Add(new RankingBannerDto()
             {
                 Image = "banner_ranking3.png",
-                Description = "CADASTRO DE FLORES ALIADAS",
+                Description = "CONVIDAR FLORES ALIADAS",
                 Index = 3
             });
             RankingDto.Add(new RankingBannerDto()

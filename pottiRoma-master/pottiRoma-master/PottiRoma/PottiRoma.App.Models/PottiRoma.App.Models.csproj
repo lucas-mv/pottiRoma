@@ -52,6 +52,7 @@
     <Compile Include="Responses\GamificationPoints\GetGamificationPointsResponse.cs" />
     <Compile Include="Responses\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Responses\Season\SeasonResponse.cs" />
+    <Compile Include="Responses\User\GetAppUsersResponse.cs" />
     <Compile Include="Responses\User\LoginReponse.cs" />
     <Compile Include="Responses\User\SendEmailResponse.cs" />
   </ItemGroup>

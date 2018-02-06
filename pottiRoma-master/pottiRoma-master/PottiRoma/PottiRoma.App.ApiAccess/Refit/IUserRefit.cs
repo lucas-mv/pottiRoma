@@ -30,5 +30,9 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Post("/User/Profile/Update")]
         [Headers("Authorization: Bearer")]
         Task UpdateUserPoints(UpdateUserPointsRequest request);
+
+        [Post("/User/GetAppUsers")]
+        [Headers("Authorization: Bearer")]
+        Task<GetAppUsersResponse> GetAppUsers();
     }
 }
