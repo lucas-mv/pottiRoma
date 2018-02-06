@@ -17,7 +17,7 @@
             <OnPlatform
                 x:TypeArguments="Thickness"
                 Android="8,8,8,8"
-                iOS="8,32,8,8" />
+                iOS="8,8,8,8" />
         </Grid.Margin>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -29,6 +29,9 @@
             Grid.Row="0"
             HorizontalOptions="Fill"
             VerticalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
             <SearchBar
                 x:Name="SearchBarClientes"
                 Margin="0,0,10,0"

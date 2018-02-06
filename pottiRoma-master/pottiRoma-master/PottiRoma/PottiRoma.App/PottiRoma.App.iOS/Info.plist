@@ -55,6 +55,6 @@
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>XSLaunchImageAssets</key>
-	<string>Resources/Media.xcassets/LaunchImages.launchimage</string>
+	<string>Resources/SplashScreen.xcassets/LaunchImages.launchimage</string>
 </dict>
 </plist>

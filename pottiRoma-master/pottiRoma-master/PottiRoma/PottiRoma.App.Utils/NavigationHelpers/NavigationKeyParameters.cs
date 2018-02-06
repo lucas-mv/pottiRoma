@@ -11,5 +11,6 @@ namespace PottiRoma.App.Utils.NavigationHelpers
         public const string SelectedClient = "SelectedClient";
         public const string EditClient = "EditClient";
         public const string RankingType = "RankingType";
+        public const string SelectedSale = "SelectedSale";
     }
 }

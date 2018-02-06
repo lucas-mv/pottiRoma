@@ -23,6 +23,9 @@ namespace PottiRoma.App.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            Entry_sold_pieces.Text = "";
+            Entry_total_price.Text = "";
+            Entry_price.Text = "";
         }
 
         private void Entry_Price_Focused(object sender, FocusEventArgs e)
@@ -52,6 +55,16 @@ namespace PottiRoma.App.Views
         {
             var thisEntry = sender as CustomEntry;
             thisEntry.Text = "";
+        }
+
+        private void Editor_observacoes_placeholder_Focused(object sender, FocusEventArgs e)
+        {
+            Editor_observacoes_placeholder.IsVisible = false;
+        }
+
+        private void Editor_observacoes_placeholder_Unfocused(object sender, FocusEventArgs e)
+        {
+            Editor_observacoes_placeholder.IsVisible = (ObservacoesEditor.Text.Length < 1) ? true : false;
         }
     }
 }

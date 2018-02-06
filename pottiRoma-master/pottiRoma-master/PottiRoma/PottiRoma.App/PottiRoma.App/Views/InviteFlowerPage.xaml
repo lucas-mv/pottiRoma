@@ -28,85 +28,87 @@
             Aspect="AspectFill"
             Source="banner_top_2.png" />
 
-        <ScrollView Grid.Row="1" Grid.Column="1">
-            <StackLayout Spacing="10">
 
-                <Frame
-                    Padding="0"
-                    BackgroundColor="{StaticResource WhiteColor}"
-                    HeightRequest="50"
-                    OutlineColor="{StaticResource OutlineColor}">
-                    <renderers:CustomEntry
-                        Margin="10,0,10,0"
-                        FontSize="{StaticResource StandardFontSize}"
-                        Placeholder="Nome*"
-                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                        TextColor="{StaticResource TextColor}"
-                        VerticalOptions="Center" />
-                </Frame>
+        <StackLayout
+            Grid.Row="1"
+            Grid.Column="1"
+            Spacing="10">
 
-                <Frame
-                    Padding="0"
-                    BackgroundColor="{StaticResource WhiteColor}"
-                    HeightRequest="50"
-                    OutlineColor="{StaticResource OutlineColor}">
-                    <renderers:CustomEntry
-                        Margin="10,0,10,0"
-                        FontSize="{StaticResource StandardFontSize}"
-                        Keyboard="Email"
-                        Placeholder="Email*"
-                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                        Text="{Binding Email}"
-                        TextColor="{StaticResource TextColor}"
-                        VerticalOptions="Center" />
-                </Frame>
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="50"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Placeholder="Nome*"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="Center" />
+            </Frame>
 
-                <Frame
-                    Padding="0"
-                    BackgroundColor="{StaticResource WhiteColor}"
-                    HeightRequest="50"
-                    OutlineColor="{StaticResource OutlineColor}">
-                    <renderers:CustomEntry
-                        Margin="10,0,10,0"
-                        FontSize="{StaticResource StandardFontSize}"
-                        Placeholder="CPF*"
-                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                        TextColor="{StaticResource TextColor}"
-                        VerticalOptions="Center" />
-                </Frame>
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="50"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Keyboard="Email"
+                    Placeholder="Email*"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding Email}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="Center" />
+            </Frame>
 
-                <Frame
-                    Padding="0"
-                    BackgroundColor="{StaticResource WhiteColor}"
-                    HeightRequest="50"
-                    OutlineColor="{StaticResource OutlineColor}">
-                    <renderers:CustomEntry
-                        Margin="10,0,10,0"
-                        FontSize="{StaticResource StandardFontSize}"
-                        Keyboard="Email"
-                        Placeholder="Telefone Principal*"
-                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                        TextColor="{StaticResource TextColor}"
-                        VerticalOptions="Center" />
-                </Frame>
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="50"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Placeholder="CPF*"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="Center" />
+            </Frame>
 
-                <Frame
-                    Padding="0"
-                    BackgroundColor="{StaticResource WhiteColor}"
-                    HeightRequest="50"
-                    OutlineColor="{StaticResource OutlineColor}">
-                    <renderers:CustomEntry
-                        Margin="10,0,10,0"
-                        FontSize="{StaticResource StandardFontSize}"
-                        Placeholder="CEP"
-                        PlaceholderColor="{StaticResource PlaceholderColor}"
-                        TextColor="{StaticResource TextColor}"
-                        VerticalOptions="Center" />
-                </Frame>
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="50"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Keyboard="Email"
+                    Placeholder="Telefone Principal*"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="Center" />
+            </Frame>
 
-                <ContentView HeightRequest="10" />
-            </StackLayout>
-        </ScrollView>
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="50"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Placeholder="CEP"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="Center" />
+            </Frame>
+
+            <ContentView HeightRequest="10" />
+        </StackLayout>
 
         <Button
             Grid.Row="2"

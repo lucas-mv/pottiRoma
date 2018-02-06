@@ -61,7 +61,11 @@ namespace PottiRoma.App.ViewModels
         private async void SaleSelected(object obj)
         {
             CanExecuteInitial();
-            await _navigationService.NavigateAsync(NavigationSettings.RegisterSale);
+            var saleSelected = obj as Sale;
+
+            NavigationParameters parameters = new NavigationParameters();
+            parameters.Add(NavigationKeyParameters.SelectedSale, saleSelected);
+            await _navigationService.NavigateAsync(NavigationSettings.RegisterSale, parameters);
             CanExecuteEnd();
         }
 

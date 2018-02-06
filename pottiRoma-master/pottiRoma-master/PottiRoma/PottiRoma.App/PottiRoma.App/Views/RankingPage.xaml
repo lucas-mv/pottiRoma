@@ -17,8 +17,12 @@
                         <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToRankingPageCommand, Source={x:Reference PageContent}}" CommandParameter="{Binding .}" />
                     </Grid.GestureRecognizers>
                     <Image Aspect="AspectFill" Source="{Binding Image}" />
+                    <ContentView
+                        Margin="0"
+                        BackgroundColor="Black"
+                        IsEnabled="False"
+                        Opacity="0.4" />
                     <Label
-                        Margin="16,40,16,0"
                         FontAttributes="Bold"
                         FontSize="{StaticResource StandardFontSize}"
                         HeightRequest="50"
@@ -27,7 +31,14 @@
                         Text="{Binding Description}"
                         TextColor="{StaticResource LightBackgroundColor}"
                         VerticalOptions="Start"
-                        VerticalTextAlignment="Start" />
+                        VerticalTextAlignment="Start">
+                        <StackLayout.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="16,16,16,16" />
+                                <On Platform="Android, WinPhone, Windows" Value="16,40,16,16" />
+                            </OnPlatform>
+                        </StackLayout.Margin>
+                    </Label>
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
@@ -50,6 +61,12 @@
                 Grid.Column="1"
                 Aspect="AspectFill"
                 Source="ranking_geral.png" />
+            <ContentView
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0"
+                BackgroundColor="Black"
+                Opacity="0.4" />
 
             <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.RowDefinitions>
