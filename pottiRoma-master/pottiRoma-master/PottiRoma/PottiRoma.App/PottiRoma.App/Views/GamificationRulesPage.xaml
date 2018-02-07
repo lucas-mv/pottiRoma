@@ -5,15 +5,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:PottiRoma.App.Controls"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     Title="Regras do Jogo"
     prism:ViewModelLocator.AutowireViewModel="True">
-    <ScrollView>
-        <Label
-            Margin="16"
-            FontSize="{StaticResource StandardFontSize}"
-            HorizontalOptions="Fill"
-            Text="{Binding Rules}"
-            TextColor="{StaticResource TextColor}"
-            VerticalOptions="Fill" />
-    </ScrollView>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource LightBackgroundColor}">
+            <Label
+                FontAttributes="Bold"
+                FontSize="{StaticResource LargeFontSize}"
+                Text="{Binding Main.Title}"
+                TextColor="{StaticResource TextColor}" />
+            <Label
+                FontSize="{StaticResource StandardFontSize}"
+                Text="{Binding Main.Definition}"
+                TextColor="{StaticResource TextColor}" />
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

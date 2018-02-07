@@ -47,6 +47,7 @@
     <Compile Include="CustomRenderers\CustomEntry.cs" />
     <Compile Include="CustomRenderers\CustomProgressBar.cs" />
     <Compile Include="Dtos\RankingBannerDto.cs" />
+    <Compile Include="Dtos\RulesContentDto.cs" />
     <Compile Include="Helpers\GetDatePopupHelper.cs" />
     <Compile Include="Helpers\LogoutPopupHelper.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />

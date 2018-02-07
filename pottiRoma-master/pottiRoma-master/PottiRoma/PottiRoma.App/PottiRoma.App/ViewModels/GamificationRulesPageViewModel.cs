@@ -1,57 +1,163 @@
-﻿using PottiRoma.App.ViewModels.Core;
+﻿using PottiRoma.App.Dtos;
+using PottiRoma.App.Utils.ConstantRules;
+using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace PottiRoma.App.ViewModels
 {
 	public class GamificationRulesPageViewModel : ViewModelBase
 	{
-        private string _rules;
-        public string Rules
+        private RulesContentDto _main;
+        public RulesContentDto Main
+        {
+            get { return _main; }
+            set { SetProperty(ref _main, value); }
+        }
+
+        private RulesContentDto _objective;
+        public RulesContentDto Objective
+        {
+            get { return _objective; }
+            set { SetProperty(ref _objective, value); }
+        }
+
+        private RulesContentDto _theGame;
+        public RulesContentDto TheGame
+        {
+            get { return _theGame; }
+            set { SetProperty(ref _theGame, value); }
+        }
+
+        private RulesContentDto _bonus;
+        public RulesContentDto Bonus
+        {
+            get { return _bonus; }
+            set { SetProperty(ref _bonus, value); }
+        }
+
+        private RulesContentDto _kpis;
+        public RulesContentDto Kpis
+        {
+            get { return _kpis; }
+            set { SetProperty(ref _kpis, value); }
+        }
+
+        private RulesContentDto _seeds;
+        public RulesContentDto Seeds
+        {
+            get { return _seeds; }
+            set { SetProperty(ref _seeds, value); }
+        }
+
+        private RulesContentDto _rules;
+        public RulesContentDto Rules
         {
             get { return _rules; }
             set { SetProperty(ref _rules, value); }
         }
+
+        private RulesContentDto _where;
+        public RulesContentDto Where
+        {
+            get { return _where; }
+            set { SetProperty(ref _where, value); }
+        }
+
+        private RulesContentDto _who;
+        public RulesContentDto Who
+        {
+            get { return _who; }
+            set { SetProperty(ref _who, value); }
+        }
+
+        private RulesContentDto _generalObservations;
+        public RulesContentDto GeneralObservations
+        {
+            get { return _generalObservations; }
+            set { SetProperty(ref _generalObservations, value); }
+        }
         public GamificationRulesPageViewModel()
         {
-
         }
 
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            Rules = GameRules();
+            GameRules();
         }
 
-        private string GameRules()
+        private async void GameRules()
         {
-            return "Lorem ipsum a vestibulum dictum posuere egestas nam sit, " +
-                "aliquam purus sapien inceptos gravida curabitur adipiscing aenean " +
-                "malesuada, diam aliquam eu sem sapien mattis vulputate. class erat " +
-                "quis convallis tortor dui congue, lectus placerat lacinia mauris " +
-                "aptent aenean porttitor, vestibulum rutrum fames praesent ullamcorper." +
-                " nisi dolor aliquet mauris metus vehicula eget facilisis ullamcorper, " +
-                "hac turpis aliquam ut cursus condimentum praesent tristique, vulputate " +
-                "diam iaculis etiam eleifend auctor sit, cubilia lobortis suspendisse " +
-                "habitant odio donec fermentum. integer pulvinar molestie gravida semper " +
-                "cubilia venenatis nostra, fringilla rhoncus elit purus malesuada euismod " +
-                "sagittis quisque, vestibulum turpis interdum vel volutpat enim. Tempor suscipit " +
-                "etiam eleifend tempus sociosqu faucibus quisque nec curabitur sagittis " +
-                "dictum class ornare, risus dolor mi aliquam sociosqu cubilia sociosqu " +
-                "imperdiet tristique praesent est.etiam donec ut sagittis elit metus " +
-                "nisi in leo nibh ultricies, eros non habitasse rutrum aenean auctor " +
-                "accumsan sodales adipiscing praesent, vestibulum nunc commodo non " +
-                "volutpat habitasse pretium et cursus.vel non maecenas semper erat " +
-                "elit donec tempor accumsan eu felis accumsan, vivamus senectus nibh " +
-                "proin facilisis netus gravida aliquet ut vivamus a mattis, ut non " +
-                "phasellus tristique arcu mauris pretium dolor per accumsan. fermentum" +
-                " habitasse vestibulum venenatis malesuada primis fusce lacus, rhoncus " +
-                "nulla neque gravida consequat velit faucibus urna, erat dictumst " +
-                "laoreet gravida proin phasellus. ";
+            Device.BeginInvokeOnMainThread(async () => 
+            {
+                Main = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.Main,
+                    Title = "JOGO CRM - POTTI ROMÃ",
+                    Definition = RulesConstants.Main
+                });
+                Objective = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.Objective,
+                    Title = "OBJETIVO",
+                    Definition = RulesConstants.Objective
+                });
+                TheGame = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.TheGame,
+                    Title = "O JOGO",
+                    Definition = RulesConstants.TheGame
+                });
+                Bonus = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.Bonus,
+                    Title = "BÔNUS",
+                    Definition = RulesConstants.Bonus
+                });
+                Kpis = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.Kpis,
+                    Title = "INDICADORES",
+                    Definition = RulesConstants.Kpis
+                });
+                Seeds = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.Seeds,
+                    Title = "SEMENTES",
+                    Definition = RulesConstants.Seeds
+                });
+                Rules = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.Rules,
+                    Title = "REGRAS",
+                    Definition = RulesConstants.Rules,
+                });
+                Where = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.Where,
+                    Title = "ONDE JOGAR",
+                    Definition = RulesConstants.Kpis,
+                });
+                Who = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.Who,
+                    Title = "QUEM PODE JOGAR",
+                    Definition = RulesConstants.Kpis
+                });
+                GeneralObservations = (new RulesContentDto()
+                {
+                    ContentRulesId = Utils.Enums.RulesTitleContentEnum.GeneralObservations,
+                    Title = "OBSERVAÇÕES GERAIS",
+                    Definition = RulesConstants.GeneralObservations
+                });
+            });
         }
 	}
 }

@@ -34,10 +34,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="ConstantRules\RulesConstants.cs" />
     <Compile Include="CustomExceptions\AuthorizationException.cs" />
     <Compile Include="CustomExceptions\ErrorException.cs" />
     <Compile Include="CustomExceptions\ValidationException.cs" />
     <Compile Include="Enums\CarouselBannerType.cs" />
+    <Compile Include="Enums\RulesTitleContentEnum.cs" />
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Helpers\ConvertIndexToEnumHelper.cs" />
     <Compile Include="Helpers\Formatter.cs" />
