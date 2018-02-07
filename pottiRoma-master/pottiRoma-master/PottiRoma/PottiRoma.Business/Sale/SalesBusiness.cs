@@ -32,5 +32,10 @@ namespace PottiRoma.Business.Sale
         {
             return SalesRepository.Get().GetSalesByUserId(userId);
         }
+
+        public static void UpdateSale(Guid vendaId, float saleValue, float salePaidValue, int numberSoldPieces, string description)
+        {
+            SalesRepository.Get().UpdateSale(vendaId, saleValue, salePaidValue, numberSoldPieces, description);
+        }
     }
 }

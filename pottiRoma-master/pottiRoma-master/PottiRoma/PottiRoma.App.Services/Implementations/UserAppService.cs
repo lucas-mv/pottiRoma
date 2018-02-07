@@ -37,6 +37,11 @@ namespace PottiRoma.App.Services.Implementations
             await UserApiRepository.Get().SendEmail(request);
         }
 
+        public async Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
+        {
+            await UserApiRepository.Get().UpdateUser(usuarioId, email, primaryTelephone, secundaryTelephone, cep);
+        }
+
         public async Task UpdateUserPoints(UpdateUserPointsRequest request)
         {
             await UserApiRepository.Get().UpdateUserPoints(request);

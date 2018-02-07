@@ -341,9 +341,6 @@
     <BundleResource Include="Resources\banner_top_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\banner_top1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\foto_perfil.png" />
   </ItemGroup>
   <ItemGroup>
@@ -629,6 +626,12 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\banner_landing_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_podium.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_top1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

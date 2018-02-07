@@ -21,5 +21,6 @@ namespace PottiRoma.Services.Interfaces
             int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive);
         void UpdateUserPoints(Guid usuarioId, int averageTicketPoints, int registerClientsPoints, int salesNumberPoints, int averageItensPerSalePoints, int inviteAllyFlowersPoints);
         List<UserEntity> GetAppUsers();
+        void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep);
     }
 }

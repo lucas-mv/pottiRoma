@@ -114,5 +114,13 @@ namespace PottiRoma.Api.Controllers
                 Users = _userService.GetAppUsers()
             };
         }
+
+        [Route("UpdateUser")]
+        [HttpPost]
+        public async Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
+        {
+            //await ValidateToken();
+            _userService.UpdateUser(new Guid(usuarioId), email, primaryTelephone, secundaryTelephone, cep);
+        }
     }
 }

@@ -136,6 +136,14 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Commands
 
+        private const string UPDATE_USER = @"
+        UPDATE dbo.UsuarioPotti
+                SET Email = @email,
+	                PrimaryTelephone = @primarytelephone,
+	                SecundaryTelephone = @secundaryTelephone,
+	                Cep = @cep
+                WHERE UsuarioId = @usuarioid;";
+
         private const string INSERT_USER = @"
         INSERT INTO dbo.UsuarioPotti 
         (
@@ -217,6 +225,18 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@inviteAllyFlowersPoints", user.InviteAllyFlowersPoints, System.Data.DbType.Int64);
 
             Execute(UPDATE_USER_POINTS, parameters);
+        }
+
+        public void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@usuarioid", usuarioId, System.Data.DbType.Guid);
+            parameters.Add("@email", email, System.Data.DbType.AnsiString);
+            parameters.Add("@primarytelephone", primaryTelephone, System.Data.DbType.AnsiString);
+            parameters.Add("@secundarytelephone", secundaryTelephone, System.Data.DbType.AnsiString);
+            parameters.Add("@cep", cep, System.Data.DbType.AnsiString);
+
+            Execute(UPDATE_USER, parameters);
         }
 
         public List<UserEntity> GetAppUsers()

@@ -45,6 +45,15 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _nameAndDateLabel, value); }
         }
 
+        private string _buttonText;
+        public string ButtonText
+        {
+            get { return _buttonText; }
+            set { SetProperty(ref _buttonText, value); }
+        }
+
+        private bool _isEditSale = false;
+
         public RegisterSalePageViewModel(
             INavigationService navigationService,
             IUserDialogs userDialogs,
@@ -62,8 +71,16 @@ namespace PottiRoma.App.ViewModels
 
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey(NavigationKeyParameters.SelectedClient))
+            if (parameters.ContainsKey(NavigationKeyParameters.SelectedSale))
             {
+                ButtonText = "EDITAR VENDA";
+                SaleRegistered = parameters[NavigationKeyParameters.SelectedSale] as Sale;
+                NameAndDateLabel = "Venda para: " + SaleRegistered.ClientName + ", " + Formatter.FormatDate(SaleRegistered.SaleDate);
+                _isEditSale = true;
+            }
+            else if (parameters.ContainsKey(NavigationKeyParameters.SelectedClient))
+            {
+                ButtonText = "SALVAR VENDA";
                 Client selectedClient = (Client)parameters[NavigationKeyParameters.SelectedClient];
                 SaleRegistered.ClienteId = selectedClient.ClienteId;
                 SaleRegistered.ClientName = selectedClient.Name;
@@ -77,8 +94,6 @@ namespace PottiRoma.App.ViewModels
                 {
                     _userDialogs.Toast("Tivemos um problema com seu usuário, faça o Login novamente!");
                 }
-
-
                 NameAndDateLabel = "Venda para: " + SaleRegistered.ClientName + ", " + Formatter.FormatDate(DateTime.Now);
             }
             base.OnNavigatedTo(parameters);
@@ -95,54 +110,73 @@ namespace PottiRoma.App.ViewModels
 
             if (IsSaleValid())
             {
-                CanExecuteInitial();
-                await NavigationHelper.ShowLoading();
-                try
+                if (!_isEditSale)
                 {
-                    var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                    var userGuid = user.UsuarioId;
-
-
-
-                    await _salesAppService.InsertNewSale(new InsertNewSaleRequest
+                    CanExecuteInitial();
+                    await NavigationHelper.ShowLoading();
+                    try
                     {
-                        UsuarioId = userGuid,
-                        UserName = user.Name,
-                        ClienteId = SaleRegistered.ClienteId,
-                        ClientName = SaleRegistered.ClientName,
-                        NumberSoldPieces = SaleRegistered.NumberSoldPieces,
-                        SaleDate = DateTime.Now,
-                        SalePaidValue = SaleRegistered.SalePaidValue,
-                        SaleValue = SaleRegistered.SaleValue,
-                        Description = SaleRegistered.Description
-                    });
+                        var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                        var userGuid = user.UsuarioId;
 
 
-                    int increment = (int)SaleRegistered.NumberSoldPieces + (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces;
-                    user.AverageItensPerSalePoints += (int)SaleRegistered.NumberSoldPieces;
-                    user.AverageTicketPoints += (int)SaleRegistered.SaleValue/SaleRegistered.NumberSoldPieces;
 
-                    await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        await _salesAppService.InsertNewSale(new InsertNewSaleRequest
+                        {
+                            UsuarioId = userGuid,
+                            UserName = user.Name,
+                            ClienteId = SaleRegistered.ClienteId,
+                            ClientName = SaleRegistered.ClientName,
+                            NumberSoldPieces = SaleRegistered.NumberSoldPieces,
+                            SaleDate = DateTime.Now,
+                            SalePaidValue = SaleRegistered.SalePaidValue,
+                            SaleValue = SaleRegistered.SaleValue,
+                            Description = SaleRegistered.Description
+                        });
+
+
+                        int increment = (int)SaleRegistered.NumberSoldPieces + (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces;
+                        user.AverageItensPerSalePoints += (int)SaleRegistered.NumberSoldPieces;
+                        user.AverageTicketPoints += (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces;
+
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            UsuarioId = userGuid,
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            RegisterClientsPoints = user.RegisterClientsPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                            SalesNumberPoints = user.SalesNumberPoints
+                        });
+                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increment + " Pontos com essa Venda!", duration);
+                        await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+
+                    }
+                    catch
                     {
-                        UsuarioId = userGuid,
-                        AverageItensPerSalePoints = user.AverageItensPerSalePoints,
-                        AverageTicketPoints = user.AverageTicketPoints,
-                        RegisterClientsPoints = user.RegisterClientsPoints,
-                        InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
-                        SalesNumberPoints = user.SalesNumberPoints
-                    });
-                    UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increment + " Pontos com essa Venda!", duration);
-                    await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
-
+                        _userDialogs.Toast("Não foi possível registrar sua venda");
+                    }
+                    finally
+                    {
+                        CanExecuteEnd();
+                        await NavigationHelper.PopLoading();
+                    }
                 }
-                catch
+                else
                 {
-                    _userDialogs.Toast("Não foi possível registrar sua venda");
-                }
-                finally
-                {
-                    CanExecuteEnd();
-                    await NavigationHelper.PopLoading();
+                    try
+                    {
+                        await _salesAppService.UpdateSale(SaleRegistered.VendaId.ToString(), SaleRegistered.SaleValue, SaleRegistered.SalePaidValue, SaleRegistered.NumberSoldPieces, SaleRegistered.Description);
+                        _userDialogs.Toast("Venda Editada com sucesso!");
+                    }
+                    catch
+                    {
+                        _userDialogs.Toast("Não foi possível editar sua venda!");
+                    }
+                    finally
+                    {
+                        await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                    }
                 }
             }
             else _userDialogs.Toast("Faltam Dados para preencher!", duration);

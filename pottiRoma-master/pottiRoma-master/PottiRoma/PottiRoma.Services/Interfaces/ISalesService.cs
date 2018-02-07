@@ -9,5 +9,6 @@ namespace PottiRoma.Services.Interfaces
     {
         void InsertNewSale(Guid usuarioId, Guid clienteId, string userName, string clientName, DateTime saleDate, float saleValue, float salePaidValue, int numberSoldPieces, string description);
         List<SaleEntity> GetSalesByUserId(Guid userId);
+        void UpdateSale(Guid vendaId,float saleValue, float salePaidValue, int numberSoldPieces, string description);
     }
 }

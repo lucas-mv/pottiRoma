@@ -18,5 +18,9 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Post("/Sales/New")]
         [Headers("Authorization: Bearer")]
         Task InsertNewSale(InsertNewSaleRequest request);
+
+        [Post("/Sales/UpdateSale")]
+        [Headers("Authorization: Bearer")]
+        Task UpdateSale(string vendaId, float saleValue, float salePaidValue, int numberSoldPieces, string description);
     }
 }

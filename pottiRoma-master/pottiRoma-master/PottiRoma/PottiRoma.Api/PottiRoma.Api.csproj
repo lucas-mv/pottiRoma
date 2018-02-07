@@ -147,6 +147,7 @@
     <Compile Include="Request\Email\SendEmailRequest.cs" />
     <Compile Include="Request\GamificationPoints\GamificationPointsRequest.cs" />
     <Compile Include="Request\Sales\InsertNewSaleRequest.cs" />
+    <Compile Include="Request\Sales\UpdateSaleRequest.cs" />
     <Compile Include="Request\Season\SeasonRequest.cs" />
     <Compile Include="Request\User\ChangePasswordRequest.cs" />
     <Compile Include="Request\User\LoginUserRequest.cs" />

@@ -112,5 +112,19 @@ namespace PottiRoma.App.Repositories.Api
               );
             return response;
         }
+
+        public async Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
+        {
+            await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+               retryCount: 5,
+               sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+             )
+             .ExecuteAsync(async () =>
+                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().UpdateUser(usuarioId, email, primaryTelephone, secundaryTelephone, cep)
+             );
+        }
     }
 }

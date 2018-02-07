@@ -75,9 +75,31 @@ namespace PottiRoma.DataAccess.Repositories
             @description
         )";
 
+        public const string UPDATE_SALE = @"
+        UPDATE dbo.Venda
+        SET SaleValue = @salevalue,
+	        SalePaidValue = @salepaidvalue,
+	        NumberSoldPieces = @numbersoldpieces,
+	        Description = @description
+	
+        WHERE VendaId = @vendaid;
+        ";
+
         #endregion
 
         #region Public methods
+
+        public void UpdateSale(Guid vendaId, float saleValue, float salePaidValue, int numberSoldPieces, string description)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@vendaid", vendaId, System.Data.DbType.Guid);
+            parameters.Add("@salevalue", saleValue, System.Data.DbType.Double);
+            parameters.Add("@salepaidvalue", salePaidValue, System.Data.DbType.Double);
+            parameters.Add("@numbersoldpieces", numberSoldPieces, System.Data.DbType.Int32);
+            parameters.Add("@description", description, System.Data.DbType.AnsiString);
+
+            Execute(UPDATE_SALE, parameters);
+        }
 
         public void InsertNewSale(SaleEntity sale)
         {

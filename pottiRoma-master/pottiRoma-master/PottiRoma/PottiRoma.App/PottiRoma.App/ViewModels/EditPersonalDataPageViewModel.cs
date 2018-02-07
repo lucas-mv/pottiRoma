@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Repositories.Internal;
+using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -17,6 +18,7 @@ namespace PottiRoma.App.ViewModels
     public class EditPersonalDataPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private readonly IUserAppService _userAppService;
 
         private double _screenHeightRequest;
         public double ScreenHeightRequest
@@ -33,12 +35,37 @@ namespace PottiRoma.App.ViewModels
         }
 
         public DelegateCommand ChangePasswordCommand { get; set; }
+        public DelegateCommand EditPersonalDataCommand { get; set; }
         
 
-        public EditPersonalDataPageViewModel(INavigationService navigationService)
+        public EditPersonalDataPageViewModel(INavigationService navigationService,
+            IUserAppService userAppService)
         {
             _navigationService = navigationService;
+            _userAppService = userAppService;
             ChangePasswordCommand = new DelegateCommand(ChangePassword).ObservesCanExecute(() => CanExecute);
+            EditPersonalDataCommand = new DelegateCommand(EditPersonalData).ObservesCanExecute(() => CanExecute);
+        }
+
+        private async void EditPersonalData()
+        {
+            if (User.Email != null)
+            {
+                try
+                {
+                    await _userAppService.UpdateUser(User.UsuarioId.ToString(), User.Email, User.PrimaryTelephone, User.SecundaryTelephone, User.Cep);
+                    UserDialogs.Instance.Toast("Edição de dados realizada com sucesso!");
+                }
+                catch
+                {
+                    UserDialogs.Instance.Toast("Não foi possível editar suas informações pessoais!");
+                }
+                finally
+                {
+                    await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                }
+            }
+            else UserDialogs.Instance.Toast("Preencha o seu email");
         }
 
         private async void ChangePassword()

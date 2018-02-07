@@ -12,5 +12,6 @@ namespace PottiRoma.App.Services.Interfaces
     {
         Task<GetSalesByUserIdResponse> GetSalesByUserId(string usuarioId);
         Task InsertNewSale(InsertNewSaleRequest request);
+        Task UpdateSale(string vendaId, float saleValue, float salePaidValue, int numberSoldPieces, string description);
     }
 }

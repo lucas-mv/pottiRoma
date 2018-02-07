@@ -55,5 +55,19 @@ namespace PottiRoma.App.Repositories.Api
                    await PottiRomaApiAccess.GetPottiRomaApi<ISalesRefit>().InsertNewSale(request)
               );
         }
+
+        public async Task UpdateSale(string vendaId, float saleValue, float salePaidValue, int numberSoldPieces, string description)
+        {
+            await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+               retryCount: 5,
+               sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+             )
+             .ExecuteAsync(async () =>
+                   await PottiRomaApiAccess.GetPottiRomaApi<ISalesRefit>().UpdateSale(vendaId,saleValue,salePaidValue,numberSoldPieces,description)
+              );
+        }
     }
 }

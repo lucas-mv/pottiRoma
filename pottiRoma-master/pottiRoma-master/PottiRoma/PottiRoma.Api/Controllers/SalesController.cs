@@ -38,5 +38,13 @@ namespace PottiRoma.Api.Controllers
             //await ValidateToken();
             _salesService.InsertNewSale(request.UsuarioId, request.ClienteId, request.UserName, request.ClientName, request.SaleDate, request.SaleValue, request.SalePaidValue, request.NumberSoldPieces, request.Description);
         }
+
+        [Route("UpdateSale")]
+        [HttpPost]
+        public async Task UpdateSale(string vendaId, float saleValue, float salePaidValue, int numberSoldPieces, string description)
+        {
+            //await ValidateToken();
+            _salesService.UpdateSale(new Guid(vendaId), saleValue, salePaidValue, numberSoldPieces, description);
+        }
     }
 }

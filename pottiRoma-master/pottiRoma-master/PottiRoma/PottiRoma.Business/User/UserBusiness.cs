@@ -128,6 +128,11 @@ namespace PottiRoma.Business.User
             return UserRepository.Get().GetAppUsers();
         }
 
+        public static void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
+        {
+            UserRepository.Get().UpdateUser(usuarioId, email, primaryTelephone, secundaryTelephone, cep);
+        }
+
         #region Private methods
 
         public static string RandomString(int length)

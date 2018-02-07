@@ -34,5 +34,9 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Post("/User/GetAppUsers")]
         [Headers("Authorization: Bearer")]
         Task<GetAppUsersResponse> GetAppUsers();
+
+        [Post("/User/UpdateUser")]
+        [Headers("Authorization: Bearer")]
+        Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep);
     }
 }

@@ -18,5 +18,10 @@ namespace PottiRoma.Services.Implementations
         {
             return SalesBusiness.GetSalesByUserId(usuarioId);
         }
+
+        public void UpdateSale(Guid vendaId, float saleValue, float salePaidValue, int numberSoldPieces, string description)
+        {
+            SalesBusiness.UpdateSale(vendaId, saleValue, salePaidValue, numberSoldPieces, description);
+        }
     }
 }

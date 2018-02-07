@@ -59,5 +59,10 @@ namespace PottiRoma.Services.Implementations
         {
             return UserBusiness.GetAppUsers();
         }
+
+        public void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
+        {
+            UserBusiness.UpdateUser(usuarioId, email, primaryTelephone, secundaryTelephone, cep);
+        }
     }
 }

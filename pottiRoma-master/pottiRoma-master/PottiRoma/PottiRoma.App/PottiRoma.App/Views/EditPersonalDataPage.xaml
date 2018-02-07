@@ -120,6 +120,7 @@
             <Button
                 Grid.Row="2"
                 Margin="16"
+                Command="{Binding EditPersonalDataCommand}"
                 Style="{StaticResource ButtonDefault}"
                 Text="SALVAR"
                 VerticalOptions="Center" />

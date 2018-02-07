@@ -100,7 +100,7 @@
                             FontAttributes="Bold"
                             FontSize="{StaticResource StandardFontSize}"
                             HorizontalOptions="End"
-                            HorizontalTextAlignment="Center"
+                            HorizontalTextAlignment="End"
                             Keyboard="Numeric"
                             Placeholder="Digite aqui"
                             PlaceholderColor="{StaticResource PlaceholderColor}"
@@ -133,7 +133,7 @@
                             FontAttributes="Bold"
                             FontSize="{StaticResource StandardFontSize}"
                             HorizontalOptions="End"
-                            HorizontalTextAlignment="Center"
+                            HorizontalTextAlignment="End"
                             Keyboard="Numeric"
                             Placeholder="Digite aqui"
                             PlaceholderColor="{StaticResource PlaceholderColor}"
@@ -165,7 +165,7 @@
                             FontAttributes="Bold"
                             FontSize="{StaticResource StandardFontSize}"
                             HorizontalOptions="End"
-                            HorizontalTextAlignment="Center"
+                            HorizontalTextAlignment="End"
                             Keyboard="Numeric"
                             Placeholder="Digite aqui"
                             PlaceholderColor="{StaticResource PlaceholderColor}"
@@ -187,8 +187,8 @@
                             TextColor="{StaticResource DarkTextColor}" />
                         <Grid>
                             <renderers:CustomEditor
-                                Margin="0"
                                 x:Name="ObservacoesEditor"
+                                Margin="0"
                                 Completed="Editor_observacoes_placeholder_Unfocused"
                                 Focused="Editor_observacoes_placeholder_Focused"
                                 FontSize="14"
@@ -219,7 +219,7 @@
             Command="{Binding SaveSaleCommand}"
             HorizontalOptions="Center"
             Style="{StaticResource ButtonDefault}"
-            Text="SALVAR VENDA"
+            Text="{Binding ButtonText}"
             VerticalOptions="Center"
             WidthRequest="220" />
 
