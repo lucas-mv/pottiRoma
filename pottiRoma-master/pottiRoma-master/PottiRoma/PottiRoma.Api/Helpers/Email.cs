@@ -71,7 +71,6 @@ namespace PottiRoma.Api.Helpers
             msg.IsBodyHtml = true;
             msg.Body = _Corpo;
 
-
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Credentials = new System.Net.NetworkCredential("lucasrloliveira@gmail.com", "Qpmjvc@1704");

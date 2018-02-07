@@ -102,12 +102,8 @@
                                 <TapGestureRecognizer Command="{Binding ResetPasswordCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
-
                         <ContentView HeightRequest="20" />
                     </StackLayout>
-
-
-
                     <Button
                         Grid.Row="3"
                         Grid.Column="1"

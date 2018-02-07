@@ -102,6 +102,7 @@ namespace PottiRoma.App.ViewModels
             else ListType = CarouselBannerType.Total;
             await GetAppUsers();
             base.OnNavigatedTo(parameters);
+            await NavigationHelper.PopLoading();
         }
 
         private async Task GetAppUsers()

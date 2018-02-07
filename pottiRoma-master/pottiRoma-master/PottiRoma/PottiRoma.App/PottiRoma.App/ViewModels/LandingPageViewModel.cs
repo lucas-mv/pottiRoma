@@ -38,15 +38,12 @@ namespace PottiRoma.App.ViewModels
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-
-            var currentSeasonReponse = await _seasonAppService.CurrentSeason();
-
-            //var currentPoints = await _gamificationPointsAppService.GetCurrentGamificationPoints();
-            //await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, currentPoints.Entity);
-            await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
-
             try
             {
+                var currentSeasonReponse = await _seasonAppService.CurrentSeason();
+                //var currentPoints = await _gamificationPointsAppService.GetCurrentGamificationPoints();
+                //await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, currentPoints.Entity);
+                await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 var token = await CacheAccess.GetSecure<Guid>(CacheKeys.ACCESS_TOKEN);
                 Settings.AccessToken = token.ToString();

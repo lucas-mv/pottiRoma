@@ -63,9 +63,16 @@ namespace PottiRoma.App.ViewModels
             CacheAccess.Initialize();
         }
 
-        private void ResetPassword()
+        private async void ResetPassword()
         {
-            //aqui deve abrir um popup pro usuário inserir o email dele e assim reenviar outra senha para esse email
+            CanExecuteInitial();
+            await ResetPasswordPopupHelper.Mostrar(CallbackDate);
+            CanExecuteEnd();
+        }
+
+        private void CallbackDate(string date)
+        {
+            UserDialogs.Instance.Toast("Esse método ainda não foi implementado");
         }
 
         public override async void OnNavigatedTo(NavigationParameters parameters)

@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.Utils.Helpers;
+﻿using PottiRoma.App.Models.Models;
+using PottiRoma.App.Utils.Helpers;
 using Xamarin.Forms;
 
 namespace PottiRoma.App.Views
@@ -16,6 +17,47 @@ namespace PottiRoma.App.Views
 
             if (!string.IsNullOrEmpty(thisLabel.Text) && !thisLabel.Text.Contains("R$"))
                 thisLabel.Text = Formatter.FormatMoney(decimal.Parse(thisLabel.Text));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SearchBarHistorySales.TextChanged += TextoPesquisaChanged;
+        }
+
+        private void TextoPesquisaChanged(object sender, TextChangedEventArgs e)
+        {
+            var ThisSearchBar = (sender as SearchBar);
+            if (SalesListView.DataSource != null)
+            {
+                SalesListView.DataSource.Filter = FiltrarClientes;
+                SalesListView.DataSource.RefreshFilter();
+            }
+        }
+
+        private bool FiltrarClientes(object item)
+        {
+            if (SearchBarHistorySales == null || SearchBarHistorySales.Text == null) return true;
+
+            var sale = item as Sale;
+
+            string textolista;
+            string textobarra;
+            bool ok = false;
+
+            Translate translate = new Translate();
+            textobarra = translate.TranslateString(SearchBarHistorySales.Text.ToLower());
+
+            if (sale != null)
+            {
+                if (!string.IsNullOrEmpty(sale.ClientName))
+                {
+                    textolista = translate.TranslateString(sale.ClientName.ToLower());
+                    if (textolista.Contains(textobarra))
+                        ok = true;
+                }
+            }
+            return ok;
         }
     }
 }

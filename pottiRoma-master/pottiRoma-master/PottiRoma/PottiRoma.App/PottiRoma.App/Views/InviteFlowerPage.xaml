@@ -6,7 +6,7 @@
     xmlns:controls="clr-namespace:PottiRoma.App.Controls"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
-    Title="Convidar Flor"
+    Title="Convidar Flor Aliada"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource LightBackgroundColor}">
     <Grid>
@@ -44,6 +44,7 @@
                     FontSize="{StaticResource StandardFontSize}"
                     Placeholder="Nome*"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding Name}"
                     TextColor="{StaticResource TextColor}"
                     VerticalOptions="Center" />
             </Frame>
@@ -74,6 +75,7 @@
                     FontSize="{StaticResource StandardFontSize}"
                     Placeholder="CPF*"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding Cpf}"
                     TextColor="{StaticResource TextColor}"
                     VerticalOptions="Center" />
             </Frame>
@@ -89,6 +91,7 @@
                     Keyboard="Email"
                     Placeholder="Telefone Principal*"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding PrimaryTelephone}"
                     TextColor="{StaticResource TextColor}"
                     VerticalOptions="Center" />
             </Frame>
@@ -103,6 +106,7 @@
                     FontSize="{StaticResource StandardFontSize}"
                     Placeholder="CEP"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding Cep}"
                     TextColor="{StaticResource TextColor}"
                     VerticalOptions="Center" />
             </Frame>

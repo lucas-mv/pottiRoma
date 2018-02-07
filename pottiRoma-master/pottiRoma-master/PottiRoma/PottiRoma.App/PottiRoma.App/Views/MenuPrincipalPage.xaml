@@ -136,7 +136,7 @@
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"
                                 HorizontalOptions="Start"
-                                Text="    Convidar Flor"
+                                Text="    Convidar Flor Aliada"
                                 TextColor="{StaticResource WhiteColor}"
                                 VerticalOptions="Center" />
                         </Grid>

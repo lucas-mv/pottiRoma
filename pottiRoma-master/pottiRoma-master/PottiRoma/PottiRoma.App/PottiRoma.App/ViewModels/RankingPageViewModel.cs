@@ -57,7 +57,6 @@ namespace PottiRoma.App.ViewModels
             await Task.Delay(2000);
             await _navigationService.NavigateAsync(NavigationSettings.ListRanking);
             CanExecuteEnd();
-            await NavigationHelper.PopLoading();
         }
 
         private async void GoToRankingPage(RankingBannerDto obj)
@@ -71,7 +70,6 @@ namespace PottiRoma.App.ViewModels
             parameters.Add(NavigationKeyParameters.RankingType, convertedIndex);
             await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
             CanExecuteEnd();
-            await NavigationHelper.PopLoading();
         }
 
         public override void OnNavigatedTo(NavigationParameters parameters)

@@ -27,7 +27,7 @@
 
         <sfBusy:SfBusyIndicator
             Title="Aguarde..."
-            AnimationType="Globe"
+            AnimationType="SingleCircle"
             HorizontalOptions="Center"
             TextColor="White"
             TextSize="12"

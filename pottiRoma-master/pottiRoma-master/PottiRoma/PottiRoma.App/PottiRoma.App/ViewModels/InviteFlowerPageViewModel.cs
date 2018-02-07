@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.ViewModels.Core;
@@ -20,18 +21,39 @@ namespace PottiRoma.App.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly IUserAppService _userAppService;
 
-        private string _message;
-        public string Message
-        {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
-        }
-
         private string _email;
         public string Email
         {
             get { return _email; }
             set { SetProperty(ref _email, value); }
+        }
+
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set { SetProperty(ref _name, value); }
+        }
+
+        private string _cpf;
+        public string Cpf
+        {
+            get { return _cpf; }
+            set { SetProperty(ref _cpf, value); }
+        }
+
+        private string _primaryTelephone;
+        public string PrimaryTelephone
+        {
+            get { return _primaryTelephone; }
+            set { SetProperty(ref _primaryTelephone, value); }
+        }
+
+        private string _cep;
+        public string Cep
+        {
+            get { return _cep; }
+            set { SetProperty(ref _cep, value); }
         }
 
         public DelegateCommand SendEmailCommand { get; set; }
@@ -50,28 +72,43 @@ namespace PottiRoma.App.ViewModels
 
         private async void SendEmail()
         {
+            string MensagemPadrão = "Testando o envio de email";
+
             try
             {
                 TimeSpan duration = new TimeSpan(0, 0, 2);
-                if (string.IsNullOrEmpty(Email))
-                    _userDialogs.Toast("Digite o Email!", duration);
-                if (string.IsNullOrEmpty(Message))
-                    _userDialogs.Toast("Digite uma mensagem!", duration);
+                if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(Cpf) || string.IsNullOrEmpty(PrimaryTelephone))
+                    _userDialogs.Toast("Dados Incompletos!", duration);
+
                 else
                 {
                     await NavigationHelper.ShowLoading();
 
                     var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                    var userGuid = user.UsuarioId;
+
                     var email_name = new Dictionary<string, string>();
                     email_name.Add(Email, user.Name);
                     await _userAppService.SendEmail(new Models.Requests.User.SendEmailRequest
                     {
                         Assunto = "Convite para ser revendedor Potti Roma de" + user.Name,
-                        CorpoEmail = Message,
+                        CorpoEmail = MensagemPadrão,
                         Destinatarios = email_name,
                         UserId = user.UsuarioId,
                     });
-                    _userDialogs.Toast("Email enviado com Sucesso!", duration);
+                    user.InviteAllyFlowersPoints += 100;
+
+                    await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                    {
+                        UsuarioId = userGuid,
+                        AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                        AverageTicketPoints = user.AverageTicketPoints,
+                        RegisterClientsPoints = user.RegisterClientsPoints,
+                        InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                        SalesNumberPoints = user.SalesNumberPoints
+                    });
+
+                    _userDialogs.Toast("Email enviado com Sucesso! Você ganhou 110 pontos com o convite!", duration);
                 }
             }
             catch (Exception ex)
