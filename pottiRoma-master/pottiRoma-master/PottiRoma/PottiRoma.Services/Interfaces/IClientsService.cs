@@ -12,5 +12,6 @@ namespace PottiRoma.Services.Interfaces
         void RegisterClient(Guid usuarioId, string name, string telephone, string email,string Cep, DateTime birthdate);
         List<ClientEntity> GetClientsByUserId(Guid usuarioId);
         void UpdateClientInfo(Guid clienteId, string name, string telephone, string email, string Cep, DateTime birthdate);
+        void RemoveClient(Guid clienteId);
     }
 }

@@ -30,6 +30,11 @@ namespace PottiRoma.Business.Clients
             return ClientsRepository.Get().GetClientsByUserId(usuarioId);
         }
 
+        public static void RemoveClient(Guid clienteId)
+        {
+            ClientsRepository.Get().RemoveClient(clienteId);
+        }
+
         public static void UpdateClientInfo(Guid clienteId, string name, string telephone, string email, string Cep, DateTime birthdate)
         {
             var client = new ClientEntity()

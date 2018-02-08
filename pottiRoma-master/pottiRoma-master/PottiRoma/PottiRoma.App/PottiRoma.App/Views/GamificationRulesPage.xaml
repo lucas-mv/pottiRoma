@@ -9,16 +9,110 @@
     Title="Regras do Jogo"
     prism:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource LightBackgroundColor}">
-            <Label
-                FontAttributes="Bold"
-                FontSize="{StaticResource LargeFontSize}"
-                Text="{Binding Main.Title}"
-                TextColor="{StaticResource TextColor}" />
-            <Label
-                FontSize="{StaticResource StandardFontSize}"
-                Text="{Binding Main.Definition}"
-                TextColor="{StaticResource TextColor}" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="16" BackgroundColor="{StaticResource LightBackgroundColor}">
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding Main.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding Main.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding Objective.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding Objective.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding TheGame.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding TheGame.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding Bonus.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding Bonus.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding Kpis.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding Kpis.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding Seeds.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding Seeds.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding Rules.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding Rules.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding Where.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding Where.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding Who.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding Who.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="10" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    Text="{Binding GeneralObservations.Title}"
+                    TextColor="{StaticResource TextColor}" />
+                <Label
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding GeneralObservations.Definition}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="30" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

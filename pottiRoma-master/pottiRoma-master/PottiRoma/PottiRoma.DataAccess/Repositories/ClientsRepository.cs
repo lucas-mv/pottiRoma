@@ -52,6 +52,11 @@ namespace PottiRoma.DataAccess.Repositories
         WHERE ClienteId = @clienteid  
         ";
 
+        private const string REMOVE_CLIENT = @"
+            DELETE FROM dbo.Cliente
+            WHERE ClienteId = '@clienteid';
+        ";
+
         private const string INSERT_CLIENT = @"
         INSERT INTO dbo.Cliente 
         (
@@ -114,6 +119,15 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@birthdate", client.Birthdate, System.Data.DbType.DateTime);
 
             Execute(INSERT_CLIENT, parameters);
+        }
+
+        public void RemoveClient(Guid clienteId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@clienteid", clienteId, System.Data.DbType.Guid);
+
+            Execute(REMOVE_CLIENT, parameters);
         }
 
         public List<ClientEntity> GetClientsByUserId(Guid userId)

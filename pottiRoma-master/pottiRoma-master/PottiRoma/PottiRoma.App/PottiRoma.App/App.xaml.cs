@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using Microsoft.Practices.Unity;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.Views;
