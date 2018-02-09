@@ -69,7 +69,7 @@ namespace PottiRoma.Api.Controllers
                 "pottiroma.azurewebsites.net/api/v1/User/Profile/Password/Reset/" + userId;
             var destinatario = new Dictionary<string, string>();
             destinatario.Add(user.Email, user.Name);
-            Email.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
+            EmailObsoleto.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
         }
 
         [Route("Profile/Password/Reset/{userId}")]
@@ -80,20 +80,14 @@ namespace PottiRoma.Api.Controllers
             var corpoEmail = "A sua senha do app da Potti Roma foi redefinida com sucesso para a senha temporária indicada abaixo:\n\n" + user.Password;
             var destinatario = new Dictionary<string, string>();
             destinatario.Add(user.Email, user.Name);
-            Email.Enviar("Potti Roma - Nova senha", corpoEmail, destinatario);
+            EmailObsoleto.Enviar("Potti Roma - Nova senha", corpoEmail, destinatario);
         }
 
         [HttpPost]
         [Route("SendEmail")]
-        public async Task<SendEmailResponse> SendEmail(SendEmailRequest request)
+        public async void SendEmail(string emailInvited,string nameInvited, string nameUser, string cpf, string telephone, string cep)
         {
-            await ValidateToken();
-            var user = _userService.GetUserById(request.UserId);
-            Email.Enviar(request.Assunto, request.CorpoEmail, request.Destinatarios, request.Cc, null, user.Email, user.Name, null);
-            return new SendEmailResponse()
-            {
-                IsSuccess = true
-            };
+            EmailInvite.Enviar(emailInvited, nameInvited, nameUser, cpf, telephone, cep);
         }
 
         [Route("Profile/Update")]

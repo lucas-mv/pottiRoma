@@ -32,9 +32,9 @@ namespace PottiRoma.App.Services.Implementations
             await UserApiRepository.Get().Logout(userId);
         }
 
-        public async Task SendEmail(SendEmailRequest request)
+        public async Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep)
         {
-            await UserApiRepository.Get().SendEmail(request);
+            await UserApiRepository.Get().SendEmail(emailInvited, nameInvited, nameUser, cpf, telephone, cep);
         }
 
         public async Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)

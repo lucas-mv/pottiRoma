@@ -140,7 +140,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Email.cs" />
+    <Compile Include="Helpers\EmailObsoleto.cs" />
+    <Compile Include="Helpers\EmailInvite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\Clients\DeleteClientRequest.cs" />
     <Compile Include="Request\Clients\RegisterClientRequest.cs" />

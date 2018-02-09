@@ -4,6 +4,7 @@ using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
+using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -89,13 +90,7 @@ namespace PottiRoma.App.ViewModels
 
                     var email_name = new Dictionary<string, string>();
                     email_name.Add(Email, user.Name);
-                    await _userAppService.SendEmail(new Models.Requests.User.SendEmailRequest
-                    {
-                        Assunto = "Convite para ser revendedor Potti Roma de" + user.Name,
-                        CorpoEmail = MensagemPadrão,
-                        Destinatarios = email_name,
-                        UserId = user.UsuarioId,
-                    });
+                    await _userAppService.SendEmail(Email, Name, user.Name, Cpf, PrimaryTelephone, Cep);
                     user.InviteAllyFlowersPoints += 100;
 
                     await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
@@ -113,8 +108,12 @@ namespace PottiRoma.App.ViewModels
             }
             catch (Exception ex)
             {
-                _userDialogs.Toast(ex.Message);
+                _userDialogs.Toast("Não foi possível enviar o convite, verifique sua conexão com a internet!");
+            }
+            finally
+            {
                 await NavigationHelper.PopLoading();
+                await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
             }
         }
     }

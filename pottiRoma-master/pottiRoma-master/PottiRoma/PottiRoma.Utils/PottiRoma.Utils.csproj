@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\Settings.cs" />
+    <Compile Include="Constants\EmailTexts.cs" />
     <Compile Include="Constants\Messages.cs" />
     <Compile Include="CustomExceptions\ExceptionWithHttpStatus.cs" />
     <Compile Include="Enums\AuthOrigin.cs" />

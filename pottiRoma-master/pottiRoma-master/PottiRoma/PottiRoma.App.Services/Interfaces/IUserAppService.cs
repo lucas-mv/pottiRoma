@@ -13,7 +13,7 @@ namespace PottiRoma.App.Services.Interfaces
         Task ChangePassword(ChangePasswordRequest request);
         Task<LoginReponse> Login(LoginRequest request);
         Task Logout(string userId);
-        Task SendEmail(SendEmailRequest request);
+        Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep);
         Task UpdateUserPoints(UpdateUserPointsRequest request);
         Task<GetAppUsersResponse> GetAppUsers();
         Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep);

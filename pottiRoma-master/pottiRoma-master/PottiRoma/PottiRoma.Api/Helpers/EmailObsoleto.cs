@@ -6,7 +6,7 @@ using System.Net.Mail;
 
 namespace PottiRoma.Api.Helpers
 {
-    public static class Email
+    public static class EmailObsoleto
     {
         public static void Enviar(String _Assunto, String _Corpo, Dictionary<string, string> _Destinatarios, Dictionary<string, string> _Cc = null, List<Attachment> _anexos = null, String _emailFrom = null, String _nomeFrom = null, string _logoPath = null)
         {
