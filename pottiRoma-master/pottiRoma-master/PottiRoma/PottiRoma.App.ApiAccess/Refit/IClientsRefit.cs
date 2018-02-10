@@ -22,5 +22,9 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Post("/Clients/Update")]
         [Headers("Authorization: Bearer")]
         Task UpdateClientInfo(UpdateClientInfoRequest request);
+
+        [Get("/Clients/Remove")]
+        [Headers("Authorization: Bearer")]
+        Task RemoveCliente(string clienteId);
     }
 }

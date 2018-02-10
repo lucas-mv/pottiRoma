@@ -124,7 +124,7 @@ namespace PottiRoma.App.ViewModels
             }
             catch(Exception ex)
             {
-                UserDialogs.Instance.Toast(ex.Message);
+                UserDialogs.Instance.Toast("Não foi possível fazer o Login, verifique sua conexão");
             }
             finally
             {
