@@ -20,72 +20,79 @@
             ScaleOut="0.8" />
     </pages:PopupPage.Animation>
 
-    <Grid
-        BackgroundColor="{StaticResource LightBackgroundColor}"
+    <Frame
+        Padding="0"
+        HasShadow="True"
         HeightRequest="400"
         HorizontalOptions="Center"
+        OutlineColor="{StaticResource OutlineColor}"
         VerticalOptions="Center"
         WidthRequest="260">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="50" />
-        </Grid.RowDefinitions>
-        <Image
-            Grid.Row="0"
-            Aspect="AspectFill"
-            Source="popup.png" />
-        <StackLayout
-            Grid.Row="1"
-            Margin="16"
-            Spacing="10">
-            <Label
-                FontAttributes="Bold"
-                FontSize="{StaticResource LargeFontSize}"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="{Binding DataAniversariantes}"
-                TextColor="{StaticResource DarkTextColor}"
-                VerticalOptions="Center" />
-            <ContentView HeightRequest="10" />
-            <sflistview:SfListView
-                HorizontalOptions="CenterAndExpand"
-                ItemsSource="{Binding Aniversariantes}"
-                SelectionBackgroundColor="Transparent"
-                VerticalOptions="CenterAndExpand">
-                <sflistview:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <Label
-                                    FontSize="{StaticResource StandardFontSize}"
-                                    Text="{Binding Nome}"
-                                    TextColor="{StaticResource TextColor}" />
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </sflistview:SfListView.ItemTemplate>
-            </sflistview:SfListView>
-        </StackLayout>
+        <Grid BackgroundColor="{StaticResource LightBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Image
+                Grid.Row="0"
+                Aspect="AspectFill"
+                Source="popup.png" />
+            <StackLayout
+                Grid.Row="1"
+                Margin="16"
+                Spacing="10">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource LargeFontSize}"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding BirthdayTitle}"
+                    TextColor="{StaticResource DarkTextColor}"
+                    VerticalOptions="Center" />
+                <ContentView HeightRequest="10" />
+                <sflistview:SfListView
+                    ItemSize="20"
+                    ItemsSource="{Binding Birthdays}"
+                    SelectionBackgroundColor="Transparent">
+                    <sflistview:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid HeightRequest="20" HorizontalOptions="Center">
+                                        <Label
+                                            FontSize="{StaticResource StandardFontSize}"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Name}"
+                                            TextColor="{StaticResource TextColor}" />
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </sflistview:SfListView.ItemTemplate>
+                </sflistview:SfListView>
+            </StackLayout>
 
-        <Grid
-            Grid.Row="2"
-            BackgroundColor="{StaticResource ButtonColor}"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <Button
-                FontSize="14"
-                Style="{StaticResource ButtonDefault}"
-                Text="FECHAR" />
-            <Button
-                Grid.Column="1"
-                Style="{StaticResource ButtonDefault}"
-                Text="ENVIAR EMAIL"
-                TextColor="#fafafa" />
+            <Grid
+                Grid.Row="2"
+                BackgroundColor="{StaticResource ButtonColor}"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Command="{Binding CloseCommand}"
+                    FontSize="14"
+                    Style="{StaticResource ButtonDefault}"
+                    Text="FECHAR" />
+                <Button
+                    Grid.Column="1"
+                    Command="{Binding SendEmailCommand}"
+                    Style="{StaticResource ButtonDefault}"
+                    Text="ENVIAR EMAIL" />
+            </Grid>
         </Grid>
-    </Grid>
+    </Frame>
 </pages:PopupPage>

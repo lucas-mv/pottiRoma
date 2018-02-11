@@ -18,6 +18,8 @@ namespace PottiRoma.App.Utils
             public const string SEASON_KEY = "Season";
             public const string CLIENTS = "Clients";
             public const string POINTS = "GamificationPoints";
+            public const string FIRST_ACCESS = "FirstAccess";
+            public const string BIRTHDAYS = "Birthdays";
         }
 
         public class Global

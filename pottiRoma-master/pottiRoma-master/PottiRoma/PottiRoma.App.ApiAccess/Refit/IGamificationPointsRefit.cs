@@ -10,7 +10,7 @@ namespace PottiRoma.App.ApiAccess.Refit
 {
     public interface IGamificationPointsRefit
     {
-        [Get("/GamificationPoints/GetCurrent")]
+        [Post("/GamificationPoints/GetCurrent")]
         [Headers("Authorization: Bearer")]
         Task<GetGamificationPointsResponse> GetCurrentGamificationPoints();
     }

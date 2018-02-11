@@ -1,6 +1,8 @@
 ﻿using Acr.UserDialogs;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Responses.User;
+using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
@@ -9,9 +11,11 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -56,9 +60,22 @@ namespace PottiRoma.App.ViewModels
             GoToSalesHistoryCommand = new DelegateCommand(GoToSalesHistory).ObservesCanExecute(() => CanExecute);
             LogoutCommand = new DelegateCommand(Logout).ObservesCanExecute(() => CanExecute);
 
-
-
             Title = "Ranking Geral";
+        }
+
+        public override async void OnNavigatedTo(NavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            string firstAccess = "false";
+
+            if (parameters.ContainsKey(NavigationKeyParameters.FirstAccess))
+                firstAccess = parameters[NavigationKeyParameters.FirstAccess] as string;
+            if (parameters.ContainsKey(NavigationKeyParameters.ClientsBirthday) && firstAccess == "true")
+            {
+                var listBirthdays = parameters[NavigationKeyParameters.ClientsBirthday] as ObservableCollection<Client>;
+                await CacheAccess.Insert<ObservableCollection<Client>>(CacheKeys.BIRTHDAYS, listBirthdays);
+                await PopupAnniversaryHelper.Mostrar(_userAppService);
+            }
         }
 
         private async void GoToSalesHistory()

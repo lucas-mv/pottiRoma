@@ -66,7 +66,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        Email, 
 	        Telephone, 
 	        Cep, 
-	        Birthdate
+	        Birthdate,
+            IsActive
         )
         VALUES 
         (
@@ -76,7 +77,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        @email, 
 	        @telephone, 
 	        @cep, 
-            @birthdate
+            @birthdate,
+            1
         )";
 
         #endregion
