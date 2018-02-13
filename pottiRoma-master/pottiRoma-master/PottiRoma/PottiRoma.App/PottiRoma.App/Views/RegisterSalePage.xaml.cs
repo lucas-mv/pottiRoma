@@ -59,12 +59,12 @@ namespace PottiRoma.App.Views
 
         private void Editor_observacoes_placeholder_Focused(object sender, FocusEventArgs e)
         {
-            Editor_observacoes_placeholder.IsVisible = false;
+            ViewModel.DescriptionPlaceHolderVisible = false;
         }
 
         private void Editor_observacoes_placeholder_Unfocused(object sender, FocusEventArgs e)
         {
-            Editor_observacoes_placeholder.IsVisible = (ObservacoesEditor.Text.Length < 1) ? true : false;
+            ViewModel.DescriptionPlaceHolderVisible = (ObservacoesEditor.Text.Length < 1) ? true : false;
         }
     }
 }

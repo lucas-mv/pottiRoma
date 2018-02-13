@@ -204,6 +204,7 @@
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="Start"
                                 HorizontalTextAlignment="Start"
+                                IsVisible="{Binding DescriptionPlaceHolderVisible}"
                                 Text="Digite aqui:"
                                 TextColor="{StaticResource PlaceholderColor}"
                                 VerticalOptions="Start"

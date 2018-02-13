@@ -52,6 +52,13 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _buttonText, value); }
         }
 
+        private bool _descriptionPlaceHolderVisible = true;
+        public bool DescriptionPlaceHolderVisible
+        {
+            get { return _descriptionPlaceHolderVisible; }
+            set { SetProperty(ref _descriptionPlaceHolderVisible, value); }
+        }
+
         private bool _isEditSale = false;
 
         public RegisterSalePageViewModel(
@@ -96,6 +103,8 @@ namespace PottiRoma.App.ViewModels
                 }
                 NameAndDateLabel = "Venda para: " + SaleRegistered.ClientName + ", " + Formatter.FormatDate(DateTime.Now);
             }
+            if(SaleRegistered != null && SaleRegistered.Description != null)
+                DescriptionPlaceHolderVisible = (SaleRegistered.Description.Length > 0) ? false : true;
             base.OnNavigatedTo(parameters);
         }
 
