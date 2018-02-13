@@ -185,14 +185,16 @@
                             FontSize="{StaticResource StandardFontSize}"
                             Text="Observações"
                             TextColor="{StaticResource DarkTextColor}" />
-                        <Grid>
-                            <renderers:CustomEditor
+                        <Grid Margin="0">
+                            <renderers:CustomEntry
                                 x:Name="ObservacoesEditor"
                                 Margin="0"
                                 Completed="Editor_observacoes_placeholder_Unfocused"
                                 Focused="Editor_observacoes_placeholder_Focused"
                                 FontSize="14"
                                 HeightRequest="100"
+                                HorizontalTextAlignment="Start"
+                                
                                 HorizontalOptions="Fill"
                                 Text="{Binding SaleRegistered.Description}"
                                 TextColor="{StaticResource TextColor}"

@@ -1,6 +1,7 @@
 ﻿using PottiRoma.App.CustomRenderers;
 using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.ViewModels;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace PottiRoma.App.Views
