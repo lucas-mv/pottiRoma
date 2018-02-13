@@ -20,7 +20,7 @@ namespace PottiRoma.App.Utils.Helpers
         public static string FormatDate(DateTime Date)
         {
             string StringDate = Date.ToString();
-            string FormattedDate = Convert.ToDateTime(StringDate).ToString("dd/mm/yyyy");
+            string FormattedDate = Convert.ToDateTime(StringDate).ToString("dd/MM/yyyy");
             return FormattedDate;
         }
 
