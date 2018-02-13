@@ -18,15 +18,21 @@ namespace PottiRoma.Business.User
     {
         private static Random _random = new Random();
 
-        public static UserEntity GetUserById(Guid userId)
+        public static UserEntity GetUserById(Guid usuarioId)
         {
-            var user = UserRepository.Get().GetUserById(userId);
+            var user = UserRepository.Get().GetUserById(usuarioId);
             return user;
         }
 
-        public static void Logout(string userId)
+        public static UserEntity GetUserByEmail(string email)
         {
-            AuthenticationControlRepository.Get().DeleteAllUserAuthControl(new Guid(userId));
+            var user = UserRepository.Get().GetUserByEmail(email);
+            return user;
+        }
+
+        public static void Logout(string usuarioId)
+        {
+            AuthenticationControlRepository.Get().DeleteAllUserAuthControl(new Guid(usuarioId));
         }
 
         public static UserEntity RegisterUser(string email, string password, string name,

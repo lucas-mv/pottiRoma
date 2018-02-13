@@ -20,5 +20,15 @@ Com Amor,
 Potti Roma";
 
         public static string EMAIL_SUBJECT = @"Convite Potti Roma";
+
+        public static string RESET_PASSWORD = @"
+Olá @userName !
+A sua senha do App Potti Roma foi redefinida com sucesso para a senha temporária indicada abaixo:
+@userPassword
+
+
+Com Amor, Potti Roma";
+
+        public static string RESET_PASSWORD_SUBJECT = @"Alteração de Senha";
     }
 }

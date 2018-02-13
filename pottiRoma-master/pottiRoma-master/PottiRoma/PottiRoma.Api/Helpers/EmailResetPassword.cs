@@ -1,17 +1,18 @@
 ﻿using PottiRoma.Utils.Constants;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
-using System.Web;
 
 namespace PottiRoma.Api.Helpers
 {
-    public static class EmailInvite
+    public static class EmailResetPassword
     {
-        public static async void Enviar(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep)
+        public static void Enviar(string emailUsuario, string userName, string userPassword)
         {
-            //Define os dados do e-mail
+            var msg = new MailMessage();
+
             string nomeRemetente = "Administrativo Potti Roma";
             string emailRemetente = "cila@pottiroma.com.br";
             string senha = "poderosas1";
@@ -26,13 +27,7 @@ namespace PottiRoma.Api.Helpers
             objEmail.From = new System.Net.Mail.MailAddress(nomeRemetente + "<" + emailRemetente + ">");
 
             //Define os destinatários do e-mail.
-            objEmail.To.Add(emailInvited);
-
-            //Enviar cópia para.
-            //objEmail.CC.Add(emailComCopia);
-
-            //Enviar cópia oculta para.
-            //objEmail.Bcc.Add(emailComCopiaOculta);
+            objEmail.To.Add(emailUsuario);
 
             //Define a prioridade do e-mail.
             objEmail.Priority = System.Net.Mail.MailPriority.Normal;
@@ -41,29 +36,14 @@ namespace PottiRoma.Api.Helpers
             objEmail.IsBodyHtml = false;
 
             //Define título do e-mail.
-            objEmail.Subject = EmailTexts.EMAIL_SUBJECT;
+            objEmail.Subject = EmailTexts.RESET_PASSWORD_SUBJECT;
 
             //Define o corpo do e-mail.
-            objEmail.Body = GetFormattedMessage(nameInvited, nameUser, cpf, telephone, cep);
-
+            objEmail.Body = GetFormattedMessage(userPassword, userName);
 
             //Para evitar problemas de caracteres "estranhos", configuramos o charset para "ISO-8859-1"
             objEmail.SubjectEncoding = System.Text.Encoding.GetEncoding("ISO-8859-1");
             objEmail.BodyEncoding = System.Text.Encoding.GetEncoding("ISO-8859-1");
-
-
-            // Caso queira enviar um arquivo anexo
-            //Caminho do arquivo a ser enviado como anexo
-            //string arquivo = Server.MapPath("arquivo.jpg");
-
-            // Ou especifique o caminho manualmente
-            //string arquivo = @"e:\home\LoginFTP\Web\arquivo.jpg";
-
-            // Cria o anexo para o e-mail
-            //Attachment anexo = new Attachment(arquivo, System.Net.Mime.MediaTypeNames.Application.Octet);
-
-            // Anexa o arquivo a mensagem
-            //objEmail.Attachments.Add(anexo);
 
             //Cria objeto com os dados do SMTP
             System.Net.Mail.SmtpClient objSmtp = new System.Net.Mail.SmtpClient();
@@ -92,16 +72,12 @@ namespace PottiRoma.Api.Helpers
             }
         }
 
-        public static string GetFormattedMessage(string nameInvited, string nameUser, string cpf, string telephone, string cep)
+        public static string GetFormattedMessage(string userPassword, string userName)
         {
-            string message = EmailTexts.EMAIL_INVITE;
+            string message = EmailTexts.RESET_PASSWORD;
 
-            message = message.Replace("@nameInvited", nameInvited);
-            message = message.Replace("@nameUser", nameUser);
-            message = message.Replace("@cpf", cpf);
-            message = message.Replace("@telephone", telephone);
-            message = message.Replace("@cep", cep);
-
+            message = message.Replace("@userPassword", userPassword);
+            message = message.Replace("@userName", userName);
             return message;
         }
     }

@@ -33,9 +33,14 @@ namespace PottiRoma.Services.Implementations
              inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive);
         }
 
-        public UserEntity GetUserById(Guid userId)
+        public UserEntity GetUserById(Guid usuarioId)
         {
-            return UserBusiness.GetUserById(userId);
+            return UserBusiness.GetUserById(usuarioId);
+        }
+
+        public UserEntity GetUserByEmail(string email)
+        {
+            return UserBusiness.GetUserByEmail(email);
         }
 
         public void ChangePassword(Guid UsuarioId, string oldPassword, string newPassword)
@@ -43,10 +48,10 @@ namespace PottiRoma.Services.Implementations
             UserBusiness.ChangePassword(UsuarioId, oldPassword, newPassword);
         }
 
-        public UserEntity ResetPassword(Guid userId)
+        public UserEntity ResetPassword(Guid usuarioId)
         {
-            var user = GetUserById(userId);
-            user.Password = UserBusiness.ResetPassword(userId);
+            var user = GetUserById(usuarioId);
+            user.Password = UserBusiness.ResetPassword(usuarioId);
             return user;
         }
 
