@@ -76,13 +76,13 @@ namespace PottiRoma.Business.User
             }
         }
 
-        public static void ChangePassword(Guid userId, string oldPassword, string newPassword)
+        public static void ChangePassword(Guid usuarioId, string oldPassword, string newPassword)
         {
             UserEntity user;
-            user = UserRepository.Get().GetUserAuthById(userId);
+            user = UserRepository.Get().GetUserAuthById(usuarioId);
 
             if (user == null)
-                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.INVALID_PASSWORD);
 
             if (ValidatePassword(oldPassword, user.PasswordSalt, user.Password))
             {
@@ -91,7 +91,7 @@ namespace PottiRoma.Business.User
             }
             else
             {
-                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.INVALID_PASSWORD);
             }
         }
 
