@@ -149,9 +149,8 @@ namespace PottiRoma.App.ViewModels
                             Telephone = ClientSelectedForEdition.Telephone
                         });
 
-                        int increatePoints = 50;
-                        //CONSERTAR ESSE ESQUEMA
-                        user.RegisterClientsPoints += 50;
+                        var points = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
+                        user.RegisterClientsPoints += points.RegisterNewClients;
 
                         await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
                         {
@@ -163,7 +162,7 @@ namespace PottiRoma.App.ViewModels
                             SalesNumberPoints = user.SalesNumberPoints
                         });
                         TimeSpan duration = new TimeSpan(0, 0, 3);
-                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increatePoints + " Pontos com esse Cadastro!", duration);
+                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + points.RegisterNewClients + " Pontos com esse Cadastro!", duration);
                     }
                     else
                     {

@@ -25,6 +25,12 @@ namespace PottiRoma.App.Views
             SearchBarHistorySales.TextChanged += TextoPesquisaChanged;
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            SearchBarHistorySales.Text = "";
+        }
+
         private void TextoPesquisaChanged(object sender, TextChangedEventArgs e)
         {
             var ThisSearchBar = (sender as SearchBar);

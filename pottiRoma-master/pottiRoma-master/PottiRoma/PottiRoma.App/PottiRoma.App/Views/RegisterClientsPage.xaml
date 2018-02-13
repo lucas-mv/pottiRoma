@@ -36,7 +36,7 @@
                 <renderers:CustomEntry
                     Margin="10,0,10,0"
                     FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="Nome"
+                    Placeholder="*Nome"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
                     Text="{Binding ClientSelectedForEdition.Name}"
                     TextColor="{StaticResource TextColor}"
@@ -52,23 +52,7 @@
                 <renderers:CustomEntry
                     Margin="10,0,10,0"
                     FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="CEP"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding ClientSelectedForEdition.Cep}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
-
-            <Frame
-                Grid.Row="1"
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="40"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Keyboard="Email"
+                    Keyboard="*Email"
                     Placeholder="Email"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
                     Text="{Binding ClientSelectedForEdition.Email}"
@@ -107,6 +91,22 @@
                     Placeholder="Telefone*"
                     PlaceholderColor="{StaticResource PlaceholderColor}"
                     Text="{Binding ClientSelectedForEdition.Telephone}"
+                    TextColor="{StaticResource TextColor}"
+                    VerticalOptions="Center" />
+            </Frame>
+
+            <Frame
+                Grid.Row="1"
+                Padding="0"
+                BackgroundColor="{StaticResource WhiteColor}"
+                HeightRequest="40"
+                OutlineColor="{StaticResource OutlineColor}">
+                <renderers:CustomEntry
+                    Margin="10,0,10,0"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Placeholder="CEP"
+                    PlaceholderColor="{StaticResource PlaceholderColor}"
+                    Text="{Binding ClientSelectedForEdition.Cep}"
                     TextColor="{StaticResource TextColor}"
                     VerticalOptions="Center" />
             </Frame>

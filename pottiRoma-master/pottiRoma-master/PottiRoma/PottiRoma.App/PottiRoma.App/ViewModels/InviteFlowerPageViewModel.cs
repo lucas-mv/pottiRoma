@@ -91,7 +91,8 @@ namespace PottiRoma.App.ViewModels
                     var email_name = new Dictionary<string, string>();
                     email_name.Add(Email, user.Name);
                     await _userAppService.SendEmail(Email, Name, user.Name, Cpf, PrimaryTelephone, Cep);
-                    user.InviteAllyFlowersPoints += 100;
+                    var points = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
+                    user.InviteAllyFlowersPoints += points.InviteFlower;
 
                     await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
                     {
@@ -103,7 +104,7 @@ namespace PottiRoma.App.ViewModels
                         SalesNumberPoints = user.SalesNumberPoints
                     });
 
-                    _userDialogs.Toast("Email enviado com Sucesso! Você ganhou 110 pontos com o convite!", duration);
+                    _userDialogs.Toast("Email enviado com Sucesso! Você ganhou " + points.InviteFlower + " pontos com o convite!", duration);
                 }
             }
             catch (Exception ex)

@@ -18,6 +18,12 @@ namespace PottiRoma.App.Views
             return false;
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            SearchBarClientesForSale.Text = "";
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

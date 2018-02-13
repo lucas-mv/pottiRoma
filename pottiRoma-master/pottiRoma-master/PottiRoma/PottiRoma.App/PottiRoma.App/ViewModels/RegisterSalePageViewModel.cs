@@ -134,10 +134,11 @@ namespace PottiRoma.App.ViewModels
                             Description = SaleRegistered.Description
                         });
 
-
-                        int increment = (int)SaleRegistered.NumberSoldPieces + (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces;
+                        var points = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
                         user.AverageItensPerSalePoints += (int)SaleRegistered.NumberSoldPieces;
                         user.AverageTicketPoints += (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces;
+                        user.SalesNumberPoints += (int)points.SalesNumber;
+                        int increment = (int)SaleRegistered.NumberSoldPieces + (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces + points.SalesNumber;
 
                         await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
                         {

@@ -78,8 +78,11 @@ namespace PottiRoma.App.ViewModels
         {
             parameters.Add(NavigationKeyParameters.FirstAccess, "true");
 
-            if (localBirthdays.Count > 0)
-                parameters.Add(NavigationKeyParameters.ClientsBirthday, localBirthdays);
+            if (localBirthdays != null)
+            {
+                if (localBirthdays.Count > 0)
+                    parameters.Add(NavigationKeyParameters.ClientsBirthday, localBirthdays);
+            }
 
             base.OnNavigatedFrom(parameters);
         }

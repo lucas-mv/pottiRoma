@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.Models.Requests.User;
+﻿using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Models.Responses.User;
 using PottiRoma.App.Repositories.Api;
 using PottiRoma.App.Services.Interfaces;
@@ -22,14 +23,24 @@ namespace PottiRoma.App.Services.Implementations
             return await UserApiRepository.Get().GetAppUsers();
         }
 
+        public async Task<User> GetUserByEmail(string email)
+        {
+            return await UserApiRepository.Get().GetUserByEmail(email);
+        }
+
         public async Task<LoginReponse> Login(LoginRequest request)
         {
             return await UserApiRepository.Get().Login(request);
         }
 
-        public async Task Logout(string userId)
+        public async Task Logout(string usuarioId)
         {
-            await UserApiRepository.Get().Logout(userId);
+            await UserApiRepository.Get().Logout(usuarioId);
+        }
+
+        public async Task ResetPassword(string usuarioId)
+        {
+            await UserApiRepository.Get().ResetPassword(usuarioId);
         }
 
         public async Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep)
