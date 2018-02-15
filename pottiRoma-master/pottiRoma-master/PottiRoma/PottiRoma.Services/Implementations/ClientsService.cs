@@ -26,7 +26,7 @@ namespace PottiRoma.Services.Implementations
             ClientsBusiness.UpdateClientInfo(clienteId, name, telephone, email, Cep, birthdate);
         }
 
-        public void RemoveClient(Guid clienteId)
+        public void RemoveCliente(Guid clienteId)
         {
             ClientsBusiness.RemoveClient(clienteId);
         }

@@ -1,4 +1,5 @@
-﻿using PottiRoma.App.Models.Requests.User;
+﻿using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Models.Responses.User;
 using Refit;
 using System;
@@ -38,5 +39,13 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Post("/User/UpdateUser")]
         [Headers("Authorization: Bearer")]
         Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep);
+
+        [Post("/User/Profile/GetUserByEmail")]
+        [Headers("Authorization: Bearer")]
+        Task<User> GetUserByEmail(string email);
+
+        [Get("/User/Profile/Password/Reset/{usuarioId}")]
+        [Headers("Authorization: Bearer")]
+        Task<User> ResetPassword(string usuarioId);
     }
 }

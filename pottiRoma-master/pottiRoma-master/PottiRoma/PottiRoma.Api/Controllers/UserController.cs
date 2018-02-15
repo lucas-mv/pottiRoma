@@ -56,31 +56,28 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task ChangePassword(ChangePasswordRequest request)
         {
-            await ValidateToken();
-            _userService.ChangePassword(request.UserId, request.OldPassword, request.NewPassword);
+            //await ValidateToken();
+            _userService.ChangePassword(request.UsuarioId, request.OldPassword, request.NewPassword);
         }
 
-        [Route("Profile/Password/Reset/Request/{userId}")]
+        [Route("Profile/Password/Reset/Request/{usuarioId}")]
         [HttpGet]
-        public async Task RequestPasswordReset(string userId)
+        public async Task RequestPasswordReset(string usuarioId)
         {
-            var user = _userService.GetUserById(new Guid(userId));
-            var corpoEmail = "Para redefinir uma nova senha para o app da Potti Roma, por favor clique no link abaixo:\n\n" +
-                "pottiroma.azurewebsites.net/api/v1/User/Profile/Password/Reset/" + userId;
-            var destinatario = new Dictionary<string, string>();
-            destinatario.Add(user.Email, user.Name);
-            EmailObsoleto.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
+            //var user = _userService.GetUserById(new Guid(usuarioId));
+            //var corpoEmail = "Para redefinir uma nova senha para o app da Potti Roma, por favor clique no link abaixo:\n\n" +
+            //    "pottiroma.azurewebsites.net/api/v1/User/Profile/Password/Reset/" + usuarioId;
+            //var destinatario = new Dictionary<string, string>();
+            //destinatario.Add(user.Email, user.Name);
+            //EmailResetPassword.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
         }
 
-        [Route("Profile/Password/Reset/{userId}")]
+        [Route("Profile/Password/Reset/{usuarioId}")]
         [HttpGet]
-        public async Task ResetPassword(string userId)
+        public async Task ResetPassword(string usuarioId)
         {
-            var user = _userService.ResetPassword(new Guid(userId));
-            var corpoEmail = "A sua senha do app da Potti Roma foi redefinida com sucesso para a senha temporária indicada abaixo:\n\n" + user.Password;
-            var destinatario = new Dictionary<string, string>();
-            destinatario.Add(user.Email, user.Name);
-            EmailObsoleto.Enviar("Potti Roma - Nova senha", corpoEmail, destinatario);
+            var user = _userService.ResetPassword(new Guid(usuarioId));  
+            EmailResetPassword.Enviar(user.Email, user.Name, user.Password);
         }
 
         [HttpPost]
@@ -115,6 +112,14 @@ namespace PottiRoma.Api.Controllers
         {
             //await ValidateToken();
             _userService.UpdateUser(new Guid(usuarioId), email, primaryTelephone, secundaryTelephone, cep);
+        }
+
+        [Route("Profile/GetUserByEmail")]
+        [HttpPost]
+        public async Task<UserEntity> GetUserByEmail(string email)
+        {
+            //await ValidateToken();
+            return _userService.GetUserByEmail(email);
         }
     }
 }

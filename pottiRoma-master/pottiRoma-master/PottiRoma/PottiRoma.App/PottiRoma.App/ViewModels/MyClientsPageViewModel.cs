@@ -51,7 +51,7 @@ namespace PottiRoma.App.ViewModels
             ListaClientes = new ObservableCollection<Client>();
             EditClientCommand = new DelegateCommand<object>(async param => await EditClient(param))
                 .ObservesCanExecute(() => CanExecute);
-            RemoveClientCommand = new DelegateCommand<object>(param => RemoveClient(param))
+            RemoveClientCommand = new DelegateCommand<object>(async param => RemoveClient(param))
                 .ObservesCanExecute(() => CanExecute);
             RegisterNewClientCommand = new DelegateCommand(RegisterNewClient).ObservesCanExecute(() => CanExecute);
         }
@@ -95,21 +95,32 @@ namespace PottiRoma.App.ViewModels
             CanExecuteEnd();
         }
 
-        private void RemoveClient(object item)
+        private async Task RemoveClient(object item)
         {
+            await NavigationHelper.ShowLoading();
             if (item == null) return;
-
-            CanExecuteInitial();
-            Client removedClient = (Client)item;
-            if (removedClient != null)
+            try
             {
-                for (int i = 0; i < ListaClientes.Count; i++)
+                CanExecuteInitial();
+                Client removedClient = (Client)item;
+                await _clientsAppService.RemoveCliente(removedClient.ClienteId.ToString());
+
+                if (removedClient != null)
                 {
-                    if (ListaClientes[i].ClienteId == removedClient.ClienteId)
-                        ListaClientes.RemoveAt(i);
+                    for (int i = 0; i < ListaClientes.Count; i++)
+                    {
+                        if (ListaClientes[i].ClienteId == removedClient.ClienteId)
+                            ListaClientes.RemoveAt(i);
+                    }
                 }
+                UserDialogs.Instance.Toast("Cliente removido com sucesso!",new TimeSpan(0,0,2));
+            }
+            catch
+            {
+                UserDialogs.Instance.Toast("Não foi possível remover o cliente, verifique sua conexão!");
             }
             CanExecuteEnd();
+            await NavigationHelper.PopLoading();
         }
 
         private async Task EditClient(object item)

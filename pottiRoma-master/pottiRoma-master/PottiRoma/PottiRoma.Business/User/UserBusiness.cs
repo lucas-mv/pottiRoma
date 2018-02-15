@@ -18,15 +18,21 @@ namespace PottiRoma.Business.User
     {
         private static Random _random = new Random();
 
-        public static UserEntity GetUserById(Guid userId)
+        public static UserEntity GetUserById(Guid usuarioId)
         {
-            var user = UserRepository.Get().GetUserById(userId);
+            var user = UserRepository.Get().GetUserById(usuarioId);
             return user;
         }
 
-        public static void Logout(string userId)
+        public static UserEntity GetUserByEmail(string email)
         {
-            AuthenticationControlRepository.Get().DeleteAllUserAuthControl(new Guid(userId));
+            var user = UserRepository.Get().GetUserByEmail(email);
+            return user;
+        }
+
+        public static void Logout(string usuarioId)
+        {
+            AuthenticationControlRepository.Get().DeleteAllUserAuthControl(new Guid(usuarioId));
         }
 
         public static UserEntity RegisterUser(string email, string password, string name,
@@ -76,13 +82,13 @@ namespace PottiRoma.Business.User
             }
         }
 
-        public static void ChangePassword(Guid userId, string oldPassword, string newPassword)
+        public static void ChangePassword(Guid usuarioId, string oldPassword, string newPassword)
         {
             UserEntity user;
-            user = UserRepository.Get().GetUserAuthById(userId);
+            user = UserRepository.Get().GetUserAuthById(usuarioId);
 
             if (user == null)
-                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.INVALID_PASSWORD);
 
             if (ValidatePassword(oldPassword, user.PasswordSalt, user.Password))
             {
@@ -91,7 +97,7 @@ namespace PottiRoma.Business.User
             }
             else
             {
-                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.INVALID_PASSWORD);
             }
         }
 

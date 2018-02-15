@@ -82,6 +82,7 @@ namespace PottiRoma.Api.Helpers
             }
             catch (Exception ex)
             {
+                throw new Exception(ex.Message);
             }
             finally
             {

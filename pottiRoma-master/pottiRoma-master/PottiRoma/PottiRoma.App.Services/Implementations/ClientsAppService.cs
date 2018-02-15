@@ -26,5 +26,11 @@ namespace PottiRoma.App.Services.Implementations
         {
             await ClientsApiRepository.Get().UpdateClientInfo(request);
         }
+
+
+        public async Task RemoveCliente(string clienteId)
+        {
+            await ClientsApiRepository.Get().RemoveCliente(clienteId);
+        }
     }
 }

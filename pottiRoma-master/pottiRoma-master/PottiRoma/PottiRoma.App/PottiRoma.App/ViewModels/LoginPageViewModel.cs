@@ -70,9 +70,23 @@ namespace PottiRoma.App.ViewModels
             CanExecuteEnd();
         }
 
-        private void CallbackDate(string date)
+        private async void CallbackDate(string email)
         {
-            UserDialogs.Instance.Toast("Esse método ainda não foi implementado");
+            await NavigationHelper.ShowLoading();
+            try
+            {
+                var usuario = await _userAppService.GetUserByEmail(email);
+                await _userAppService.ResetPassword(usuario.UsuarioId.ToString());
+                UserDialogs.Instance.Toast("Te enviamos um email com uma nova senha!");
+            }
+            catch
+            {
+                UserDialogs.Instance.Toast("Não foi possível realizar a requisição, verifique sua conexão e o email informado.");
+            }
+            finally
+            {
+                await NavigationHelper.PopLoading();
+            }
         }
 
         public override async void OnNavigatedTo(NavigationParameters parameters)
@@ -124,7 +138,7 @@ namespace PottiRoma.App.ViewModels
             }
             catch(Exception ex)
             {
-                UserDialogs.Instance.Toast(ex.Message);
+                UserDialogs.Instance.Toast("Não foi possível fazer o Login, verifique sua conexão");
             }
             finally
             {

@@ -111,7 +111,7 @@ namespace PottiRoma.DataAccess.Repositories
           where Email = @email";
 
         private const string GET_USER_AUTH_BY_ID = @"
-        SELECT UsuarioId AS UserId
+        SELECT UsuarioId AS UsuarioId
               ,Cpf As Cpf
               ,Name as Name
               ,Email as Email
@@ -190,12 +190,9 @@ namespace PottiRoma.DataAccess.Repositories
 
         private const string UPDATE_USER_PASSWORD = @"
         UPDATE dbo.UsuarioPotti
-        SET UsuarioId = @name,
-	        Email = @email,
-	        Telephone = @telephone,
- 	        Cep = @cep,
-            Birthdate = @birthdate
-        WHERE UsuarioId = @clienteid  
+        SET Salt = @salt,
+            Senha = @senha
+        WHERE UsuarioId = @usuarioid  
         ";
 
         private const string UPDATE_USER_POINTS = @"
@@ -271,11 +268,11 @@ namespace PottiRoma.DataAccess.Repositories
             return Query(GET_USER_AUTH_BY_EMAIL, parameters).FirstOrDefault();
         }
 
-        public UserEntity GetUserAuthById(Guid userId)
+        public UserEntity GetUserAuthById(Guid usuarioId)
         {
             DynamicParameters parameters = new DynamicParameters();
 
-            parameters.Add("@usuarioid", userId, System.Data.DbType.Guid);
+            parameters.Add("@usuarioid", usuarioId, System.Data.DbType.Guid);
 
             return Query(GET_USER_AUTH_BY_ID, parameters).FirstOrDefault();
         }

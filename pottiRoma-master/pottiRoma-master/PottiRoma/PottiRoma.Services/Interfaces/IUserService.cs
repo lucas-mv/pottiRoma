@@ -14,6 +14,7 @@ namespace PottiRoma.Services.Interfaces
         void ChangePassword(Guid userId, string oldPassword, string newPassword);
         UserEntity ResetPassword(Guid userId);
         UserEntity GetUserById(Guid userId);
+        UserEntity GetUserByEmail(string email);
         UserEntity Authenticate(string email, string password);
         UserEntity RegisterUser(string email, string password, string name,
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,

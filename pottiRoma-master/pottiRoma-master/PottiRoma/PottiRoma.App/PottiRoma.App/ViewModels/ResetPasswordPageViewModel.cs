@@ -55,7 +55,7 @@ namespace PottiRoma.App.ViewModels
         {
             try
             {
-                TimeSpan duration = new TimeSpan(0, 0, 2);
+                TimeSpan duration = new TimeSpan(0, 0, 3);
                 if (string.IsNullOrEmpty(RepeatPassword) || string.IsNullOrEmpty(Password))
                 {
                     _userDialogs.Toast("Preencha os dois campos para continuar.", duration);
@@ -67,7 +67,7 @@ namespace PottiRoma.App.ViewModels
                 {
                     NewPassword = Password,
                     OldPassword = RepeatPassword,
-                    UserId = user.UsuarioId
+                    UsuarioId = user.UsuarioId
                 });
 
                 _userDialogs.Toast("Senha Alterada com Sucesso!", duration);

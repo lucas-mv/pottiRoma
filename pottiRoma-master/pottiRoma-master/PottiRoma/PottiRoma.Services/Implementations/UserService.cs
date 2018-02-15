@@ -33,20 +33,25 @@ namespace PottiRoma.Services.Implementations
              inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive);
         }
 
-        public UserEntity GetUserById(Guid userId)
+        public UserEntity GetUserById(Guid usuarioId)
         {
-            return UserBusiness.GetUserById(userId);
+            return UserBusiness.GetUserById(usuarioId);
         }
 
-        public void ChangePassword(Guid userId, string oldPassword, string newPassword)
+        public UserEntity GetUserByEmail(string email)
         {
-            UserBusiness.ChangePassword(userId, oldPassword, newPassword);
+            return UserBusiness.GetUserByEmail(email);
         }
 
-        public UserEntity ResetPassword(Guid userId)
+        public void ChangePassword(Guid UsuarioId, string oldPassword, string newPassword)
         {
-            var user = GetUserById(userId);
-            user.Password = UserBusiness.ResetPassword(userId);
+            UserBusiness.ChangePassword(UsuarioId, oldPassword, newPassword);
+        }
+
+        public UserEntity ResetPassword(Guid usuarioId)
+        {
+            var user = GetUserById(usuarioId);
+            user.Password = UserBusiness.ResetPassword(usuarioId);
             return user;
         }
 

@@ -29,14 +29,6 @@ namespace PottiRoma.Api.Controllers
             _clientsService.RegisterClient(request.UsuarioId, request.Name, request.Telephone, request.Email, request.Cep, request.Birthdate);
         }
 
-        [Route("Remove")]
-        [HttpPost]
-        public async Task RemoveClient(DeleteClientRequest request)
-        {
-            //await ValidateToken();
-            _clientsService.RemoveClient(new Guid(request.ClienteId));
-        }
-
         [Route("Update")]
         [HttpPost]
         public async Task UpdateClientInfo(UpdateClientRequest request)
@@ -54,6 +46,14 @@ namespace PottiRoma.Api.Controllers
             {
                 Clients = _clientsService.GetClientsByUserId(new Guid(usuarioId))
             }; 
+        }
+
+        [Route("Remove")]
+        [HttpGet]
+        public async Task RemoveCliente(string clienteId)
+        {
+            //await ValidateToken();
+            _clientsService.RemoveCliente(new Guid(clienteId));
         }
     }
 }

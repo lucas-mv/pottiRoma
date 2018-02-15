@@ -36,7 +36,7 @@ namespace PottiRoma.DataAccess.Repositories
             Cep as Cep,
             Birthdate as Birthdate
         FROM dbo.Cliente
-        WHERE UsuarioId = @usuarioid";
+        WHERE UsuarioId = @usuarioid AND IsActive = 1";
 
         #endregion
 
@@ -53,9 +53,9 @@ namespace PottiRoma.DataAccess.Repositories
         ";
 
         private const string REMOVE_CLIENT = @"
-            DELETE FROM dbo.Cliente
-            WHERE ClienteId = '@clienteid';
-        ";
+        UPDATE dbo.Cliente
+            SET IsActive = 0
+            WHERE ClienteId = @clienteid";
 
         private const string INSERT_CLIENT = @"
         INSERT INTO dbo.Cliente 
@@ -66,7 +66,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        Email, 
 	        Telephone, 
 	        Cep, 
-	        Birthdate
+	        Birthdate,
+            IsActive
         )
         VALUES 
         (
@@ -76,7 +77,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        @email, 
 	        @telephone, 
 	        @cep, 
-            @birthdate
+            @birthdate,
+            1
         )";
 
         #endregion
