@@ -4,5 +4,29 @@
 
 .margin-pages
 {
-    margin: 12px;
+    margin: 20px;
+}
+
+.form-center-layout
+{
+    text-align:center;
+}
+
+.form-end-layout
+{
+    float:right;
+    margin: 16px;
+    text-align:center;
+}
+
+.form-start-layout
+{
+    text-align:center;
+    float:left;
+    margin: 16px;
+}
+
+.padding-top
+{
+    padding: 20px 16px 0px 16px;
 }

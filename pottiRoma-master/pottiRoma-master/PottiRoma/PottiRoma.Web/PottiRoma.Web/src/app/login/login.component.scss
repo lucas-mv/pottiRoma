@@ -6,7 +6,7 @@ $topnav-background-color: #fafafa;
     position: absolute;
     top: 0;
     left: 0;
-    right: -50px;
+    right: 0px;
     bottom: 0;
     overflow: auto;
     background: $topnav-background-color;
@@ -42,8 +42,11 @@ $topnav-background-color: #fafafa;
         background: $topnav-background-color;
         border: 2px solid #d48d48;
         font-size: 18px;
+        width: 150px;
+        text-align: center;
         line-height: 40px;
-        padding: 0 25px;
+        padding: 10px 0px 10px 0px;
+        margin: 10px;
     }
     .rounded-btn:hover,
     .rounded-btn:focus,
