@@ -1,0 +1,35 @@
+<div class="login-page col-xl-12" [@routerTransition]>
+    <div class="img col-xl-4">
+        <div class = "justify-content-register-page">
+            <h1>Registrar novo Administrador</h1>
+            <form role="form">
+                <div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="CPF*">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Nome*">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control input-underline input-lg" id="" placeholder="Email*">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Telefone Primário*">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Senha">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repetir Senha">
+                    </div>
+                </div>
+                <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Register </a>&nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+            </form>
+        </div>
+    </div>
+    <div class="col-xl-8">
+            <img src="assets/images/banned_sales_page_detail.png" class="background-signup-img"/>
+    </div>
+</div>
