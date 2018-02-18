@@ -7,10 +7,12 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'dashboard' },
+            { path: '', redirectTo: 'main-page' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+            { path: 'main-page', loadChildren: './main-page/main-page.module#MainPageModule' },
             { path: 'sales-report', loadChildren: './sales-report/sales-report.module#SalesReportModule' },
             { path: 'insert-points', loadChildren: './insert-points/insert-points.module#InsertPointsModule' },
+            { path: 'insert-challenges', loadChildren: './insert-challenges/insert-challenges.module#InsertChallengesModule' },
             { path: 'game-parameters', loadChildren: './game-parameters/game-parameters.module#GameParametersModule' },
             { path: 'reseller', loadChildren: './reseller/reseller.module#ResellerModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },

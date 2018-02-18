@@ -1,6 +1,6 @@
 import { InsertPointsModule } from './insert-points.module';
 
-describe('FormModule', () => {
+describe('InsertPointsModule', () => {
     let insertPointsModule: InsertPointsModule;
 
     beforeEach(() => {
