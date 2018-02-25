@@ -193,9 +193,8 @@
                                 Focused="Editor_observacoes_placeholder_Focused"
                                 FontSize="14"
                                 HeightRequest="100"
-                                HorizontalTextAlignment="Start"
-                                
                                 HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Start"
                                 Text="{Binding SaleRegistered.Description}"
                                 TextColor="{StaticResource TextColor}"
                                 Unfocused="Editor_observacoes_placeholder_Unfocused"

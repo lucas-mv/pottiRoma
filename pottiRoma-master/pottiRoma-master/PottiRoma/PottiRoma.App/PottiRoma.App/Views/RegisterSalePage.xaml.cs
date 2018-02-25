@@ -24,9 +24,17 @@ namespace PottiRoma.App.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Entry_sold_pieces.Text = "";
-            Entry_total_price.Text = "";
-            Entry_price.Text = "";
+            if (!ViewModel._isEditSale)
+            {
+                Entry_sold_pieces.Text = "";
+                Entry_total_price.Text = "";
+                Entry_price.Text = "";
+            }
+            else
+            {
+                Entry_total_price.Text = Formatter.FormatMoney((decimal)ViewModel.SaleRegistered.SaleValue);
+                Entry_price.Text = Formatter.FormatMoney((decimal)ViewModel.SaleRegistered.SalePaidValue);
+            }
         }
 
         private void Entry_Price_Focused(object sender, FocusEventArgs e)

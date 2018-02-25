@@ -59,7 +59,7 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _descriptionPlaceHolderVisible, value); }
         }
 
-        private bool _isEditSale = false;
+        public bool _isEditSale = false;
 
         public RegisterSalePageViewModel(
             INavigationService navigationService,
@@ -76,7 +76,7 @@ namespace PottiRoma.App.ViewModels
             SaleRegistered = new Sale();
         }
 
-        public override async void OnNavigatedTo(NavigationParameters parameters)
+        public override async void OnNavigatingTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey(NavigationKeyParameters.SelectedSale))
             {
@@ -91,6 +91,7 @@ namespace PottiRoma.App.ViewModels
                 Client selectedClient = (Client)parameters[NavigationKeyParameters.SelectedClient];
                 SaleRegistered.ClienteId = selectedClient.ClienteId;
                 SaleRegistered.ClientName = selectedClient.Name;
+                _isEditSale = false;
 
                 try
                 {
