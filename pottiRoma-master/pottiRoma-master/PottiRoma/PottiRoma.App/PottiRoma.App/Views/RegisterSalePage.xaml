@@ -198,13 +198,14 @@
                                 Text="{Binding SaleRegistered.Description}"
                                 TextColor="{StaticResource TextColor}"
                                 Unfocused="Editor_observacoes_placeholder_Unfocused"
-                                VerticalOptions="Center" />
+                                VerticalOptions="Fill" />
                             <Label
                                 x:Name="Editor_observacoes_placeholder"
                                 Margin="10,10,0,0"
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="Start"
                                 HorizontalTextAlignment="Start"
+                                IsEnabled="False"
                                 IsVisible="{Binding DescriptionPlaceHolderVisible}"
                                 Text="Digite aqui:"
                                 TextColor="{StaticResource PlaceholderColor}"
