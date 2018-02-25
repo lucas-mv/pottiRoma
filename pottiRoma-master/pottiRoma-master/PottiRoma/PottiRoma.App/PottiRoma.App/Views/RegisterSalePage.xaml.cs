@@ -40,7 +40,6 @@ namespace PottiRoma.App.Views
         private void Entry_Price_Focused(object sender, FocusEventArgs e)
         {
             var thisEntry = sender as CustomEntry;
-
             thisEntry.Text = "";
         }
 
