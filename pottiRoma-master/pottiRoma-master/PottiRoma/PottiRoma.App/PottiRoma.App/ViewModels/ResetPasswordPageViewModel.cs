@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
@@ -55,6 +57,14 @@ namespace PottiRoma.App.ViewModels
         {
             try
             {
+                try
+                {
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.ResetPasswordPage, InsightsActionNames.ChangePassword }
+                        });
+                }
+                catch { }
                 TimeSpan duration = new TimeSpan(0, 0, 3);
                 if (string.IsNullOrEmpty(RepeatPassword) || string.IsNullOrEmpty(Password))
                 {

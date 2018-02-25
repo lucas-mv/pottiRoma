@@ -130,10 +130,14 @@ namespace PottiRoma.App.ViewModels
                     Settings.AccessToken = response.Token.ToString();
                     Settings.UserId = response.User.UsuarioId.ToString();
                     await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
-                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
-                {
-                    { InsightsPagesNames.LoginPage, InsightsActionNames.LoginSuccess }
-                });
+                    try
+                    {
+                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.LoginPage, InsightsActionNames.LoginSuccess }
+                        });
+                    }
+                    catch { }
                 }
                 else
                 {

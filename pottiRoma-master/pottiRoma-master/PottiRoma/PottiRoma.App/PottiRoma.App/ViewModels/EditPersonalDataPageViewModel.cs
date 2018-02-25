@@ -56,10 +56,14 @@ namespace PottiRoma.App.ViewModels
                 try
                 {
                     await _userAppService.UpdateUser(User.UsuarioId.ToString(), User.Email, User.PrimaryTelephone, User.SecundaryTelephone, User.Cep);
-                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                    try
                     {
-                        { InsightsPagesNames.EditPersonalDataPage, InsightsActionNames.EditPersonalData }
-                    });
+                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.EditPersonalDataPage, InsightsActionNames.EditPersonalData }
+                        });
+                    }
+                    catch { }
                     UserDialogs.Instance.Toast("Edição de dados realizada com sucesso!");
                 }
                 catch

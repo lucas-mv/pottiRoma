@@ -55,10 +55,14 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
             await NavigationHelper.ShowLoading();
-            Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+            try
             {
-                { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRanking }
-            });
+                Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRanking }
+                        });
+            }
+            catch { }
             await Task.Delay(2000);
             await _navigationService.NavigateAsync(NavigationSettings.ListRanking);
             CanExecuteEnd();
@@ -68,7 +72,6 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
             await NavigationHelper.ShowLoading();
-            //TODO fazer servico que busca todos os usuarios do app que nao sao do tipo administrativo
             await Task.Delay(2000);
             NavigationParameters parameters = new NavigationParameters();
             CarouselBannerType convertedIndex = ConvertIndexToEnumHelper.Convert(obj.Index);

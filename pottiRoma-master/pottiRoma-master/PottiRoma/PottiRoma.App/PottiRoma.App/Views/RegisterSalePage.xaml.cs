@@ -72,7 +72,10 @@ namespace PottiRoma.App.Views
 
         private void Editor_observacoes_placeholder_Unfocused(object sender, FocusEventArgs e)
         {
-            ViewModel.DescriptionPlaceHolderVisible = (ObservacoesEditor.Text.Length < 1) ? true : false;
+            if (ObservacoesEditor.Text == null)
+                ObservacoesEditor.Text = "";
+            if (ObservacoesEditor != null && ObservacoesEditor.Text != null)
+                ViewModel.DescriptionPlaceHolderVisible = (ObservacoesEditor.Text.Length < 1) ? true : false;
         }
     }
 }

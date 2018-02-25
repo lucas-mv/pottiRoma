@@ -30,10 +30,14 @@ namespace PottiRoma.App.ViewModels.Core
         {
             CanExecuteInitial();
             await ResetPasswordPopupHelper.EsconderAsync();
-            Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+            try
             {
-                { InsightsPagesNames.LoginPage, InsightsActionNames.ForgotPassword }
-            });
+                Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                {
+                    { InsightsPagesNames.LoginPage, InsightsActionNames.ForgotPassword }
+                });
+            }
+            catch { }
             CanExecuteEnd();
         }
 

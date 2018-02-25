@@ -165,10 +165,14 @@ namespace PottiRoma.App.ViewModels
                         });
                         TimeSpan duration = new TimeSpan(0, 0, 3);
                         UserDialogs.Instance.Toast("Parabéns! Você ganhou " + points.RegisterNewClients + " Pontos com esse Cadastro!", duration);
-                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        try
                         {
-                            { InsightsPagesNames.RegisterClientsPage, InsightsActionNames.AddNewClient }
-                        });
+                            Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                            {
+                                { InsightsPagesNames.RegisterClientsPage, InsightsActionNames.AddNewClient }
+                            });
+                        }
+                        catch { }
                     }
                     else
                     {
@@ -182,10 +186,14 @@ namespace PottiRoma.App.ViewModels
                             Telephone = ClientSelectedForEdition.Telephone
                         });
                         UserDialogs.Instance.Toast("Cliente editado com sucesso!");
-                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        try
                         {
-                            { InsightsPagesNames.RegisterClientsPage, InsightsActionNames.EditClient }
-                        });
+                            Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                            {
+                                { InsightsPagesNames.RegisterClientsPage, InsightsActionNames.EditClient }
+                            });
+                        }
+                        catch { }
                     }
                 }
                 catch (Exception ex)

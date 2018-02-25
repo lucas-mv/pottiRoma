@@ -124,10 +124,14 @@ namespace PottiRoma.App.ViewModels
                     }
                 }
                 UserDialogs.Instance.Toast("Cliente removido com sucesso!",new TimeSpan(0,0,2));
-                Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                try
                 {
-                    { InsightsPagesNames.MyClientsPage, InsightsActionNames.RemoveClient }
-                });
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                    {
+                        { InsightsPagesNames.MyClientsPage, InsightsActionNames.RemoveClient }
+                    });
+                }
+                catch { }
             }
             catch
             {
