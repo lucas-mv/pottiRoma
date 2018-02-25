@@ -186,6 +186,18 @@
                             Text="Observações"
                             TextColor="{StaticResource DarkTextColor}" />
                         <Grid Margin="0">
+                            <Label
+                                x:Name="Editor_observacoes_placeholder"
+                                Margin="10,10,0,0"
+                                FontSize="{StaticResource StandardFontSize}"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Start"
+                                IsEnabled="False"
+                                IsVisible="{Binding DescriptionPlaceHolderVisible}"
+                                Text="Digite aqui:"
+                                TextColor="{StaticResource PlaceholderColor}"
+                                VerticalOptions="Start"
+                                VerticalTextAlignment="Start" />
                             <renderers:CustomEntry
                                 x:Name="ObservacoesEditor"
                                 Margin="0"
@@ -199,18 +211,6 @@
                                 TextColor="{StaticResource TextColor}"
                                 Unfocused="Editor_observacoes_placeholder_Unfocused"
                                 VerticalOptions="Fill" />
-                            <Label
-                                x:Name="Editor_observacoes_placeholder"
-                                Margin="10,10,0,0"
-                                FontSize="{StaticResource StandardFontSize}"
-                                HorizontalOptions="Start"
-                                HorizontalTextAlignment="Start"
-                                IsEnabled="False"
-                                IsVisible="{Binding DescriptionPlaceHolderVisible}"
-                                Text="Digite aqui:"
-                                TextColor="{StaticResource PlaceholderColor}"
-                                VerticalOptions="Start"
-                                VerticalTextAlignment="Start" />
                         </Grid>
                     </StackLayout>
                 </Grid>

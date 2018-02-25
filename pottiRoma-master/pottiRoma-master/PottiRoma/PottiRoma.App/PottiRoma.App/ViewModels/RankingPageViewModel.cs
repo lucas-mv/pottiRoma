@@ -1,6 +1,8 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Dtos;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Utils.Enums;
 using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
@@ -46,14 +48,17 @@ namespace PottiRoma.App.ViewModels
             _userDialogs = userDialogs;
             GoToRankingPageCommand = new DelegateCommand<RankingBannerDto>(GoToRankingPage).ObservesCanExecute(() => CanExecute);
             GoToGeneralRankingPageCommand = new DelegateCommand(GoToGeneralRankingPage).ObservesCanExecute(() => CanExecute);
-            InitializeMockRewards();
+            InitializeRewards();
         }
 
         private async void GoToGeneralRankingPage()
         {
             CanExecuteInitial();
             await NavigationHelper.ShowLoading();
-            //TODO fazer servico que busca todos os usuarios do app que nao sao do tipo administrativo            
+            Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+            {
+                { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRanking }
+            });
             await Task.Delay(2000);
             await _navigationService.NavigateAsync(NavigationSettings.ListRanking);
             CanExecuteEnd();
@@ -78,7 +83,7 @@ namespace PottiRoma.App.ViewModels
             SelectedIndex = 2;
         }
 
-        private void InitializeMockRewards()
+        private void InitializeRewards()
         {
             RankingDto = new ObservableCollection<RankingBannerDto>();
             RankingDto.Add(new RankingBannerDto()

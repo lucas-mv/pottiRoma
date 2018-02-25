@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Responses.User;
 using PottiRoma.App.Repositories.Internal;
@@ -65,27 +67,47 @@ namespace PottiRoma.App.ViewModels
                 case CarouselBannerType.AverageTicket:
                     Title = "Ticket Médio";
                     foreach (var users in AppUsers)
-                        users.TotalPoints = users.AverageTicketPoints;
+                    users.TotalPoints = users.AverageTicketPoints;
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                    {
+                        { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRankingAverageTicket }
+                    });
                     break;
                 case CarouselBannerType.RegisterClients:
                     Title = "Cadastro de Clientes";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.RegisterClientsPoints;
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                    {
+                        { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRankingRegisterClients }
+                    });
                     break;
                 case CarouselBannerType.AveragePiecesForSale:
                     Title = "Peças por Venda";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.AverageItensPerSalePoints;
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                    {
+                        { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRankingPiecesForSale }
+                    });
                     break;
                 case CarouselBannerType.RegisterAlliedFlowers:
                     Title = "Convite de Flores Aliadas";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.InviteAllyFlowersPoints;
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                    {
+                        { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRankingInviteFlowers }
+                    });
                     break;
                 case CarouselBannerType.RegisteredSales:
                     Title = "Registro de Vendas";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.SalesNumberPoints;
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                    {
+                        { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRankingPiecesForSale }
+                    });
                     break;
                 case CarouselBannerType.Total:
                     Title = "Geral";

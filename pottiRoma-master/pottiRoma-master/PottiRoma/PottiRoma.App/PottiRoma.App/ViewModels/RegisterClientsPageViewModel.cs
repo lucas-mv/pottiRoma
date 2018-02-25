@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Models;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.Clients;
@@ -163,6 +165,10 @@ namespace PottiRoma.App.ViewModels
                         });
                         TimeSpan duration = new TimeSpan(0, 0, 3);
                         UserDialogs.Instance.Toast("Parabéns! Você ganhou " + points.RegisterNewClients + " Pontos com esse Cadastro!", duration);
+                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.RegisterClientsPage, InsightsActionNames.AddNewClient }
+                        });
                     }
                     else
                     {
@@ -176,6 +182,10 @@ namespace PottiRoma.App.ViewModels
                             Telephone = ClientSelectedForEdition.Telephone
                         });
                         UserDialogs.Instance.Toast("Cliente editado com sucesso!");
+                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.RegisterClientsPage, InsightsActionNames.EditClient }
+                        });
                     }
                 }
                 catch (Exception ex)

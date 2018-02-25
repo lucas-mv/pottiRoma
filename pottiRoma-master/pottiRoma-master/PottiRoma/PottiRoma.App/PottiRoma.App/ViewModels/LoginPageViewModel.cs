@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
@@ -128,6 +130,10 @@ namespace PottiRoma.App.ViewModels
                     Settings.AccessToken = response.Token.ToString();
                     Settings.UserId = response.User.UsuarioId.ToString();
                     await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                {
+                    { InsightsPagesNames.LoginPage, InsightsActionNames.LoginSuccess }
+                });
                 }
                 else
                 {
@@ -138,6 +144,10 @@ namespace PottiRoma.App.ViewModels
             }
             catch(Exception ex)
             {
+                Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                {
+                    { InsightsPagesNames.LoginPage, InsightsActionNames.LoginFailed }
+                });
                 UserDialogs.Instance.Toast("Não foi possível fazer o Login, verifique sua conexão");
             }
             finally

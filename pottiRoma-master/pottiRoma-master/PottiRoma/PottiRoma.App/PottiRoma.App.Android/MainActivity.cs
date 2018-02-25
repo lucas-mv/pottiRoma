@@ -12,6 +12,9 @@ using Xfx;
 using Prism;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace PottiRoma.App.Droid
 {
