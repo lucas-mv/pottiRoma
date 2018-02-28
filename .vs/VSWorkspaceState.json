@@ -3,8 +3,15 @@
     "",
     "\\pottiRoma-master",
     "\\pottiRoma-master\\pottiRoma-master",
-    "\\pottiRoma-master\\pottiRoma-master\\PottiRoma"
+    "\\pottiRoma-master\\pottiRoma-master\\PottiRoma",
+    "\\pottiRoma-master\\pottiRoma-master\\PottiRoma\\AdminWebPottiRoma\\src",
+    "\\pottiRoma-master\\pottiRoma-master\\PottiRoma\\PottiRoma.App",
+    "\\pottiRoma-master\\pottiRoma-master\\PottiRoma\\PottiRoma.App\\PottiRoma.App",
+    "\\pottiRoma-master\\pottiRoma-master\\PottiRoma\\PottiRoma.App\\PottiRoma.App.Android",
+    "\\pottiRoma-master\\pottiRoma-master\\PottiRoma\\PottiRoma.App\\PottiRoma.App.Android\\Resources",
+    "\\pottiRoma-master\\pottiRoma-master\\PottiRoma\\PottiRoma.App\\PottiRoma.App\\ViewModels",
+    "\\pottiRoma-master\\pottiRoma-master\\PottiRoma\\PottiRoma.App\\PottiRoma.App\\Views"
   ],
-  "SelectedNode": "\\pottiRoma-master\\pottiRoma-master\\PottiRoma\\PottiRoma.sln",
+  "SelectedNode": "\\pottiRoma-master\\pottiRoma-master\\PottiRoma",
   "PreviewInSolutionExplorer": false
 }
