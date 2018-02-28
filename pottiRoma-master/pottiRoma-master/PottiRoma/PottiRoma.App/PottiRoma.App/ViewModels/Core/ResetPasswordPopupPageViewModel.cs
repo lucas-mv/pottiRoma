@@ -1,4 +1,6 @@
-﻿using PottiRoma.App.Helpers;
+﻿using Microsoft.AppCenter.Analytics;
+using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -28,6 +30,14 @@ namespace PottiRoma.App.ViewModels.Core
         {
             CanExecuteInitial();
             await ResetPasswordPopupHelper.EsconderAsync();
+            try
+            {
+                Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                {
+                    { InsightsPagesNames.LoginPage, InsightsActionNames.ForgotPassword }
+                });
+            }
+            catch { }
             CanExecuteEnd();
         }
 

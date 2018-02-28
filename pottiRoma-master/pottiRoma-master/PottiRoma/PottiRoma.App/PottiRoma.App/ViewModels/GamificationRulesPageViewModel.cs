@@ -1,4 +1,6 @@
-﻿using PottiRoma.App.Dtos;
+﻿using Microsoft.AppCenter.Analytics;
+using PottiRoma.App.Dtos;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Utils.ConstantRules;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -90,6 +92,10 @@ namespace PottiRoma.App.ViewModels
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+            Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+            {
+                { InsightsPagesNames.GamificationRulesPage, InsightsActionNames.ReadRules }
+            });
             GameRules();
         }
 

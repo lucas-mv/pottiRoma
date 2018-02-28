@@ -46,7 +46,7 @@ namespace PottiRoma.DataAccess.Repositories
               ,MotherFlowerId as MotherFlowerId
               ,IsActive as IsActive
           FROM dbo.UsuarioPotti
-          where IsActive = 1";
+          where IsActive = 1 AND UserType = 1";
 
         private const string GET_USER_BY_ID = @"
         SELECT UsuarioId AS UsuarioId

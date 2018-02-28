@@ -1,4 +1,6 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
@@ -54,6 +56,14 @@ namespace PottiRoma.App.ViewModels
                 try
                 {
                     await _userAppService.UpdateUser(User.UsuarioId.ToString(), User.Email, User.PrimaryTelephone, User.SecundaryTelephone, User.Cep);
+                    try
+                    {
+                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.EditPersonalDataPage, InsightsActionNames.EditPersonalData }
+                        });
+                    }
+                    catch { }
                     UserDialogs.Instance.Toast("Edição de dados realizada com sucesso!");
                 }
                 catch

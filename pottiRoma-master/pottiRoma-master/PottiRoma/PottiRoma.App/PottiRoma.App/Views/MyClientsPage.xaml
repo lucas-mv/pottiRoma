@@ -77,7 +77,7 @@
             SwipeOffset="200">
             <syncfusion:SfListView.Behaviors>
                 <behaviors:EventToCommandBehavior
-                    Command="{Binding ClienteSelectedCommand}"
+                    Command="{Binding ClientSelectedCommand}"
                     EventArgsParameterPath="ItemData"
                     EventName="ItemTapped" />
             </syncfusion:SfListView.Behaviors>

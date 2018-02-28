@@ -34,13 +34,9 @@ namespace PottiRoma.Api.Controllers
 
         [Route("Insert")]
         [HttpPost]
-        public async Task InsertSeason(string name, DateTime startDate, DateTime endDate,
-            int averageTicketGoal, int registerClientsGoal, int salesNumberGoal, int averageItensPerSaleGoal,
-            int inviteFlowersGoal, bool isActive)
+        public async Task InsertSeason(string name, DateTime startDate, DateTime endDate, bool isActive)
         {
-             await _seasonService.InsertSeason( name, startDate, endDate,
-             averageTicketGoal, registerClientsGoal, salesNumberGoal, averageItensPerSaleGoal,
-             inviteFlowersGoal, isActive);
+             await _seasonService.InsertSeason( name, startDate, endDate, isActive);
         }
     }
 }

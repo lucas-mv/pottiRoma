@@ -9,9 +9,7 @@ namespace PottiRoma.Services.Interfaces
 {
     public interface ISeasonService
     {
-        Task InsertSeason(string name, DateTime startDate, DateTime endDate,
-            int averageTicketGoal, int registerClientsGoal, int salesNumberGoal, int averageItensPerSaleGoal,
-            int inviteFlowersGoal, bool isActive);
+        Task InsertSeason(string name, DateTime startDate, DateTime endDate, bool isActive);
         SeasonEntity GetCurrentSeason();
     }
 }

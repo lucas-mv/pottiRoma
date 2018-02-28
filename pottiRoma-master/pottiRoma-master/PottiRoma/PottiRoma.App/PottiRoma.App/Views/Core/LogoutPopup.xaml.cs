@@ -12,6 +12,9 @@ using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Repositories.Internal;
 using static PottiRoma.App.Utils.Constants;
 using PottiRoma.App.Models.Models;
+using Microsoft.AppCenter.Analytics;
+using System.Collections.Generic;
+using PottiRoma.App.Insights;
 
 namespace PottiRoma.App.Views.Core
 {
@@ -52,6 +55,14 @@ namespace PottiRoma.App.Views.Core
                 await _userAppService.Logout(user.UsuarioId.ToString());
                 await CacheAccess.DeleteAll();
                 await _navigationService.NavigateAsync(NavigationSettings.AbsoluteLogin);
+                try
+                {
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                {
+                    { InsightsPagesNames.LoginPage, InsightsActionNames.Logout }
+                });
+                }
+                catch { }
             }
             catch(Exception ex)
             {

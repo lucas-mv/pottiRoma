@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Models;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Repositories.Internal;
@@ -41,6 +43,7 @@ namespace PottiRoma.App.ViewModels
         public DelegateCommand<object> RemoveClientCommand { get; set; }
         public DelegateCommand RegisterNewClientCommand { get; set; }
         public ObservableCollection<Client> ListaClientes { get; set; }
+        public DelegateCommand ClientSelectedCommand { get; set; }
 
         public MyClientsPageViewModel(
             INavigationService navigationService,
@@ -54,6 +57,13 @@ namespace PottiRoma.App.ViewModels
             RemoveClientCommand = new DelegateCommand<object>(async param => RemoveClient(param))
                 .ObservesCanExecute(() => CanExecute);
             RegisterNewClientCommand = new DelegateCommand(RegisterNewClient).ObservesCanExecute(() => CanExecute);
+            ClientSelectedCommand = new DelegateCommand(ClientSelected);
+        }
+
+        private void ClientSelected()
+        {
+            TimeSpan duration = new TimeSpan(0, 0, 3);
+            UserDialogs.Instance.Toast("Arraste para a esquerda para editar ou remover cliente!", duration);
         }
 
         public override async void OnNavigatedTo(NavigationParameters parameters)
@@ -114,6 +124,14 @@ namespace PottiRoma.App.ViewModels
                     }
                 }
                 UserDialogs.Instance.Toast("Cliente removido com sucesso!",new TimeSpan(0,0,2));
+                try
+                {
+                    Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                    {
+                        { InsightsPagesNames.MyClientsPage, InsightsActionNames.RemoveClient }
+                    });
+                }
+                catch { }
             }
             catch
             {

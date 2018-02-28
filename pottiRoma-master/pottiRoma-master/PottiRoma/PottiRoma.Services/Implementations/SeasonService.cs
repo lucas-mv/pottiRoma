@@ -16,10 +16,9 @@ namespace PottiRoma.Services.Implementations
             return SeasonBusiness.GetCurrentSeason();
         }
 
-        public async Task InsertSeason(string name, DateTime startDate, DateTime endDate, int averageTicketGoal, int registerClientsGoal, int salesNumberGoal, int averageItensPerSaleGoal, int inviteFlowersGoal, bool isActive)
+        public async Task InsertSeason(string name, DateTime startDate, DateTime endDate, bool isActive)
         {
-            SeasonBusiness.InsertSeason(name, startDate, endDate, averageTicketGoal, registerClientsGoal, 
-                salesNumberGoal, averageItensPerSaleGoal, inviteFlowersGoal, isActive);
+            SeasonBusiness.InsertSeason(name, startDate, endDate, isActive);
         }
     }
 }
