@@ -46,6 +46,11 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)
         {
+            var checkUserEmailRegistered = _userService.GetUserByEmail(request.Email);
+            if (checkUserEmailRegistered != null)
+            {
+                throw new Exception("Email de usuário já cadastrado");
+            }
             return new RegisterUserResponse()
             {
                 User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecundaryTelephone, request.Cpf, request.UserType,request.Cep,request.AverageTicketPoints,request.RegisterClientsPoints,request.SalesNumberPoints,request.AverageItensPerSalePoints,request.InviteAllyFlowersPoints,request.TemporadaId,request.MotherFlowerId, request.IsActive)

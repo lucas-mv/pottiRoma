@@ -12,10 +12,6 @@ namespace PottiRoma.Entities
         public string Name { get; set; }
         public int StartDate { get; set; }
         public int EndDate { get; set; }
-        public int AverageTicketGoal { get; set; }
-        public int RegisterClientsGoal { get; set; }
-        public int SalesNumberGoal { get; set; }
-        public int AverageItensPerSaleGoal { get; set; }
-        public int InviteFlowersGoal { get; set; }
+        public bool IsActive { get; set; }
     }
 }

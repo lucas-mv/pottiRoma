@@ -21,16 +21,12 @@ namespace PottiRoma.Business.Season
             return season;
         }
 
-        public static void InsertSeason(string name, DateTime startDate, DateTime endDate,
-            int averageTicketGoal, int registerClientsGoal, int salesNumberGoal, int averageItensPerSaleGoal,
-            int inviteFlowersGoal, bool isActive)
+        public static void InsertSeason(string name, DateTime startDate, DateTime endDate, bool isActive)
         {
             if(endDate < DateTime.Now || string.IsNullOrEmpty(name))
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.OBRIGATORY_DATA_MISSING);
 
-            SeasonRepository.Get().InsertSeason(name, startDate, endDate,
-             averageTicketGoal, registerClientsGoal, salesNumberGoal, averageItensPerSaleGoal,
-             inviteFlowersGoal, isActive);
+            SeasonRepository.Get().InsertSeason(name, startDate, endDate, isActive);
         }
     }
 }

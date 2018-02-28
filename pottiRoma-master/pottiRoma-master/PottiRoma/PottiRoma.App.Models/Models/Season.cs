@@ -12,10 +12,6 @@ namespace PottiRoma.App.Models.Models
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int AverageTicketGoal { get; set; }
-        public int SalesNumberGoal { get; set; }
-        public int AverageItensPerSaleGoal { get; set; }
-        public int InviteFlowersGoal { get; set; }
         public bool IsActive { get; set; }
     }
 }

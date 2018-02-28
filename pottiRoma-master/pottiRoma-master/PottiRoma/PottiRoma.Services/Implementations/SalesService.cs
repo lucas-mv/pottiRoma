@@ -23,5 +23,10 @@ namespace PottiRoma.Services.Implementations
         {
             SalesBusiness.UpdateSale(vendaId, saleValue, salePaidValue, numberSoldPieces, description);
         }
+
+        public List<SaleEntity> GetAllSales()
+        {
+            return SalesBusiness.GetAllSales();
+        }
     }
 }
