@@ -5,6 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+
+import { LoginService } from './shared/services/login.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +23,10 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
     imports: [
+        HttpModule,
         CommonModule,
         BrowserModule,
+        FormsModule,
         BrowserAnimationsModule,
         HttpClientModule,
         TranslateModule.forRoot({
@@ -33,7 +39,9 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard],
+    providers: [
+        AuthGuard,
+        LoginService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
