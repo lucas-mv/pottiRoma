@@ -6,7 +6,7 @@
     xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-    Title="Meus Clientes"
+    Title="Minhas Colecionadoras"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource WhiteColor}">
     <Grid

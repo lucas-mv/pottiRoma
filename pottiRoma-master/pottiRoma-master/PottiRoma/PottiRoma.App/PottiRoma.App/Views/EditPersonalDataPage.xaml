@@ -6,19 +6,17 @@
     xmlns:controls="clr-namespace:PottiRoma.App.Controls"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
-    Title="Editar Dados Pessoais"
+    Title="Meu Perfil"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource LightBackgroundColor}">
 
     <ScrollView>
-        <Grid
-            x:Name="EditPersonalDataPageContent"
-            HeightRequest="{Binding ScreenHeightRequest}"
-            SizeChanged="EditPersonalDataPageContent_SizeChanged">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="150" />
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="130" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="100" />
+                <RowDefinition Height="150" />
             </Grid.RowDefinitions>
 
             <Image
@@ -26,96 +24,87 @@
                 Aspect="AspectFill"
                 Source="banner_perfil.png" />
 
-            <!--  TROCAR ESSE BANNER PQ TA REPETIDO  -->
-
-            <ScrollView Grid.Row="1" VerticalOptions="Center">
-                <StackLayout Margin="16,8,16,8" Spacing="8">
-                    <ContentView HeightRequest="4" />
-                    <Label
-                        Margin="12,0,0,0"
-                        FontAttributes="Bold"
+            <StackLayout
+                Grid.Row="1"
+                Margin="16,8,16,8"
+                Spacing="8"
+                VerticalOptions="Center">
+                <ContentView HeightRequest="4" />
+                <Label
+                    Margin="12,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding User.Name}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="4" />
+                <Label
+                    Margin="12,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="{StaticResource StandardFontSize}"
+                    Text="{Binding Profit}"
+                    TextColor="{StaticResource TextColor}" />
+                <ContentView HeightRequest="8" />
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="40"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
                         FontSize="{StaticResource StandardFontSize}"
-                        Text="{Binding User.Name}"
-                        TextColor="{StaticResource TextColor}" />
-                    <ContentView HeightRequest="8" />
-                    <Frame
-                        Grid.Row="1"
-                        Padding="0"
-                        BackgroundColor="{StaticResource WhiteColor}"
-                        HeightRequest="40"
-                        OutlineColor="{StaticResource OutlineColor}">
-                        <renderers:CustomEntry
-                            Margin="10,0,10,0"
-                            FontSize="{StaticResource StandardFontSize}"
-                            Keyboard="Email"
-                            Placeholder="Email"
-                            PlaceholderColor="{StaticResource PlaceholderColor}"
-                            Text="{Binding User.Email}"
-                            TextColor="{StaticResource TextColor}"
-                            VerticalOptions="Center" />
-                    </Frame>
-                    <Frame
-                        Grid.Row="1"
-                        Padding="0"
-                        BackgroundColor="{StaticResource WhiteColor}"
-                        HeightRequest="40"
-                        OutlineColor="{StaticResource OutlineColor}">
-                        <renderers:CustomEntry
-                            Margin="10,0,10,0"
-                            FontSize="{StaticResource StandardFontSize}"
-                            Placeholder="Telefone 1"
-                            PlaceholderColor="{StaticResource PlaceholderColor}"
-                            Text="{Binding User.PrimaryTelephone}"
-                            TextColor="{StaticResource TextColor}"
-                            VerticalOptions="Center" />
-                    </Frame>
-                    <Frame
-                        Grid.Row="1"
-                        Padding="0"
-                        BackgroundColor="{StaticResource WhiteColor}"
-                        HeightRequest="40"
-                        OutlineColor="{StaticResource OutlineColor}">
-                        <renderers:CustomEntry
-                            Margin="10,0,10,0"
-                            FontSize="{StaticResource StandardFontSize}"
-                            Placeholder="Telefone 2"
-                            PlaceholderColor="{StaticResource PlaceholderColor}"
-                            Text="{Binding User.SecundaryTelephone}"
-                            TextColor="{StaticResource TextColor}"
-                            VerticalOptions="Center" />
-                    </Frame>
-                    <Frame
-                        Grid.Row="1"
-                        Padding="0"
-                        BackgroundColor="{StaticResource WhiteColor}"
-                        HeightRequest="40"
-                        OutlineColor="{StaticResource OutlineColor}">
-                        <renderers:CustomEntry
-                            Margin="10,0,10,0"
-                            FontSize="{StaticResource StandardFontSize}"
-                            Placeholder="CEP"
-                            PlaceholderColor="{StaticResource PlaceholderColor}"
-                            Text="{Binding User.Cep}"
-                            TextColor="{StaticResource TextColor}"
-                            VerticalOptions="Center" />
-                    </Frame>
-                    <ContentView HeightRequest="15" />
-                    <Label
-                        x:Name="LoginIncorretoLabel"
+                        Keyboard="Email"
+                        Placeholder="Email"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding User.Email}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="40"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
                         FontSize="{StaticResource StandardFontSize}"
-                        HeightRequest="30"
-                        HorizontalOptions="Center"
-                        Text="Trocar Senha"
-                        TextColor="{StaticResource LightTextColor}"
-                        VerticalOptions="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ChangePasswordCommand}" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <ContentView HeightRequest="8" />
-                </StackLayout>
-
-            </ScrollView>
+                        Placeholder="Telefone 1"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding User.PrimaryTelephone}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="40"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="CEP"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding User.Cep}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+                <ContentView HeightRequest="15" />
+                <Label
+                    x:Name="LoginIncorretoLabel"
+                    FontSize="{StaticResource StandardFontSize}"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Text="Trocar Senha"
+                    TextColor="{StaticResource LightTextColor}"
+                    VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePasswordCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <ContentView HeightRequest="8" />
+            </StackLayout>
 
             <Button
                 Grid.Row="2"

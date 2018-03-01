@@ -105,7 +105,7 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
             await _navigationService.NavigateAsync(NavigationSettings.MyClients);
-            Title = "Meus Cliente";
+            Title = "Minhas Colecionadoras";
             CanExecuteEnd();
         }
 

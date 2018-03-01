@@ -23,22 +23,16 @@
                         IsEnabled="False"
                         Opacity="0.3" />
                     <Label
+                        Margin="16,50,16,16"
                         FontAttributes="Bold"
                         FontSize="{StaticResource StandardFontSize}"
-                        HeightRequest="50"
+                        HeightRequest="90"
                         HorizontalOptions="Start"
                         HorizontalTextAlignment="Start"
                         Text="{Binding Description}"
                         TextColor="{StaticResource LightBackgroundColor}"
                         VerticalOptions="Start"
-                        VerticalTextAlignment="Start">
-                        <StackLayout.Margin>
-                            <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="16,16,16,16" />
-                                <On Platform="Android, WinPhone, Windows" Value="16,40,16,16" />
-                            </OnPlatform>
-                        </StackLayout.Margin>
-                    </Label>
+                        VerticalTextAlignment="Start" />
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
@@ -114,7 +108,7 @@
                 ItemTemplate="{StaticResource CarouselRankingTemplate}"
                 ItemWidth="220"
                 ItemsSource="{Binding RankingDto}"
-                RotationAngle="30"
+                RotationAngle="5"
                 SelectedIndex="2" />
 
         </Grid>

@@ -104,7 +104,7 @@ namespace PottiRoma.App.ViewModels
             RankingDto.Add(new RankingBannerDto()
             {
                 Image = "banner_ranking2.png",
-                Description = "PEÇAS POR ATENDIMENTO",
+                Description = "RANKING GERAL",
                 Index = 2
             });
             RankingDto.Add(new RankingBannerDto()
@@ -118,6 +118,12 @@ namespace PottiRoma.App.ViewModels
                 Image = "ranking_dia.png",
                 Description = "VENDAS EFETUADAS",
                 Index = 4
+            });
+            RankingDto.Add(new RankingBannerDto()
+            {
+                Image = "banner_ranking2.png",
+                Description = "PEÇAS POR ATENDIMENTO",
+                Index = 5
             });
         }
     }
