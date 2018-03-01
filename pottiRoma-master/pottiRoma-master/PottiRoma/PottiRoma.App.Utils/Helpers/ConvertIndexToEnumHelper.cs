@@ -18,13 +18,15 @@ namespace PottiRoma.App.Utils.Helpers
                 case 1:
                     return CarouselBannerType.RegisterClients;
                 case 2:
-                    return CarouselBannerType.AveragePiecesForSale;
+                    return CarouselBannerType.Total;
                 case 3:
                     return CarouselBannerType.RegisterAlliedFlowers;
                 case 4:
                     return CarouselBannerType.RegisteredSales;
-                default:
+                case 5:
                     return CarouselBannerType.AveragePiecesForSale;
+                default:
+                    return CarouselBannerType.Total;
             }
         }
     }

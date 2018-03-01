@@ -1,7 +1,11 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
+using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
+using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -19,13 +23,7 @@ namespace PottiRoma.App.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IUserAppService _userAppService;
-
-        private double _screenHeightRequest;
-        public double ScreenHeightRequest
-        {
-            get { return _screenHeightRequest; }
-            set { SetProperty(ref _screenHeightRequest, value); }
-        }
+        private readonly ISalesAppService _salesAppService;
 
         private User _user;
         public User User
@@ -34,15 +32,24 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _user, value); }
         }
 
+        private string _profit;
+        public string Profit
+        {
+            get { return _profit; }
+            set { SetProperty(ref _profit, value); }
+        }
+
         public DelegateCommand ChangePasswordCommand { get; set; }
         public DelegateCommand EditPersonalDataCommand { get; set; }
         
 
         public EditPersonalDataPageViewModel(INavigationService navigationService,
-            IUserAppService userAppService)
+            IUserAppService userAppService,
+            ISalesAppService salesAppService)
         {
             _navigationService = navigationService;
             _userAppService = userAppService;
+            _salesAppService = salesAppService;
             ChangePasswordCommand = new DelegateCommand(ChangePassword).ObservesCanExecute(() => CanExecute);
             EditPersonalDataCommand = new DelegateCommand(EditPersonalData).ObservesCanExecute(() => CanExecute);
         }
@@ -54,6 +61,14 @@ namespace PottiRoma.App.ViewModels
                 try
                 {
                     await _userAppService.UpdateUser(User.UsuarioId.ToString(), User.Email, User.PrimaryTelephone, User.SecundaryTelephone, User.Cep);
+                    try
+                    {
+                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.EditPersonalDataPage, InsightsActionNames.EditPersonalData }
+                        });
+                    }
+                    catch { }
                     UserDialogs.Instance.Toast("Edição de dados realizada com sucesso!");
                 }
                 catch
@@ -77,14 +92,23 @@ namespace PottiRoma.App.ViewModels
 
         private async Task GetUserFromCache()
         {
+            await NavigationHelper.ShowLoading();
             try
             {
                 User = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                var salesResponse = await _salesAppService.GetSalesByUserId(User.UsuarioId.ToString());
+                float profit = 0;
+                foreach (var sale in salesResponse.Sales)
+                {
+                    profit += sale.SaleValue;
+                }
+                Profit = Formatter.FormatMoney((decimal)profit);
             }
             catch
             {
-                UserDialogs.Instance.Toast("Ocorreu um problema, faça o Login Novamente!");
+                UserDialogs.Instance.Toast("Não foi possível carregar seus dados, verifique sua conexão!");
             }
+            await NavigationHelper.PopLoading();
         }
 
         public override async void OnNavigatedTo(NavigationParameters parameters)

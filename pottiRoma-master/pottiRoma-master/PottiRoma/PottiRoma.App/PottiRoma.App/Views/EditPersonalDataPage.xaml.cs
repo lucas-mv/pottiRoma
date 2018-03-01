@@ -17,21 +17,9 @@ namespace PottiRoma.App.Views
             InitializeComponent();
         }
 
-        private void EditPersonalDataPageContent_SizeChanged(object sender, System.EventArgs e)
-        {
-            SetInitialScreenHeight();
-        }
-
-        private void SetInitialScreenHeight()
-        {
-            if (ViewModel != null)
-                ViewModel.ScreenHeightRequest = (EditPersonalDataPageContent.Width < EditPersonalDataPageContent.Height) ? EditPersonalDataPageContent.Height : 650;
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            SetInitialScreenHeight();
         }
     }
 }

@@ -108,7 +108,7 @@
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"
                                 HorizontalOptions="Start"
-                                Text="    Meus Clientes"
+                                Text="    Minhas Colecionadoras"
                                 TextColor="{StaticResource WhiteColor}"
                                 VerticalOptions="Center" />
                         </Grid>
@@ -165,7 +165,7 @@
                                 Grid.Column="2"
                                 FontSize="{StaticResource LargeFontSize}"
                                 HorizontalOptions="Start"
-                                Text="    Editar Dados Pessoais"
+                                Text="    Meu Perfil"
                                 TextColor="{StaticResource WhiteColor}"
                                 VerticalOptions="Center" />
                         </Grid>

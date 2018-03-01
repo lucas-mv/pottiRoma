@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.Sales;
 using PottiRoma.App.Models.Requests.User;
@@ -9,12 +11,9 @@ using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
@@ -59,7 +58,7 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _descriptionPlaceHolderVisible, value); }
         }
 
-        private bool _isEditSale = false;
+        public bool _isEditSale = false;
 
         public RegisterSalePageViewModel(
             INavigationService navigationService,
@@ -76,7 +75,7 @@ namespace PottiRoma.App.ViewModels
             SaleRegistered = new Sale();
         }
 
-        public override async void OnNavigatedTo(NavigationParameters parameters)
+        public override async void OnNavigatingTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey(NavigationKeyParameters.SelectedSale))
             {
@@ -91,6 +90,7 @@ namespace PottiRoma.App.ViewModels
                 Client selectedClient = (Client)parameters[NavigationKeyParameters.SelectedClient];
                 SaleRegistered.ClienteId = selectedClient.ClienteId;
                 SaleRegistered.ClientName = selectedClient.Name;
+                _isEditSale = false;
 
                 try
                 {
@@ -128,7 +128,10 @@ namespace PottiRoma.App.ViewModels
                         var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                         var userGuid = user.UsuarioId;
 
-
+                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.RegisterSalePage, InsightsActionNames.SaveSale }
+                        });
 
                         await _salesAppService.InsertNewSale(new InsertNewSaleRequest
                         {

@@ -28,6 +28,10 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Selects
 
+        private const string GET_ALL_SALES = @"
+        SELECT * FROM dbo.Venda
+        ";
+
         private const string GET_SALES_BY_USER_ID = @"
         SELECT 
 	        VendaId AS VendaId, 
@@ -126,6 +130,11 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@usuarioid", usuarioId, System.Data.DbType.Guid);
 
             return Query(GET_SALES_BY_USER_ID, parameters).ToList();
+        }
+
+        public List<SaleEntity> GetAllSales()
+        {
+            return Query(GET_ALL_SALES).ToList();
         }
 
         #endregion

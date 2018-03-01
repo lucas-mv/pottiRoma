@@ -1,6 +1,8 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Dtos;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Utils.Enums;
 using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
@@ -46,14 +48,21 @@ namespace PottiRoma.App.ViewModels
             _userDialogs = userDialogs;
             GoToRankingPageCommand = new DelegateCommand<RankingBannerDto>(GoToRankingPage).ObservesCanExecute(() => CanExecute);
             GoToGeneralRankingPageCommand = new DelegateCommand(GoToGeneralRankingPage).ObservesCanExecute(() => CanExecute);
-            InitializeMockRewards();
+            InitializeRewards();
         }
 
         private async void GoToGeneralRankingPage()
         {
             CanExecuteInitial();
             await NavigationHelper.ShowLoading();
-            //TODO fazer servico que busca todos os usuarios do app que nao sao do tipo administrativo            
+            try
+            {
+                Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRanking }
+                        });
+            }
+            catch { }
             await Task.Delay(2000);
             await _navigationService.NavigateAsync(NavigationSettings.ListRanking);
             CanExecuteEnd();
@@ -63,7 +72,6 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
             await NavigationHelper.ShowLoading();
-            //TODO fazer servico que busca todos os usuarios do app que nao sao do tipo administrativo
             await Task.Delay(2000);
             NavigationParameters parameters = new NavigationParameters();
             CarouselBannerType convertedIndex = ConvertIndexToEnumHelper.Convert(obj.Index);
@@ -78,7 +86,7 @@ namespace PottiRoma.App.ViewModels
             SelectedIndex = 2;
         }
 
-        private void InitializeMockRewards()
+        private void InitializeRewards()
         {
             RankingDto = new ObservableCollection<RankingBannerDto>();
             RankingDto.Add(new RankingBannerDto()
@@ -96,7 +104,7 @@ namespace PottiRoma.App.ViewModels
             RankingDto.Add(new RankingBannerDto()
             {
                 Image = "banner_ranking2.png",
-                Description = "PEÇAS POR ATENDIMENTO",
+                Description = "RANKING GERAL",
                 Index = 2
             });
             RankingDto.Add(new RankingBannerDto()
@@ -110,6 +118,12 @@ namespace PottiRoma.App.ViewModels
                 Image = "ranking_dia.png",
                 Description = "VENDAS EFETUADAS",
                 Index = 4
+            });
+            RankingDto.Add(new RankingBannerDto()
+            {
+                Image = "banner_ranking2.png",
+                Description = "PEÇAS POR ATENDIMENTO",
+                Index = 5
             });
         }
     }

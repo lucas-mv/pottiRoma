@@ -45,16 +45,15 @@ namespace PottiRoma.DataAccess.Repositories
         #region Commands
 
         private const string INSERT_SEASON = @"
+        UPDATE dbo.Temporada
+        SET IsActive = 0;        
+
         INSERT INTO dbo.Temporada 
         (
 	        TemporadaId, 
 	        Name, 
 	        StartDate, 
 	        EndDate, 
-	        AverageTicketGoal, 
-	        SalesNumberGoal, 
-	        AverageItensPerSaleGoal, 
-	        InviteFlowersGoal,
             IsActive
         )
         VALUES 
@@ -63,10 +62,6 @@ namespace PottiRoma.DataAccess.Repositories
 	        @name, 
 	        @startdate, 
 	        @enddate, 
-	        @averageticketgoal, 
-	        @salesnumbergoal, 
-	        @averageitensPersalegoal, 
-	        @inviteflowersgoal, 
 	        @isactive
         )";
 
@@ -80,9 +75,7 @@ namespace PottiRoma.DataAccess.Repositories
             return Query(GET_CURRENT_SEASON).FirstOrDefault();
         }
 
-        public void InsertSeason(string name,DateTime StartDate, DateTime EndDate,
-            int averageTicketGoal, int RegisterClientsGoal, int SalesNumberGoal, int AverageItensPerSaleGoal,
-            int inviteFlowersGoal, bool IsActive)
+        public void InsertSeason(string name,DateTime StartDate, DateTime EndDate, bool IsActive)
         {
             DynamicParameters parameters = new DynamicParameters();
             Guid seasonId = Guid.NewGuid();
@@ -91,10 +84,6 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@name", name, System.Data.DbType.AnsiString);
             parameters.Add("@startdate", StartDate, System.Data.DbType.DateTime);
             parameters.Add("@enddate", EndDate, System.Data.DbType.DateTime);
-            parameters.Add("@averageticketgoal", averageTicketGoal, System.Data.DbType.Int16);
-            parameters.Add("@salesnumbergoal", SalesNumberGoal, System.Data.DbType.Int16);
-            parameters.Add("@averageitensPersalegoal", AverageItensPerSaleGoal, System.Data.DbType.Int16);
-            parameters.Add("@inviteflowersgoal", inviteFlowersGoal, System.Data.DbType.Int16);
             parameters.Add("@isactive", IsActive, System.Data.DbType.Boolean);
 
             Execute(INSERT_SEASON,parameters);

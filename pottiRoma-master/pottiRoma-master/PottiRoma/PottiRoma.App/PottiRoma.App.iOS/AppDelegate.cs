@@ -11,6 +11,9 @@ using Syncfusion.SfCarousel.XForms.iOS;
 using Syncfusion.SfPicker.XForms.iOS;
 using UIKit;
 using Xfx;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace PottiRoma.App.iOS
 {

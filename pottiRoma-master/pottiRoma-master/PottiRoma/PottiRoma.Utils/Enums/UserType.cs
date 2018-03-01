@@ -7,7 +7,7 @@ namespace PottiRoma.Utils.Enums
     public enum UserType
     {
         SalesPerson = 1,
-        Administrator,
+        Administrator = 2,
         SecundarySalesPerson
     }
 }

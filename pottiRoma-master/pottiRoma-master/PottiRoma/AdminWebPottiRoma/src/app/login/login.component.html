@@ -4,15 +4,21 @@
         <div class="col-xl-12">
             <img src="assets/images/logo_login.png" width="150px"/>
             <h1>Sistema Administrativo Potti Roma</h1>
-            <div class="login-form-container">
-                <input type="email" [(ngModel)]="email" class="form-control input-underline input-lg login-input" placeholder="Email">
-                <input type="password" [(ngModel)]="password" class="form-control input-underline input-lg login-input" placeholder="Senha">
-                <div class="login-button-container">
-                    <div class="btn rounded-btn" (click)="onLoggedin()">  Log in  </div>
-                    <div class="btn rounded-btn" (click)="onSignup()">Registrar</div>
+            <form role="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Senha">
+                    </div>
                 </div>
-            </div>
-            <img src="assets/images/banner_top1.png"  class="background-login-img"/>
+                <a class="btn rounded-btn" [routerLink]="['/main-page']" (click)="onLoggedin()">  Log in  </a>
+                &nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/signup']">Registrar</a>
+            </form>
+            <img src="assets/images/banner_top5.png"  class=" col-xl-13 background-login-img"/>
         </div>
     </div>
 

@@ -1,4 +1,7 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Microsoft.Practices.Unity;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
@@ -24,6 +27,7 @@ namespace PottiRoma.App
 
         protected override void OnInitialized()
         {
+            AppCenter.Start("ios=ce1bfa28-94c8-4ffc-9726-fad5c55172f9;android=8085118a-c304-4b96-b2f2-b1468761f934", typeof(Analytics), typeof(Crashes));
             InitializeComponent();
             StartNavigation();
         }

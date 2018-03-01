@@ -1,5 +1,6 @@
 ﻿using PottiRoma.Api.Request.Sales;
 using PottiRoma.Api.Response.Sales;
+using PottiRoma.Entities;
 using PottiRoma.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,14 @@ namespace PottiRoma.Api.Controllers
         {
             //await ValidateToken();
             _salesService.UpdateSale(new Guid(vendaId), saleValue, salePaidValue, numberSoldPieces, description);
+        }
+
+        [Route("GetAllSales")]
+        [HttpPost]
+        public List<SaleEntity> GetAllSales()
+        {
+            //await ValidateToken();
+            return _salesService.GetAllSales();
         }
     }
 }

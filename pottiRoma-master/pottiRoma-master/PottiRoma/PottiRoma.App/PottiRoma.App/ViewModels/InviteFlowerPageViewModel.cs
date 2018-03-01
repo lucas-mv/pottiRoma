@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Helpers;
+using PottiRoma.App.Insights;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
@@ -103,7 +105,14 @@ namespace PottiRoma.App.ViewModels
                         InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
                         SalesNumberPoints = user.SalesNumberPoints
                     });
-
+                    try
+                    {
+                        Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
+                        {
+                            { InsightsPagesNames.LoginPage, InsightsActionNames.ForgotPassword }
+                        });
+                    }
+                    catch { }
                     _userDialogs.Toast("Email enviado com Sucesso! Você ganhou " + points.InviteFlower + " pontos com o convite!", duration);
                 }
             }

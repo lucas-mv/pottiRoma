@@ -93,7 +93,7 @@ namespace PottiRoma.App.ViewModels
 
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
-            PageTitle = "Selecionar Cliente";
+            PageTitle = "Selecionar Colecionadora";
             await GetClients();
             base.OnNavigatedTo(parameters);
         }
