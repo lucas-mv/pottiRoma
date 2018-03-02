@@ -15,7 +15,7 @@ namespace PottiRoma.Services.Interfaces
         UserEntity ResetPassword(Guid userId);
         UserEntity GetUserById(Guid userId);
         UserEntity GetUserByEmail(string email);
-        UserEntity Authenticate(string email, string password);
+        UserEntity Authenticate(string email, string password, AuthOrigin origin);
         UserEntity RegisterUser(string email, string password, string name,
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,

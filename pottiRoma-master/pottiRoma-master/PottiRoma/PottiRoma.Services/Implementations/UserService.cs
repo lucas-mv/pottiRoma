@@ -12,9 +12,9 @@ namespace PottiRoma.Services.Implementations
 {
     public class UserService : IUserService
     {
-        public UserEntity Authenticate(string email, string password)
+        public UserEntity Authenticate(string email, string password, AuthOrigin origin)
         {
-            return UserBusiness.Authenticate(email, password);
+            return UserBusiness.Authenticate(email, password, origin);
         }
 
         public void Logout(string userId)
