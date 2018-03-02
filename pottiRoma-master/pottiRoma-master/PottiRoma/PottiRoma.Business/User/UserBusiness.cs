@@ -62,10 +62,23 @@ namespace PottiRoma.Business.User
             return newUser;
         }
 
-        public static UserEntity Authenticate(string email, string password)
+        public static UserEntity Authenticate(string email, string password, AuthOrigin origin)
         {
             UserEntity user;
             user = UserRepository.Get().GetUserAuth(email);
+
+            switch (origin)
+            {
+                case AuthOrigin.App:
+                    if(user.UserType == UserType.Administrator)
+                        throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+                    break;
+                case AuthOrigin.Web:
+                    if(user.UserType == UserType.SalesPerson ||
+                        user.UserType == UserType.SecundarySalesPerson)
+                        throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+                    break;
+            }
 
             if (user == null)
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);

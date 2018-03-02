@@ -30,7 +30,7 @@ namespace PottiRoma.Api.Controllers
         public async Task<LoginResponse> LoginUser(LoginUserRequest request)
         {
             var response = new LoginResponse();
-            response.User = _userService.Authenticate(request.Email, request.Password);
+            response.User = _userService.Authenticate(request.Email, request.Password, request.Origin);
             response.Token = _authenticationService.CreateAuthenticationControl(response.User.UsuarioId, request.Origin);
             return response;
         }

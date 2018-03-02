@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace PottiRoma.Api
 {
@@ -10,6 +11,9 @@ namespace PottiRoma.Api
         public static void Register(HttpConfiguration config)
         {
             // Serviços e configuração da API da Web
+#if DEBUG
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+#endif
 
             // Rotas da API da Web
             config.MapHttpAttributeRoutes();

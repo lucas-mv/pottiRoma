@@ -20,6 +20,7 @@ namespace PottiRoma.Api.Controllers
 
         public async Task ValidateToken()
         {
+#if !DEBUG
             var request = System.Web.HttpContext.Current.Request;
             var authInfo = new AuthenticationInformationEntity()
             {
@@ -31,6 +32,7 @@ namespace PottiRoma.Api.Controllers
                 authInfo.AuthMethod = Request.Headers.Authorization.Scheme;
             }
             await _authenticationService.ValidateToken(authInfo);
+#endif
         }
     }
 }

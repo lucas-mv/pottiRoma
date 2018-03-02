@@ -2,6 +2,22 @@ $topnav-background-color: #fafafa;
 :host {
     display: block;
 }
+
+.login-form-container{
+    display:flex; 
+    flex-direction:column;
+
+    .login-input{
+        margin-bottom: 12px;
+        margin-top: 12px;
+    }
+    
+    .login-button-container{
+        display:flex;
+        margin: 12px auto;
+    }
+}
+
 .login-page {
     position: absolute;
     top: 0;
