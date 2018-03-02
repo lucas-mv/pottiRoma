@@ -82,40 +82,8 @@
                         BackgroundColor="{StaticResource CorBoxSeparetorLine}"
                         HorizontalOptions="Fill"
                         VerticalOptions="Fill" />
+
                     <Grid Grid.Row="2">
-                        <Label
-                            Margin="16,0,0,0"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HorizontalOptions="Start"
-                            Text="Valor Pago:"
-                            TextColor="Green"
-                            VerticalOptions="Center" />
-                        <renderers:CustomEntry
-                            x:Name="Entry_price"
-                            Grid.Column="1"
-                            Margin="0,0,16,0"
-                            Completed="Entry_Price_Completed"
-                            Focused="Entry_Price_Focused"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"
-                            Keyboard="Numeric"
-                            Placeholder="Digite aqui"
-                            PlaceholderColor="{StaticResource PlaceholderColor}"
-                            Text="{Binding SaleRegistered.SalePaidValue}"
-                            TextColor="{StaticResource TextColor}"
-                            Unfocused="Entry_Price_Unfocused"
-                            VerticalOptions="Center"
-                            WidthRequest="120" />
-                    </Grid>
-                    <ContentView
-                        Grid.Row="3"
-                        BackgroundColor="{StaticResource CorBoxSeparetorLine}"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill" />
-                    <Grid Grid.Row="4">
                         <Label
                             Margin="16,0,0,0"
                             FontAttributes="Bold"
@@ -143,6 +111,42 @@
                             VerticalOptions="Center"
                             WidthRequest="120" />
                     </Grid>
+
+                    <ContentView
+                        Grid.Row="3"
+                        BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill" />
+
+                    <Grid Grid.Row="4">
+                        <Label
+                            Margin="16,0,0,0"
+                            FontAttributes="Bold"
+                            FontSize="{StaticResource StandardFontSize}"
+                            HorizontalOptions="Start"
+                            Text="Valor Pago:"
+                            TextColor="{StaticResource DarkTextColor}"
+                            VerticalOptions="Center" />
+                        <renderers:CustomEntry
+                            x:Name="Entry_price"
+                            Grid.Column="1"
+                            Margin="0,0,16,0"
+                            Completed="Entry_Price_Completed"
+                            Focused="Entry_Price_Focused"
+                            FontAttributes="Bold"
+                            FontSize="{StaticResource StandardFontSize}"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"
+                            Keyboard="Numeric"
+                            Placeholder="Digite aqui"
+                            PlaceholderColor="{StaticResource PlaceholderColor}"
+                            Text="{Binding SaleRegistered.SalePaidValue}"
+                            TextColor="{StaticResource TextColor}"
+                            Unfocused="Entry_Price_Unfocused"
+                            VerticalOptions="Center"
+                            WidthRequest="120" />
+                    </Grid>
+
                     <ContentView
                         Grid.Row="5"
                         BackgroundColor="{StaticResource CorBoxSeparetorLine}"
@@ -183,7 +187,7 @@
                         <Label
                             FontAttributes="Bold"
                             FontSize="{StaticResource StandardFontSize}"
-                            Text="Observações"
+                            Text="Conte Mais Sobre a Venda:"
                             TextColor="{StaticResource DarkTextColor}" />
                         <Grid Margin="0">
                             <Label

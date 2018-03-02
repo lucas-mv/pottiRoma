@@ -25,7 +25,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task UpdateGamificationPoints(GamificationPointsRequest request)
         {
-            //await ValidateToken();
+            await ValidateToken();
             _gamificationPointsService.UpdatePoints(request.IsActive, request.AverageTicket, request.RegisterNewClients, request.SalesNumber, request.AverageItensPerSale, request.InviteFlower);
         }
 
@@ -33,7 +33,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<GamificationPointsResponse> GetCurrentGamificationPoints()
         {
-            //await ValidateToken();
+            await ValidateToken();
 
             var response = new GamificationPointsResponse();
             response.Entity = _gamificationPointsService.GetCurrentGamificationPoints();

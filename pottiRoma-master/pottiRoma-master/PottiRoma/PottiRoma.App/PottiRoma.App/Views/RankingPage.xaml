@@ -76,7 +76,7 @@
                         FontAttributes="Bold"
                         FontSize="{StaticResource UltraLargeFontSize}"
                         HorizontalOptions="Center"
-                        Text="RANKING GERAL"
+                        Text="DESAFIOS DA TEMPORADA"
                         TextColor="{StaticResource LightBackgroundColor}"
                         VerticalOptions="Center" />
                     <Label
@@ -95,7 +95,7 @@
                     FontSize="{StaticResource StandardFontSize}"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Text="Clique aqui para ver seu posicionamento geral na venda de produtos Potti Romã."
+                    Text="Clique aqui para ver os desafios da Temporada!"
                     TextColor="{StaticResource LightBackgroundColor}"
                     VerticalOptions="Center" />
 

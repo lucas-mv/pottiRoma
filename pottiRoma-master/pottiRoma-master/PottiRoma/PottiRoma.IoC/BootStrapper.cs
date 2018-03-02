@@ -29,6 +29,7 @@ namespace PottiRoma.IoC
             container.Register<IAuthenticationService, AuthenticationService>(Lifestyle.Transient);
             container.Register<ISeasonService,SeasonService>(Lifestyle.Transient);
             container.Register<IGamificationPointsService, GamificationPointsService>(Lifestyle.Transient);
+            container.Register<IChallengesService, ChallengesService>(Lifestyle.Transient);
         }
     }
 }

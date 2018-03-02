@@ -17,10 +17,8 @@ namespace PottiRoma.App.Utils.NavigationHelpers
         public const string RankingDetail = "MainNavigationPage/RankingPage";
         public const string MyClients = "MainNavigationPage/MyClientsPage";
         public const string EditPersonalData = "MainNavigationPage/EditPersonalDataPage";
-        public const string TrophyRoom = "MainNavigationPage/TrophyRoomPage";
         public const string GamificationRules = "MainNavigationPage/GamificationRulesPage";
         public const string SalesHistory = "MainNavigationPage/SalesHistoryPage";
-
 
         #endregion
 
@@ -31,5 +29,7 @@ namespace PottiRoma.App.Utils.NavigationHelpers
         public const string RegisterSale = "RegisterSalePage";
         public const string ResetPassword = "ResetPasswordPage";
         public const string ListRanking = "ListRankingPage";
+        public const string TrophyRoom = "TrophyRoomPage";
+        public const string CurrentChallenges = "CurrentChallengesPage";
     }
 }

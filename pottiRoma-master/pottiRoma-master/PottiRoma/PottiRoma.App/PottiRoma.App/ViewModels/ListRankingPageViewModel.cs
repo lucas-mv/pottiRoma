@@ -153,7 +153,7 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 var users = await _userAppService.GetAppUsers();
-                
+
                 foreach (var user in users.Users)
                 {
                     AppUsers.Add(user);
@@ -169,7 +169,7 @@ namespace PottiRoma.App.ViewModels
             var listaOrdenada = ListaOrdenada();
 
             AppUsers.Clear();
-            
+
 
             foreach (var userOrdenado in listaOrdenada)
             {
@@ -180,9 +180,9 @@ namespace PottiRoma.App.ViewModels
 
             ThisUser = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
 
-            for (int i=0; i < AppUsers.Count; i++)
+            for (int i = 0; i < AppUsers.Count; i++)
             {
-                AppUsers[i].RankingPosition = (i+1).ToString() + ". ";
+                AppUsers[i].RankingPosition = (i + 1).ToString() + ". ";
 
             }
 
@@ -195,6 +195,18 @@ namespace PottiRoma.App.ViewModels
                     ThisUser.RankingPosition = user.RankingPosition;
                     ThisUser.Name = user.Name;
                     ThisUser.TotalPoints = user.TotalPoints;
+                }
+                SelectFirstFiveUsers();
+            }
+        }
+
+        private void SelectFirstFiveUsers()
+        {
+            if (AppUsers.Count > 5)
+            {
+                for (int i = 5; i < AppUsers.Count; i++)
+                {
+                    AppUsers.RemoveAt(i);
                 }
             }
         }

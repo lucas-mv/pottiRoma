@@ -165,7 +165,7 @@
             Command="{Binding RegisterNewClientCommand}"
             HorizontalOptions="Center"
             Style="{StaticResource ButtonDefault}"
-            Text="NOVO CLIENTE"
+            Text="NOVA COLECIONADORA"
             VerticalOptions="Center"
             WidthRequest="250" />
     </Grid>

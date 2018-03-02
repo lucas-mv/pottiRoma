@@ -17,11 +17,5 @@ namespace PottiRoma.App.Views
         {
             InitializeComponent();
         }
-
-
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
     }
 }

@@ -48,24 +48,17 @@ namespace PottiRoma.App.ViewModels
             _userDialogs = userDialogs;
             GoToRankingPageCommand = new DelegateCommand<RankingBannerDto>(GoToRankingPage).ObservesCanExecute(() => CanExecute);
             GoToGeneralRankingPageCommand = new DelegateCommand(GoToGeneralRankingPage).ObservesCanExecute(() => CanExecute);
-            InitializeRewards();
+            InitializeRankings();
         }
 
         private async void GoToGeneralRankingPage()
         {
             CanExecuteInitial();
             await NavigationHelper.ShowLoading();
-            try
-            {
-                Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
-                        {
-                            { InsightsPagesNames.RankingPage, InsightsActionNames.VisualizeRanking }
-                        });
-            }
-            catch { }
-            await Task.Delay(2000);
-            await _navigationService.NavigateAsync(NavigationSettings.ListRanking);
+           
+            await _navigationService.NavigateAsync(NavigationSettings.TrophyRoom);
             CanExecuteEnd();
+            await NavigationHelper.PopLoading();
         }
 
         private async void GoToRankingPage(RankingBannerDto obj)
@@ -86,7 +79,7 @@ namespace PottiRoma.App.ViewModels
             SelectedIndex = 2;
         }
 
-        private void InitializeRewards()
+        private void InitializeRankings()
         {
             RankingDto = new ObservableCollection<RankingBannerDto>();
             RankingDto.Add(new RankingBannerDto()

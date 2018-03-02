@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AuthenticationBusiness.cs" />
+    <Compile Include="Challenges\ChallengesBusiness.cs" />
     <Compile Include="Clients\ClientsBusiness.cs" />
     <Compile Include="GamificationPointsBusiness\GamificationPointBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

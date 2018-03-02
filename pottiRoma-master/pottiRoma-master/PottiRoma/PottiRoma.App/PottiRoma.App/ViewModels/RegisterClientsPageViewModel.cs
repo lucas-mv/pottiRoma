@@ -124,10 +124,8 @@ namespace PottiRoma.App.ViewModels
 
         private string SetTitle(bool isEdit)
         {
-            if(isEdit)
-                return Device.OS == TargetPlatform.Android ? "Cadastro de Clientes" : "";
-            else
-                return Device.OS == TargetPlatform.Android ? "Editar dados do Cliente" : "";
+            string title = isEdit ? "Editar Colecionadora" : "Registrar Colecionadora";
+            return title;
         }
 
         private async void RegisterNewClient()
@@ -185,7 +183,7 @@ namespace PottiRoma.App.ViewModels
                             Name = ClientSelectedForEdition.Name,
                             Telephone = ClientSelectedForEdition.Telephone
                         });
-                        UserDialogs.Instance.Toast("Cliente editado com sucesso!");
+                        UserDialogs.Instance.Toast("Colecionadora editada com sucesso!");
                         try
                         {
                             Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
@@ -199,9 +197,9 @@ namespace PottiRoma.App.ViewModels
                 catch (Exception ex)
                 {
                     if (RegisterOrEditText.Contains("CADASTRAR"))
-                        UserDialogs.Instance.Toast("Não foi possível registrar o cliente.");
+                        UserDialogs.Instance.Toast("Não foi possível registrar a Colecionadora.");
                     else
-                        UserDialogs.Instance.Toast("Não foi possível editar o cliente.");
+                        UserDialogs.Instance.Toast("Não foi possível editar a Colecionadora.");
                 }
                 finally
                 {

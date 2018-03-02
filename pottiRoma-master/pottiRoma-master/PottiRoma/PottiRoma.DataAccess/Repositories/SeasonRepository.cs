@@ -31,11 +31,6 @@ namespace PottiRoma.DataAccess.Repositories
         , Name AS Name
         , StartDate AS StartDate
         , EndDate AS EndDate
-        , AverageTicketGoal AS AverageTicketGoal
-        , AverageItensPerSaleGoal AS AverageItensPerSaleGoal
-        , RegisterClientsGoal AS RegisterClientsGoal
-        , SalesNumberGoal AS SalesNumberGoal
-        , InviteFlowersGoal AS InviteFlowersGoal
         , IsActive AS IsActive
             FROM dbo.Temporada
             WHERE IsActive = 1";

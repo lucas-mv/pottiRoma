@@ -648,6 +648,21 @@
   <ItemGroup>
     <BundleResource Include="Resources\banner_top1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\card%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\card%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rectangle_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rectangle_13%403x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -41,11 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\AuthenticationService.cs" />
+    <Compile Include="Implementations\ChallengesService.cs" />
     <Compile Include="Implementations\ClientsService.cs" />
     <Compile Include="Implementations\GamificationPointsService.cs" />
     <Compile Include="Implementations\SalesService.cs" />
     <Compile Include="Implementations\SeasonService.cs" />
     <Compile Include="Implementations\UserService.cs" />
+    <Compile Include="Interfaces\IChallengesService.cs" />
     <Compile Include="Interfaces\IAuthenticationService.cs" />
     <Compile Include="Interfaces\IClientsService.cs" />
     <Compile Include="Interfaces\IGamificationPointsService.cs" />

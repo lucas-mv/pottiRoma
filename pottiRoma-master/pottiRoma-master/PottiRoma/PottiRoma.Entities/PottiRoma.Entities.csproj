@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AuthenticationControlEntity.cs" />
     <Compile Include="AuthenticationInformationEntity.cs" />
+    <Compile Include="ChallengeEntity.cs" />
     <Compile Include="ClientEntity.cs" />
     <Compile Include="GamificationPointsEntity.cs" />
     <Compile Include="Internal\PasswordCrypto.cs" />

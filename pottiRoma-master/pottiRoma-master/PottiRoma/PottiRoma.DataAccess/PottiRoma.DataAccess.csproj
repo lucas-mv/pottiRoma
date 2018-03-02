@@ -47,12 +47,14 @@
     <Compile Include="Core\BaseDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\AuthenticationControlQuery.cs" />
+    <Compile Include="Query\ChallengesQuery.cs" />
     <Compile Include="Query\ClientsQuery.cs" />
     <Compile Include="Query\GamificationPointsQuery.cs" />
     <Compile Include="Query\SalesQuery.cs" />
     <Compile Include="Query\SeasonQuery.cs" />
     <Compile Include="Query\UserQuery.cs" />
     <Compile Include="Repositories\AuthenticationControlRepository.cs" />
+    <Compile Include="Repositories\ChallengesRepository.cs" />
     <Compile Include="Repositories\ClientsRepository.cs" />
     <Compile Include="Repositories\GamificationPointsRepository.cs" />
     <Compile Include="Repositories\SalesRepository.cs" />

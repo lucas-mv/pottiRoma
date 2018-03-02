@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PottiRoma.Entities.Internal
+namespace PottiRoma.Entities
 {
-    public class SeasonEntity
+    public class ChallengeEntity
     {
         public Guid TemporadaId { get; set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public bool IsActive { get; set; }
+        public int Parameter { get; set; }
+        public int Goal { get; set; }
     }
 }

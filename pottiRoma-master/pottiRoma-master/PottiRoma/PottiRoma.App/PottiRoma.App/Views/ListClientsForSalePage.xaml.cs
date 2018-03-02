@@ -13,11 +13,6 @@ namespace PottiRoma.App.Views
             NavigationPage.SetHasNavigationBar(this, true);
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            return false;
-        }
-
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
