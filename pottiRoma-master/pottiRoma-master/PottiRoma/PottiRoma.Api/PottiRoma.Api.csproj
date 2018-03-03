@@ -163,6 +163,7 @@
     <Compile Include="Request\User\LoginUserRequest.cs" />
     <Compile Include="Request\User\RegisterUserRequest.cs" />
     <Compile Include="Request\User\UpdateUserPointsRequest.cs" />
+    <Compile Include="Response\Challenges\GetCurrentChallengesResponse.cs" />
     <Compile Include="Response\Clients\GetClientsByUserIdResponse.cs" />
     <Compile Include="Response\Email\SendEmailResponse.cs" />
     <Compile Include="Response\GamificationPoints\GamificationPointsResponse.cs" />

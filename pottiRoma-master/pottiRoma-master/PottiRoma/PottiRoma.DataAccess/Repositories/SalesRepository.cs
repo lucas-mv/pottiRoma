@@ -96,6 +96,7 @@ namespace PottiRoma.DataAccess.Repositories
         public void UpdateSale(Guid vendaId, float saleValue, float salePaidValue, int numberSoldPieces, string description)
         {
             DynamicParameters parameters = new DynamicParameters();
+
             parameters.Add("@vendaid", vendaId, System.Data.DbType.Guid);
             parameters.Add("@salevalue", saleValue, System.Data.DbType.Double);
             parameters.Add("@salepaidvalue", salePaidValue, System.Data.DbType.Double);

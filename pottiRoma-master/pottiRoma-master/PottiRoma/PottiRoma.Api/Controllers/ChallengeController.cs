@@ -1,4 +1,5 @@
 ﻿using PottiRoma.Api.Request.Challenges;
+using PottiRoma.Api.Response.Challenges;
 using PottiRoma.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Web.Http;
 
 namespace PottiRoma.Api.Controllers
 {
-    [RoutePrefix("api/v1/GamificationPoints")]
+    [RoutePrefix("api/v1/Challenge")]
     public class ChallengeController : BaseController
     {
         private readonly IChallengesService _challengesService;
@@ -30,6 +31,17 @@ namespace PottiRoma.Api.Controllers
             await ValidateToken();
             var temporadaId = _seasonService.GetCurrentSeason();
             _challengesService.InsertNewChallenge(temporadaId.TemporadaId, request.Name, request.StartDate, request.EndDate, request.Parameter, request.Goal);
+        }
+
+        [Route("Get/{temporadaId}")]
+        [HttpGet]
+        public async Task<GetCurrentChallengesResponse> GetCurrentChallenges(string temporadaId)
+        {
+            //await ValidateToken();
+            return new GetCurrentChallengesResponse()
+            {
+                Challenges = _challengesService.GetCurrentChallenges(new Guid(temporadaId))
+            };
         }
     }
 }

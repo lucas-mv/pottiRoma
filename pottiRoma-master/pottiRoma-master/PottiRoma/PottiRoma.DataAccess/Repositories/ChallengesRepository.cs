@@ -27,8 +27,16 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Selects
 
-        private const string GET_ALL_CHALLENGES = @"
-        SELECT * FROM dbo.Desafio
+        private const string GET_CURRENT_CHALLENGES = @"
+        SELECT
+            TemporadaId as TemporadaId,
+            Name as Name,
+            StartDate as StartDate,
+            EndDate as EndDate,
+            Parameter as Parameter,
+            Goal as Goal
+        FROM dbo.Desafio
+        WHERE TemporadaId = @temporadaid
         ";
 
         #endregion
@@ -73,9 +81,13 @@ namespace PottiRoma.DataAccess.Repositories
             Execute(INSERT_NEW_CHALLENGE, parameters);
         }
 
-        public List<ChallengeEntity> GetAllChallenges()
+        public List<ChallengeEntity> GetCurrentChallenges(Guid temporadaId)
         {
-            return Query(GET_ALL_CHALLENGES).ToList();
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@temporadaid", temporadaId, System.Data.DbType.Guid);
+
+            return Query(GET_CURRENT_CHALLENGES, parameters).ToList();
         }
 
         #endregion

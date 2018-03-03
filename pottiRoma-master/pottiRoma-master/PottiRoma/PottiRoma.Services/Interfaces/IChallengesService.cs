@@ -11,6 +11,6 @@ namespace PottiRoma.Services.Interfaces
     {
         void InsertNewChallenge(Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal);
 
-        List<ChallengeEntity> GetAllChallenges();
+        List<ChallengeEntity> GetCurrentChallenges(Guid temporadaId);
     }
 }
