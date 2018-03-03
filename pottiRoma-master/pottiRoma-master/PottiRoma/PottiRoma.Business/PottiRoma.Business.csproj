@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=4.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleCrypto, Version=26.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
     </Reference>
@@ -47,6 +50,7 @@
     <Compile Include="Challenges\ChallengesBusiness.cs" />
     <Compile Include="Clients\ClientsBusiness.cs" />
     <Compile Include="GamificationPointsBusiness\GamificationPointBusiness.cs" />
+    <Compile Include="General\ReportGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sale\SalesBusiness.cs" />
     <Compile Include="Season\SeasonBusiness.cs" />
@@ -66,9 +70,7 @@
       <Name>PottiRoma.Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="General\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

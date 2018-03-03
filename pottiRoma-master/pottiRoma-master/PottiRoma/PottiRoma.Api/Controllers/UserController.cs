@@ -46,7 +46,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)
         {
-            ValidateToken();
+            await ValidateToken();
             var checkUserEmailRegistered = _userService.GetUserByEmail(request.Email);
             if (checkUserEmailRegistered != null)
             {
@@ -70,12 +70,12 @@ namespace PottiRoma.Api.Controllers
         [HttpGet]
         public async Task RequestPasswordReset(string usuarioId)
         {
-            //var user = _userService.GetUserById(new Guid(usuarioId));
-            //var corpoEmail = "Para redefinir uma nova senha para o app da Potti Roma, por favor clique no link abaixo:\n\n" +
-            //    "pottiroma.azurewebsites.net/api/v1/User/Profile/Password/Reset/" + usuarioId;
-            //var destinatario = new Dictionary<string, string>();
-            //destinatario.Add(user.Email, user.Name);
-            //EmailResetPassword.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
+            var user = _userService.GetUserById(new Guid(usuarioId));
+            var corpoEmail = "Para redefinir uma nova senha para o app da Potti Roma, por favor clique no link abaixo:\n\n" +
+                "pottiroma.azurewebsites.net/api/v1/User/Profile/Password/Reset/" + usuarioId;
+            var destinatario = new Dictionary<string, string>();
+            destinatario.Add(user.Email, user.Name);
+            EmailResetPassword.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
         }
 
         [Route("Profile/Password/Reset/{usuarioId}")]
@@ -97,7 +97,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task UpdateClientInfo(UpdateUserPointsRequest request)
         {
-            //await ValidateToken();
+            await ValidateToken();
             _userService.UpdateUserPoints(request.UsuarioId ,request.AverageTicketPoints, request.RegisterClientsPoints, request.SalesNumberPoints, request.AverageItensPerSalePoints, request.InviteAllyFlowersPoints);
         }
 
@@ -105,7 +105,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<GetAppUsersResponse> GetAppUsers()
         {
-            //await ValidateToken();
+            await ValidateToken();
             return new GetAppUsersResponse()
             {
                 Users = _userService.GetAppUsers()
@@ -116,7 +116,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
         {
-            //await ValidateToken();
+            await ValidateToken();
             _userService.UpdateUser(new Guid(usuarioId), email, primaryTelephone, secundaryTelephone, cep);
         }
 
@@ -124,7 +124,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<UserEntity> GetUserByEmail(string email)
         {
-            //await ValidateToken();
+            await ValidateToken();
             return _userService.GetUserByEmail(email);
         }
     }

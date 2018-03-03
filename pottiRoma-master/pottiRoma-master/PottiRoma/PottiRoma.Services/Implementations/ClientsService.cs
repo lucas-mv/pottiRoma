@@ -30,5 +30,15 @@ namespace PottiRoma.Services.Implementations
         {
             ClientsBusiness.RemoveClient(clienteId);
         }
+
+        public List<ClientEntity> GetAllClients()
+        {
+            return ClientsBusiness.GetAllClients();
+        }
+
+        public byte[] GenerateClientsReport()
+        {
+            return ClientsBusiness.GenerateClientsReport();
+        }
     }
 }

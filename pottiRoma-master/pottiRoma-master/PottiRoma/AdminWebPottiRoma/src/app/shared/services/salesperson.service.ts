@@ -3,15 +3,16 @@ import { Http } from '@angular/http';
 import { BaseService } from './base.service';
 
 @Injectable()
-export class SalespersonService {
+export class SalespersonService extends BaseService {
 
-  constructor(private http: Http, private baseService: BaseService) { }
+  constructor(private http: Http) {
+    super();
+   }
 
-  registerNewSalesperson(name: string, primaryPhone :string, secondaryPhone: string, cpf: string, email: string, cep: string){
+   public registerNewSalesperson(name: string, primaryPhone :string, secondaryPhone: string, cpf: string, email: string, cep: string){
     return this.http
       .post(
-        'http://localhost:51945/api/v1/User/Register',
-        // 'https://pottiroma.azurewebsites.net/api/v1/User/Register',
+        this.getBaseUrl() + 'User/Register',
         {
           Name: name,
           Email: email,
@@ -23,7 +24,7 @@ export class SalespersonService {
           Cep: cep,
           IsActive: true
         },
-        this.baseService.createAuthenticationRequestOptions()
+        this.createAuthenticationRequestOptions()
       )
       .toPromise()
       .then(res => {

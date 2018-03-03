@@ -13,5 +13,7 @@ namespace PottiRoma.Services.Interfaces
         List<ClientEntity> GetClientsByUserId(Guid usuarioId);
         void UpdateClientInfo(Guid clienteId, string name, string telephone, string email, string Cep, DateTime birthdate);
         void RemoveCliente(Guid clienteId);
+        byte[] GenerateClientsReport();
+        List<ClientEntity> GetAllClients();
     }
 }

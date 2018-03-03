@@ -1,4 +1,5 @@
-﻿using PottiRoma.DataAccess.Repositories;
+﻿using PottiRoma.Business.General;
+using PottiRoma.DataAccess.Repositories;
 using PottiRoma.Entities;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,16 @@ namespace PottiRoma.Business.Clients
                 Birthdate = birthdate
             };
             ClientsRepository.Get().UpdateClientInfo(client);
+        }
+
+        public static List<ClientEntity> GetAllClients()
+        {
+            return ClientsRepository.Get().GetAllClients().OrderBy(c => c.Name).ToList();
+        }
+
+        public static byte[] GenerateClientsReport()
+        {
+            return ReportGenerator.GenerateClientsReport(GetAllClients());
         }
     }
 }

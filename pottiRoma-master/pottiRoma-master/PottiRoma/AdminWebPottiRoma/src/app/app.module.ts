@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material';
 import { BaseService } from './shared/services/base.service';
 import { LoginService } from './shared/services/login.service';
 import { SalespersonService } from './shared/services/salesperson.service';
+import { SalesReportService } from './shared/services/sales-report.service';
+import { ClientsService } from './shared/services/clients.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,7 +56,9 @@ export function createTranslateLoader(http: HttpClient) {
         AuthGuard,
         BaseService,
         LoginService,
-        SalespersonService],
+        SalespersonService,
+        SalesReportService,
+        ClientsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
