@@ -70,12 +70,12 @@ namespace PottiRoma.Api.Controllers
         [HttpGet]
         public async Task RequestPasswordReset(string usuarioId)
         {
-            var user = _userService.GetUserById(new Guid(usuarioId));
-            var corpoEmail = "Para redefinir uma nova senha para o app da Potti Roma, por favor clique no link abaixo:\n\n" +
-                "pottiroma.azurewebsites.net/api/v1/User/Profile/Password/Reset/" + usuarioId;
-            var destinatario = new Dictionary<string, string>();
-            destinatario.Add(user.Email, user.Name);
-            EmailResetPassword.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
+            //var user = _userService.GetUserById(new Guid(usuarioId));
+            //var corpoEmail = "Para redefinir uma nova senha para o app da Potti Roma, por favor clique no link abaixo:\n\n" +
+            //    "pottiroma.azurewebsites.net/api/v1/User/Profile/Password/Reset/" + usuarioId;
+            //var destinatario = new Dictionary<string, string>();
+            //destinatario.Add(user.Email, user.Name);
+            //EmailResetPassword.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
         }
 
         [Route("Profile/Password/Reset/{usuarioId}")]
