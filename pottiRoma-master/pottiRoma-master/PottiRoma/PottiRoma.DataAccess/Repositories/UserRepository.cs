@@ -184,7 +184,7 @@ namespace PottiRoma.DataAccess.Repositories
             @averageitenspersalepoints,
             @inviteallyflowerspoints,
             @temporadaid,
-            @motherflowerid
+            @motherflowerid,
             @isactive
         )";
 

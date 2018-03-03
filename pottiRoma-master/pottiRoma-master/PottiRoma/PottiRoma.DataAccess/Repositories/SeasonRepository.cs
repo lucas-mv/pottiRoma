@@ -62,7 +62,6 @@ namespace PottiRoma.DataAccess.Repositories
 
         #endregion
 
-
         #region Public Methods
 
         public SeasonEntity GetCurrentSeason()
@@ -85,7 +84,6 @@ namespace PottiRoma.DataAccess.Repositories
         }
 
         #endregion
-
 
         #region Private methods
 

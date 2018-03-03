@@ -1,4 +1,5 @@
-﻿using PottiRoma.DataAccess.Repositories;
+﻿using PottiRoma.Business.Season;
+using PottiRoma.DataAccess.Repositories;
 using PottiRoma.Entities;
 using PottiRoma.Entities.Internal;
 using PottiRoma.Utils;
@@ -50,11 +51,13 @@ namespace PottiRoma.Business.User
             if (oldUser != null)
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.EMAIL_ALREADY_USED);
 
+            var currentSeason = SeasonBusiness.GetCurrentSeason();
+
             var cryptoPassword = EncryptPassword(password);
             var newUserId = Guid.NewGuid();
             UserRepository.Get().InsertUser(newUserId, email, cryptoPassword.Password, cryptoPassword.Salt, name, primaryTelephone,
                 secundaryTelephone, cpf, userType, cep, AverageTicketPoints, RegisterClientsPoints, salesNumberPoints, averageTtensPerSalepoints, 
-                inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive);
+                inviteAllyFlowersPoints, currentSeason.TemporadaId, motherFlowerId, isActive);
             var newUser = UserRepository.Get().GetUserById(newUserId);
 
             if (newUser == null)
@@ -67,21 +70,21 @@ namespace PottiRoma.Business.User
             UserEntity user;
             user = UserRepository.Get().GetUserAuth(email);
 
+            if (user == null)
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+
             switch (origin)
             {
                 case AuthOrigin.App:
-                    if(user.UserType == UserType.Administrator)
+                    if (user.UserType == UserType.Administrator)
                         throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
                     break;
                 case AuthOrigin.Web:
-                    if(user.UserType == UserType.SalesPerson ||
+                    if (user.UserType == UserType.SalesPerson ||
                         user.UserType == UserType.SecundarySalesPerson)
                         throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
                     break;
             }
-
-            if (user == null)
-                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
 
             if (ValidatePassword(password, user.PasswordSalt, user.Password))
             {

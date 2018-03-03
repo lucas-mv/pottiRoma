@@ -46,6 +46,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)
         {
+            ValidateToken();
             var checkUserEmailRegistered = _userService.GetUserByEmail(request.Email);
             if (checkUserEmailRegistered != null)
             {
@@ -61,7 +62,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task ChangePassword(ChangePasswordRequest request)
         {
-            //await ValidateToken();
+            await ValidateToken();
             _userService.ChangePassword(request.UsuarioId, request.OldPassword, request.NewPassword);
         }
 

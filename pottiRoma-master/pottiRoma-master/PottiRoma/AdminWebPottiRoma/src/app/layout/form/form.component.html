@@ -1,54 +1,40 @@
 <div [@routerTransition] class="margin-pages">
-    <!-- <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header> -->
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
     <div>
         <h3 class="margin-pages">Registrar novo Revendedor</h3>
     </div>
-    <div class="row">
-        <div class="col-lg-6 padding-top" >
-            <form role="form">
-                <!-- <fieldset class="form-group">
-                    <label>Text Input</label>
-                    <input class="form-control">
-                    <p class="help-block">Example block-level help text here.</p>
-                </fieldset> -->
+    <div class="register-salesperson-container">
 
-                <fieldset class="form-group">
-                    <label>Nome*</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
+        <div class="register-salesperson-line">
 
-                <fieldset class="form-group">
-                    <label>CPF*</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
+            <mat-form-field class="register-salesperson-item">
+                <input matInput placeholder="Nome" type="text" [(ngModel)]="name">
+            </mat-form-field>
+            <mat-form-field class="register-salesperson-item">
+                <input matInput placeholder="CPF" type="text" [(ngModel)]="cpf">
+            </mat-form-field>
+            <mat-form-field class="register-salesperson-item">
+                <input matInput placeholder="Email" type="email" [(ngModel)]="email">
+            </mat-form-field>
 
-                <fieldset class="form-group">
-                    <label>Email*</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
-            </form>
         </div>
-        <div class="col-lg-6 padding-top">
-            <form role="form">
-                    <fieldset class="form-group">
-                            <label>Telefone Primário*</label>
-                            <input class="form-control" placeholder="Digite aqui...">
-                        </fieldset>
 
-                        <fieldset class="form-group">
-                            <label>Telefone Secundário</label>
-                            <input class="form-control" placeholder="Digite aqui...">
-                        </fieldset>
+        <div class="register-salesperson-line">
 
-                        <fieldset class="form-group">
-                            <label>CEP</label>
-                            <input class="form-control" placeholder="Digite aqui...">
-                        </fieldset>
-            </form>
-            <br>
+            <mat-form-field class="register-salesperson-item">
+                <input matInput placeholder="Telefone primário" type="text" [(ngModel)]="primaryPhone">
+            </mat-form-field>
+            <mat-form-field class="register-salesperson-item">
+                <input matInput placeholder="Telefone secundário" type="text" [(ngModel)]="secondaryPhone">
+            </mat-form-field>
+            <mat-form-field class="register-salesperson-item">
+                <input matInput placeholder="CEP" type="text" [(ngModel)]="cep">
+            </mat-form-field>
+            
         </div>
+
     </div>
     <div class="form-center-layout">
-        <button type="submit" class="btn btn-primary margin-pages btn-color-excel">CONFIRMAR</button>
+        <button type="submit" (click)="clickRegisterSalesperson()" class="btn btn-primary margin-pages btn-color-excel">CONFIRMAR</button>
     </div>
 </div>
