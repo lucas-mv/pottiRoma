@@ -11,9 +11,9 @@ namespace PottiRoma.Services.Implementations
 {
     public class ChallengesService : IChallengesService
     {
-        public List<ChallengeEntity> GetAllChallenges()
+        public List<ChallengeEntity> GetCurrentChallenges(Guid temporadaId)
         {
-            return ChallengesBusiness.GetAllChallenges();
+            return ChallengesBusiness.GetCurrentChallenges(temporadaId);
         }
 
         public void InsertNewChallenge(Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal)

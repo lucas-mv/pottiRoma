@@ -20,6 +20,7 @@ namespace PottiRoma.App.Utils
             public const string POINTS = "GamificationPoints";
             public const string FIRST_ACCESS = "FirstAccess";
             public const string BIRTHDAYS = "Birthdays";
+            public const string CHALLENGES = "Challenges";
         }
 
         public class Global

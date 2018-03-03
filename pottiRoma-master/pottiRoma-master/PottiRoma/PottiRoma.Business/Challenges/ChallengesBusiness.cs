@@ -25,9 +25,9 @@ namespace PottiRoma.Business.Challenges
             ChallengesRepository.Get().InsertNewChallenge(newChallenge);
         }
 
-        public static List<ChallengeEntity> GetAllChallenges()
+        public static List<ChallengeEntity> GetCurrentChallenges(Guid temporadaId)
         {
-            return ChallengesRepository.Get().GetAllChallenges();
+            return ChallengesRepository.Get().GetCurrentChallenges(temporadaId);
         }
     }
 }

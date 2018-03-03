@@ -33,11 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Implementations\ChallengesAppService.cs" />
     <Compile Include="Implementations\ClientsAppService.cs" />
     <Compile Include="Implementations\GamificationPointsAppService.cs" />
     <Compile Include="Implementations\SalesAppService.cs" />
     <Compile Include="Implementations\SeasonAppService.cs" />
     <Compile Include="Implementations\UserAppService.cs" />
+    <Compile Include="Interfaces\IChallengesAppService.cs" />
     <Compile Include="Interfaces\IClientsAppService.cs" />
     <Compile Include="Interfaces\IGamificationPointsAppService.cs" />
     <Compile Include="Interfaces\ISalesAppService.cs" />

@@ -25,6 +25,9 @@ namespace PottiRoma.App.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IUserAppService _userAppService;
         private readonly IUserDialogs _userDialogs;
+        private readonly IChallengesAppService _challengesAppService;
+        private readonly ISeasonAppService _seasonAppService;
+
 
         private double _screenHeightRequest;
         public double ScreenHeightRequest
@@ -53,11 +56,15 @@ namespace PottiRoma.App.ViewModels
         public LoginPageViewModel(
             INavigationService navigationService,
             IUserAppService userAppService,
-            IUserDialogs userDialogs)
+            IUserDialogs userDialogs,
+            IChallengesAppService challengesAppService,
+            ISeasonAppService seasonAppService)
         {
             _navigationService = navigationService;
             _userAppService = userAppService;
             _userDialogs = userDialogs;
+            _challengesAppService = challengesAppService;
+            _seasonAppService = seasonAppService;
 
             LoginCommand = new DelegateCommand(ExecuteLogin).ObservesCanExecute(() => CanExecute);
             ResetPasswordCommand = new DelegateCommand(ResetPassword).ObservesCanExecute(() => CanExecute);

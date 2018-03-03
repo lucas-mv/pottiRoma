@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Api\ChallengesApiRepository.cs" />
     <Compile Include="Api\ClientsApiRepository.cs" />
     <Compile Include="Api\GamificationPointsApiRepository.cs" />
     <Compile Include="Api\SalesApiRepository.cs" />

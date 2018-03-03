@@ -25,19 +25,22 @@ namespace PottiRoma.App.ViewModels
         private readonly IGamificationPointsAppService _gamificationPointsAppService;
         private readonly IUserAppService _userAppService;
         private readonly IClientsAppService _clientsAppService;
+        private readonly IChallengesAppService _challengesAppService;
 
         public LandingPageViewModel(
             ISeasonAppService seasonAppService,
             INavigationService navigationService,
             IGamificationPointsAppService gamificationPointsAppService,
             IUserAppService userAppService,
-            IClientsAppService clientsAppService)
+            IClientsAppService clientsAppService,
+            IChallengesAppService challengesAppService)
         {
             _seasonAppService = seasonAppService;
             _navigationService = navigationService;
             _gamificationPointsAppService = gamificationPointsAppService;
             _userAppService = userAppService;
             _clientsAppService = clientsAppService;
+            _challengesAppService = challengesAppService;
         }
 
         private ObservableCollection<Client> localBirthdays;
@@ -55,6 +58,10 @@ namespace PottiRoma.App.ViewModels
                 await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, currentClients.Clients);
                 await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, currentPoints.Entity);
                 await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
+
+                var currentChallenges = await _challengesAppService.GetCurrentChallenges(currentSeasonReponse.Entity.TemporadaId.ToString());
+                await CacheAccess.Insert<List<Challenge>>(CacheKeys.CHALLENGES, currentChallenges.Challenges);
+           
                 localBirthdays = await CheckAnniversary();
 
                 Settings.AccessToken = token.ToString();
