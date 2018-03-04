@@ -68,7 +68,27 @@ namespace PottiRoma.DataAccess.Repositories
           FROM dbo.UsuarioPotti
           where UsuarioId = @usuarioId";
 
-        public const string GET_USER_BY_EMAIL = @"
+        private const string GET_ALL_USERS = @"
+        SELECT UsuarioId AS UsuarioId
+              ,Cpf As Cpf
+              ,Name as Name
+              ,Email as Email
+              ,PrimaryTelephone as PrimaryTelephone
+              ,SecundaryTelephone as SecundaryTelephone
+              ,UserType as UserType
+              ,Cep as Cep
+              ,AverageTicketPoints as AverageTicketPoints
+              ,RegisterClientsPoints as RegisterClientsPoints
+              ,SalesNumberPoints as SalesNumberPoints
+              ,AverageItensPerSalePoints as AverageItensPerSalePoints
+              ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
+              ,TemporadaId as TemporadaId
+              ,MotherFlowerId as MotherFlowerId
+              ,IsActive as IsActive
+          FROM dbo.UsuarioPotti
+          where IsActive = 1";
+
+        private const string GET_USER_BY_EMAIL = @"
         SELECT UsuarioId AS UsuarioId
               ,Cpf As Cpf
               ,Name as Name
@@ -248,6 +268,13 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@usuarioId", userId, System.Data.DbType.Guid);
 
             return Query(GET_USER_BY_ID, parameters).FirstOrDefault();
+        }
+
+        public List<UserEntity> GetAllUsers()
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            return Query(GET_ALL_USERS, parameters).ToList();
         }
 
         public UserEntity GetUserByEmail(string email)

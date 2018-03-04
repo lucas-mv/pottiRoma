@@ -4,36 +4,37 @@
             <div class="card mb-3">
                 <div>
                     <h3 class="form-start-layout">Lista de Revendedoras</h3>
-                    <button type="button" class="btn btn-lg btn-primary form-end-layout btn-color-excel">Exportar para Excel</button>
+                    <button type="button" (click)="generateSalespeopleReport()" class="btn btn-lg btn-primary form-end-layout btn-color-excel">Exportar para Excel</button>
                 </div>
                 <div class="card-body table-responsive">
+                    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>CPF</th>
                                 <th>Nome</th>
+                                <th>CPF</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
                                 <th>Revendedora Vinculada</th>
-                                <th>Ticket Médio</th>
-                                <th>Cadastro de Clientes</th>
-                                <th>Peças por Atendimento</th>
-                                <th>Convite de Flores Aliadas</th>
-                                <th>Vendas Efetuadas</th>
+                                <th>Pontos de Ticket Médio</th>
+                                <th>Pontos de Cadastro de Clientes</th>
+                                <th>Pontos de Peças por Atendimento</th>
+                                <th>Pontos de Convite de Flores Aliadas</th>
+                                <th>Pontos de Vendas Efetuadas</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
+                            <tr *ngFor="let salesperson of salespeople">
+                                <td>{{salesperson.Name}}</td>
+                                <td>{{salesperson.Cpf}}</td>
+                                <td>{{salesperson.Email}}</td>
+                                <td>{{salesperson.PrimaryTelephone}}</td>
+                                <td>{{salesperson.MotherFlowerName}}</td>
+                                <td>{{salesperson.AverageTicketPoints}}</td>
+                                <td>{{salesperson.RegisterClientsPoints}}</td>
+                                <td>{{salesperson.AverageItensPerSalePoints}}</td>
+                                <td>{{salesperson.InviteAllyFlowersPoints}}</td>
+                                <td>{{salesperson.SalesNumberPoints}}</td>
                             </tr>
                         </tbody>
                     </table>

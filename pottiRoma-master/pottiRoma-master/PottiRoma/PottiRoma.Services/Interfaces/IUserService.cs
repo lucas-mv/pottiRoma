@@ -1,4 +1,5 @@
 ﻿using PottiRoma.Entities;
+using PottiRoma.Entities.Internal;
 using PottiRoma.Utils.Enums;
 using System;
 using System.Collections.Generic;
@@ -23,5 +24,7 @@ namespace PottiRoma.Services.Interfaces
         void UpdateUserPoints(Guid usuarioId, int averageTicketPoints, int registerClientsPoints, int salesNumberPoints, int averageItensPerSalePoints, int inviteAllyFlowersPoints);
         List<UserEntity> GetAppUsers();
         void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep);
+        List<SalespersonEntity> GetAllSalespeople();
+        byte[] GenerateSalespeopleReport();
     }
 }

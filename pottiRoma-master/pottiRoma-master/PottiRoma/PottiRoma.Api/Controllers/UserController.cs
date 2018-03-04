@@ -4,11 +4,15 @@ using PottiRoma.Api.Request.User;
 using PottiRoma.Api.Response.Email;
 using PottiRoma.Api.Response.User;
 using PottiRoma.Entities;
+using PottiRoma.Entities.Internal;
 using PottiRoma.Services.Interfaces;
 using PottiRoma.Utils.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -32,6 +36,35 @@ namespace PottiRoma.Api.Controllers
             var response = new LoginResponse();
             response.User = _userService.Authenticate(request.Email, request.Password, request.Origin);
             response.Token = _authenticationService.CreateAuthenticationControl(response.User.UsuarioId, request.Origin);
+            return response;
+        }
+
+        [Route("Get/Salesperson")]
+        [HttpGet]
+        public async Task<List<SalespersonEntity>> GetAllSalespeople()
+        {
+            await ValidateToken();
+            return _userService.GetAllSalespeople();
+        }
+
+        [Route("Report")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> GenerateSalespeopleReport()
+        {
+            await ValidateToken();
+            var fileName = "RelatorioRevendedoras_" + DateTime.Now.ToShortDateString().Replace("/", "-") + ".xlsx";
+            var reportData = _userService.GenerateSalespeopleReport();
+
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ByteArrayContent(reportData)
+            };
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = fileName
+            };
+
             return response;
         }
 

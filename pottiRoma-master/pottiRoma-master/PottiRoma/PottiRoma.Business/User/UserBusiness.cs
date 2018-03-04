@@ -1,4 +1,5 @@
-﻿using PottiRoma.Business.Season;
+﻿using PottiRoma.Business.General;
+using PottiRoma.Business.Season;
 using PottiRoma.DataAccess.Repositories;
 using PottiRoma.Entities;
 using PottiRoma.Entities.Internal;
@@ -153,6 +154,29 @@ namespace PottiRoma.Business.User
         public static void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
         {
             UserRepository.Get().UpdateUser(usuarioId, email, primaryTelephone, secundaryTelephone, cep);
+        }
+
+        public static List<SalespersonEntity> GetAllSalespeople()
+        {
+            var users = UserRepository.Get().GetAppUsers();
+            var salespeople = new List<SalespersonEntity>();
+            foreach (var user in users)
+            {
+                var motherFlowerName = string.Empty;
+                if(user.MotherFlowerId != null && Guid.Empty != user.MotherFlowerId)
+                    motherFlowerName = GetUserById(user.UsuarioId).Name;
+                var season = SeasonBusiness.GetSeasonById(user.TemporadaId);
+                if(season != null)
+                {
+                    salespeople.Add(SalespersonEntity.FromUser(user, motherFlowerName, season.Name));
+                }
+            }
+            return salespeople;
+        }
+
+        public static byte[] GenerateSalespeopleReport()
+        {
+            return ReportGenerator.GenerateSalespeopleReport(GetAllSalespeople());
         }
 
         #region Private methods

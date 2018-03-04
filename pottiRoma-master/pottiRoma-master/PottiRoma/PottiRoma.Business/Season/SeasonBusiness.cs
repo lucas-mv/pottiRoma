@@ -28,5 +28,10 @@ namespace PottiRoma.Business.Season
 
             SeasonRepository.Get().InsertSeason(name, startDate, endDate, isActive);
         }
+
+        public static SeasonEntity GetSeasonById(Guid seasonId)
+        {
+            return SeasonRepository.Get().GetSeasonById(seasonId);
+        }
     }
 }

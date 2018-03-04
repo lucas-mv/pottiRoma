@@ -8,6 +8,7 @@ using OfficeOpenXml.Style;
 using System.Threading.Tasks;
 using PottiRoma.Entities;
 using PottiRoma.Business.User;
+using PottiRoma.Entities.Internal;
 
 namespace PottiRoma.Business.General
 {
@@ -80,6 +81,53 @@ namespace PottiRoma.Business.General
                     ws.Cells["D" + line].Value = client.Email;
                     ws.Cells["E" + line].Value = client.Telephone;
                     ws.Cells["F" + line].Value = client.Birthdate.ToString("dd/MM");
+                }
+
+                ws.Cells[ws.Dimension.Address].AutoFitColumns();
+                reportData = package.GetAsByteArray();
+            }
+            return reportData;
+        }
+
+        public static byte[] GenerateSalespeopleReport(List<SalespersonEntity> salespeople)
+        {
+            byte[] reportData;
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                ExcelWorksheet ws = package.Workbook.Worksheets.Add("testsheet");
+
+                ws.Cells["A1"].Value = "Relatório de revendedoras - " + DateTime.Now.ToShortDateString();
+                ws.Cells["A1"].Style.Font.Bold = true;
+
+                ws.Cells["A2"].Value = "Revendedora";
+                ws.Cells["B2"].Value = "Email";
+                ws.Cells["C2"].Value = "CPF";
+                ws.Cells["D2"].Value = "CEP";
+                ws.Cells["E2"].Value = "Telefone primário";
+                ws.Cells["F2"].Value = "Telefone secundário";
+                ws.Cells["G2"].Value = "Temporada";
+                ws.Cells["H2"].Value = "Pontos de ticket médio";
+                ws.Cells["I2"].Value = "Pontos de clientes registrados";
+                ws.Cells["J2"].Value = "Pontos de peças por atendimento";
+                ws.Cells["K2"].Value = "Pontos por convidar revendedoras";
+
+                ws.Cells["A2:K2"].Style.Font.Bold = true;
+
+                var line = 2;
+                foreach (var salesperson in salespeople)
+                {
+                    line++;
+                    ws.Cells["A" + line].Value = salesperson.Name;
+                    ws.Cells["B" + line].Value = salesperson.Email;
+                    ws.Cells["C" + line].Value = salesperson.Cpf;
+                    ws.Cells["D" + line].Value = salesperson.Cep;
+                    ws.Cells["E" + line].Value = salesperson.PrimaryTelephone;
+                    ws.Cells["F" + line].Value = salesperson.SecundaryTelephone;
+                    ws.Cells["G" + line].Value = salesperson.Season;
+                    ws.Cells["H" + line].Value = salesperson.AverageTicketPoints;
+                    ws.Cells["I" + line].Value = salesperson.RegisterClientsPoints;
+                    ws.Cells["J" + line].Value = salesperson.AverageItensPerSalePoints;
+                    ws.Cells["K" + line].Value = salesperson.InviteAllyFlowersPoints;
                 }
 
                 ws.Cells[ws.Dimension.Address].AutoFitColumns();

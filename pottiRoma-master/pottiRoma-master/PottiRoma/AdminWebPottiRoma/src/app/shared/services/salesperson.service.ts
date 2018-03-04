@@ -41,4 +41,48 @@ export class SalespersonService extends BaseService {
         }
       });
   }
+
+  public getAllSalespeople(){
+    return this.http
+    .get(
+      this.getBaseUrl() + 'User/Get/Salesperson',
+      this.createAuthenticationRequestOptions()
+    )
+    .toPromise()
+    .then(res => {
+      let responseJson = res.json();
+      return {
+        salespeople: responseJson,
+        message: ''
+      };
+    })
+    .catch(res => {
+      return {
+        salespeople: null,
+        message: res._body
+      }
+    });
+   }
+
+   public generateSalespeopleReport(){
+    return this.http
+      .get(
+        this.getBaseUrl() + 'User/Report',
+        this.createBlobAuthenticationRequestOptions()
+      )
+      .toPromise()
+      .then(res => {        
+        let date = new Date();
+        let fileName = 'RelatorioRevendedoras_' + date.getDate() + '-' + (date.getMonth()+1) + '-' + date.getFullYear() + '.xlsx';
+        this.saveAsBlob(res, fileName);
+        return {
+          message: ''
+        };
+      })
+      .catch(res => {
+        return {
+          message: res._body
+        }
+      });
+  } 
 }

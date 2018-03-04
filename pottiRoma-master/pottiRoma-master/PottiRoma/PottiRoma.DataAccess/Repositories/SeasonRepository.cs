@@ -35,6 +35,16 @@ namespace PottiRoma.DataAccess.Repositories
             FROM dbo.Temporada
             WHERE IsActive = 1";
 
+        private const string GET_SEASON_BY_ID = @"
+        SELECT TemporadaId AS TemporadaId
+        , Name AS Name
+        , StartDate AS StartDate
+        , EndDate AS EndDate
+        , IsActive AS IsActive
+            FROM dbo.Temporada
+            WHERE IsActive = 1
+            AND TemporadaId = @seasonid";
+
         #endregion
 
         #region Commands
@@ -81,6 +91,15 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@isactive", IsActive, System.Data.DbType.Boolean);
 
             Execute(INSERT_SEASON,parameters);
+        }
+
+        public SeasonEntity GetSeasonById(Guid seasonId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@seasonid", seasonId, System.Data.DbType.Guid);
+
+            return Query(GET_SEASON_BY_ID, parameters).FirstOrDefault();
         }
 
         #endregion
