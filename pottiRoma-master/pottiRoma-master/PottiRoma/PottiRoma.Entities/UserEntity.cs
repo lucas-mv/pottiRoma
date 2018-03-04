@@ -24,5 +24,6 @@ namespace PottiRoma.Entities
         public int InviteAllyFlowersPoints { get; set; }
         public Guid TemporadaId { get; set; }
         public Guid MotherFlowerId { get; set; }
+        public DateTime Birthday { get; set; }
     }
 }

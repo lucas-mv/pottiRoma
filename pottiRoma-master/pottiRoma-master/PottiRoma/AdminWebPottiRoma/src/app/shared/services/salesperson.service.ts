@@ -9,7 +9,7 @@ export class SalespersonService extends BaseService {
     super();
    }
 
-   public registerNewSalesperson(name: string, primaryPhone :string, secondaryPhone: string, cpf: string, email: string, cep: string){
+   public registerNewSalesperson(name: string, primaryPhone :string, secondaryPhone: string, cpf: string, email: string, cep: string, birthday:Date){
     return this.http
       .post(
         this.getBaseUrl() + 'User/Register',
@@ -22,7 +22,8 @@ export class SalespersonService extends BaseService {
           SecundaryTelephone: secondaryPhone,
           UserType: 1,
           Cep: cep,
-          IsActive: true
+          IsActive: true,
+          Birthday: birthday
         },
         this.createAuthenticationRequestOptions()
       )

@@ -44,7 +44,8 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
-              ,IsActive as IsActive
+              ,IsActive as IsActive,
+              Birthday as Birthday
           FROM dbo.UsuarioPotti
           where IsActive = 1 AND UserType = 1";
 
@@ -64,7 +65,8 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
-              ,IsActive as IsActive
+              ,IsActive as IsActive,
+              Birthday as Birthday
           FROM dbo.UsuarioPotti
           where UsuarioId = @usuarioId";
 
@@ -84,7 +86,8 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
-              ,IsActive as IsActive
+              ,IsActive as IsActive,
+              Birthday as Birthday
           FROM dbo.UsuarioPotti
           where IsActive = 1";
 
@@ -104,7 +107,8 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
-              ,IsActive as IsActive
+              ,IsActive as IsActive,
+              Birthday as Birthday
           FROM dbo.UsuarioPotti
           where Email = @email";
 
@@ -126,7 +130,8 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
-              ,IsActive as IsActive
+              ,IsActive as IsActive,
+              Birthday as Birthday
           FROM dbo.UsuarioPotti
           where Email = @email";
 
@@ -148,7 +153,8 @@ namespace PottiRoma.DataAccess.Repositories
               ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
               ,TemporadaId as TemporadaId
               ,MotherFlowerId as MotherFlowerId
-              ,IsActive as IsActive
+              ,IsActive as IsActive,
+              Birthday as Birthday
           FROM dbo.UsuarioPotti
           where UsuarioId = @usuarioid";
 
@@ -184,7 +190,8 @@ namespace PottiRoma.DataAccess.Repositories
             InviteAllyFlowersPoints,
             TemporadaId,
             MotherFlowerId,
-            IsActive
+            IsActive,
+            Birthday
         )
         VALUES 
         (
@@ -205,7 +212,8 @@ namespace PottiRoma.DataAccess.Repositories
             @inviteallyflowerspoints,
             @temporadaid,
             @motherflowerid,
-            @isactive
+            @isactive,
+            @birthday
         )";
 
         private const string UPDATE_USER_PASSWORD = @"
@@ -307,7 +315,7 @@ namespace PottiRoma.DataAccess.Repositories
         public void InsertUser(Guid usuarioId, string email, string password, string passwordSalt, string name, 
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
-            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive)
+            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive, DateTime birthday)
         {
             DynamicParameters parameters = new DynamicParameters();
 
@@ -329,6 +337,7 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@temporadaid", temporadaId, System.Data.DbType.Guid);
             parameters.Add("@motherflowerid", motherFlowerId, System.Data.DbType.Guid);
             parameters.Add("@isactive", isActive, System.Data.DbType.Boolean);
+            parameters.Add("@birthday", birthday, System.Data.DbType.DateTime);
 
             Execute(INSERT_USER, parameters);
         }

@@ -26,12 +26,12 @@ namespace PottiRoma.Services.Implementations
         public UserEntity RegisterUser(string email, string password, string name,
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
-            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive)
+            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive, DateTime birthday)
         {
             return UserBusiness.RegisterUser( email, password, name,
              primaryTelephone, secundaryTelephone, cpf, userType, cep,
              AverageTicketPoints, RegisterClientsPoints, salesNumberPoints, averageTtensPerSalepoints,
-             inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive);
+             inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive, birthday);
         }
 
         public UserEntity GetUserById(Guid usuarioId)

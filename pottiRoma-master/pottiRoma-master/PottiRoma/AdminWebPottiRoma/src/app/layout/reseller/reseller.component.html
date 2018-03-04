@@ -15,6 +15,7 @@
                                 <th>CPF</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
+                                <th>Aniversário</th>
                                 <th>Revendedora Vinculada</th>
                                 <th>Pontos de Ticket Médio</th>
                                 <th>Pontos de Cadastro de Clientes</th>
@@ -29,6 +30,7 @@
                                 <td>{{salesperson.Cpf}}</td>
                                 <td>{{salesperson.Email}}</td>
                                 <td>{{salesperson.PrimaryTelephone}}</td>
+                                <td>{{salesperson.Birthday | date:'dd/MM'}}</td>
                                 <td>{{salesperson.MotherFlowerName}}</td>
                                 <td>{{salesperson.AverageTicketPoints}}</td>
                                 <td>{{salesperson.RegisterClientsPoints}}</td>

@@ -110,8 +110,9 @@ namespace PottiRoma.Business.General
                 ws.Cells["I2"].Value = "Pontos de clientes registrados";
                 ws.Cells["J2"].Value = "Pontos de peças por atendimento";
                 ws.Cells["K2"].Value = "Pontos por convidar revendedoras";
+                ws.Cells["L2"].Value = "Aniversário";
 
-                ws.Cells["A2:K2"].Style.Font.Bold = true;
+                ws.Cells["A2:L2"].Style.Font.Bold = true;
 
                 var line = 2;
                 foreach (var salesperson in salespeople)
@@ -128,6 +129,7 @@ namespace PottiRoma.Business.General
                     ws.Cells["I" + line].Value = salesperson.RegisterClientsPoints;
                     ws.Cells["J" + line].Value = salesperson.AverageItensPerSalePoints;
                     ws.Cells["K" + line].Value = salesperson.InviteAllyFlowersPoints;
+                    ws.Cells["L" + line].Value = salesperson.Birthday.ToShortDateString();
                 }
 
                 ws.Cells[ws.Dimension.Address].AutoFitColumns();

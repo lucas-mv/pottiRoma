@@ -41,7 +41,8 @@ namespace PottiRoma.Entities.Internal
                 RegisterClientsPoints = user.RegisterClientsPoints,
                 SalesNumberPoints = user.SalesNumberPoints,
                 UsuarioId = user.UsuarioId,
-                Season = season
+                Season = season,
+                Birthday = user.Birthday
             };
         }
     }    

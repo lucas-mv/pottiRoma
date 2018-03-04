@@ -1,0 +1,14 @@
+.game-parameters-container{
+    display: flex;
+    flex-direction: column;
+
+    .game-parameters-line{
+        display: flex;
+
+        .game-parameters-item{
+            margin-left: 12px;
+            margin-right: 12px;
+            width: 33%;
+        }
+    }
+}

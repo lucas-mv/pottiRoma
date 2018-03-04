@@ -3,61 +3,48 @@
     <div>
         <h4 class="margin-pages">Inserir Pontos para Revendedora</h4>
     </div>
-    <div class="row">
-        <div class="col-lg-6 padding-top">
-            <form role="form">
-                <!-- <fieldset class="form-group">
-                    <label>Text Input</label>
-                    <input class="form-control">
-                    <p class="help-block">Example block-level help text here.</p>
-                </fieldset> -->
 
-                <fieldset class="form-group">
-                    <label>Email da Revendedora*</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 
-                <fieldset class="form-group">
-                    <label>Pontos de Ticket Médio</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
+    <div class="insert-points-container">
 
-                <fieldset class="form-group">
-                    <label>Pontos de Peças por Atendimento*</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
-            </form>
+        <mat-form-field class="insert-points-line-item">
+            <input type="email" placeholder="Email da revendedora" matInput [matAutocomplete]="auto" [(ngModel)]="selectedSalespersonEmail">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let salesperson of salespeople" [value]="salesperson.Email">
+                {{ salesperson.Email }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+
+        <div class="insert-points-line">
+            <mat-form-field class="insert-points-item">
+                <input matInput placeholder="Pontos de Vendas Efetuadas" type="number" [(ngModel)]="numberOfSales">
+            </mat-form-field>
+            <mat-form-field class="insert-points-item">
+                <input matInput placeholder="Pontos de Ticket Médio" type="number" [(ngModel)]="averageTicket">
+            </mat-form-field>
+            <mat-form-field class="insert-points-item">
+                <input matInput placeholder="Pontos de Convidar Flores Aliadas" type="number" [(ngModel)]="registerReseller">
+            </mat-form-field>
         </div>
-        <div class="col-lg-6 padding-top">
-            <form role="form">
-                <fieldset class="form-group">
-                    <label>Pontos de Vendas Efetuadas</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
 
-                <fieldset class="form-group">
-                    <label>Pontos de Convidar Flores Aliadas</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
-
-                <fieldset class="form-group">
-                    <label>Pontos de Cadastro de Clientes</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
-            </form>
-            <br>
+        <div class="insert-points-line">
+            <mat-form-field class="insert-points-item">
+                <input matInput placeholder="Pontos de Peças por Atendimento" type="number" [(ngModel)]="itensPerSale">
+            </mat-form-field>
+            <mat-form-field class="insert-points-item">
+                <input matInput placeholder="Pontos de Cadastro de Clientes" type="number" [(ngModel)]="registerClients">
+            </mat-form-field>
+            <div class="insert-points-item"></div>
         </div>
-    </div>
 
-    <div class="col-lg-12">
-        <form role="form">
-            <fieldset class="form-group">
-                <label>Justificativa</label>
-                <input class="form-control" placeholder="Digite aqui...">
-            </fieldset>
-        </form>
-        <br>
+        <mat-form-field class="insert-points-line-item">
+            <textarea matInput placeholder="Justificativa" [(ngModel)]="description" class="insert-points-text-area"></textarea>
+        </mat-form-field>
     </div>
+    
     <div class="form-center-layout">
         <button type="submit" class="btn btn-primary btn-color-excel">CONFIRMAR</button>
     </div>

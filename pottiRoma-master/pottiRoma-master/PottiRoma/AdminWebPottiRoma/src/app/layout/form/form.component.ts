@@ -22,14 +22,28 @@ export class FormComponent implements OnInit {
     cpf: string;
     email: string;
     cep: string;
+    birthday: Date;
 
     ngOnInit() {
 
     }
 
     clickRegisterSalesperson(){
+        if(this.email === '' || this.email === undefined ||
+        this.name === '' || this.name === undefined || 
+        this.cep === '' || this.cep === undefined ||
+        this.primaryPhone === '' || this.primaryPhone === undefined ||
+        this.cpf === '' || this.cpf === undefined ||
+        this.name === '' || this.name === undefined || 
+        this.birthday === null || this.birthday === undefined){
+            debugger;
+            this.toastr.error('Campos obrigatórios não preenchidos');
+            return;
+        }
+
+        debugger;
         this.loading = true;
-        this.salespersonService.registerNewSalesperson(this.name, this.primaryPhone, this.secondaryPhone, this.cpf, this.email, this.cep)
+        this.salespersonService.registerNewSalesperson(this.name, this.primaryPhone, this.secondaryPhone, this.cpf, this.email, this.cep, this.birthday)
         .then(response => {
             this.loading = false;
             if(response.message === ''){
