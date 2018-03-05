@@ -22,13 +22,13 @@
 
         <Grid
             Grid.Row="1"
-            Margin="16,-120,16,16"
+            Margin="16,-190,16,16"
             BackgroundColor="{StaticResource DarkBackgroundColor}">
 
             <syncfusion:SfListView
                 HorizontalOptions="Fill"
-                ItemSize="185"
-                ItemSpacing="10"
+                ItemSize="165"
+                ItemSpacing="0"
                 ItemsSource="{Binding Challenges}"
                 VerticalOptions="Fill">
                 <syncfusion:SfListView.ItemTemplate>
@@ -38,14 +38,14 @@
                                 Padding="0"
                                 BackgroundColor="White"
                                 HasShadow="True"
-                                HeightRequest="180"
+                                HeightRequest="160"
                                 OutlineColor="{StaticResource OutlineColor}"
                                 VerticalOptions="Start">
                                 <Grid Margin="0" BackgroundColor="White">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="55" />
+                                        <RowDefinition Height="45" />
                                         <RowDefinition Height="70" />
-                                        <RowDefinition Height="55" />
+                                        <RowDefinition Height="45" />
                                     </Grid.RowDefinitions>
 
                                     <ContentView
@@ -123,8 +123,9 @@
                                             Orientation="Horizontal"
                                             VerticalOptions="Center">
                                             <Image
-                                                BackgroundColor="Green"
+                                                Aspect="AspectFit"
                                                 HeightRequest="12"
+                                                Source="ic_up.png"
                                                 WidthRequest="12" />
                                             <Label
                                                 FontAttributes="Bold"

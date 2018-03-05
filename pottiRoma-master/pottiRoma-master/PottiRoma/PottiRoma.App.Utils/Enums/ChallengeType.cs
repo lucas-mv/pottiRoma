@@ -10,5 +10,6 @@ namespace PottiRoma.App.Utils.Enums
     {
         NumeroVendas = 1,
         ConvidarFloresAliadas = 2,
+        CadastrarClientes = 3
     }
 }

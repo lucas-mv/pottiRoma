@@ -40,6 +40,8 @@ namespace PottiRoma.App.Utils.Helpers
                     return "Número de Vendas";
                 case ChallengeType.ConvidarFloresAliadas:
                     return "Convidar Flores Aliadas";
+                case ChallengeType.CadastrarClientes:
+                    return "Cadastrar Clientes";
                 default: 
                     return "Convidar Flores Aliadas";
             }
@@ -53,6 +55,8 @@ namespace PottiRoma.App.Utils.Helpers
                     return "Vendas";
                 case ChallengeType.ConvidarFloresAliadas:
                     return "Convites de Flores Aliadas";
+                case ChallengeType.CadastrarClientes:
+                    return "Cadastrar Clientes";
                 default:
                     return "Convites de Flores Aliadas";
             }
