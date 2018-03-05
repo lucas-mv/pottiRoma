@@ -23,7 +23,7 @@
                         VerticalOptions="Start">
                         <Image
                             Aspect="AspectFit"
-                            HeightRequest="100"
+                            HeightRequest="90"
                             Source="foto_perfil.png" />
                         <Grid HeightRequest="40" />
 
@@ -224,6 +224,35 @@
                                 FontSize="{StaticResource LargeFontSize}"
                                 HorizontalOptions="Start"
                                 Text="    Regras do Jogo"
+                                TextColor="{StaticResource WhiteColor}"
+                                VerticalOptions="Center" />
+                        </Grid>
+
+                        <Grid
+                            x:Name="ContentTrophyRules"
+                            HeightRequest="{StaticResource HeightMenuItem}"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="{StaticResource ShadedMenu}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToMyTrophiesCommand}" Tapped="ContentMyTrophies_Clicked" />
+                            </Grid.GestureRecognizers>
+                            <Image
+                                Grid.Column="1"
+                                HeightRequest="24"
+                                HorizontalOptions="Start"
+                                Source="ic_rules.png"
+                                VerticalOptions="Center"
+                                WidthRequest="24" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="{StaticResource LargeFontSize}"
+                                HorizontalOptions="Start"
+                                Text="    Meus Troféus"
                                 TextColor="{StaticResource WhiteColor}"
                                 VerticalOptions="Center" />
                         </Grid>

@@ -10,7 +10,7 @@ namespace PottiRoma.Business.Challenges
 {
     public static class ChallengesBusiness
     {
-        public static void InsertNewChallenge(Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal)
+        public static void InsertNewChallenge(Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal, int prize, string description)
         {
             var newChallenge = new ChallengeEntity()
             {
@@ -19,7 +19,9 @@ namespace PottiRoma.Business.Challenges
                 StartDate = startDate,
                 EndDate = endDate,
                 Parameter = parameter,
-                Goal = goal
+                Goal = goal,
+                Prize = prize,
+                Description = description
             };
 
             ChallengesRepository.Get().InsertNewChallenge(newChallenge);

@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaleEntity.cs" />
     <Compile Include="Season.cs" />
+    <Compile Include="TrophyEntity.cs" />
     <Compile Include="UserEntity.cs" />
   </ItemGroup>
   <ItemGroup>

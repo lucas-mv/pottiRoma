@@ -34,7 +34,9 @@ namespace PottiRoma.DataAccess.Repositories
             StartDate as StartDate,
             EndDate as EndDate,
             Parameter as Parameter,
-            Goal as Goal
+            Goal as Goal,
+            Prize as Prize,
+            Description as Description
         FROM dbo.Desafio
         WHERE TemporadaId = @temporadaid
         ";
@@ -51,7 +53,9 @@ namespace PottiRoma.DataAccess.Repositories
 	        StartDate, 
 	        EndDate, 
 	        Parameter, 
-            Goal
+            Goal,
+            Description,
+            Prize
         )
         VALUES 
         (
@@ -60,7 +64,9 @@ namespace PottiRoma.DataAccess.Repositories
 	        @startdate, 
 	        @enddate, 
 	        @parameter,
-            @goal      
+            @goal,
+            @description,
+            @prize
         )";
 
         #endregion
@@ -77,6 +83,8 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@enddate", challenge.EndDate, System.Data.DbType.DateTime);
             parameters.Add("@parameter", challenge.Parameter, System.Data.DbType.Int16);
             parameters.Add("@goal", challenge.Goal, System.Data.DbType.Int16);
+            parameters.Add("@description", challenge.Parameter, System.Data.DbType.String);
+            parameters.Add("@prize", challenge.Goal, System.Data.DbType.Int16);
 
             Execute(INSERT_NEW_CHALLENGE, parameters);
         }

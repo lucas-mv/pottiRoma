@@ -40,12 +40,14 @@
     <Compile Include="Models\Points.cs" />
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\Season.cs" />
+    <Compile Include="Models\Trophy.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Challenges\InsertChallengeRequest.cs" />
     <Compile Include="Requests\Clients\RegisterClientRequest.cs" />
     <Compile Include="Requests\Clients\UpdateClientInfoRequest.cs" />
     <Compile Include="Requests\Sales\InsertNewSaleRequest.cs" />
+    <Compile Include="Requests\Trophies\InsertTrophyRequest.cs" />
     <Compile Include="Requests\User\ChangePasswordRequest.cs" />
     <Compile Include="Requests\User\LoginRequest.cs" />
     <Compile Include="Requests\User\SendEmailRequest.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="Responses\GamificationPoints\GetGamificationPointsResponse.cs" />
     <Compile Include="Responses\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Responses\Season\SeasonResponse.cs" />
+    <Compile Include="Responses\Trophies\GetThophiesByUserIdResponse.cs" />
     <Compile Include="Responses\User\GetAppUsersResponse.cs" />
     <Compile Include="Responses\User\LoginReponse.cs" />
     <Compile Include="Responses\User\SendEmailResponse.cs" />

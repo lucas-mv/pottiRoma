@@ -14,5 +14,7 @@ namespace PottiRoma.Entities
         public DateTime EndDate { get; set; }
         public int Parameter { get; set; }
         public int Goal { get; set; }
+        public int Prize { get; set; }
+        public string Description { get; set; }
     }
 }

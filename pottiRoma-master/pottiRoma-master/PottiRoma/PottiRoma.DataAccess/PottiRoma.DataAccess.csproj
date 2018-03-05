@@ -52,6 +52,7 @@
     <Compile Include="Query\GamificationPointsQuery.cs" />
     <Compile Include="Query\SalesQuery.cs" />
     <Compile Include="Query\SeasonQuery.cs" />
+    <Compile Include="Query\TrophiesQuery.cs" />
     <Compile Include="Query\UserQuery.cs" />
     <Compile Include="Repositories\AuthenticationControlRepository.cs" />
     <Compile Include="Repositories\ChallengesRepository.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Repositories\GamificationPointsRepository.cs" />
     <Compile Include="Repositories\SalesRepository.cs" />
     <Compile Include="Repositories\SeasonRepository.cs" />
+    <Compile Include="Repositories\TrophiesRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

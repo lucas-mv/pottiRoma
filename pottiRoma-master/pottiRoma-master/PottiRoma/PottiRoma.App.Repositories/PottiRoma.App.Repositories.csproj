@@ -39,6 +39,7 @@
     <Compile Include="Api\GamificationPointsApiRepository.cs" />
     <Compile Include="Api\SalesApiRepository.cs" />
     <Compile Include="Api\SeasonApiRepository.cs" />
+    <Compile Include="Api\TrophiesApiRepository.cs" />
     <Compile Include="Api\UserApiRepository.cs" />
     <Compile Include="Internal\CacheAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,5 +9,10 @@ namespace PottiRoma.App.Models.Responses.Season
     public class SeasonResponse
     {
         public Models.Season Entity { get; set; }
+
+        public SeasonResponse()
+        {
+            Entity = new Models.Season();
+        }
     }
 }

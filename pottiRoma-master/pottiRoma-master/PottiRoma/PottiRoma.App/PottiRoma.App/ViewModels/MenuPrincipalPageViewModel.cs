@@ -24,6 +24,7 @@ namespace PottiRoma.App.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
         private readonly IUserAppService _userAppService;
+        private readonly ITrophyAppService _trophyAppService;
 
         private string _title;
         public string Title
@@ -40,16 +41,19 @@ namespace PottiRoma.App.ViewModels
         public DelegateCommand GoToEditPersonalDataCommand { get; set; }
         public DelegateCommand GoToSalesHistoryCommand { get; set; }
         public DelegateCommand LogoutCommand { get; set; }
+        public DelegateCommand GoToMyTrophiesCommand { get; set; }
 
 
         public MenuPrincipalPageViewModel(
             INavigationService navigationService,
             IUserDialogs userDialogs,
-            IUserAppService userAppService)
+            IUserAppService userAppService,
+            ITrophyAppService trophyAppService)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
             _userAppService = userAppService;
+            _trophyAppService = trophyAppService;
 
             GoToInviteFlowerCommand = new DelegateCommand(GoToInviteFlower).ObservesCanExecute(() => CanExecute);
             GoToRankingCommand = new DelegateCommand(GoToRanking).ObservesCanExecute(() => CanExecute);
@@ -59,6 +63,7 @@ namespace PottiRoma.App.ViewModels
             GoToEditPersonalDataCommand = new DelegateCommand(GoToEditPersonalData).ObservesCanExecute(() => CanExecute);
             GoToSalesHistoryCommand = new DelegateCommand(GoToSalesHistory).ObservesCanExecute(() => CanExecute);
             LogoutCommand = new DelegateCommand(Logout).ObservesCanExecute(() => CanExecute);
+            GoToMyTrophiesCommand = new DelegateCommand(GoToMyTrophies).ObservesCanExecute(() => CanExecute);
 
             Title = "Ranking Geral";
         }
@@ -139,6 +144,37 @@ namespace PottiRoma.App.ViewModels
             await _navigationService.NavigateAsync(NavigationSettings.InviteFlower);
             Title = "Convidar Flor";
             CanExecuteEnd();
+        }
+
+        private async void GoToMyTrophies()
+        {
+            CanExecuteInitial();
+            await NavigationHelper.ShowLoading();
+            var parameter = new NavigationParameters();
+            try
+            {
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                var myTrophies = await _trophyAppService.GetCurrentTrophies(user.UsuarioId.ToString());
+                parameter.Add(NavigationKeyParameters.MyTrophies, myTrophies.Trophies);
+                if (myTrophies.Trophies.Count < 1)
+                {
+                    _userDialogs.Toast("Você não possui Troféus!", new TimeSpan(0, 0, 3));
+                }
+                else
+                {
+                    await _navigationService.NavigateAsync(NavigationSettings.TrophyRoom, parameter);
+                }
+
+            }
+            catch
+            {
+                _userDialogs.Toast("Não foi possível carregar seus troféus, verifique sua conexão.", new TimeSpan(0, 0, 3));
+            }
+            finally
+            {
+                await NavigationHelper.PopLoading();
+                CanExecuteEnd();
+            }
         }
     }
 }
