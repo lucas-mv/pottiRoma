@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PottiRoma.Entities;
 using PottiRoma.Utils.Enums;
 using PottiRoma.Business.User;
+using PottiRoma.Entities.Internal;
 
 namespace PottiRoma.Services.Implementations
 {
@@ -25,12 +26,12 @@ namespace PottiRoma.Services.Implementations
         public UserEntity RegisterUser(string email, string password, string name,
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
-            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive)
+            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive, DateTime birthday)
         {
             return UserBusiness.RegisterUser( email, password, name,
              primaryTelephone, secundaryTelephone, cpf, userType, cep,
              AverageTicketPoints, RegisterClientsPoints, salesNumberPoints, averageTtensPerSalepoints,
-             inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive);
+             inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive, birthday);
         }
 
         public UserEntity GetUserById(Guid usuarioId)
@@ -68,6 +69,16 @@ namespace PottiRoma.Services.Implementations
         public void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
         {
             UserBusiness.UpdateUser(usuarioId, email, primaryTelephone, secundaryTelephone, cep);
+        }
+
+        public List<SalespersonEntity> GetAllSalespeople()
+        {
+            return UserBusiness.GetAllSalespeople();
+        }
+
+        public byte[] GenerateSalespeopleReport()
+        {
+            return UserBusiness.GenerateSalespeopleReport();
         }
     }
 }

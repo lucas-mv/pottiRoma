@@ -24,5 +24,6 @@ namespace PottiRoma.Api.Request.User
         public Guid TemporadaId { get; set; }
         public Guid MotherFlowerId { get; set; }
         public bool IsActive { get; set; }
+        public DateTime Birthday { get; set; }
     }
 }

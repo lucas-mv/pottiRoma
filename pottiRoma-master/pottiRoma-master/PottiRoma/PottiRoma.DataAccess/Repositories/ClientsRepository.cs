@@ -38,6 +38,17 @@ namespace PottiRoma.DataAccess.Repositories
         FROM dbo.Cliente
         WHERE UsuarioId = @usuarioid AND IsActive = 1";
 
+        private const string GET_ALL = @"
+        SELECT ClienteId as ClienteId, 
+            UsuarioId as UsuarioId,
+            Name as Name, 
+            Email as Email, 
+            Telephone as Telephone, 
+            Cep as Cep,
+            Birthdate as Birthdate
+        FROM dbo.Cliente
+        WHERE IsActive = 1";
+
         #endregion
 
         #region Commands
@@ -139,6 +150,13 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@usuarioid", userId, System.Data.DbType.Guid);
 
             return Query(GET_BY_USER_ID, parameters).ToList();
+        }
+
+        public List<ClientEntity> GetAllClients()
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            return Query(GET_ALL, parameters).ToList();
         }
 
         #endregion

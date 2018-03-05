@@ -5,6 +5,9 @@ using PottiRoma.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -25,7 +28,7 @@ namespace PottiRoma.Api.Controllers
         [HttpGet]
         public async Task<GetSalesByUserIdResponse> GetSalesByUserId(string usuarioId)
         {
-            //await ValidateToken();
+            await ValidateToken();
             return new GetSalesByUserIdResponse()
             {
                 Sales = _salesService.GetSalesByUserId(new Guid(usuarioId))
@@ -36,7 +39,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task InsertNewSale(InsertNewSaleRequest request)
         {
-            //await ValidateToken();
+            await ValidateToken();
             _salesService.InsertNewSale(request.UsuarioId, request.ClienteId, request.UserName, request.ClientName, request.SaleDate, request.SaleValue, request.SalePaidValue, request.NumberSoldPieces, request.Description);
         }
 
@@ -44,16 +47,37 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task UpdateSale(string vendaId, float saleValue, float salePaidValue, int numberSoldPieces, string description)
         {
-            //await ValidateToken();
+            await ValidateToken();
             _salesService.UpdateSale(new Guid(vendaId), saleValue, salePaidValue, numberSoldPieces, description);
         }
 
         [Route("GetAllSales")]
         [HttpPost]
-        public List<SaleEntity> GetAllSales()
+        public async Task<List<SaleEntity>> GetAllSales()
         {
-            //await ValidateToken();
+            await ValidateToken();
             return _salesService.GetAllSales();
+        }
+
+        [Route("Report")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> GenerateSalesReport()
+        {
+            await ValidateToken();
+            var fileName = "RelatorioVendas_"+DateTime.Now.ToShortDateString().Replace("/", "-")+".xlsx";
+            var reportData = _salesService.GenerateSalesReport();
+
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ByteArrayContent(reportData)
+            };
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = fileName
+            };
+
+            return response;
         }
     }
 }

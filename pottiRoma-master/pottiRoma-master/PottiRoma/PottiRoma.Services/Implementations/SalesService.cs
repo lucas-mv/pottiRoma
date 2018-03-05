@@ -28,5 +28,10 @@ namespace PottiRoma.Services.Implementations
         {
             return SalesBusiness.GetAllSales();
         }
+
+        public byte[] GenerateSalesReport()
+        {
+            return SalesBusiness.GenerateSalesReport();
+        }
     }
 }

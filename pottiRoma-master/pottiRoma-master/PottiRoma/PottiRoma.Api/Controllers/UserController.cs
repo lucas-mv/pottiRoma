@@ -4,11 +4,15 @@ using PottiRoma.Api.Request.User;
 using PottiRoma.Api.Response.Email;
 using PottiRoma.Api.Response.User;
 using PottiRoma.Entities;
+using PottiRoma.Entities.Internal;
 using PottiRoma.Services.Interfaces;
 using PottiRoma.Utils.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -35,6 +39,35 @@ namespace PottiRoma.Api.Controllers
             return response;
         }
 
+        [Route("Get/Salesperson")]
+        [HttpGet]
+        public async Task<List<SalespersonEntity>> GetAllSalespeople()
+        {
+            await ValidateToken();
+            return _userService.GetAllSalespeople();
+        }
+
+        [Route("Report")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> GenerateSalespeopleReport()
+        {
+            await ValidateToken();
+            var fileName = "RelatorioRevendedoras_" + DateTime.Now.ToShortDateString().Replace("/", "-") + ".xlsx";
+            var reportData = _userService.GenerateSalespeopleReport();
+
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ByteArrayContent(reportData)
+            };
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = fileName
+            };
+
+            return response;
+        }
+
         [Route("Logout/{id}")]
         [HttpGet]
         public async Task LogoutUser(string id)
@@ -46,6 +79,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)
         {
+            await ValidateToken();
             var checkUserEmailRegistered = _userService.GetUserByEmail(request.Email);
             if (checkUserEmailRegistered != null)
             {
@@ -53,7 +87,7 @@ namespace PottiRoma.Api.Controllers
             }
             return new RegisterUserResponse()
             {
-                User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecundaryTelephone, request.Cpf, request.UserType,request.Cep,request.AverageTicketPoints,request.RegisterClientsPoints,request.SalesNumberPoints,request.AverageItensPerSalePoints,request.InviteAllyFlowersPoints,request.TemporadaId,request.MotherFlowerId, request.IsActive)
+                User = _userService.RegisterUser(request.Email, request.Password, request.Name, request.PrimaryTelephone, request.SecundaryTelephone, request.Cpf, request.UserType,request.Cep,request.AverageTicketPoints,request.RegisterClientsPoints,request.SalesNumberPoints,request.AverageItensPerSalePoints,request.InviteAllyFlowersPoints,request.TemporadaId,request.MotherFlowerId, request.IsActive, request.Birthday)
             };
         }
 
@@ -61,7 +95,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task ChangePassword(ChangePasswordRequest request)
         {
-            //await ValidateToken();
+            await ValidateToken();
             _userService.ChangePassword(request.UsuarioId, request.OldPassword, request.NewPassword);
         }
 
@@ -96,7 +130,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task UpdateClientInfo(UpdateUserPointsRequest request)
         {
-            //await ValidateToken();
+            await ValidateToken();
             _userService.UpdateUserPoints(request.UsuarioId ,request.AverageTicketPoints, request.RegisterClientsPoints, request.SalesNumberPoints, request.AverageItensPerSalePoints, request.InviteAllyFlowersPoints);
         }
 
@@ -104,7 +138,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<GetAppUsersResponse> GetAppUsers()
         {
-            //await ValidateToken();
+            await ValidateToken();
             return new GetAppUsersResponse()
             {
                 Users = _userService.GetAppUsers()
@@ -115,7 +149,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
         {
-            //await ValidateToken();
+            await ValidateToken();
             _userService.UpdateUser(new Guid(usuarioId), email, primaryTelephone, secundaryTelephone, cep);
         }
 
@@ -123,7 +157,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<UserEntity> GetUserByEmail(string email)
         {
-            //await ValidateToken();
+            await ValidateToken();
             return _userService.GetUserByEmail(email);
         }
     }

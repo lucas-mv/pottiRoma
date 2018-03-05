@@ -68,6 +68,8 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@salesnumber", pointsGamification.SalesNumber, System.Data.DbType.Int32);
             parameters.Add("@averageitenspersale", pointsGamification.AverageItensPerSale, System.Data.DbType.Int32);
             parameters.Add("@inviteflower", pointsGamification.InviteFlower, System.Data.DbType.Int32);
+
+            Execute(UPDATE_GAMIFICATION_POINTS, parameters);
         }
 
         public GamificationPointsEntity GetCurrentGamificationPoints()

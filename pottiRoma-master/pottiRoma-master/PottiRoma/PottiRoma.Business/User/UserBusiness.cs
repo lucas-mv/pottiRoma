@@ -1,4 +1,6 @@
-﻿using PottiRoma.DataAccess.Repositories;
+﻿using PottiRoma.Business.General;
+using PottiRoma.Business.Season;
+using PottiRoma.DataAccess.Repositories;
 using PottiRoma.Entities;
 using PottiRoma.Entities.Internal;
 using PottiRoma.Utils;
@@ -38,7 +40,7 @@ namespace PottiRoma.Business.User
         public static UserEntity RegisterUser(string email, string password, string name,
             string primaryTelephone, string secundaryTelephone, string cpf, UserType userType, string cep,
             int AverageTicketPoints, int RegisterClientsPoints, int salesNumberPoints, int averageTtensPerSalepoints,
-            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive)
+            int inviteAllyFlowersPoints, Guid temporadaId, Guid motherFlowerId, bool isActive, DateTime birthday)
         {
             if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(password) || String.IsNullOrEmpty(name) ||
                 String.IsNullOrEmpty(primaryTelephone) || String.IsNullOrEmpty(cpf))
@@ -50,11 +52,13 @@ namespace PottiRoma.Business.User
             if (oldUser != null)
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.EMAIL_ALREADY_USED);
 
+            var currentSeason = SeasonBusiness.GetCurrentSeason();
+
             var cryptoPassword = EncryptPassword(password);
             var newUserId = Guid.NewGuid();
             UserRepository.Get().InsertUser(newUserId, email, cryptoPassword.Password, cryptoPassword.Salt, name, primaryTelephone,
                 secundaryTelephone, cpf, userType, cep, AverageTicketPoints, RegisterClientsPoints, salesNumberPoints, averageTtensPerSalepoints, 
-                inviteAllyFlowersPoints, temporadaId, motherFlowerId, isActive);
+                inviteAllyFlowersPoints, currentSeason.TemporadaId, motherFlowerId, isActive, birthday);
             var newUser = UserRepository.Get().GetUserById(newUserId);
 
             if (newUser == null)
@@ -67,21 +71,21 @@ namespace PottiRoma.Business.User
             UserEntity user;
             user = UserRepository.Get().GetUserAuth(email);
 
+            if (user == null)
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
+
             switch (origin)
             {
                 case AuthOrigin.App:
-                    if(user.UserType == UserType.Administrator)
+                    if (user.UserType == UserType.Administrator)
                         throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
                     break;
                 case AuthOrigin.Web:
-                    if(user.UserType == UserType.SalesPerson ||
+                    if (user.UserType == UserType.SalesPerson ||
                         user.UserType == UserType.SecundarySalesPerson)
                         throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
                     break;
             }
-
-            if (user == null)
-                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.USER_INVALID);
 
             if (ValidatePassword(password, user.PasswordSalt, user.Password))
             {
@@ -150,6 +154,29 @@ namespace PottiRoma.Business.User
         public static void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
         {
             UserRepository.Get().UpdateUser(usuarioId, email, primaryTelephone, secundaryTelephone, cep);
+        }
+
+        public static List<SalespersonEntity> GetAllSalespeople()
+        {
+            var users = UserRepository.Get().GetAppUsers();
+            var salespeople = new List<SalespersonEntity>();
+            foreach (var user in users)
+            {
+                var motherFlowerName = string.Empty;
+                if(user.MotherFlowerId != null && Guid.Empty != user.MotherFlowerId)
+                    motherFlowerName = GetUserById(user.UsuarioId).Name;
+                var season = SeasonBusiness.GetSeasonById(user.TemporadaId);
+                if(season != null)
+                {
+                    salespeople.Add(SalespersonEntity.FromUser(user, motherFlowerName, season.Name));
+                }
+            }
+            return salespeople;
+        }
+
+        public static byte[] GenerateSalespeopleReport()
+        {
+            return ReportGenerator.GenerateSalespeopleReport(GetAllSalespeople());
         }
 
         #region Private methods

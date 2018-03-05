@@ -1,4 +1,5 @@
-﻿using PottiRoma.DataAccess.Repositories;
+﻿using PottiRoma.Business.General;
+using PottiRoma.DataAccess.Repositories;
 using PottiRoma.Entities;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,12 @@ namespace PottiRoma.Business.Sale
 
         public static List<SaleEntity> GetAllSales()
         {
-            return SalesRepository.Get().GetAllSales();
+            return SalesRepository.Get().GetAllSales().OrderByDescending(s => s.SaleDate).ToList();
+        }
+
+        public static byte[] GenerateSalesReport()
+        {
+            return ReportGenerator.GenerateSalesReport(GetAllSales());
         }
     }
 }

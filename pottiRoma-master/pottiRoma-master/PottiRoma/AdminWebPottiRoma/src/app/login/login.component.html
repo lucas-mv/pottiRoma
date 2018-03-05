@@ -1,27 +1,46 @@
+<img src="assets/images/banner_top5.png" id="bg" alt=""/>
+<div class="login-main-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    <mat-card class="login-card" [@routerTransition]>
+        <img mat-card-image class="login-image" src="assets/images/logo_login.png">
+        <mat-card-content>
+            <div class="login-form-container">
+                <mat-form-field>
+                    <input matInput placeholder="Email" type="email" [(ngModel)]="email">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Senha" type="password"  [(ngModel)]="password">
+                </mat-form-field>
+            </div>
+            <div class="login-button-container">
+                <button mat-button color="primary" class="login-button">Login</button>
+                <button mat-button color="primary" class="login-button">Esqueci minha senha</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
 
-<div class="login-page" [@routerTransition]>
+<!-- <div class="login-page" [@routerTransition]>
     <div class="content-login-page">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
         <div class="col-xl-12">
             <img src="assets/images/logo_login.png" width="150px"/>
             <h1>Sistema Administrativo Potti Roma</h1>
-            <form role="form">
-                <div class="form-content">
-                    <div class="form-group">
-                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Senha">
-                    </div>
+                <div class="login-form-container">
+                    <mat-form-field>
+                        <input matInput placeholder="Email" type="email" [(ngModel)]="email">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Senha" type="password"  [(ngModel)]="password">
+                    </mat-form-field>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/main-page']" (click)="onLoggedin()">  Log in  </a>
-                &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Registrar</a>
-            </form>
+                <div class="login-button-container">
+                    <div class="btn rounded-btn" (click)="onLoggedin()">  Log in  </div>
+                </div>
             <img src="assets/images/banner_top5.png"  class=" col-xl-13 background-login-img"/>
         </div>
     </div>
 
 
-</div>
+</div> -->
 

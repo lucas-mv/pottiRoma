@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-// import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Http } from '@angular/http';
-
+import { BaseService } from './base.service';
 
 @Injectable()
-export class LoginService {
+export class LoginService extends BaseService{
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    super();
+   }
 
-  Login(userName, password) {
+   public Login(userName, password) {
     return this.http
       .post(
-        'http://localhost:51945/api/v1/User/Login',
-        // 'https://pottiroma.azurewebsites.net/api/v1/User/Login',
+        this.getBaseUrl() + 'User/Login',
         {
           Email: userName,
           Password: password,

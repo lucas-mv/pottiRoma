@@ -1,0 +1,26 @@
+.insert-points-container{
+    display: flex;
+    flex-direction: column;
+
+    .insert-points-line{
+        display: flex;
+
+        .insert-points-item{
+            margin-left: 12px;
+            margin-right: 12px;
+            width: 33%;
+        }
+    }
+
+    .insert-points-line-item{
+        margin-left: 12px;
+        margin-right: 12px;
+        width: 100%;
+
+        .insert-points-text-area{
+            min-height: 100px;
+            height: 100px;
+            max-height: 100px;
+        }
+    }
+}

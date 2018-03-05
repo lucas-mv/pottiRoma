@@ -6,13 +6,25 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { LoadingModule } from 'ngx-loading';
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
         LayoutRoutingModule,
         TranslateModule,
-        NgbDropdownModule.forRoot()
+        NgbDropdownModule.forRoot(),
+        MatButtonModule, 
+        MatCheckboxModule, 
+        FormsModule,  
+        LoadingModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
 })

@@ -46,6 +46,7 @@
     <Compile Include="ClientEntity.cs" />
     <Compile Include="GamificationPointsEntity.cs" />
     <Compile Include="Internal\PasswordCrypto.cs" />
+    <Compile Include="Internal\SalespersonEntity.cs" />
     <Compile Include="Internal\SeasonEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaleEntity.cs" />
