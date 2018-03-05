@@ -69,7 +69,7 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoToGeneralRankingPageCommand}" />
+                    <TapGestureRecognizer Command="{Binding GoToCurrentChallengesPageCommand}" />
                 </Grid.GestureRecognizers>
                 <StackLayout Grid.Row="1">
                     <Label

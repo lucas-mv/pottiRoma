@@ -24,6 +24,8 @@ namespace PottiRoma.App
             Container.RegisterType<ISeasonAppService, SeasonAppService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IGamificationPointsAppService, GamificationPointsAppService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IChallengesAppService, ChallengesAppService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<ITrophyAppService, TrophyAppService>(new ContainerControlledLifetimeManager());
+
         }
     }
 }

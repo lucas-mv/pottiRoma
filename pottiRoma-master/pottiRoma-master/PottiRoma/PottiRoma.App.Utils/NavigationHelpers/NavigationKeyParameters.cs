@@ -14,5 +14,8 @@ namespace PottiRoma.App.Utils.NavigationHelpers
         public const string SelectedSale = "SelectedSale";
         public const string ClientsBirthday = "ClientsBirthday";
         public const string FirstAccess = "FirstAccess";
+        public const string CurrentChallenges = "CurrentChallenges";
+        public const string CurrentSeason = "CurrentSeason";
+        public const string MyTrophies = "MyTrophies";
     }
 }

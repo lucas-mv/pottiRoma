@@ -143,6 +143,7 @@
     <Compile Include="Controllers\GamificationPointsController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SeasonController.cs" />
+    <Compile Include="Controllers\TrophiesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -159,6 +160,7 @@
     <Compile Include="Request\Sales\InsertNewSaleRequest.cs" />
     <Compile Include="Request\Sales\UpdateSaleRequest.cs" />
     <Compile Include="Request\Season\SeasonRequest.cs" />
+    <Compile Include="Request\Trophies\InsertTrophyRequest.cs" />
     <Compile Include="Request\User\ChangePasswordRequest.cs" />
     <Compile Include="Request\User\LoginUserRequest.cs" />
     <Compile Include="Request\User\RegisterUserRequest.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="Response\GamificationPoints\GamificationPointsResponse.cs" />
     <Compile Include="Response\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Response\Season\SeasonResponse.cs" />
+    <Compile Include="Response\Trophies\GetTrophiesResponse.cs" />
     <Compile Include="Response\User\GetAppUsersResponse.cs" />
     <Compile Include="Response\User\LoginResponse.cs" />
     <Compile Include="Response\User\RegisterUserResponse.cs" />

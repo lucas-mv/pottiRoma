@@ -50,5 +50,51 @@ namespace PottiRoma.App.Models.Models
             get { return _goal; }
             set { SetProperty(ref _goal, value); }
         }
+
+        private string _description;
+        public string Description
+        {
+            get { return _description; }
+            set { SetProperty(ref _description, value); }
+        }
+
+        private int _prize;
+        public int Prize
+        {
+            get { return _prize; }
+            set { SetProperty(ref _prize, value); }
+        }
+
+        #region Helper Properties
+
+        private string _startDateFormatted;
+        public string StartDateFormatted
+        {
+            get { return _startDateFormatted; }
+            set { SetProperty(ref _startDateFormatted, value); }
+        }
+
+        private string _endDateFormatted;
+        public string EndDateFormatted
+        {
+            get { return _endDateFormatted; }
+            set { SetProperty(ref _endDateFormatted, value); }
+        }
+
+        private string _prizeFormatted;
+        public string PrizeFormatted
+        {
+            get { return _prizeFormatted; }
+            set { SetProperty(ref _prizeFormatted, value); }
+        }
+
+        private string _parameterFormatted;
+        public string ParameterFormatted
+        {
+            get { return _parameterFormatted; }
+            set { SetProperty(ref _parameterFormatted, value); }
+        }
+
+        #endregion
     }
 }

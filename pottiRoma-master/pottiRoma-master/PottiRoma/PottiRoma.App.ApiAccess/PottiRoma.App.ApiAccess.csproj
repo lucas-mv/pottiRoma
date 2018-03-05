@@ -43,6 +43,7 @@
     <Compile Include="Refit\IGamificationPointsRefit.cs" />
     <Compile Include="Refit\ISalesRefit.cs" />
     <Compile Include="Refit\ISeasonRefit.cs" />
+    <Compile Include="Refit\ITrophiesRefit.cs" />
     <Compile Include="Refit\IUserRefit.cs" />
   </ItemGroup>
   <ItemGroup>

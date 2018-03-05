@@ -4,5 +4,147 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     Title="Desafios da Temporada"
-    prism:ViewModelLocator.AutowireViewModel="True" />
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource DarkBackgroundColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="240" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image
+            Grid.Row="0"
+            Aspect="AspectFill"
+            Source="banner_challenge.jpg" />
+
+        <Grid
+            Grid.Row="1"
+            Margin="16,-190,16,16"
+            BackgroundColor="{StaticResource DarkBackgroundColor}">
+
+            <syncfusion:SfListView
+                HorizontalOptions="Fill"
+                ItemSize="165"
+                ItemSpacing="0"
+                ItemsSource="{Binding Challenges}"
+                VerticalOptions="Fill">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Padding="0"
+                                BackgroundColor="White"
+                                HasShadow="True"
+                                HeightRequest="160"
+                                OutlineColor="{StaticResource OutlineColor}"
+                                VerticalOptions="Start">
+                                <Grid Margin="0" BackgroundColor="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="45" />
+                                        <RowDefinition Height="70" />
+                                        <RowDefinition Height="45" />
+                                    </Grid.RowDefinitions>
+
+                                    <ContentView
+                                        Grid.Row="0"
+                                        Margin="0"
+                                        BackgroundColor="{StaticResource SelectionBackgroundColor}"
+                                        HeightRequest="55"
+                                        VerticalOptions="Start" />
+                                    <Label
+                                        Margin="16,0,0,0"
+                                        FontSize="{StaticResource LargeFontSize}"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Name}"
+                                        TextColor="{StaticResource TextColor}"
+                                        VerticalOptions="Center" />
+                                    <StackLayout
+                                        Margin="0,0,16,0"
+                                        HorizontalOptions="End"
+                                        Orientation="Vertical"
+                                        Spacing="5"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            FontSize="{StaticResource StandardFontSize}"
+                                            Text="{Binding StartDateFormatted}"
+                                            TextColor="{StaticResource ButtonColor}" />
+                                        <Label
+                                            FontSize="{StaticResource StandardFontSize}"
+                                            Text="{Binding EndDateFormatted}"
+                                            TextColor="{StaticResource ButtonColor}" />
+                                    </StackLayout>
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Margin="16,8,16,8"
+                                        FontSize="{StaticResource StandardFontSize}"
+                                        HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding Description}"
+                                        TextColor="{StaticResource LightTextColor}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label
+                                            Margin="16,0,0,16"
+                                            FontSize="{StaticResource LargeFontSize}"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding PrizeFormatted}"
+                                            TextColor="{StaticResource TextColor}"
+                                            VerticalOptions="Center" />
+                                        <Image
+                                            Grid.Column="1"
+                                            Margin="0,0,18,20"
+                                            Aspect="AspectFill"
+                                            BackgroundColor="Green"
+                                            Source="card_challenge.jpg" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Margin="8,0,0,16"
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource SmallFontSize}"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding ParameterFormatted}"
+                                            TextColor="{StaticResource PlaceholderColor}"
+                                            VerticalOptions="Center" />
+                                        <StackLayout
+                                            Grid.Column="1"
+                                            Margin="0,0,26,16"
+                                            HorizontalOptions="End"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="Center">
+                                            <Image
+                                                Aspect="AspectFit"
+                                                HeightRequest="12"
+                                                Source="ic_up.png"
+                                                WidthRequest="12" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource SmallFontSize}"
+                                                Text="{Binding Goal}"
+                                                TextColor="{StaticResource PlaceholderColor}" />
+                                        </StackLayout>
+                                    </Grid>
+
+
+                                </Grid>
+                            </Frame>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+
+        </Grid>
+    </Grid>
+
+</ContentPage>

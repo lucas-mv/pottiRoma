@@ -3,6 +3,7 @@ using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Dtos;
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Insights;
+using PottiRoma.App.Models.Models;
 using PottiRoma.App.Utils.Enums;
 using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
@@ -23,11 +24,11 @@ namespace PottiRoma.App.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
 
-        private ObservableCollection<TrophyDto> _trophies;
-        public ObservableCollection<TrophyDto> Trophies
+        private ObservableCollection<Trophy> _myTrophies;
+        public ObservableCollection<Trophy> MyTrophies
         {
-            get { return _trophies; }
-            set { SetProperty(ref _trophies, value); }
+            get { return _myTrophies; }
+            set { SetProperty(ref _myTrophies, value); }
         }
 
         public TrophyRoomPageViewModel(INavigationService navigationService,
@@ -35,66 +36,24 @@ namespace PottiRoma.App.ViewModels
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
-            InitializeRewards();
+
+            MyTrophies = new ObservableCollection<Trophy>();
         }
 
-
-        private async void GoToGeneralRankingPage()
+        public override void OnNavigatedTo(NavigationParameters parameters)
         {
-            CanExecuteInitial();
-            await NavigationHelper.ShowLoading();
-
-            await _navigationService.NavigateAsync(NavigationSettings.TrophyRoom);
-            CanExecuteEnd();
-            await NavigationHelper.PopLoading();
-        }
-
-        private async void GoToRankingPage(RankingBannerDto obj)
-        {
-            CanExecuteInitial();
-            await NavigationHelper.ShowLoading();
-            await Task.Delay(2000);
-            NavigationParameters parameters = new NavigationParameters();
-            CarouselBannerType convertedIndex = ConvertIndexToEnumHelper.Convert(obj.Index);
-            parameters.Add(NavigationKeyParameters.RankingType, convertedIndex);
-            await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
-            CanExecuteEnd();
-        }
-
-
-        private void InitializeRewards()
-        {
-            Trophies = new ObservableCollection<TrophyDto>();
-            Trophies.Add(new TrophyDto()
+            base.OnNavigatedTo(parameters);
+            if (parameters.ContainsKey(NavigationKeyParameters.MyTrophies))
             {
-                Image = "trofeu.png",
-                Description = "Troféu de desafio de Ticket Médio cumprido na Temporada Flores do Oriente",
-            });
-            Trophies.Add(new TrophyDto()
-            {
-                Image = "trofeu.png",
-                Description = "Troféu de desafio de Ticket Médio cumprido na Temporada Flores do Oriente",
-            });
-            Trophies.Add(new TrophyDto()
-            {
-                Image = "trofeu.png",
-                Description = "Troféu de desafio de Ticket Médio cumprido na Temporada Flores do Oriente",
-            });
-            Trophies.Add(new TrophyDto()
-            {
-                Image = "trofeu.png",
-                Description = "Troféu de desafio de Ticket Médio cumprido na Temporada Flores do Oriente",
-            });
-            Trophies.Add(new TrophyDto()
-            {
-                Image = "trofeu.png",
-                Description = "Troféu de desafio de Ticket Médio cumprido na Temporada Flores do Oriente",
-            });
-            Trophies.Add(new TrophyDto()
-            {
-                Image = "trofeu.png",
-                Description = "Troféu de desafio de Ticket Médio cumprido na Temporada Flores do Oriente",
-            });
+                foreach (var trophy in (List<Trophy>)parameters[NavigationKeyParameters.MyTrophies])
+                {
+                    MyTrophies.Add(trophy);
+                    trophy.Description = "Você conseguiu o " + trophy.Name + " após realizar " +
+                        trophy.Goal + " " +
+                        (Formatter.FormatChallengeTypeForDescription((ChallengeType)trophy.Parameter))
+                    + " durante o período entre " + Formatter.FormatDate(trophy.StartDate) + " até " + Formatter.FormatDate(trophy.EndDate);
+                }
+            }
         }
     }
 }

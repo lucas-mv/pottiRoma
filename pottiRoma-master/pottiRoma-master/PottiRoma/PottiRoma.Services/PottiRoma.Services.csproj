@@ -44,6 +44,7 @@
     <Compile Include="Implementations\ChallengesService.cs" />
     <Compile Include="Implementations\ClientsService.cs" />
     <Compile Include="Implementations\GamificationPointsService.cs" />
+    <Compile Include="Implementations\TrophyService.cs" />
     <Compile Include="Implementations\SalesService.cs" />
     <Compile Include="Implementations\SeasonService.cs" />
     <Compile Include="Implementations\UserService.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Interfaces\IGamificationPointsService.cs" />
     <Compile Include="Interfaces\ISalesService.cs" />
     <Compile Include="Interfaces\ISeasonService.cs" />
+    <Compile Include="Interfaces\ITrophyService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

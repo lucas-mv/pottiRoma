@@ -9,7 +9,7 @@ namespace PottiRoma.Services.Interfaces
 {
     public interface IChallengesService
     {
-        void InsertNewChallenge(Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal);
+        void InsertNewChallenge(Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal, int prize, string description);
 
         List<ChallengeEntity> GetCurrentChallenges(Guid temporadaId);
     }

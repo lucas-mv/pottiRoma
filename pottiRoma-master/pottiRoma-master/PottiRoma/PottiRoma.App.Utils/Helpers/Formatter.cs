@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PottiRoma.App.Utils.Enums;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -29,6 +30,36 @@ namespace PottiRoma.App.Utils.Helpers
             string StringDate = Date.ToString();
             string FormattedDate = Convert.ToDateTime(StringDate).ToString("dd/MM");
             return FormattedDate;
+        }
+
+        public static string FormatChallengeType(ChallengeType type)
+        {
+            switch (type)
+            {
+                case ChallengeType.NumeroVendas:
+                    return "Número de Vendas";
+                case ChallengeType.ConvidarFloresAliadas:
+                    return "Convidar Flores Aliadas";
+                case ChallengeType.CadastrarClientes:
+                    return "Cadastrar Clientes";
+                default: 
+                    return "Convidar Flores Aliadas";
+            }
+        }
+
+        public static string FormatChallengeTypeForDescription(ChallengeType type)
+        {
+            switch (type)
+            {
+                case ChallengeType.NumeroVendas:
+                    return "Vendas";
+                case ChallengeType.ConvidarFloresAliadas:
+                    return "Convites de Flores Aliadas";
+                case ChallengeType.CadastrarClientes:
+                    return "Cadastrar Clientes";
+                default:
+                    return "Convites de Flores Aliadas";
+            }
         }
     }
 }

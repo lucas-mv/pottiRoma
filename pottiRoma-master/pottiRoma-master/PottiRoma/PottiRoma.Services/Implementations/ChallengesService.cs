@@ -16,9 +16,9 @@ namespace PottiRoma.Services.Implementations
             return ChallengesBusiness.GetCurrentChallenges(temporadaId);
         }
 
-        public void InsertNewChallenge(Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal)
+        public void InsertNewChallenge(Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal, int prize, string description)
         {
-            ChallengesBusiness.InsertNewChallenge(temporadaId, name, startDate, endDate, parameter, goal);
+            ChallengesBusiness.InsertNewChallenge(temporadaId, name, startDate, endDate, parameter, goal, prize, description);
         }
     }
 }

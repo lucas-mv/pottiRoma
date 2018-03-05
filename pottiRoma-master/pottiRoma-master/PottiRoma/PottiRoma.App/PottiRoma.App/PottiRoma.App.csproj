@@ -48,12 +48,12 @@
     <Compile Include="CustomRenderers\CustomProgressBar.cs" />
     <Compile Include="Dtos\RankingBannerDto.cs" />
     <Compile Include="Dtos\RulesContentDto.cs" />
-    <Compile Include="Dtos\TrophyDto.cs" />
     <Compile Include="Helpers\GetDatePopupHelper.cs" />
     <Compile Include="Helpers\LogoutPopupHelper.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Helpers\PopupAnniversaryHelper.cs" />
     <Compile Include="Helpers\ResetPasswordPopupHelper.cs" />
+    <Compile Include="Helpers\SelectActualChallenges.cs" />
     <Compile Include="Insights\InsightsActionNames.cs" />
     <Compile Include="Insights\InsightsPagesNames.cs" />
     <Compile Include="Insights\InsightsTypeEvents.cs" />

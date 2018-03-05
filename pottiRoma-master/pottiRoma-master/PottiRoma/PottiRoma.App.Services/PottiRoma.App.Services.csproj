@@ -38,12 +38,14 @@
     <Compile Include="Implementations\GamificationPointsAppService.cs" />
     <Compile Include="Implementations\SalesAppService.cs" />
     <Compile Include="Implementations\SeasonAppService.cs" />
+    <Compile Include="Implementations\TrophyAppService.cs" />
     <Compile Include="Implementations\UserAppService.cs" />
     <Compile Include="Interfaces\IChallengesAppService.cs" />
     <Compile Include="Interfaces\IClientsAppService.cs" />
     <Compile Include="Interfaces\IGamificationPointsAppService.cs" />
     <Compile Include="Interfaces\ISalesAppService.cs" />
     <Compile Include="Interfaces\ISeasonAppService.cs" />
+    <Compile Include="Interfaces\ITrophyAppService.cs" />
     <Compile Include="Interfaces\IUserAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
