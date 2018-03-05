@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule, MatNativeDateModule, MatDatepickerModule  } from '@angular/material';
 import { MAT_DATE_LOCALE  } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {Component} from '@angular/core';
+import { MatCardModule } from '@angular/material';
 
 import { BaseService } from './shared/services/base.service';
 import { LoginService } from './shared/services/login.service';
@@ -48,6 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
         MatNativeDateModule, 
         MatDatepickerModule,
         MatAutocompleteModule,
+        MatCardModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

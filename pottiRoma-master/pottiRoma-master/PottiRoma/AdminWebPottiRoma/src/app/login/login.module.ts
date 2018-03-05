@@ -8,6 +8,7 @@ import { LoginComponent } from './login.component';
 import { LoadingModule } from 'ngx-loading';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
 
 @NgModule({
     imports: [CommonModule, 
@@ -17,7 +18,8 @@ import { MatInputModule } from '@angular/material';
                 FormsModule,  
                 LoadingModule,
                 MatFormFieldModule,
-                MatInputModule],
+                MatInputModule,
+                MatCardModule],
     exports: [MatButtonModule, MatCheckboxModule],
     declarations: [LoginComponent]
 })
