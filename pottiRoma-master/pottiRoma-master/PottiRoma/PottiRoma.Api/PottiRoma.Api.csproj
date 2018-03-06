@@ -141,6 +141,7 @@
     <Compile Include="Controllers\ChallengeController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\GamificationPointsController.cs" />
+    <Compile Include="Controllers\LogInsertPointsController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SeasonController.cs" />
     <Compile Include="Controllers\TrophiesController.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Request\Clients\UpdateClientRequest.cs" />
     <Compile Include="Request\Email\SendEmailRequest.cs" />
     <Compile Include="Request\GamificationPoints\GamificationPointsRequest.cs" />
+    <Compile Include="Request\InsertNewLogRequest\LogInsertPointsRequest.cs" />
     <Compile Include="Request\Sales\InsertNewSaleRequest.cs" />
     <Compile Include="Request\Sales\UpdateSaleRequest.cs" />
     <Compile Include="Request\Season\SeasonRequest.cs" />

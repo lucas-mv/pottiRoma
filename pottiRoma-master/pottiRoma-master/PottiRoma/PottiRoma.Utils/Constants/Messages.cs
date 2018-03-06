@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PottiRoma.Utils.Constants
 {
-    public class Messages
+    public static class Messages
     {
         public const string USER_INVALID = "Email ou senha incorretos.";
         public const string INVALID_PASSWORD = "Senha inválida";
@@ -17,5 +17,6 @@ namespace PottiRoma.Utils.Constants
         public const string EXPIRED_AUTHORIZATION = "Sua sessão expirou e precisa ser revalidada.";
         public const string NO_SEASONS_REGISTERED = "Não há temporadas registradas";
         public const string NO_POINTS_REGISTERED = "Não há pontuação registrada";
+        public const string INVALID_USER = "Não foi encontrado nenhum usuário com esse email";
     }
 }
