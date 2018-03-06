@@ -54,6 +54,7 @@
     <Compile Include="Season.cs" />
     <Compile Include="TrophyEntity.cs" />
     <Compile Include="UserEntity.cs" />
+    <Compile Include="RankingBySeasonEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PottiRoma.Utils\PottiRoma.Utils.csproj">
