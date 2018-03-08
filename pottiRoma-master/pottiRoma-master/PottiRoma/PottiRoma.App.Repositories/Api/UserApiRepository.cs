@@ -3,6 +3,7 @@ using PottiRoma.App.ApiAccess;
 using PottiRoma.App.ApiAccess.Refit;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Models.Responses.Trophies;
 using PottiRoma.App.Models.Responses.User;
 using System;
 using System.Collections.Generic;
@@ -155,6 +156,21 @@ namespace PottiRoma.App.Repositories.Api
              .ExecuteAsync(async () =>
                    await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().ResetPassword(usuarioId)
               );
+        }
+
+        public async Task<GetThophiesByUserIdResponse> GetUserInvitePointsForChallenge(string usuarioId)
+        {
+            var response = await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+              retryCount: 5,
+              sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+            )
+            .ExecuteAsync(async () =>
+                  await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().GetUserInvitePointsForChallenge(usuarioId)
+             );
+            return response;
         }
     }
 }

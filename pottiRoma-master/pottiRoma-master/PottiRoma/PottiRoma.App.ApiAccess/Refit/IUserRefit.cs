@@ -1,5 +1,6 @@
 ﻿using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Models.Responses.Trophies;
 using PottiRoma.App.Models.Responses.User;
 using Refit;
 using System;
@@ -47,5 +48,9 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Get("/User/Profile/Password/Reset/{usuarioId}")]
         [Headers("Authorization: Bearer")]
         Task<User> ResetPassword(string usuarioId);
+
+        [Get("/User/GetUserInvitePointsForChallenge/{usuarioId}")]
+        [Headers("Authorization: Bearer")]
+        Task<GetThophiesByUserIdResponse> GetUserInvitePointsForChallenge(string usuarioId);
     }
 }

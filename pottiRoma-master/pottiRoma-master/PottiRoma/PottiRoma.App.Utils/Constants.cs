@@ -18,6 +18,7 @@ namespace PottiRoma.App.Utils
             public const string FIRST_ACCESS = "FirstAccess";
             public const string BIRTHDAYS = "Birthdays";
             public const string CHALLENGES = "Challenges";
+            public const string TROPHIES = "Trophies";
         }
 
         public class Global

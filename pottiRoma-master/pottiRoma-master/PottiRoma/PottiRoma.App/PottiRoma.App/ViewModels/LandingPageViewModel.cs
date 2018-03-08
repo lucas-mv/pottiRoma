@@ -26,6 +26,7 @@ namespace PottiRoma.App.ViewModels
         private readonly IUserAppService _userAppService;
         private readonly IClientsAppService _clientsAppService;
         private readonly IChallengesAppService _challengesAppService;
+        private readonly ITrophyAppService _trophyAppService;
 
         public LandingPageViewModel(
             ISeasonAppService seasonAppService,
@@ -33,7 +34,8 @@ namespace PottiRoma.App.ViewModels
             IGamificationPointsAppService gamificationPointsAppService,
             IUserAppService userAppService,
             IClientsAppService clientsAppService,
-            IChallengesAppService challengesAppService)
+            IChallengesAppService challengesAppService,
+            ITrophyAppService trophyAppService)
         {
             _seasonAppService = seasonAppService;
             _navigationService = navigationService;
@@ -41,6 +43,7 @@ namespace PottiRoma.App.ViewModels
             _userAppService = userAppService;
             _clientsAppService = clientsAppService;
             _challengesAppService = challengesAppService;
+            _trophyAppService = trophyAppService;
         }
 
         private ObservableCollection<Client> localBirthdays;
@@ -55,10 +58,11 @@ namespace PottiRoma.App.ViewModels
                 var currentSeasonReponse = await _seasonAppService.CurrentSeason();
                 var currentPoints = await _gamificationPointsAppService.GetCurrentGamificationPoints();
                 var currentClients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
+                var myTrophies = await _trophyAppService.GetCurrentTrophies(user.UsuarioId.ToString());
                 await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, currentClients.Clients);
                 await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, currentPoints.Entity);
                 await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
-
+                await CacheAccess.Insert<List<Trophy>>(CacheKeys.TROPHIES, myTrophies.Trophies);
                 var currentChallenges = await _challengesAppService.GetCurrentChallenges(currentSeasonReponse.Entity.TemporadaId.ToString());
                 await CacheAccess.Insert<List<Challenge>>(CacheKeys.CHALLENGES, currentChallenges.Challenges);
            
