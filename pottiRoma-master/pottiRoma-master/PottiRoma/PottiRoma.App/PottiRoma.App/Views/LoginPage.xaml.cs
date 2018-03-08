@@ -35,5 +35,10 @@ namespace PottiRoma.App.Views
             base.OnAppearing();
             SetInitialScreenHeight();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return false;
+        }
     }
 }

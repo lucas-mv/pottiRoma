@@ -14,11 +14,15 @@ namespace PottiRoma.App.Utils
             public const string ACCESS_TOKEN = "AccessToken";
             public const string SEASON_KEY = "Season";
             public const string CLIENTS = "Clients";
+            public const string SALES = "Sales";
             public const string POINTS = "GamificationPoints";
             public const string FIRST_ACCESS = "FirstAccess";
             public const string BIRTHDAYS = "Birthdays";
             public const string CHALLENGES = "Challenges";
             public const string TROPHIES = "Trophies";
+            public const string INVITE_POINTS_FOR_CHALLENGE = "InvitePointsForChallenge";
+            public const string REGISTER_POINTS_FOR_CHALLENGE = "RegisterPointsForChallenge";
+            public const string SALE_POINTS_FOR_CHALLENGE = "SalePointsForChallenge";
         }
 
         public class Global

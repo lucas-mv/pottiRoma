@@ -27,11 +27,12 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Selects
 
-        private const string GET_CURRENT_SEASON = @"SELECT TemporadaId AS TemporadaId
-        , Name AS Name
-        , StartDate AS StartDate
-        , EndDate AS EndDate
-        , IsActive AS IsActive
+        private const string GET_CURRENT_SEASON = @"SELECT 
+        TemporadaId AS TemporadaId,
+        Name AS Name,
+        StartDate AS StartDate,
+        EndDate AS EndDate,
+        IsActive AS IsActive
             FROM dbo.Temporada
             WHERE IsActive = 1";
 

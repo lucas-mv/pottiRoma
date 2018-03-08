@@ -1,7 +1,8 @@
 ﻿using Polly;
 using PottiRoma.App.ApiAccess;
 using PottiRoma.App.ApiAccess.Refit;
-using PottiRoma.App.Models.Responses.Season;
+using PottiRoma.App.Models.Responses;
+using PottiRoma.App.Models.Responses.Seasons;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -33,7 +33,7 @@ namespace PottiRoma.App.Services.Implementations
             await ClientsApiRepository.Get().RemoveCliente(clienteId);
         }
 
-        public async Task<int> GetUserInvitePointsForChallenge(string usuarioId)
+        public async Task<int> GetUserClientPointsForChallenge(string usuarioId)
         {
             return await ClientsApiRepository.Get().GetUserClientPointsForChallenge(usuarioId);
         }

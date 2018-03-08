@@ -27,7 +27,7 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Headers("Authorization: Bearer")]
         Task RemoveCliente(string clienteId);
 
-        [Get("/User/GetUserClientPointsForChallenge/{usuarioId}")]
+        [Get("/Clients/GetUserClientPointsForChallenge/{usuarioId}")]
         [Headers("Authorization: Bearer")]
         Task<int> GetUserClientPointsForChallenge(string usuarioId);
     }

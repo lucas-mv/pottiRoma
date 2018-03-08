@@ -1,4 +1,4 @@
-﻿using PottiRoma.App.Models.Responses.Season;
+﻿using PottiRoma.App.Models.Responses.Seasons;
 using Refit;
 using System;
 using System.Collections.Generic;

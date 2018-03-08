@@ -44,7 +44,7 @@ namespace PottiRoma.Api.Controllers
         [HttpGet]
         public async Task<GetClientsByUserIdResponse> GetClientsByUserId(string usuarioId)
         {
-            await ValidateToken();
+            //await ValidateToken();
             return new GetClientsByUserIdResponse()
             {
                 Clients = _clientsService.GetClientsByUserId(new Guid(usuarioId))

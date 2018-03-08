@@ -31,8 +31,8 @@ namespace PottiRoma.Business.GamificationPoints
             var gamificationPoints = GamificationPointsRepository.Get().GetCurrentGamificationPoints();
             if (gamificationPoints == null)
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.NO_SEASONS_REGISTERED);
-
-            return gamificationPoints;
+            else
+                return gamificationPoints;
         }
     }
 }

@@ -14,6 +14,8 @@ using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Repositories.Internal;
 using static PottiRoma.App.Utils.Constants;
+using PottiRoma.App.Models.Responses.Sales;
+using System.Threading.Tasks;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -69,6 +71,22 @@ namespace PottiRoma.App.ViewModels
             CanExecuteEnd();
         }
 
+        private async Task<GetSalesByUserIdResponse> TryGetSalesFromCache()
+        {
+            var sales = new GetSalesByUserIdResponse();
+            try
+            {
+                sales.Sales = await CacheAccess.Get<List<Sale>>(CacheKeys.SALES);
+            }
+            catch
+            {
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                sales = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
+                await CacheAccess.Insert<List<Sale>>(CacheKeys.SALES, sales.Sales);
+            }
+            return sales;
+        }
+
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
@@ -77,7 +95,7 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                var salesResponse = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
+                var salesResponse = await TryGetSalesFromCache();
                 SalesList = new ObservableCollection<Sale>(salesResponse.Sales);
                 foreach (var sale in SalesList)
                 {

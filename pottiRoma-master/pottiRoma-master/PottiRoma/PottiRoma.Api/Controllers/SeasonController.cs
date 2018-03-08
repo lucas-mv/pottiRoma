@@ -30,9 +30,9 @@ namespace PottiRoma.Api.Controllers
 
         [Route("GetCurrent")]
         [HttpPost]
-        public async Task<SeasonResponse> CurrentSeason()
+        public async Task<SeasonResponse> GetCurrentSeason()
         {
-            await ValidateToken();
+            //await ValidateToken();
 
             var response = new SeasonResponse();
             response.Entity = _seasonService.GetCurrentSeason();
@@ -44,7 +44,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task InsertSeason(string name, DateTime startDate, DateTime endDate, bool isActive)
         {
-            var currentSeason = await CurrentSeason();
+            var currentSeason = await GetCurrentSeason();
             var appUsers = _userService.GetAppUsers();
 
             foreach (var user in appUsers)

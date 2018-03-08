@@ -1,5 +1,7 @@
-﻿using PottiRoma.App.Helpers;
+﻿using Acr.UserDialogs;
+using PottiRoma.App.Helpers;
 using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Requests.Trophies;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils;
@@ -70,9 +72,8 @@ namespace PottiRoma.App.ViewModels
 
                 Settings.AccessToken = token.ToString();
                 Settings.UserId = user.UsuarioId.ToString();
-
+                await CheckInviteChallengeCompleted( myTrophies.Trophies, user.UsuarioId.ToString(), currentChallenges.Challenges, currentSeasonReponse.Entity);
                 await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
-
             }
             catch
             {
@@ -96,6 +97,54 @@ namespace PottiRoma.App.ViewModels
             }
 
             base.OnNavigatedFrom(parameters);
+        }
+
+        private async Task CheckInviteChallengeCompleted(List<Trophy> myTrophies, string usuarioId, List<Challenge> currentChallenges, Season CurrentSeason)
+        {
+            try
+            {
+                int myInvitePoints = 0;
+                try
+                {
+                    myInvitePoints = await CacheAccess.Get<int>(CacheKeys.INVITE_POINTS_FOR_CHALLENGE);
+                }
+                catch
+                {
+                    myInvitePoints = await _userAppService.GetUserInvitePointsForChallenge(usuarioId);
+                    await CacheAccess.Insert<int>(CacheKeys.INVITE_POINTS_FOR_CHALLENGE, myInvitePoints);
+                }
+
+                foreach (var challenge in currentChallenges)
+                {
+                    bool _hasTrophy = false;
+                    bool _hasEnoughtPoints = false;
+                    if (challenge.Parameter == 2)
+                    {
+                        foreach (var trophy in myTrophies)
+                        {
+                            if (trophy.DesafioId.ToString() == challenge.DesafioId.ToString())
+                                _hasTrophy = true;
+                        }
+                        _hasEnoughtPoints = (myInvitePoints >= challenge.Goal) ? true : false;
+                    }
+                    if (!_hasTrophy && _hasEnoughtPoints)
+                    {
+                        await _trophyAppService.InsertNewTrophy(new InsertTrophyRequest
+                        {
+                            DesafioId = challenge.DesafioId,
+                            EndDate = challenge.EndDate,
+                            StartDate = challenge.StartDate,
+                            Goal = challenge.Goal,
+                            Name = challenge.Name,
+                            Parameter = challenge.Parameter,
+                            TemporadaId = CurrentSeason.TemporadaId,
+                            UsuarioId = new Guid(usuarioId)
+                        });
+                        UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Convite de Flores Aliadas! Parabéns!", new TimeSpan(0, 0, 4));
+                    }
+                }
+            }
+            catch { }
         }
 
 
