@@ -9,7 +9,7 @@ namespace PottiRoma.Services.Interfaces
 {
     public interface ITrophyService
     {
-        void InsertNewTrophy(Guid usuarioId, Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal);
+        void InsertNewTrophy(Guid desafioId, Guid usuarioId, Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal);
 
         List<TrophyEntity> GetTrophies(Guid userId);
     }

@@ -8,6 +8,7 @@ namespace PottiRoma.Entities
 {
     public class ChallengeEntity
     {
+        public Guid DesafioId { get; set; }
         public Guid TemporadaId { get; set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }

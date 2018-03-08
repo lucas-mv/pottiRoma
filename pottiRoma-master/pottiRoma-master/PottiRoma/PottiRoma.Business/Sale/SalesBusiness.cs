@@ -48,5 +48,11 @@ namespace PottiRoma.Business.Sale
         {
             return ReportGenerator.GenerateSalesReport(GetAllSales());
         }
+
+        public static int GetUserSalePointsForChallenge(Guid usuarioId)
+        {
+            DateTime now = DateTime.Now;
+            return SalesRepository.Get().GetUserSalePointsForChallenge(usuarioId, now);
+        }
     }
 }

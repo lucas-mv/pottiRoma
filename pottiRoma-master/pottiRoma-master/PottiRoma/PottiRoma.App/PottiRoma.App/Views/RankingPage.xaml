@@ -108,7 +108,7 @@
                 ItemTemplate="{StaticResource CarouselRankingTemplate}"
                 ItemWidth="220"
                 ItemsSource="{Binding RankingDto}"
-                RotationAngle="5"
+                RotationAngle="0"
                 SelectedIndex="2" />
 
         </Grid>

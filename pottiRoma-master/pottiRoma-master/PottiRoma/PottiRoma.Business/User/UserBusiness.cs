@@ -204,6 +204,12 @@ namespace PottiRoma.Business.User
             return cryptoService.Compare(hashedPassword, hashedPassword2);
         }
 
+        public static int GetUserInvitePointsForChallenge(Guid usuarioId)
+        {
+            DateTime now = DateTime.Now;
+            return UserRepository.Get().GetUserInvitePointsForChallenge(usuarioId, now);
+        }
+
         #endregion
     }
 }

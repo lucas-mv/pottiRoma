@@ -59,5 +59,11 @@ namespace PottiRoma.Business.Clients
         {
             return ReportGenerator.GenerateClientsReport(GetAllClients());
         }
+
+        public static int GetUserClientPointsForChallenge(Guid usuarioId)
+        {
+            DateTime now = DateTime.Now;
+            return ClientsRepository.Get().GetUserClientPointsForChallenge(usuarioId, now);
+        }
     }
 }

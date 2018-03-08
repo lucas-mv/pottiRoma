@@ -26,5 +26,6 @@ namespace PottiRoma.Services.Interfaces
         void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep);
         List<SalespersonEntity> GetAllSalespeople();
         byte[] GenerateSalespeopleReport();
+        int GetUserInvitePointsForChallenge(Guid usuarioId);
     }
 }

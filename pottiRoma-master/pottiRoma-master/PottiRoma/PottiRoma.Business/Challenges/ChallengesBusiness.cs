@@ -14,6 +14,7 @@ namespace PottiRoma.Business.Challenges
         {
             var newChallenge = new ChallengeEntity()
             {
+                DesafioId = Guid.NewGuid(),
                 TemporadaId = temporadaId,
                 Name = name,
                 StartDate = startDate,

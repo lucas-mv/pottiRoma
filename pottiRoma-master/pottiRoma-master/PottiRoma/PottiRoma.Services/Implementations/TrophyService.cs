@@ -16,9 +16,9 @@ namespace PottiRoma.Services.Implementations
             return TrophiesBusiness.GetTrophies(userId);
         }
 
-        public void InsertNewTrophy(Guid usuarioId, Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal)
+        public void InsertNewTrophy(Guid desafioId,Guid usuarioId, Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal)
         {
-            TrophiesBusiness.InsertNewTrophy(usuarioId, temporadaId, name, startDate, endDate, parameter, goal);
+            TrophiesBusiness.InsertNewTrophy(desafioId, usuarioId, temporadaId, name, startDate, endDate, parameter, goal);
         }
     }
 }

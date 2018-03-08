@@ -10,10 +10,11 @@ namespace PottiRoma.Business.Trophies
 {
     public class TrophiesBusiness
     {
-        public static void InsertNewTrophy(Guid usuarioId,Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal)
+        public static void InsertNewTrophy(Guid desafioId, Guid usuarioId, Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal)
         {
             var newTrophy = new TrophyEntity()
             {
+                DesafioId = desafioId,
                 UsuarioId = usuarioId,
                 TemporadaId = temporadaId,
                 Name = name,

@@ -29,6 +29,7 @@ namespace PottiRoma.DataAccess.Repositories
 
         private const string GET_CURRENT_CHALLENGES = @"
         SELECT
+            DesafioId as DesafioId,
             TemporadaId as TemporadaId,
             Name as Name,
             StartDate as StartDate,
@@ -48,6 +49,7 @@ namespace PottiRoma.DataAccess.Repositories
         private const string INSERT_NEW_CHALLENGE = @"
         INSERT INTO dbo.Desafio 
         (
+            DesafioId,
 	        TemporadaId, 
 	        Name, 
 	        StartDate, 
@@ -59,6 +61,7 @@ namespace PottiRoma.DataAccess.Repositories
         )
         VALUES 
         (
+            @desafioid,
 	        @temporadaid, 
 	        @name, 
 	        @startdate, 
@@ -77,15 +80,15 @@ namespace PottiRoma.DataAccess.Repositories
         {
             DynamicParameters parameters = new DynamicParameters();
 
+            parameters.Add("@desafioid", challenge.DesafioId, System.Data.DbType.Guid);
             parameters.Add("@temporadaid", challenge.TemporadaId, System.Data.DbType.Guid);
             parameters.Add("@name", challenge.Name, System.Data.DbType.String);
             parameters.Add("@startdate", challenge.StartDate, System.Data.DbType.DateTime);
             parameters.Add("@enddate", challenge.EndDate, System.Data.DbType.DateTime);
             parameters.Add("@parameter", challenge.Parameter, System.Data.DbType.Int16);
             parameters.Add("@goal", challenge.Goal, System.Data.DbType.Int16);
-            parameters.Add("@description", challenge.Parameter, System.Data.DbType.String);
-            parameters.Add("@prize", challenge.Goal, System.Data.DbType.Int16);
-
+            parameters.Add("@description", challenge.Description, System.Data.DbType.String);
+            parameters.Add("@prize", challenge.Prize, System.Data.DbType.Int16);
             Execute(INSERT_NEW_CHALLENGE, parameters);
         }
 

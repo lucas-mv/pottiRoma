@@ -1,4 +1,5 @@
 ﻿using PottiRoma.Api.Request.Sales;
+using PottiRoma.Api.Request.User;
 using PottiRoma.Api.Response.Sales;
 using PottiRoma.Entities;
 using PottiRoma.Services.Interfaces;
@@ -80,6 +81,12 @@ namespace PottiRoma.Api.Controllers
             return response;
         }
 
-
+        [Route("GetUserSalePointsForChallenge")]
+        [HttpGet]
+        public async Task<int> GetUserSalePointsForChallenge(string usuarioId)
+        {
+            await ValidateToken();
+            return _salesService.GetUserSalePointsForChallenge(new Guid(usuarioId));
+        }
     }
 }

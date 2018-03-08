@@ -146,11 +146,23 @@ namespace PottiRoma.App.ViewModels
                             Description = SaleRegistered.Description
                         });
 
+                        var userSales = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
+                        float salesValue = 0;
+                        int salesCount = 0;
+                        int salesNumberPieces = 0;
+                        foreach (var sale in userSales.Sales)
+                        {
+                            salesValue += sale.SaleValue;
+                            salesNumberPieces += sale.NumberSoldPieces;
+                            salesCount++;
+                        }
+                        int AverageTicketPoints = (int)salesValue / salesCount;
+                        int AverageItensPerSale = salesNumberPieces / salesCount;
+
                         var points = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
-                        user.AverageItensPerSalePoints += (int)SaleRegistered.NumberSoldPieces;
-                        user.AverageTicketPoints += (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces;
+                        user.AverageItensPerSalePoints = AverageItensPerSale;
+                        user.AverageTicketPoints += AverageTicketPoints;
                         user.SalesNumberPoints += (int)points.SalesNumber;
-                        int increment = (int)SaleRegistered.NumberSoldPieces + (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces + points.SalesNumber;
 
                         await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
                         {
@@ -161,9 +173,8 @@ namespace PottiRoma.App.ViewModels
                             InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
                             SalesNumberPoints = user.SalesNumberPoints
                         });
-                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increment + " Pontos com essa Venda!", duration);
+                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + points.SalesNumber + " Pontos com essa Venda!", duration);
                         await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
-
                     }
                     catch
                     {

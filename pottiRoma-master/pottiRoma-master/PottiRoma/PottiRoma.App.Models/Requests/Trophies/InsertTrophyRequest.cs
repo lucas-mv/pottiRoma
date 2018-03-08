@@ -8,6 +8,7 @@ namespace PottiRoma.App.Models.Requests.Trophies
 {
     public class InsertTrophyRequest
     {
+        public Guid DesafioId { get; set; }
         public Guid UsuarioId { get; set; }
         public Guid TemporadaId { get; set; }
         public DateTime StartDate { get; set; }
