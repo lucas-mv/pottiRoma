@@ -81,7 +81,7 @@ namespace PottiRoma.Api.Controllers
             return response;
         }
 
-        [Route("GetUserSalePointsForChallenge")]
+        [Route("GetUserSalePointsForChallenge/{usuarioId}")]
         [HttpGet]
         public async Task<int> GetUserSalePointsForChallenge(string usuarioId)
         {

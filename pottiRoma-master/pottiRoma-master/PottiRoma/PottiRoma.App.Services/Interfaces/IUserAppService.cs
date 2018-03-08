@@ -1,5 +1,6 @@
 ﻿using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Models.Responses.Trophies;
 using PottiRoma.App.Models.Responses.User;
 using System;
 using System.Collections.Generic;
@@ -20,5 +21,6 @@ namespace PottiRoma.App.Services.Interfaces
         Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep);
         Task<User> GetUserByEmail(string email);
         Task ResetPassword(string usuarioId);
+        Task<int> GetUserInvitePointsForChallenge(string usuarioId);
     }
 }

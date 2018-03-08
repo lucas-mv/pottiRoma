@@ -158,7 +158,7 @@ namespace PottiRoma.App.Repositories.Api
               );
         }
 
-        public async Task<GetThophiesByUserIdResponse> GetUserInvitePointsForChallenge(string usuarioId)
+        public async Task<int> GetUserInvitePointsForChallenge(string usuarioId)
         {
             var response = await Policy
              .Handle<WebException>()

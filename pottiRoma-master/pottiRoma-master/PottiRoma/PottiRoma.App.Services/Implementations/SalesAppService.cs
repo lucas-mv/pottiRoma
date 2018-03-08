@@ -26,5 +26,10 @@ namespace PottiRoma.App.Services.Implementations
         {
             await SalesApiRepository.Get().UpdateSale(vendaId, saleValue, salePaidValue, numberSoldPieces, description);
         }
+
+        public async Task<int> GetUserSalePointsForChallenge(string usuarioId)
+        {
+            return await SalesApiRepository.Get().GetUserSalePointsForChallenge(usuarioId);
+        }
     }
 }

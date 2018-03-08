@@ -51,6 +51,6 @@ namespace PottiRoma.App.ApiAccess.Refit
 
         [Get("/User/GetUserInvitePointsForChallenge/{usuarioId}")]
         [Headers("Authorization: Bearer")]
-        Task<GetThophiesByUserIdResponse> GetUserInvitePointsForChallenge(string usuarioId);
+        Task<int> GetUserInvitePointsForChallenge(string usuarioId);
     }
 }
