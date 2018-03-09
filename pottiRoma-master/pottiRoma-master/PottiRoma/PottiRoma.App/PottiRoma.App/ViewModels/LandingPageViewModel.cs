@@ -123,7 +123,10 @@ namespace PottiRoma.App.ViewModels
                         foreach (var trophy in myTrophies)
                         {
                             if (trophy.DesafioId.ToString() == challenge.DesafioId.ToString())
+                            {
                                 _hasTrophy = true;
+                                break;
+                            }
                         }
                         _hasEnoughtPoints = (myInvitePoints >= challenge.Goal) ? true : false;
                     }

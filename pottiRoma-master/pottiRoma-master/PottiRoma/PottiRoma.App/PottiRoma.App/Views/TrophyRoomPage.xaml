@@ -34,6 +34,7 @@
                     ItemSize="115"
                     ItemSpacing="10"
                     ItemsSource="{Binding MyTrophies}"
+                    SelectionBackgroundColor="Transparent"
                     VerticalOptions="Fill">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>

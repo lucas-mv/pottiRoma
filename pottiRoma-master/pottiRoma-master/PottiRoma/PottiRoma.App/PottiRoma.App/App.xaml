@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <Color x:Key="DarkBackgroundColor">#e2e2e2</Color>
             <Color x:Key="ThemeColor">#ffd195</Color>
+            <Color x:Key="ToolBarColor">#e8a175</Color>
             <Color x:Key="LightBackgroundColor">#fafafa</Color>
             <Color x:Key="PlaceholderColor">#d5d5d5</Color>
             <Color x:Key="TextColor">#696969</Color>

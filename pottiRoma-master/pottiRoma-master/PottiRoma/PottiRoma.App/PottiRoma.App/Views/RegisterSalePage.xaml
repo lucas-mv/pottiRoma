@@ -7,228 +7,230 @@
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
-    <Grid x:Name="ContentRegisterSalePage">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="210" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="90" />
-        </Grid.RowDefinitions>
-        <Grid>
+    <ScrollView HeightRequest="{Binding ScreenHeightRequest, Mode=TwoWay}">
+        <Grid HeightRequest="{Binding ScreenHeightRequest, Mode=TwoWay}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="95" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="65" />
+                <RowDefinition Height="210" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
             </Grid.RowDefinitions>
-            <Image
-                Grid.RowSpan="3"
-                Aspect="AspectFill"
-                Source="banned_sales_page_detail.png" />
-
-            <StackLayout Orientation="Horizontal" Spacing="30">
-                <StackLayout.Margin>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="iOS" Value="16,24,16,16" />
-                        <On Platform="Android, WinPhone, Windows" Value="16,16,16,16" />
-                    </OnPlatform>
-                </StackLayout.Margin>
-
-
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoBackCommand}" />
-                </StackLayout.GestureRecognizers>
-                <Image
-                    HeightRequest="30"
-                    Source="ic_arrow_back_white_24dp.png"
-                    WidthRequest="30" />
-                <Label
-                    FontSize="{StaticResource TopBarFontSize}"
-                    Text="Registro de Venda"
-                    TextColor="{StaticResource WhiteColor}"
-                    VerticalOptions="Center" />
-            </StackLayout>
-        </Grid>
-
-        <Frame
-            Grid.Row="1"
-            Margin="16,-55,16,0"
-            Padding="0"
-            BackgroundColor="White">
             <Grid>
-                <Grid RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="50*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="50*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="50*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="120*" />
-                    </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="95" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="65" />
+                </Grid.RowDefinitions>
+                <Image
+                    Grid.RowSpan="3"
+                    Aspect="AspectFill"
+                    Source="banned_sales_page_detail.png" />
+
+                <StackLayout Orientation="Horizontal" Spacing="30">
+                    <StackLayout.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="16,24,16,16" />
+                            <On Platform="Android, WinPhone, Windows" Value="16,16,16,16" />
+                        </OnPlatform>
+                    </StackLayout.Margin>
+
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Image
+                        HeightRequest="30"
+                        Source="ic_arrow_back_white_24dp.png"
+                        WidthRequest="30" />
                     <Label
-                        Grid.Row="0"
-                        Margin="16,0,16,0"
-                        FontAttributes="Bold"
-                        FontSize="{StaticResource StandardFontSize}"
-                        HorizontalOptions="Start"
-                        HorizontalTextAlignment="Start"
-                        Text="{Binding NameAndDateLabel}"
-                        TextColor="{StaticResource LightTextColor}"
-                        VerticalOptions="Center"
-                        VerticalTextAlignment="Center" />
-                    <ContentView
-                        Grid.Row="1"
-                        BackgroundColor="{StaticResource CorBoxSeparetorLine}"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill" />
+                        FontSize="{StaticResource TopBarFontSize}"
+                        Text="Registro de Venda"
+                        TextColor="{StaticResource WhiteColor}"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </Grid>
 
-                    <Grid Grid.Row="2">
+            <Frame
+                Grid.Row="1"
+                Margin="16,-55,16,0"
+                Padding="0"
+                BackgroundColor="White">
+                <Grid>
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="120" />
+                        </Grid.RowDefinitions>
                         <Label
-                            Margin="16,0,0,0"
+                            Grid.Row="0"
+                            Margin="16,0,16,0"
                             FontAttributes="Bold"
                             FontSize="{StaticResource StandardFontSize}"
                             HorizontalOptions="Start"
-                            Text="Valor Total:"
-                            TextColor="{StaticResource DarkTextColor}"
-                            VerticalOptions="Center" />
-                        <renderers:CustomEntry
-                            x:Name="Entry_total_price"
-                            Grid.Column="1"
-                            Margin="0,0,16,0"
-                            Completed="Entry_Price_Completed"
-                            Focused="Entry_Price_Focused"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"
-                            Keyboard="Numeric"
-                            Placeholder="Digite aqui"
-                            PlaceholderColor="{StaticResource PlaceholderColor}"
-                            Text="{Binding SaleRegistered.SaleValue}"
-                            TextColor="{StaticResource TextColor}"
-                            Unfocused="Entry_Price_Unfocused"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding NameAndDateLabel}"
+                            TextColor="{StaticResource LightTextColor}"
                             VerticalOptions="Center"
-                            WidthRequest="120" />
-                    </Grid>
+                            VerticalTextAlignment="Center" />
+                        <ContentView
+                            Grid.Row="1"
+                            BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill" />
 
-                    <ContentView
-                        Grid.Row="3"
-                        BackgroundColor="{StaticResource CorBoxSeparetorLine}"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill" />
-
-                    <Grid Grid.Row="4">
-                        <Label
-                            Margin="16,0,0,0"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HorizontalOptions="Start"
-                            Text="Valor Pago:"
-                            TextColor="{StaticResource DarkTextColor}"
-                            VerticalOptions="Center" />
-                        <renderers:CustomEntry
-                            x:Name="Entry_price"
-                            Grid.Column="1"
-                            Margin="0,0,16,0"
-                            Completed="Entry_Price_Completed"
-                            Focused="Entry_Price_Focused"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"
-                            Keyboard="Numeric"
-                            Placeholder="Digite aqui"
-                            PlaceholderColor="{StaticResource PlaceholderColor}"
-                            Text="{Binding SaleRegistered.SalePaidValue}"
-                            TextColor="{StaticResource TextColor}"
-                            Unfocused="Entry_Price_Unfocused"
-                            VerticalOptions="Center"
-                            WidthRequest="120" />
-                    </Grid>
-
-                    <ContentView
-                        Grid.Row="5"
-                        BackgroundColor="{StaticResource CorBoxSeparetorLine}"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill" />
-                    <Grid Grid.Row="6">
-                        <Label
-                            Margin="16,0,0,0"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HorizontalOptions="Start"
-                            Text="Quantidade de Peças:"
-                            TextColor="{StaticResource DarkTextColor}"
-                            VerticalOptions="Center" />
-                        <renderers:CustomEntry
-                            x:Name="Entry_sold_pieces"
-                            Grid.Column="1"
-                            Margin="0,0,16,0"
-                            Focused="NumberSoldPieces_focused"
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            HorizontalOptions="End"
-                            HorizontalTextAlignment="End"
-                            Keyboard="Numeric"
-                            Placeholder="Digite aqui"
-                            PlaceholderColor="{StaticResource PlaceholderColor}"
-                            Text="{Binding SaleRegistered.NumberSoldPieces}"
-                            TextColor="{StaticResource TextColor}"
-                            VerticalOptions="Center"
-                            WidthRequest="120" />
-                    </Grid>
-                    <ContentView
-                        Grid.Row="7"
-                        BackgroundColor="{StaticResource CorBoxSeparetorLine}"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill" />
-                    <StackLayout Grid.Row="8" Margin="16,10,16,0">
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="{StaticResource StandardFontSize}"
-                            Text="Conte Mais Sobre a Venda:"
-                            TextColor="{StaticResource DarkTextColor}" />
-                        <Grid Margin="0">
+                        <Grid Grid.Row="2">
                             <Label
-                                x:Name="Editor_observacoes_placeholder"
-                                Margin="10,10,0,0"
+                                Margin="16,0,0,0"
+                                FontAttributes="Bold"
                                 FontSize="{StaticResource StandardFontSize}"
                                 HorizontalOptions="Start"
-                                HorizontalTextAlignment="Start"
-                                IsEnabled="False"
-                                IsVisible="{Binding DescriptionPlaceHolderVisible}"
-                                Text="Digite aqui:"
-                                TextColor="{StaticResource PlaceholderColor}"
-                                VerticalOptions="Start"
-                                VerticalTextAlignment="Start" />
+                                Text="Valor Total:"
+                                TextColor="{StaticResource DarkTextColor}"
+                                VerticalOptions="Center" />
                             <renderers:CustomEntry
-                                x:Name="ObservacoesEditor"
-                                Margin="0"
-                                Completed="Editor_observacoes_placeholder_Unfocused"
-                                Focused="Editor_observacoes_placeholder_Focused"
-                                FontSize="14"
-                                HeightRequest="100"
-                                HorizontalOptions="Fill"
-                                HorizontalTextAlignment="Start"
-                                Text="{Binding SaleRegistered.Description}"
+                                x:Name="Entry_total_price"
+                                Grid.Column="1"
+                                Margin="0,0,16,0"
+                                Completed="Entry_Price_Completed"
+                                Focused="Entry_Price_Focused"
+                                FontAttributes="Bold"
+                                FontSize="{StaticResource StandardFontSize}"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Keyboard="Numeric"
+                                Placeholder="Digite aqui"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding SaleRegistered.SaleValue}"
                                 TextColor="{StaticResource TextColor}"
-                                Unfocused="Editor_observacoes_placeholder_Unfocused"
-                                VerticalOptions="Fill" />
+                                Unfocused="Entry_Price_Unfocused"
+                                VerticalOptions="Center"
+                                WidthRequest="120" />
                         </Grid>
-                    </StackLayout>
+
+                        <ContentView
+                            Grid.Row="3"
+                            BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill" />
+
+                        <Grid Grid.Row="4">
+                            <Label
+                                Margin="16,0,0,0"
+                                FontAttributes="Bold"
+                                FontSize="{StaticResource StandardFontSize}"
+                                HorizontalOptions="Start"
+                                Text="Valor Pago:"
+                                TextColor="{StaticResource DarkTextColor}"
+                                VerticalOptions="Center" />
+                            <renderers:CustomEntry
+                                x:Name="Entry_price"
+                                Grid.Column="1"
+                                Margin="0,0,16,0"
+                                Completed="Entry_Price_Completed"
+                                Focused="Entry_Price_Focused"
+                                FontAttributes="Bold"
+                                FontSize="{StaticResource StandardFontSize}"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Keyboard="Numeric"
+                                Placeholder="Digite aqui"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding SaleRegistered.SalePaidValue}"
+                                TextColor="{StaticResource TextColor}"
+                                Unfocused="Entry_Price_Unfocused"
+                                VerticalOptions="Center"
+                                WidthRequest="120" />
+                        </Grid>
+
+                        <ContentView
+                            Grid.Row="5"
+                            BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill" />
+                        <Grid Grid.Row="6">
+                            <Label
+                                Margin="16,0,0,0"
+                                FontAttributes="Bold"
+                                FontSize="{StaticResource StandardFontSize}"
+                                HorizontalOptions="Start"
+                                Text="Quantidade de Peças:"
+                                TextColor="{StaticResource DarkTextColor}"
+                                VerticalOptions="Center" />
+                            <renderers:CustomEntry
+                                x:Name="Entry_sold_pieces"
+                                Grid.Column="1"
+                                Margin="0,0,16,0"
+                                Focused="NumberSoldPieces_focused"
+                                FontAttributes="Bold"
+                                FontSize="{StaticResource StandardFontSize}"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Keyboard="Numeric"
+                                Placeholder="Digite aqui"
+                                PlaceholderColor="{StaticResource PlaceholderColor}"
+                                Text="{Binding SaleRegistered.NumberSoldPieces}"
+                                TextColor="{StaticResource TextColor}"
+                                VerticalOptions="Center"
+                                WidthRequest="120" />
+                        </Grid>
+                        <ContentView
+                            Grid.Row="7"
+                            BackgroundColor="{StaticResource CorBoxSeparetorLine}"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill" />
+                        <StackLayout Grid.Row="8" Margin="16,10,16,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="{StaticResource StandardFontSize}"
+                                Text="Conte Mais Sobre a Venda:"
+                                TextColor="{StaticResource DarkTextColor}" />
+                            <Grid Margin="0">
+                                <Label
+                                    x:Name="Editor_observacoes_placeholder"
+                                    Margin="10,10,0,0"
+                                    FontSize="{StaticResource StandardFontSize}"
+                                    HorizontalOptions="Start"
+                                    HorizontalTextAlignment="Start"
+                                    IsEnabled="False"
+                                    IsVisible="{Binding DescriptionPlaceHolderVisible}"
+                                    Text="Digite aqui:"
+                                    TextColor="{StaticResource PlaceholderColor}"
+                                    VerticalOptions="Start"
+                                    VerticalTextAlignment="Start" />
+                                <renderers:CustomEntry
+                                    x:Name="ObservacoesEditor"
+                                    Margin="0"
+                                    Completed="Editor_observacoes_placeholder_Unfocused"
+                                    Focused="Editor_observacoes_placeholder_Focused"
+                                    FontSize="14"
+                                    HeightRequest="100"
+                                    HorizontalOptions="Fill"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding SaleRegistered.Description}"
+                                    TextColor="{StaticResource TextColor}"
+                                    Unfocused="Editor_observacoes_placeholder_Unfocused"
+                                    VerticalOptions="Fill" />
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Frame>
+            </Frame>
 
-        <Button
-            Grid.Row="2"
-            Command="{Binding SaveSaleCommand}"
-            HorizontalOptions="Center"
-            Style="{StaticResource ButtonDefault}"
-            Text="{Binding ButtonText}"
-            VerticalOptions="Center"
-            WidthRequest="220" />
+            <Button
+                Grid.Row="2"
+                Command="{Binding SaveSaleCommand}"
+                HorizontalOptions="Center"
+                Style="{StaticResource ButtonDefault}"
+                Text="{Binding ButtonText}"
+                VerticalOptions="Center"
+                WidthRequest="220" />
 
-    </Grid>
+        </Grid>
+    </ScrollView>
 </ContentPage>

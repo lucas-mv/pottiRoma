@@ -110,7 +110,7 @@
                                     HorizontalOptions="End"
                                     PropertyChanged="Label_PropertyChanged"
                                     Text="{Binding SaleValue}"
-                                    TextColor="{StaticResource TextColor}"
+                                    TextColor="{Binding ColorLabel}"
                                     VerticalOptions="Center" />
                             </Grid>
 

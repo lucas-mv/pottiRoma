@@ -96,6 +96,13 @@ namespace PottiRoma.App.ViewModels
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 var salesResponse = await TryGetSalesFromCache();
+                foreach (var sale in salesResponse.Sales)
+                {
+                    if (sale.SaleValue > sale.SalePaidValue)
+                        sale.ColorLabel = "#696969";
+                    else
+                        sale.ColorLabel = "#FF3131";
+                }
                 SalesList = new ObservableCollection<Sale>(salesResponse.Sales);
                 foreach (var sale in SalesList)
                 {

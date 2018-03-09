@@ -22,7 +22,7 @@
 
         <Grid
             Grid.Row="1"
-            Margin="16,-190,16,16"
+            Margin="16,-120,16,16"
             BackgroundColor="{StaticResource DarkBackgroundColor}">
 
             <syncfusion:SfListView
@@ -30,6 +30,7 @@
                 ItemSize="165"
                 ItemSpacing="0"
                 ItemsSource="{Binding Challenges}"
+                SelectionBackgroundColor="Transparent"
                 VerticalOptions="Fill">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -61,21 +62,6 @@
                                         Text="{Binding Name}"
                                         TextColor="{StaticResource TextColor}"
                                         VerticalOptions="Center" />
-                                    <StackLayout
-                                        Margin="0,0,16,0"
-                                        HorizontalOptions="End"
-                                        Orientation="Vertical"
-                                        Spacing="5"
-                                        VerticalOptions="Center">
-                                        <Label
-                                            FontSize="{StaticResource StandardFontSize}"
-                                            Text="{Binding StartDateFormatted}"
-                                            TextColor="{StaticResource ButtonColor}" />
-                                        <Label
-                                            FontSize="{StaticResource StandardFontSize}"
-                                            Text="{Binding EndDateFormatted}"
-                                            TextColor="{StaticResource ButtonColor}" />
-                                    </StackLayout>
 
                                     <Label
                                         Grid.Row="1"
@@ -101,12 +87,10 @@
                                             Text="{Binding PrizeFormatted}"
                                             TextColor="{StaticResource TextColor}"
                                             VerticalOptions="Center" />
-                                        <Image
+                                        <ContentView
                                             Grid.Column="1"
                                             Margin="0,0,18,20"
-                                            Aspect="AspectFill"
-                                            BackgroundColor="Green"
-                                            Source="card_challenge.jpg" />
+                                            BackgroundColor="{StaticResource ToolBarColor}" />
                                         <Label
                                             Grid.Column="1"
                                             Margin="8,0,0,16"
@@ -114,7 +98,7 @@
                                             FontSize="{StaticResource SmallFontSize}"
                                             HorizontalOptions="Start"
                                             Text="{Binding ParameterFormatted}"
-                                            TextColor="{StaticResource PlaceholderColor}"
+                                            TextColor="{StaticResource WhiteColor}"
                                             VerticalOptions="Center" />
                                         <StackLayout
                                             Grid.Column="1"
@@ -122,16 +106,11 @@
                                             HorizontalOptions="End"
                                             Orientation="Horizontal"
                                             VerticalOptions="Center">
-                                            <Image
-                                                Aspect="AspectFit"
-                                                HeightRequest="12"
-                                                Source="ic_up.png"
-                                                WidthRequest="12" />
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="{StaticResource SmallFontSize}"
                                                 Text="{Binding Goal}"
-                                                TextColor="{StaticResource PlaceholderColor}" />
+                                                TextColor="{StaticResource WhiteColor}" />
                                         </StackLayout>
                                     </Grid>
 

@@ -64,6 +64,13 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _cardLabel, value); }
         }
 
+        private string _colorLabel;
+        public string ColorLabel
+        {
+            get { return _colorLabel; }
+            set { SetProperty(ref _colorLabel, value); }
+        }
+
         #endregion
 
         public Sale()
