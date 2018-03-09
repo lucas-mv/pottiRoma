@@ -9,118 +9,121 @@
     Title="Convidar Flor Aliada"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource LightBackgroundColor}">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="140" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="100" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="16" />
-            <ColumnDefinition Width="12*" />
-            <ColumnDefinition Width="16" />
-        </Grid.ColumnDefinitions>
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="140" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="150" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="12*" />
+                <ColumnDefinition Width="16" />
+            </Grid.ColumnDefinitions>
 
-        <Image
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            Aspect="AspectFill"
-            Source="banner_top_2.png" />
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Aspect="AspectFill"
+                Source="banner_top_2.png" />
 
 
-        <StackLayout
-            Grid.Row="1"
-            Grid.Column="1"
-            Spacing="10">
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="1"
+                Spacing="10">
 
-            <Frame
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="50"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="Nome*"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding Name}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="50"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Keyboard="Email"
+                        Placeholder="Email*"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding Email}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="50"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="CPF*"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding Cpf}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="50"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Keyboard="Email"
+                        Placeholder="Telefone Principal*"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding PrimaryTelephone}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="50"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="CEP"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding Cep}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <ContentView HeightRequest="10" />
+            </StackLayout>
+
+            <Button
+                Grid.Row="2"
+                Grid.Column="1"
+                Command="{Binding SendEmailCommand}"
                 HeightRequest="50"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="Nome*"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding Name}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
-
-            <Frame
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="50"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Keyboard="Email"
-                    Placeholder="Email*"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding Email}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
-
-            <Frame
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="50"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="CPF*"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding Cpf}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
-
-            <Frame
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="50"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Keyboard="Email"
-                    Placeholder="Telefone Principal*"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding PrimaryTelephone}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
-
-            <Frame
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="50"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="CEP"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding Cep}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
-
-            <ContentView HeightRequest="10" />
-        </StackLayout>
-
-        <Button
-            Grid.Row="2"
-            Grid.Column="1"
-            Command="{Binding SendEmailCommand}"
-            HeightRequest="50"
-            Style="{StaticResource ButtonDefault}"
-            Text="CONVIDAR FLOR ALIADA"
-            VerticalOptions="Center" />
-    </Grid>
+                Style="{StaticResource ButtonDefault}"
+                Text="CONVIDAR FLOR ALIADA"
+                VerticalOptions="Center" />
+        </Grid>
+    </ScrollView>
 </ContentPage>

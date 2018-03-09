@@ -51,7 +51,9 @@
     <Compile Include="Clients\ClientsBusiness.cs" />
     <Compile Include="GamificationPointsBusiness\GamificationPointBusiness.cs" />
     <Compile Include="General\ReportGenerator.cs" />
+    <Compile Include="LogInsertPoints\LogInsertPointsBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RankingBySeason\RankingBySeasonBusiness.cs" />
     <Compile Include="Sale\SalesBusiness.cs" />
     <Compile Include="Season\SeasonBusiness.cs" />
     <Compile Include="Trophies\TrophiesBusiness.cs" />

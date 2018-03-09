@@ -38,7 +38,6 @@ namespace PottiRoma.DataAccess.Repositories
 
         private const string GET_CURRENT_GAMIFICATION_POINTS = @"
         SELECT AverageTicket as AverageTicket,
-            IsActive as IsActive,
             RegisterNewClients as RegisterNewClients,
             SalesNumber as SalesNumber, 
             AverageItensPerSale as AverageItensPerSale, 

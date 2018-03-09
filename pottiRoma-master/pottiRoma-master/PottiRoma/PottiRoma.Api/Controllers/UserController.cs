@@ -160,5 +160,13 @@ namespace PottiRoma.Api.Controllers
             await ValidateToken();
             return _userService.GetUserByEmail(email);
         }
+
+        [Route("GetUserInvitePointsForChallenge/{usuarioId}")]
+        [HttpGet]
+        public async Task<int> GetUserInvitePointsForChallenge(string usuarioId)
+        {
+            await ValidateToken();
+            return _userService.GetUserInvitePointsForChallenge(new Guid(usuarioId));
+        }
     }
 }

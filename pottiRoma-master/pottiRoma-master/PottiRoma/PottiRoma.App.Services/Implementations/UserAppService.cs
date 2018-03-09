@@ -1,5 +1,6 @@
 ﻿using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Models.Responses.Trophies;
 using PottiRoma.App.Models.Responses.User;
 using PottiRoma.App.Repositories.Api;
 using PottiRoma.App.Services.Interfaces;
@@ -56,6 +57,11 @@ namespace PottiRoma.App.Services.Implementations
         public async Task UpdateUserPoints(UpdateUserPointsRequest request)
         {
             await UserApiRepository.Get().UpdateUserPoints(request);
+        }
+
+        public async Task<int> GetUserInvitePointsForChallenge(string usuarioId)
+        {
+            return await UserApiRepository.Get().GetUserInvitePointsForChallenge(usuarioId);
         }
     }
 }

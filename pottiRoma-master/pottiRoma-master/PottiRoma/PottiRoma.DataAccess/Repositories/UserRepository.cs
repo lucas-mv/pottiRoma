@@ -233,6 +233,15 @@ namespace PottiRoma.DataAccess.Repositories
         WHERE UsuarioId = @usuarioid  
         ";
 
+        private const string GET_USER_INVITE_POINTS_FOR_CHALLENGE = @"
+            SELECT COUNT(*) AS PontosDesafioVigenteVendas FROM Desafio d
+            LEFT JOIN UsuarioPotti u 												
+            ON d.Parameter = 1 												
+            WHERE @now BETWEEN d.StartDate AND d.EndDate 	
+            AND u.RegisterDate BETWEEN d.StartDate AND d.EndDate
+            AND u.MotherFlowerId = @usuarioid 
+        ";
+
         #endregion
 
         #region Public methods
@@ -262,6 +271,16 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@cep", cep, System.Data.DbType.AnsiString);
 
             Execute(UPDATE_USER, parameters);
+        }
+
+        public int GetUserInvitePointsForChallenge(Guid usuarioId, DateTime now)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@usuarioid", usuarioId, System.Data.DbType.Guid);
+            parameters.Add("@now", now, System.Data.DbType.DateTime);
+
+            return Query<int>(GET_USER_INVITE_POINTS_FOR_CHALLENGE, parameters).FirstOrDefault();
         }
 
         public List<UserEntity> GetAppUsers()

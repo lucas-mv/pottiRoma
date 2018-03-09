@@ -5,7 +5,7 @@ using PottiRoma.App.Helpers;
 using PottiRoma.App.Insights;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Responses.Challenges;
-using PottiRoma.App.Models.Responses.Season;
+using PottiRoma.App.Models.Responses.Seasons;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.Enums;

@@ -14,5 +14,7 @@ namespace PottiRoma.App.Services.Interfaces
         Task RegisterClient(RegisterClientRequest request);
         Task UpdateClientInfo(UpdateClientInfoRequest request);
         Task RemoveCliente(string clienteId);
+        Task<int> GetUserClientPointsForChallenge(string usuarioId);
+
     }
 }

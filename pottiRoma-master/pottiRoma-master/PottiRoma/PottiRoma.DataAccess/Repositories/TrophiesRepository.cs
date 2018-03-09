@@ -29,6 +29,7 @@ namespace PottiRoma.DataAccess.Repositories
 
         private const string GET_TROPHIES = @"
         SELECT
+            DesafioId as DesafioId,
             UsuarioId as UsuarioId,
             TemporadaId as TemporadaId,
             Name as Name,
@@ -47,6 +48,7 @@ namespace PottiRoma.DataAccess.Repositories
         private const string INSERT_NEW_TROPHY = @"
         INSERT INTO dbo.Trofeus 
         (
+            DesafioId,
             UsuarioId,
 	        TemporadaId, 
 	        Name, 
@@ -57,6 +59,7 @@ namespace PottiRoma.DataAccess.Repositories
         )
         VALUES 
         (
+            @desafioid,
             @usuarioid,
 	        @temporadaid, 
 	        @name, 
@@ -74,6 +77,7 @@ namespace PottiRoma.DataAccess.Repositories
         {
             DynamicParameters parameters = new DynamicParameters();
 
+            parameters.Add("@desafioid", trophy.DesafioId, System.Data.DbType.Guid);
             parameters.Add("@usuarioid", trophy.UsuarioId, System.Data.DbType.Guid);
             parameters.Add("@temporadaid", trophy.TemporadaId, System.Data.DbType.Guid);
             parameters.Add("@name", trophy.Name, System.Data.DbType.String);

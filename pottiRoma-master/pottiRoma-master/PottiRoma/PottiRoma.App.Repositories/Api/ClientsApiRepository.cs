@@ -81,7 +81,22 @@ namespace PottiRoma.App.Repositories.Api
              )
              .ExecuteAsync(async () =>
                    await PottiRomaApiAccess.GetPottiRomaApi<IClientsRefit>().RemoveCliente(clienteId)
-              );
+             );
+        }
+
+        public async Task<int> GetUserClientPointsForChallenge(string usuarioId)
+        {
+            var response = await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+              retryCount: 5,
+              sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+            )
+            .ExecuteAsync(async () =>
+                  await PottiRomaApiAccess.GetPottiRomaApi<IClientsRefit>().GetUserClientPointsForChallenge(usuarioId)
+             );
+            return response;
         }
     }
 }

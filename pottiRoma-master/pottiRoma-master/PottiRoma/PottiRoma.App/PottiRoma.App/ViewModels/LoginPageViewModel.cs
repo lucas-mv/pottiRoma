@@ -27,6 +27,8 @@ namespace PottiRoma.App.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly IChallengesAppService _challengesAppService;
         private readonly ISeasonAppService _seasonAppService;
+        private readonly ISalesAppService _salesAppService;
+        private readonly IClientsAppService _clientsAppService;
 
 
         private double _screenHeightRequest;
@@ -58,13 +60,17 @@ namespace PottiRoma.App.ViewModels
             IUserAppService userAppService,
             IUserDialogs userDialogs,
             IChallengesAppService challengesAppService,
-            ISeasonAppService seasonAppService)
+            ISeasonAppService seasonAppService,
+            ISalesAppService salesAppService,
+            IClientsAppService clientsAppService)
         {
             _navigationService = navigationService;
             _userAppService = userAppService;
             _userDialogs = userDialogs;
             _challengesAppService = challengesAppService;
             _seasonAppService = seasonAppService;
+            _salesAppService = salesAppService;
+            _clientsAppService = clientsAppService;
 
             LoginCommand = new DelegateCommand(ExecuteLogin).ObservesCanExecute(() => CanExecute);
             ResetPasswordCommand = new DelegateCommand(ResetPassword).ObservesCanExecute(() => CanExecute);
@@ -98,22 +104,12 @@ namespace PottiRoma.App.ViewModels
             }
         }
 
-        public override async void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            try
-            {
-                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                var token = await CacheAccess.GetSecure<Guid>(CacheKeys.ACCESS_TOKEN);
-                Settings.AccessToken = token.ToString();
-                Settings.UserId = user.UsuarioId.ToString();
-                await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
-            }
-            catch
-            {
-                Settings.AccessToken = string.Empty;
-                Settings.UserId = string.Empty;
-            }
+
+            Settings.AccessToken = string.Empty;
+            Settings.UserId = string.Empty;
         }
 
 
@@ -145,6 +141,8 @@ namespace PottiRoma.App.ViewModels
                         });
                     }
                     catch { }
+                    var teste2 = await _salesAppService.GetUserSalePointsForChallenge(response.User.UsuarioId.ToString());
+                    var teste3 = await _clientsAppService.GetUserClientPointsForChallenge(response.User.UsuarioId.ToString());
                 }
                 else
                 {

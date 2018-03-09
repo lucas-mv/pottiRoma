@@ -113,7 +113,7 @@ namespace PottiRoma.App.ViewModels
                         });
                     }
                     catch { }
-                    _userDialogs.Toast("Email enviado com Sucesso! Você ganhou " + points.InviteFlower + " pontos com o convite!", duration);
+                    _userDialogs.Toast("Email enviado com Sucesso! Você ganhou " + points.InviteFlower + " Sementes com o convite!", duration);
                 }
             }
             catch (Exception ex)

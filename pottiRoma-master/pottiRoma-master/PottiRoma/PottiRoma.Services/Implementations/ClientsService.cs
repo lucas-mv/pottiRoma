@@ -40,5 +40,10 @@ namespace PottiRoma.Services.Implementations
         {
             return ClientsBusiness.GenerateClientsReport();
         }
+
+        public int GetUserClientPointsForChallenge(Guid usuarioId)
+        {
+            return ClientsBusiness.GetUserClientPointsForChallenge(usuarioId);
+        }
     }
 }

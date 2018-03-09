@@ -30,10 +30,10 @@ namespace PottiRoma.Api.Controllers
         }
 
         [Route("GetCurrent")]
-        [HttpPost]
+        [HttpGet]
         public async Task<GamificationPointsResponse> GetCurrentGamificationPoints()
         {
-            await ValidateToken();
+            //await ValidateToken();
 
             var response = new GamificationPointsResponse();
             response.Entity = _gamificationPointsService.GetCurrentGamificationPoints();

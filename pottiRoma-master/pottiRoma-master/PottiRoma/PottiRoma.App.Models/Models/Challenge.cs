@@ -9,6 +9,13 @@ namespace PottiRoma.App.Models.Models
 {
     public class Challenge : BindableBase
     {
+        private Guid _desafioId;
+        public Guid DesafioId
+        {
+            get { return _desafioId; }
+            set { SetProperty(ref _desafioId, value); }
+        }
+
         private Guid _temporadaId;
         public Guid TemporadaId
         {

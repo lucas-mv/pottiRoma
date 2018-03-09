@@ -92,6 +92,15 @@ namespace PottiRoma.DataAccess.Repositories
             1
         )";
 
+        private const string GET_USER_CLIENT_POINTS_FOR_CHALLENGE = @"
+            SELECT COUNT(*) AS PontosDesafioVigenteVendas FROM Desafio d
+            LEFT JOIN Cliente c 												
+            ON d.Parameter = 3 												
+            WHERE @now BETWEEN d.StartDate AND d.EndDate 	
+            AND c.RegisterDate BETWEEN d.StartDate AND d.EndDate
+            AND c.UsuarioId = @usuarioid 
+        ";
+
         #endregion
 
         #region Private methods
@@ -157,6 +166,16 @@ namespace PottiRoma.DataAccess.Repositories
             DynamicParameters parameters = new DynamicParameters();
 
             return Query(GET_ALL, parameters).ToList();
+        }
+
+        public int GetUserClientPointsForChallenge(Guid usuarioId, DateTime now)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@usuarioid", usuarioId, System.Data.DbType.Guid);
+            parameters.Add("@now", now, System.Data.DbType.DateTime);
+
+            return Query<int>(GET_USER_CLIENT_POINTS_FOR_CHALLENGE, parameters).FirstOrDefault();
         }
 
         #endregion

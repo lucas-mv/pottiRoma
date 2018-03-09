@@ -15,5 +15,6 @@ namespace PottiRoma.Services.Interfaces
         void RemoveCliente(Guid clienteId);
         byte[] GenerateClientsReport();
         List<ClientEntity> GetAllClients();
+        int GetUserClientPointsForChallenge(Guid usuarioId);
     }
 }

@@ -33,5 +33,10 @@ namespace PottiRoma.Services.Implementations
         {
             return SalesBusiness.GenerateSalesReport();
         }
+
+        public int GetUserSalePointsForChallenge(Guid usuarioId)
+        {
+            return SalesBusiness.GetUserSalePointsForChallenge(usuarioId);
+        }
     }
 }

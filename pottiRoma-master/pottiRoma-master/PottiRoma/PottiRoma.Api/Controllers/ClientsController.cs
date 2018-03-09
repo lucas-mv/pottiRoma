@@ -44,7 +44,7 @@ namespace PottiRoma.Api.Controllers
         [HttpGet]
         public async Task<GetClientsByUserIdResponse> GetClientsByUserId(string usuarioId)
         {
-            await ValidateToken();
+            //await ValidateToken();
             return new GetClientsByUserIdResponse()
             {
                 Clients = _clientsService.GetClientsByUserId(new Guid(usuarioId))
@@ -89,6 +89,14 @@ namespace PottiRoma.Api.Controllers
             };
 
             return response;
+        }
+
+        [Route("GetUserClientPointsForChallenge/{usuarioId}")]
+        [HttpGet]
+        public async Task<int> GetUserClientPointsForChallenge(string usuarioId)
+        {
+            await ValidateToken();
+            return _clientsService.GetUserClientPointsForChallenge(new Guid(usuarioId));
         }
     }
 }

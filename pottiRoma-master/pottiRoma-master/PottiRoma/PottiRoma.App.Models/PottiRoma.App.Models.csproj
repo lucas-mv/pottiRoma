@@ -56,7 +56,7 @@
     <Compile Include="Responses\Clients\GetClientsByUserIdResponse.cs" />
     <Compile Include="Responses\GamificationPoints\GetGamificationPointsResponse.cs" />
     <Compile Include="Responses\Sales\GetSalesByUserIdResponse.cs" />
-    <Compile Include="Responses\Season\SeasonResponse.cs" />
+    <Compile Include="Responses\CurrentSeason\SeasonResponse.cs" />
     <Compile Include="Responses\Trophies\GetThophiesByUserIdResponse.cs" />
     <Compile Include="Responses\User\GetAppUsersResponse.cs" />
     <Compile Include="Responses\User\LoginReponse.cs" />

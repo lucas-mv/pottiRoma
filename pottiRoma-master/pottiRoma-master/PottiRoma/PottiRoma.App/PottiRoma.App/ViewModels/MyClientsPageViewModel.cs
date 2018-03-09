@@ -4,6 +4,7 @@ using PottiRoma.App.Helpers;
 using PottiRoma.App.Insights;
 using PottiRoma.App.Models;
 using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Responses.Clients;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.NavigationHelpers;
@@ -69,17 +70,33 @@ namespace PottiRoma.App.ViewModels
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            await GetClientsFromCache();
+            await GetClients();
         }
 
-        private async Task GetClientsFromCache()
+        private async Task<GetClientsByUserIdResponse> TryGetClientsFromCache()
+        {
+            var clients = new GetClientsByUserIdResponse();
+            try
+            {
+                clients.Clients = await CacheAccess.Get<List<Client>>(CacheKeys.CLIENTS);
+            }
+            catch
+            {
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                clients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
+                await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, clients.Clients);
+            }
+            return clients;
+        }
+
+        private async Task GetClients()
         {
             ListaClientes.Clear();
             await NavigationHelper.ShowLoading();
             try
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                var clients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
+                var clients = await TryGetClientsFromCache();
 
                 foreach (var client in clients.Clients)
                 {

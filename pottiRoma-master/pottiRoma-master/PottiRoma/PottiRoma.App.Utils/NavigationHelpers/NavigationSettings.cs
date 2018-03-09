@@ -23,7 +23,7 @@ namespace PottiRoma.App.Utils.NavigationHelpers
 
         #endregion
 
-        public const string Landing = "LandingPage";
+        public const string Landing = "app:///LandingPage";
         public const string RegisterClients = "RegisterClientsPage";
         public const string Login = "LoginPage";
         public const string AbsoluteLogin = "app:///LoginPage";

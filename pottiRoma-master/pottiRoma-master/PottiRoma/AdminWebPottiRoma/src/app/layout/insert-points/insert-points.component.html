@@ -1,7 +1,7 @@
 <div [@routerTransition] class="margin-pages">
     <!-- <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header> -->
     <div>
-        <h4 class="margin-pages">Inserir Pontos para Revendedora</h4>
+        <h4 class="margin-pages">Inserir Sementes para Revendedora</h4>
     </div>
 
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
@@ -20,22 +20,22 @@
 
         <div class="insert-points-line">
             <mat-form-field class="insert-points-item">
-                <input matInput placeholder="Pontos de Vendas Efetuadas" type="number" [(ngModel)]="numberOfSales">
+                <input matInput placeholder="Sementes de Vendas Efetuadas" type="number" [(ngModel)]="numberOfSales">
             </mat-form-field>
             <mat-form-field class="insert-points-item">
-                <input matInput placeholder="Pontos de Ticket Médio" type="number" [(ngModel)]="averageTicket">
+                <input matInput placeholder="Sementes de Ticket Médio" type="number" [(ngModel)]="averageTicket">
             </mat-form-field>
             <mat-form-field class="insert-points-item">
-                <input matInput placeholder="Pontos de Convidar Flores Aliadas" type="number" [(ngModel)]="registerReseller">
+                <input matInput placeholder="Sementes de Convidar Flores Aliadas" type="number" [(ngModel)]="registerReseller">
             </mat-form-field>
         </div>
 
         <div class="insert-points-line">
             <mat-form-field class="insert-points-item">
-                <input matInput placeholder="Pontos de Peças por Atendimento" type="number" [(ngModel)]="itensPerSale">
+                <input matInput placeholder="Sementes de Peças por Atendimento" type="number" [(ngModel)]="itensPerSale">
             </mat-form-field>
             <mat-form-field class="insert-points-item">
-                <input matInput placeholder="Pontos de Cadastro de Clientes" type="number" [(ngModel)]="registerClients">
+                <input matInput placeholder="Sementes de Cadastro de Clientes" type="number" [(ngModel)]="registerClients">
             </mat-form-field>
             <div class="insert-points-item"></div>
         </div>

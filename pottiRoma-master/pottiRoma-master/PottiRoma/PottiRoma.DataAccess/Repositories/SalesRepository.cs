@@ -51,6 +51,15 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Commands
 
+        private const string GET_USER_SALE_POINT_FOR_CHALLENGE = @"
+            SELECT COUNT(*) AS PontosDesafioVigenteVendas FROM Desafio d
+            LEFT JOIN Venda v 												
+            ON d.Parameter = 2 												
+            WHERE @now BETWEEN d.StartDate AND d.EndDate 	
+            AND v.SaleDate BETWEEN d.StartDate AND d.EndDate
+            AND v.UsuarioId = @usuarioid 
+        ";
+
         private const string INSERT_NEW_SALE = @"
         INSERT INTO dbo.Venda 
         (
@@ -136,6 +145,16 @@ namespace PottiRoma.DataAccess.Repositories
         public List<SaleEntity> GetAllSales()
         {
             return Query(GET_ALL_SALES).ToList();
+        }
+
+        public int GetUserSalePointsForChallenge(Guid usuarioId, DateTime now)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@usuarioid", usuarioId, System.Data.DbType.Guid);
+            parameters.Add("@now", now, System.Data.DbType.DateTime);
+
+            return Query<int>(GET_USER_SALE_POINT_FOR_CHALLENGE,parameters).FirstOrDefault();
         }
 
         #endregion

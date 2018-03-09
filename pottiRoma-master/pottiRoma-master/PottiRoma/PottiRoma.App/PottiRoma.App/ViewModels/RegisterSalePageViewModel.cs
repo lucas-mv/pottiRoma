@@ -4,7 +4,11 @@ using PottiRoma.App.Helpers;
 using PottiRoma.App.Insights;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.Sales;
+using PottiRoma.App.Models.Requests.Trophies;
 using PottiRoma.App.Models.Requests.User;
+using PottiRoma.App.Models.Responses.Challenges;
+using PottiRoma.App.Models.Responses.Seasons;
+using PottiRoma.App.Models.Responses.Trophies;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.Helpers;
@@ -14,6 +18,7 @@ using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
@@ -24,6 +29,9 @@ namespace PottiRoma.App.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly ISalesAppService _salesAppService;
         private readonly IUserAppService _userAppService;
+        private readonly ITrophyAppService _trophyAppService;
+        private readonly IChallengesAppService _challengesAppService;
+        private readonly ISeasonAppService _seasonAppService;
 
         private User CurrentUser;
 
@@ -35,6 +43,13 @@ namespace PottiRoma.App.ViewModels
         {
             get { return _saleRegistered; }
             set { SetProperty(ref _saleRegistered, value); }
+        }
+
+        private double _screenHeightRequest;
+        public double ScreenHeightRequest
+        {
+            get { return _screenHeightRequest; }
+            set { SetProperty(ref _screenHeightRequest, value); }
         }
 
         private string _nameAndDateLabel;
@@ -64,12 +79,18 @@ namespace PottiRoma.App.ViewModels
             INavigationService navigationService,
             IUserDialogs userDialogs,
             ISalesAppService salesAppService,
-            IUserAppService userAppService)
+            IUserAppService userAppService,
+            ITrophyAppService trophyAppService,
+            IChallengesAppService challengesAppService,
+            ISeasonAppService seasonAppService)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
             _salesAppService = salesAppService;
             _userAppService = userAppService;
+            _trophyAppService = trophyAppService;
+            _challengesAppService = challengesAppService;
+            _seasonAppService = seasonAppService;
             GoBackCommand = new DelegateCommand(GoBack).ObservesCanExecute(() => CanExecute);
             SaveSaleCommand = new DelegateCommand(SaveSale).ObservesCanExecute(() => CanExecute);
             SaleRegistered = new Sale();
@@ -105,7 +126,7 @@ namespace PottiRoma.App.ViewModels
             }
             if(SaleRegistered != null && SaleRegistered.Description != null)
                 DescriptionPlaceHolderVisible = (SaleRegistered.Description.Length > 0) ? false : true;
-            base.OnNavigatedTo(parameters);
+            base.OnNavigatingTo(parameters);
         }
 
         private bool IsSaleValid()
@@ -146,11 +167,23 @@ namespace PottiRoma.App.ViewModels
                             Description = SaleRegistered.Description
                         });
 
+                        var userSales = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
+                        float salesValue = 0;
+                        int salesCount = 0;
+                        int salesNumberPieces = 0;
+                        foreach (var sale in userSales.Sales)
+                        {
+                            salesValue += sale.SaleValue;
+                            salesNumberPieces += sale.NumberSoldPieces;
+                            salesCount++;
+                        }
+                        int AverageTicketPoints = (int)salesValue / salesCount;
+                        int AverageItensPerSale = salesNumberPieces / salesCount;
+
                         var points = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
-                        user.AverageItensPerSalePoints += (int)SaleRegistered.NumberSoldPieces;
-                        user.AverageTicketPoints += (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces;
+                        user.AverageItensPerSalePoints = AverageItensPerSale;
+                        user.AverageTicketPoints += AverageTicketPoints;
                         user.SalesNumberPoints += (int)points.SalesNumber;
-                        int increment = (int)SaleRegistered.NumberSoldPieces + (int)SaleRegistered.SaleValue / SaleRegistered.NumberSoldPieces + points.SalesNumber;
 
                         await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
                         {
@@ -161,9 +194,10 @@ namespace PottiRoma.App.ViewModels
                             InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
                             SalesNumberPoints = user.SalesNumberPoints
                         });
-                        UserDialogs.Instance.Toast("Parabéns! Você ganhou " + increment + " Pontos com essa Venda!", duration);
+                        await GetParametersForChallenge();
+                        if (!_hasWonTrophy)
+                            UserDialogs.Instance.Toast("Parabéns! Você ganhou " + points.SalesNumber + " Sementes com essa Venda!", duration);
                         await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
-
                     }
                     catch
                     {
@@ -194,6 +228,86 @@ namespace PottiRoma.App.ViewModels
             }
             else _userDialogs.Toast("Faltam Dados para preencher!", duration);
         }
+
+        private bool _hasWonTrophy = false;
+        private async Task GetParametersForChallenge()
+        {
+            var user = new User();
+            var currentSeasonReponse = new SeasonResponse();
+            var currentChallenges = new GetCurrentChallengesResponse();
+            var myTrophies = new GetThophiesByUserIdResponse();
+            user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+            try
+            {
+                currentSeasonReponse.Entity = await CacheAccess.GetSecure<Season>(CacheKeys.SEASON_KEY);
+                currentChallenges.Challenges = await CacheAccess.Get<List<Challenge>>(CacheKeys.CHALLENGES);
+                myTrophies.Trophies = await CacheAccess.Get<List<Trophy>>(CacheKeys.TROPHIES);
+            }
+            catch
+            {
+                currentSeasonReponse = await _seasonAppService.CurrentSeason();
+                await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
+                currentChallenges = await _challengesAppService.GetCurrentChallenges(currentSeasonReponse.Entity.TemporadaId.ToString());
+                await CacheAccess.Insert<List<Challenge>>(CacheKeys.CHALLENGES, currentChallenges.Challenges);
+                myTrophies = await _trophyAppService.GetCurrentTrophies(user.UsuarioId.ToString());
+                await CacheAccess.Insert<List<Trophy>>(CacheKeys.TROPHIES, myTrophies.Trophies);
+            }
+            await CheckSaleChallengeCompleted(myTrophies.Trophies, user.UsuarioId.ToString(), currentChallenges.Challenges, currentSeasonReponse.Entity);
+        }
+
+        private async Task CheckSaleChallengeCompleted(List<Trophy> myTrophies, string usuarioId, List<Challenge> currentChallenges, Season CurrentSeason)
+        {
+            try
+            {
+                int myRSalesPoints = 0;
+                try
+                {
+                    myRSalesPoints = await CacheAccess.Get<int>(CacheKeys.SALE_POINTS_FOR_CHALLENGE);
+                }
+                catch
+                {
+                    myRSalesPoints = await _salesAppService.GetUserSalePointsForChallenge(usuarioId);
+                    await CacheAccess.Insert<int>(CacheKeys.SALE_POINTS_FOR_CHALLENGE, myRSalesPoints);
+                }
+
+                foreach (var challenge in currentChallenges)
+                {
+                    bool _hasTrophy = false;
+                    bool _hasEnoughtPoints = false;
+                    if (challenge.Parameter == 1)
+                    {
+                        foreach (var trophy in myTrophies)
+                        {
+                            if (trophy.DesafioId.ToString() == challenge.DesafioId.ToString())
+                            {
+                                _hasTrophy = true;
+                                break;
+                            }
+                        }
+                        _hasEnoughtPoints = (myRSalesPoints >= challenge.Goal) ? true : false;
+                    }
+                    if (!_hasTrophy && _hasEnoughtPoints)
+                    {
+                        await _trophyAppService.InsertNewTrophy(new InsertTrophyRequest
+                        {
+                            DesafioId = challenge.DesafioId,
+                            EndDate = challenge.EndDate,
+                            StartDate = challenge.StartDate,
+                            Goal = challenge.Goal,
+                            Name = challenge.Name,
+                            Parameter = challenge.Parameter,
+                            TemporadaId = CurrentSeason.TemporadaId,
+                            UsuarioId = new Guid(usuarioId)
+                        });
+                        _hasWonTrophy = true;
+                        UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Cadastro de Clientes! Parabéns!", new TimeSpan(0, 0, 4));
+                    }
+                }
+            }
+            catch { }
+
+        }
+
 
         private async void GoBack()
         {

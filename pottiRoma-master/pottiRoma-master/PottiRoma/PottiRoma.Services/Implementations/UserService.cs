@@ -80,5 +80,10 @@ namespace PottiRoma.Services.Implementations
         {
             return UserBusiness.GenerateSalespeopleReport();
         }
+
+        public int GetUserInvitePointsForChallenge(Guid usuarioId)
+        {
+            return UserBusiness.GetUserInvitePointsForChallenge(usuarioId);
+        }
     }
 }

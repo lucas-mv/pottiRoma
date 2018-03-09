@@ -106,10 +106,10 @@ namespace PottiRoma.Business.General
                 ws.Cells["E2"].Value = "Telefone primário";
                 ws.Cells["F2"].Value = "Telefone secundário";
                 ws.Cells["G2"].Value = "Temporada";
-                ws.Cells["H2"].Value = "Pontos de ticket médio";
-                ws.Cells["I2"].Value = "Pontos de clientes registrados";
-                ws.Cells["J2"].Value = "Pontos de peças por atendimento";
-                ws.Cells["K2"].Value = "Pontos por convidar revendedoras";
+                ws.Cells["H2"].Value = "Sementes de ticket médio";
+                ws.Cells["I2"].Value = "Sementes de clientes registrados";
+                ws.Cells["J2"].Value = "Sementes de peças por atendimento";
+                ws.Cells["K2"].Value = "Sementes por convidar revendedoras";
                 ws.Cells["L2"].Value = "Aniversário";
 
                 ws.Cells["A2:L2"].Style.Font.Bold = true;

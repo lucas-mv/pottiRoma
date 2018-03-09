@@ -12,5 +12,6 @@ namespace PottiRoma.Services.Interfaces
         void UpdateSale(Guid vendaId,float saleValue, float salePaidValue, int numberSoldPieces, string description);
         List<SaleEntity> GetAllSales();
         byte[] GenerateSalesReport();
+        int GetUserSalePointsForChallenge(Guid usuarioId);
     }
 }

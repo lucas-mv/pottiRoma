@@ -199,17 +199,6 @@ namespace PottiRoma.App.ViewModels
             }
         }
 
-        //private void SelectFirstFiveUsers()
-        //{
-        //    if (AppUsers.Count > 5)
-        //    {
-        //        for (int i = 5; i < AppUsers.Count; i++)
-        //        {
-        //            AppUsers.RemoveAt(i);
-        //        }
-        //    }
-        //}
-
         private List<User> ListaOrdenada()
         {
             var listainvertida = AppUsers.OrderBy(user => user.TotalPoints).ToList();

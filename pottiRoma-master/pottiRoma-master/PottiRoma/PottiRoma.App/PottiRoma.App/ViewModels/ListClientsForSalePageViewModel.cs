@@ -2,6 +2,7 @@
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Models;
 using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Responses.Clients;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.NavigationHelpers;
@@ -52,6 +53,22 @@ namespace PottiRoma.App.ViewModels
                 .ObservesCanExecute(() => CanExecute);
         }
 
+        private async Task<GetClientsByUserIdResponse> TryGetClientsFromCache()
+        {
+            var clients = new GetClientsByUserIdResponse();
+            try
+            {
+                clients.Clients = await CacheAccess.Get<List<Client>>(CacheKeys.CLIENTS);
+            }
+            catch
+            {
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                clients = await _clientAppService.GetClientsByUserId(user.UsuarioId.ToString());
+                await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, clients.Clients);
+            }
+            return clients;
+        }
+
         private async Task GetClients()
         {
             await NavigationHelper.ShowLoading();
@@ -59,7 +76,8 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
-                var clients = await _clientAppService.GetClientsByUserId(user.UsuarioId.ToString());
+
+                var clients = await TryGetClientsFromCache();
 
                 foreach (var client in clients.Clients)
                 {
