@@ -254,6 +254,7 @@ namespace PottiRoma.App.ViewModels
                         catch
                         {
                             points = await _gamificationPointsAppService.GetCurrentGamificationPoints();
+                            await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, points.Entity);
                         }
                         user.RegisterClientsPoints += points.Entity.RegisterNewClients;
 
