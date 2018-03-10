@@ -44,7 +44,7 @@ namespace PottiRoma.Api.Helpers
             objEmail.Subject = EmailTexts.EMAIL_BIRTHDAY_SUBJECT;
 
             //Define o corpo do e-mail.
-            objEmail.Body = GetFormattedMessage();
+            objEmail.Body = GetFormattedMessage(userName);
 
 
             //Para evitar problemas de caracteres "estranhos", configuramos o charset para "ISO-8859-1"
@@ -92,11 +92,11 @@ namespace PottiRoma.Api.Helpers
             }
         }
 
-        public static string GetFormattedMessage(string nameInvited)
+        public static string GetFormattedMessage(string userName)
         {
             string message = EmailTexts.EMAIL_BIRTHDAY_SUBJECT;
 
-            message = message.Replace("@nameInvited", nameInvited);
+            message = message.Replace("@nameInvited", userName);
 
             return message;
         }
