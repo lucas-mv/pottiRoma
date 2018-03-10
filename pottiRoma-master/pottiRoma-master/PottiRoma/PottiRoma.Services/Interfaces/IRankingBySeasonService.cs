@@ -10,5 +10,7 @@ namespace PottiRoma.Services.Interfaces
     {
         void GenerateRankingBySeason(string name, string email, string season, int totalPoints, DateTime startDate, DateTime endDate,
             int averageTicketPoints, int registerClientsPoints, int salesNumberPoints, int averageItensPerSalePoints, int inviteAllyFlowersPoints);
+
+        byte[] GenerateRankingBySeasonReport();
     }
 }

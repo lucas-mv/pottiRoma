@@ -9,6 +9,41 @@ export class SalespersonService extends BaseService {
     super();
    }
 
+   public registerNewAdminstrator(name: string, primaryPhone :string, secondaryPhone: string, cpf: string, email: string, cep: string, birthday:Date){
+    return this.http
+      .post(
+        this.getBaseUrl() + 'User/Register',
+        {
+          Name: name,
+          Email: email,
+          Password: cpf,
+          Cpf: cpf,
+          PrimaryTelephone: primaryPhone,
+          SecundaryTelephone: secondaryPhone,
+          UserType: 2,
+          Cep: cep,
+          IsActive: true,
+          Birthday: birthday,
+          MotherFlowerId: null
+        },
+        this.createAuthenticationRequestOptions()
+      )
+      .toPromise()
+      .then(res => {
+        let responseJson = res.json();
+        return {
+          user: responseJson.User,
+          message: ''
+        };
+      })
+      .catch(res => {
+        return {
+          user: null,
+          message: res._body
+        }
+      });
+  }
+
    public registerNewSalesperson(name: string, primaryPhone :string, secondaryPhone: string, cpf: string, email: string, cep: string, birthday:Date, motherFlowerId:string){
     return this.http
       .post(

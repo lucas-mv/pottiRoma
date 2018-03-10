@@ -16,5 +16,10 @@ namespace PottiRoma.Services.Implementations
             RankingBySeasonBusiness.GenerateRankingBySeason(name, email, season, totalPoints, startDate, endDate,
             averageTicketPoints, registerClientsPoints, salesNumberPoints, averageItensPerSalePoints, inviteAllyFlowersPoints);
         }
+
+        public byte[] GenerateRankingBySeasonReport()
+        {
+            return RankingBySeasonBusiness.GenerateRankingBySeasonReport();
+        }
     }
 }

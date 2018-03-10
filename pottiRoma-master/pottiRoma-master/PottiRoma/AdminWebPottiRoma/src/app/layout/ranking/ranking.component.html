@@ -4,148 +4,37 @@
             <div class="card mb-3">
                 <div>
                     <h3 class="form-start-layout">Ranking Geral</h3>
-                    <button type="button" class="btn btn-lg btn-primary btn-color-excel form-end-layout">Exportar para Excel</button>
+                    <button type="button" (click)="generateRankingReport()" class="btn btn-lg btn-primary btn-color-excel form-end-layout">Exportar para Excel</button>
                 </div>
                 <div class="card-body table-responsive">
+                    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Nome</th>
+                                <th>Flor</th>
+                                <th>Email</th>
                                 <th>Temporada</th>
-                                <th>Total de Sementes</th>
-                                <th>Data Inicial</th>
-                                <th>Data Final</th>
+                                <th>Total de sementes</th>
+                                <th>Data de início da temporada</th>
+                                <th>Data de término da temporada</th>
+                                <th>Sementes de ticket médio</th>
+                                <th>Sementes de clientes registrados</th>
+                                <th>Sementes de peças por atendimento</th>
+                                <th>Sementes por convidar Flores</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
+                            <tr *ngFor="let position of ranking">
+                                <td>{{position.Name}}</td>
+                                <td>{{position.Email}}</td>
+                                <td>{{position.Season}}</td>
+                                <td>{{position.TotalPoints}}</td>
+                                <td>{{position.StartDate | date:'dd/MM/yyyy'}}</td>
+                                <td>{{position.EndDate | date:'dd/MM/yyyy'}}</td>
+                                <td>{{position.AverageTicketPoints}}</td>
+                                <td>{{position.RegisterClientsPoints}}</td>
+                                <td>{{position.AverageItensPerSalePoints}}</td>
+                                <td>{{position.InviteAllyFlowersPoints}}</td>
                             </tr>
                         </tbody>
                     </table>

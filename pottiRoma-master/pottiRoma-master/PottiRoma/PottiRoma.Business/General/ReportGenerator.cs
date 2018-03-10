@@ -24,7 +24,7 @@ namespace PottiRoma.Business.General
                 ws.Cells["A1"].Value = "Relatório de vendas - " + DateTime.Now.ToShortDateString();
                 ws.Cells["A1"].Style.Font.Bold = true;
 
-                ws.Cells["A2"].Value = "Revendedora";
+                ws.Cells["A2"].Value = "Flor";
                 ws.Cells["B2"].Value = "Cliente";
                 ws.Cells["C2"].Value = "Data venda";
                 ws.Cells["D2"].Value = "Valor total";
@@ -63,7 +63,7 @@ namespace PottiRoma.Business.General
                 ws.Cells["A1"].Style.Font.Bold = true;
 
                 ws.Cells["A2"].Value = "Cliente";
-                ws.Cells["B2"].Value = "Revendedora";
+                ws.Cells["B2"].Value = "Flor";
                 ws.Cells["C2"].Value = "Cep";
                 ws.Cells["D2"].Value = "Email";
                 ws.Cells["E2"].Value = "Telefone";
@@ -96,10 +96,10 @@ namespace PottiRoma.Business.General
             {
                 ExcelWorksheet ws = package.Workbook.Worksheets.Add("testsheet");
 
-                ws.Cells["A1"].Value = "Relatório de revendedoras - " + DateTime.Now.ToShortDateString();
+                ws.Cells["A1"].Value = "Relatório de Flores - " + DateTime.Now.ToShortDateString();
                 ws.Cells["A1"].Style.Font.Bold = true;
 
-                ws.Cells["A2"].Value = "Revendedora";
+                ws.Cells["A2"].Value = "Flor";
                 ws.Cells["B2"].Value = "Email";
                 ws.Cells["C2"].Value = "CPF";
                 ws.Cells["D2"].Value = "CEP";
@@ -109,7 +109,7 @@ namespace PottiRoma.Business.General
                 ws.Cells["H2"].Value = "Sementes de ticket médio";
                 ws.Cells["I2"].Value = "Sementes de clientes registrados";
                 ws.Cells["J2"].Value = "Sementes de peças por atendimento";
-                ws.Cells["K2"].Value = "Sementes por convidar revendedoras";
+                ws.Cells["K2"].Value = "Sementes por convidar Flores";
                 ws.Cells["L2"].Value = "Aniversário";
 
                 ws.Cells["A2:L2"].Style.Font.Bold = true;
@@ -130,6 +130,51 @@ namespace PottiRoma.Business.General
                     ws.Cells["J" + line].Value = salesperson.AverageItensPerSalePoints;
                     ws.Cells["K" + line].Value = salesperson.InviteAllyFlowersPoints;
                     ws.Cells["L" + line].Value = salesperson.Birthday.ToShortDateString();
+                }
+
+                ws.Cells[ws.Dimension.Address].AutoFitColumns();
+                reportData = package.GetAsByteArray();
+            }
+            return reportData;
+        }
+
+        public static byte[] GenerateRankingBySeasonReport(List<RankingBySeasonEntity> rankings)
+        {
+            byte[] reportData;
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                ExcelWorksheet ws = package.Workbook.Worksheets.Add("testsheet");
+
+                ws.Cells["A1"].Value = "Relatório Ranking por Temporada - " + DateTime.Now.ToShortDateString();
+                ws.Cells["A1"].Style.Font.Bold = true;
+
+                ws.Cells["A2"].Value = "Flor";
+                ws.Cells["B2"].Value = "Email";
+                ws.Cells["C2"].Value = "Temporada";
+                ws.Cells["D2"].Value = "Total de sementes";
+                ws.Cells["E2"].Value = "Data de início da temporada";
+                ws.Cells["F2"].Value = "Data de término da temporada";
+                ws.Cells["G2"].Value = "Sementes de ticket médio";
+                ws.Cells["H2"].Value = "Sementes de clientes registrados";
+                ws.Cells["I2"].Value = "Sementes de peças por atendimento";
+                ws.Cells["J2"].Value = "Sementes por convidar Flores";
+
+                ws.Cells["A2:J2"].Style.Font.Bold = true;
+
+                var line = 2;
+                foreach (var ranking in rankings)
+                {
+                    line++;
+                    ws.Cells["A" + line].Value = ranking.Name;
+                    ws.Cells["B" + line].Value = ranking.Email;
+                    ws.Cells["C" + line].Value = ranking.Season;
+                    ws.Cells["D" + line].Value = ranking.TotalPoints;
+                    ws.Cells["E" + line].Value = ranking.StartDate.ToShortDateString();
+                    ws.Cells["F" + line].Value = ranking.EndDate.ToShortDateString();
+                    ws.Cells["G" + line].Value = ranking.AverageTicketPoints;
+                    ws.Cells["H" + line].Value = ranking.RegisterClientsPoints;
+                    ws.Cells["I" + line].Value = ranking.AverageItensPerSalePoints;
+                    ws.Cells["J" + line].Value = ranking.InviteAllyFlowersPoints;
                 }
 
                 ws.Cells[ws.Dimension.Address].AutoFitColumns();

@@ -20,6 +20,7 @@ import { SalespersonService } from './shared/services/salesperson.service';
 import { SalesReportService } from './shared/services/sales-report.service';
 import { ClientsService } from './shared/services/clients.service';
 import { GamificationService } from './shared/services/gamification.service';
+import { SeasonService } from './shared/services/season.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -70,6 +71,7 @@ export function createTranslateLoader(http: HttpClient) {
         SalesReportService,
         ClientsService,
         GamificationService,
+        SeasonService,
         {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
     ],
     bootstrap: [AppComponent]

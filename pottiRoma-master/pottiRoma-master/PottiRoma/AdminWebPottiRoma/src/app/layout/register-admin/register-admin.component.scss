@@ -1,0 +1,20 @@
+.register-admin-container{
+    display: flex;
+    flex-direction: column;
+
+    .register-admin-line{
+        display: flex;
+
+        .register-admin-item{
+            margin-left: 12px;
+            margin-right: 12px;
+            width: 33%;
+        }
+
+        .register-admin-double-item{
+            margin-left: 12px;
+            margin-right: 12px;
+            width: 66%;
+        }
+    }
+}
