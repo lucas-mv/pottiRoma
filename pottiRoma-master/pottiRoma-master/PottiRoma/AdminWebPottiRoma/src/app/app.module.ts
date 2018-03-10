@@ -13,6 +13,7 @@ import { MAT_DATE_LOCALE  } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {Component} from '@angular/core';
 import { MatCardModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 
 import { BaseService } from './shared/services/base.service';
 import { LoginService } from './shared/services/login.service';
@@ -28,6 +29,8 @@ import { AuthGuard } from './shared';
 
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingModule } from 'ngx-loading';
+
+
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -53,6 +56,7 @@ export function createTranslateLoader(http: HttpClient) {
         MatAutocompleteModule,
         MatCardModule,
         MatSelectModule,
+        MatDialogModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

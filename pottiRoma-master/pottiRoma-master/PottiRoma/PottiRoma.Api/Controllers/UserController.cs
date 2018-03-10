@@ -111,6 +111,15 @@ namespace PottiRoma.Api.Controllers
             //EmailResetPassword.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
         }
 
+        [Route("Profile/Password/Reset/Email/{email}")]
+        [HttpGet]
+        public async Task ResetPasswordByEmail(string email)
+        {
+            var user = _userService.GetUserByEmail(email);
+            user = _userService.ResetPassword(user.UsuarioId);
+            EmailResetPassword.Enviar(user.Email, user.Name, user.Password);
+        }
+
         [Route("Profile/Password/Reset/{usuarioId}")]
         [HttpGet]
         public async Task ResetPassword(string usuarioId)
