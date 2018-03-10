@@ -71,7 +71,7 @@
     <Compile Include="ViewModels\MainNavigationPageViewModel.cs" />
     <Compile Include="ViewModels\MenuPrincipalPageViewModel.cs" />
     <Compile Include="ViewModels\MyClientsPageViewModel.cs" />
-    <Compile Include="ViewModels\PopupAnniversaryViewModel.cs" />
+    <Compile Include="ViewModels\Core\PopupAnniversaryViewModel.cs" />
     <Compile Include="ViewModels\RankingPageViewModel.cs" />
     <Compile Include="ViewModels\RegisterClientsPageViewModel.cs" />
     <Compile Include="ViewModels\RegisterSalePageViewModel.cs" />

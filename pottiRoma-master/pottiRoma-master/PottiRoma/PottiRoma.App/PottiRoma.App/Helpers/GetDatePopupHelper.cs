@@ -46,9 +46,9 @@ namespace PottiRoma.App.Helpers
                 case MonthStringFormat.Setembro:
                     return 9;
                 case MonthStringFormat.Outubro:
-                    return 11;
-                case MonthStringFormat.Novembro:
                     return 10;
+                case MonthStringFormat.Novembro:
+                    return 11;
                 case MonthStringFormat.Dezembro:
                     return 12;
                 default:

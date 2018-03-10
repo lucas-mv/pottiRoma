@@ -48,12 +48,12 @@ namespace PottiRoma.App.Views.Core
                         ObservableCollection<object> days = new ObservableCollection<object>();
                         Month = GetDatePopupHelper.ConvertBack((string)e.NewValue);
 
-                        if (Month == 1 || Month == 3 || Month == 5 || Month == 7 || Month == 8 || Month == 10 || Month == 12)
-                            viewModel.Days = viewModel.FillDays(31);
-                        else if (Month == 2)
-                            viewModel.Days = viewModel.FillDays(29);
-                        else
-                            viewModel.Days = viewModel.FillDays(30);
+                        //if (Month == 1 || Month == 3 || Month == 5 || Month == 7 || Month == 8 || Month == 10 || Month == 12)
+                        //    viewModel.Days = viewModel.FillDays(31);
+                        //else if (Month == 2)
+                        //    viewModel.Days = viewModel.FillDays(29);
+                        //else
+                        //    viewModel.Days = viewModel.FillDays(30);
                     }
                 }
                 catch { }
