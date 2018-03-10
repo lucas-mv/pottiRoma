@@ -1,0 +1,38 @@
+.insert-challenges-container{
+    display: flex;
+    flex-direction: column;
+
+    .insert-challenges-line{
+        display: flex;
+
+        .insert-challenges-item{
+            margin-left: 12px;
+            margin-right: 12px;
+            width: 33%;
+        }
+
+        .insert-challenges-double-item{
+            margin-left: 12px;
+            margin-right: 12px;
+            width: 50%;
+        }
+
+        .insert-challenges-triple-item{
+            margin-left: 12px;
+            margin-right: 12px;
+            width: 100%;
+        }
+    }
+}
+
+.insert-challenges-line-item{
+    margin-left: 12px;
+    margin-right: 12px;
+    width: 100%;
+
+    .insert-challenges-text-area{
+        min-height: 100px;
+        height: 100px;
+        max-height: 100px;
+    }
+}

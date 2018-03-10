@@ -41,3 +41,8 @@ $potti-warn:    mat-palette($mat-red);
 $potti-theme: mat-light-theme($potti-primary, $potti-accent, $potti-warn);
 
 @include angular-material-theme($potti-theme);
+
+$potti-typography: mat-typography-config(
+    $font-family: 'Montserrat'
+);
+@include angular-material-typography($potti-typography);

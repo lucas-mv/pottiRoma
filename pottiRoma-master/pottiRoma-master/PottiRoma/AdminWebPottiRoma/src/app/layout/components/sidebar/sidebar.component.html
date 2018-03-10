@@ -1,32 +1,31 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <div class="list-group">
         <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Novo Revendedor' | translate }}
-        </a>
-
-        <a [routerLink]="['/sales-report']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Relatório de Vendas' | translate }}
-        </a>
-
-        <a [routerLink]="['/insert-points']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Inserir Sementes' | translate }}
+            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;Nova Flor
         </a>
         <a [routerLink]="['/reseller']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Revendedoras' | translate }}
+            <i class="fa fa-fw fa-edit"></i>&nbsp;Lista de Flores
         </a>
-        <a [routerLink]="['/game-parameters']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'Parâmetros do Jogo' | translate }}
-        </a>
-        <a [routerLink]="['/insert-challenges']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-wrench"></i>&nbsp;{{ 'Inserir Desafio' | translate }}
+        <a [routerLink]="['/sales-report']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;Relatório de Vendas
         </a>
         <a [routerLink]="['/list-clients']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-th-list"></i>&nbsp;{{ 'Lista de Clientes' | translate }}
+            <i class="fa fa-th-list"></i>&nbsp;Lista de Clientes
+        </a>
+        <div class="sidebar-divider"></div>
+        <a [routerLink]="['/game-parameters']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;Parâmetros do Jogo
+        </a>
+        <a [routerLink]="['/insert-points']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;Inserir Sementes
+        </a>
+        <a [routerLink]="['/insert-challenges']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-wrench"></i>&nbsp;Inserir Desafio
         </a>
         <a [routerLink]="['/ranking']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-file-o"></i>&nbsp;{{ 'Ranking Geral' | translate }}
+            <i class="fa fa-file-o"></i>&nbsp;Ranking Geral
         </a>
-        <div class="header-fields">
+        <!-- <div class="header-fields">
             <a (click)="rltAndLtr()" class="list-group-item">
                 <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
             </a>
@@ -64,6 +63,6 @@
                     </ul>
                 </li>
             </div>
-        </div>
+        </div> -->
     </div>
 </nav>

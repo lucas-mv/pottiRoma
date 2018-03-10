@@ -9,7 +9,7 @@ export class SalespersonService extends BaseService {
     super();
    }
 
-   public registerNewSalesperson(name: string, primaryPhone :string, secondaryPhone: string, cpf: string, email: string, cep: string, birthday:Date){
+   public registerNewSalesperson(name: string, primaryPhone :string, secondaryPhone: string, cpf: string, email: string, cep: string, birthday:Date, motherFlowerId:string){
     return this.http
       .post(
         this.getBaseUrl() + 'User/Register',
@@ -23,7 +23,8 @@ export class SalespersonService extends BaseService {
           UserType: 1,
           Cep: cep,
           IsActive: true,
-          Birthday: birthday
+          Birthday: birthday,
+          MotherFlowerId: motherFlowerId
         },
         this.createAuthenticationRequestOptions()
       )
@@ -45,15 +46,16 @@ export class SalespersonService extends BaseService {
 
   public getAllSalespeople(){
     return this.http
-    .get(
-      this.getBaseUrl() + 'User/Get/Salesperson',
+    .post(
+      this.getBaseUrl() + 'User/GetAppUsers',
+      null,
       this.createAuthenticationRequestOptions()
     )
     .toPromise()
     .then(res => {
       let responseJson = res.json();
       return {
-        salespeople: responseJson,
+        salespeople: responseJson.Users,
         message: ''
       };
     })
