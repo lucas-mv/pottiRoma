@@ -1,6 +1,7 @@
 ﻿using PottiRoma.App.Models.Models;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.ViewModels;
+using PottiRoma.App.ViewModels.Core;
 using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;

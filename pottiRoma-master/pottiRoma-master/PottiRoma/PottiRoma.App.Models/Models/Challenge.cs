@@ -102,6 +102,13 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _parameterFormatted, value); }
         }
 
+        private int currentSituation;
+        public int CurrentSituation
+        {
+            get { return currentSituation; }
+            set { SetProperty(ref currentSituation, value); }
+        }
+
         #endregion
     }
 }

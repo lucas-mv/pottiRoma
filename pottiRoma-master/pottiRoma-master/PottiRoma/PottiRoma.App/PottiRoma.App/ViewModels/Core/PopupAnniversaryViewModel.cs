@@ -13,7 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static PottiRoma.App.Utils.Constants;
 
-namespace PottiRoma.App.ViewModels
+namespace PottiRoma.App.ViewModels.Core
 {
     public class PopupAnniversaryViewModel : ViewModelBase
     {
@@ -55,10 +55,13 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
 
-            await NavigationHelper.ShowLoading();
             try
             {
-                await Task.Delay(3000);
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                foreach (var client in Birthdays)
+                {
+                    await _userAppService.SendBirthdayEmail(client.Email, user.Name);
+                }
                 UserDialogs.Instance.Toast("Email(s) enviado(s) com sucesso!");
                 await PopupAnniversaryHelper.EsconderAsync();
             }

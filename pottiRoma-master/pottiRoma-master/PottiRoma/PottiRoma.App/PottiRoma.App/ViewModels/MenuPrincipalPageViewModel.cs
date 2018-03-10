@@ -77,6 +77,7 @@ namespace PottiRoma.App.ViewModels
                 firstAccess = parameters[NavigationKeyParameters.FirstAccess] as string;
             if (parameters.ContainsKey(NavigationKeyParameters.ClientsBirthday) && firstAccess == "true")
             {
+                await Task.Delay(2000);
                 var listBirthdays = parameters[NavigationKeyParameters.ClientsBirthday] as ObservableCollection<Client>;
                 await CacheAccess.Insert<ObservableCollection<Client>>(CacheKeys.BIRTHDAYS, listBirthdays);
                 await PopupAnniversaryHelper.Mostrar(_userAppService);

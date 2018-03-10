@@ -8,6 +8,7 @@ using PottiRoma.App.Models.Requests.Clients;
 using PottiRoma.App.Models.Requests.Trophies;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Models.Responses.Challenges;
+using PottiRoma.App.Models.Responses.GamificationPoints;
 using PottiRoma.App.Models.Responses.Seasons;
 using PottiRoma.App.Models.Responses.Trophies;
 using PottiRoma.App.Repositories.Internal;
@@ -37,6 +38,7 @@ namespace PottiRoma.App.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly ITrophyAppService _trophyAppService;
         private readonly IChallengesAppService _challengesAppService;
+        private readonly IGamificationPointsAppService _gamificationPointsAppService;
 
         private readonly string DatePlaceholder = "Data de Aniversário*";
         private Color _colorDateAnniversary;
@@ -83,6 +85,7 @@ namespace PottiRoma.App.ViewModels
             IUserAppService userAppService,
             ISeasonAppService seasonAppService,
             ITrophyAppService trophyAppService,
+            IGamificationPointsAppService gamificationPointsAppService,
             IChallengesAppService challengesAppService,
             IUserDialogs userDialogs)
         {
@@ -90,6 +93,7 @@ namespace PottiRoma.App.ViewModels
             _clientsAppService = clientsAppService;
             _userAppService = userAppService;
             _trophyAppService = trophyAppService;
+            _gamificationPointsAppService = gamificationPointsAppService;
             _challengesAppService = challengesAppService;
             _seasonAppService = seasonAppService;
             _userDialogs = userDialogs;
@@ -242,8 +246,17 @@ namespace PottiRoma.App.ViewModels
                             Telephone = ClientSelectedForEdition.Telephone
                         });
 
-                        var points = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
-                        user.RegisterClientsPoints += points.RegisterNewClients;
+                        var points = new GetGamificationPointsResponse();
+                        try
+                        {
+                            points.Entity = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
+                        }
+                        catch
+                        {
+                            points = await _gamificationPointsAppService.GetCurrentGamificationPoints();
+                            await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, points.Entity);
+                        }
+                        user.RegisterClientsPoints += points.Entity.RegisterNewClients;
 
                         await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
                         {
@@ -257,7 +270,7 @@ namespace PottiRoma.App.ViewModels
                         await GetParametersForChallenge();
                         TimeSpan duration = new TimeSpan(0, 0, 3);
                         if(!_hasWonTrophy)
-                            UserDialogs.Instance.Toast("Parabéns! Você ganhou " + points.RegisterNewClients + " Sementes com esse Cadastro!", duration);
+                            UserDialogs.Instance.Toast("Parabéns! Você ganhou " + points.Entity.RegisterNewClients + " Sementes com esse Cadastro!", duration);
                         try
                         {
                             Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
@@ -292,7 +305,7 @@ namespace PottiRoma.App.ViewModels
                 catch (Exception ex)
                 {
                     if (RegisterOrEditText.Contains("CADASTRAR"))
-                        UserDialogs.Instance.Toast("Não foi possível registrar a Colecionadora.");
+                        UserDialogs.Instance.Toast(ex.Message);
                     else
                         UserDialogs.Instance.Toast("Não foi possível editar a Colecionadora.");
                 }

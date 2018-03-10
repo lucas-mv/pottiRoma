@@ -8,16 +8,14 @@
     xmlns:sflistview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
 
     <pages:PopupPage.Animation>
-        <animations:ScaleAnimation
-            DurationIn="400"
-            DurationOut="300"
+        <animations:MoveAnimation
+            DurationIn="600"
+            DurationOut="400"
             EasingIn="SinOut"
             EasingOut="SinIn"
             HasBackgroundAnimation="True"
-            PositionIn="Center"
-            PositionOut="Center"
-            ScaleIn="1.2"
-            ScaleOut="0.8" />
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
     </pages:PopupPage.Animation>
 
     <Frame

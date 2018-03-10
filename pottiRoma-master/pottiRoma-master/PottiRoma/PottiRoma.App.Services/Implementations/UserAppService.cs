@@ -49,6 +49,11 @@ namespace PottiRoma.App.Services.Implementations
             await UserApiRepository.Get().SendEmail(emailInvited, nameInvited, nameUser, cpf, telephone, cep);
         }
 
+        public async Task SendBirthdayEmail(string emailInvited, string nameUser)
+        {
+            await UserApiRepository.Get().SendBirthdayEmail(emailInvited, nameUser);
+        }
+
         public async Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
         {
             await UserApiRepository.Get().UpdateUser(usuarioId, email, primaryTelephone, secundaryTelephone, cep);

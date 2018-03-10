@@ -30,6 +30,9 @@ namespace PottiRoma.App.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly IChallengesAppService _challengesAppService;
         private readonly ISeasonAppService _seasonAppService;
+        private readonly ISalesAppService _salesAppService;
+        private readonly IClientsAppService _clientsAppService;
+        private readonly IUserAppService _userAppService;
 
         private ObservableCollection<RankingBannerDto> _rankingDto;
         public ObservableCollection<RankingBannerDto> RankingDto
@@ -52,12 +55,18 @@ namespace PottiRoma.App.ViewModels
             INavigationService navigationService,
             IUserDialogs userDialogs,
             IChallengesAppService challengesAppService,
-            ISeasonAppService seasonAppService)
+            ISeasonAppService seasonAppService,
+            IUserAppService userAppService,
+            ISalesAppService salesAppService,
+            IClientsAppService clientsAppService)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
             _challengesAppService = challengesAppService;
             _seasonAppService = seasonAppService;
+            _userAppService = userAppService;
+            _salesAppService = salesAppService;
+            _clientsAppService = clientsAppService;
             GoToRankingPageCommand = new DelegateCommand<RankingBannerDto>(GoToRankingPage).ObservesCanExecute(() => CanExecute);
             GoToCurrentChallengesPageCommand = new DelegateCommand(GoToCurrentChallengesPage).ObservesCanExecute(() => CanExecute);
             InitializeRankings();
@@ -85,6 +94,7 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 challenges = await _challengesAppService.GetCurrentChallenges(season.Entity.TemporadaId.ToString());
+
             }
             catch
             {
@@ -107,7 +117,6 @@ namespace PottiRoma.App.ViewModels
                 }
             }
             CanExecuteEnd();
-            await NavigationHelper.PopLoading();
         }
 
 
