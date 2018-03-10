@@ -1,4 +1,5 @@
-﻿using PottiRoma.DataAccess.Repositories;
+﻿using PottiRoma.Business.General;
+using PottiRoma.DataAccess.Repositories;
 using PottiRoma.Entities;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,17 @@ namespace PottiRoma.Business.RankingBySeason
 
         public static List<RankingBySeasonEntity> GetRankingBySeason()
         {
-            return RankingBySeasonRepository.Get().GetRankingBySeason();
+            var ranking = RankingBySeasonRepository.Get().GetRankingBySeason();
+            foreach(var position in ranking)
+            {
+                position.TotalPoints = position.SalesNumberPoints + position.RegisterClientsPoints + position.InviteAllyFlowersPoints + position.AverageTicketPoints + position.AverageItensPerSalePoints;
+            }
+            return ranking.OrderByDescending(r => r.StartDate).ThenByDescending(r => r.TotalPoints).ToList();
+        }
+
+        public static byte[] GenerateRankingBySeasonReport()
+        {
+            return ReportGenerator.GenerateRankingBySeasonReport(GetRankingBySeason());
         }
     }
 }

@@ -9,6 +9,9 @@ import { LoadingModule } from 'ngx-loading';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatCardModule } from '@angular/material';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { MatDialogModule } from '@angular/material';
+
 
 @NgModule({
     imports: [CommonModule, 
@@ -19,8 +22,10 @@ import { MatCardModule } from '@angular/material';
                 LoadingModule,
                 MatFormFieldModule,
                 MatInputModule,
+                MatDialogModule,
                 MatCardModule],
     exports: [MatButtonModule, MatCheckboxModule],
-    declarations: [LoginComponent]
+    declarations: [LoginComponent, ForgotPasswordComponent],
+    entryComponents: [ForgotPasswordComponent]
 })
 export class LoginModule {}

@@ -8,6 +8,7 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'main-page' },
+            { path: 'register-admin', loadChildren: './register-admin/register-admin.module#RegisterAdminModule' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'main-page', loadChildren: './main-page/main-page.module#MainPageModule' },
             { path: 'sales-report', loadChildren: './sales-report/sales-report.module#SalesReportModule' },

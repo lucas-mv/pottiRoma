@@ -64,7 +64,7 @@ export class FormComponent implements OnInit {
             });
         } 
         else{
-            selectedFlower.UsuarioId = '';
+            selectedFlower.UsuarioId = null;
         }
 
         debugger;

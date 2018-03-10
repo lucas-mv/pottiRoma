@@ -13,6 +13,7 @@ import { MAT_DATE_LOCALE  } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {Component} from '@angular/core';
 import { MatCardModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 
 import { BaseService } from './shared/services/base.service';
 import { LoginService } from './shared/services/login.service';
@@ -20,6 +21,7 @@ import { SalespersonService } from './shared/services/salesperson.service';
 import { SalesReportService } from './shared/services/sales-report.service';
 import { ClientsService } from './shared/services/clients.service';
 import { GamificationService } from './shared/services/gamification.service';
+import { SeasonService } from './shared/services/season.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +29,8 @@ import { AuthGuard } from './shared';
 
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingModule } from 'ngx-loading';
+
+
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -52,6 +56,7 @@ export function createTranslateLoader(http: HttpClient) {
         MatAutocompleteModule,
         MatCardModule,
         MatSelectModule,
+        MatDialogModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -70,6 +75,7 @@ export function createTranslateLoader(http: HttpClient) {
         SalesReportService,
         ClientsService,
         GamificationService,
+        SeasonService,
         {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
     ],
     bootstrap: [AppComponent]

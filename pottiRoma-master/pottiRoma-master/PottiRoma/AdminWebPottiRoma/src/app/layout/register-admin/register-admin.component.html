@@ -1,0 +1,52 @@
+<div [@routerTransition] class="margin-pages">
+    <!-- <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header> -->
+    <div>
+        <h3 class="margin-pages">Registrar novo Administrador</h3>
+    </div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    
+    <div class="register-admin-container">
+        <div class="register-admin-line">
+
+            <mat-form-field class="register-admin-item">
+                <input matInput placeholder="Nome" type="text" [(ngModel)]="name">
+            </mat-form-field>
+            <mat-form-field class="register-admin-item">
+                <input matInput placeholder="CPF" type="number" [(ngModel)]="cpf">
+            </mat-form-field>
+            <mat-form-field class="register-admin-item">
+                <input matInput placeholder="Email" type="email" [(ngModel)]="email">
+            </mat-form-field>
+
+        </div>
+
+        <div class="register-admin-line">
+
+            <mat-form-field class="register-admin-item">
+                <input matInput placeholder="Telefone primário" type="number" [(ngModel)]="primaryPhone">
+            </mat-form-field>
+            <mat-form-field class="register-admin-item">
+                <input matInput placeholder="Telefone secundário" type="number" [(ngModel)]="secondaryPhone">
+            </mat-form-field>
+            <mat-form-field class="register-admin-item">
+                <input matInput placeholder="CEP" type="number" [(ngModel)]="cep">
+            </mat-form-field>
+            
+        </div>
+        <div class="register-admin-line">
+
+            <mat-form-field class="register-admin-item">
+                <input matInput [matDatepicker]="picker" placeholder="Data de aniversário" [(ngModel)]="birthday">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div class="register-admin-item"></div>
+            <div class="register-admin-item"></div>
+        </div>
+    
+    </div>
+
+    <div class="form-center-layout">
+        <button (click)="clickRegisterSalesperson()" type="submit" class="btn btn-primary margin-pages btn-color-excel">CONFIRMAR</button>
+    </div>
+</div>

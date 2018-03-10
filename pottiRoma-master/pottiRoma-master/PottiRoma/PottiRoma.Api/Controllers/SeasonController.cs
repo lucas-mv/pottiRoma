@@ -6,6 +6,9 @@ using PottiRoma.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -61,8 +64,8 @@ namespace PottiRoma.Api.Controllers
              await _seasonService.InsertSeason( name, startDate, endDate, isActive);
         }
 
-        [Route("GetRankingBySeason")]
-        [HttpPost]
+        [Route("RankingBySeason")]
+        [HttpGet]
         public async Task<RankingBySeasonResponse> GetRankingBySeason()
         {
             await ValidateToken();
@@ -70,6 +73,27 @@ namespace PottiRoma.Api.Controllers
             {
                 RankingBySeason = _seasonService.GetRankingBySeason()
             };
+        }
+
+        [Route("Report")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> GenerateRankingBySeasonReport()
+        {
+            await ValidateToken();
+            var fileName = "RelatorioRankingPorTemporada_" + DateTime.Now.ToShortDateString().Replace("/", "-") + ".xlsx";
+            var reportData = _rankingBySeasonService.GenerateRankingBySeasonReport();
+
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ByteArrayContent(reportData)
+            };
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = fileName
+            };
+
+            return response;
         }
     }
 }

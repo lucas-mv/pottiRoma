@@ -1,68 +1,33 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <div class="list-group">
+        <a [routerLink]="['/register-admin']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-user-o"></i>&nbsp;Novo Adminstrador
+        </a>
+        <div class="sidebar-divider"></div>
         <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;Nova Flor
+            <i class="fa fa-fw fa-user-circle-o"></i>&nbsp;Nova Flor
         </a>
         <a [routerLink]="['/reseller']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;Lista de Flores
+            <i class="fa fa-fw fa-list-alt"></i>&nbsp;Lista de Flores
         </a>
         <a [routerLink]="['/sales-report']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;Relatório de Vendas
         </a>
         <a [routerLink]="['/list-clients']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-th-list"></i>&nbsp;Lista de Clientes
+            <i class="fa fa-list-ul"></i>&nbsp;Lista de Clientes
         </a>
         <div class="sidebar-divider"></div>
+        <a [routerLink]="['/ranking']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-list-ol"></i>&nbsp;Ranking Geral
+        </a>
         <a [routerLink]="['/game-parameters']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-desktop"></i>&nbsp;Parâmetros do Jogo
+            <i class="fa fa-fw fa-wrench"></i>&nbsp;Parâmetros do Jogo
         </a>
         <a [routerLink]="['/insert-points']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;Inserir Sementes
+            <i class="fa fa-fw fa-plus"></i>&nbsp;Inserir Sementes
         </a>
         <a [routerLink]="['/insert-challenges']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-wrench"></i>&nbsp;Inserir Desafio
+            <i class="fa fa-fw fa-plus-square"></i>&nbsp;Inserir Desafio
         </a>
-        <a [routerLink]="['/ranking']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-file-o"></i>&nbsp;Ranking Geral
-        </a>
-        <!-- <div class="header-fields">
-            <a (click)="rltAndLtr()" class="list-group-item">
-                <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
-            </a>
-            <div class="nested-menu">
-                <a class="list-group-item" (click)="addExpandClass('languages')">
-                    <span><i class="fa fa-language"></i>&nbsp; {{ 'Language' | translate }} <b class="caret"></b></span>
-                </a>
-                <li class="nested" [class.expand]="showMenu === 'languages'">
-                </li>
-            </div>
-            <div class="nested-menu">
-
-                <li class="nested" [class.expand]="showMenu === 'profile'">
-                    <ul class="submenu">
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="['/login']" (click)="onLoggedout()">
-                                <span><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-        </div> -->
     </div>
 </nav>

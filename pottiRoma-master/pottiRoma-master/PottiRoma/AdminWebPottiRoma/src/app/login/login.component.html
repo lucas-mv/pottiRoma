@@ -14,33 +14,9 @@
             </div>
             <div class="login-button-container">
                 <button mat-button color="primary" class="login-button" (click)="onLoggedin()">Login</button>
-                <button mat-button color="primary" class="login-button">Esqueci minha senha</button>
+                <button mat-button color="primary" class="login-button" (click)="onForgotPassword()" >Esqueci minha senha</button>
             </div>
         </mat-card-content>
     </mat-card>
 </div>
-
-<!-- <div class="login-page" [@routerTransition]>
-    <div class="content-login-page">
-        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
-        <div class="col-xl-12">
-            <img src="assets/images/logo_login.png" width="150px"/>
-            <h1>Sistema Administrativo Potti Roma</h1>
-                <div class="login-form-container">
-                    <mat-form-field>
-                        <input matInput placeholder="Email" type="email" [(ngModel)]="email">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Senha" type="password"  [(ngModel)]="password">
-                    </mat-form-field>
-                </div>
-                <div class="login-button-container">
-                    <div class="btn rounded-btn" (click)="onLoggedin()">  Log in  </div>
-                </div>
-            <img src="assets/images/banner_top5.png"  class=" col-xl-13 background-login-img"/>
-        </div>
-    </div>
-
-
-</div> -->
 

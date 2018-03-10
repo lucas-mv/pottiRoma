@@ -36,4 +36,23 @@ export class LoginService extends BaseService{
         }
       });
   }
+
+  public ResetPassword(email) {
+    return this.http
+      .get(
+        this.getBaseUrl() + 'User/Profile/Password/Reset/Email/' + email
+      )
+      .toPromise()
+      .then(res => {
+        let responseJson = res.json();
+        return {
+          message: ''
+        };
+      })
+      .catch(res => {
+        return {
+          message: res._body
+        }
+      });
+  }
 }
