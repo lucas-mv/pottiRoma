@@ -172,6 +172,7 @@
     <Compile Include="Response\Clients\GetClientsByUserIdResponse.cs" />
     <Compile Include="Response\Email\SendEmailResponse.cs" />
     <Compile Include="Response\GamificationPoints\GamificationPointsResponse.cs" />
+    <Compile Include="Response\RankingBySeason\RankingBySeasonResponse.cs" />
     <Compile Include="Response\Sales\GetSalesByUserIdResponse.cs" />
     <Compile Include="Response\Season\SeasonResponse.cs" />
     <Compile Include="Response\Trophies\GetTrophiesResponse.cs" />

@@ -1,4 +1,5 @@
-﻿using PottiRoma.Entities.Internal;
+﻿using PottiRoma.Entities;
+using PottiRoma.Entities.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace PottiRoma.Services.Interfaces
     {
         Task InsertSeason(string name, DateTime startDate, DateTime endDate, bool isActive);
         SeasonEntity GetCurrentSeason();
+        List<RankingBySeasonEntity> GetRankingBySeason();
     }
 }

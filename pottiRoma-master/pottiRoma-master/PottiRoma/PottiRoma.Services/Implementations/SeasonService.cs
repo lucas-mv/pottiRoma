@@ -1,4 +1,6 @@
-﻿using PottiRoma.Business.Season;
+﻿using PottiRoma.Business.RankingBySeason;
+using PottiRoma.Business.Season;
+using PottiRoma.Entities;
 using PottiRoma.Entities.Internal;
 using PottiRoma.Services.Interfaces;
 using System;
@@ -14,6 +16,11 @@ namespace PottiRoma.Services.Implementations
         public SeasonEntity GetCurrentSeason()
         {
             return SeasonBusiness.GetCurrentSeason();
+        }
+
+        public List<RankingBySeasonEntity> GetRankingBySeason()
+        {
+            return RankingBySeasonBusiness.GetRankingBySeason();
         }
 
         public async Task InsertSeason(string name, DateTime startDate, DateTime endDate, bool isActive)
