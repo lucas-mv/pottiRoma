@@ -7,6 +7,7 @@ namespace PottiRoma.App.Views
         public InviteFlowerPage()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "Voltar");
         }
     }
 }

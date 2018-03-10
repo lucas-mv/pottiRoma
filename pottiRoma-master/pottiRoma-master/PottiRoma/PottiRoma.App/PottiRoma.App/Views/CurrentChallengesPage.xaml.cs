@@ -7,6 +7,7 @@ namespace PottiRoma.App.Views
         public CurrentChallengesPage()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "Voltar");
         }
     }
 }
