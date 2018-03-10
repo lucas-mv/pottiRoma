@@ -15,6 +15,7 @@ namespace PottiRoma.App.Views
         public EditPersonalDataPage()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "Voltar");
         }
 
         protected override void OnAppearing()

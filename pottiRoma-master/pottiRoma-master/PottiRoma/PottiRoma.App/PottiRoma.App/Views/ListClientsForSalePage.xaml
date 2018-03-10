@@ -17,11 +17,10 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <controls:StatusBarIOS />
         <Image
             Grid.Row="0"
             Aspect="AspectFill"
-            Source="banner_top1.png" />
+            Source="banner_top1.jpg" />
 
         <Grid
             Grid.Row="1"

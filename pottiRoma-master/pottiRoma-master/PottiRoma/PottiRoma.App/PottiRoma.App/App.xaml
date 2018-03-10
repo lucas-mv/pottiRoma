@@ -49,7 +49,7 @@
                 x:Key="TextButtonFontSize"
                 x:TypeArguments="x:Double"
                 Android="14"
-                iOS="15" />
+                iOS="14" />
 
             <OnPlatform
                 x:Key="UltraLargeFontSize"
@@ -61,33 +61,33 @@
                 x:Key="SuperLargeFontSize"
                 x:TypeArguments="x:Double"
                 Android="19"
-                iOS="20" />
+                iOS="19" />
 
             <OnPlatform
                 x:Key="LargeFontSize"
                 x:TypeArguments="x:Double"
                 Android="17"
-                iOS="18" />
+                iOS="17" />
             <OnPlatform
                 x:Key="StandardFontSize"
                 x:TypeArguments="x:Double"
                 Android="14"
-                iOS="15" />
+                iOS="14" />
             <OnPlatform
                 x:Key="ReducedFontSize"
                 x:TypeArguments="x:Double"
                 Android="13"
-                iOS="14" />
+                iOS="13" />
             <OnPlatform
                 x:Key="SmallFontSize"
                 x:TypeArguments="x:Double"
                 Android="10"
-                iOS="12" />
+                iOS="10" />
             <OnPlatform
                 x:Key="TopBarFontSize"
                 x:TypeArguments="x:Double"
                 Android="20"
-                iOS="21" />
+                iOS="20" />
 
 
             <Style x:Key="ButtonDefault" TargetType="Button">

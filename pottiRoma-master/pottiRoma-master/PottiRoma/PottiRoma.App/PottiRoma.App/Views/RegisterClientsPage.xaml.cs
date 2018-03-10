@@ -16,6 +16,7 @@ namespace PottiRoma.App.Views
         public RegisterClientsPage()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "");
         }
     }
 }

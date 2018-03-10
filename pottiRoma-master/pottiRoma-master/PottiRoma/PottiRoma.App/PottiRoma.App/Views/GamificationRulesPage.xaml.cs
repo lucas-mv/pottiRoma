@@ -7,6 +7,7 @@ namespace PottiRoma.App.Views
         public GamificationRulesPage()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, "Voltar");
         }
     }
 }
