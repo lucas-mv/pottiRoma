@@ -8,7 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material';
-import { MatInputModule, MatNativeDateModule, MatDatepickerModule  } from '@angular/material';
+import { MatInputModule, MatNativeDateModule, MatDatepickerModule, MatSelectModule   } from '@angular/material';
 import { MAT_DATE_LOCALE  } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {Component} from '@angular/core';
@@ -51,6 +51,7 @@ export function createTranslateLoader(http: HttpClient) {
         MatDatepickerModule,
         MatAutocompleteModule,
         MatCardModule,
+        MatSelectModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

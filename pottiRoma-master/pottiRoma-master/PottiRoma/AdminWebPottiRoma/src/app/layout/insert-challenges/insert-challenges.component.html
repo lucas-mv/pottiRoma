@@ -1,65 +1,62 @@
 <div [@routerTransition] class="margin-pages">
-    <!-- <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header> -->
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
     <div>
         <h3 class="margin-pages">Inserir Novo Desafio</h3>
     </div>
-    <div class="row">
-        <div class="col-lg-6 padding-top">
-            <form role="form">
-                <!-- <fieldset class="form-group">
-                    <label>Text Input</label>
-                    <input class="form-control">
-                    <p class="help-block">Example block-level help text here.</p>
-                </fieldset> -->
 
-                <fieldset class="form-group">
-                    <label>Nome do Desafio</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
+    <div class="insert-challenges-container">
 
-                <fieldset class="form-group">
-                    <label>Data Inicial</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
+        <div class="insert-challenges-line">
 
-                <fieldset class="form-group">
-                    <label>Data Final</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
-            </form>
+            <mat-form-field class="insert-challenges-triple-item">
+                <input matInput placeholder="Nome do Desafio" type="text" [(ngModel)]="challengeName">
+            </mat-form-field>
+
         </div>
-        <div class="col-lg-6 padding-top">
-            <form role="form">
-                <fieldset class="form-group">
-                    <label>Parâmetro do Desafio</label>
-                    <select class="form-control teste" title="Escolha um Item">
-                        <option value="1">Ticket Médio</option>
-                        <option value="2">Cadastro de Clientes</option>
-                        <option value="3">Peças por Atendimento</option>
-                        <option value="4">Convidar Flores Aliadas</option>
-                        <option value="5">Vendas Efetuadas</option>
-                    </select>
-                </fieldset>
 
-                <fieldset class="form-group">
-                    <label>Quantidade de Sementes para quem cumprir o desafio</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
+        <div class="insert-challenges-line">
+            <mat-form-field class="insert-challenges-double-item">
+                <input matInput [matDatepicker]="initialpicker" placeholder="Data Inicial" [(ngModel)]="startDate">
+                <mat-datepicker-toggle matSuffix [for]="initialpicker"></mat-datepicker-toggle>
+                <mat-datepicker #initialpicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="insert-challenges-double-item">
+                <input matInput [matDatepicker]="finalpicker" placeholder="Data Final" [(ngModel)]="endDate">
+                <mat-datepicker-toggle matSuffix [for]="finalpicker"></mat-datepicker-toggle>
+                <mat-datepicker #finalpicker></mat-datepicker>
+            </mat-form-field>
 
-                <fieldset class="form-group">
-                    <label>Aumento do parâmetro</label>
-                    <input class="form-control" placeholder="Digite aqui...">
-                </fieldset>
-
-            </form>
-            <br>
         </div>
+
+        <div class="insert-challenges-line">
+            <mat-form-field class="insert-challenges-triple-item">
+                <input matInput placeholder="Quantidade de Sementes para quem cumprir o desafio" type="number" [(ngModel)]="seedAmount">
+            </mat-form-field>
+        </div>
+
+        <div class="insert-challenges-line">
+
+            <mat-form-field class="insert-challenges-double-item">
+                <mat-select placeholder="Parâmetro do Desafio" [(ngModel)]="challengeParameter">
+                    <mat-option value="3">Cadastro de Clientes</mat-option>
+                    <mat-option value="2">Convidar Flores Aliadas</mat-option>
+                    <mat-option value="1">Vendas Efetuadas</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="insert-challenges-double-item">
+                <input matInput placeholder="Objetivo" type="number" [(ngModel)]="goal">
+            </mat-form-field>
+
+        </div>
+
+        <mat-form-field class="insert-challenges-line-item">
+            <textarea matInput placeholder="Descrição" [(ngModel)]="description" class="insert-challenges-text-area"></textarea>
+        </mat-form-field>
+        
     </div>
 
-    <div class="col-lg-12 padding-top">
-        <br>
-    </div>
     <div class="form-center-layout">
-        <button type="submit" class="btn btn-primary margin-pages btn-color-excel">CONFIRMAR</button>
+        <button type="submit" (click)="onInsertChallengeClick()" class="btn btn-primary margin-pages btn-color-excel">CONFIRMAR</button>
     </div>
 </div>

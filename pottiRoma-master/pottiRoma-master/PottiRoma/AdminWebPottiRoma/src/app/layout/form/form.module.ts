@@ -12,6 +12,7 @@ import { LoadingModule } from 'ngx-loading';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MAT_DATE_LOCALE  } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
     imports: [CommonModule, 
@@ -24,7 +25,8 @@ import { MAT_DATE_LOCALE  } from '@angular/material/core';
         MatFormFieldModule,
         MatInputModule,
         MatNativeDateModule, 
-        MatDatepickerModule],
+        MatDatepickerModule,
+        MatAutocompleteModule],
     declarations: [FormComponent],
     providers:[{provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}]
 })

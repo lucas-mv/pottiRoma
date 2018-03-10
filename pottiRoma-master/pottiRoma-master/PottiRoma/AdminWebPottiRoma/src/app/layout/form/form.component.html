@@ -1,7 +1,7 @@
 <div [@routerTransition] class="margin-pages">
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
     <div>
-        <h3 class="margin-pages">Registrar novo Revendedor</h3>
+        <h3 class="margin-pages">Registrar nova Flor</h3>
     </div>
     <div class="register-salesperson-container">
 
@@ -39,8 +39,15 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-            <div class="register-salesperson-item"></div>
-            <div class="register-salesperson-item"></div>
+            
+            <mat-form-field class="register-salesperson-double-item">
+                <input type="email" placeholder="Email da flor investidora (caso seja flor aliada)" matInput [matAutocomplete]="auto" [(ngModel)]="motherFlowerEmail">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let salesperson of salespeople" [value]="salesperson.Email">
+                    {{ salesperson.Email }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
         </div>
 
     </div>
