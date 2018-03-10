@@ -1,4 +1,5 @@
 ﻿using PottiRoma.DataAccess.Repositories;
+using PottiRoma.Entities;
 using PottiRoma.Entities.Internal;
 using PottiRoma.Utils.Constants;
 using PottiRoma.Utils.CustomExceptions;

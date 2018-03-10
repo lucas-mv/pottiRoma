@@ -29,6 +29,10 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Headers("Authorization: Bearer")]
         Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep);
 
+        [Post("/User/SendBirthdayEmail")]
+        [Headers("Authorization: Bearer")]
+        Task SendBirthdayEmail(string emailInvited, string userName);
+
         [Post("/User/Profile/Update")]
         [Headers("Authorization: Bearer")]
         Task UpdateUserPoints(UpdateUserPointsRequest request);

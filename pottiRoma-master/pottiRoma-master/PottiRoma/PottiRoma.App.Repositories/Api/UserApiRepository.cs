@@ -57,6 +57,20 @@ namespace PottiRoma.App.Repositories.Api
               );
         }
 
+        public async Task SendBirthdayEmail(string emailInvited, string nameUser)
+        {
+            await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+               retryCount: 5,
+               sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+             )
+             .ExecuteAsync(async () =>
+                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().SendBirthdayEmail(emailInvited, nameUser)
+              );
+        }
+
         public async Task<LoginReponse> Login(LoginRequest request)
         {
             var response = await Policy

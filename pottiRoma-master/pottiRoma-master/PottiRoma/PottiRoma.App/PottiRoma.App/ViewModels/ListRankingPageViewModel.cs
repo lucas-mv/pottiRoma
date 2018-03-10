@@ -152,9 +152,62 @@ namespace PottiRoma.App.ViewModels
             AppUsers.Clear();
             try
             {
-                var users = await _userAppService.GetAppUsers();
+                var users = (await _userAppService.GetAppUsers()).Users;
+                switch (ListType)
+                {
+                    case CarouselBannerType.AveragePiecesForSale:
+                        users = users.OrderByDescending(u => u.AverageItensPerSalePoints).ToList().GetRange(0, 5);
+                        foreach(var user in users)
+                        {
+                            user.ListRankingPoints = user.AverageItensPerSalePoints;
+                        }
+                        break;
 
-                foreach (var user in users.Users)
+                    case CarouselBannerType.AverageTicket:
+                        users = users.OrderByDescending(u => u.AverageTicketPoints).ToList().GetRange(0, 5);
+                        foreach (var user in users)
+                        {
+                            user.ListRankingPoints = user.AverageTicketPoints;
+                        }
+                        break;
+
+                    case CarouselBannerType.RegisterAlliedFlowers:
+                        users = users.OrderByDescending(u => u.InviteAllyFlowersPoints).ToList().GetRange(0, 5);
+                        foreach (var user in users)
+                        {
+                            user.ListRankingPoints = user.InviteAllyFlowersPoints;
+                        }
+                        break;
+
+                    case CarouselBannerType.RegisterClients:
+                        users = users.OrderByDescending(u => u.RegisterClientsPoints).ToList().GetRange(0, 5);
+                        foreach (var user in users)
+                        {
+                            user.ListRankingPoints = user.RegisterClientsPoints;
+                        }
+                        break;
+
+                    case CarouselBannerType.RegisteredSales:
+                        users = users.OrderByDescending(u => u.SalesNumberPoints).ToList().GetRange(0, 5);
+                        foreach (var user in users)
+                        {
+                            user.ListRankingPoints = user.SalesNumberPoints;
+                        }
+                        break;
+
+                    case CarouselBannerType.Total:
+                        foreach (var user in users)
+                        {
+                            user.ListRankingPoints = user.SalesNumberPoints + 
+                                                        user.RegisterClientsPoints +
+                                                        user.InviteAllyFlowersPoints + 
+                                                        user.AverageItensPerSalePoints + 
+                                                        user.AverageTicketPoints;
+                        }
+                        users = users.OrderByDescending(u => u.ListRankingPoints).ToList().GetRange(0, 5);
+                        break;
+                }
+                foreach (var user in users)
                 {
                     AppUsers.Add(user);
                 }
@@ -166,15 +219,6 @@ namespace PottiRoma.App.ViewModels
                 await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
             }
 
-            var listaOrdenada = ListaOrdenada();
-
-            AppUsers.Clear();
-
-
-            foreach (var userOrdenado in listaOrdenada)
-            {
-                AppUsers.Add(userOrdenado);
-            }
 
             ThisUser = new User();
 
@@ -197,18 +241,6 @@ namespace PottiRoma.App.ViewModels
                     ThisUser.TotalPoints = user.TotalPoints;
                 }
             }
-        }
-
-        private List<User> ListaOrdenada()
-        {
-            var listainvertida = AppUsers.OrderBy(user => user.TotalPoints).ToList();
-            var listaCorreta = new List<User>();
-
-            for (int i = 0; i < listainvertida.Count; i++)
-            {
-                listaCorreta.Add(listainvertida[listainvertida.Count - i - 1]);
-            }
-            return listaCorreta;
         }
     }
 }

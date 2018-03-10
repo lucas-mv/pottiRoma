@@ -30,5 +30,10 @@ namespace PottiRoma.Business.RankingBySeason
 
             RankingBySeasonRepository.Get().GenerateRankingBySeason(newRankingItem);
         }
+
+        public static List<RankingBySeasonEntity> GetRankingBySeason()
+        {
+            return RankingBySeasonRepository.Get().GetRankingBySeason();
+        }
     }
 }

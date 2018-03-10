@@ -66,6 +66,20 @@ namespace PottiRoma.DataAccess.Repositories
             @totalpoints
         )";
 
+        private const string GET_RANKING_BY_SEASON = @"
+        SELECT 
+	        Name AS Name, 
+	        Email AS Email, 
+	        AverageTicketPoints AS AverageTicketPoints, 
+	        RegisterClientsPoints AS RegisterClientsPoints, 
+	        SalesNumberPoints AS SalesNumberPoints,
+	        AverageItensPerSalePoints AS AverageItensPerSalePoints,
+	        InviteAllyFlowersPoints AS InviteAllyFlowersPoints,
+	        Season AS Season, 
+	        StartDate AS StartDate,
+            EndDate AS EndDate
+        FROM dbo.RankingPorTemporada";
+
         #endregion
 
         #region Public methods
@@ -87,6 +101,11 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@totalpoints", rankingElement.TotalPoints, System.Data.DbType.Int32);
 
             Execute(INSERT_RANKING_BY_SEASON, parameters);
+        }
+
+        public List<RankingBySeasonEntity> GetRankingBySeason()
+        {
+            return Query(GET_RANKING_BY_SEASON).ToList();
         }
 
         #endregion

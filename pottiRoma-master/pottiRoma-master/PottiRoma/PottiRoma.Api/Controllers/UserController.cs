@@ -126,6 +126,13 @@ namespace PottiRoma.Api.Controllers
             EmailInvite.Enviar(emailInvited, nameInvited, nameUser, cpf, telephone, cep);
         }
 
+        [HttpPost]
+        [Route("SendBirthdayEmail")]
+        public async void SendBirthdayEmail(string emailInvited, string userName)
+        {
+            EmailBirthday.Enviar(emailInvited, userName);
+        }
+
         [Route("Profile/Update")]
         [HttpPost]
         public async Task UpdateClientInfo(UpdateUserPointsRequest request)

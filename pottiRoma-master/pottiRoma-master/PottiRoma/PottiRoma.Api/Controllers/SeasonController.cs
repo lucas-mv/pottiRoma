@@ -1,4 +1,5 @@
 ﻿using PottiRoma.Api.Request.Season;
+using PottiRoma.Api.Response.RankingBySeason;
 using PottiRoma.Api.Response.Season;
 using PottiRoma.Entities;
 using PottiRoma.Services.Interfaces;
@@ -58,6 +59,17 @@ namespace PottiRoma.Api.Controllers
                 _userService.UpdateUserPoints(user.UsuarioId, 0, 0, 0, 0, 0);
             }
              await _seasonService.InsertSeason( name, startDate, endDate, isActive);
+        }
+
+        [Route("GetRankingBySeason")]
+        [HttpPost]
+        public async Task<RankingBySeasonResponse> GetRankingBySeason()
+        {
+            await ValidateToken();
+            return new RankingBySeasonResponse()
+            {
+                RankingBySeason = _seasonService.GetRankingBySeason()
+            };
         }
     }
 }
