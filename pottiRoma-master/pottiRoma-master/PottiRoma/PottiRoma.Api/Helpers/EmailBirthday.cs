@@ -94,9 +94,9 @@ namespace PottiRoma.Api.Helpers
 
         public static string GetFormattedMessage(string userName)
         {
-            string message = EmailTexts.EMAIL_BIRTHDAY_SUBJECT;
+            string message = EmailTexts.BIRTHDAY_TEXT;
 
-            message = message.Replace("@nameInvited", userName);
+            message = message.Replace("@userName", userName);
 
             return message;
         }

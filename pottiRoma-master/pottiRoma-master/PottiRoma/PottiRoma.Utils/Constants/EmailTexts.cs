@@ -41,6 +41,6 @@ Com Amor, Potti Roma";
 Que no seu ano novo particular tenha abraços apertados, sentimentos leves e sorrisos no rosto. 
 Feliz vida!
 Com amor,
-Sua Flor de Potti Romã @userName!";
+Sua Flor de Potti Romã, @userName!!";
     }
 }
