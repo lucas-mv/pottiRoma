@@ -54,7 +54,7 @@
                     FontAttributes="Bold"
                     FontSize="{StaticResource LargeFontSize}"
                     HorizontalOptions="Start"
-                    Text="{Binding ThisUser.TotalPoints}"
+                    Text="{Binding ThisUser.ListRankingPoints}"
                     TextColor="{StaticResource LightBackgroundColor}"
                     VerticalOptions="Center" />
                 <Image

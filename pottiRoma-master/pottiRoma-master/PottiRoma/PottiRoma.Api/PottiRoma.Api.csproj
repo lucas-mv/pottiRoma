@@ -149,6 +149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EmailBirthday.cs" />
     <Compile Include="Helpers\EmailResetPassword.cs" />
     <Compile Include="Helpers\EmailInvite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
