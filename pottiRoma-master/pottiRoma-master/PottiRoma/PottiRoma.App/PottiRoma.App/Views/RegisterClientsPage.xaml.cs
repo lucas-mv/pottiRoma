@@ -18,5 +18,11 @@ namespace PottiRoma.App.Views
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
         }
+
+        protected override void OnAppearing()
+        {
+            ContentRegisterClientsPage.HeightRequest += 150;
+            base.OnAppearing();
+        }
     }
 }

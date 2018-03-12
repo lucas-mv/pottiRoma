@@ -7,12 +7,13 @@
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
-    <ScrollView HeightRequest="{Binding ScreenHeightRequest, Mode=TwoWay}">
-        <Grid HeightRequest="{Binding ScreenHeightRequest, Mode=TwoWay}">
+    <ScrollView>
+        <Grid x:Name="ContentRegisterSalePage">
             <Grid.RowDefinitions>
                 <RowDefinition Height="210" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="100" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="120" />
+                <RowDefinition Height="180" />
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.RowDefinitions>
@@ -51,7 +52,7 @@
 
             <Frame
                 Grid.Row="1"
-                Margin="16,-55,16,0"
+                Margin="16,-75,16,0"
                 Padding="0"
                 BackgroundColor="White">
                 <Grid>
@@ -224,6 +225,7 @@
 
             <Button
                 Grid.Row="2"
+                Margin="0,-30,0,0"
                 Command="{Binding SaveSaleCommand}"
                 HorizontalOptions="Center"
                 Style="{StaticResource ButtonDefault}"
