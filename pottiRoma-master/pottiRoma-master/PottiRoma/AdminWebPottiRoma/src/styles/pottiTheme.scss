@@ -26,7 +26,7 @@ $potti-brown: (
     600: $dark-primary-text,
     700: $dark-primary-text,
     800: $dark-primary-text,
-    900: $light-primary-text,
+    900: $dark-primary-text,
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
@@ -35,7 +35,7 @@ $potti-brown: (
 );
 
 $potti-primary: mat-palette($potti-brown);
-$potti-accent:  mat-palette($mat-lime, 100);
+$potti-accent:  mat-palette($mat-green);
 $potti-warn:    mat-palette($mat-red);
 
 $potti-theme: mat-light-theme($potti-primary, $potti-accent, $potti-warn);

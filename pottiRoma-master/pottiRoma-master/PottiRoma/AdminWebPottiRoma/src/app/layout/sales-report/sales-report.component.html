@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col">
             <div class="card mb-3">
-                <div>
+                <div class="report-button-container">
                     <h3 class="form-start-layout">Relatório de Vendas</h3>
-                    <button type="button" (click)="generateSalesReport()" class="btn btn-lg btn-primary form-end-layout btn-color-excel">Exportar para Excel</button>
+                    <button (click)="generateSalesReport()" mat-raised-button color="accent" class="report-button" >Exportar para Excel</button>
                 </div>
                 <div class="card-body table-responsive">
                     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>

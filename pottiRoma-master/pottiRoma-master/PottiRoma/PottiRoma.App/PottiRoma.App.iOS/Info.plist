@@ -9,7 +9,7 @@
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
@@ -55,6 +55,6 @@
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>XSLaunchImageAssets</key>
-	<string>Resources/SplashScreen.xcassets/LaunchImages.launchimage</string>
+	<string>Resources/Media.xcassets/LaunchImages.launchimage</string>
 </dict>
 </plist>

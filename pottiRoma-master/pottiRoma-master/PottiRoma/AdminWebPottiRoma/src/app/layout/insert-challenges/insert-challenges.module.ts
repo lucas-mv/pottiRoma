@@ -25,6 +25,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         FormsModule,  
         LoadingModule,
         MatFormFieldModule,
+        MatButtonModule,
         MatInputModule,
         MatNativeDateModule, 
         MatDatepickerModule,
