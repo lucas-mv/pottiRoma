@@ -11,114 +11,120 @@
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="280" />
-            <RowDefinition Height="90" />
-        </Grid.RowDefinitions>
+    <ScrollView>
 
-        <Image Aspect="AspectFill" Source="banner_perfil.png" />
+        <Grid x:Name="ContentRegisterClientsPage">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="280" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="180" />
+            </Grid.RowDefinitions>
 
-        <!--  TROCAR ESSE BANNER PQ TA REPETIDO  -->
+            <Image
+                Aspect="AspectFill"
+                HeightRequest="150"
+                Source="banner_perfil.png" />
 
-        <StackLayout
-            Grid.Row="1"
-            Margin="16,8,16,8"
-            Spacing="12">
-
-            <Frame
+            <StackLayout
                 Grid.Row="1"
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="40"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="*Nome"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding ClientSelectedForEdition.Name}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
+                Margin="16,8,16,8"
+                Spacing="12">
 
-            <Frame
-                Grid.Row="1"
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="40"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Keyboard="Email"
-                    Placeholder="Email*"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding ClientSelectedForEdition.Email}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="40"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="*Nome"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding ClientSelectedForEdition.Name}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
 
-            <Frame
-                x:Name="AnniversaryPickerButton"
-                Grid.Row="1"
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="40"
-                OutlineColor="{StaticResource OutlineColor}">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OpenPopupDateCommand}" />
-                </Frame.GestureRecognizers>
-                <Label
-                    x:Name="DateLabel"
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Text="{Binding AnniversaryDate}"
-                    TextColor="{Binding ColorDateAnniversary}"
-                    VerticalOptions="Center" />
-            </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="40"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Keyboard="Email"
+                        Placeholder="Email*"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding ClientSelectedForEdition.Email}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
 
-            <Frame
-                Grid.Row="1"
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="40"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="Telefone*"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding ClientSelectedForEdition.Telephone}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
+                <Frame
+                    x:Name="AnniversaryPickerButton"
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="40"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenPopupDateCommand}" />
+                    </Frame.GestureRecognizers>
+                    <Label
+                        x:Name="DateLabel"
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Text="{Binding AnniversaryDate}"
+                        TextColor="{Binding ColorDateAnniversary}"
+                        VerticalOptions="Center" />
+                </Frame>
 
-            <Frame
-                Grid.Row="1"
-                Padding="0"
-                BackgroundColor="{StaticResource WhiteColor}"
-                HeightRequest="40"
-                OutlineColor="{StaticResource OutlineColor}">
-                <renderers:CustomEntry
-                    Margin="10,0,10,0"
-                    FontSize="{StaticResource StandardFontSize}"
-                    Placeholder="CEP"
-                    PlaceholderColor="{StaticResource PlaceholderColor}"
-                    Text="{Binding ClientSelectedForEdition.Cep}"
-                    TextColor="{StaticResource TextColor}"
-                    VerticalOptions="Center" />
-            </Frame>
-        </StackLayout>
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="40"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="Telefone*"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding ClientSelectedForEdition.Telephone}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
 
-        <Button
-            Grid.Row="2"
-            Margin="16"
-            Command="{Binding RegisterNewClientCommand}"
-            Style="{StaticResource ButtonDefault}"
-            Text="{Binding RegisterOrEditText}"
-            VerticalOptions="Center" />
-    </Grid>
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HeightRequest="40"
+                    OutlineColor="{StaticResource OutlineColor}">
+                    <renderers:CustomEntry
+                        Margin="10,0,10,0"
+                        FontSize="{StaticResource StandardFontSize}"
+                        Placeholder="CEP"
+                        PlaceholderColor="{StaticResource PlaceholderColor}"
+                        Text="{Binding ClientSelectedForEdition.Cep}"
+                        TextColor="{StaticResource TextColor}"
+                        VerticalOptions="Center" />
+                </Frame>
+            </StackLayout>
+
+            <Button
+                Grid.Row="2"
+                Margin="16"
+                Command="{Binding RegisterNewClientCommand}"
+                Style="{StaticResource ButtonDefault}"
+                Text="{Binding RegisterOrEditText}"
+                VerticalOptions="Center" />
+        </Grid>
+
+    </ScrollView>
 
 </ContentPage>

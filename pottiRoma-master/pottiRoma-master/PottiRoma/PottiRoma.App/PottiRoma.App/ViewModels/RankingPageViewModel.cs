@@ -149,7 +149,7 @@ namespace PottiRoma.App.ViewModels
             });
             RankingDto.Add(new RankingBannerDto()
             {
-                Image = "banner_ranking1.png",
+                Image = "rank_cadastro_colecionadora.png",
                 Description = "CADASTRO DE CLIENTES",
                 Index = 1
             });
@@ -161,7 +161,7 @@ namespace PottiRoma.App.ViewModels
             });
             RankingDto.Add(new RankingBannerDto()
             {
-                Image = "banner_ranking3.png",
+                Image = "rank_cadastro_flor_aliada.png",
                 Description = "CONVIDAR FLORES ALIADAS",
                 Index = 3
             });
@@ -173,7 +173,7 @@ namespace PottiRoma.App.ViewModels
             });
             RankingDto.Add(new RankingBannerDto()
             {
-                Image = "banner_ranking2.png",
+                Image = "rank_pecas_atendimento.png",
                 Description = "PEÇAS POR ATENDIMENTO",
                 Index = 5
             });

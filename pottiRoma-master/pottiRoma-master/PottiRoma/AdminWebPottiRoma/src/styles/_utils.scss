@@ -13,6 +13,12 @@
 
 .form-center-layout
 {
+    margin-top: 16px;
+    text-align:center;
+}
+
+.form-center-layout-without-margin
+{
     text-align:center;
 }
 
@@ -28,9 +34,4 @@
     text-align:center;
     float:left;
     margin: 16px;
-}
-
-.btn-color-excel {
-    background-color: #008000;
-    border-color: #008000;
 }

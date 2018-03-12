@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col">
             <div class="card mb-3">
-                <div>
+                <div class="report-button-container">
                     <h3 class="form-start-layout">Ranking Geral</h3>
-                    <button type="button" (click)="generateRankingReport()" class="btn btn-lg btn-primary btn-color-excel form-end-layout">Exportar para Excel</button>
+                    <button (click)="generateRankingReport()" mat-raised-button color="accent" class="report-button" >Exportar para Excel</button>
                 </div>
                 <div class="card-body table-responsive">
                     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>

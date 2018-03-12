@@ -26,6 +26,7 @@ namespace PottiRoma.App.ViewModels
         private readonly IClientsAppService _clientAppService;
 
         public DelegateCommand<Client> ClienteSelectedCommand { get; set; }
+        public DelegateCommand GoToRegisterClientCommand { get; set; }
 
         public ObservableCollection<Client> ListaClientes { get; set; }
 
@@ -51,6 +52,14 @@ namespace PottiRoma.App.ViewModels
             ListaClientes = new ObservableCollection<Client>();
             ClienteSelectedCommand = new DelegateCommand<Client>(async param => await SelecionarCliente(param))
                 .ObservesCanExecute(() => CanExecute);
+            GoToRegisterClientCommand = new DelegateCommand(GoToRegisterClient).ObservesCanExecute(() => CanExecute);
+        }
+
+        private async void GoToRegisterClient()
+        {
+            CanExecuteInitial();
+            await _navigationService.NavigateAsync(NavigationSettings.RegisterClients);
+            CanExecuteEnd();
         }
 
         private async Task<GetClientsByUserIdResponse> TryGetClientsFromCache()

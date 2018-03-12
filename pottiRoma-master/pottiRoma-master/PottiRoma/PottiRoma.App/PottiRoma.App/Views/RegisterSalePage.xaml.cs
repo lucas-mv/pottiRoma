@@ -24,7 +24,8 @@ namespace PottiRoma.App.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            ViewModel.ScreenHeightRequest += 150;
+
+            ContentRegisterSalePage.HeightRequest += 150;
             if (!ViewModel._isEditSale)
             {
                 Entry_sold_pieces.Text = "";

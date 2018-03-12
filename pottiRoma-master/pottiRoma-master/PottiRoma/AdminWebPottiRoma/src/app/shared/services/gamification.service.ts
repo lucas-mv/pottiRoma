@@ -32,6 +32,35 @@ export class GamificationService extends BaseService {
     });
   }
 
+  public InsertSeedsForSalePerson(email:string, averageTicket:Number, registerNewClients:Number, salesNumber:Number, averageItensPerSale:Number, inviteFlower:Number, description:string){
+    return this.http
+    .post(
+      this.getBaseUrl() + 'LogInsertPoints/New',
+      {
+        UserEmail: email,
+        AverageTicket: averageTicket,
+        RegisterNewClients: registerNewClients,
+        SalesNumber: salesNumber,
+        AverageItensPerSale: averageItensPerSale,
+        InviteFlower: inviteFlower,
+        Description: description,
+        IsActive: true
+      },
+      this.createAuthenticationRequestOptions()
+    )
+    .toPromise()
+    .then(res => {
+      return {
+        message: ''
+      };
+    })
+    .catch(res => {
+      return {
+        message: res._body
+      }
+    });
+  }
+
   public updateGamificationPoints(averageTicket:Number, registerNewClients:Number, salesNumber:Number, averageItensPerSale:Number, inviteFlower:Number){
     return this.http
     .post(

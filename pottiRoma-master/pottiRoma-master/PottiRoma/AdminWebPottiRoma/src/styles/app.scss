@@ -6,3 +6,21 @@
 @import "responsive";
 @import "pottiTheme";
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+button{
+   color: whitesmoke!important; 
+   font-weight: bold!important;
+   text-transform: uppercase!important;
+}
+
+.report-button-container{
+    display: flex;
+
+    .report-button{
+        margin-left: auto;
+        margin-right: 12px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+

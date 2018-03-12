@@ -54,7 +54,5 @@
 	<string>9.2</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
-	<key>XSLaunchImageAssets</key>
-	<string>Resources/SplashScreen.xcassets/LaunchImages.launchimage</string>
 </dict>
 </plist>
