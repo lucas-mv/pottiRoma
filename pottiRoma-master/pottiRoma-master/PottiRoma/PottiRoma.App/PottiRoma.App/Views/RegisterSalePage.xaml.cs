@@ -24,6 +24,7 @@ namespace PottiRoma.App.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
             ContentRegisterSalePage.HeightRequest += 150;
             if (!ViewModel._isEditSale)
             {

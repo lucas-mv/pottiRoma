@@ -105,6 +105,7 @@
     <ITunesArtwork Include="Resources\iTunesArtwork" />
     <ITunesArtwork Include="Resources\iTunesArtwork%402x" />
     <BundleResource Include="Resources\sync_smb.json" />
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -692,6 +693,36 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rank_pecas_atendimento%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rank_pecas_atendimento%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rank_cadastro_colecionadora.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rank_cadastro_colecionadora%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rank_cadastro_colecionadora%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rank_cadastro_flor_aliada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rank_cadastro_flor_aliada%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rank_cadastro_flor_aliada%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rank_pecas_atendimento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splashscreen_ios.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

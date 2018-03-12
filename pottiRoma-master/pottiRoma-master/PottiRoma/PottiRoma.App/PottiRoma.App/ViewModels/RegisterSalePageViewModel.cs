@@ -7,6 +7,7 @@ using PottiRoma.App.Models.Requests.Sales;
 using PottiRoma.App.Models.Requests.Trophies;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Models.Responses.Challenges;
+using PottiRoma.App.Models.Responses.GamificationPoints;
 using PottiRoma.App.Models.Responses.Seasons;
 using PottiRoma.App.Models.Responses.Trophies;
 using PottiRoma.App.Repositories.Internal;
@@ -32,6 +33,7 @@ namespace PottiRoma.App.ViewModels
         private readonly ITrophyAppService _trophyAppService;
         private readonly IChallengesAppService _challengesAppService;
         private readonly ISeasonAppService _seasonAppService;
+        private readonly IGamificationPointsAppService _gamificationPointsAppService;
 
         private User CurrentUser;
 
@@ -80,6 +82,7 @@ namespace PottiRoma.App.ViewModels
             IUserDialogs userDialogs,
             ISalesAppService salesAppService,
             IUserAppService userAppService,
+            IGamificationPointsAppService gamificationPointsAppService,
             ITrophyAppService trophyAppService,
             IChallengesAppService challengesAppService,
             ISeasonAppService seasonAppService)
@@ -89,6 +92,7 @@ namespace PottiRoma.App.ViewModels
             _salesAppService = salesAppService;
             _userAppService = userAppService;
             _trophyAppService = trophyAppService;
+            _gamificationPointsAppService = gamificationPointsAppService;
             _challengesAppService = challengesAppService;
             _seasonAppService = seasonAppService;
             GoBackCommand = new DelegateCommand(GoBack).ObservesCanExecute(() => CanExecute);
@@ -180,10 +184,20 @@ namespace PottiRoma.App.ViewModels
                         int AverageTicketPoints = (int)salesValue / salesCount;
                         int AverageItensPerSale = salesNumberPieces / salesCount;
 
-                        var points = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
+                        GetGamificationPointsResponse currentPoints = new GetGamificationPointsResponse();
+                        try
+                        {
+                            currentPoints.Entity = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
+                        }
+                        catch
+                        {
+                            currentPoints = await _gamificationPointsAppService.GetCurrentGamificationPoints();
+                            await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, currentPoints.Entity);
+
+                        }
                         user.AverageItensPerSalePoints = AverageItensPerSale;
                         user.AverageTicketPoints += AverageTicketPoints;
-                        user.SalesNumberPoints += (int)points.SalesNumber;
+                        user.SalesNumberPoints += (int)currentPoints.Entity.SalesNumber;
 
                         await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
                         {
@@ -196,7 +210,7 @@ namespace PottiRoma.App.ViewModels
                         });
                         await GetParametersForChallenge();
                         if (!_hasWonTrophy)
-                            UserDialogs.Instance.Toast("Parabéns! Você ganhou " + points.SalesNumber + " Sementes com essa Venda!", duration);
+                            UserDialogs.Instance.Toast("Parabéns! Você ganhou " + currentPoints.Entity.SalesNumber + " Sementes com essa Venda!", duration);
                         await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
                     }
                     catch
@@ -300,7 +314,7 @@ namespace PottiRoma.App.ViewModels
                             UsuarioId = new Guid(usuarioId)
                         });
                         _hasWonTrophy = true;
-                        UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Cadastro de Clientes! Parabéns!", new TimeSpan(0, 0, 4));
+                        UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Vendas Realizadas! Parabéns!", new TimeSpan(0, 0, 4));
                     }
                 }
             }

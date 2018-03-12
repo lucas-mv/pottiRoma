@@ -13,7 +13,6 @@
                 <RowDefinition Height="210" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="120" />
-                <RowDefinition Height="180" />
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.RowDefinitions>
