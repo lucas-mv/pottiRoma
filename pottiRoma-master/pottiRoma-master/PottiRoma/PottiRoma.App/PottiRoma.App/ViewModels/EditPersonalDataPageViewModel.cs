@@ -102,7 +102,7 @@ namespace PottiRoma.App.ViewModels
                 {
                     profit += sale.SaleValue;
                 }
-                Profit = Formatter.FormatMoney((decimal)profit);
+                Profit = "Faturamento: " + Formatter.FormatMoney((decimal)profit);
             }
             catch
             {
