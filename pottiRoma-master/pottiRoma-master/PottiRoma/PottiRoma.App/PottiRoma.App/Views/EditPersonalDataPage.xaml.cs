@@ -22,5 +22,10 @@ namespace PottiRoma.App.Views
         {
             base.OnAppearing();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return false;
+        }
     }
 }

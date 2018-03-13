@@ -69,6 +69,11 @@ namespace PottiRoma.App.Droid
                 // Register any platform specific implementations
             }
         }
+
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+        }
     }
 }
 
