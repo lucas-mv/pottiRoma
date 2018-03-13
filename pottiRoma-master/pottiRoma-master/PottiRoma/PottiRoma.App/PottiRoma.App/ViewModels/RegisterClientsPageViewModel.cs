@@ -234,6 +234,7 @@ namespace PottiRoma.App.ViewModels
                     await NavigationHelper.ShowLoading();
                     var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                     var userGuid = user.UsuarioId;
+                    
                     if (RegisterOrEditText.Contains("CADASTRAR"))
                     {
                         await _clientsAppService.RegisterClient(new RegisterClientRequest()
@@ -245,6 +246,9 @@ namespace PottiRoma.App.ViewModels
                             Name = ClientSelectedForEdition.Name,
                             Telephone = ClientSelectedForEdition.Telephone
                         });
+
+                        var myClients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
+                        await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, myClients.Clients);
 
                         var points = new GetGamificationPointsResponse();
                         try

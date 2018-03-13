@@ -37,13 +37,13 @@ namespace PottiRoma.App.Utils.Helpers
             switch (type)
             {
                 case ChallengeType.NumeroVendas:
-                    return "Vendas Realizadas";
+                    return "Vendas Restantes";
                 case ChallengeType.ConvidarFloresAliadas:
-                    return "Flores Cadastradas";
+                    return "Cadastros Restantes";
                 case ChallengeType.CadastrarClientes:
-                    return "Colecionadoras Registradas";
+                    return "Registros de Clientes Restantes";
                 default:
-                    return "Colecionadoras Registradas";
+                    return "Registros de Clientes Restantes";
             }
         }
 
