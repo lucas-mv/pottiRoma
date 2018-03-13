@@ -227,7 +227,6 @@ namespace PottiRoma.App.ViewModels
             for (int i = 0; i < AppUsers.Count; i++)
             {
                 AppUsers[i].RankingPosition = (i + 1).ToString() + ". ";
-
             }
 
             InsertPageTitleAndPoints();
@@ -239,6 +238,7 @@ namespace PottiRoma.App.ViewModels
                     ThisUser.RankingPosition = user.RankingPosition;
                     ThisUser.Name = user.Name;
                     ThisUser.TotalPoints = user.TotalPoints;
+                    ThisUser.ListRankingPoints = user.ListRankingPoints;
                 }
             }
         }

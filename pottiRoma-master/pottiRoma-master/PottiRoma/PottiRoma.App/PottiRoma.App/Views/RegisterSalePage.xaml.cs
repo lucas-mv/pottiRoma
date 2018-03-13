@@ -25,7 +25,6 @@ namespace PottiRoma.App.Views
         {
             base.OnAppearing();
 
-            ContentRegisterSalePage.HeightRequest += 150;
             if (!ViewModel._isEditSale)
             {
                 Entry_sold_pieces.Text = "";

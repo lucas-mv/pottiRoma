@@ -151,7 +151,7 @@
                         Grid.Row="2"
                         Grid.Column="0"
                         FontSize="{StaticResource StandardFontSize}"
-                        Text="Pontos ganhos por Venda:"
+                        Text="Pontos ganhos por Registro de Clientes:"
                         TextColor="{StaticResource TextColor}"
                         VerticalOptions="Center" />
 
@@ -160,7 +160,7 @@
                         Grid.Column="1"
                         FontSize="{StaticResource StandardFontSize}"
                         HorizontalOptions="End"
-                        Text="20"
+                        Text="{Binding GamificationSalesPoints}"
                         TextColor="{StaticResource TextColor}"
                         VerticalOptions="Center" />
 
@@ -169,7 +169,7 @@
                         Grid.Column="1"
                         FontSize="{StaticResource StandardFontSize}"
                         HorizontalOptions="End"
-                        Text="10"
+                        Text="{Binding GamificationInvitePoints}"
                         TextColor="{StaticResource TextColor}"
                         VerticalOptions="Center" />
 
@@ -178,7 +178,7 @@
                         Grid.Column="1"
                         FontSize="{StaticResource StandardFontSize}"
                         HorizontalOptions="End"
-                        Text="30"
+                        Text="{Binding GamificationRegisterPoints}"
                         TextColor="{StaticResource TextColor}"
                         VerticalOptions="Center" />
 
