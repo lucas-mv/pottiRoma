@@ -193,7 +193,6 @@ namespace PottiRoma.App.ViewModels
                         {
                             currentPoints = await _gamificationPointsAppService.GetCurrentGamificationPoints();
                             await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, currentPoints.Entity);
-
                         }
                         user.AverageItensPerSalePoints = AverageItensPerSale;
                         user.AverageTicketPoints += AverageTicketPoints;

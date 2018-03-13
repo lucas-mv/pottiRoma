@@ -1,6 +1,11 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Dtos;
+using PottiRoma.App.Helpers;
 using PottiRoma.App.Insights;
+using PottiRoma.App.Models.Models;
+using PottiRoma.App.Models.Responses.GamificationPoints;
+using PottiRoma.App.Repositories.Internal;
+using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.ConstantRules;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -11,11 +16,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
+using static PottiRoma.App.Utils.Constants;
 
 namespace PottiRoma.App.ViewModels
 {
 	public class GamificationRulesPageViewModel : ViewModelBase
 	{
+        private readonly IGamificationPointsAppService _gamificationPointsAppService;
+
         private RulesContentDto _main;
         public RulesContentDto Main
         {
@@ -85,8 +93,30 @@ namespace PottiRoma.App.ViewModels
             get { return _generalObservations; }
             set { SetProperty(ref _generalObservations, value); }
         }
-        public GamificationRulesPageViewModel()
+        public GamificationRulesPageViewModel(IGamificationPointsAppService gamificationPointsAppService)
         {
+            _gamificationPointsAppService = gamificationPointsAppService;
+        }
+
+        private int _gamificationSalesPoints;
+        public int GamificationSalesPoints
+        {
+            get { return _gamificationSalesPoints; }
+            set { SetProperty(ref _gamificationSalesPoints, value); }
+        }
+
+        private int _gamificationRegisterPoints;
+        public int GamificationRegisterPoints
+        {
+            get { return _gamificationRegisterPoints; }
+            set { SetProperty(ref _gamificationRegisterPoints, value); }
+        }
+
+        private int _gamificationInvitePoints;
+        public int GamificationInvitePoints
+        {
+            get { return _gamificationInvitePoints; }
+            set { SetProperty(ref _gamificationInvitePoints, value); }
         }
 
         public override void OnNavigatedTo(NavigationParameters parameters)
@@ -97,6 +127,33 @@ namespace PottiRoma.App.ViewModels
                 { InsightsPagesNames.GamificationRulesPage, InsightsActionNames.ReadRules }
             });
             GameRules();
+        }
+
+        public override async void OnNavigatingTo(NavigationParameters parameters)
+        {
+            await NavigationHelper.ShowLoading();
+
+            GetGamificationPointsResponse currentPoints = new GetGamificationPointsResponse();
+            try
+            {
+                currentPoints.Entity = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
+            }
+            catch
+            {
+                currentPoints = await _gamificationPointsAppService.GetCurrentGamificationPoints();
+                await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, currentPoints.Entity);
+            }
+            if (currentPoints.Entity != null)
+            {
+                GamificationInvitePoints = currentPoints.Entity.InviteFlower;
+                GamificationRegisterPoints = currentPoints.Entity.RegisterNewClients;
+                GamificationSalesPoints = currentPoints.Entity.SalesNumber;
+            }
+
+            await NavigationHelper.PopLoading();
+
+            base.OnNavigatingTo(parameters);
+
         }
 
         private async void GameRules()

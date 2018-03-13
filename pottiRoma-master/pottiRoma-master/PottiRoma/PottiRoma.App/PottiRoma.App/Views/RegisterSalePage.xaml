@@ -8,10 +8,10 @@
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
     <ScrollView>
-        <Grid x:Name="ContentRegisterSalePage">
+        <Grid HeightRequest="900">
             <Grid.RowDefinitions>
                 <RowDefinition Height="210" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="264" />
                 <RowDefinition Height="120" />
             </Grid.RowDefinitions>
             <Grid>
@@ -51,7 +51,7 @@
 
             <Frame
                 Grid.Row="1"
-                Margin="16,-75,16,0"
+                Margin="16,-95,16,0"
                 Padding="0"
                 BackgroundColor="White">
                 <Grid>
