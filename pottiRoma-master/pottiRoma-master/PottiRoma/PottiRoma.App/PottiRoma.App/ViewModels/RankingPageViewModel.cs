@@ -143,7 +143,7 @@ namespace PottiRoma.App.ViewModels
             RankingDto = new ObservableCollection<RankingBannerDto>();
             RankingDto.Add(new RankingBannerDto()
             {
-                Image = "ranking_semana.png",
+                Image = "ranking_ticket.png",
                 Description = "TICKET MÉDIO",
                 Index = 0
             });
@@ -155,7 +155,7 @@ namespace PottiRoma.App.ViewModels
             });
             RankingDto.Add(new RankingBannerDto()
             {
-                Image = "banner_ranking2.png",
+                Image = "banner_ranking_geral.png",
                 Description = "RANKING GERAL",
                 Index = 2
             });
@@ -167,7 +167,7 @@ namespace PottiRoma.App.ViewModels
             });
             RankingDto.Add(new RankingBannerDto()
             {
-                Image = "ranking_dia.png",
+                Image = "ranking_atendimento.png",
                 Description = "VENDAS EFETUADAS",
                 Index = 4
             });

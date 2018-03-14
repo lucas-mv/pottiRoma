@@ -14,7 +14,7 @@
             <RowDefinition Height="150" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Image Aspect="AspectFill" Source="banner_history.png" />
+        <Image Aspect="AspectFill" Source="banner_historico.png" />
         <Grid
             Grid.Row="1"
             Margin="16,-20,16,0"

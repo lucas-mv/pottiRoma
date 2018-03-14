@@ -23,7 +23,7 @@
                 <Image
                     Grid.RowSpan="3"
                     Aspect="AspectFill"
-                    Source="banned_sales_page_detail.png" />
+                    Source="banner_registro_venda.png" />
 
                 <StackLayout Orientation="Horizontal" Spacing="30">
                     <StackLayout.Margin>
