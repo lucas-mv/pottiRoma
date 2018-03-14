@@ -8,6 +8,7 @@ using PottiRoma.App.Models.Requests.Trophies;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Models.Responses.Challenges;
 using PottiRoma.App.Models.Responses.GamificationPoints;
+using PottiRoma.App.Models.Responses.Sales;
 using PottiRoma.App.Models.Responses.Seasons;
 using PottiRoma.App.Models.Responses.Trophies;
 using PottiRoma.App.Repositories.Internal;
@@ -138,6 +139,20 @@ namespace PottiRoma.App.ViewModels
             return (SaleRegistered.SaleValue > 0 && SaleRegistered.SalePaidValue >= 0) && (SaleRegistered.ClienteId != null) ? true : false;
         }
 
+        private async Task<GetSalesByUserIdResponse> SaveNewSaleInCache()
+        {
+            var sales = new GetSalesByUserIdResponse();
+            try
+            {
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                sales = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
+                await CacheAccess.Insert<List<Sale>>(CacheKeys.SALES, sales.Sales);
+            }
+            catch
+            { }
+            return sales;
+        }
+
         private async void SaveSale()
         {
             TimeSpan duration = new TimeSpan(0, 0, 3);
@@ -171,7 +186,8 @@ namespace PottiRoma.App.ViewModels
                             Description = SaleRegistered.Description
                         });
 
-                        var userSales = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
+
+                        var userSales = await SaveNewSaleInCache();
                         float salesValue = 0;
                         int salesCount = 0;
                         int salesNumberPieces = 0;

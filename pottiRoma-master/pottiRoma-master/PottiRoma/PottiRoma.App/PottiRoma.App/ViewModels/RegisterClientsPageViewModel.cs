@@ -130,10 +130,10 @@ namespace PottiRoma.App.ViewModels
 
         private void CallbackDate(string date)
         {
-            DateTime now = DateTime.Now;
+            DateTime startDate = new DateTime(9999,6,15);
             string[] newDate = date.Split('/');
-            newDate[0] = newDate[0] == "0" ? now.Day.ToString() : newDate[0];
-            newDate[1] = newDate[1] == "0" ? now.Month.ToString() : newDate[1];
+            newDate[0] = newDate[0] == "0" ? startDate.Day.ToString() : newDate[0];
+            newDate[1] = newDate[1] == "0" ? startDate.Month.ToString() : newDate[1];
             date = newDate[0] + "/" + newDate[1];
             ClientSelectedForEdition.Birthdate = new DateTime(9999, int.Parse(newDate[1]), int.Parse(newDate[0]));
             AnniversaryDate = date;
