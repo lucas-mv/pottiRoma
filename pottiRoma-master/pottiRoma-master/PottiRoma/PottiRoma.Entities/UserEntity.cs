@@ -25,5 +25,6 @@ namespace PottiRoma.Entities
         public Guid TemporadaId { get; set; }
         public Guid MotherFlowerId { get; set; }
         public DateTime Birthday { get; set; }
+        public bool IsActive { get; set; }
     }
 }

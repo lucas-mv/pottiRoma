@@ -3,6 +3,8 @@ import { routerTransition } from '../../router.animations';
 import { SalespersonService } from './../../shared/services/salesperson.service';
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
     selector: 'app-reseller',
@@ -41,4 +43,18 @@ export class ResellerComponent implements OnInit {
             }
         });
     }   
+
+    onSalespersonStatusChange(salesperson:any){
+        this.loading = true;
+        this.salespersonService.updateStatus(salesperson.UsuarioId, !salesperson.IsActive)
+        .then(response => {
+            this.loading = false;
+            if(response.message !== ''){
+                this.toastr.error(response.message);
+            }
+            else{
+                this.toastr.success('Operação concluída com sucesso!');
+            }
+        });
+    }
 }

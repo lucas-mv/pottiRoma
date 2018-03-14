@@ -161,6 +161,25 @@ namespace PottiRoma.Api.Controllers
             };
         }
 
+        [Route("GetAllAppUsers")]
+        [HttpPost]
+        public async Task<GetAppUsersResponse> GetAllAppUsers()
+        {
+            await ValidateToken();
+            return new GetAppUsersResponse()
+            {
+                Users = _userService.GetAllAppUsers()
+            };
+        }
+
+        [Route("UpdateStatus")]
+        [HttpPost]
+        public async Task UpdateUserStatus(UpdateUserStatusRequest request)
+        {
+            await ValidateToken();
+            _userService.UpdateUserStatus(request.UserId, request.IsActive);
+        }
+
         [Route("UpdateUser")]
         [HttpPost]
         public async Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)

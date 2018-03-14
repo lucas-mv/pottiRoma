@@ -50,6 +50,7 @@
     <Compile Include="Challenges\ChallengesBusiness.cs" />
     <Compile Include="Clients\ClientsBusiness.cs" />
     <Compile Include="GamificationPointsBusiness\GamificationPointBusiness.cs" />
+    <Compile Include="General\EmailValidator.cs" />
     <Compile Include="General\ReportGenerator.cs" />
     <Compile Include="LogInsertPoints\LogInsertPointsBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -47,6 +47,7 @@ namespace PottiRoma.Business.User
             {
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.OBRIGATORY_DATA_MISSING);
             }
+            EmailValidator.IsValidEmail(email);
 
             var oldUser = UserRepository.Get().GetUserByEmail(email);
             if (oldUser != null)
@@ -149,6 +150,16 @@ namespace PottiRoma.Business.User
         public static List<UserEntity> GetAppUsers()
         {
             return UserRepository.Get().GetAppUsers();
+        }
+
+        public static List<UserEntity> GetAllAppUsers()
+        {
+            return UserRepository.Get().GetAllAppUsers().OrderBy(u => u.Name).ToList();
+        }
+
+        public static void UpdateUserStatus(Guid userId, bool isActive)
+        {
+            UserRepository.Get().UpdateUserStatus(userId, isActive);
         }
 
         public static void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
