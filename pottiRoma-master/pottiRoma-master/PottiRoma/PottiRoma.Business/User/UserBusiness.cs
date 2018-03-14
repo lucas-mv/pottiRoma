@@ -151,6 +151,16 @@ namespace PottiRoma.Business.User
             return UserRepository.Get().GetAppUsers();
         }
 
+        public static List<UserEntity> GetAllAppUsers()
+        {
+            return UserRepository.Get().GetAllAppUsers().OrderBy(u => u.Name).ToList();
+        }
+
+        public static void UpdateUserStatus(Guid userId, bool isActive)
+        {
+            UserRepository.Get().UpdateUserStatus(userId, isActive);
+        }
+
         public static void UpdateUser(Guid usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep)
         {
             UserRepository.Get().UpdateUser(usuarioId, email, primaryTelephone, secundaryTelephone, cep);

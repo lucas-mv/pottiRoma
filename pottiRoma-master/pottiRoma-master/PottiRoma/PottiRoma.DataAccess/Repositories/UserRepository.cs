@@ -49,6 +49,27 @@ namespace PottiRoma.DataAccess.Repositories
           FROM dbo.UsuarioPotti
           where IsActive = 1 AND UserType = 1";
 
+        private const string GET_ALL_APP_USERS = @"
+        SELECT UsuarioId AS UsuarioId
+              ,Cpf As Cpf
+              ,Name as Name
+              ,Email as Email
+              ,PrimaryTelephone as PrimaryTelephone
+              ,SecundaryTelephone as SecundaryTelephone
+              ,UserType as UserType
+              ,Cep as Cep
+              ,AverageTicketPoints as AverageTicketPoints
+              ,RegisterClientsPoints as RegisterClientsPoints
+              ,SalesNumberPoints as SalesNumberPoints
+              ,AverageItensPerSalePoints as AverageItensPerSalePoints
+              ,InviteAllyFlowersPoints as InviteAllyFlowersPoints
+              ,TemporadaId as TemporadaId
+              ,MotherFlowerId as MotherFlowerId
+              ,IsActive as IsActive,
+              Birthday as Birthday
+          FROM dbo.UsuarioPotti
+          WHERE UserType = 1";
+
         private const string GET_USER_BY_ID = @"
         SELECT UsuarioId AS UsuarioId
               ,Cpf As Cpf
@@ -162,6 +183,11 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Commands
 
+        private const string UPDATE_USER_STATUS = @"
+        UPDATE dbo.UsuarioPotti
+        SET IsActive = @isactive
+        WHERE UsuarioId = @usuarioid";
+
         private const string UPDATE_USER = @"
         UPDATE dbo.UsuarioPotti
                 SET Email = @email,
@@ -246,6 +272,16 @@ namespace PottiRoma.DataAccess.Repositories
 
         #region Public methods
 
+        public void UpdateUserStatus(Guid userId, bool isActive)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@usuarioid", userId, System.Data.DbType.Guid);
+            parameters.Add("@isactive", isActive, System.Data.DbType.Boolean);
+
+            Execute(UPDATE_USER_STATUS, parameters);
+        }
+
 
         public void UpdateUserPoints(UserEntity user)
         {
@@ -286,6 +322,11 @@ namespace PottiRoma.DataAccess.Repositories
         public List<UserEntity> GetAppUsers()
         {
             return Query(GET_APP_USERS).ToList();
+        }
+
+        public List<UserEntity> GetAllAppUsers()
+        {
+            return Query(GET_ALL_APP_USERS).ToList();
         }
 
         public UserEntity GetUserById(Guid userId)

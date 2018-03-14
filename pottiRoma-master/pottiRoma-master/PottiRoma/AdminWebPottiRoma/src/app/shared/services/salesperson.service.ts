@@ -82,7 +82,7 @@ export class SalespersonService extends BaseService {
   public getAllSalespeople(){
     return this.http
     .post(
-      this.getBaseUrl() + 'User/GetAppUsers',
+      this.getBaseUrl() + 'User/GetAllAppUsers',
       null,
       this.createAuthenticationRequestOptions()
     )
@@ -122,5 +122,29 @@ export class SalespersonService extends BaseService {
           message: res._body
         }
       });
-  } 
+  }
+  
+  public updateStatus(userId:string, isActive:boolean){
+    return this.http
+    .post(
+      this.getBaseUrl() + 'User/UpdateStatus',
+      {
+        UserId: userId,
+        IsActive: isActive
+      },
+      this.createAuthenticationRequestOptions()
+    )
+    .toPromise()
+    .then(res => {
+      let responseJson = res.json();
+      return {
+        message: ''
+      };
+    })
+    .catch(res => {
+      return {
+        message: res._body
+      }
+    });
+   }
 }
