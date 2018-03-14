@@ -53,9 +53,9 @@ export class FormComponent implements OnInit {
             return;
         }
 
-        debugger;
-
-        let selectedFlower: any = null;
+        let selectedFlower: any = {
+            UsuarioId: null
+        };
         if(this.motherFlowerEmail !== ''){
             this.salespeople.forEach(salesperson => {
                 if(salesperson.Email === this.motherFlowerEmail){
@@ -66,8 +66,6 @@ export class FormComponent implements OnInit {
         else{
             selectedFlower.UsuarioId = null;
         }
-
-        debugger;
 
         this.loading = true;
         this.salespersonService.registerNewSalesperson(this.name, this.primaryPhone, this.secondaryPhone, this.cpf, this.email, this.cep, this.birthday, selectedFlower.UsuarioId)
