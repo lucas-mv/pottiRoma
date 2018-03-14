@@ -13,7 +13,7 @@
 
     <ScrollView>
 
-        <Grid x:Name="ContentRegisterClientsPage">
+        <Grid HeightRequest="900">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="280" />

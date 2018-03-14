@@ -58,11 +58,9 @@ namespace PottiRoma.App.ViewModels
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 var token = await CacheAccess.GetSecure<Guid>(CacheKeys.ACCESS_TOKEN);
                 var currentSeasonReponse = await _seasonAppService.CurrentSeason();
-                var currentPoints = await _gamificationPointsAppService.GetCurrentGamificationPoints();
                 var currentClients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
                 var myTrophies = await _trophyAppService.GetCurrentTrophies(user.UsuarioId.ToString());
                 await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, currentClients.Clients);
-                await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, currentPoints.Entity);
                 await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
                 await CacheAccess.Insert<List<Trophy>>(CacheKeys.TROPHIES, myTrophies.Trophies);
                 var currentChallenges = await _challengesAppService.GetCurrentChallenges(currentSeasonReponse.Entity.TemporadaId.ToString());

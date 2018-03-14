@@ -21,7 +21,6 @@ namespace PottiRoma.App.Views
 
         protected override void OnAppearing()
         {
-            ContentRegisterClientsPage.HeightRequest += 150;
             base.OnAppearing();
         }
     }

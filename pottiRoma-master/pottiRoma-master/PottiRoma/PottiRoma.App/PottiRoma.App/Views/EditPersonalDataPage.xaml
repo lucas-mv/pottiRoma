@@ -11,10 +11,10 @@
     BackgroundColor="{StaticResource LightBackgroundColor}">
 
     <ScrollView>
-        <Grid>
+        <Grid HeightRequest="900">
             <Grid.RowDefinitions>
                 <RowDefinition Height="130" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="240" />
                 <RowDefinition Height="100" />
                 <RowDefinition Height="180" />
             </Grid.RowDefinitions>
