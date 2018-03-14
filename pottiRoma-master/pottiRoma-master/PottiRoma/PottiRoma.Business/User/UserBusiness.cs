@@ -47,6 +47,7 @@ namespace PottiRoma.Business.User
             {
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, Messages.OBRIGATORY_DATA_MISSING);
             }
+            EmailValidator.IsValidEmail(email);
 
             var oldUser = UserRepository.Get().GetUserByEmail(email);
             if (oldUser != null)
