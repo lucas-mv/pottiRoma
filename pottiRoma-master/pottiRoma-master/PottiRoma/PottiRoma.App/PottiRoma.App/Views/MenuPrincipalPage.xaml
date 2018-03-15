@@ -73,7 +73,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_my_sales.png"
+                                Source="cabide_pimenta.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label
@@ -101,7 +101,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_my_clients.png"
+                                Source="ic_conexao.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label
@@ -129,7 +129,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_launcher.png"
+                                Source="ic_flor.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label
@@ -216,7 +216,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_rules.png"
+                                Source="maleta.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label
@@ -245,7 +245,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_rules.png"
+                                Source="ic_trofeu.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label

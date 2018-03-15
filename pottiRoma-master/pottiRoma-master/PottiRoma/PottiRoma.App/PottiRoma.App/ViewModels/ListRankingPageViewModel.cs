@@ -78,7 +78,7 @@ namespace PottiRoma.App.ViewModels
                     catch { }
                     break;
                 case CarouselBannerType.RegisterClients:
-                    Title = "Cadastro de Clientes";
+                    Title = "Cadastro de Colecionadoras";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.RegisterClientsPoints;
                     try
@@ -91,7 +91,7 @@ namespace PottiRoma.App.ViewModels
                     catch { }
                     break;
                 case CarouselBannerType.AveragePiecesForSale:
-                    Title = "Peças por Venda";
+                    Title = "Peças por Atendimento";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.AverageItensPerSalePoints;
                     try
@@ -104,7 +104,7 @@ namespace PottiRoma.App.ViewModels
                     catch { }
                     break;
                 case CarouselBannerType.RegisterAlliedFlowers:
-                    Title = "Convite de Flores Aliadas";
+                    Title = "Cadastro de Flores Aliadas";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.InviteAllyFlowersPoints;
                     try
@@ -117,7 +117,7 @@ namespace PottiRoma.App.ViewModels
                     catch { }
                     break;
                 case CarouselBannerType.RegisteredSales:
-                    Title = "Registro de Vendas";
+                    Title = "Atendimento";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.SalesNumberPoints;
                     try
