@@ -286,15 +286,24 @@ namespace PottiRoma.App.ViewModels
                     }
                     else
                     {
-                        await _clientsAppService.UpdateClientInfo(new UpdateClientInfoRequest()
+                        try
                         {
-                            ClienteId = ClientSelectedForEdition.ClienteId,
-                            Birthdate = ClientSelectedForEdition.Birthdate,
-                            Cep = ClientSelectedForEdition.Cep,
-                            Email = ClientSelectedForEdition.Email,
-                            Name = ClientSelectedForEdition.Name,
-                            Telephone = ClientSelectedForEdition.Telephone
-                        });
+                            await _clientsAppService.UpdateClientInfo(new UpdateClientInfoRequest()
+                            {
+                                ClienteId = ClientSelectedForEdition.ClienteId,
+                                Birthdate = ClientSelectedForEdition.Birthdate,
+                                Cep = ClientSelectedForEdition.Cep,
+                                Email = ClientSelectedForEdition.Email,
+                                Name = ClientSelectedForEdition.Name,
+                                Telephone = ClientSelectedForEdition.Telephone
+                            });
+                            var myClients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
+                            await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, myClients.Clients);
+                        }
+                        catch
+                        {
+                            UserDialogs.Instance.Toast("Não foi possível editar sua cliente, verifique sua conexão!");
+                        }
                         UserDialogs.Instance.Toast("Colecionadora editada com sucesso!");
                         try
                         {
