@@ -118,7 +118,7 @@
                                     Grid.Column="1"
                                     HorizontalOptions="End"
                                     Opacity="{StaticResource ShadedMenu}"
-                                    Source="ic_keyboard_arrow_left_black_24dp.png"
+                                    Source="ic_keyboard_arrow_right_black_24dp.png"
                                     VerticalOptions="Center" />
                             </Grid>
 

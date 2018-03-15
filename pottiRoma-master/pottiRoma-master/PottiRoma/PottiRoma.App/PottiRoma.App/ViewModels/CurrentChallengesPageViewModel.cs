@@ -67,7 +67,7 @@ namespace PottiRoma.App.ViewModels
 
             if (parameters.ContainsKey(NavigationKeyParameters.CurrentChallenges))
             {
-                foreach (var challenge in (List<Challenge>)parameters[NavigationKeyParameters.CurrentChallenges])
+                foreach (var challenge in ((List<Challenge>)parameters[NavigationKeyParameters.CurrentChallenges]))
                 {
                     Challenges.Add(challenge);
                     challenge.StartDateFormatted = Formatter.FormatDate(challenge.StartDate);
