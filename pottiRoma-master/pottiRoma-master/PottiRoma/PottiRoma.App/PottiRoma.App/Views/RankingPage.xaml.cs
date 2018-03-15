@@ -17,5 +17,14 @@ namespace PottiRoma.App.Views
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Device.BeginInvokeOnMainThread(async () => 
+            {
+                await ViewModel.InitializeRankings();
+            });
+        }
     }
 }

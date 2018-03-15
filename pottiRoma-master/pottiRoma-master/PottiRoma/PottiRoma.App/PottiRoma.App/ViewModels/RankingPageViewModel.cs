@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Dtos;
 using PottiRoma.App.Helpers;
@@ -69,7 +70,6 @@ namespace PottiRoma.App.ViewModels
             _clientsAppService = clientsAppService;
             GoToRankingPageCommand = new DelegateCommand<RankingBannerDto>(GoToRankingPage).ObservesCanExecute(() => CanExecute);
             GoToCurrentChallengesPageCommand = new DelegateCommand(GoToCurrentChallengesPage).ObservesCanExecute(() => CanExecute);
-            InitializeRankings();
         }
 
         private async void GoToCurrentChallengesPage()
@@ -136,9 +136,10 @@ namespace PottiRoma.App.ViewModels
         {
             base.OnNavigatedTo(parameters);
             SelectedIndex = 2;
+
         }
 
-        private void InitializeRankings()
+        public async Task InitializeRankings()
         {
             RankingDto = new ObservableCollection<RankingBannerDto>();
             RankingDto.Add(new RankingBannerDto()
