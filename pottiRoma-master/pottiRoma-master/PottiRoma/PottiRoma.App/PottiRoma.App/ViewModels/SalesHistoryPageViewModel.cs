@@ -92,9 +92,10 @@ namespace PottiRoma.App.ViewModels
             foreach (var sale in sales)
             {
                 if (sale.SaleValue > sale.SalePaidValue)
-                    sale.ColorLabel = "#696969";
-                else
                     sale.ColorLabel = "#FF3131";
+
+                else
+                    sale.ColorLabel = "#696969";
             }
         }
 

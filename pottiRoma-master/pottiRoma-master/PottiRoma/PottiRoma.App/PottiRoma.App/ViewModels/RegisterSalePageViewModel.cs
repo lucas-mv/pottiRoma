@@ -185,8 +185,6 @@ namespace PottiRoma.App.ViewModels
                             SaleValue = SaleRegistered.SaleValue,
                             Description = SaleRegistered.Description
                         });
-
-
                         var userSales = await SaveNewSaleInCache();
                         float salesValue = 0;
                         int salesCount = 0;
@@ -243,6 +241,7 @@ namespace PottiRoma.App.ViewModels
                     try
                     {
                         await _salesAppService.UpdateSale(SaleRegistered.VendaId.ToString(), SaleRegistered.SaleValue, SaleRegistered.SalePaidValue, SaleRegistered.NumberSoldPieces, SaleRegistered.Description);
+                        var userSales = await SaveNewSaleInCache();
                         _userDialogs.Toast("Venda Editada com sucesso!");
                     }
                     catch
