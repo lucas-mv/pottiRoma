@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace PottiRoma.App.ViewModels
 {
-	public class SalesHistoryPageViewModel : ViewModelBase
+    public class SalesHistoryPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
@@ -87,6 +87,17 @@ namespace PottiRoma.App.ViewModels
             return sales;
         }
 
+        private async void AdjustColorsFromSales(List<Sale> sales)
+        {
+            foreach (var sale in sales)
+            {
+                if (sale.SaleValue > sale.SalePaidValue)
+                    sale.ColorLabel = "#696969";
+                else
+                    sale.ColorLabel = "#FF3131";
+            }
+        }
+
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
@@ -96,13 +107,9 @@ namespace PottiRoma.App.ViewModels
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 var salesResponse = await TryGetSalesFromCache();
-                foreach (var sale in salesResponse.Sales)
-                {
-                    if (sale.SaleValue > sale.SalePaidValue)
-                        sale.ColorLabel = "#696969";
-                    else
-                        sale.ColorLabel = "#FF3131";
-                }
+
+                AdjustColorsFromSales(salesResponse.Sales);
+
                 SalesList = new ObservableCollection<Sale>(salesResponse.Sales);
                 foreach (var sale in SalesList)
                 {

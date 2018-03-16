@@ -2,6 +2,7 @@
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.Trophies;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils;
@@ -102,6 +103,8 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 int myInvitePoints = 0;
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+
                 try
                 {
                     myInvitePoints = await CacheAccess.Get<int>(CacheKeys.INVITE_POINTS_FOR_CHALLENGE);
@@ -140,6 +143,15 @@ namespace PottiRoma.App.ViewModels
                             Parameter = challenge.Parameter,
                             TemporadaId = CurrentSeason.TemporadaId,
                             UsuarioId = new Guid(usuarioId)
+                        });
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints + challenge.Prize,
+                            RegisterClientsPoints = user.RegisterClientsPoints,
+                            SalesNumberPoints = user.SalesNumberPoints,
+                            UsuarioId = user.UsuarioId
                         });
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Convite de Flores Aliadas! Parabéns!", new TimeSpan(0, 0, 4));
                     }

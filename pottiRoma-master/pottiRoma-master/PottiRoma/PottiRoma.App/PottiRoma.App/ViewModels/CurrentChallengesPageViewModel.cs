@@ -74,7 +74,7 @@ namespace PottiRoma.App.ViewModels
                     challenge.EndDateFormatted = Formatter.FormatDate(challenge.EndDate);
                     challenge.ParameterFormatted = Formatter.FormatChallengeType((ChallengeType)challenge.Parameter);
                     challenge.CurrentSituation = GetCurrentSituationMissingPoints((ChallengeType)challenge.Parameter, challenge.Goal);
-                    challenge.PrizeFormatted = challenge.Prize.ToString() + " pts.";
+                    challenge.PrizeFormatted = challenge.Prize.ToString() + " sementes";
                 }
             }
             await NavigationHelper.PopLoading();

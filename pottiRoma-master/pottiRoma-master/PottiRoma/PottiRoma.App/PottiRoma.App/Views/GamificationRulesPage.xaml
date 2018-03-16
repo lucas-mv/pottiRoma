@@ -117,7 +117,7 @@
                     Margin="0,8,0,8"
                     FontAttributes="Bold"
                     FontSize="{StaticResource LargeFontSize}"
-                    Text="PONTUAÇÃO POR AÇÕES:"
+                    Text="SEMENTES RECEBIDAS POR AÇÕES:"
                     TextColor="{StaticResource TextColor}" />
 
                 <Grid Margin="0,0,0,16">

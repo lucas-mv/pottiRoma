@@ -177,6 +177,8 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 int myRegisterPoints = 0;
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+
                 try
                 {
                     myRegisterPoints = await CacheAccess.Get<int>(CacheKeys.REGISTER_POINTS_FOR_CHALLENGE);
@@ -215,6 +217,15 @@ namespace PottiRoma.App.ViewModels
                             Parameter = challenge.Parameter,
                             TemporadaId = CurrentSeason.TemporadaId,
                             UsuarioId = new Guid(usuarioId)
+                        });
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                            RegisterClientsPoints = user.RegisterClientsPoints + challenge.Prize,
+                            SalesNumberPoints = user.SalesNumberPoints,
+                            UsuarioId = user.UsuarioId
                         });
                         _hasWonTrophy = true;
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Cadastro de Clientes! Parabéns!", new TimeSpan(0, 0, 4));
