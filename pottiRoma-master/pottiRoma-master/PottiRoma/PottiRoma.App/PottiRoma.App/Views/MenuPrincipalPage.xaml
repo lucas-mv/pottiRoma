@@ -187,7 +187,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_history.png"
+                                Source="maleta.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label
@@ -216,7 +216,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="maleta.png"
+                                Source="ic_rules.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label

@@ -216,10 +216,5 @@ namespace PottiRoma.App.Views
             ContentSalesHistory.BackgroundColor = Color.Transparent;
             ContentSalesHistory.Opacity = ShadedMenuItem;
         }
-
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
     }
 }

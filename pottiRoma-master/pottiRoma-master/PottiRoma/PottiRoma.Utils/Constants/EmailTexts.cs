@@ -33,7 +33,7 @@ A sua senha do App Potti Roma foi redefinida com sucesso para a senha temporári
 
 Com Amor, Potti Roma";
 
-        public static string EMAIL_BIRTHDAY_SUBJECT = @"Felicitações Potti Roma";
+        public static string EMAIL_BIRTHDAY_SUBJECT = @"Feliz novo ano! Feliz vida!";
 
         public static string RESET_PASSWORD_SUBJECT = @"Alteração de Senha";
 

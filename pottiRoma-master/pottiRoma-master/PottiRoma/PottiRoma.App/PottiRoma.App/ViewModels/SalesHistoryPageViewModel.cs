@@ -108,14 +108,18 @@ namespace PottiRoma.App.ViewModels
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 var salesResponse = await TryGetSalesFromCache();
+                salesResponse.Sales.OrderByDescending(sale => sale.SaleDate).ToList();
 
                 AdjustColorsFromSales(salesResponse.Sales);
 
-                SalesList = new ObservableCollection<Sale>(salesResponse.Sales);
-                foreach (var sale in SalesList)
+                var salesDisordered = new List<Sale>(salesResponse.Sales);
+                foreach (var sale in salesDisordered)
                 {
                     sale.CardLabel = sale.ClientName + ", " + sale.SaleDate.ToString("dd/MM/yyyy");
                 }
+                salesDisordered = salesDisordered.OrderByDescending(sale => sale.SaleDate).ToList();
+
+                SalesList = new ObservableCollection<Sale>(salesDisordered);
                 NoData = SalesList.Count < 1 ? true : false;
             }
             catch (Exception ex)

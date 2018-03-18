@@ -28,8 +28,7 @@ namespace PottiRoma.Api.Helpers
             //Define os destinatários do e-mail.
             objEmail.To.Add(emailInvited);
 
-            //Enviar cópia para.
-            //objEmail.CC.Add(emailComCopia);
+            objEmail.CC.Add(emailRemetente);
 
             //Enviar cópia oculta para.
             //objEmail.Bcc.Add(emailComCopiaOculta);
