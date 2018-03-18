@@ -192,7 +192,6 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<UserEntity> GetUserByEmail(string email)
         {
-            await ValidateToken();
             return _userService.GetUserByEmail(email);
         }
 
