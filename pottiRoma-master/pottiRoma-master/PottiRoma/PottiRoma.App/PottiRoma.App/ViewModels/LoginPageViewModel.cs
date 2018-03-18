@@ -90,7 +90,7 @@ namespace PottiRoma.App.ViewModels
             await NavigationHelper.ShowLoading();
             try
             {
-                await _userAppService.ResetPassword(email);
+                await _userAppService.ResetPasswordByEmail(email);
                 UserDialogs.Instance.Toast("Te enviamos um email com uma nova senha!");
             }
             catch
