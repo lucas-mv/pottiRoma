@@ -158,7 +158,7 @@ namespace PottiRoma.App.Repositories.Api
             return response;
         }
 
-        public async Task ResetPasswordByEmail(string email)
+        public async Task ResetPassword(string usuarioId)
         {
             await Policy
              .Handle<WebException>()
@@ -168,7 +168,7 @@ namespace PottiRoma.App.Repositories.Api
                sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
              )
              .ExecuteAsync(async () =>
-                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().ResetPasswordByEmail(email)
+                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().ResetPassword(usuarioId)
               );
         }
 

@@ -49,9 +49,9 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Headers("Authorization: Bearer")]
         Task<User> GetUserByEmail(string email);
 
-        [Get("/User/Profile/Password/Reset/Email/{email}")]
+        [Get("/User/Profile/Password/Reset/{usuarioId}")]
         [Headers("Authorization: Bearer")]
-        Task ResetPasswordByEmail(string email);
+        Task ResetPassword(string usuarioId);
 
         [Get("/User/GetUserInvitePointsForChallenge/{usuarioId}")]
         [Headers("Authorization: Bearer")]

@@ -21,7 +21,7 @@ namespace PottiRoma.App.Services.Interfaces
         Task<GetAppUsersResponse> GetAppUsers();
         Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep);
         Task<User> GetUserByEmail(string email);
-        Task ResetPasswordByEmail(string email);
+        Task ResetPassword(string email);
         Task<int> GetUserInvitePointsForChallenge(string usuarioId);
     }
 }

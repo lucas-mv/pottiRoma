@@ -39,9 +39,9 @@ namespace PottiRoma.App.Services.Implementations
             await UserApiRepository.Get().Logout(usuarioId);
         }
 
-        public async Task ResetPasswordByEmail(string email)
+        public async Task ResetPassword(string usuarioId)
         {
-            await UserApiRepository.Get().ResetPasswordByEmail(email);
+            await UserApiRepository.Get().ResetPassword(usuarioId);
         }
 
         public async Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep)
