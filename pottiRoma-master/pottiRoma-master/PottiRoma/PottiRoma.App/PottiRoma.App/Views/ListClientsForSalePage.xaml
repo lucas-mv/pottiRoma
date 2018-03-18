@@ -20,7 +20,7 @@
         <Image
             Grid.Row="0"
             Aspect="AspectFill"
-            Source="banner_top1.jpg" />
+            Source="banner_minhas_colecionadoras.png" />
 
         <Grid
             Grid.Row="1"

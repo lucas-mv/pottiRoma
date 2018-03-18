@@ -11,6 +11,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>Status</th>
                                 <th>Nome</th>
                                 <th>CPF</th>
                                 <th>Email</th>
@@ -26,6 +27,9 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let salesperson of salespeople">
+                                <td class="reseller-status-container">
+                                    <mat-checkbox class="reseller-status" [(ngModel)]="salesperson.IsActive" (click)="onSalespersonStatusChange(salesperson)"></mat-checkbox>
+                                </td>
                                 <td>{{salesperson.Name}}</td>
                                 <td>{{salesperson.Cpf}}</td>
                                 <td>{{salesperson.Email}}</td>

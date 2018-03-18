@@ -85,5 +85,15 @@ namespace PottiRoma.Services.Implementations
         {
             return UserBusiness.GetUserInvitePointsForChallenge(usuarioId);
         }
+
+        public List<UserEntity> GetAllAppUsers()
+        {
+            return UserBusiness.GetAllAppUsers();
+        }
+
+        public void UpdateUserStatus(Guid userId, bool isActive)
+        {
+            UserBusiness.UpdateUserStatus(userId, isActive);
+        }
     }
 }

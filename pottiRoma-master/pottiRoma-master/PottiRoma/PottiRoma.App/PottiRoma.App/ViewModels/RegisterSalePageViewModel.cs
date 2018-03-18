@@ -8,6 +8,7 @@ using PottiRoma.App.Models.Requests.Trophies;
 using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Models.Responses.Challenges;
 using PottiRoma.App.Models.Responses.GamificationPoints;
+using PottiRoma.App.Models.Responses.Sales;
 using PottiRoma.App.Models.Responses.Seasons;
 using PottiRoma.App.Models.Responses.Trophies;
 using PottiRoma.App.Repositories.Internal;
@@ -138,6 +139,20 @@ namespace PottiRoma.App.ViewModels
             return (SaleRegistered.SaleValue > 0 && SaleRegistered.SalePaidValue >= 0) && (SaleRegistered.ClienteId != null) ? true : false;
         }
 
+        private async Task<GetSalesByUserIdResponse> SaveNewSaleInCache()
+        {
+            var sales = new GetSalesByUserIdResponse();
+            try
+            {
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+                sales = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
+                await CacheAccess.Insert<List<Sale>>(CacheKeys.SALES, sales.Sales);
+            }
+            catch
+            { }
+            return sales;
+        }
+
         private async void SaveSale()
         {
             TimeSpan duration = new TimeSpan(0, 0, 3);
@@ -170,8 +185,7 @@ namespace PottiRoma.App.ViewModels
                             SaleValue = SaleRegistered.SaleValue,
                             Description = SaleRegistered.Description
                         });
-
-                        var userSales = await _salesAppService.GetSalesByUserId(user.UsuarioId.ToString());
+                        var userSales = await SaveNewSaleInCache();
                         float salesValue = 0;
                         int salesCount = 0;
                         int salesNumberPieces = 0;
@@ -227,6 +241,7 @@ namespace PottiRoma.App.ViewModels
                     try
                     {
                         await _salesAppService.UpdateSale(SaleRegistered.VendaId.ToString(), SaleRegistered.SaleValue, SaleRegistered.SalePaidValue, SaleRegistered.NumberSoldPieces, SaleRegistered.Description);
+                        var userSales = await SaveNewSaleInCache();
                         _userDialogs.Toast("Venda Editada com sucesso!");
                     }
                     catch
@@ -273,6 +288,8 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 int myRSalesPoints = 0;
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+
                 try
                 {
                     myRSalesPoints = await CacheAccess.Get<int>(CacheKeys.SALE_POINTS_FOR_CHALLENGE);
@@ -311,6 +328,15 @@ namespace PottiRoma.App.ViewModels
                             Parameter = challenge.Parameter,
                             TemporadaId = CurrentSeason.TemporadaId,
                             UsuarioId = new Guid(usuarioId)
+                        });
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                            RegisterClientsPoints = user.RegisterClientsPoints,
+                            SalesNumberPoints = user.SalesNumberPoints + challenge.Prize,
+                            UsuarioId = user.UsuarioId
                         });
                         _hasWonTrophy = true;
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Vendas Realizadas! Parabéns!", new TimeSpan(0, 0, 4));

@@ -130,10 +130,10 @@ namespace PottiRoma.App.ViewModels
 
         private void CallbackDate(string date)
         {
-            DateTime now = DateTime.Now;
+            DateTime startDate = new DateTime(9999,6,15);
             string[] newDate = date.Split('/');
-            newDate[0] = newDate[0] == "0" ? now.Day.ToString() : newDate[0];
-            newDate[1] = newDate[1] == "0" ? now.Month.ToString() : newDate[1];
+            newDate[0] = newDate[0] == "0" ? startDate.Day.ToString() : newDate[0];
+            newDate[1] = newDate[1] == "0" ? startDate.Month.ToString() : newDate[1];
             date = newDate[0] + "/" + newDate[1];
             ClientSelectedForEdition.Birthdate = new DateTime(9999, int.Parse(newDate[1]), int.Parse(newDate[0]));
             AnniversaryDate = date;
@@ -177,6 +177,8 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 int myRegisterPoints = 0;
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+
                 try
                 {
                     myRegisterPoints = await CacheAccess.Get<int>(CacheKeys.REGISTER_POINTS_FOR_CHALLENGE);
@@ -215,6 +217,15 @@ namespace PottiRoma.App.ViewModels
                             Parameter = challenge.Parameter,
                             TemporadaId = CurrentSeason.TemporadaId,
                             UsuarioId = new Guid(usuarioId)
+                        });
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                            RegisterClientsPoints = user.RegisterClientsPoints + challenge.Prize,
+                            SalesNumberPoints = user.SalesNumberPoints,
+                            UsuarioId = user.UsuarioId
                         });
                         _hasWonTrophy = true;
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Cadastro de Clientes! Parabéns!", new TimeSpan(0, 0, 4));
@@ -286,15 +297,24 @@ namespace PottiRoma.App.ViewModels
                     }
                     else
                     {
-                        await _clientsAppService.UpdateClientInfo(new UpdateClientInfoRequest()
+                        try
                         {
-                            ClienteId = ClientSelectedForEdition.ClienteId,
-                            Birthdate = ClientSelectedForEdition.Birthdate,
-                            Cep = ClientSelectedForEdition.Cep,
-                            Email = ClientSelectedForEdition.Email,
-                            Name = ClientSelectedForEdition.Name,
-                            Telephone = ClientSelectedForEdition.Telephone
-                        });
+                            await _clientsAppService.UpdateClientInfo(new UpdateClientInfoRequest()
+                            {
+                                ClienteId = ClientSelectedForEdition.ClienteId,
+                                Birthdate = ClientSelectedForEdition.Birthdate,
+                                Cep = ClientSelectedForEdition.Cep,
+                                Email = ClientSelectedForEdition.Email,
+                                Name = ClientSelectedForEdition.Name,
+                                Telephone = ClientSelectedForEdition.Telephone
+                            });
+                            var myClients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
+                            await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, myClients.Clients);
+                        }
+                        catch
+                        {
+                            UserDialogs.Instance.Toast("Não foi possível editar sua cliente, verifique sua conexão!");
+                        }
                         UserDialogs.Instance.Toast("Colecionadora editada com sucesso!");
                         try
                         {

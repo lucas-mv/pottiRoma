@@ -1,5 +1,4 @@
 ﻿using Acr.UserDialogs;
-using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using PottiRoma.App.Dtos;
 using PottiRoma.App.Helpers;
@@ -50,6 +49,13 @@ namespace PottiRoma.App.ViewModels
         }
 
         public DelegateCommand<RankingBannerDto> GoToRankingPageCommand { get; set; }
+        public DelegateCommand GoToAvgTicketPageCommand { get; set; }
+        public DelegateCommand GoToRegisterClientsPageCommand { get; set; }
+        public DelegateCommand GoToGeneralRankingPageCommand { get; set; }
+        public DelegateCommand GoToInviteFlowerPageCommand { get; set; }
+        public DelegateCommand GoToEffectedSalesPageCommand { get; set; }
+        public DelegateCommand GoToAvgPiecesForSalePageCommand { get; set; }
+
         public DelegateCommand GoToCurrentChallengesPageCommand { get; set; }
 
         public RankingPageViewModel(
@@ -70,6 +76,79 @@ namespace PottiRoma.App.ViewModels
             _clientsAppService = clientsAppService;
             GoToRankingPageCommand = new DelegateCommand<RankingBannerDto>(GoToRankingPage).ObservesCanExecute(() => CanExecute);
             GoToCurrentChallengesPageCommand = new DelegateCommand(GoToCurrentChallengesPage).ObservesCanExecute(() => CanExecute);
+            GoToAvgPiecesForSalePageCommand = new DelegateCommand(GoToAvgPiecesForSalePage).ObservesCanExecute(() => CanExecute);
+            GoToAvgTicketPageCommand = new DelegateCommand(GoToAvgTicketPage).ObservesCanExecute(() => CanExecute);
+            GoToEffectedSalesPageCommand = new DelegateCommand(GoToEffectedSalesPage).ObservesCanExecute(() => CanExecute);
+            GoToGeneralRankingPageCommand = new DelegateCommand(GoToGeneralRankingPage).ObservesCanExecute(() => CanExecute);
+            GoToInviteFlowerPageCommand = new DelegateCommand(GoToInviteFlowerPage).ObservesCanExecute(() => CanExecute);
+            GoToRegisterClientsPageCommand = new DelegateCommand(GoToRegisterClientsPage).ObservesCanExecute(() => CanExecute);
+            InitializeRankings();
+        }
+
+        private async void GoToGeneralRankingPage()
+        {
+            CanExecuteInitial();
+            await NavigationHelper.ShowLoading();
+            NavigationParameters parameters = new NavigationParameters();
+            CarouselBannerType rankingType = CarouselBannerType.Total;
+            parameters.Add(NavigationKeyParameters.RankingType, rankingType);
+            await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
+            CanExecuteEnd();
+        }
+
+        private async void GoToAvgPiecesForSalePage()
+        {
+            CanExecuteInitial();
+            await NavigationHelper.ShowLoading();
+            NavigationParameters parameters = new NavigationParameters();
+            CarouselBannerType rankingType = CarouselBannerType.AveragePiecesForSale;
+            parameters.Add(NavigationKeyParameters.RankingType, rankingType);
+            await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
+            CanExecuteEnd();
+        }
+
+        private async void GoToAvgTicketPage()
+        {
+            CanExecuteInitial();
+            await NavigationHelper.ShowLoading();
+            NavigationParameters parameters = new NavigationParameters();
+            CarouselBannerType rankingType = CarouselBannerType.AverageTicket;
+            parameters.Add(NavigationKeyParameters.RankingType, rankingType);
+            await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
+            CanExecuteEnd();
+        }
+
+        private async void GoToEffectedSalesPage()
+        {
+            CanExecuteInitial();
+            await NavigationHelper.ShowLoading();
+            NavigationParameters parameters = new NavigationParameters();
+            CarouselBannerType rankingType = CarouselBannerType.RegisteredSales;
+            parameters.Add(NavigationKeyParameters.RankingType, rankingType);
+            await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
+            CanExecuteEnd();
+        }
+
+        private async void GoToInviteFlowerPage()
+        {
+            CanExecuteInitial();
+            await NavigationHelper.ShowLoading();
+            NavigationParameters parameters = new NavigationParameters();
+            CarouselBannerType rankingType = CarouselBannerType.RegisterAlliedFlowers;
+            parameters.Add(NavigationKeyParameters.RankingType, rankingType);
+            await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
+            CanExecuteEnd();
+        }
+
+        private async void GoToRegisterClientsPage()
+        {
+            CanExecuteInitial();
+            await NavigationHelper.ShowLoading();
+            NavigationParameters parameters = new NavigationParameters();
+            CarouselBannerType rankingType = CarouselBannerType.RegisterClients;
+            parameters.Add(NavigationKeyParameters.RankingType, rankingType);
+            await _navigationService.NavigateAsync(NavigationSettings.ListRanking, parameters);
+            CanExecuteEnd();
         }
 
         private async void GoToCurrentChallengesPage()
@@ -124,7 +203,6 @@ namespace PottiRoma.App.ViewModels
         {
             CanExecuteInitial();
             await NavigationHelper.ShowLoading();
-            await Task.Delay(2000);
             NavigationParameters parameters = new NavigationParameters();
             CarouselBannerType convertedIndex = ConvertIndexToEnumHelper.Convert(obj.Index);
             parameters.Add(NavigationKeyParameters.RankingType, convertedIndex);
@@ -136,15 +214,14 @@ namespace PottiRoma.App.ViewModels
         {
             base.OnNavigatedTo(parameters);
             SelectedIndex = 2;
-
         }
 
-        public async Task InitializeRankings()
+        private void InitializeRankings()
         {
             RankingDto = new ObservableCollection<RankingBannerDto>();
             RankingDto.Add(new RankingBannerDto()
             {
-                Image = "ranking_semana.png",
+                Image = "ranking_ticket.png",
                 Description = "TICKET MÉDIO",
                 Index = 0
             });
@@ -156,7 +233,7 @@ namespace PottiRoma.App.ViewModels
             });
             RankingDto.Add(new RankingBannerDto()
             {
-                Image = "banner_ranking2.png",
+                Image = "banner_ranking_geral.png",
                 Description = "RANKING GERAL",
                 Index = 2
             });
@@ -168,7 +245,7 @@ namespace PottiRoma.App.ViewModels
             });
             RankingDto.Add(new RankingBannerDto()
             {
-                Image = "ranking_dia.png",
+                Image = "ranking_atendimento.png",
                 Description = "VENDAS EFETUADAS",
                 Index = 4
             });

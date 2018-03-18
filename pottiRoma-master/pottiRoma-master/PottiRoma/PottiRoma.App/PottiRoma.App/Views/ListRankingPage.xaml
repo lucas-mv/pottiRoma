@@ -23,9 +23,9 @@
                 <RowDefinition Height="16" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="20" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="120" />
             </Grid.ColumnDefinitions>
 
             <Label
@@ -85,9 +85,9 @@
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="20" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="120" />
                             </Grid.ColumnDefinitions>
 
                             <Label
@@ -113,7 +113,7 @@
                                 <Label
                                     FontSize="{StaticResource StandardFontSize}"
                                     HorizontalOptions="Start"
-                                    Text="{Binding TotalPoints}"
+                                    Text="{Binding ListRankingPoints}"
                                     TextColor="{StaticResource TextColor}"
                                     VerticalOptions="Center" />
                                 <Image

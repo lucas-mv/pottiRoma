@@ -20,11 +20,11 @@ namespace PottiRoma.App.Views
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-            Device.BeginInvokeOnMainThread(async () => 
+            Device.BeginInvokeOnMainThread(async () =>
             {
-                await ViewModel.InitializeRankings();
+                await ScrollImages.ScrollToAsync(605, 605, true);
             });
+            base.OnAppearing();
         }
     }
 }

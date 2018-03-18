@@ -35,7 +35,7 @@
             <Image
                 Grid.Row="0"
                 Aspect="AspectFill"
-                Source="popup.png" />
+                Source="banner_popup_aniversario.png" />
             <StackLayout
                 Grid.Row="1"
                 Margin="16"
