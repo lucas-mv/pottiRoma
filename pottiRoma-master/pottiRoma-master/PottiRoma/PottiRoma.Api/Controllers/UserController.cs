@@ -130,9 +130,9 @@ namespace PottiRoma.Api.Controllers
 
         [HttpPost]
         [Route("SendEmail")]
-        public async void SendEmail(string emailInvited,string nameInvited, string nameUser, string cpf, string telephone, string cep)
+        public async void SendEmail(string emailInvited,string nameInvited, string nameUser, string cpf, string telephone, string cep, string emailInviter)
         {
-            EmailInvite.Enviar(emailInvited, nameInvited, nameUser, cpf, telephone, cep);
+            EmailInvite.Enviar(emailInvited, nameInvited, nameUser, cpf, telephone, cep, emailInviter);
         }
 
         [HttpPost]

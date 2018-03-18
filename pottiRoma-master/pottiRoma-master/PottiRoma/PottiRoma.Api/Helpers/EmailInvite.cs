@@ -9,7 +9,7 @@ namespace PottiRoma.Api.Helpers
 {
     public static class EmailInvite
     {
-        public static async void Enviar(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep)
+        public static async void Enviar(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep, string emailInviter)
         {
             //Define os dados do e-mail
             string nomeRemetente = "Administrativo Potti Roma";
@@ -29,6 +29,7 @@ namespace PottiRoma.Api.Helpers
             objEmail.To.Add(emailInvited);
 
             objEmail.CC.Add(emailRemetente);
+            objEmail.CC.Add(emailInviter);
 
             //Enviar cópia oculta para.
             //objEmail.Bcc.Add(emailComCopiaOculta);
