@@ -22,9 +22,10 @@
                         Spacing="-10"
                         VerticalOptions="Start">
                         <Image
+                            Margin="20,0,20,0"
                             Aspect="AspectFit"
                             HeightRequest="90"
-                            Source="foto_perfil.png" />
+                            Source="connect_white.png" />
                         <Grid HeightRequest="40" />
 
                         <Grid

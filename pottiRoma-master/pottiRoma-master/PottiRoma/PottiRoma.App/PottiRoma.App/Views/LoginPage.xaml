@@ -48,8 +48,8 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         Aspect="AspectFit"
-                        HeightRequest="110"
-                        Source="logo_login.png"
+                        HeightRequest="120"
+                        Source="connect_orange_tg.png"
                         VerticalOptions="Start" />
 
                     <StackLayout Grid.Row="2" Grid.Column="1">

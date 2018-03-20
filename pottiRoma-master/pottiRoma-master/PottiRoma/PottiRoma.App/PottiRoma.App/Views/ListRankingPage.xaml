@@ -59,7 +59,7 @@
                     VerticalOptions="Center" />
                 <Image
                     HeightRequest="30"
-                    Source="ic_trophy_white.png"
+                    Source="ic_trofeu.png"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </StackLayout>
