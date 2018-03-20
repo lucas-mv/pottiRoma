@@ -204,8 +204,13 @@ namespace PottiRoma.App.ViewModels
                                                         user.InviteAllyFlowersPoints + 
                                                         user.AverageItensPerSalePoints + 
                                                         user.AverageTicketPoints).ToString();
+                            user.TotalPoints = (user.SalesNumberPoints +
+                                                        user.RegisterClientsPoints +
+                                                        user.InviteAllyFlowersPoints +
+                                                        user.AverageItensPerSalePoints +
+                                                        user.AverageTicketPoints);
                         }
-                        users = users.OrderByDescending(u => u.ListRankingPoints).ToList().GetRange(0, 5);
+                        users = users.OrderByDescending(u => u.TotalPoints).ToList().GetRange(0, 5);
                         break;
                 }
                 foreach (var user in users)
