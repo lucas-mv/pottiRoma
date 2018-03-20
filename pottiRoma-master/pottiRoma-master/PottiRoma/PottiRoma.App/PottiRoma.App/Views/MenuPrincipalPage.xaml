@@ -25,7 +25,8 @@
                             Margin="20,0,20,0"
                             Aspect="AspectFit"
                             HeightRequest="90"
-                            Source="connect_white.png" />
+                            Opacity="0.4"
+                            Source="ic_menu_top.png" />
                         <Grid HeightRequest="40" />
 
                         <Grid
