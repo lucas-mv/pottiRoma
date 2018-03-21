@@ -2424,8 +2424,26 @@ namespace PottiRoma.App.Droid
 			// aapt resource value: 0x7f020055
 			public const int avd_hide_password = 2130837589;
 			
+			// aapt resource value: 0x7f020193
+			public const int avd_hide_password_1 = 2130837907;
+			
+			// aapt resource value: 0x7f020194
+			public const int avd_hide_password_2 = 2130837908;
+			
+			// aapt resource value: 0x7f020195
+			public const int avd_hide_password_3 = 2130837909;
+			
 			// aapt resource value: 0x7f020056
 			public const int avd_show_password = 2130837590;
+			
+			// aapt resource value: 0x7f020196
+			public const int avd_show_password_1 = 2130837910;
+			
+			// aapt resource value: 0x7f020197
+			public const int avd_show_password_2 = 2130837911;
+			
+			// aapt resource value: 0x7f020198
+			public const int avd_show_password_3 = 2130837912;
 			
 			// aapt resource value: 0x7f020057
 			public const int banner_atendimento_ranking = 2130837591;

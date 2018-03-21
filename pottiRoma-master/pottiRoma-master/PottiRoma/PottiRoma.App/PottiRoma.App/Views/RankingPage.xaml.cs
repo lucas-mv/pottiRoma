@@ -22,7 +22,7 @@ namespace PottiRoma.App.Views
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await ScrollImages.ScrollToAsync(605, 605, true);
+                await ScrollImages.ScrollToAsync(605, 0, true);
             });
             base.OnAppearing();
         }

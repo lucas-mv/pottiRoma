@@ -113,11 +113,6 @@
     <BundleResource Include="Resources\sync_smb.json" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-60%403x.png" />
     <BundleResource Include="Resources\Icon-76.png" />
@@ -300,7 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PottiRoma.App\PottiRoma.App.csproj">
-      <Project>{99030915-a550-49e5-bb70-3e271a42d837}</Project>
+      <Project>{49C52089-B188-439C-B94B-D2AAFC91EA87}</Project>
       <Name>PottiRoma.App</Name>
     </ProjectReference>
   </ItemGroup>
@@ -539,27 +534,6 @@
     <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\ItunesArtwork@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Default-568h@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Default-Portrait.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Default-Portrait@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Default@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\splash_portrait_1024_768.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\splash_portrait_2048_1536.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Resources\SplashScreen.xcassets\AppIcons.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -584,6 +558,12 @@
     <ImageAsset Include="Resources\SplashScreen.xcassets\LaunchImages.launchimage\splash_portrait_2048_1536.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default.png" />
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default%402x.png" />
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default-568h%402x.png" />
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default-Portrait.png" />
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-App-20x20%401x.png" />

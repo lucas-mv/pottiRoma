@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="PottiRoma.App.Views.RegisterClientsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -9,7 +9,8 @@
     xmlns:renderers="clr-namespace:PottiRoma.App.CustomRenderers"
     Title="{Binding PageTitle}"
     prism:ViewModelLocator.AutowireViewModel="True"
-    BackgroundColor="{StaticResource DarkBackgroundColor}">
+    BackgroundColor="{StaticResource DarkBackgroundColor}"
+    NavigationPage.BackButtonTitle = "Voltar">
 
     <ScrollView>
 

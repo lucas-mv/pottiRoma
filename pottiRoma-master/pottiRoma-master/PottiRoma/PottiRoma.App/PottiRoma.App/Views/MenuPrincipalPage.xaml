@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage
     x:Class="PottiRoma.App.Views.MenuPrincipalPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -11,7 +11,7 @@
     Icon="ic_menu_white.png">
 
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu" Icon="ic_menu_white.png">
+        <ContentPage Title="Menu" Icon="ic_menu_white.png" NavigationPage.BackButtonTitle = "Voltar">
             <ScrollView>
                 <Grid
                     BackgroundColor="{StaticResource BackgroundMenuColor}"

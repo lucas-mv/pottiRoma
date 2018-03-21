@@ -44,8 +44,6 @@
 		<string>Icon-Small@2x</string>
 		<string>Icon-Small@3x</string>
 	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>(not set)</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>XSAppIconAssets</key>
@@ -54,7 +52,15 @@
 	<string>9.2</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
+	<key>CFBundleName</key>
+	<string>PottiRoma.App</string>
 	<key>XSLaunchImageAssets</key>
-	<string>Resources/SplashScreen.xcassets/LaunchImages.launchimage</string>
+	<string>Resources/Media.xcassets/LaunchImage.launchimage</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>pt-BR</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>pt-BR</string>
 </dict>
 </plist>
