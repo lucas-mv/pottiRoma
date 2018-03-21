@@ -48,7 +48,7 @@ namespace PottiRoma.App.ViewModels
                 foreach (var trophy in (List<Trophy>)parameters[NavigationKeyParameters.MyTrophies])
                 {
                     MyTrophies.Add(trophy);
-                    trophy.DescriptionFormatted = TrophyDescriptionHelper.GetDescription(trophy.Parameter, trophy.Goal, trophy.StartDate, trophy.EndDate);
+                    trophy.DescriptionFormatted = TrophyDescriptionHelper.GetDescription(trophy.Parameter, trophy.Prize, trophy.StartDate, trophy.EndDate);
                     trophy.ImageSource = TrophyDescriptionHelper.GetImageSource(trophy.Parameter);
                 }
             }

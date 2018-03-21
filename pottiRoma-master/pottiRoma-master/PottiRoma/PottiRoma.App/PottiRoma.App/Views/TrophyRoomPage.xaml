@@ -31,7 +31,7 @@
 
                 <syncfusion:SfListView
                     HorizontalOptions="Fill"
-                    ItemSize="115"
+                    ItemSize="180"
                     ItemSpacing="10"
                     ItemsSource="{Binding MyTrophies}"
                     SelectionBackgroundColor="Transparent"
@@ -43,7 +43,7 @@
                                     Padding="0"
                                     BackgroundColor="White"
                                     HasShadow="True"
-                                    HeightRequest="140"
+                                    HeightRequest="170"
                                     OutlineColor="{Binding OutlineColor}"
                                     VerticalOptions="Start">
                                     <Grid Margin="0">
@@ -51,12 +51,7 @@
                                             <ColumnDefinition Width="95" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Image
-                                            Grid.Column="0"
-                                            Grid.ColumnSpan="2"
-                                            Margin="0"
-                                            Aspect="AspectFill"
-                                            Source="rectangle_13.png" />
+
                                         <ContentView
                                             Grid.Column="0"
                                             Margin="0"
@@ -64,9 +59,7 @@
                                         <Image
                                             Margin="12"
                                             Aspect="AspectFit"
-                                            HorizontalOptions="Center"
-                                            Source="{Binding ImageSource}"
-                                            VerticalOptions="Center" />
+                                            Source="{Binding ImageSource}" />
                                         <Label
                                             Grid.Column="1"
                                             Margin="8,0,8,0"

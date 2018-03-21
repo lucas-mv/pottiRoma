@@ -10,7 +10,7 @@ namespace PottiRoma.Business.Trophies
 {
     public class TrophiesBusiness
     {
-        public static void InsertNewTrophy(Guid desafioId, Guid usuarioId, Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal)
+        public static void InsertNewTrophy(Guid desafioId, Guid usuarioId, Guid temporadaId, string name, DateTime startDate, DateTime endDate, int parameter, int goal, int prize)
         {
             var newTrophy = new TrophyEntity()
             {
@@ -22,6 +22,7 @@ namespace PottiRoma.Business.Trophies
                 EndDate = endDate,
                 Parameter = parameter,
                 Goal = goal,
+                Prize = prize
             };
 
             TrophiesRepository.Get().InsertNewTrophy(newTrophy);

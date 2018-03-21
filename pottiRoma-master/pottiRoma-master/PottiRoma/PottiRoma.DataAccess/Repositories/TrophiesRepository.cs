@@ -36,7 +36,8 @@ namespace PottiRoma.DataAccess.Repositories
             StartDate as StartDate,
             EndDate as EndDate,
             Parameter as Parameter,
-            Goal as Goal
+            Goal as Goal,
+            Prize as Prize
         FROM dbo.Trofeus
         WHERE UsuarioId = @usuarioid
         ";
@@ -55,7 +56,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        StartDate, 
 	        EndDate, 
 	        Parameter, 
-            Goal
+            Goal,
+            Prize
         )
         VALUES 
         (
@@ -66,7 +68,8 @@ namespace PottiRoma.DataAccess.Repositories
 	        @startdate, 
 	        @enddate, 
 	        @parameter,
-            @goal
+            @goal,
+            @prize
         )";
 
         #endregion
@@ -85,6 +88,7 @@ namespace PottiRoma.DataAccess.Repositories
             parameters.Add("@enddate", trophy.EndDate, System.Data.DbType.DateTime);
             parameters.Add("@parameter", trophy.Parameter, System.Data.DbType.Int16);
             parameters.Add("@goal", trophy.Goal, System.Data.DbType.Int16);
+            parameters.Add("@prize", trophy.Prize, System.Data.DbType.Int16);
 
             Execute(INSERT_NEW_TROPHY, parameters);
         }

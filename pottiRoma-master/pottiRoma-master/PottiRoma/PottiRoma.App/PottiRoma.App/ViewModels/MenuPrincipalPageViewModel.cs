@@ -25,6 +25,8 @@ namespace PottiRoma.App.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly IUserAppService _userAppService;
         private readonly ITrophyAppService _trophyAppService;
+        private readonly IChallengesAppService _challengesAppService;
+        private readonly ISeasonAppService _seasonAppService;
 
         private string _title;
         public string Title
@@ -48,12 +50,14 @@ namespace PottiRoma.App.ViewModels
             INavigationService navigationService,
             IUserDialogs userDialogs,
             IUserAppService userAppService,
-            ITrophyAppService trophyAppService)
+            ITrophyAppService trophyAppService,
+            IChallengesAppService challengesAppService)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
             _userAppService = userAppService;
             _trophyAppService = trophyAppService;
+            _challengesAppService = challengesAppService;
 
             GoToInviteFlowerCommand = new DelegateCommand(GoToInviteFlower).ObservesCanExecute(() => CanExecute);
             GoToRankingCommand = new DelegateCommand(GoToRanking).ObservesCanExecute(() => CanExecute);

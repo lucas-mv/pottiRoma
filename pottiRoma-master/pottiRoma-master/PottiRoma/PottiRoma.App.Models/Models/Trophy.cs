@@ -87,6 +87,13 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _imageSource, value); }
         }
 
+        private int _prize;
+        public int Prize
+        {
+            get { return _prize; }
+            set { SetProperty(ref _prize, value); }
+        }
+
         #endregion
     }
 }
