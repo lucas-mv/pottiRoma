@@ -891,6 +891,192 @@
   <ItemGroup>
     <BundleResource Include="Resources\cabide_pimenta.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_flor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_manequim_ranking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_minhas_colecionadoras_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_porquinho_ranking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_varal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\card_trophy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_modal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\connect_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\connect_orange_tg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\connect_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\connect_white_tg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_account_circle_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_attach_money_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_create_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_email_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_home_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_insert_invitation_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_sala_trofeu_caramelo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_sala_trofeu_verde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_sala_trofeu_vermelho.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_settings_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splashscreen_android.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_atendimento_ranking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_colecionadoras_ranking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_desafio_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_varal%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_modal%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\connect_orange%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\connect_orange_tg%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\connect_white%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\connect_white_tg%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\edit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_account_circle_white_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_attach_money_white_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_create_white_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_email_black_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_home_white_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_insert_invitation_white_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_top%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_menu_white%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_sala_trofeu_caramelo%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_sala_trofeu_verde%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_sala_trofeu_vermelho%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_settings_white_24dp%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rectangle_13%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\right%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splashscreen_android%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_atendimento_ranking%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_colecionadoras_ranking%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_desafio_2%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_flor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_manequim_ranking%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_minhas_colecionadoras_2%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner_porquinho_ranking%402x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

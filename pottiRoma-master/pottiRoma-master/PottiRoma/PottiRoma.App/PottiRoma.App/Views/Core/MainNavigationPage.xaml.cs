@@ -9,6 +9,7 @@ namespace PottiRoma.App.Views.Core
             InitializeComponent();
             this.BarBackgroundColor = Color.FromHex("#ffd195");
             this.BarTextColor = Color.White;
+            NavigationPage.SetBackButtonTitle(this, "");
         }
     }
 }

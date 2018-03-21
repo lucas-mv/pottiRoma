@@ -11,6 +11,7 @@ namespace PottiRoma.App.Views
         {
             InitializeComponent();
             SetInitialScreenState();
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         private void SetInitialScreenState()
