@@ -320,7 +320,8 @@ namespace PottiRoma.App.ViewModels
                             Name = challenge.Name,
                             Parameter = challenge.Parameter,
                             TemporadaId = CurrentSeason.TemporadaId,
-                            UsuarioId = new Guid(usuarioId)
+                            UsuarioId = new Guid(usuarioId),
+                            Prize = challenge.Prize
                         });
                         await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
                         {
