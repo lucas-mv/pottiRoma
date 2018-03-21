@@ -13,7 +13,7 @@ namespace PottiRoma.App.Helpers
         {
             for (int i = 0; i < challenges.Challenges.Count; i++)
             {
-                if (challenges.Challenges[i].EndDate < DateTime.Now)
+                if (challenges.Challenges[i].EndDate < DateTime.Now && challenges.Challenges[i].StartDate > DateTime.Now)
                     challenges.Challenges.RemoveAt(i);
             }
             return challenges;

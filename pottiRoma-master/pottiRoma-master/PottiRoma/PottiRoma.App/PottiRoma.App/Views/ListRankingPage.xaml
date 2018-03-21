@@ -16,7 +16,7 @@
             <RowDefinition Height="150" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Image Aspect="AspectFill" Source="banner_flor.png" />
+        <Image Aspect="AspectFill" Source="{Binding ImageSource}" />
         <Grid Margin="16,0,16,0" VerticalOptions="End">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

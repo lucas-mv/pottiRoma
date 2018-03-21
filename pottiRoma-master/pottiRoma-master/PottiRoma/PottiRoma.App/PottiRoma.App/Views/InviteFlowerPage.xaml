@@ -28,7 +28,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Aspect="AspectFill"
-                Source="convidar_flor_aliada.png" />
+                Source="banner_flor.png" />
 
 
             <StackLayout

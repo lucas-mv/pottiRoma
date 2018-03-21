@@ -54,6 +54,7 @@
     <Compile Include="Helpers\PopupAnniversaryHelper.cs" />
     <Compile Include="Helpers\ResetPasswordPopupHelper.cs" />
     <Compile Include="Helpers\SelectActualChallenges.cs" />
+    <Compile Include="Helpers\TrophyDescriptionHelper.cs" />
     <Compile Include="Insights\InsightsActionNames.cs" />
     <Compile Include="Insights\InsightsPagesNames.cs" />
     <Compile Include="Insights\InsightsTypeEvents.cs" />

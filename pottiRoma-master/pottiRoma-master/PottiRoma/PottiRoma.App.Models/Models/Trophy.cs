@@ -73,6 +73,20 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _description, value); }
         }
 
+        private string _descriptionFormatted;
+        public string DescriptionFormatted
+        {
+            get { return _descriptionFormatted; }
+            set { SetProperty(ref _descriptionFormatted, value); }
+        }
+
+        private string _imageSource;
+        public string ImageSource
+        {
+            get { return _imageSource; }
+            set { SetProperty(ref _imageSource, value); }
+        }
+
         #endregion
     }
 }

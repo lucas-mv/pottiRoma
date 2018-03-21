@@ -64,14 +64,14 @@
                                         <Image
                                             Margin="16"
                                             Aspect="AspectFit"
-                                            Source="placeholder_trophy.png" />
+                                            Source="{Binding ImageSource}" />
                                         <Label
                                             Grid.Column="1"
                                             Margin="8,0,8,0"
                                             FontSize="{StaticResource StandardFontSize}"
                                             HorizontalOptions="Center"
                                             HorizontalTextAlignment="Start"
-                                            Text="{Binding Description}"
+                                            Text="{Binding DescriptionFormatted}"
                                             TextColor="{StaticResource LightTextColor}"
                                             VerticalOptions="Center"
                                             VerticalTextAlignment="Center" />

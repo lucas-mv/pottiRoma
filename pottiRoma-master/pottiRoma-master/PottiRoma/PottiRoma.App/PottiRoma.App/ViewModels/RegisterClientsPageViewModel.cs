@@ -156,19 +156,10 @@ namespace PottiRoma.App.ViewModels
             user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
             try
             {
-                currentSeasonReponse.Entity = await CacheAccess.GetSecure<Season>(CacheKeys.SEASON_KEY);
-                currentChallenges.Challenges = await CacheAccess.Get<List<Challenge>>(CacheKeys.CHALLENGES);
-                myTrophies.Trophies = await CacheAccess.Get<List<Trophy>>(CacheKeys.TROPHIES);
+                currentSeasonReponse = await _seasonAppService.CurrentSeason();
             }
             catch
-            {
-                currentSeasonReponse = await _seasonAppService.CurrentSeason();
-                await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
-                currentChallenges = await _challengesAppService.GetCurrentChallenges(currentSeasonReponse.Entity.TemporadaId.ToString());
-                await CacheAccess.Insert<List<Challenge>>(CacheKeys.CHALLENGES, currentChallenges.Challenges);
-                myTrophies = await _trophyAppService.GetCurrentTrophies(user.UsuarioId.ToString());
-                await CacheAccess.Insert<List<Trophy>>(CacheKeys.TROPHIES, myTrophies.Trophies);
-            }
+            {}
             await CheckRegisterChallengeCompleted(myTrophies.Trophies, user.UsuarioId.ToString(), currentChallenges.Challenges, currentSeasonReponse.Entity);
         }
 

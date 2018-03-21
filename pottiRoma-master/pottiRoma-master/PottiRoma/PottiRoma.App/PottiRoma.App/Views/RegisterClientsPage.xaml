@@ -24,7 +24,7 @@
             <Image
                 Aspect="AspectFill"
                 HeightRequest="150"
-                Source="banner_registro_colecionadoras.png" />
+                Source="banner_colecionadoras_ranking.png" />
 
             <StackLayout
                 Grid.Row="1"

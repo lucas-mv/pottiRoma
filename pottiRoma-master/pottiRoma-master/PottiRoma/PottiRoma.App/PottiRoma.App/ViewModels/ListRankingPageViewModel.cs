@@ -49,6 +49,13 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        private string _imageSource;
+        public string ImageSource
+        {
+            get { return _imageSource; }
+            set { SetProperty(ref _imageSource, value); }
+        }
+
         public ListRankingPageViewModel(
             INavigationService navigationService,
             IUserDialogs userDialogs,
@@ -67,6 +74,7 @@ namespace PottiRoma.App.ViewModels
             {
                 case CarouselBannerType.AverageTicket:
                     Title = "Ticket Médio";
+                    ImageSource = "banner_porquinho_ranking.png";
                     foreach (var users in AppUsers)
                     users.TotalPoints = users.AverageTicketPoints;
                     try
@@ -80,6 +88,7 @@ namespace PottiRoma.App.ViewModels
                     break;
                 case CarouselBannerType.RegisterClients:
                     Title = "Cadastro de Colecionadoras";
+                    ImageSource = "banner_colecionadoras_ranking.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.RegisterClientsPoints;
                     try
@@ -93,6 +102,7 @@ namespace PottiRoma.App.ViewModels
                     break;
                 case CarouselBannerType.AveragePiecesForSale:
                     Title = "Peças por Atendimento";
+                    ImageSource = "banner_varal.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.AverageItensPerSalePoints;
                     try
@@ -106,6 +116,7 @@ namespace PottiRoma.App.ViewModels
                     break;
                 case CarouselBannerType.RegisterAlliedFlowers:
                     Title = "Cadastro de Flores Aliadas";
+                    ImageSource = "banner_flor.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.InviteAllyFlowersPoints;
                     try
@@ -119,6 +130,7 @@ namespace PottiRoma.App.ViewModels
                     break;
                 case CarouselBannerType.RegisteredSales:
                     Title = "Atendimento";
+                    ImageSource = "banner_atendimento_ranking.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.SalesNumberPoints;
                     try
@@ -132,6 +144,7 @@ namespace PottiRoma.App.ViewModels
                     break;
                 case CarouselBannerType.Total:
                     Title = "Geral";
+                    ImageSource = "banner_manequim_ranking.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.AverageItensPerSalePoints + users.AverageTicketPoints + users.RegisterClientsPoints + users.InviteAllyFlowersPoints + users.SalesNumberPoints;
                     break;
