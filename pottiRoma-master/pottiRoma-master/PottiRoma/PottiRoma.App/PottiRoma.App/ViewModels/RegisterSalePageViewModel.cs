@@ -159,10 +159,10 @@ namespace PottiRoma.App.ViewModels
 
             if (IsSaleValid())
             {
+                await NavigationHelper.ShowLoading();
                 if (!_isEditSale)
                 {
                     CanExecuteInitial();
-                    await NavigationHelper.ShowLoading();
                     try
                     {
                         var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
@@ -251,6 +251,7 @@ namespace PottiRoma.App.ViewModels
                     finally
                     {
                         await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                        await NavigationHelper.PopLoading();
                     }
                 }
             }
