@@ -43,7 +43,7 @@
                                     Padding="0"
                                     BackgroundColor="White"
                                     HasShadow="True"
-                                    HeightRequest="110"
+                                    HeightRequest="140"
                                     OutlineColor="{Binding OutlineColor}"
                                     VerticalOptions="Start">
                                     <Grid Margin="0">
@@ -62,9 +62,11 @@
                                             Margin="0"
                                             BackgroundColor="{StaticResource LightBackgroundColor}" />
                                         <Image
-                                            Margin="16"
+                                            Margin="12"
                                             Aspect="AspectFit"
-                                            Source="{Binding ImageSource}" />
+                                            HorizontalOptions="Center"
+                                            Source="{Binding ImageSource}"
+                                            VerticalOptions="Center" />
                                         <Label
                                             Grid.Column="1"
                                             Margin="8,0,8,0"

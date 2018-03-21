@@ -11,12 +11,9 @@ namespace PottiRoma.App.Helpers
     {
         public static GetCurrentChallengesResponse Select(GetCurrentChallengesResponse challenges)
         {
-            for (int i = 0; i < challenges.Challenges.Count; i++)
-            {
-                if (challenges.Challenges[i].EndDate < DateTime.Now && challenges.Challenges[i].StartDate > DateTime.Now)
-                    challenges.Challenges.RemoveAt(i);
-            }
-            return challenges;
+            var response = new GetCurrentChallengesResponse();
+            response.Challenges = challenges.Challenges.OrderByDescending(challenge => challenge.StartDate).Where(challenge => challenge.StartDate < DateTime.Now && challenge.EndDate > DateTime.Now).ToList();
+            return response;
         }
     }
 }
