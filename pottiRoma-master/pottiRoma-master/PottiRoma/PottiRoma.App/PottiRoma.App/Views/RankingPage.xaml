@@ -17,27 +17,11 @@
                         <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToRankingPageCommand, Source={x:Reference PageContent}}" CommandParameter="{Binding .}" />
                     </Grid.GestureRecognizers>
                     <Image Aspect="AspectFill" Source="{Binding Image}" />
-                    <ContentView
-                        Margin="0"
-                        BackgroundColor="Black"
-                        IsEnabled="False"
-                        Opacity="0.3" />
-                    <Label
-                        Margin="16,50,16,16"
-                        FontAttributes="Bold"
-                        FontSize="{StaticResource StandardFontSize}"
-                        HeightRequest="90"
-                        HorizontalOptions="Start"
-                        HorizontalTextAlignment="Start"
-                        Text="{Binding Description}"
-                        TextColor="{StaticResource LightBackgroundColor}"
-                        VerticalOptions="Start"
-                        VerticalTextAlignment="Start" />
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentView x:Name="PageContent" BackgroundColor="{StaticResource LightBackgroundColor}">
+    <ContentView x:Name="PageContent" BackgroundColor="{StaticResource WhiteColor}">
         <Grid ColumnSpacing="12" RowSpacing="12">
             <Grid.RowDefinitions>
                 <RowDefinition Height="12" />
@@ -50,58 +34,19 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="12" />
             </Grid.ColumnDefinitions>
-            <Image
-                Grid.Row="1"
-                Grid.Column="1"
-                Aspect="AspectFill"
-                Source="ranking_geral.png" />
-            <ContentView
-                Grid.Row="1"
-                Grid.Column="1"
-                Margin="0"
-                BackgroundColor="Black"
-                Opacity="0.3" />
 
             <Grid Grid.Row="1" Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
+                <Image
+                    Margin="0"
+                    Aspect="Fill"
+                    Source="banner_desafios.png" />
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoToCurrentChallengesPageCommand}" />
                 </Grid.GestureRecognizers>
-                <StackLayout Grid.Row="1">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="{StaticResource UltraLargeFontSize}"
-                        HorizontalOptions="Center"
-                        Text="DESAFIOS DA TEMPORADA"
-                        TextColor="{StaticResource LightBackgroundColor}"
-                        VerticalOptions="Center" />
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="{StaticResource SuperLargeFontSize}"
-                        HorizontalOptions="Center"
-                        Text="POTTI ROMÃ"
-                        TextColor="{StaticResource LightBackgroundColor}"
-                        VerticalOptions="Center" />
-                </StackLayout>
-
-                <Label
-                    Grid.Row="2"
-                    Margin="10,0,10,0"
-                    FontAttributes="Bold"
-                    FontSize="{StaticResource StandardFontSize}"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="Clique aqui para ver os desafios da Temporada!"
-                    TextColor="{StaticResource LightBackgroundColor}"
-                    VerticalOptions="Center" />
 
             </Grid>
 
-            <sfcarousel:SfCarousel
+            <!--<sfcarousel:SfCarousel
                 Grid.Row="2"
                 Grid.Column="1"
                 ItemHeight="350"
@@ -109,7 +54,70 @@
                 ItemWidth="220"
                 ItemsSource="{Binding RankingDto}"
                 RotationAngle="0"
-                SelectedIndex="2" />
+                SelectedIndex="2" />-->
+
+            <ScrollView
+                x:Name="ScrollImages"
+                Grid.Row="2"
+                Grid.Column="1"
+                HeightRequest="350"
+                Orientation="Horizontal">
+                <StackLayout
+                    x:Name="ContentItens"
+                    HeightRequest="350"
+                    Orientation="Horizontal"
+                    Spacing="20"
+                    WidthRequest="1300">
+                    <Image
+                        Aspect="AspectFill"
+                        Source="ranking_ticket.png"
+                        WidthRequest="200">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToAvgTicketPageCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Aspect="AspectFill"
+                        Source="rank_cadastro_colecionadora.png"
+                        WidthRequest="200">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToRegisterClientsPageCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Aspect="AspectFill"
+                        Source="banner_ranking_geral.png"
+                        WidthRequest="200">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToGeneralRankingPageCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Aspect="AspectFill"
+                        Source="rank_cadastro_flor_aliada.png"
+                        WidthRequest="200">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToInviteFlowerPageCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Aspect="AspectFill"
+                        Source="ranking_atendimento.png"
+                        WidthRequest="200">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToEffectedSalesPageCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Aspect="AspectFill"
+                        Source="rank_pecas_atendimento.png"
+                        WidthRequest="200">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToAvgPiecesForSalePageCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </ScrollView>
 
         </Grid>
     </ContentView>

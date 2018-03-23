@@ -69,49 +69,17 @@
         <syncfusion:SfListView
             x:Name="ClientsListView"
             Grid.Row="1"
-            AllowSwiping="True"
+            AllowSwiping="False"
             ItemSize="65"
             ItemSpacing="0"
             ItemsSource="{Binding ListaClientes}"
-            SelectionBackgroundColor="{StaticResource SelectionBackgroundColor}"
-            SwipeOffset="200">
+            SelectionBackgroundColor="{StaticResource SelectionBackgroundColor}">
             <syncfusion:SfListView.Behaviors>
                 <behaviors:EventToCommandBehavior
-                    Command="{Binding ClientSelectedCommand}"
+                    Command="{Binding EditClientCommand}"
                     EventArgsParameterPath="ItemData"
                     EventName="ItemTapped" />
             </syncfusion:SfListView.Behaviors>
-            <syncfusion:SfListView.RightSwipeTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout
-                                Margin="6"
-                                Orientation="Horizontal"
-                                Spacing="0">
-                                <Button
-                                    Command="{Binding Path=BindingContext.EditClientCommand, Source={x:Reference ClientsListView}}"
-                                    CommandParameter="{Binding .}"
-                                    HeightRequest="65"
-                                    HorizontalOptions="Fill"
-                                    Style="{StaticResource ButtonDefault}"
-                                    Text="Editar"
-                                    VerticalOptions="Center"
-                                    WidthRequest="100" />
-                                <Button
-                                    Command="{Binding Path=BindingContext.RemoveClientCommand, Source={x:Reference ClientsListView}}"
-                                    CommandParameter="{Binding .}"
-                                    HeightRequest="65"
-                                    HorizontalOptions="Fill"
-                                    Style="{StaticResource RedButton}"
-                                    Text="Remover"
-                                    VerticalOptions="Center"
-                                    WidthRequest="100" />
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </syncfusion:SfListView.RightSwipeTemplate>
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -150,7 +118,7 @@
                                     Grid.Column="1"
                                     HorizontalOptions="End"
                                     Opacity="{StaticResource ShadedMenu}"
-                                    Source="ic_keyboard_arrow_left_black_24dp.png"
+                                    Source="ic_keyboard_arrow_right_black_24dp.png"
                                     VerticalOptions="Center" />
                             </Grid>
 

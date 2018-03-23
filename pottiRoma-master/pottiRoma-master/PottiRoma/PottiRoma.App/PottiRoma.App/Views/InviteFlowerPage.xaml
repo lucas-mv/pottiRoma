@@ -28,7 +28,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Aspect="AspectFill"
-                Source="banner_top_2.png" />
+                Source="banner_flor.png" />
 
 
             <StackLayout

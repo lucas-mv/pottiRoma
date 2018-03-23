@@ -9,10 +9,5 @@ namespace PottiRoma.App.Views
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "Voltar");
         }
-
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
     }
 }

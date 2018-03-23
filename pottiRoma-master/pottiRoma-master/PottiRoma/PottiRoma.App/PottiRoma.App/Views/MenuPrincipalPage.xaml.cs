@@ -11,6 +11,7 @@ namespace PottiRoma.App.Views
         {
             InitializeComponent();
             SetInitialScreenState();
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
         private void SetInitialScreenState()
@@ -215,11 +216,6 @@ namespace PottiRoma.App.Views
             ContentRanking.Opacity = ShadedMenuItem;
             ContentSalesHistory.BackgroundColor = Color.Transparent;
             ContentSalesHistory.Opacity = ShadedMenuItem;
-        }
-
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
         }
     }
 }

@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace PottiRoma.App.ViewModels
 {
-	public class SalesHistoryPageViewModel : ViewModelBase
+    public class SalesHistoryPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
@@ -87,6 +87,18 @@ namespace PottiRoma.App.ViewModels
             return sales;
         }
 
+        private async void AdjustColorsFromSales(List<Sale> sales)
+        {
+            foreach (var sale in sales)
+            {
+                if (sale.SaleValue > sale.SalePaidValue)
+                    sale.ColorLabel = "#FF3131";
+
+                else
+                    sale.ColorLabel = "#696969";
+            }
+        }
+
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
@@ -96,18 +108,18 @@ namespace PottiRoma.App.ViewModels
             {
                 var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
                 var salesResponse = await TryGetSalesFromCache();
-                foreach (var sale in salesResponse.Sales)
-                {
-                    if (sale.SaleValue > sale.SalePaidValue)
-                        sale.ColorLabel = "#696969";
-                    else
-                        sale.ColorLabel = "#FF3131";
-                }
-                SalesList = new ObservableCollection<Sale>(salesResponse.Sales);
-                foreach (var sale in SalesList)
+                salesResponse.Sales.OrderByDescending(sale => sale.SaleDate).ToList();
+
+                AdjustColorsFromSales(salesResponse.Sales);
+
+                var salesDisordered = new List<Sale>(salesResponse.Sales);
+                foreach (var sale in salesDisordered)
                 {
                     sale.CardLabel = sale.ClientName + ", " + sale.SaleDate.ToString("dd/MM/yyyy");
                 }
+                salesDisordered = salesDisordered.OrderByDescending(sale => sale.SaleDate).ToList();
+
+                SalesList = new ObservableCollection<Sale>(salesDisordered);
                 NoData = SalesList.Count < 1 ? true : false;
             }
             catch (Exception ex)

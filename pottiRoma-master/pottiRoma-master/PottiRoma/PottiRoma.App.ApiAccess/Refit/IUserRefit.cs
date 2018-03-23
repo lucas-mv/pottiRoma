@@ -51,7 +51,7 @@ namespace PottiRoma.App.ApiAccess.Refit
 
         [Get("/User/Profile/Password/Reset/{usuarioId}")]
         [Headers("Authorization: Bearer")]
-        Task<User> ResetPassword(string usuarioId);
+        Task ResetPassword(string usuarioId);
 
         [Get("/User/GetUserInvitePointsForChallenge/{usuarioId}")]
         [Headers("Authorization: Bearer")]

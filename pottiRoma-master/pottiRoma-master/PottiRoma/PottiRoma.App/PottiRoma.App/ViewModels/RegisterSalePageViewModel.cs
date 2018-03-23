@@ -159,10 +159,10 @@ namespace PottiRoma.App.ViewModels
 
             if (IsSaleValid())
             {
+                await NavigationHelper.ShowLoading();
                 if (!_isEditSale)
                 {
                     CanExecuteInitial();
-                    await NavigationHelper.ShowLoading();
                     try
                     {
                         var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
@@ -185,8 +185,6 @@ namespace PottiRoma.App.ViewModels
                             SaleValue = SaleRegistered.SaleValue,
                             Description = SaleRegistered.Description
                         });
-
-
                         var userSales = await SaveNewSaleInCache();
                         float salesValue = 0;
                         int salesCount = 0;
@@ -243,6 +241,7 @@ namespace PottiRoma.App.ViewModels
                     try
                     {
                         await _salesAppService.UpdateSale(SaleRegistered.VendaId.ToString(), SaleRegistered.SaleValue, SaleRegistered.SalePaidValue, SaleRegistered.NumberSoldPieces, SaleRegistered.Description);
+                        var userSales = await SaveNewSaleInCache();
                         _userDialogs.Toast("Venda Editada com sucesso!");
                     }
                     catch
@@ -252,6 +251,7 @@ namespace PottiRoma.App.ViewModels
                     finally
                     {
                         await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                        await NavigationHelper.PopLoading();
                     }
                 }
             }
@@ -268,19 +268,12 @@ namespace PottiRoma.App.ViewModels
             user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
             try
             {
-                currentSeasonReponse.Entity = await CacheAccess.GetSecure<Season>(CacheKeys.SEASON_KEY);
-                currentChallenges.Challenges = await CacheAccess.Get<List<Challenge>>(CacheKeys.CHALLENGES);
-                myTrophies.Trophies = await CacheAccess.Get<List<Trophy>>(CacheKeys.TROPHIES);
+                currentSeasonReponse = await _seasonAppService.CurrentSeason();
+                currentChallenges = await _challengesAppService.GetCurrentChallenges(currentSeasonReponse.Entity.TemporadaId.ToString());
+                myTrophies = await _trophyAppService.GetCurrentTrophies(user.UsuarioId.ToString());
             }
             catch
-            {
-                currentSeasonReponse = await _seasonAppService.CurrentSeason();
-                await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
-                currentChallenges = await _challengesAppService.GetCurrentChallenges(currentSeasonReponse.Entity.TemporadaId.ToString());
-                await CacheAccess.Insert<List<Challenge>>(CacheKeys.CHALLENGES, currentChallenges.Challenges);
-                myTrophies = await _trophyAppService.GetCurrentTrophies(user.UsuarioId.ToString());
-                await CacheAccess.Insert<List<Trophy>>(CacheKeys.TROPHIES, myTrophies.Trophies);
-            }
+            {}
             await CheckSaleChallengeCompleted(myTrophies.Trophies, user.UsuarioId.ToString(), currentChallenges.Challenges, currentSeasonReponse.Entity);
         }
 
@@ -289,6 +282,8 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 int myRSalesPoints = 0;
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+
                 try
                 {
                     myRSalesPoints = await CacheAccess.Get<int>(CacheKeys.SALE_POINTS_FOR_CHALLENGE);
@@ -326,7 +321,17 @@ namespace PottiRoma.App.ViewModels
                             Name = challenge.Name,
                             Parameter = challenge.Parameter,
                             TemporadaId = CurrentSeason.TemporadaId,
-                            UsuarioId = new Guid(usuarioId)
+                            UsuarioId = new Guid(usuarioId),
+                            Prize = challenge.Prize
+                        });
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                            RegisterClientsPoints = user.RegisterClientsPoints,
+                            SalesNumberPoints = user.SalesNumberPoints + challenge.Prize,
+                            UsuarioId = user.UsuarioId
                         });
                         _hasWonTrophy = true;
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Vendas Realizadas! Parabéns!", new TimeSpan(0, 0, 4));

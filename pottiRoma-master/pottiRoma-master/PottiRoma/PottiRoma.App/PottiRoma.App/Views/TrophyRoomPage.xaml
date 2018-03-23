@@ -19,7 +19,7 @@
         <Image
             Grid.Row="0"
             Aspect="AspectFill"
-            Source="banner_trophies.jpg" />
+            Source="banner_flor.png" />
 
         <Frame
             Grid.Row="1"
@@ -31,7 +31,7 @@
 
                 <syncfusion:SfListView
                     HorizontalOptions="Fill"
-                    ItemSize="115"
+                    ItemSize="180"
                     ItemSpacing="10"
                     ItemsSource="{Binding MyTrophies}"
                     SelectionBackgroundColor="Transparent"
@@ -43,7 +43,7 @@
                                     Padding="0"
                                     BackgroundColor="White"
                                     HasShadow="True"
-                                    HeightRequest="110"
+                                    HeightRequest="170"
                                     OutlineColor="{Binding OutlineColor}"
                                     VerticalOptions="Start">
                                     <Grid Margin="0">
@@ -51,27 +51,22 @@
                                             <ColumnDefinition Width="95" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Image
-                                            Grid.Column="0"
-                                            Grid.ColumnSpan="2"
-                                            Margin="0"
-                                            Aspect="AspectFill"
-                                            Source="rectangle_13.png" />
+
                                         <ContentView
                                             Grid.Column="0"
                                             Margin="0"
                                             BackgroundColor="{StaticResource LightBackgroundColor}" />
                                         <Image
-                                            Margin="16"
+                                            Margin="12"
                                             Aspect="AspectFit"
-                                            Source="placeholder_trophy.png" />
+                                            Source="{Binding ImageSource}" />
                                         <Label
                                             Grid.Column="1"
                                             Margin="8,0,8,0"
                                             FontSize="{StaticResource StandardFontSize}"
                                             HorizontalOptions="Center"
                                             HorizontalTextAlignment="Start"
-                                            Text="{Binding Description}"
+                                            Text="{Binding DescriptionFormatted}"
                                             TextColor="{StaticResource LightTextColor}"
                                             VerticalOptions="Center"
                                             VerticalTextAlignment="Center" />

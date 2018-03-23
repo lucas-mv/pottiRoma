@@ -18,7 +18,7 @@ using Microsoft.AppCenter.Crashes;
 
 namespace PottiRoma.App.Droid
 {
-    [Activity(Label = "PottiRoma", 
+    [Activity(Label = "Connect Me!", 
         Icon = "@drawable/logo", 
         Theme = "@style/MainTheme",
         MainLauncher = false,

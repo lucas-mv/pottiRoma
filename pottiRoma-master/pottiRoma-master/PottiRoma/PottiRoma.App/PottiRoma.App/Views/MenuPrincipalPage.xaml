@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage
     x:Class="PottiRoma.App.Views.MenuPrincipalPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -11,7 +11,7 @@
     Icon="ic_menu_white.png">
 
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu" Icon="ic_menu_white.png">
+        <ContentPage Title="Menu" Icon="ic_menu_white.png" NavigationPage.BackButtonTitle = "Voltar">
             <ScrollView>
                 <Grid
                     BackgroundColor="{StaticResource BackgroundMenuColor}"
@@ -22,9 +22,11 @@
                         Spacing="-10"
                         VerticalOptions="Start">
                         <Image
+                            Margin="20,0,20,0"
                             Aspect="AspectFit"
                             HeightRequest="90"
-                            Source="foto_perfil.png" />
+                            Opacity="0.4"
+                            Source="ic_menu_top.png" />
                         <Grid HeightRequest="40" />
 
                         <Grid
@@ -73,7 +75,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_my_sales.png"
+                                Source="cabide_pimenta.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label
@@ -101,7 +103,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_my_clients.png"
+                                Source="ic_conexao.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label
@@ -129,7 +131,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_launcher.png"
+                                Source="ic_flor.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label
@@ -187,7 +189,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_history.png"
+                                Source="maleta.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label
@@ -245,7 +247,7 @@
                                 Grid.Column="1"
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
-                                Source="ic_rules.png"
+                                Source="ic_trofeu.png"
                                 VerticalOptions="Center"
                                 WidthRequest="24" />
                             <Label

@@ -67,14 +67,14 @@ namespace PottiRoma.App.ViewModels
 
             if (parameters.ContainsKey(NavigationKeyParameters.CurrentChallenges))
             {
-                foreach (var challenge in (List<Challenge>)parameters[NavigationKeyParameters.CurrentChallenges])
+                foreach (var challenge in ((List<Challenge>)parameters[NavigationKeyParameters.CurrentChallenges]))
                 {
                     Challenges.Add(challenge);
                     challenge.StartDateFormatted = Formatter.FormatDate(challenge.StartDate);
                     challenge.EndDateFormatted = Formatter.FormatDate(challenge.EndDate);
                     challenge.ParameterFormatted = Formatter.FormatChallengeType((ChallengeType)challenge.Parameter);
                     challenge.CurrentSituation = GetCurrentSituationMissingPoints((ChallengeType)challenge.Parameter, challenge.Goal);
-                    challenge.PrizeFormatted = challenge.Prize.ToString() + " pts.";
+                    challenge.PrizeFormatted = challenge.Prize.ToString();
                 }
             }
             await NavigationHelper.PopLoading();

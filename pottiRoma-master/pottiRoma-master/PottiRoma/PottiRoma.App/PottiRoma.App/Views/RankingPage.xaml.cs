@@ -17,5 +17,14 @@ namespace PottiRoma.App.Views
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await ScrollImages.ScrollToAsync(605, 0, true);
+            });
+            base.OnAppearing();
+        }
     }
 }

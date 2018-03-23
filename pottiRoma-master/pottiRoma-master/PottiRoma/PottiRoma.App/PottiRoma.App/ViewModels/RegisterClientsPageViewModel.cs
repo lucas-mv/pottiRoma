@@ -156,19 +156,10 @@ namespace PottiRoma.App.ViewModels
             user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
             try
             {
-                currentSeasonReponse.Entity = await CacheAccess.GetSecure<Season>(CacheKeys.SEASON_KEY);
-                currentChallenges.Challenges = await CacheAccess.Get<List<Challenge>>(CacheKeys.CHALLENGES);
-                myTrophies.Trophies = await CacheAccess.Get<List<Trophy>>(CacheKeys.TROPHIES);
+                currentSeasonReponse = await _seasonAppService.CurrentSeason();
             }
             catch
-            {
-                currentSeasonReponse = await _seasonAppService.CurrentSeason();
-                await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
-                currentChallenges = await _challengesAppService.GetCurrentChallenges(currentSeasonReponse.Entity.TemporadaId.ToString());
-                await CacheAccess.Insert<List<Challenge>>(CacheKeys.CHALLENGES, currentChallenges.Challenges);
-                myTrophies = await _trophyAppService.GetCurrentTrophies(user.UsuarioId.ToString());
-                await CacheAccess.Insert<List<Trophy>>(CacheKeys.TROPHIES, myTrophies.Trophies);
-            }
+            {}
             await CheckRegisterChallengeCompleted(myTrophies.Trophies, user.UsuarioId.ToString(), currentChallenges.Challenges, currentSeasonReponse.Entity);
         }
 
@@ -177,6 +168,8 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 int myRegisterPoints = 0;
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+
                 try
                 {
                     myRegisterPoints = await CacheAccess.Get<int>(CacheKeys.REGISTER_POINTS_FOR_CHALLENGE);
@@ -214,7 +207,17 @@ namespace PottiRoma.App.ViewModels
                             Name = challenge.Name,
                             Parameter = challenge.Parameter,
                             TemporadaId = CurrentSeason.TemporadaId,
-                            UsuarioId = new Guid(usuarioId)
+                            UsuarioId = new Guid(usuarioId),
+                            Prize = challenge.Prize
+                        });
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
+                            RegisterClientsPoints = user.RegisterClientsPoints + challenge.Prize,
+                            SalesNumberPoints = user.SalesNumberPoints,
+                            UsuarioId = user.UsuarioId
                         });
                         _hasWonTrophy = true;
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Cadastro de Clientes! Parabéns!", new TimeSpan(0, 0, 4));
@@ -286,15 +289,24 @@ namespace PottiRoma.App.ViewModels
                     }
                     else
                     {
-                        await _clientsAppService.UpdateClientInfo(new UpdateClientInfoRequest()
+                        try
                         {
-                            ClienteId = ClientSelectedForEdition.ClienteId,
-                            Birthdate = ClientSelectedForEdition.Birthdate,
-                            Cep = ClientSelectedForEdition.Cep,
-                            Email = ClientSelectedForEdition.Email,
-                            Name = ClientSelectedForEdition.Name,
-                            Telephone = ClientSelectedForEdition.Telephone
-                        });
+                            await _clientsAppService.UpdateClientInfo(new UpdateClientInfoRequest()
+                            {
+                                ClienteId = ClientSelectedForEdition.ClienteId,
+                                Birthdate = ClientSelectedForEdition.Birthdate,
+                                Cep = ClientSelectedForEdition.Cep,
+                                Email = ClientSelectedForEdition.Email,
+                                Name = ClientSelectedForEdition.Name,
+                                Telephone = ClientSelectedForEdition.Telephone
+                            });
+                            var myClients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
+                            await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, myClients.Clients);
+                        }
+                        catch
+                        {
+                            UserDialogs.Instance.Toast("Não foi possível editar sua cliente, verifique sua conexão!");
+                        }
                         UserDialogs.Instance.Toast("Colecionadora editada com sucesso!");
                         try
                         {

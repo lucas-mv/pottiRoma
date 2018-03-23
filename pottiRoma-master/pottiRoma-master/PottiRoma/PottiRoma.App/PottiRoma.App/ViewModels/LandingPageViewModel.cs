@@ -2,6 +2,7 @@
 using PottiRoma.App.Helpers;
 using PottiRoma.App.Models.Models;
 using PottiRoma.App.Models.Requests.Trophies;
+using PottiRoma.App.Models.Requests.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils;
@@ -61,10 +62,7 @@ namespace PottiRoma.App.ViewModels
                 var currentClients = await _clientsAppService.GetClientsByUserId(user.UsuarioId.ToString());
                 var myTrophies = await _trophyAppService.GetCurrentTrophies(user.UsuarioId.ToString());
                 await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, currentClients.Clients);
-                await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, currentSeasonReponse.Entity);
-                await CacheAccess.Insert<List<Trophy>>(CacheKeys.TROPHIES, myTrophies.Trophies);
                 var currentChallenges = await _challengesAppService.GetCurrentChallenges(currentSeasonReponse.Entity.TemporadaId.ToString());
-                await CacheAccess.Insert<List<Challenge>>(CacheKeys.CHALLENGES, currentChallenges.Challenges);
            
                 localBirthdays = await CheckAnniversary();
 
@@ -102,6 +100,8 @@ namespace PottiRoma.App.ViewModels
             try
             {
                 int myInvitePoints = 0;
+                var user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
+
                 try
                 {
                     myInvitePoints = await CacheAccess.Get<int>(CacheKeys.INVITE_POINTS_FOR_CHALLENGE);
@@ -139,7 +139,17 @@ namespace PottiRoma.App.ViewModels
                             Name = challenge.Name,
                             Parameter = challenge.Parameter,
                             TemporadaId = CurrentSeason.TemporadaId,
-                            UsuarioId = new Guid(usuarioId)
+                            UsuarioId = new Guid(usuarioId),
+                            Prize = challenge.Prize
+                        });
+                        await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
+                        {
+                            AverageItensPerSalePoints = user.AverageItensPerSalePoints,
+                            AverageTicketPoints = user.AverageTicketPoints,
+                            InviteAllyFlowersPoints = user.InviteAllyFlowersPoints + challenge.Prize,
+                            RegisterClientsPoints = user.RegisterClientsPoints,
+                            SalesNumberPoints = user.SalesNumberPoints,
+                            UsuarioId = user.UsuarioId
                         });
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Convite de Flores Aliadas! Parabéns!", new TimeSpan(0, 0, 4));
                     }

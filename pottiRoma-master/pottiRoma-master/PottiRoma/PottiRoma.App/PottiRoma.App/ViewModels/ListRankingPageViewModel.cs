@@ -7,6 +7,7 @@ using PottiRoma.App.Models.Responses.User;
 using PottiRoma.App.Repositories.Internal;
 using PottiRoma.App.Services.Interfaces;
 using PottiRoma.App.Utils.Enums;
+using PottiRoma.App.Utils.Helpers;
 using PottiRoma.App.Utils.NavigationHelpers;
 using PottiRoma.App.ViewModels.Core;
 using Prism.Commands;
@@ -48,6 +49,13 @@ namespace PottiRoma.App.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        private string _imageSource;
+        public string ImageSource
+        {
+            get { return _imageSource; }
+            set { SetProperty(ref _imageSource, value); }
+        }
+
         public ListRankingPageViewModel(
             INavigationService navigationService,
             IUserDialogs userDialogs,
@@ -66,6 +74,7 @@ namespace PottiRoma.App.ViewModels
             {
                 case CarouselBannerType.AverageTicket:
                     Title = "Ticket Médio";
+                    ImageSource = "banner_porquinho_ranking.png";
                     foreach (var users in AppUsers)
                     users.TotalPoints = users.AverageTicketPoints;
                     try
@@ -78,7 +87,8 @@ namespace PottiRoma.App.ViewModels
                     catch { }
                     break;
                 case CarouselBannerType.RegisterClients:
-                    Title = "Cadastro de Clientes";
+                    Title = "Cadastro de Colecionadoras";
+                    ImageSource = "banner_colecionadoras_ranking.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.RegisterClientsPoints;
                     try
@@ -91,7 +101,8 @@ namespace PottiRoma.App.ViewModels
                     catch { }
                     break;
                 case CarouselBannerType.AveragePiecesForSale:
-                    Title = "Peças por Venda";
+                    Title = "Peças por Atendimento";
+                    ImageSource = "banner_varal.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.AverageItensPerSalePoints;
                     try
@@ -104,7 +115,8 @@ namespace PottiRoma.App.ViewModels
                     catch { }
                     break;
                 case CarouselBannerType.RegisterAlliedFlowers:
-                    Title = "Convite de Flores Aliadas";
+                    Title = "Cadastro de Flores Aliadas";
+                    ImageSource = "banner_flor.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.InviteAllyFlowersPoints;
                     try
@@ -117,7 +129,8 @@ namespace PottiRoma.App.ViewModels
                     catch { }
                     break;
                 case CarouselBannerType.RegisteredSales:
-                    Title = "Registro de Vendas";
+                    Title = "Atendimento";
+                    ImageSource = "banner_atendimento_ranking.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.SalesNumberPoints;
                     try
@@ -131,6 +144,7 @@ namespace PottiRoma.App.ViewModels
                     break;
                 case CarouselBannerType.Total:
                     Title = "Geral";
+                    ImageSource = "banner_manequim_ranking.png";
                     foreach (var users in AppUsers)
                         users.TotalPoints = users.AverageItensPerSalePoints + users.AverageTicketPoints + users.RegisterClientsPoints + users.InviteAllyFlowersPoints + users.SalesNumberPoints;
                     break;
@@ -159,7 +173,7 @@ namespace PottiRoma.App.ViewModels
                         users = users.OrderByDescending(u => u.AverageItensPerSalePoints).ToList().GetRange(0, 5);
                         foreach(var user in users)
                         {
-                            user.ListRankingPoints = user.AverageItensPerSalePoints;
+                            user.ListRankingPoints = user.AverageItensPerSalePoints.ToString() + " und";
                         }
                         break;
 
@@ -167,7 +181,7 @@ namespace PottiRoma.App.ViewModels
                         users = users.OrderByDescending(u => u.AverageTicketPoints).ToList().GetRange(0, 5);
                         foreach (var user in users)
                         {
-                            user.ListRankingPoints = user.AverageTicketPoints;
+                            user.ListRankingPoints = Formatter.FormatMoney(user.AverageTicketPoints);
                         }
                         break;
 
@@ -175,7 +189,7 @@ namespace PottiRoma.App.ViewModels
                         users = users.OrderByDescending(u => u.InviteAllyFlowersPoints).ToList().GetRange(0, 5);
                         foreach (var user in users)
                         {
-                            user.ListRankingPoints = user.InviteAllyFlowersPoints;
+                            user.ListRankingPoints = user.InviteAllyFlowersPoints.ToString();
                         }
                         break;
 
@@ -183,7 +197,7 @@ namespace PottiRoma.App.ViewModels
                         users = users.OrderByDescending(u => u.RegisterClientsPoints).ToList().GetRange(0, 5);
                         foreach (var user in users)
                         {
-                            user.ListRankingPoints = user.RegisterClientsPoints;
+                            user.ListRankingPoints = user.RegisterClientsPoints.ToString();
                         }
                         break;
 
@@ -191,20 +205,25 @@ namespace PottiRoma.App.ViewModels
                         users = users.OrderByDescending(u => u.SalesNumberPoints).ToList().GetRange(0, 5);
                         foreach (var user in users)
                         {
-                            user.ListRankingPoints = user.SalesNumberPoints;
+                            user.ListRankingPoints = user.SalesNumberPoints.ToString();
                         }
                         break;
 
                     case CarouselBannerType.Total:
                         foreach (var user in users)
                         {
-                            user.ListRankingPoints = user.SalesNumberPoints + 
+                            user.ListRankingPoints = (user.SalesNumberPoints + 
                                                         user.RegisterClientsPoints +
                                                         user.InviteAllyFlowersPoints + 
                                                         user.AverageItensPerSalePoints + 
-                                                        user.AverageTicketPoints;
+                                                        user.AverageTicketPoints).ToString();
+                            user.TotalPoints = (user.SalesNumberPoints +
+                                                        user.RegisterClientsPoints +
+                                                        user.InviteAllyFlowersPoints +
+                                                        user.AverageItensPerSalePoints +
+                                                        user.AverageTicketPoints);
                         }
-                        users = users.OrderByDescending(u => u.ListRankingPoints).ToList().GetRange(0, 5);
+                        users = users.OrderByDescending(u => u.TotalPoints).ToList().GetRange(0, 5);
                         break;
                 }
                 foreach (var user in users)

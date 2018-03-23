@@ -64,6 +64,13 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _goal, value); }
         }
 
+        private int _prize;
+        public int Prize
+        {
+            get { return _prize; }
+            set { SetProperty(ref _prize, value); }
+        }
+
         #region Helper Properties
 
         private string _description;
@@ -71,6 +78,20 @@ namespace PottiRoma.App.Models.Models
         {
             get { return _description; }
             set { SetProperty(ref _description, value); }
+        }
+
+        private string _descriptionFormatted;
+        public string DescriptionFormatted
+        {
+            get { return _descriptionFormatted; }
+            set { SetProperty(ref _descriptionFormatted, value); }
+        }
+
+        private string _imageSource;
+        public string ImageSource
+        {
+            get { return _imageSource; }
+            set { SetProperty(ref _imageSource, value); }
         }
 
         #endregion

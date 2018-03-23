@@ -16,16 +16,16 @@
             <RowDefinition Height="150" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Image Aspect="AspectFill" Source="banner_ranking.jpg" />
+        <Image Aspect="AspectFill" Source="{Binding ImageSource}" />
         <Grid Margin="16,0,16,0" VerticalOptions="End">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="16" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="20" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="120" />
             </Grid.ColumnDefinitions>
 
             <Label
@@ -59,7 +59,7 @@
                     VerticalOptions="Center" />
                 <Image
                     HeightRequest="30"
-                    Source="ic_trophy_white.png"
+                    Source="ic_trofeu.png"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </StackLayout>
@@ -85,9 +85,9 @@
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="20" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="120" />
                             </Grid.ColumnDefinitions>
 
                             <Label
@@ -113,7 +113,7 @@
                                 <Label
                                     FontSize="{StaticResource StandardFontSize}"
                                     HorizontalOptions="Start"
-                                    Text="{Binding TotalPoints}"
+                                    Text="{Binding ListRankingPoints}"
                                     TextColor="{StaticResource TextColor}"
                                     VerticalOptions="Center" />
                                 <Image

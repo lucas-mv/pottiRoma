@@ -27,6 +27,7 @@ namespace PottiRoma.Api.Helpers
 
             //Define os destinatários do e-mail.
             objEmail.To.Add(emailInvited);
+            objEmail.CC.Add(emailRemetente);
 
             objEmail.Priority = System.Net.Mail.MailPriority.Normal;
 

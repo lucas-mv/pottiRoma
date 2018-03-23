@@ -113,8 +113,8 @@ namespace PottiRoma.App.Models.Models
             set { SetProperty(ref _rankingPosition, value); }
         }
 
-        private int _listRankingPoints;
-        public int ListRankingPoints
+        private string _listRankingPoints;
+        public string ListRankingPoints
         {
             get { return _listRankingPoints; }
             set { SetProperty(ref _listRankingPoints, value); }

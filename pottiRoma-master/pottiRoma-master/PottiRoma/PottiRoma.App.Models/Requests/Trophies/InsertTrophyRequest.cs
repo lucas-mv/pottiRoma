@@ -16,5 +16,6 @@ namespace PottiRoma.App.Models.Requests.Trophies
         public string Name { get; set; }
         public int Parameter { get; set; }
         public int Goal { get; set; }
+        public int Prize { get; set; }
     }
 }

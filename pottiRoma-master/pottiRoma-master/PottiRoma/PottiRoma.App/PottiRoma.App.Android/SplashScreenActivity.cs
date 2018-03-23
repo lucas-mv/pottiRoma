@@ -15,7 +15,7 @@ namespace PottiRoma.App.Droid
 {
     [Activity(Theme = "@style/Theme.Splash",
           MainLauncher = true,
-          Label = "PottiRoma",
+          Label = "Connect Me!",
           NoHistory = true,
           ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.SensorPortrait)]
     public class SplashScreenActivity : Activity

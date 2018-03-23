@@ -30,7 +30,7 @@ namespace PottiRoma.Api.Controllers
         {
             await ValidateToken();
             var temporadaId = _seasonService.GetCurrentSeason();
-            _trophyService.InsertNewTrophy(request.DesafioId,request.UsuarioId, temporadaId.TemporadaId, request.Name, request.StartDate, request.EndDate, request.Parameter, request.Goal);
+            _trophyService.InsertNewTrophy(request.DesafioId,request.UsuarioId, temporadaId.TemporadaId, request.Name, request.StartDate, request.EndDate, request.Parameter, request.Goal, request.Prize);
         }
 
         [Route("Get/{usuarioId}")]
