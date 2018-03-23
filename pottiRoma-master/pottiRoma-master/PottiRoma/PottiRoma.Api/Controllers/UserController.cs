@@ -100,11 +100,11 @@ namespace PottiRoma.Api.Controllers
             _userService.ChangePassword(request.UsuarioId, request.OldPassword, request.NewPassword);
         }
 
-        [Route("Profile/ResetPasswordByEmail")]
+        [Route("ResetPasswordByEmail")]
         [HttpPost]
-        public async Task ResetPasswordByEmail(string email)
+        public async Task ResetPasswordByEmail(ResetPasswordByEmailRequest request)
         {
-            var user = _userService.GetUserByEmail(email);
+            var user = _userService.GetUserByEmail(request.Email);
             if (user == null)
                 throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, "Email não encontrado!");
             user = _userService.ResetPassword(user.UsuarioId);

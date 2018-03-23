@@ -40,8 +40,8 @@ export class LoginService extends BaseService{
   public ResetPassword(email) {
     return this.http
       .post(
-        this.getBaseUrl() + 'User/Profile/ResetPasswordByEmail',
-        { email: email }
+        this.getBaseUrl() + 'User/ResetPasswordByEmail',
+        { Email: email }
       )
       .toPromise()
       .then(res => {
