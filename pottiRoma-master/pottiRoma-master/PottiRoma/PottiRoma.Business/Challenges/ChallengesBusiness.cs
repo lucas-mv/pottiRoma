@@ -30,7 +30,8 @@ namespace PottiRoma.Business.Challenges
 
         public static List<ChallengeEntity> GetCurrentChallenges(Guid temporadaId)
         {
-            return ChallengesRepository.Get().GetCurrentChallenges(temporadaId);
+            var challenges = ChallengesRepository.Get().GetCurrentChallenges(temporadaId);
+            return challenges.OrderByDescending(challenge => challenge.StartDate).Where(challenge => challenge.StartDate < DateTime.Now && challenge.EndDate > DateTime.Now).ToList();
         }
     }
 }
