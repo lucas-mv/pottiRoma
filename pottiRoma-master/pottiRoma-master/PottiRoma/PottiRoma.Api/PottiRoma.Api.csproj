@@ -168,6 +168,7 @@
     <Compile Include="Request\User\ChangePasswordRequest.cs" />
     <Compile Include="Request\User\LoginUserRequest.cs" />
     <Compile Include="Request\User\RegisterUserRequest.cs" />
+    <Compile Include="Request\User\ResetPasswordByEmailRequest.cs" />
     <Compile Include="Request\User\UpdateUserPointsRequest.cs" />
     <Compile Include="Request\User\UpdateUserStatusRequest.cs" />
     <Compile Include="Response\Challenges\GetCurrentChallengesResponse.cs" />
