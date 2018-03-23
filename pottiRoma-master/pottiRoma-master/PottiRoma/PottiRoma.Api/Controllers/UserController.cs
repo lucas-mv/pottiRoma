@@ -6,6 +6,7 @@ using PottiRoma.Api.Response.User;
 using PottiRoma.Entities;
 using PottiRoma.Entities.Internal;
 using PottiRoma.Services.Interfaces;
+using PottiRoma.Utils.CustomExceptions;
 using PottiRoma.Utils.Enums;
 using System;
 using System.Collections.Generic;
@@ -99,23 +100,13 @@ namespace PottiRoma.Api.Controllers
             _userService.ChangePassword(request.UsuarioId, request.OldPassword, request.NewPassword);
         }
 
-        [Route("Profile/Password/Reset/Request/{usuarioId}")]
-        [HttpGet]
-        public async Task RequestPasswordReset(string usuarioId)
-        {
-            //var user = _userService.GetUserById(new Guid(usuarioId));
-            //var corpoEmail = "Para redefinir uma nova senha para o app da Potti Roma, por favor clique no link abaixo:\n\n" +
-            //    "pottiroma.azurewebsites.net/api/v1/User/Profile/Password/Reset/" + usuarioId;
-            //var destinatario = new Dictionary<string, string>();
-            //destinatario.Add(user.Email, user.Name);
-            //EmailResetPassword.Enviar("Potti Roma - Confirme requisição de nova senha", corpoEmail, destinatario);
-        }
-
-        [Route("Profile/Password/Reset/Email/{email}")]
-        [HttpGet]
+        [Route("Profile/ResetPasswordByEmail")]
+        [HttpPost]
         public async Task ResetPasswordByEmail(string email)
         {
             var user = _userService.GetUserByEmail(email);
+            if (user == null)
+                throw new ExceptionWithHttpStatus(System.Net.HttpStatusCode.BadRequest, "Email não encontrado!");
             user = _userService.ResetPassword(user.UsuarioId);
             EmailResetPassword.Enviar(user.Email, user.Name, user.Password);
         }
