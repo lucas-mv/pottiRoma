@@ -154,6 +154,7 @@
     <Compile Include="Helpers\EmailInvite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\Challenges\InsertChallengeRequest.cs" />
+    <Compile Include="Request\Challenges\UpdateChallengeRequest.cs" />
     <Compile Include="Request\Clients\DeleteClientRequest.cs" />
     <Compile Include="Request\Clients\RegisterClientRequest.cs" />
     <Compile Include="Request\Clients\UpdateClientRequest.cs" />
