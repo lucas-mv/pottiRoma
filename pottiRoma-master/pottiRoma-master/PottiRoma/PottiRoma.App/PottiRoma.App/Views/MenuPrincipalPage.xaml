@@ -11,7 +11,10 @@
     Icon="ic_menu_white.png">
 
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu" Icon="ic_menu_white.png" NavigationPage.BackButtonTitle = "Voltar">
+        <ContentPage
+            Title="Menu"
+            Icon="ic_menu_white.png"
+            NavigationPage.BackButtonTitle="Voltar">
             <ScrollView>
                 <Grid
                     BackgroundColor="{StaticResource BackgroundMenuColor}"
@@ -24,7 +27,7 @@
                         <Image
                             Margin="20,0,20,0"
                             Aspect="AspectFit"
-                            HeightRequest="90"
+                            HeightRequest="75"
                             Opacity="0.4"
                             Source="ic_menu_top.png" />
                         <Grid HeightRequest="40" />
