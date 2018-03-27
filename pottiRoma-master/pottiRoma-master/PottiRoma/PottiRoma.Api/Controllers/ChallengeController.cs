@@ -43,5 +43,25 @@ namespace PottiRoma.Api.Controllers
                 Challenges = _challengesService.GetCurrentChallenges(new Guid(temporadaId))
             };
         }
+
+        [Route("GetChallengesPortal")]
+        [HttpGet]
+        public async Task<GetCurrentChallengesResponse> GetCurrentChallengesPortal()
+        {
+            await ValidateToken();
+            return new GetCurrentChallengesResponse()
+            {
+                Challenges = _challengesService.GetCurrentChallengesPortal()
+            };
+        }
+
+        [Route("Update")]
+        [HttpPost]
+        public async Task UpdateChallenge(UpdateChallengeRequest request)
+        {
+            await ValidateToken();
+            var temporadaId = _seasonService.GetCurrentSeason();
+            _challengesService.UpdateChallenge(new Guid(request.DesafioId), new Guid(request.TemporadaId), request.Name, request.StartDate, request.EndDate, request.Parameter, request.Goal, request.Prize, request.Description);
+        }
     }
 }

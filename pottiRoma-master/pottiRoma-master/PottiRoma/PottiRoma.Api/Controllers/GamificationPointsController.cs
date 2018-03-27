@@ -1,4 +1,5 @@
-﻿using PottiRoma.Api.Request.PointsGamification;
+﻿
+using PottiRoma.Api.Request.PointsGamification;
 using PottiRoma.Api.Response.GamificationPoints;
 using PottiRoma.Services.Interfaces;
 using System;
