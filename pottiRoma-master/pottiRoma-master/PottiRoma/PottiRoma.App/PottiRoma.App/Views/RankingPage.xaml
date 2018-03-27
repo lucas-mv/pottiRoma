@@ -70,7 +70,7 @@
                     WidthRequest="1300">
                     <Image
                         Aspect="AspectFill"
-                        Source="ranking_ticket.png"
+                        Source="banner_ticket_medio.png"
                         WidthRequest="200">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToAvgTicketPageCommand}" />

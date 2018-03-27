@@ -135,7 +135,7 @@
                         Grid.Row="0"
                         Grid.Column="0"
                         FontSize="{StaticResource StandardFontSize}"
-                        Text="Pontos ganhos por Venda:"
+                        Text="Sementes ganhas por Venda:"
                         TextColor="{StaticResource TextColor}"
                         VerticalOptions="Center" />
 
@@ -143,7 +143,7 @@
                         Grid.Row="1"
                         Grid.Column="0"
                         FontSize="{StaticResource StandardFontSize}"
-                        Text="Pontos ganhos por Convite de Flores aliadas:"
+                        Text="Sementes ganhas por Convite de Flores aliadas:"
                         TextColor="{StaticResource TextColor}"
                         VerticalOptions="Center" />
 
@@ -151,7 +151,7 @@
                         Grid.Row="2"
                         Grid.Column="0"
                         FontSize="{StaticResource StandardFontSize}"
-                        Text="Pontos ganhos por Registro de Clientes:"
+                        Text="Sementes ganhas por Registro de Clientes:"
                         TextColor="{StaticResource TextColor}"
                         VerticalOptions="Center" />
 

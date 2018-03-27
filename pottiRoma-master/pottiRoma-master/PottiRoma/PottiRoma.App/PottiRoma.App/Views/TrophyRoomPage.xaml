@@ -19,7 +19,7 @@
         <Image
             Grid.Row="0"
             Aspect="AspectFill"
-            Source="banner_flor.png" />
+            Source="banner_sala_trofeus.png" />
 
         <Frame
             Grid.Row="1"
