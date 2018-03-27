@@ -553,22 +553,54 @@
     <ImageAsset Include="Resources\SplashScreen.xcassets\LaunchImages.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Contents.json" />
-    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\ItunesArtwork%402x.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1242x2208.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\750x1334.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\2048x2732.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\640x960.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\640x1136.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\768x1024.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1536x2048.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1024x768.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\2048x1536.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\320x480.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\768x1004.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1536x2008.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\2436x1125.png" />
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1125x2436.png" />
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\ItunesArtwork%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1242x2208.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\750x1334.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\2048x2732.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\640x960.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\640x1136.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\768x1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1536x2048.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1024x768.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\2048x1536.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\320x480.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\768x1004.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1536x2008.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\2436x1125.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImage.launchimage\1125x2436.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-App-20x20%401x.png" />
