@@ -38,7 +38,7 @@ export class SeasonService extends BaseService {
         this.createBlobAuthenticationRequestOptions()
       )
       .toPromise()
-      .then(res => {        
+      .then(res => {
         let date = new Date();
         let fileName = 'RelatorioRankingPorTemporada_' + date.getDate() + '-' + (date.getMonth()+1) + '-' + date.getFullYear() + '.xlsx';
         this.saveAsBlob(res, fileName);
@@ -51,6 +51,31 @@ export class SeasonService extends BaseService {
           message: res._body
         }
       });
-  } 
+  }
+
+  public insertSeason(name: string, startDate: Date, endDate: Date, isActive: boolean ){
+    return this.http
+      .post(
+        this.getBaseUrl() + 'Season/Insert',
+      {
+        Name: name,
+        StartDate: startDate,
+        EndDate: endDate,
+        IsActive: true,
+      },
+      this.createAuthenticationRequestOptions()
+    )
+    .toPromise()
+    .then(res => {
+      return {
+        message: ''
+      };
+    })
+    .catch(res => {
+      return {
+        message: res._body
+      }
+    });
+  }
 
 }

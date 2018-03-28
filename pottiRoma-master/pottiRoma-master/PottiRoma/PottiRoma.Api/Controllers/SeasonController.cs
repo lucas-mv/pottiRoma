@@ -46,7 +46,7 @@ namespace PottiRoma.Api.Controllers
 
         [Route("Insert")]
         [HttpPost]
-        public async Task InsertSeason(string name, DateTime startDate, DateTime endDate, bool isActive)
+        public async Task InsertSeason(InsertSeasonRequest request)
         {
             var currentSeason = await GetCurrentSeason();
             var appUsers = _userService.GetAppUsers();
@@ -61,7 +61,7 @@ namespace PottiRoma.Api.Controllers
 
                 _userService.UpdateUserPoints(user.UsuarioId, 0, 0, 0, 0, 0);
             }
-             await _seasonService.InsertSeason( name, startDate, endDate, isActive);
+             await _seasonService.InsertSeason( request.Name, request.StartDate, request.EndDate, request.IsActive);
         }
 
         [Route("RankingBySeason")]

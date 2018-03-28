@@ -18,15 +18,15 @@ export class InsertChallengesComponent implements OnInit {
     selectedChallenge:any = null;
 
     challengeTypes:any = [
-        { 
+        {
             parametro: 3,
             nome: 'Cadastro de Clientes'
         },
-        { 
+        {
             parametro: 2,
             nome: 'Convidar Flores Aliadas'
         },
-        { 
+        {
             parametro: 1,
             nome: 'Vendas Efetuadas'
         },
@@ -41,11 +41,11 @@ export class InsertChallengesComponent implements OnInit {
     goal:Number;
     challengeParameter:Number;
 
-    ngOnInit() 
+    ngOnInit()
     {
         this.loading = true;
         this.challengeService.getCurrentChallenges()
-        .then(response => 
+        .then(response =>
             {
                 this.loading = false;
                 if(response.message !== ''){

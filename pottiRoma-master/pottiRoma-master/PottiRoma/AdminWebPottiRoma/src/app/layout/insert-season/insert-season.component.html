@@ -1,0 +1,37 @@
+<div [@routerTransition] class="margin-pages">
+    <!-- <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header> -->
+    <div>
+        <h4 class="margin-pages">Inserir Nova Temporada</h4>
+    </div>
+
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+    <div class="insert-season-container">
+
+            <div class="insert-season-line">
+                    <mat-form-field class="insert-season-line-item">
+                        <input matInput placeholder="Nome da Temporada" [(ngModel)]="name">
+                    </mat-form-field>
+                    <div class="insert-season-item"></div>
+                </div>
+
+
+        <div class="insert-season-line">
+            <mat-form-field class="insert-season-line-item">
+                <input matInput [matDatepicker]="initialpicker" placeholder="Data Inicial" [(ngModel)]="startDate">
+                <mat-datepicker-toggle matSuffix [for]="initialpicker"></mat-datepicker-toggle>
+                <mat-datepicker #initialpicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="insert-season-line-item">
+                <input matInput [matDatepicker]="finalpicker" placeholder="Data Final" [(ngModel)]="endDate">
+                <mat-datepicker-toggle matSuffix [for]="finalpicker"></mat-datepicker-toggle>
+                <mat-datepicker #finalpicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+    </div>
+
+    <div class="form-center-layout">
+        <button (click)="insertSeason()" mat-raised-button color="accent" >CONFIRMAR</button>
+    </div>
+</div>

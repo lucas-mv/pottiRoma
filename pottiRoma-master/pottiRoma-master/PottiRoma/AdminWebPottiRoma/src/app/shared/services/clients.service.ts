@@ -39,7 +39,7 @@ export class ClientsService extends BaseService{
         this.createBlobAuthenticationRequestOptions()
       )
       .toPromise()
-      .then(res => {        
+      .then(res => {
         let date = new Date();
         let fileName = 'RelatorioClientes_' + date.getDate() + '-' + (date.getMonth()+1) + '-' + date.getFullYear() + '.xlsx';
         this.saveAsBlob(res, fileName);
@@ -52,5 +52,5 @@ export class ClientsService extends BaseService{
           message: res._body
         }
       });
-  } 
+  }
 }

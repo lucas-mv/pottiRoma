@@ -163,6 +163,7 @@
     <Compile Include="Request\InsertNewLogRequest\LogInsertPointsRequest.cs" />
     <Compile Include="Request\Sales\InsertNewSaleRequest.cs" />
     <Compile Include="Request\Sales\UpdateSaleRequest.cs" />
+    <Compile Include="Request\Season\InsertSeasonRequest.cs" />
     <Compile Include="Request\Season\SeasonRequest.cs" />
     <Compile Include="Request\Trophies\InsertTrophyRequest.cs" />
     <Compile Include="Request\User\ChangePasswordRequest.cs" />

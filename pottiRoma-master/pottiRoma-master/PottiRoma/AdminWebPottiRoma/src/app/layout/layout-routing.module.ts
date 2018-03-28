@@ -13,6 +13,7 @@ const routes: Routes = [
             { path: 'main-page', loadChildren: './main-page/main-page.module#MainPageModule' },
             { path: 'sales-report', loadChildren: './sales-report/sales-report.module#SalesReportModule' },
             { path: 'insert-points', loadChildren: './insert-points/insert-points.module#InsertPointsModule' },
+            { path: 'insert-season', loadChildren: './insert-season/insert-season.module#InsertSeasonModule' },
             { path: 'insert-challenges', loadChildren: './insert-challenges/insert-challenges.module#InsertChallengesModule' },
             { path: 'game-parameters', loadChildren: './game-parameters/game-parameters.module#GameParametersModule' },
             { path: 'reseller', loadChildren: './reseller/reseller.module#ResellerModule' },
