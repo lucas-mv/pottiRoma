@@ -15,6 +15,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {Component} from '@angular/core';
 import { MatCardModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { BaseService } from './shared/services/base.service';
 import { LoginService } from './shared/services/login.service';
@@ -58,6 +59,7 @@ export function createTranslateLoader(http: HttpClient) {
         MatAutocompleteModule,
         MatCardModule,
         MatSelectModule,
+        MatRadioModule,
         MatDialogModule,
         MaterialModule,
         TranslateModule.forRoot({

@@ -3,7 +3,7 @@
     <div class="insert-challenges-container">
         <div class="insert-challenges-line">
 
-            <h3 class="insert-challenges-double-item">Inserir Novo Desafio</h3>
+            <h3 class="insert-challenges-double-item">Desafios</h3>
 
             <mat-form-field class="insert-challenges-double-item">
                 <mat-select placeholder="Selecionar Desafio"  [(ngModel)]="selectedChallenge" (change)="onSelectedChallengeChange($event.value)">
@@ -97,15 +97,20 @@
             </mat-form-field>
         </div>
 
+        <div class="insert-challenges-line column">
+
+            <span class="insert-challenges-line-item">Parâmetro do desafio</span>
+
+            <mat-radio-group class="insert-challenges-line-item" [(ngModel)]="selectedChallenge.Parameter">
+                <mat-radio-button class="insert-challenges-radio-button" *ngFor="let challengeType of challengeTypes" value="{{challengeType.parametro}}">
+                    {{challengeType.nome}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
         <div class="insert-challenges-line">
 
-            <mat-form-field class="insert-challenges-double-item">
-                <mat-select placeholder="Parâmetro do Desafio" [(ngModel)]="selectedChallenge.Parameter">
-                    <mat-option *ngFor="let challengeType of challengeTypes" value="{{challengeType.parametro}}">{{challengeType.nome}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field class="insert-challenges-double-item">
+            <mat-form-field class="insert-challenges-line-item">
                 <input matInput placeholder="Objetivo" type="number" [(ngModel)]="selectedChallenge.Goal">
             </mat-form-field>
 
@@ -121,6 +126,7 @@
         <button (click)="onInsertChallengeClick()" mat-raised-button color="accent">Aceitar</button>
     </div>
     <div class="form-center-layout-without-margin"  *ngIf="selectedChallenge !== null">
+        <button (click)="onRemoveChallengeClick()" mat-raised-button color="warn">Remover</button>
         <button (click)="onUpdateChallengeClick()" mat-raised-button color="accent">Atualizar</button>
     </div>
 </div>

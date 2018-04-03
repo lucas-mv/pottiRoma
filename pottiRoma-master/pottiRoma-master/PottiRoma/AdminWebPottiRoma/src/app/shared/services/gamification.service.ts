@@ -116,4 +116,34 @@ export class GamificationService extends BaseService {
     });
   }
 
+  public updateChallenge(name:string, startDate: Date, endDate:Date, parameter:Number, goal:Number, prize:Number, description:string, challengeId:string, seasonId:string){
+    return this.http
+    .post(
+      this.getBaseUrl() + 'Challenge/Update',
+      {
+        Name: name,
+        StartDate: startDate,
+        EndDate: endDate,
+        Parameter: parameter,
+        Goal: goal,
+        Prize: prize,
+        Description: description,
+        DesafioId: challengeId,
+        TemporadaId: seasonId
+      },
+      this.createAuthenticationRequestOptions()
+    )
+    .toPromise()
+    .then(res => {
+      return {
+        message: ''
+      };
+    })
+    .catch(res => {
+      return {
+        message: res._body
+      }
+    });
+  }
+
 }

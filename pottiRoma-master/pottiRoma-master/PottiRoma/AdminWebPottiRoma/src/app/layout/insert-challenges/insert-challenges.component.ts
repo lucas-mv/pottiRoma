@@ -3,7 +3,9 @@ import { routerTransition } from '../../router.animations';
 import { ToastrService } from 'ngx-toastr';
 import { GamificationService } from './../../shared/services/gamification.service';
 import { ChallengeService } from './../../shared/services/challenge.service';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
+import { MatDialogModule } from '@angular/material';
 
 @Component({
     selector: 'app-insert-challenges',
@@ -12,7 +14,7 @@ import { ChallengeService } from './../../shared/services/challenge.service';
     animations: [routerTransition()]
 })
 export class InsertChallengesComponent implements OnInit {
-    constructor(private toastr:ToastrService, private gamificationService:GamificationService, private challengeService:ChallengeService) {}
+    constructor(public dialog: MatDialog, private toastr:ToastrService, private gamificationService:GamificationService, private challengeService:ChallengeService) {}
 
     challenges:any;
     selectedChallenge:any = null;
@@ -61,12 +63,110 @@ export class InsertChallengesComponent implements OnInit {
     onSelectedChallengeChange(challenge:any){
         if(challenge.Name === 'Cancelar edição')
             this.selectedChallenge = null;
-
-            debugger;
     }
 
     onUpdateChallengeClick(){
-        debugger;
+        if(this.selectedChallenge.Parameter === undefined || this.selectedChallenge.Parameter === null ||
+            this.selectedChallenge.Name === '' || this.selectedChallenge.Description === '' ||
+            this.selectedChallenge.StartDate === undefined || this.selectedChallenge.StartDate === null ||
+            this.selectedChallenge.EndDate === undefined || this.selectedChallenge.EndDate === null ||
+            this.selectedChallenge.Goal === undefined || this.selectedChallenge.Goal === null ||
+            this.selectedChallenge.Prize === undefined || this.selectedChallenge.Prize === null){
+            this.toastr.error('Por favor preencha todos os campos para continuar!');
+            return;
+        }
+
+        if(this.selectedChallenge.EndDate <= this.selectedChallenge.StartDate){
+            this.toastr.error('A data final do desafio não pode ser menor do que a data inicial.');
+            return;
+        }
+
+        let today = new Date();
+        today.setHours(0);
+        today.setMinutes(0);
+        today.setSeconds(0);
+        today.setMilliseconds(0);
+        if(this.selectedChallenge.StartDate < today){
+            this.toastr.error('A data inicial do desafio não pode ser anterior ao dia de hoje.');
+            return;
+        }
+
+        if(this.selectedChallenge.Goal <= 0){
+            this.toastr.error('O valor do objetivo não pode ser menor ou igual a zero.');
+            return;
+        }
+
+        if(this.selectedChallenge.Prize <= 0){
+            this.toastr.error('O valor das sementes não pode ser menor ou igual a zero.');
+            return;
+        }
+
+        this.loading = true;
+        this.challengeService.UpdateChallenge(this.selectedChallenge)
+        .then((response) => 
+        {
+            this.loading = false;
+            if(response.message !== ''){
+                this.toastr.error(response.message);
+            }
+            else{
+                this.toastr.success('Operação realizada com sucesso!');
+            }
+        });
+    }
+
+    onRemoveChallengeClick(){
+        let dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+            width: '325px',
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if(result === undefined || result === null || !result){
+                return;
+            }
+
+            let today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+            today.setMilliseconds(0);
+            this.selectedChallenge.EndDate = today;
+            
+            if(result !== undefined && result !== null){
+                if(this.selectedChallenge.Parameter === undefined || this.selectedChallenge.Parameter === null ||
+                    this.selectedChallenge.Name === '' || this.selectedChallenge.Description === '' ||
+                    this.selectedChallenge.StartDate === undefined || this.selectedChallenge.StartDate === null ||
+                    this.selectedChallenge.EndDate === undefined || this.selectedChallenge.EndDate === null ||
+                    this.selectedChallenge.Goal === undefined || this.selectedChallenge.Goal === null ||
+                    this.selectedChallenge.Prize === undefined || this.selectedChallenge.Prize === null){
+                    this.toastr.error('Por favor preencha todos os campos para continuar!');
+                    return;
+                }
+        
+                if(this.selectedChallenge.Goal <= 0){
+                    this.toastr.error('O valor do objetivo não pode ser menor ou igual a zero.');
+                    return;
+                }
+        
+                if(this.selectedChallenge.Prize <= 0){
+                    this.toastr.error('O valor das sementes não pode ser menor ou igual a zero.');
+                    return;
+                }
+        
+                this.loading = true;
+                this.challengeService.UpdateChallenge(this.selectedChallenge)
+                .then((response) => 
+                {
+                    this.loading = false;
+                    if(response.message === undefined || response.message === null || response.message === ''){
+                        this.toastr.success('Desafio removido com sucesso! Atualize a página para ver a listagem mais recente de desafios.');
+                    }
+                    else{                        
+                        this.toastr.error(response.message);
+                    }
+                });
+            }
+        });
     }
 
     onInsertChallengeClick(){
