@@ -58,9 +58,7 @@ namespace PottiRoma.App.ViewModels
         private async void GoToRegisterClient()
         {
             CanExecuteInitial();
-            var parameters = new NavigationParameters();
-            parameters.Add(NavigationKeyParameters.CameFromRegisterSale, (bool)true);
-            await _navigationService.NavigateAsync(NavigationSettings.RegisterClients, parameters);
+            await _navigationService.NavigateAsync(NavigationSettings.RegisterClients);
             CanExecuteEnd();
         }
 

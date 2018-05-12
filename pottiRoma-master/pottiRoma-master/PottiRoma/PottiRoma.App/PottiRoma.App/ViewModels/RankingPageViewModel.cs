@@ -157,15 +157,23 @@ namespace PottiRoma.App.ViewModels
             CanExecuteInitial();
             await NavigationHelper.ShowLoading();
 
-
+            var season = new SeasonResponse();
+            try
+            {
+                season.Entity = await CacheAccess.GetSecure<Season>(CacheKeys.SEASON_KEY);
+            }
+            catch
+            {
+                season = await _seasonAppService.CurrentSeason();
+                await CacheAccess.InsertSecure<Season>(CacheKeys.SEASON_KEY, season.Entity);
+            }
             bool isSuccess = true;
             var challenges = new GetCurrentChallengesResponse();
-            var season = new SeasonResponse();
 
             try
             {
-                season = await _seasonAppService.CurrentSeason();
                 challenges = await _challengesAppService.GetCurrentChallenges(season.Entity.TemporadaId.ToString());
+
             }
             catch
             {
@@ -177,6 +185,7 @@ namespace PottiRoma.App.ViewModels
                 challenges = SelectActualChallenges.Select(challenges);
                 if (isSuccess && challenges.Challenges.Count > 0)
                 {
+
                     parameters.Add(NavigationKeyParameters.CurrentChallenges, challenges.Challenges);
                     parameters.Add(NavigationKeyParameters.CurrentSeason, season.Entity);
                     await _navigationService.NavigateAsync(NavigationSettings.CurrentChallenges, parameters);
@@ -185,7 +194,6 @@ namespace PottiRoma.App.ViewModels
                 {
                     UserDialogs.Instance.Toast("Não possuimos desafios ativos no momento!", new TimeSpan(0, 0, 3));
                 }
-                await NavigationHelper.PopLoading();
             }
             CanExecuteEnd();
         }
