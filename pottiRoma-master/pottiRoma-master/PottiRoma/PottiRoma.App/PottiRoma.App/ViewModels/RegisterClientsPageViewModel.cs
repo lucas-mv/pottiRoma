@@ -40,6 +40,8 @@ namespace PottiRoma.App.ViewModels
         private readonly IChallengesAppService _challengesAppService;
         private readonly IGamificationPointsAppService _gamificationPointsAppService;
 
+        private bool _cameFromRegisterSale = false;
+
         private readonly string DatePlaceholder = "Data de Aniversário*";
         private Color _colorDateAnniversary;
         public Color ColorDateAnniversary
@@ -126,6 +128,9 @@ namespace PottiRoma.App.ViewModels
                 ColorDateAnniversary = Color.FromHex("#696969");
             }
             else PageTitle = SetTitle(false);
+
+            if (parameters.ContainsKey(NavigationKeyParameters.CameFromRegisterSale))
+                _cameFromRegisterSale = (bool)parameters[NavigationKeyParameters.CameFromRegisterSale];
         }
 
         private void CallbackDate(string date)
@@ -328,7 +333,10 @@ namespace PottiRoma.App.ViewModels
                 finally
                 {
                     await NavigationHelper.PopLoading();
-                    await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                    if (!_cameFromRegisterSale)
+                        await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                    else
+                        await _navigationService.GoBackAsync();
                 }
             }
             else

@@ -17,5 +17,6 @@ namespace PottiRoma.App.Utils.NavigationHelpers
         public const string CurrentChallenges = "CurrentChallenges";
         public const string CurrentSeason = "CurrentSeason";
         public const string MyTrophies = "MyTrophies";
+        public const string CameFromRegisterSale = "CameFromRegisterSale";
     }
 }

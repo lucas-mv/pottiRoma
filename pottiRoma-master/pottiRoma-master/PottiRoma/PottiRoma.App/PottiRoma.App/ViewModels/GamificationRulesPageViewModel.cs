@@ -163,7 +163,7 @@ namespace PottiRoma.App.ViewModels
                 Main = (new RulesContentDto()
                 {
                     ContentRulesId = Utils.Enums.RulesTitleContentEnum.Main,
-                    Title = "JOGO CRM - POTTI ROMÃ",
+                    Title = "CONNECT ME - POTTI ROMÃ",
                     Definition = RulesConstants.Main
                 });
                 Objective = (new RulesContentDto()
