@@ -32,6 +32,25 @@ namespace PottiRoma.App.Utils.Helpers
             return FormattedDate;
         }
 
+        public static string FormatAveragePiecesForSale(int points)
+        {
+            string pointsFormatted = ConvertToString(points);
+            return points + " und";
+        }
+
+        public static string ConvertToString(int points)
+        {
+            string pointsFormatted = points.ToString();
+            if (string.IsNullOrWhiteSpace(pointsFormatted) || string.IsNullOrWhiteSpace(pointsFormatted))
+                return "0";
+            else return pointsFormatted;
+        }
+
+        public static string FormatUserRankingPosition(int position)
+        {
+            return position.ToString() + ". ";
+        }
+
         public static string FormatChallengeType(ChallengeType type)
         {
             switch (type)

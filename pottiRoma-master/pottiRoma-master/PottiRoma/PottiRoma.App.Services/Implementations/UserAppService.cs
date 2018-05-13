@@ -24,6 +24,11 @@ namespace PottiRoma.App.Services.Implementations
             return await UserApiRepository.Get().GetAppUsers();
         }
 
+        public async Task<GetAppUsersResponse> GetAllAppUsers()
+        {
+            return await UserApiRepository.Get().GetAllAppUsers();
+        }
+
         public async Task<User> GetUserByEmail(string email)
         {
             return await UserApiRepository.Get().GetUserByEmail(email);
@@ -44,9 +49,9 @@ namespace PottiRoma.App.Services.Implementations
             await UserApiRepository.Get().ResetPassword(usuarioId);
         }
 
-        public async Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep)
+        public async Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep, string emailInviter)
         {
-            await UserApiRepository.Get().SendEmail(emailInvited, nameInvited, nameUser, cpf, telephone, cep);
+            await UserApiRepository.Get().SendEmail(emailInvited, nameInvited, nameUser, cpf, telephone, cep, emailInviter);
         }
 
         public async Task SendBirthdayEmail(string emailInvited, string nameUser)

@@ -41,6 +41,7 @@ namespace PottiRoma.App.ViewModels
         private readonly IGamificationPointsAppService _gamificationPointsAppService;
 
         private readonly string DatePlaceholder = "Data de Aniversário*";
+        private bool _cameFromClientsForSale = false;
         private Color _colorDateAnniversary;
         public Color ColorDateAnniversary
         {
@@ -126,6 +127,9 @@ namespace PottiRoma.App.ViewModels
                 ColorDateAnniversary = Color.FromHex("#696969");
             }
             else PageTitle = SetTitle(false);
+
+            if (parameters.ContainsKey(NavigationKeyParameters.GoToRegisterClientFromSale))
+                _cameFromClientsForSale = (bool)parameters[NavigationKeyParameters.GoToRegisterClientFromSale];
         }
 
         private void CallbackDate(string date)
@@ -254,15 +258,9 @@ namespace PottiRoma.App.ViewModels
                         await CacheAccess.Insert<List<Client>>(CacheKeys.CLIENTS, myClients.Clients);
 
                         var points = new GetGamificationPointsResponse();
-                        try
-                        {
-                            points.Entity = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
-                        }
-                        catch
-                        {
-                            points = await _gamificationPointsAppService.GetCurrentGamificationPoints();
-                            await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, points.Entity);
-                        }
+                        points = await _gamificationPointsAppService.GetCurrentGamificationPoints();
+                        await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, points.Entity);
+
                         user.RegisterClientsPoints += points.Entity.RegisterNewClients;
 
                         await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
@@ -328,7 +326,10 @@ namespace PottiRoma.App.ViewModels
                 finally
                 {
                     await NavigationHelper.PopLoading();
-                    await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                    if (!_cameFromClientsForSale)
+                        await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
+                    else
+                        await _navigationService.GoBackAsync();
                 }
             }
             else

@@ -27,7 +27,7 @@ namespace PottiRoma.App.ApiAccess.Refit
 
         [Post("/User/SendEmail")]
         [Headers("Authorization: Bearer")]
-        Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep);
+        Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep, string emailInviter);
 
         [Post("/User/SendBirthdayEmail")]
         [Headers("Authorization: Bearer")]
@@ -36,6 +36,10 @@ namespace PottiRoma.App.ApiAccess.Refit
         [Post("/User/Profile/Update")]
         [Headers("Authorization: Bearer")]
         Task UpdateUserPoints(UpdateUserPointsRequest request);
+
+        [Post("/User/GetAllAppUsers")]
+        [Headers("Authorization: Bearer")]
+        Task<GetAppUsersResponse> GetAllAppUsers();
 
         [Post("/User/GetAppUsers")]
         [Headers("Authorization: Bearer")]

@@ -15,10 +15,11 @@ namespace PottiRoma.App.Services.Interfaces
         Task ChangePassword(ChangePasswordRequest request);
         Task<LoginReponse> Login(LoginRequest request);
         Task Logout(string usuarioId);
-        Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep);
+        Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep, string emailInviter);
         Task SendBirthdayEmail(string emailInvited, string nameUser);
         Task UpdateUserPoints(UpdateUserPointsRequest request);
         Task<GetAppUsersResponse> GetAppUsers();
+        Task<GetAppUsersResponse> GetAllAppUsers();
         Task UpdateUser(string usuarioId, string email, string primaryTelephone, string secundaryTelephone, string cep);
         Task<User> GetUserByEmail(string email);
         Task ResetPassword(string email);
