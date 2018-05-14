@@ -43,7 +43,7 @@ namespace PottiRoma.App.Repositories.Api
               );
         }
 
-        public async Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep)
+        public async Task SendEmail(string emailInvited, string nameInvited, string nameUser, string cpf, string telephone, string cep, string emailInviter)
         {
             await Policy
              .Handle<WebException>()
@@ -53,7 +53,7 @@ namespace PottiRoma.App.Repositories.Api
                sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
              )
              .ExecuteAsync(async () =>
-                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().SendEmail(emailInvited, nameInvited, nameUser, cpf, telephone, cep)
+                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().SendEmail(emailInvited, nameInvited, nameUser, cpf, telephone, cep, emailInviter)
               );
         }
 
@@ -125,6 +125,21 @@ namespace PottiRoma.App.Repositories.Api
              )
              .ExecuteAsync(async () =>
                    await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().GetAppUsers()
+              );
+            return response;
+        }
+
+        public async Task<GetAppUsersResponse> GetAllAppUsers()
+        {
+            var response = await Policy
+             .Handle<WebException>()
+             .WaitAndRetryAsync
+             (
+               retryCount: 5,
+               sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+             )
+             .ExecuteAsync(async () =>
+                   await PottiRomaApiAccess.GetPottiRomaApi<IUserRefit>().GetAllAppUsers()
               );
             return response;
         }

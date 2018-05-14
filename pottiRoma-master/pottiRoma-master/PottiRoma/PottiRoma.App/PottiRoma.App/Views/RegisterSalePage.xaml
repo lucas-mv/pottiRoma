@@ -203,7 +203,7 @@
                                     TextColor="{StaticResource PlaceholderColor}"
                                     VerticalOptions="Start"
                                     VerticalTextAlignment="Start" />
-                                <renderers:CustomEntry
+                                <renderers:CustomEditor
                                     x:Name="ObservacoesEditor"
                                     Margin="0"
                                     Completed="Editor_observacoes_placeholder_Unfocused"
@@ -211,7 +211,7 @@
                                     FontSize="14"
                                     HeightRequest="100"
                                     HorizontalOptions="Fill"
-                                    HorizontalTextAlignment="Start"
+                                    Keyboard="Text"
                                     Text="{Binding SaleRegistered.Description}"
                                     TextColor="{StaticResource TextColor}"
                                     Unfocused="Editor_observacoes_placeholder_Unfocused"

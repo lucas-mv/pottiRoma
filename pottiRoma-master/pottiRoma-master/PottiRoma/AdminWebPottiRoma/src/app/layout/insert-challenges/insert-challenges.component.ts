@@ -169,7 +169,8 @@ export class InsertChallengesComponent implements OnInit {
         });
     }
 
-    onInsertChallengeClick(){
+    onInsertChallengeClick() {
+        debugger;
         if(this.challengeParameter === undefined || this.challengeParameter === null ||
             this.challengeName === '' || this.description === '' ||
             this.startDate === undefined || this.startDate === null ||
@@ -204,9 +205,8 @@ export class InsertChallengesComponent implements OnInit {
             this.toastr.error('O valor das sementes não pode ser menor ou igual a zero.');
             return;
         }
-
+        debugger;
         this.loading = true;
-        if(this.selectedChallenge.name == null){
             this.gamificationService.insertNewChallenge(this.challengeName, this.startDate, this.endDate, this.challengeParameter, this.goal, this.seedAmount, this.description)
             .then(response => {
                 this.loading = false;
@@ -217,24 +217,5 @@ export class InsertChallengesComponent implements OnInit {
                     this.toastr.error(response.message);
                 }
             });
-        }
-        else
-        {
-            this.selectedChallenge.Name = this.challengeName;
-            this.selectedChallenge.startDate = this.startDate;
-            this.selectedChallenge.parameter = this.challengeParameter;
-            this.selectedChallenge.seedAmount = this.seedAmount;
-            this.selectedChallenge.description = this.description;
-            this.challengeService.UpdateChallenge(this.selectedChallenge)
-            .then(response => {
-                this.loading = false;
-                if(response.message === ''){
-                    this.toastr.success('Desafio alterado com sucesso!');
-                }
-                else{
-                    this.toastr.error(response.message);
-                }
-            });
-        }
     }
 }

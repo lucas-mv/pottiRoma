@@ -250,8 +250,8 @@ namespace PottiRoma.App.ViewModels
                     }
                     finally
                     {
-                        await _navigationService.NavigateAsync(NavigationSettings.MenuPrincipal);
                         await NavigationHelper.PopLoading();
+                        await _navigationService.GoBackAsync();      
                     }
                 }
             }

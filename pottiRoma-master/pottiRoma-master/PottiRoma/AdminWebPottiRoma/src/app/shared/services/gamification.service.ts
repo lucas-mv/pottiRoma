@@ -91,7 +91,7 @@ export class GamificationService extends BaseService {
   public insertNewChallenge(name:string, startDate: Date, endDate:Date, parameter:Number, goal:Number, prize:Number, description:string){
     return this.http
     .post(
-      this.getBaseUrl() + 'Challenge/Insert',
+        this.getBaseUrl() + 'Challenge/Insert',
       {
         Name: name,
         StartDate: startDate,

@@ -92,7 +92,7 @@ namespace PottiRoma.App.ViewModels
 
                     var email_name = new Dictionary<string, string>();
                     email_name.Add(Email, user.Name);
-                    await _userAppService.SendEmail(Email, Name, user.Name, Cpf, PrimaryTelephone, Cep);
+                    await _userAppService.SendEmail(Email, Name, user.Name, Cpf, PrimaryTelephone, Cep, user.Email);
                     var points = await CacheAccess.GetSecure<Points>(CacheKeys.POINTS);
                     user.InviteAllyFlowersPoints += points.InviteFlower;
 

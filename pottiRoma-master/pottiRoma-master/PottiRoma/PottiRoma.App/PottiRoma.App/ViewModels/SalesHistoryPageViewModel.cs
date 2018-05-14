@@ -16,6 +16,7 @@ using PottiRoma.App.Repositories.Internal;
 using static PottiRoma.App.Utils.Constants;
 using PottiRoma.App.Models.Responses.Sales;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace PottiRoma.App.ViewModels
 {
@@ -24,6 +25,8 @@ namespace PottiRoma.App.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IUserDialogs _userDialogs;
         private readonly ISalesAppService _salesAppService;
+
+        private bool _cameFromRegisterSale = false;
 
         public DelegateCommand<object> SaleSelectedCommand { get; set; }
 
@@ -102,6 +105,7 @@ namespace PottiRoma.App.ViewModels
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+
             await NavigationHelper.ShowLoading();
 
             try
@@ -127,11 +131,12 @@ namespace PottiRoma.App.ViewModels
                 _userDialogs.Toast(ex.Message);
                 await _navigationService.GoBackAsync();
             }
-            finally
+
+            Device.BeginInvokeOnMainThread(async () => 
             {
                 await NavigationHelper.PopLoading();
-            }
-        }        
+            });
+        }
 
         private void CompleteLabelFromSale(Sale Sale)
         {
