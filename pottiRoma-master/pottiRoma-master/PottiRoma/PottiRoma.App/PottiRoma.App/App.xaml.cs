@@ -28,7 +28,7 @@ namespace PottiRoma.App
 
         protected override void OnInitialized()
         {
-            AppCenter.Start("ios=ce1bfa28-94c8-4ffc-9726-fad5c55172f9;android=8085118a-c304-4b96-b2f2-b1468761f934", typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("ios=a0e445e9-761d-4596-a137-9a21d9ca1ad2;android=fb450a0f-a9a1-49c4-b2b3-7e08521f2447", typeof(Analytics), typeof(Crashes));
             InitializeComponent();
             StartNavigation();
         }

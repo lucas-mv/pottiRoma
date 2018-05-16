@@ -55,13 +55,13 @@ namespace PottiRoma.Api.Controllers
             {
                 var totalpoints = user.AverageItensPerSalePoints + user.AverageTicketPoints + user.InviteAllyFlowersPoints + user.SalesNumberPoints + user.RegisterClientsPoints;
 
-                _rankingBySeasonService.GenerateRankingBySeason(user.Name, user.Email, currentSeason.Entity.Name, totalpoints, 
+                _rankingBySeasonService.GenerateRankingBySeason(user.Name, user.Email, currentSeason.Entity.Name, totalpoints,
                     currentSeason.Entity.StartDate, currentSeason.Entity.EndDate, user.AverageTicketPoints,
                     user.RegisterClientsPoints, user.SalesNumberPoints, user.AverageItensPerSalePoints, user.InviteAllyFlowersPoints);
 
                 _userService.UpdateUserPoints(user.UsuarioId, 0, 0, 0, 0, 0);
             }
-             await _seasonService.InsertSeason( request.Name, request.StartDate, request.EndDate, request.IsActive);
+            await _seasonService.InsertSeason( request.Name, request.StartDate, request.EndDate, request.IsActive);
         }
 
         [Route("RankingBySeason")]
