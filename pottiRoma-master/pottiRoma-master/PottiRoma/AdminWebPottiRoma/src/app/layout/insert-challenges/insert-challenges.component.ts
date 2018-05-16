@@ -170,7 +170,6 @@ export class InsertChallengesComponent implements OnInit {
     }
 
     onInsertChallengeClick() {
-        debugger;
         if(this.challengeParameter === undefined || this.challengeParameter === null ||
             this.challengeName === '' || this.description === '' ||
             this.startDate === undefined || this.startDate === null ||
@@ -205,7 +204,6 @@ export class InsertChallengesComponent implements OnInit {
             this.toastr.error('O valor das sementes não pode ser menor ou igual a zero.');
             return;
         }
-        debugger;
         this.loading = true;
             this.gamificationService.insertNewChallenge(this.challengeName, this.startDate, this.endDate, this.challengeParameter, this.goal, this.seedAmount, this.description)
             .then(response => {

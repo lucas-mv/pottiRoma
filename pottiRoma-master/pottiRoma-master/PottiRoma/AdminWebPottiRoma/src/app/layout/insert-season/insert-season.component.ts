@@ -38,7 +38,6 @@ export class InsertSeasonComponent implements OnInit {
         }
 
         this.loading = true;
-        debugger;
         this.seasonService.insertSeason(this.name, this.startDate, this.endDate, this.isActive)
         .then(response => {
             this.loading = false;

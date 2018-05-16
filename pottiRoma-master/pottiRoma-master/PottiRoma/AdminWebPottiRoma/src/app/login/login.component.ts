@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
                     this.toastr.error(response.message);
                 }
                 else {
-                    debugger;
                     localStorage.setItem('potti-token', response.token);
                     localStorage.setItem('potti-user', JSON.stringify(response.user));
                     localStorage.setItem('isLoggedin', 'true');

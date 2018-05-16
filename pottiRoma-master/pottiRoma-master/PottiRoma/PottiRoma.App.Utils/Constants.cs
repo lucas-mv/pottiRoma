@@ -40,7 +40,7 @@ namespace PottiRoma.App.Utils
             {
                 {
                     Enviroments.Production,
-                    new Uri("https://pottiroma.azurewebsites.net/api/v1")
+                    new Uri("https://92736775.ngrok.io/api/v1")
                 },
                 {
                     Enviroments.Development,

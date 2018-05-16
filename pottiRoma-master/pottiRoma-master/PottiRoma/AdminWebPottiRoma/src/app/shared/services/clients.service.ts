@@ -18,7 +18,6 @@ export class ClientsService extends BaseService{
     .toPromise()
     .then(res => {
       let responseJson = res.json();
-      debugger;
       return {
         clients: responseJson.Clients,
         message: ''
