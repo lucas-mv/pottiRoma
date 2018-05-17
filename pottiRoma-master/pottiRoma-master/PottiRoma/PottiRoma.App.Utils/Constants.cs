@@ -18,6 +18,7 @@ namespace PottiRoma.App.Utils
             public const string POINTS = "GamificationPoints";
             public const string FIRST_ACCESS = "FirstAccess";
             public const string BIRTHDAYS = "Birthdays";
+            public const string DAY_MONTH = "DayMonth";
             public const string CHALLENGES = "Challenges";
             public const string TROPHIES = "Trophies";
             public const string INVITE_POINTS_FOR_CHALLENGE = "InvitePointsForChallenge";
@@ -40,15 +41,18 @@ namespace PottiRoma.App.Utils
             {
                 {
                     Enviroments.Production,
-                    new Uri("https://92736775.ngrok.io/api/v1")
+                    ///*new Uri("https://potti-web-prod.azurewebsites.net/api/v1")*/
+                    new Uri("https://0b39405e.ngrok.io/api/v1")
                 },
                 {
                     Enviroments.Development,
-                    new Uri("https://pottiroma.azurewebsites.net/api/v1")
+                    ///*new Uri("https://potti-web-prod.azurewebsites.net/api/v1")*/
+                    new Uri("https://0b39405e.ngrok.io/api/v1")
                 },
                 {
                     Enviroments.Homologation,
-                    new Uri("https://pottiroma.azurewebsites.net/api/v1")
+                    ///*new Uri("https://potti-web-prod.azurewebsites.net/api/v1")*/
+                    new Uri("https://0b39405e.ngrok.io/api/v1")
                 }
             };
         }

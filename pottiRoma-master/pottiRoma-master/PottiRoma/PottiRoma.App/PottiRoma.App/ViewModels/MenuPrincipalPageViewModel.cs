@@ -79,12 +79,28 @@ namespace PottiRoma.App.ViewModels
 
             if (parameters.ContainsKey(NavigationKeyParameters.FirstAccess))
                 firstAccess = parameters[NavigationKeyParameters.FirstAccess] as string;
-            if (parameters.ContainsKey(NavigationKeyParameters.ClientsBirthday) && firstAccess == "true")
+            if (parameters.ContainsKey(NavigationKeyParameters.ClientsBirthday))
             {
                 await Task.Delay(2000);
                 var listBirthdays = parameters[NavigationKeyParameters.ClientsBirthday] as ObservableCollection<Client>;
-                await CacheAccess.Insert<ObservableCollection<Client>>(CacheKeys.BIRTHDAYS, listBirthdays);
-                await PopupAnniversaryHelper.Mostrar(_userAppService);
+                if (CacheAccess.Get<ObservableCollection<Client>>(CacheKeys.BIRTHDAYS) != null && firstAccess == "true")
+                {
+                    int dayMonthCache = 0;
+                    try
+                    {
+                        dayMonthCache = await CacheAccess.Get<int>(CacheKeys.DAY_MONTH);
+                    }
+                    catch { }
+                    if (dayMonthCache != DateTime.Now.Day)
+                    {
+                        try
+                        {
+                            await CacheAccess.InsertExpire<int>(CacheKeys.DAY_MONTH, DateTime.Now.Day, new TimeSpan(24, 0, 0));
+                        }
+                        catch { }
+                        await PopupAnniversaryHelper.Mostrar(_userAppService);
+                    }
+                }
             }
         }
 

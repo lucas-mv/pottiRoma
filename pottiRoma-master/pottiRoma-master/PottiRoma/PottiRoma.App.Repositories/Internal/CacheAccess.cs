@@ -27,6 +27,11 @@ namespace PottiRoma.App.Repositories.Internal
             await BlobCache.LocalMachine.InsertObject<T>(key, blob);
         }
 
+        public async static Task InsertExpire<T>(string key, T blob, TimeSpan expiration)
+        {
+            await BlobCache.LocalMachine.InsertObject<T>(key, blob, expiration);
+        }
+
         public async static Task<T> Get<T>(string key)
         {
             return await BlobCache.LocalMachine.GetObject<T>(key);

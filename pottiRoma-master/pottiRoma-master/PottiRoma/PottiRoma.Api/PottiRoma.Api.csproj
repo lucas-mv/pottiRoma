@@ -186,6 +186,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\potti-web-prod - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\potti-web-prod - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\PottiRoma - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\PottiRoma - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
