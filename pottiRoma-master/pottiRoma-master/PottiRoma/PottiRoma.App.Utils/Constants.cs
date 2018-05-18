@@ -41,18 +41,18 @@ namespace PottiRoma.App.Utils
             {
                 {
                     Enviroments.Production,
-                    ///*new Uri("https://potti-web-prod.azurewebsites.net/api/v1")*/
-                    new Uri("https://0b39405e.ngrok.io/api/v1")
+                    new Uri("https://potti-web-prod.azurewebsites.net/api/v1")
+                    //new Uri("https://0b39405e.ngrok.io/api/v1")
                 },
                 {
                     Enviroments.Development,
-                    ///*new Uri("https://potti-web-prod.azurewebsites.net/api/v1")*/
-                    new Uri("https://0b39405e.ngrok.io/api/v1")
+                    new Uri("https://potti-web-prod.azurewebsites.net/api/v1")
+                    ////new Uri("https://0b39405e.ngrok.io/api/v1")
                 },
                 {
                     Enviroments.Homologation,
-                    ///*new Uri("https://potti-web-prod.azurewebsites.net/api/v1")*/
-                    new Uri("https://0b39405e.ngrok.io/api/v1")
+                    new Uri("https://potti-web-prod.azurewebsites.net/api/v1")
+                    ////new Uri("https://0b39405e.ngrok.io/api/v1")
                 }
             };
         }

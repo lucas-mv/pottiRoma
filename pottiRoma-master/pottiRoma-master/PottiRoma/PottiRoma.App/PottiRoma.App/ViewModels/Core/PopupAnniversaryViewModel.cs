@@ -78,7 +78,11 @@ namespace PottiRoma.App.ViewModels.Core
 
         private async void GetBirthdays()
         {
-            Birthdays = await CacheAccess.Get<ObservableCollection<Client>>(CacheKeys.BIRTHDAYS);
+            try
+            {
+                Birthdays = await CacheAccess.Get<ObservableCollection<Client>>(CacheKeys.BIRTHDAYS);
+            }
+            catch { }
             BirthdayTitle = "Aniversariantes do dia: " + DateTime.Now.Day + "/" + DateTime.Now.Month + "!";
         }
     }

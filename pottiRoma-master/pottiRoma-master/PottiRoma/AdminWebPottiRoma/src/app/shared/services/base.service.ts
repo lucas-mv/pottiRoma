@@ -9,7 +9,7 @@ export class BaseService {
 
   protected getBaseUrl(){
     return 'http://localhost:51945/api/v1/';
-    //return 'https://pottiroma.azurewebsites.net/api/v1/';
+    //return 'https://potti-web-prod.azurewebsites.net/api/v1';
   }
 
   protected createAuthenticationRequestOptions(){
