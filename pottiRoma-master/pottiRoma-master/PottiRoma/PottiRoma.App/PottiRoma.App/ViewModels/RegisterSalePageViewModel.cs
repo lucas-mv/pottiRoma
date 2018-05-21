@@ -221,6 +221,7 @@ namespace PottiRoma.App.ViewModels
                             InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
                             SalesNumberPoints = user.SalesNumberPoints
                         });
+                        await CacheAccess.InsertSecure<User>(CacheKeys.USER_KEY, user);
                         await GetParametersForChallenge();
                         if (!_hasWonTrophy)
                             UserDialogs.Instance.Toast("Parabéns! Você ganhou " + currentPoints.Entity.SalesNumber + " Sementes com essa Venda!", duration);
@@ -333,6 +334,8 @@ namespace PottiRoma.App.ViewModels
                             SalesNumberPoints = user.SalesNumberPoints + challenge.Prize,
                             UsuarioId = user.UsuarioId
                         });
+                        await CacheAccess.InsertSecure<User>(CacheKeys.USER_KEY, user);
+
                         _hasWonTrophy = true;
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Vendas Realizadas! Parabéns!", new TimeSpan(0, 0, 4));
                     }

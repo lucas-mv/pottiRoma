@@ -105,6 +105,8 @@ namespace PottiRoma.App.ViewModels
                         InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
                         SalesNumberPoints = user.SalesNumberPoints
                     });
+                    await CacheAccess.InsertSecure<User>(CacheKeys.USER_KEY, user);
+
                     try
                     {
                         Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>

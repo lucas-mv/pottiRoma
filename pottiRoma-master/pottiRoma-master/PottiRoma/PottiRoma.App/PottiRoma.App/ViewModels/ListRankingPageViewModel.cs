@@ -78,7 +78,6 @@ namespace PottiRoma.App.ViewModels
                     ImageSource = "banner_porquinho_ranking.png";
                     foreach (var users in AppUsers)
                         users.ListRankingPoints = Formatter.FormatMoney(users.AverageTicketPoints);
-                    ThisUser.ListRankingPoints = Formatter.FormatMoney(ThisUser.AverageTicketPoints);
                     try
                     {
                         Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
@@ -93,7 +92,6 @@ namespace PottiRoma.App.ViewModels
                     ImageSource = "banner_colecionadoras_ranking.png";
                     foreach (var users in AppUsers)
                         users.ListRankingPoints = Formatter.ConvertToString(users.RegisterClientsPoints);
-                    ThisUser.ListRankingPoints = Formatter.ConvertToString(ThisUser.RegisterClientsPoints);
                     try
                     {
                         Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
@@ -108,7 +106,6 @@ namespace PottiRoma.App.ViewModels
                     ImageSource = "banner_varal.png";
                     foreach (var users in AppUsers)
                         users.ListRankingPoints = Formatter.FormatAveragePiecesForSale(users.AverageItensPerSalePoints);
-                    ThisUser.ListRankingPoints = Formatter.FormatAveragePiecesForSale(ThisUser.AverageItensPerSalePoints);
 
                     try
                     {
@@ -124,7 +121,6 @@ namespace PottiRoma.App.ViewModels
                     ImageSource = "banner_flor.png";
                     foreach (var users in AppUsers)
                         users.ListRankingPoints = Formatter.ConvertToString(users.InviteAllyFlowersPoints);
-                    ThisUser.ListRankingPoints = Formatter.ConvertToString(ThisUser.InviteAllyFlowersPoints);
                     try
                     {
                         Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
@@ -139,7 +135,6 @@ namespace PottiRoma.App.ViewModels
                     ImageSource = "banner_atendimento_ranking.png";
                     foreach (var users in AppUsers)
                         users.ListRankingPoints = Formatter.ConvertToString(users.SalesNumberPoints);
-                    ThisUser.ListRankingPoints = Formatter.ConvertToString(ThisUser.SalesNumberPoints);
                     try
                     {
                         Analytics.TrackEvent(InsightsTypeEvents.ActionView, new Dictionary<string, string>
@@ -153,8 +148,7 @@ namespace PottiRoma.App.ViewModels
                     Title = "Geral";
                     ImageSource = "banner_manequim_ranking.png";
                     foreach (var users in AppUsers)
-                        users.ListRankingPoints = Formatter.ConvertToString(users.AverageItensPerSalePoints + users.AverageTicketPoints + users.RegisterClientsPoints + users.InviteAllyFlowersPoints + users.SalesNumberPoints);
-                    ThisUser.ListRankingPoints = Formatter.ConvertToString(ThisUser.AverageItensPerSalePoints + ThisUser.AverageTicketPoints + ThisUser.RegisterClientsPoints + ThisUser.InviteAllyFlowersPoints + ThisUser.SalesNumberPoints);
+                        users.ListRankingPoints = Formatter.ConvertToString(users.RegisterClientsPoints + users.InviteAllyFlowersPoints + users.SalesNumberPoints);
                     break;
             }
         }
@@ -181,7 +175,8 @@ namespace PottiRoma.App.ViewModels
                 switch (ListType)
                 {
                     case CarouselBannerType.AveragePiecesForSale:
-                        users = users.OrderByDescending(u => u.AverageItensPerSalePoints).ToList().GetRange(0, 5);
+                        users = users.Count < 6 ? users.OrderByDescending(u => u.AverageItensPerSalePoints).ToList().GetRange(0, users.Count) : users.OrderByDescending(u => u.AverageItensPerSalePoints).ToList().GetRange(0, 5);
+
                         foreach (var user in users)
                         {
                             user.ListRankingPoints = Formatter.FormatAveragePiecesForSale(user.AverageItensPerSalePoints);
@@ -190,7 +185,9 @@ namespace PottiRoma.App.ViewModels
                         break;
 
                     case CarouselBannerType.AverageTicket:
-                        users = users.OrderByDescending(u => u.AverageTicketPoints).ToList().GetRange(0, 5);
+
+                        users = users.Count < 6 ? users.OrderByDescending(u => u.AverageTicketPoints).ToList().GetRange(0, users.Count) : users.OrderByDescending(u => u.AverageTicketPoints).ToList().GetRange(0, 5);
+ 
                         foreach (var user in users)
                         {
                             user.ListRankingPoints = Formatter.FormatMoney(user.AverageTicketPoints);
@@ -199,7 +196,9 @@ namespace PottiRoma.App.ViewModels
                         break;
 
                     case CarouselBannerType.RegisterAlliedFlowers:
-                        users = users.OrderByDescending(u => u.InviteAllyFlowersPoints).ToList().GetRange(0, 5);
+
+                        users = users.Count < 6 ? users.OrderByDescending(u => u.InviteAllyFlowersPoints).ToList().GetRange(0, users.Count) : users.OrderByDescending(u => u.InviteAllyFlowersPoints).ToList().GetRange(0, 5);
+
                         foreach (var user in users)
                         {
                             user.ListRankingPoints = user.InviteAllyFlowersPoints.ToString();
@@ -208,7 +207,9 @@ namespace PottiRoma.App.ViewModels
                         break;
 
                     case CarouselBannerType.RegisterClients:
-                        users = users.OrderByDescending(u => u.RegisterClientsPoints).ToList().GetRange(0, 5);
+
+                        users = users.Count < 6 ? users.OrderByDescending(u => u.RegisterClientsPoints).ToList().GetRange(0, users.Count) : users.OrderByDescending(u => u.RegisterClientsPoints).ToList().GetRange(0, 5);
+
                         foreach (var user in users)
                         {
                             user.ListRankingPoints = user.RegisterClientsPoints.ToString();
@@ -217,7 +218,9 @@ namespace PottiRoma.App.ViewModels
                         break;
 
                     case CarouselBannerType.RegisteredSales:
-                        users = users.OrderByDescending(u => u.SalesNumberPoints).ToList().GetRange(0, 5);
+
+                        users = users.Count < 6 ? users.OrderByDescending(u => u.SalesNumberPoints).ToList().GetRange(0, users.Count) : users.OrderByDescending(u => u.SalesNumberPoints).ToList().GetRange(0, 5);
+
                         foreach (var user in users)
                         {
                             user.ListRankingPoints = user.SalesNumberPoints.ToString();
@@ -228,18 +231,16 @@ namespace PottiRoma.App.ViewModels
                     case CarouselBannerType.Total:
                         foreach (var user in users)
                         {
-                            user.ListRankingPoints = (user.SalesNumberPoints +
-                                                        user.RegisterClientsPoints +
+                            user.ListRankingPoints = (  user.RegisterClientsPoints +
                                                         user.InviteAllyFlowersPoints +
-                                                        user.AverageItensPerSalePoints +
-                                                        user.AverageTicketPoints).ToString();
-                            user.TotalPoints = (user.SalesNumberPoints +
-                                                        user.RegisterClientsPoints +
-                                                        user.InviteAllyFlowersPoints +
-                                                        user.AverageItensPerSalePoints +
-                                                        user.AverageTicketPoints);
+                                                        user.SalesNumberPoints).ToString();
+                            user.TotalPoints = (    user.RegisterClientsPoints +
+                                                    user.InviteAllyFlowersPoints +
+                                                    user.SalesNumberPoints);
                         }
-                        users = users.OrderByDescending(u => u.TotalPoints).ToList().GetRange(0, 5);
+
+                        users = users.Count < 6 ? users.OrderByDescending(u => u.TotalPoints).ToList().GetRange(0, users.Count) : users.OrderByDescending(u => u.TotalPoints).ToList().GetRange(0, 5);
+
                         AppUsersOrdered = allAppUsers.Users.OrderByDescending(user => user.TotalPoints).ToList();
                         break;
                 }
@@ -261,7 +262,7 @@ namespace PottiRoma.App.ViewModels
 
             ThisUser = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
 
-            GetThisUserRankingPosition(AppUsersOrdered);
+            GetThisUserRankingPosition(AppUsersOrdered, ListType);
 
             AppUsers = FillUserRankingPosition(AppUsers);
 
@@ -269,7 +270,7 @@ namespace PottiRoma.App.ViewModels
 
         }
 
-        private void GetThisUserRankingPosition(List<User> appUsersOrdered)
+        private void GetThisUserRankingPosition(List<User> appUsersOrdered, CarouselBannerType type)
         {
             int count = 0;
 
@@ -277,7 +278,30 @@ namespace PottiRoma.App.ViewModels
             {
                 count++;
                 if (user.UsuarioId == ThisUser.UsuarioId)
+                {
                     ThisUser.RankingPosition = Formatter.FormatUserRankingPosition(count);
+                    switch (type)
+                    {
+                        case CarouselBannerType.AveragePiecesForSale:
+                            ThisUser.ListRankingPoints = Formatter.FormatAveragePiecesForSale(user.AverageItensPerSalePoints);
+                            break;
+                        case CarouselBannerType.AverageTicket:
+                            ThisUser.ListRankingPoints = Formatter.FormatMoney(user.AverageTicketPoints);
+                            break;
+                        case CarouselBannerType.RegisterAlliedFlowers:
+                            ThisUser.ListRankingPoints = Formatter.ConvertToString(user.InviteAllyFlowersPoints);
+                            break;
+                        case CarouselBannerType.RegisterClients:
+                            ThisUser.ListRankingPoints = Formatter.ConvertToString(user.RegisterClientsPoints);
+                            break;
+                        case CarouselBannerType.RegisteredSales:
+                            ThisUser.ListRankingPoints = Formatter.ConvertToString(user.SalesNumberPoints);
+                            break;
+                        case CarouselBannerType.Total:
+                            ThisUser.ListRankingPoints = Formatter.ConvertToString(user.InviteAllyFlowersPoints + user.RegisterClientsPoints + user.SalesNumberPoints);
+                            break;
+                    }
+                }
             }
         }
 

@@ -160,6 +160,7 @@ namespace PottiRoma.App.ViewModels
             user = await CacheAccess.GetSecure<User>(CacheKeys.USER_KEY);
             try
             {
+
                 currentSeasonReponse = await _seasonAppService.CurrentSeason();
             }
             catch
@@ -223,6 +224,8 @@ namespace PottiRoma.App.ViewModels
                             SalesNumberPoints = user.SalesNumberPoints,
                             UsuarioId = user.UsuarioId
                         });
+                        await CacheAccess.InsertSecure<User>(CacheKeys.USER_KEY, user);
+
                         _hasWonTrophy = true;
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Cadastro de Clientes! Parabéns!", new TimeSpan(0, 0, 4));
                     }
@@ -261,7 +264,7 @@ namespace PottiRoma.App.ViewModels
                         points = await _gamificationPointsAppService.GetCurrentGamificationPoints();
                         await CacheAccess.InsertSecure<Points>(CacheKeys.POINTS, points.Entity);
 
-                        user.RegisterClientsPoints += points.Entity.RegisterNewClients;
+                        user.RegisterClientsPoints += (int)points.Entity.RegisterNewClients;
 
                         await _userAppService.UpdateUserPoints(new UpdateUserPointsRequest()
                         {
@@ -272,6 +275,7 @@ namespace PottiRoma.App.ViewModels
                             InviteAllyFlowersPoints = user.InviteAllyFlowersPoints,
                             SalesNumberPoints = user.SalesNumberPoints
                         });
+                        await CacheAccess.InsertSecure<User>(CacheKeys.USER_KEY, user);
                         await GetParametersForChallenge();
                         TimeSpan duration = new TimeSpan(0, 0, 3);
                         if(!_hasWonTrophy)

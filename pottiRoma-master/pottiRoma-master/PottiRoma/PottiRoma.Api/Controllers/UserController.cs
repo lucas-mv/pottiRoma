@@ -80,7 +80,7 @@ namespace PottiRoma.Api.Controllers
         [HttpPost]
         public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)
         {
-            await ValidateToken();
+            //await ValidateToken();
             var checkUserEmailRegistered = _userService.GetUserByEmail(request.Email);
             if (checkUserEmailRegistered != null)
             {

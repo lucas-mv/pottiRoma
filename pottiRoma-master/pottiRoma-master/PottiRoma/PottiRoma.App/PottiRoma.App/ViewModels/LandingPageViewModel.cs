@@ -151,6 +151,8 @@ namespace PottiRoma.App.ViewModels
                             SalesNumberPoints = user.SalesNumberPoints,
                             UsuarioId = user.UsuarioId
                         });
+                        await CacheAccess.InsertSecure<User>(CacheKeys.USER_KEY, user);
+
                         UserDialogs.Instance.Toast("Você acabou de ganhar um Troféu de Convite de Flores Aliadas! Parabéns!", new TimeSpan(0, 0, 4));
                     }
                 }
