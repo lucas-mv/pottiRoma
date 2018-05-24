@@ -1,17 +1,18 @@
 ﻿using Microsoft.Owin;
 using Owin;
-using System.Web.Http;
-using Microsoft.Owin.Security.OAuth;
-using System;
-using System.Configuration;
-using System.Web.Http.Filters;
 using PottiRoma.Utils.CustomExceptions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Web;
+using System.Web.Http;
+using System.Web.Http.Filters;
 
-[assembly: OwinStartup(typeof(PottiRoma.Api.App_Start.Startup))]
+[assembly: OwinStartup("PottiStartupConfiguration", typeof(PottiRoma.Api.App_Start.PottiRomaStartup))]
 namespace PottiRoma.Api.App_Start
 {
-    public class Startup
+    public class PottiRomaStartup
     {
         public void Configuration(IAppBuilder app)
         {

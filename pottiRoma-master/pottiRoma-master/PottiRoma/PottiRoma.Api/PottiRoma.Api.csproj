@@ -133,8 +133,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\PottiRomaStartup.cs" />
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
-    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -188,8 +188,6 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\potti-web-prod - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\potti-web-prod - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\PottiRoma - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\PottiRoma - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
